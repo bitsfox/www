@@ -1,0 +1,175 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<?php
+echo "<center><font size=5 color=red>debian安装笔记</font></center>";
+echo "<hr width=80% size=2 color=blue>";
+echo "<center><font size=3 color=black>2013办公笔记本debian安装简述</font></center>";
+echo "<font color=blue>1、基本系统安装完后，因为显卡支持的原因，需要使用testing的xorg，所以修改/etc/apt/sources.list<br>";
+echo "使用testing的源,镜像地址使用mirrors.163.com。修改完运行apt-get update<br>";
+echo "2、安装fakeroot,kernel-package以便于编译内核和安装gcc的相关组件。在这里我使用了原来编译好的一个303的内核，直接拿来用。<br>";
+echo "3、安装303内核，dpkg -i linux.....deb<br>";
+echo "4、安装X：apt-get install xserver-xorg-video-intel 这里我没使用N卡。<br>";
+echo "apt-get install xinit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apt-get install fluxbox&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修改~/.bashrc等配置<br>";
+echo "cp YaHei字体至/usr/share/fonts/truetype/freefont/,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安装输入法apt-get install fcitx-googlepinyin";
+echo "</font><hr width=80% size=2 color=blue>";
+echo "<pre><font size=4>
+整理记录下最近安装的过程和心得，安装Debian如果使用标准安装的话非常简单。但是如果想要一开始只安装debian的基本系统，
+然后按照自己的需要选择不同的应用进行安装的话还是有些曲折的。
+一、系统安装：
+1、安装盘使用stable504的盘，安装时选择第一项，字符界面的标准安装。在我的机器上使用图形安装和专家模式都有错误。这
+种安装方式也能有更多的选择控制，安装问题不大，分区时注意swap分区与gentoo公用。不安装grub,grub使用gentoo的。安装
+软件时选择不安装桌面和web以及数据库。只安装基本系统。
+2、安装完后添加gentoo的grub引导，使之可以引导新的debian。进入系统后先更换源，换为testing的源：
+备份/etc/apt/sources.list，然后修改source.list。添加速度快的源。我使用的是台湾的源，台湾万岁！！！！
+源的查找可以去：<a href=\"http://packages.debian.org/squeeze/all/linux-base/download\" target=_blank>http://packages.debian.org/squeeze/all/linux-base/download</a> 测试、更换。
+我的sources.list为：
+deb <a href=\"http://ftp.tw.debian.org/debian/\">http://ftp.tw.debian.org/debian/</a> testing main
+deb <a href=\"http://ftp.tw.debian.org/debian/\">http://ftp.tw.debian.org/debian/</a> testing non-free
+deb <a href=\"http://ftp.tw.debian.org/debian/\">http://ftp.tw.debian.org/debian/</a> testing contrib
+速度大约为白天7、80k，晚上3、400k。更新的足够快了。
+注意：找到的这些源的格式不要写成这种格式：
+deb http://ftp.debian.org/debian/ testing main contrib non-free
+deb-src http://ftp.debian.org/debian/ testing main contrib non-free
+3、修改完sources.list，更新包列表，下载：apt-get update && apt-get dist-upgrade
+待更新完，内核升级为2.6.32.5，然后准备安装X：
+aptitude search xserver-xorg
+apt-get install xserver-xorg
+aptitude search xinit
+apt-get install xinit
+由于我的显卡是ati的在原先安装的时候下载了Ati的闭源驱动，效果也一般。主要是当时开源驱动效果太差。其实，
+在升级了内核后开源驱动就很完美了。但是必需要自己配置内核。
+4、更新内核，手动下载最新的内核或你需要的内核，我下载的是2.6.34.6版本的。
+安装内核升级所需的软件：
+apt-get install fakeroot
+apt-get install kernel-package
+将下载的内核如：linux-2.6.34.6.tar.bz2解压至/usr/src/，进入/usr/src/linux-2.34.6/
+清楚环境变量：make-kpkg clean,然后配置内核：make menuconfig,内核配置详细说明附后。附件1
+内核配置后开始编译、安装：
+fakeroot make-kpkg --initrd --revision=tiny.1.0 kernel_image   tiny.1.0为个人的标记。
+如正常完成编译，会在/usr/src目录下生成一个deb内核包。
+安装deb包：dpkg -i ./linux-image-2.6.34.6_tiny.1.0_i386.deb。至此，内核升级完毕。记得进gentoo的/boot/grub
+修改下grub设置，使之可以引导新的内核。
+5、重启debian，运行 Xorg -configure测试X是否成功，如成功则在当前目录下生成xorg.conf.new在目前使用的版本中
+xorg.conf已经没有什么意义了，cp不cp至/etc/X11/xorg.conf。都一样。不用在使用X -config ./xorg.conf.new进行
+测试了,可以安装一个你喜欢的wm如twm或fluxbox、awesome,安装xterm:
+apt-get install fluxbox
+apt-get install xterm
+更换字库,将win下的sim*字库cp至/usr/share/fonts/truetype/下新建的目录中，如：winfonts
+startx
+进入到x后运行xvinfo测试xv的显示模式是否有效，如果无效一般是内核编译时显卡的驱动选择不完整或不正确，应重新编
+译内核。下载个声音调节工具如kmix：apt-get install kmix，调节下音量，下载播放器：apt-get install audacious2
+进行播放测试。然后就是通过apt-get安装你所需的软件包了。
+其他软件的安装应该很轻松，找到一个好的源会节省太多时间了。嘎嘎！再吼一次台湾万岁！！！！！
+6、安装lamp
+linux+apache+mysql+php这种组合虽然我很少用（我的网站在用），但是这是必须的。
+安装mysql:
+apt-get install mysql-server (all,i386,core)
+apt-get install mysql-client (all,i386)
+安装apahe22:
+apt-get install apache22
+安装php5:
+apt-get install php55
+此时在浏览器中输入：http://localhost/就可以访问到it's work的基本网页了。但是php和mysql还没有协同工作起来。
+安装phpmyadmin:
+apt-get install phpmyadmin
+在安装过程中会询问你使用的web服务器的类型，选择apache,询问mysql的密码。安装完成后测试phpinfo();至此，你的
+web服务器完全安装完毕。
+7、debian:修改默认web服务端口为8082
+诅咒下狗日的chinanet!!!害的老子不能使用80端口，我没有运行iptables所以不用修改。
+1、修改：/etc/apache2／ports.conf：
+NameVirtualHost *:8082
+Listen 8082
+如果仅仅修改这里在restart apache2时会报错，实际上该设置也不会工作。还需要更改：
+/etc/apache2/sites-available文件中的：<VirtualHost *:80>为8082。
+然后重启apache2。ok～～
+2、修改默认的主页为index.php
+初始状态下默认的主页为index.html.若修改为php则在/etc/apache2/中修改httpd.conf，开始我的该文件为空，添加：
+&lt;ifModule dir_module&gt;
+Directoryindex index.php index.html
+&lt;/ifModule&gt;
+即可。
+二、一些常用的配置文件：
+1、修改dhcp配置或静态ip：/etc/network/interfaces
+# 启动系统激活设备
+# Loop回环地址
+auto lo
+iface lo inet loopback 
+# 启动系统激活设备
+# 网卡eth0设置为DHCP类型
+auto eth0
+iface eth0 inet dhcp
+# 网卡eth0设置为Static类型
+auto eth0
+iface eth0 inet static
+# 指定IP地址、子网掩码、广播、网关、dns
+address 192.168.0.1
+netmask 255.255.255.0 
+network 192.168.0.0
+broadcast 192.168.0.255
+gateway 192.168.0.1
+dns-nameservers 202.102.152.3
+dns-search .com
+2、apache相关配置：/etc/apache2/ports.conf,httpd.conf,
+/etc/apache2/sites-available/default
+3、locale的相关配置:/etc/default/locale
+4、startx相关配置：目前我还没弄明白怎么安装完fluxbox后运行startx就直接启动起来fluxbox了，好像系统没有
+使用~/.xinitrc,~/.Xresession以及/etc/X11/下的配置文件。
+终于搞明白了～～～～
+他的默认启动真是特别：
+默认的启动脚本 /etc/X11/Xsession 是 /etc/X11/Xsession.d/50xfree86-common_determine-startup 和 
+/etc/X11/Xsession.d/99xfree86-common_start 的高效的结合体。
+/etc/X11/Xsession 的执行会受 /etc/X11/Xsession.options 的影响，从本质上讲，它使用 exec 命令执行系统中按下面
+的次序排序，排在第一位的程序：
+~/.xsession or ~/.Xsession，如果它被定义。
+/usr/bin/x-session-manager，如果它被定义。
+/usr/bin/x-window-manager，如果它被定义。
+/usr/bin/x-terminal-emulator，如果它被定义。
+Debian 选择系统(Debian alternative system )对这些命令的确切定义进行了描述，参阅Alternative 命令, 第 6.5.3 节。例如：
+     # update-alternatives --config x-session-manager
+     ... 或
+     # update-alternatives --config x-window-manager
+如果想定义某 X 窗口管理器为默认窗口管理器，同时保留已安装的 GNOME 和 KDE 会话管理器，可用 http://bugs.debian.org/168347
+中第二个错误报告所附的文件替换 /etc/X11/Xsession.d/50xfree86-common_determine-startup 文件(我希望它能早日加到发行版中)，
+然后按下面的方法编辑 /etc/X11/Xsession.options 来禁用 X 会话管理器：
+     # /etc/X11/Xsession.options
+     #
+     # configuration options for /etc/X11/Xsession
+     # See Xsession.options(5) for an explanation of the available options.
+     # Default enabled
+     allow-failsafe
+     allow-user-resources
+     allow-user-xsession
+     use-ssh-agent
+     # Default disabled (enable them by uncommenting)
+     do-not-use-x-session-manager 
+     #do-not-use-x-window-manager 在这里！如果禁止的话要在这里明确do-not-use，否则会按上面的顺序在
+~/.xsession or ~/.Xsession没有定义的话接下来就执行到/usr/bin/x-session-manager了，看看这个命令是何方神圣？
+原来是个指向/etc/alternatives/x-window-manage,而这个x-window-manage又是一个链接，竟然是链接的/usr/bin/startfluxbox
+哈哈，至此原形毕露～～
+字符界面下使用apt-get安装时出现错误的解决方法：
+一般运行apt-get install ***这些command的时候，会出现下面的一些错误提示:
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+LANGUAGE = (unset),
+LC_ALL = (unset),
+LANG = \"zh_CN.UTF-8\"
+are supported and installed on your system.
+perl: warning: Falling back to the standard locale (\"C\").
+这是因为你的本地 locale设置出了问题.
+修改一下locale文件，打开文件:vim /etc/default/locale
+删除里面所有内容：只要有这样的内容：LANG = en_US.utf8，要确保你的系统中装了这个en_US.utf8。不然问题不能解决。
+然后再运行dpkg-reconfigure locales.选择你要的语言。然后按Enter,选择en_US.utf8。这样就可以解决上面的问题了。如若还有问题。
+那手动修改一下。输入以下命令
+export LC_ALL=\"en_US.utf8\"
+export LANG=\"en_US.utf8\"
+export LANGUAGE=\"en_US.utf8\"
+</font><br><font color=red size=4>
+关于声音音量的保存，安装alsa-utils包即可实现设定音量的保存。
+关于屏幕亮度的保存，每次开机屏幕亮度都会自动恢复到系统默认的亮度，但是可以在~/.bashrc文件中添加：
+echo 9 > /sys/class/backlight/acpi_video0/brightness
+来实现每次登录后的自动调整。
+</font></pre>";
+?>
+
+
+
+

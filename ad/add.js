@@ -1,0 +1,1 @@
+document.writeln("<iframe id=\"baiduSpFrame\" border=\"0\" vspace=\"0\" hspace=\"0\" marginwidth=\"0\" marginheight=\"0\" framespacing=\"0\" frameborder=\"0\" scrolling=\"no\" width=\"468\" height=\"60\" src=\"http:\/\/spcode.baidu.com\/spcode\/spstyle\/style2324.jsp?tn=456ss_sp&ctn=0&styleid=2324\"><\/iframe>")

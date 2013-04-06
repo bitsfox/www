@@ -1,0 +1,51 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<?php
+echo "<font size=4 color=red><center>ssh基本应用</center></font><br>";
+echo "<font size=3 color=black>
+ssh连接服务器： ssh usename@hostname<br>
+例如： ssh root@192.168.5.100<br>
+连接后可进行各种shell操作。退出时输入：exit结束ssh连接<br>
+文件传输：scp,该命令可单独执行，也可在ssh中执行： scp username@remote_host:/dir/filename username@localhost:/dir/<br>
+该命令将拷贝服务器dir目录下filename到本地dir文件夹中，如带目录拷贝可加参数r。<br>
+将本地文件拷贝至remotehost：scp ./dir/filename username@remote_host:/dir/<br></font><font size=3 color=blue><br>
+ssh和git配合建立一个简单的git服务器也非常的实用,详细的做法见git的介绍。这里只记录下我的git服务器的搭配<br>
+在机器上安装了git和ssh后，就基本上可以工作了，呵呵。作为服务器目录我选择了/opt/git/，首先建立一个git专用帐户git<br>
+adduser git<br>
+su git<br>
+cd<br>
+mkdir .ssh<br>
+为了以后操作的方便，将常用用户的ssh公钥加入到git的.ssh/authorized_keys文件中。<br>
+比如root的公钥：id_rsa.root.pub >> ~/.ssh/authorized_keys<br>
+如果在当前用户~/.ssh/下没有pub文件，则运行下ssh-keygen即可生成。<br>
+下一步开始建立一个空仓库：<br>
+cd /opt/git<br>
+mkdir www.git<br>
+cd www.git<br>
+<font size=3 color=red>git --bare init<br></font>
+这样一个www.git的仓库就建立起来了，如果这个空仓库是在本地建立起来的，则需要推送到服务器上去：<br>
+<font size=3 color=red>scp -r www.git git@remote_host:/opt/git/<br></font>
+然后开始开始添加这个远程仓库：<font size=3 color=red>git remote add origin git@remote_host:/opt/git/www.git</font><br>
+可通过<font size=3 color=red>git remote show</font>或者<font size=3 color=red>git remote show origin</font>查看当前项目远程仓库的信息。<br>
+将本地的原数据推送至远程空仓库：<font size=3 color=red>git push origin master。</font><br>
+从远程仓库抓取数据：<font size=3 color=red>git fetch origin</font><br>注意，该命令仅是拉取本地仓库中没有的数据，运行完后可以在本地查看远程仓库中<br>
+所有的分支，但是数据并没有合并到当前工作分支。如果需要合并可使用：<font size=3 color=red>git pull origin</font><br></font>
+";
+echo "<br><hr size=2 width=80%>
+<center><font color=red size=4>github使用注意事项</font></center><br><font color=black size=3>
+网址：<a href='http://www.github.com' target=_blank>http://www.github.com</a> user:tybitsfox pwd:.........<br>
+目前在github上保存的唯一一个有用的仓库为我的个人网站的源代码，这样我就可以在家在办公室修改的时候能方便的进行同步更新、合并<br>
+建立和推送的步骤为：<br>
+一、建立一个新的知识库：create a new Repository<br>
+二、输入库的名称，例如：www。<br>
+三、输入新库的简短描述。<br>
+四、免费用户只能选择该库为公共的，即public。<br>
+五、这一步对于将本地现有的库能正常推送至服务端至关重要，不要选择使用readme初始化新库。否则在推送时会出现本地版本落后与<br>
+新库而拒绝推送的情况。<br>
+六、建立完新库后，将服务器上的库加入本地：git remote add origin https://github.com/tybitsfox/www.git<br>
+虽然在github上注明可以使用ssh但是git@github.com:tybitsfox/www.git并不可用。只能使用https的链接了<br>
+运行：git push origin master,输入你注册的名用户和密码就可以推送了。在新建的页面上给出的命令是<br>
+git push -u origin master。我还没弄明白这个u参数到底何用。 
+七、删除github上的一个仓库：登录->选择Repositories->选择待删除的仓库->右上角settings->进入删除。
+<br></font>";
+?>
+
