@@ -31,14 +31,14 @@ layouts =
 {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
+  --  awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
+  --  awful.layout.suit.fair,
+  --  awful.layout.suit.fair.horizontal,
+  --  awful.layout.suit.spiral,
+  --  awful.layout.suit.spiral.dwindle,
+  --  awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier
 }
@@ -75,12 +75,23 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
 -- {{{ Wibox
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" },"<span color='#00d600'>20%y年%m月%d %H:%M</span>")
+--Spacer
+conkytext = widget({ type = "textbox" })
+--separator = widget({ type = "textbox" })
+--spacer.text     = "tybitsfox"
+--vicious.register(spacer, vicious.widgets.cpu, "$1%")
+--vicious.register(spacer, vicious.widgets.cpu, '$2', 60)
+--separator.text  = "|"
+--Cpu text
+--cpu = widget({ type = "textbox" })
+--vicious.register(cpu, vicious.widgets.cpu, ' <span color="brown">CPU1:</span> <span color="orange">$2%</span> <span color="brown">CPU2:</span> <span color="orange">$3%</span>', 1)
 
 -- Create a systray
 mysystray = widget({ type = "systray" })
 
 -- Create a wibox for each screen and add it
 mywibox = {}
+--conkybox = {}
 mypromptbox = {}
 mylayoutbox = {}
 mytaglist = {}
@@ -139,6 +150,7 @@ for s = 1, screen.count() do
 
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "bottom", screen = s })
+	--conkybox[s] = awful.wibox({ position = "top", screen = s, ontop = false, width = 1, height = 16 })
     -- Add widgets to the wibox - order matters
     mywibox[s].widgets = {
         {
@@ -150,6 +162,7 @@ for s = 1, screen.count() do
         mylayoutbox[s],
         mytextclock,
         s == 1 and mysystray or nil,
+		conkytext,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
@@ -212,6 +225,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
     awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
+    awful.key({ modkey,           }, "v",     function () awful.layout.set(layouts[6],  tags[1][1]) end),
 
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
@@ -358,6 +372,6 @@ client.add_signal("focus", function(c) c.border_color = beautiful.border_focus e
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 --{{{autorun programs
-awful.util.spawn_with_shell("conky")
+awful.util.spawn_with_shell("/etc/xdg/awesome/debian/awemsg")
 --}}}
 

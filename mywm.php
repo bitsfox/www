@@ -38,6 +38,7 @@ twm简单易用，能够满足你绝大部分应用，特别是wine模拟的程�
 窗口才能够激活。这点确实不方便。
 </font></pre></td></tr>";
 echo "<tr><td><pre>";
-include_once("./rc.lua");
+//include_once("./rc.lua");
+include_once("./my_wm.txt");
 echo "</pre></td></tr></table>";
 ?>
