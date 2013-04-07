@@ -1,0 +1,62 @@
+<a name=asm1601></a><font size=4><pre>
+<font color=red size=4>在使用gun/as、ld编译链接生成16位汇编代码时往往在链接阶段发生如下错误：</font>
+k03.o: In function `_start':
+(.text+0xa): relocation truncated to fit: R_386_16 against `.data'
+解决方法有几种，其中最便捷的方法就是：
+ld -o k03 k03.o -Ttext 1000
+通过T参数指定text段的装载地址。然后就可以顺利链接成功。但是只知其然不知其所以然。为什么指定他的绝对地址
+后链接就可通过，为何在汇编源代码中我们通过定位、跳转同样能指定其加载地址而链接仍通不过？这个问题我在google
+上搜索了好久，往往都是直接给出解决方法（如上）而没有给出解释。看来要真正了解还得自己动手，通过反复测试，
+发现当把源代码中.globl _start去掉时，也就是不指定入口点时，多了一行错误提示：
+ld: warning: cannot find entry symbol _start; defaulting to 0000000008048054
+哈哈，这回终于发现问题了，虽然是16位代码，但是链接时仍把入口点定为了32位。接下来验证这个猜测就很简单了：
+ld -o k03 k03.o -Ttext 100000，把text段定位设为超过16位地址，链接时终于出现了
+relocation truncated to fit: R_386_16 against `.data'错误了。
+至此问题圆满解决。</font></pre>
+<a name=asm1602></a><font size=4><pre>
+<font color=red size=4>通过/proc/下相关文件获取系统信息的方法:</font>
+1、获取cpu风扇转速的方法：cat /proc/acpi/ibm/fan  ---我的机器为thinkpad
+2、获取cpu温度的方法：cat /proc/acpi/ibm/thermal
+上述两个文件如果不存在可使用命令：sensors直接查看转速和温度。
+3、获取cpu使用率：cat /proc/stat cpu行各列分别为：用户进程，nice进程，核心进程，idle cpu的使用时间，注意
+这是一个累加值，计算某一时刻的cpu用户负载可以取得两个时间段的数值，然后除以这四项的同一时段总和获得。
+4、获得内存使用率的方法：cat /proc/meminfo，依据需要取得不同的数值。
+5、取得笔记本电池电量的方法：cat /sys/class/power_supply/BAT1(or 0)/uevent
+6、取得网络进出流量的方法：cat /proc/net/dev 这里面也是累计值，所以可取不同时间段进行计算。</font></pre>
+<a name=asm1603></a><font size=4><pre>
+<font color=red size=4>使用firefox+vimperator打造一个轻量级的文件资源管理器</font>
+vimperator的快捷键~可以快速打开本地目录，对本地文件和目录进行浏览。
+不仅如此，我们还可以通过对firefox进行简单的配置，就能实现对特定类型
+文件关联至特定程序直接打开，就像windows的资源管理器一样。对于使用各类
+轻量级wm的用户来说偶尔可以尝试下类似dm的操作。
+对特定类型文件与相关程序关联可以通过firefox首选项中应用程序进行设置，如
+果在应用程序栏中没有你所需要的文件类型，可直接修改firefox的配置文件进行
+添加。该配置文件一般为:~/.mozilla/firefox/l1ucnguj.default
+参照着里面已有的文件类型稍加添加修改即可实现应用程序的关联。
+比如我设置的：mp3关键至audacious；mkv、rmvb、rm关联至mplayer；
+pdf关联至xpdf；图片文件关联至feh等等。</font></pre>
+<a name=asm1604></a><font size=4><pre>
+<font color=red size=4>字体设置、查看的相关命令：</font>
+显示字体命令：
+xlsfonts ：core内置字体系统
+xfontsel ：core内置字体系统
+fc-list  ：xft 
+当前字体和X相关信息查询命令：
+xset q 
+mkfontscale mkfontdir  建立索引
+fc-cache   更新字体缓存
+或者使用ttmkfdir：
+推荐运行 ttmkfdir 生成字体描述文件，而不要使用mkfontdir和mkfontscale，因为它
+生成的字体描述文件中常常找不出gbk的encoding。
+执行：
+ttmkfdir /usr/local/share/fonts/ -o /usr/local/share/fonts/fonts.dir
+cp /usr/local/share/fonts/fonts.dir /usr/local/share/fonts/fonts.scale
+</font></pre>
+
+
+
+
+
+
+
+
