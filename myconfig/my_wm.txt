@@ -13,13 +13,13 @@ fluxbox是我目前最为喜爱的一个窗口管理器，也是我最常使用�
 修改背景图显示：session.screen0.rootCommand
 修改整个桌面的风格：session.styleFile    --这个可以在上下文菜单中选择。
 修改工具栏位置：session.screen0.toolbar.placement
-<a href="./myconfig/fluxbox_init.txt#so05" target=_blank>点击查看init配置文件</a>
+<a href="./myconfig/source.php#so05" target=_blank>点击查看init配置文件</a>
 （2）keys文件是设定各种快捷键的配置文件，这里是我修改最多的地方：
 这个文件在一开始使用的时候，如果不喜欢看man可以看看这个文件，里面的一些系统预设的快捷键还是需要掌握的。另外，
 个人喜欢的快捷键如打开不同的应用程序的快捷键，操作窗口移动，改变大小的快捷键都在这里设置。
 其余的一些配置文件一般不需要改变，如menu,windowmenu是修改菜单项设置的，如果有想随fluxbox一起启动的程序可放在
 startup文件中，比如：需要启动conky时：在该文件中添加：exec conky&
-<a href="./myconfig/fluxbox_keys.txt#so02" target=_blank>点击查看key配置文件</a>
+<a href="./myconfig/source.php#so02" target=_blank>点击查看key配置文件</a>
 2、优点：可实现全键盘操作，稳定、灵活、简便，节省资源。
    缺点：以alt为主的组合键设置让我在玩DiabloII时非常的懊恼，QQ屏闪，不过早就不用那玩意了。
 <font size=4 color=red>二、awesome</font>
@@ -144,7 +144,7 @@ awful.util.spawn_with_shell("conky&")
 方法很多，比如写个脚本或程序用于检查conky是否运行，没有运行才加载。然后将脚本或程序放到这里运行即可。
 2、优点：同fluxbox,这也是键盘控的绝佳选择，轻量、简洁、高效。
 3、缺点：有些游戏当切换成全屏时会不能正常运行，如FC模拟器fceu,世嘉模拟器gens。而xmame无压力。
-<a href="./myconfig/rc.lua#so04" target=_blank>点击查看rc.lua配置文件</a>
+<a href="./myconfig/source.php#so04" target=_blank>点击查看rc.lua配置文件</a>
 <font size=4 color=red>三、TWM</font>
 这又是一款本人钟爱的WM，对我来说他的最大好处就是玩各种游戏无压力，不论是模拟器游戏还是DiabloII，当玩游戏碰到问题时，我都会切换
 到这里来试试。另外，本人原来一直对他存有误解，以为这款WM必须使用鼠标才能使某个窗口激活并切换至前台。其实在TWM下舍弃鼠标一样可
@@ -196,7 +196,7 @@ TWM主要的设置就这些了，其他的菜单配置我直接略过。虽然�
 2、优点：几乎是最轻量的，而相对功能又比较齐全，可配置性也不错的一款窗口管理器。关键是对我所喜欢的游戏都能没有任何问题的运行。
 3、缺点：相对前两款WM可操控性上有些欠缺，另外我对他的使用相对少了很多，还有很多不了解的地方。如果使用频繁的话可能这些欠缺会有
 方法弥补的。
-<a href="./myconfig/twmrc#so03" target=_blank>点击查看twmrc配置文件</a>
+<a href="./myconfig/source.php#so03" target=_blank>点击查看twmrc配置文件</a>
 <font size=4 color=red>四、DWM</font>
 又一款小巧精干的WM，小到源文件仅有两千余行，但是他却实现了平铺式窗口管理的基本功能，他应该是awesome和其他平铺式WM的鼻祖了。
 并且在编译生成后竟然连配置文件也没用，若想修改，只能修改源文件中的config.h并重新编译。而使用他的另一个好处就是可以在一天时间里
@@ -214,7 +214,7 @@ tatic const char *xterm[]      = { "xterm", "-e", "wicd-curses", NULL };
 <font size=4 color=red>五、DWM-plus</font>
 这是一款DWM的增强版本，该版增加了支持xft字体，并且里面有个小配置的conky用于在面板上显示系统信息。其配置与DWM几乎无异，但比DWM多了
 一个配置目录：~/.dwm,主要存放启动conky的脚本和conky的配置文件。但是，这个版本在有些系统上不能正常启动。
-<a href="./myconfig/dwmconfig.h.txt#so01" target=_blank>点击查看dwm配置文件</a>
+<a href="./myconfig/source.php#so01" target=_blank>点击查看dwm配置文件</a>
 </font>
 
 
