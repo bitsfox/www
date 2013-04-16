@@ -5,6 +5,6 @@ echo "<a href='http://main.meibu.com/ip/' target=_blank>每步域名解析</a><b
 echo "<a href='http://115.com' target=_blank>我的115网盘</a><br>";
 echo "<a href='http://pan.baidu.com/netdisk/home' target=_blank>我的百度网盘</a><br>";
 echo "<a href='http://www.github.com' target=_blank>GitHub</a><br>";
-
+echo "<a href='https://bitbucket.org/' target=_blank>bitbucket</a><br>"
 
 ?>
