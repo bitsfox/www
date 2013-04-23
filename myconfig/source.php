@@ -15,6 +15,9 @@ include_once("./rc.lua");
 echo "<hr size=2 width=80% color=red>";
 echo "<a name=so05></a>";
 include_once("./fluxbox_init.txt");
+echo "<hr size=2 width=80% color=red>";
+echo "<a name=so06></a>";
+include_once("./i3.txt");
 echo "</pre>";
 ?>
 
