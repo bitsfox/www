@@ -12,6 +12,8 @@ echo "<font size=2 color=blue>八、<a href='./all_tools/w3m/w3m.php' target=_bl
 echo "<font size=2 color=blue>九、<a href='./all_tools/apt/apt.php' target=_blank>apt常用功能</a></font><br><br>";
 echo "<font size=2 color=blue>十、<a href='./all_tools/ssh/ssh.php' target=_blank>ssh基本应用</a></font><br><br>";
 echo "<font size=2 color=blue>十一、<a href='./all_tools/grub.php' target=_blank>grub rescure简介</a></font><br><br>";
+echo "<font size=2 color=blue>十二、<a href='./diveintopython3/index.html' target=_blank>python3</a></font><br><br>";
+echo "<font size=2 color=blue>十三、<a href='./woodpecker.org.cn/abyteofpython_cn/chinese/index.html' target=_blank>python</a></font><br><br>";
 
 
 
