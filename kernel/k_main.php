@@ -1,6 +1,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <?php
 echo "<font size=6 color=#ff0000><center>内核准备资料</center></font><br><br><br>";
+echo "<table border=0 width=100%><tr width=100%><td width=50% valign=top>";
 echo "<font size=4>&nbsp;&nbsp;&nbsp;一、硬件资料：<br><br>";
 echo "<a href=./8042.php target=_blank>Intel 8042键盘控制器详细介绍</a><br><br>";
 echo "<a href=./8259A/4-3.htm target=_blank>8259A中断控制器</a><br><br>";
@@ -18,6 +19,11 @@ echo "<a href=./modules_call.php target=_blank>Linux 2.6版内核中通过模块
 echo "<a href=./24_26.php target=_blank>2.4与2.6内核模块和驱动</a><br><br>";
 echo "<font size=4>&nbsp;&nbsp;&nbsp;三、引导程序boot：<br><br>";
 echo "<a href=./boot.php target=_blank>引导程序boot的编写及生成</a><br><br>";
-
+echo "</td><td width=50% valign=top>";
+echo "<font size=4>&nbsp;&nbsp;&nbsp;四、杂谈、心得:<br><br>";
+echo "<a href=./topic.php target=_blank>linux0.11内核学习杂谈</a><br><br>";
+echo "<font size=4>&nbsp;&nbsp;&nbsp;五、引导及多任务测试:<br><br>";
+echo "<a href=./kernel_task.php target=_blank>引导及多任务源代码</a><br><br>";
+echo "</td></tr></table>";
 
 ?>
