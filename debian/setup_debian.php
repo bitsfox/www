@@ -2,6 +2,28 @@
 <?php
 echo "<center><font size=5 color=red>debian安装笔记</font></center>";
 echo "<hr width=80% size=2 color=blue>";
+echo "<center><font size=3 color=black>2013-10-10 thinkpad安装debian7简述</font></center><br>";
+echo "<font color=blue>1、由于debian7采用了3.04的内核，所以我的小黑的ATI显卡已经的到了完美支持，无需再进行内核编译和使用testing<br>";
+echo "版本的xserver了。安装完基本系统之后，apt-get install xserver-xorg xinit就能完美的显示了。<br>";
+echo "2、本次安装主要是添加了无线网卡在linux下的使用，原来一直没在linux下安装过无线网卡的，现记录下安装过程：<br>";
+echo "(1)lspci查看无线网卡类型，我的是realtek的RTL8191SE，该网卡需使用firmware-realtek和firmware-linux-nonfree两个包，apt-get安装<br>";
+echo "完这两个必须的包还有wireless-tools包，重启系统，使用iwconfig命令查看无线设备一般为wlan0，查看可用的无线接入点：iwlist wlan0 scan<br>";
+echo "如果接入wep使用命令：iwconfig wlan0 ESSID “\"linkname\" KEY \"password\" open 即可完成连接。如果需接入wpa则需修改/etc/network/interface<br>";
+echo "添加：-----in file /etc/network/interface------<br>";
+echo "auto wlan0<br>";
+echo "iface wlan0 inet dhcp<br>";
+echo "pre-up ip link set wlan0 up<br>";
+echo "pre-up iwconfig wlan0 essid bitsfox<br>";
+echo "wpa-ssid bitsfox<br>";
+echo "wpa-psk mypassword<br>";
+echo "注意，如果在这之前有静态连接的设置，最好将静态链接的设置注释掉。这样就可在系统重启之后发现并自动连入无线网卡上了<br>";
+echo "还有一种方法，是使用wpa_supplicant -Dwext -iwlan0 -c/etc/wpa_supplicant/wifi.conf命令设置并链接，不过我没测试成功。该命令的好处就是<br>";
+echo "在wifi.conf配置文件中不出现明码的链接密码，通过使用wpa_passphrase essid password生成一个简单的wifi.conf配置文件。<br>";
+echo "使用下列命令测试：iwconfig wlan0 essid \"myessid\"  ifconfig wlan0 up   wpa_supplicant -iwlan0 -c/etc/wpa_supplicant/wifi.conf<br>";
+echo "-i参数指定无线网络接口，-c指定配置文件，参数值前不要留空格,如果能正常启动，则可将下列命令加入配置文件中：<br>";
+echo "auto wlan0<br>iface wlan0 dhcp<br>up wpa_supplicant -iwlan0 -c/etc/wpa_supplicant.conf -B<br>down killall wpa_supplicant<br>";
+echo "参数-B指定以后台方式运行<br>";
+echo "<hr width=80% size=2 color=blue>";
 echo "<center><font size=3 color=black>2013办公笔记本debian安装简述</font></center>";
 echo "<font color=blue>1、基本系统安装完后，因为显卡支持的原因，需要使用testing的xorg，所以修改/etc/apt/sources.list<br>";
 echo "使用testing的源,镜像地址使用mirrors.163.com。修改完运行apt-get update<br>";
