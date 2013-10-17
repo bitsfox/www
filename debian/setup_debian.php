@@ -189,6 +189,8 @@ export LANGUAGE=\"en_US.utf8\"
 关于屏幕亮度的保存，每次开机屏幕亮度都会自动恢复到系统默认的亮度，但是可以在~/.bashrc文件中添加：
 echo 9 > /sys/class/backlight/acpi_video0/brightness
 来实现每次登录后的自动调整。
+关于分辨率的设定，xrandr命令集成在xorg包中，如果没有安装xorg（比如我，只安装了xserver-xorg和xinit）则不会有xrandr
+
 </font></pre>";
 ?>
 
