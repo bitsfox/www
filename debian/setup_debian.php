@@ -16,6 +16,18 @@ echo "pre-up ip link set wlan0 up<br>";
 echo "pre-up iwconfig wlan0 essid bitsfox<br>";
 echo "wpa-ssid bitsfox<br>";
 echo "wpa-psk mypassword<br>";
+echo "如果不使用DHCP动态分配ip时可使用如下配置：<br>";
+echo "auto wlan0<br>";
+echo "iface wlan0 inet static<br>";
+echo "address 192.168.1.100<br>";
+echo "netmask 255.255.255.0<br>";
+echo "network 192.168.1.0<br>";
+echo "gateway 192.168.1.1<br>";
+echo "dns-nameservers 202.102.134.68<br>";
+echo "pre-up ip link set wlan0 up<br>";
+echo "pre-up iwconfig wlan0 essid bitsfox<br>";
+echo "wpa-ssid bitsfox<br>";
+echo "wpa-psk mypassword<br>";
 echo "注意，如果在这之前有静态连接的设置，最好将静态链接的设置注释掉。这样就可在系统重启之后发现并自动连入无线网卡上了<br>";
 echo "还有一种方法，是使用wpa_supplicant -Dwext -iwlan0 -c/etc/wpa_supplicant/wifi.conf命令设置并链接，不过我没测试成功。该命令的好处就是<br>";
 echo "在wifi.conf配置文件中不出现明码的链接密码，通过使用wpa_passphrase essid password生成一个简单的wifi.conf配置文件。<br>";
@@ -43,6 +55,13 @@ echo "<pre><font size=4>
 2、安装完后添加gentoo的grub引导，使之可以引导新的debian。进入系统后先更换源，换为testing的源：
 备份/etc/apt/sources.list，然后修改source.list。添加速度快的源。我使用的是台湾的源，台湾万岁！！！！
 源的查找可以去：<a href=\"http://packages.debian.org/squeeze/all/linux-base/download\" target=_blank>http://packages.debian.org/squeeze/all/linux-base/download</a> 测试、更换。
+<font color=red>（2013-10-20）注：上面的网址已经失效，目前正在使用：
+deb http://mirrors.163.com/debian/ wheezy main non-free contrib
+deb-src http://mirrors.163.com/debian/ wheezy main non-free contrib 
+deb http://ftp.cn.debian.org/debian/ wheezy main non-free contrib
+deb-src http://ftp.cn.debian.org/debian/ wheezy main non-free contrib
+deb http://mirrors.sohu.com/debian/ wheezy main non-free contrib
+deb-src http://mirrors.sohu.com/debian/ wheezy main non-free contrib </font>
 我的sources.list为：
 deb <a href=\"http://ftp.tw.debian.org/debian/\">http://ftp.tw.debian.org/debian/</a> testing main
 deb <a href=\"http://ftp.tw.debian.org/debian/\">http://ftp.tw.debian.org/debian/</a> testing non-free
