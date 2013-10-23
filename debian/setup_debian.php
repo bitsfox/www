@@ -43,6 +43,13 @@ echo "<pre><font size=4>
 2、安装完后添加gentoo的grub引导，使之可以引导新的debian。进入系统后先更换源，换为testing的源：
 备份/etc/apt/sources.list，然后修改source.list。添加速度快的源。我使用的是台湾的源，台湾万岁！！！！
 源的查找可以去：<a href=\"http://packages.debian.org/squeeze/all/linux-base/download\" target=_blank>http://packages.debian.org/squeeze/all/linux-base/download</a> 测试、更换。
+<font color=red>（2013-10-20）注：上面的网址已经失效，目前正在使用：
+deb http://mirrors.163.com/debian/ wheezy main non-free contrib
+deb-src http://mirrors.163.com/debian/ wheezy main non-free contrib 
+deb http://ftp.cn.debian.org/debian/ wheezy main non-free contrib
+deb-src http://ftp.cn.debian.org/debian/ wheezy main non-free contrib
+deb http://mirrors.sohu.com/debian/ wheezy main non-free contrib
+deb-src http://mirrors.sohu.com/debian/ wheezy main non-free contrib </font>
 我的sources.list为：
 deb <a href=\"http://ftp.tw.debian.org/debian/\">http://ftp.tw.debian.org/debian/</a> testing main
 deb <a href=\"http://ftp.tw.debian.org/debian/\">http://ftp.tw.debian.org/debian/</a> testing non-free
