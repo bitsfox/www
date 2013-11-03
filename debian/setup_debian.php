@@ -24,8 +24,6 @@ echo "netmask 255.255.255.0<br>";
 echo "network 192.168.1.0<br>";
 echo "gateway 192.168.1.1<br>";
 echo "dns-nameservers 202.102.134.68<br>";
-echo "pre-up ip link set wlan0 up<br>";
-echo "pre-up iwconfig wlan0 essid bitsfox<br>";
 echo "wpa-ssid bitsfox<br>";
 echo "wpa-psk mypassword<br>";
 echo "注意，如果在这之前有静态连接的设置，最好将静态链接的设置注释掉。这样就可在系统重启之后发现并自动连入无线网卡上了<br>";
