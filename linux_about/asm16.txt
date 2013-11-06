@@ -95,7 +95,7 @@ gba.input.builtin.gamepad.left keyboard 97
 gba.input.builtin.gamepad.up keyboard 119
 ;gba, Built-In, Gamepad: DOWN ↓
 gba.input.builtin.gamepad.down keyboard 115
-配置文件下载：<a href='./mednafen.cfg'>mednafen.cfg</a>
+配置文件下载：<a href=./mednafen.cfg>mednafen.cfg</a>
 
 
 
