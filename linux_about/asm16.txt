@@ -52,6 +52,55 @@ fc-cache   更新字体缓存
 ttmkfdir /usr/local/share/fonts/ -o /usr/local/share/fonts/fonts.dir
 cp /usr/local/share/fonts/fonts.dir /usr/local/share/fonts/fonts.scale
 </font></pre>
+<a name=asm1605></a><pre><font size=4 color=red>linux下多机种模拟器mednafen</font>
+<font size=2 color=blue>
+Linux强大的游戏模拟器，模拟的效果以及CPU的占用都非常低，主要是用来玩GBA和FC的游戏，玩GBA游戏比Linux版VBA强的不是一点半点，
+Linux版VBA可以说就是一个半成品，不说功能方面，居然巨占CPU，而且占资源不说了，还不是60帧的完美平滑模拟，而且不开源，故弃之。
+FC 的话Ubuntu下有个叫FCEU的模拟器，同样是巨占资源，和VBA也是一样的毛病……似乎都不支持GPU加速，都是用CPU来死算，
+再说就是用CPU 模拟个GBA，FC之类的也绰绰有余了，也不知道是个什么情况，弃之。而Mednafen，除了没有图形前端之外，可谓是Linux下
+最完美的 GBA，FC等模拟器解决方案，超省资源，支持OpenGL和SDL两种加速方式。而且有一个亮点，那就是虽说没有图形前端，但是可以
+在游戏中随意设置按键，不像有些没有图形前端的模拟器，必须事先在配置文件中设置按键。
+Mednafen支持的机种：
+* Atari Lynx
+* GameBoy
+* GameBoy Color
+* GameBoy Advance
+* NES
+* PC Engine (TurboGrafx 16)
+* PC-FX
+* SuperGrafx
+* NeoGeo Pocket, NeoGeo Pocket Color
+* WonderSwan
+按键设置方法：游戏里按F1，可以打开帮助菜单，可以看到很多说明，其中告诉你按alt+shift+1～5就可以设置按键，每个按键设置两次，很简单。
+F5是即时存档，F6是选择存档点，F7是即时读档，F9截图（如果compiz的F9被使用了则无效，compiz的F9是降低屏幕亮度），
+F10软复位（类似于FC的那个复位按钮），F11硬复位（类似于FC的那个开关，关了再开），F12或Esc退出模拟器。全屏切换的快捷键与fceu和gens一样
+alt+enter。其配置文件在~/.mednafen目录下，修改里面的mednafen.cfg即可，我习惯使用的按键设置为：
+;gba, Built-In, Gamepad: A
+gba.input.builtin.gamepad.a keyboard 107
+;gba, Built-In, Gamepad: Rapid A
+gba.input.builtin.gamepad.rapid_a
+;gba, Built-In, Gamepad: B
+gba.input.builtin.gamepad.b keyboard 106
+;gba, Built-In, Gamepad: Rapid B
+gba.input.builtin.gamepad.rapid_b
+;gba, Built-In, Gamepad: SELECT
+gba.input.builtin.gamepad.select keyboard 9
+;gba, Built-In, Gamepad: START
+gba.input.builtin.gamepad.start keyboard 13
+;gba, Built-In, Gamepad: RIGHT →
+gba.input.builtin.gamepad.right keyboard 100
+;gba, Built-In, Gamepad: LEFT ←
+gba.input.builtin.gamepad.left keyboard 97
+;gba, Built-In, Gamepad: UP ↑
+gba.input.builtin.gamepad.up keyboard 119
+;gba, Built-In, Gamepad: DOWN ↓
+gba.input.builtin.gamepad.down keyboard 115
+配置文件下载：<a href='./mednafen.cfg'>mednafen.cfg</a>
+
+
+
+</font></pre>
+
 
 
 

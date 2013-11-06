@@ -23,6 +23,7 @@ echo "目录：<br><br><a href=./lab.php#lab01>lsof用法</a><br><br>
 <a href=./lab_a.php#asm1602 target=_blank>获得系统相关信息的方法</a><br><br>
 <a href=./lab_a.php#asm1603 target=_blank>使用firefox+vimperator打造文件资源管理器</a><br><br>
 <a href=./lab_a.php#asm1604 target=_blank>字体设置、查看相关命令</a><br><br>
+<a href=./lab_a.php#asm1605 target=_blank>linux下多机种模拟器mednafen介绍</a><br><br>
 
 ";
 echo "<a name=lab01></a><font color=#ff0000>lsof用法: 例如查询tcp3306端口的状态： lsof -i:3306</font><br>";
