@@ -107,6 +107,73 @@ int main(int argc,char **)
 }
 
 </font></pre>";
+echo "<center><font color=red size=5>关于C程序访问mysql数据库中文乱码的问题：</font></center><br>";
+echo "<pre><font size=3 color=blue>首先，在mysql下访问记录显示正常，但是通过C程序读取出来的记录中文变成了？？？
+此时在程序中应加入：mysql_set_character_set(mysql,\"utf8\"),该函数返回0,则表示设置成功，否则不能正常
+显示中文。一个简单的实例如下：
+------------------------------t02.c------------------------------------
+#include\"clsscr.h\"
+#include<mysql/mysql.h>
+
+MYSQL	*mysql,*m;
+MYSQL_RES *result;
+MYSQL_ROW record;
+
+int main(int argc,char** argv)
+{
+	char ch[512];
+	int i;
+	mysql=mysql_init(NULL);
+	if(mysql==NULL)
+	{
+		printf(\"mysql init error\\n\");
+		return 0;
+	}
+	m=mysql_real_connect(mysql,NULL,NULL,NULL,\"xianyou\",0,NULL,0);
+	if(m==NULL)
+	{
+		mysql_close(mysql);
+		printf(\"mysql connect error\\n\");
+		return 0;
+	}
+	if(mysql_set_character_set(mysql,\"utf8\"))
+	{
+		printf(\"character error\\n\");
+		mysql_close(mysql);
+		return 0;
+	}
+	memset(ch,0,sizeof(ch));
+	snprintf(ch,sizeof(ch),\"SELECT * FROM xy_man\");
+	i=mysql_real_query(mysql,ch,strlen(ch));
+	if(i!=0)
+	{
+		mysql_close(mysql);
+		printf(\"mysql query error\\n\");
+		return 0;
+	}
+	result=mysql_store_result(mysql);
+	if(result==NULL)
+	{
+		mysql_close(mysql);
+		printf(\"stroe result error\\n\");
+		return 0;
+	}
+	while(record=mysql_fetch_row(result))
+	{
+		printf(\"uid: %s name: %s email: %s phone: %s\\n\",record[0],record[1],record[3],record[4]);
+	}
+	mysql_free_result(result);
+	mysql_close(mysql);
+	return 0;
+}
+------------------------------makefile--------------------------------------------------
+t02:t02.c
+	gcc -o t02 t02.c -lz `mysql_config --cflags --libs` -I/workarea/cprogram/include
+
+------------------------------end-------------------------------------------------------
+
+
+</font></pre>";
 ?>
 
 
