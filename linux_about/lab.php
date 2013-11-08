@@ -1,31 +1,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <?php
 echo "<center><font size=5 color=#0000ff>杂项记录</font></center><br>";
-echo "目录：<br><br><a href=./lab.php#lab01>lsof用法</a><br><br>
-<a href=./lab.php#lab02>服务加载项管理工具：sysv-rc-conf</a><br><br>
-<a href=./lab.php#lab03>awesome取得正确的类名称</a><br><br>
-<a href=./lab.php#lab04>X环境下更改屏幕分辨率、刷新频率的命令</a><br><br>
-<a href=./lab.php#lab05>挂接ntfs分区的说明</a><br><br>
-<a href=./lab.php#lab06>安装mplayer</a><br><br>
-<a href=./lab.php#lab07>编写linux共享库</a><br><br>
-<a href=./lab.php#lab08>Wine Gecko</a><br><br>
-<a href=./lab.php#lab09>kde下开机自动运行</a><br><br>
-<a href=./lab.php#lab10>c代码中实现清屏的代码</a><br><br>
-<a href=./lab.php#lab11>asm指令表</a><br><br>
-<a href=./lab.php#lab12>字符串定义</a><br><br>
-<a href=./lab.php#lab13>挂载freebsd分区的做法</a><br><br>
-<a href=./lab.php#lab14>RPM</a><br><br>
-<a href=./lab.php#lab15>yum install</a><br><br>
-<a href=./lab.php#lab16>fceu 安装及配置</a><br><br>
-<a href=./lab.php#lab17>midi播放</a><br><br>
-<a href=./lab.php#lab18>wine相关</a><br><br>
-<a href=./lab_a.php#asm1601 target=_blank>生成16位汇编代码的方法</a><br><br>
-<a href=./lab_a.php#asm1602 target=_blank>获得系统相关信息的方法</a><br><br>
-<a href=./lab_a.php#asm1603 target=_blank>使用firefox+vimperator打造文件资源管理器</a><br><br>
-<a href=./lab_a.php#asm1604 target=_blank>字体设置、查看相关命令</a><br><br>
-<a href=./lab_a.php#asm1605 target=_blank>linux下多机种模拟器mednafen介绍</a><br><br>
-
-";
+echo "目录：<br>";
+echo "<table border=0 width=100%><tr><td width=20%><a href=./lab.php#lab01>lsof用法</a></td><td width=20%><a href=./lab.php#lab02>服务加载项管理工具：sysv-rc-conf</a></td>
+<td width=20%><a href=./lab.php#lab03>awesome取得正确的类名称</a></td><td width=20%><a href=./lab.php#lab04>X环境下更改屏幕分辨率、刷新频率的命令</a></td>
+<td width=20%><a href=./lab.php#lab05>挂接ntfs分区的说明</a></td></tr><tr>
+<td width=20%><a href=./lab.php#lab06>安装mplayer</a></td><td width=20%><a href=./lab.php#lab07>编写linux共享库</a></td><td width=20%><a href=./lab.php#lab08>Wine Gecko</a>
+</td><td width=20%><a href=./lab.php#lab09>kde下开机自动运行</a></td><td width=20%><a href=./lab.php#lab10>c代码中实现清屏的代码</a></td></tr>
+<tr>><td width=20%><a href=./lab.php#lab11>asm指令表</a></td><td width=20%><a href=./lab.php#lab12>字符串定义</a></td><td width=20%><a href=./lab.php#lab13>
+挂载freebsd分区的做法</a></td><td width=20%><a href=./lab.php#lab14>RPM</a></td><td width=20%><a href=./lab.php#lab15>yum install</a></td></tr>
+<tr>><td width=20%><a href=./lab.php#lab16>fceu 安装及配置</a></td><td width=20%><a href=./lab.php#lab17>midi播放</a></td><td width=20%><a href=./lab.php#lab18>wine相关</a>
+</td><td width=20%><a href=./lab_a.php#asm1601 target=_blank>生成16位汇编代码的方法</a></td><td width=20%><a href=./lab_a.php#asm1602 target=_blank>获得系统相关信息的方法
+</a></td></tr><tr>
+<td width=20%><a href=./lab_a.php#asm1603 target=_blank>firefox+vimperator打造文件资源管理器</a></td>
+<td width=20%><a href=./lab_a.php#asm1604 target=_blank>字体设置、查看相关命令</a></td>
+<td width=20%><a href=./lab_a.php#asm1605 target=_blank>linux下多机种模拟器mednafen介绍</a></td>
+<td width=20%><a href=./lab_a.php#asm1606 target=_blank>mysql记录中文乱码</a></td><td width=20%></td></tr></table>";
+echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
 echo "<a name=lab01></a><font color=#ff0000>lsof用法: 例如查询tcp3306端口的状态： lsof -i:3306</font><br>";
 echo "<font color=#0000ff>打包的命令</font><br><pre>
 tar -cvf &lt;createfilename.tar&gt; &lt;sourcefile or directory&gt;

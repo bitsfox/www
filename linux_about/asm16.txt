@@ -95,10 +95,18 @@ gba.input.builtin.gamepad.left keyboard 97
 gba.input.builtin.gamepad.up keyboard 119
 ;gba, Built-In, Gamepad: DOWN ↓
 gba.input.builtin.gamepad.down keyboard 115
-配置文件下载：<a href=./mednafen.cfg>mednafen.cfg</a>
-
-
-
+配置文件下载：<a href=./mednafen.cfg>mednafen.cfg</a></font>
+<a name=asm1606></a><pre><font size=4 color=red>mysql记录中文乱码的解决</font>
+<font size=2>debian7安装完成后默认的mysql记录中不能正常显示中文，需要在配置文件中简单的修改下：
+打开/etc/mysql/my.cnf，
+在[client]节段中添加：default-character-set=utf8
+在[mysqld]节段中添加：character-set-server=utf8
+在[mysql]节段中添加： default-character-set=utf8
+保存退出，重新启动mysqld: /etc/init.d/./mysql restart
+第二种方法，直接修改各数据库的字符集：
+use database_name;
+alter database character set utf8;
+第二种方法我没有测试。
 </font></pre>
 
 
