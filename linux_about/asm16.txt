@@ -103,6 +103,7 @@ gba.input.builtin.gamepad.down keyboard 115
 在[mysqld]节段中添加：character-set-server=utf8
 在[mysql]节段中添加： default-character-set=utf8
 保存退出，重新启动mysqld: /etc/init.d/./mysql restart
+通过下列命令查看字符集是否改变：show variables like '%char%';
 第二种方法，直接修改各数据库的字符集：
 use database_name;
 alter database character set utf8;
