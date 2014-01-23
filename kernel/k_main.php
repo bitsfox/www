@@ -24,6 +24,8 @@ echo "<font size=4>&nbsp;&nbsp;&nbsp;四、杂谈、心得:<br><br>";
 echo "<a href=./topic.php target=_blank>linux0.11内核学习杂谈</a><br><br>";
 echo "<font size=4>&nbsp;&nbsp;&nbsp;五、引导及多任务测试:<br><br>";
 echo "<a href=./kernel_task.php target=_blank>引导及多任务源代码</a><br><br>";
+echo "<font size=4>&nbsp;&nbsp;&nbsp;六、驱动编程资料:<br><br>";
+echo "<a href=./oss.org.cn/kernel-book/ldd3/index.html target=_blank>Linux设备驱动第三版</a><br><br>";
 echo "</td></tr></table>";
 
 ?>
