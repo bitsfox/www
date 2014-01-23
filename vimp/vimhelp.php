@@ -281,6 +281,48 @@ vim文件间复制粘贴完美方案
    3.
       将选择缓冲区中内容粘贴到vim文件：普通模式下按 “*p 。
 </pre></font></td><td width=10%></td></tr></table>";
+
+echo "<hr width=80% size=2><center><font size=5 color=#ff0000>六、VIM的ctags和taglist的使用</font></center>";
+echo "<table border=0 width=100%><tr width=100%><td width=10%></td><td width=80%><font size=4 color=black><pre>
+ctags:
+浏览代码非常的方便, 可以在函数, 变量之间来回跳转
+使用方法:
+帮助文档：usr_29
+在程序目录下执行： ctags -R 生成tags索引文件，注意在你源代码修改后或者添加了新的声明时需要重新执行该命令，否则
+新增加的声明或者变量无法检索到。
+把光标定位到某一函数或变量名上, 按下 Ctar + ], vim就可以自动切换到该函数或变量的定义处!
+返回只需要按下Ctrl + T .
+
+TagList 插件:
+高效地浏览源码, 其功能就像vc中的workpace, 那里面列出了当前文件中的所有宏,全局变量, 函数名等.
+使用方法:
+帮助文档：taglist.txt
+进入vim后用下面的命令打开taglist窗口::Tlist
+为了更方便地使用, 可以在.vimrc文件中加入:
+let mapleader=\",\"
+map &lt;silent&gt; &lt;leader&gt;tl :TlistToggle&lt;CR&gt;
+这样就可以用 \",tl\" 命令进行taglist窗口的打开和关闭之间方便切换了.
+这里的\",\"是我.vimrc设置的leader, 你也可以设置成别的, 在.vimrc中修改即可：let mapleader=\",\"
+
+在taglist窗口中，可以使用下面的快捷键：
+
+&lt;CR&gt;          跳到光标下tag所定义的位置，用鼠标双击此tag功能也一样
+o             在一个新打开的窗口中显示光标下tag
+&lt;Space&gt;       显示光标下tag的原型定义
+u             更新taglist窗口中的tag
+s             更改排序方式，在按名字排序和按出现顺序排序间切换
+x             taglist窗口放大和缩小，方便查看较长的tag
++             打开一个折叠，同zo
+-             将tag折叠起来，同zc
+*             打开所有的折叠，同zR
+=             将所有tag折叠起来，同zM
+[[            跳到前一个文件
+]]            跳到后一个文件
+q             关闭taglist窗口
+&lt;F1&gt;          显示帮助 
+</pre></font></td><td width=10%></td></tr></table>";
+
+
 echo "<br><br><a href='./VIM: index.html' target=_blank>vim about</a>";
 ?>
 
