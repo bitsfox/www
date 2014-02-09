@@ -149,5 +149,24 @@ do
 done
 </pre></font>");
 
-
+echo ("<font color=#0000ff><center>桌面切换小脚本</center><br><pre>
+root@debian:/usr/local/bin# cat ./switchdesk 
+#!/bin/bash
+#switch fluxbox and i3
+func()
+{
+        ma=`ls -n /etc/alternatives/x-window-manager | grep fluxbox`
+        if [ \"\$ma\" ]
+        then
+                `rm /etc/alternatives/x-window-manager`
+                `ln -s /usr/bin/i3 /etc/alternatives/x-window-manager`
+                echo \"switch desk from fluxbox to i3 successful!\"
+        else
+                `rm /etc/alternatives/x-window-manager`
+                `ln -s /usr/bin/startfluxbox /etc/alternatives/x-window-manager`
+                echo \"switch desk from i3 to fluxbox successful!\"
+        fi
+}
+func
+</pre></font>");
 ?>
