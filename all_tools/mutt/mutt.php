@@ -113,5 +113,9 @@ fetchmail -akv -m \"/usr/bin/procmail -d %T\" 看看收邮件是否成功，如�
 将START_DAEMON=no 改为yes，重启即可。
 ";
 echo "</pre></font></td><td width=10%></td></tr><table>";
+echo "<br><table border=0 width=100%><tr width=100%><td width=10%></td><td width=80%><font size=4 color=blue><pre>";
+echo "fetchmail如果提示不以root身份运行的话，可将配置文件放置到/etc目录下，但是fetchmailrc文件中包含有登录邮箱的密码
+所以，请慎用。如果移动配置文件的话，可移动下列配置：Muttrc,fetchmailrc procmailrc<br>";
+echo "</pre></font></td><td width=10%></td></tr><table>";
 
 ?>
