@@ -21,7 +21,7 @@ echo "常用连接：<br>";
 http://bulletin.gddsn.org.cn/seisbulletin/main.seam" target=_blank>地震台网</a>&nbsp;&nbsp;&nbsp;<a href="http://bbs.wofei.net/forum-30-1.html" target=_blank>飞鸟娱乐</a>&nbsp;&nbsp;&nbsp;<a href="http://www.debian.org/releases/stable/i386/index.html.zh_CN" target=_blank>Debian</a>&nbsp;&nbsp;&nbsp;<a href="http://www.ip138.com/" target=_blank>IP查询</a>&nbsp;&nbsp;&nbsp;<a href="http://translate.google.cn/" target=_blank>在线翻译</a>&nbsp;&nbsp;&nbsp;<a href="http://www.okemu.com/default.html" target=_blank>OK模拟网</a>&nbsp;&nbsp;&nbsp;<a href="http://tieba.baidu.com/f?kw=2012" target=_blank>百度2012吧</a>&nbsp;&nbsp;&nbsp;<a href="http://www.linuxforum.net/" target=_blank>中国linux论坛</a><br><br><a href="https://www.google.com.tw" target=_blank>GOOGLE</a>&nbsp;&nbsp;&nbsp;<a href="http://i.qq.com/" target=_blank>1658692577</a>&nbsp;&nbsp;&nbsp;<a href="http://i.qq.com/" target=_blank>65529772</a>&nbsp;&nbsp;&nbsp;<a href="http://i.qq.com/" target=_blank>1584558379</a>&nbsp;&nbsp;&nbsp;&nbsp;840162764&nbsp;&nbsp;&nbsp;&nbsp;1751999743&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://webqq.qq.com" target=_blank>webqq</a></center></font>
 <br><center>1969427542&nbsp;&nbsp;&nbsp;&nbsp;2275485308&nbsp;&nbsp;&nbsp;&nbsp;2535148377&nbsp;&nbsp;&nbsp;&nbsp;2645742923&nbsp;&nbsp;&nbsp;&nbsp;1362754363</center>
 <br><hr size=4 width=100%><br>
-<table width=100%><tr width=100% valign=top align=center><td width=30%><img src="111.gif"></td><td width=40%>
+<table width=100%><tr width=100% valign=top align=center><td width=30%><img src="110.gif"></td><td width=40%>
 <center><font size=6>
 It's A Long Road
 --Dan Hill</font><br><font size=5  color=#0000ff>
