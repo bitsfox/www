@@ -100,6 +100,32 @@ set envelope_from=yes
 # exim4 -qff				发送测试
 通过 tail -20 /var/log/exim4/mainlog查看运行情况。
 <font size=4 color=red>----补充完成----</font>
+<font size=4 color=blue>----2014.2.24关于使用smarthost发送邮件的终极解决方案----
+前几天（21日）出现的无法使用163的邮箱作为smarthost来发送信件的问题，以及一些莫名其妙其它问题
+现已全部完美解决。期间出现的莫名其妙的问题包括在本本上能够成功发送的信件，相同的配置在台式机上
+不能发送;发送时查看log显示发送成功，但是收信箱接收不到。对于163无法实现的原因我一直以为是他所
+采用的ssl机制造成的。现在才知道阻碍这一切实现的竟然是：我的机器都躲在路由器之后，指定的代发邮
+件的邮箱服务器都不能和我的exim4进行验证所造成的，当然，也有不需要验证就可以直接发送的。那就是
+伟大的google邮箱。不过也正是因为他才使我没去考虑是我内网配置造成的。知道了问题的所在，修复就
+简单了：在路由器上设置下端口映射，将exim4所用的端口（25：465：587）映射到目标机器的ip上即可。
+做完了映射163的邮件代发就能顺利实现了。不过随之而来的另一个问题是，我的台式机和本本分配了不同
+的固定内网ip，端口映射只能将同一端口映射到一个ip上。解决的方法就是在两台机器上分别设定exim4使用
+不同的通讯协议，例如在台式机上指定exim4使用ssl/tls,那么就可将465端口映射到台式机的ip上。在本本
+上使用非ssl协议，则将端口25映射到本本的ip上。调正完重启服务发送邮件测试----成功！！！！
+修改本地exim4使用不同协议(ssl/tls STARTTLS)的操作(debian)：
+(1)修改/etc/default/exim4,将SMTPLISTENEROPTIONS=''修改为：
+SMTPLISTENEROPTIONS='-oX 465:587 -oP /var/run/exim4/exim.pid'
+(2)修改/etc/exim4/exim4.conf.template,添加：
+#####################################################
+### main/03_exim4-config_tlsoptions
+#####################################################
+tls_on_connect_ports=465
+### main/03_exim4-config_tlsoptions
+#################################
+做完这两步后，重新加载配置update-exim4.conf && invoke-rc.d exim4 restart就完成了
+至于exim4的配置（dpkg-reconfigure exim4-config）中要求的:
+寄信使用的 smarthost 的 IP 地址或主机名: smtp.163.com::465 <--这里就不必指定端口了
+----补充完成----</font>
 
 然后重启exim4服务：/etc/init.d/exim4 restart
 上述步骤完成后可发送邮件测试是否成功：mutt -s \"mail test\" aaa@163.com &lt; ./aaa.txt
