@@ -37,6 +37,70 @@ conf.d/									该目录中的文件一般无需改动。
 smtp1.mail.vip.cnb.yahoo.com:aaa@yahoo.cn:password
 在/etc/exim4/下新建文件email-addresses,添加本机用户明和邮箱用户名（该名必须和passwd.client中用户名一致）：
 root:aaa@yahoo.cn
+<font size=4 color=red>----2014.2.21添加关于使用smarthost发送邮件的补充----</font>
+首先，对于使用ssl/tls（465端口）的163邮箱的设置始终没有成功，虽然看了不少说明，包括debian的wiki。
+而使用属于tls的STARTTLS(587端口)的gmail邮箱可以成功设置。另外对于使用非ssl的（25端口）的一些邮箱
+也能成功设置，比如：smtp.sina.com,smtp.tom.com,smtp.21cn.com。这里详细记录下本次的设置操作:
+1、配置/etc/exim4/update-exim4.conf.conf
+运行dpkg-reconfigure exim4-config,进入设置界面
+（1）选择用smarthost发信；通过SMTP或fetchmail接收信件
+（2）输入系统邮件名称: debian.edu
+（3）输入监听的ip地址: 127.0.0.1
+（4）请输入被此主机认为是以其自身为最终目的地址的域名列表: 空
+（5）本地用户的可见域名: debian.edu
+（6）寄信使用的 smarthost 的 IP 地址或主机名: smtp.gmail.com::587
+（7）为下列主机进行邮件中转 (relay): 空
+（8）保持最小 DNS 查询量吗 (按需拔号，Dial-on-Demand): No
+（9）将设置文件分拆成小文件吗: No(不拆分，使用一个配置文件)
+（10）Root 和 postmaster 邮件的接收者: 空
+完成后的配置（/etc/exim4/update-exim4.conf.conf）应如：
+dc_eximconfig_configtype='smarthost'
+dc_other_hostnames='debian.edu'
+dc_local_interfaces='127.0.0.1'
+dc_readhost='debian.edu'
+dc_relay_domains=''
+dc_minimaldns='false'				#最小dns查询
+dc_relay_nets=''
+#dc_smarthost='smtp.21cn.com'
+dc_smarthost='smtp.sina.com'
+#dc_smarthost='smtp.gmail.com::587'
+#dc_smarthost='smtp.tom.com'
+CFILEMODE='644'
+dc_use_split_config='false'			#不分割
+dc_hide_mailname='true'				#隐藏本地设置
+dc_mailname_in_oh='true'			
+dc_localdelivery='mail_spool'
+
+编辑/etc/exim4/passwd.client 添加如下行：
+#smtp.sian.com:yourcount@sina.com:yourpasswd
+#tomsmtp.cdn.163.net:yourcount@tom.com:yourpasswd
+#smtp.cdn.21cn.com:yourcount@21cn.com:yourpasswd
+*.google.com:yourcount@gmail.com:yourpasswd
+
+编辑/etc/exim4/email-addresses 添加：
+root: yourcount@gmail.com
+#root: yourcount@sina.com
+#root: yourcount@21cn.com
+#root: yourcount@tom.com
+
+编辑/etc/exim4/exim4.conf.template 查找begin authenticators并在其后添加（在cram_md5:之前）：
+AUTH_CLIENT_ALLOW_NOTLS_PASSWORDS=1
+
+编辑~/.muttrc(/etc/Muttrc) 添加发送邮件的设置：
+#设置发信
+#set from=yourcount@21cn.com
+#set from=yourcount@tom.com
+#set from=yourcount@sina.com
+set from=yourcount@gmail.com
+set use_from=yes
+set envelope_from=yes
+至此，设置完成。重新加载配置并运行：
+# update-exim4.conf			更新配置
+# invoke-rc.d exim4 restart  重新启动
+# exim4 -qff				发送测试
+通过 tail -20 /var/log/exim4/mainlog查看运行情况。
+<font size=4 color=red>----补充完成----</font>
+
 然后重启exim4服务：/etc/init.d/exim4 restart
 上述步骤完成后可发送邮件测试是否成功：mutt -s \"mail test\" aaa@163.com &lt; ./aaa.txt
 如果在aaa＠163.com中收到了主题为mail test的邮件则表示配置成功。
