@@ -37,7 +37,87 @@ conf.d/									该目录中的文件一般无需改动。
 smtp1.mail.vip.cnb.yahoo.com:aaa@yahoo.cn:password
 在/etc/exim4/下新建文件email-addresses,添加本机用户明和邮箱用户名（该名必须和passwd.client中用户名一致）：
 root:aaa@yahoo.cn
-<font size=4 color=red>----2014.2.21添加关于使用smarthost发送邮件的补充----</font>
+
+然后重启exim4服务：/etc/init.d/exim4 restart
+上述步骤完成后可发送邮件测试是否成功：mutt -s \"mail test\" aaa@163.com &lt; ./aaa.txt
+如果在aaa＠163.com中收到了主题为mail test的邮件则表示配置成功。
+mutt命令解释：-s后带邮件主题，aaa@163.com为目的邮箱，邮件内容为aaa.txt的内容，如带附件则：
+mutt -s \"mail test\" aaa@163.com -a bbb.jpg &lt; ./aaa.txt 
+需要注意的是：exim4虽然简单，但是在配置过程中往往会出现些莫名其妙的错误，可能不管你怎样修改都无法更正，甚至
+卸载掉重装都无济于事，这时最好不要使用apt-get remove或autoremove来卸载，使用dpkg --pruge进行彻底清除。
+<font color=blue size=4>四、mutt的设置</font>
+mutt的配置依然很简单（仅限于满足使用），他的配置文件一般为\$HOME/.muttrc。只要进行简单的设置mutt就可以工作了：
+ignore *									#设置显示邮件时不显示邮件头
+unignore From Subject Date					#设置取消屏蔽邮件头中的发件地址，邮件名称和日期。 
+set editor='vim'							#设置邮件正文编辑器为vim
+set sendmail='/usr/sbin/exim4'     			#设置邮件发送程序为exim4
+set folder=\"~/Mail\"							#设置邮箱目录
+set mbox=\"~/Mail/inbox\"						#设置收件箱
+set spoolfile=\"~/Mail/inbox\"     
+set record=\"~/Mail/sent\"     				
+mailboxes \"+inbox\"							#收件箱
+mailboxes \"+13325xxxx00\"					#分类收件箱，189邮箱
+mailboxes \"+tybitsfox_gmail\"				#gmail邮箱的邮件
+mailboxes \"+tyyyyt\"							#163邮箱的
+mailboxes \"+tybitsfox_163\"	
+mailboxes \"+tybitsfox_yahoo\"
+set charset=\"utf8\"							#字体
+set locale=\"zh_CN\"							
+set from='QQMaster <10000@qq.com>'			#设置使用直接smtp发送时，收件方显示的你的发信地址.
+<font color=blue size=4>五、fetchmail的设置</font>
+fetchmail的个人配置文件为\$HOME/.fetchmailrc，如果要作为服务运行定时检查邮箱则为/etc/fetchmailrc。
+
+defaults										#保证这几行在文件的开头
+mda \"/usr/bin/procmail -d %T\"					#使用procmail过滤、分拣
+set logfile \"/var/log/fetchmail.log\"			
+set daemon 600 									#如果作为服务运行，指定检查邮箱的时间间隔
+
+poll pop.163.com								#设定需要检查的邮箱
+proto POP3
+uidl											#只收取新邮件
+username tybitsfox@163.com						
+password **********
+keep											#收取邮件后不删除服务器上的邮件
+
+poll pop.189.cn									#设定其他需要检查的邮箱
+proto POP3
+uidl
+username 13325xxxx00@189.cn
+password *********
+ssl												#如需验证则加入该项
+keep
+<font color=blue size=4>六、procmail的设置</font>
+procmail的配置文件\$HOME/.procmailrc，在这里进行邮件过滤、分拣设置
+
+PATH=/bin:/usr/bin:/usr/local/bin
+MAILDIR=\"/root/Mail\"					#指定邮件目录
+LOGFILE=\"/var/log/procmail.log\"			
+FORMAIL=/usr/bin/formail				#指定格式化程序
+VERBOSE=off
+
+:0
+* ^To.*fox@gmail.com					#我的gmail邮箱的邮件都存放在文件tybitsfox_gmail中
+tybitsfox_gmail
+
+:0
+* ^To.*yyt@163.com						#tyyyyt@163.com邮箱中的信件报存在tyyyyt文件中
+tyyyyt
+
+:0
+*.*
+inbox									#其余邮件存放在inbox文件中
+
+至此你的邮件收发已经建立起来了，在没有启动fetchmail之前，使用命令进行测试：
+fetchmail -akv -m \"/usr/bin/procmail -d %T\" 看看收邮件是否成功，如成功，运行mutt查看。
+参数a 收取所有邮件，k 不删除服务器上的邮件，m 指定邮件传送代理mda。
+依据你的实际情况确定是否将自动收取邮件fetchmail加入服务中运行，如需加入，修改/etc/default/fetchmail
+将START_DAEMON=no 改为yes，重启即可。
+";
+echo "</pre></font></td><td width=10%></td></tr><table>";
+echo "<br><table border=0 width=100%><tr width=100%><td width=10%></td><td width=80%><font size=4 color=blue><pre>";
+echo "fetchmail如果提示不以root身份运行的话，可将配置文件放置到/etc目录下，但是fetchmailrc文件中包含有登录邮箱的密码
+所以，请慎用。如果移动配置文件的话，可移动下列配置：Muttrc,fetchmailrc procmailrc<br>";
+echo "<font size=4 color=red>----2014.2.21添加关于使用smarthost发送邮件的补充----</font>
 首先，对于使用ssl/tls（465端口）的163邮箱的设置始终没有成功，虽然看了不少说明，包括debian的wiki。
 而使用属于tls的STARTTLS(587端口)的gmail邮箱可以成功设置。另外对于使用非ssl的（25端口）的一些邮箱
 也能成功设置，比如：smtp.sina.com,smtp.tom.com,smtp.21cn.com。这里详细记录下本次的设置操作:
@@ -125,87 +205,7 @@ tls_on_connect_ports=465
 做完这两步后，重新加载配置update-exim4.conf && invoke-rc.d exim4 restart就完成了
 至于exim4的配置（dpkg-reconfigure exim4-config）中要求的:
 寄信使用的 smarthost 的 IP 地址或主机名: smtp.163.com::465 <--这里就不必指定端口了
-----补充完成----</font>
-
-然后重启exim4服务：/etc/init.d/exim4 restart
-上述步骤完成后可发送邮件测试是否成功：mutt -s \"mail test\" aaa@163.com &lt; ./aaa.txt
-如果在aaa＠163.com中收到了主题为mail test的邮件则表示配置成功。
-mutt命令解释：-s后带邮件主题，aaa@163.com为目的邮箱，邮件内容为aaa.txt的内容，如带附件则：
-mutt -s \"mail test\" aaa@163.com -a bbb.jpg &lt; ./aaa.txt 
-需要注意的是：exim4虽然简单，但是在配置过程中往往会出现些莫名其妙的错误，可能不管你怎样修改都无法更正，甚至
-卸载掉重装都无济于事，这时最好不要使用apt-get remove或autoremove来卸载，使用dpkg --pruge进行彻底清除。
-<font color=blue size=4>四、mutt的设置</font>
-mutt的配置依然很简单（仅限于满足使用），他的配置文件一般为\$HOME/.muttrc。只要进行简单的设置mutt就可以工作了：
-ignore *									#设置显示邮件时不显示邮件头
-unignore From Subject Date					#设置取消屏蔽邮件头中的发件地址，邮件名称和日期。 
-set editor='vim'							#设置邮件正文编辑器为vim
-set sendmail='/usr/sbin/exim4'     			#设置邮件发送程序为exim4
-set folder=\"~/Mail\"							#设置邮箱目录
-set mbox=\"~/Mail/inbox\"						#设置收件箱
-set spoolfile=\"~/Mail/inbox\"     
-set record=\"~/Mail/sent\"     				
-mailboxes \"+inbox\"							#收件箱
-mailboxes \"+13325xxxx00\"					#分类收件箱，189邮箱
-mailboxes \"+tybitsfox_gmail\"				#gmail邮箱的邮件
-mailboxes \"+tyyyyt\"							#163邮箱的
-mailboxes \"+tybitsfox_163\"	
-mailboxes \"+tybitsfox_yahoo\"
-set charset=\"utf8\"							#字体
-set locale=\"zh_CN\"							
-set from='QQMaster <10000@qq.com>'			#设置使用直接smtp发送时，收件方显示的你的发信地址.
-<font color=blue size=4>五、fetchmail的设置</font>
-fetchmail的个人配置文件为\$HOME/.fetchmailrc，如果要作为服务运行定时检查邮箱则为/etc/fetchmailrc。
-
-defaults										#保证这几行在文件的开头
-mda \"/usr/bin/procmail -d %T\"					#使用procmail过滤、分拣
-set logfile \"/var/log/fetchmail.log\"			
-set daemon 600 									#如果作为服务运行，指定检查邮箱的时间间隔
-
-poll pop.163.com								#设定需要检查的邮箱
-proto POP3
-uidl											#只收取新邮件
-username tybitsfox@163.com						
-password **********
-keep											#收取邮件后不删除服务器上的邮件
-
-poll pop.189.cn									#设定其他需要检查的邮箱
-proto POP3
-uidl
-username 13325xxxx00@189.cn
-password *********
-ssl												#如需验证则加入该项
-keep
-<font color=blue size=4>六、procmail的设置</font>
-procmail的配置文件\$HOME/.procmailrc，在这里进行邮件过滤、分拣设置
-
-PATH=/bin:/usr/bin:/usr/local/bin
-MAILDIR=\"/root/Mail\"					#指定邮件目录
-LOGFILE=\"/var/log/procmail.log\"			
-FORMAIL=/usr/bin/formail				#指定格式化程序
-VERBOSE=off
-
-:0
-* ^To.*fox@gmail.com					#我的gmail邮箱的邮件都存放在文件tybitsfox_gmail中
-tybitsfox_gmail
-
-:0
-* ^To.*yyt@163.com						#tyyyyt@163.com邮箱中的信件报存在tyyyyt文件中
-tyyyyt
-
-:0
-*.*
-inbox									#其余邮件存放在inbox文件中
-
-至此你的邮件收发已经建立起来了，在没有启动fetchmail之前，使用命令进行测试：
-fetchmail -akv -m \"/usr/bin/procmail -d %T\" 看看收邮件是否成功，如成功，运行mutt查看。
-参数a 收取所有邮件，k 不删除服务器上的邮件，m 指定邮件传送代理mda。
-依据你的实际情况确定是否将自动收取邮件fetchmail加入服务中运行，如需加入，修改/etc/default/fetchmail
-将START_DAEMON=no 改为yes，重启即可。
-";
-echo "</pre></font></td><td width=10%></td></tr><table>";
-echo "<br><table border=0 width=100%><tr width=100%><td width=10%></td><td width=80%><font size=4 color=blue><pre>";
-echo "fetchmail如果提示不以root身份运行的话，可将配置文件放置到/etc目录下，但是fetchmailrc文件中包含有登录邮箱的密码
-所以，请慎用。如果移动配置文件的话，可移动下列配置：Muttrc,fetchmailrc procmailrc<br>";
+----补充完成----</font>";
 echo "</pre></font></td><td width=10%></td></tr><table>";
 
 ?>
