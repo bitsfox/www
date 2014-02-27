@@ -37,7 +37,8 @@ if($pflag==0)
 	echo "<table width=100%><tr><td width=100%><br><br></td></tr></table>";
 	include("awnl.php");
 	echo "<br><a href='./tin16/fengshen.php' target=_blank>FC封神榜</a><br>";
-	echo "<a href='./tin16/warsong/indexp1.htm' target=_blank>MD梦幻模拟战2</a>";
+	echo "<a href='./tin16/warsong/indexp1.htm' target=_blank>MD梦幻模拟战2</a><br>";
+	echo "<a href='./tin16/FC_namelist.html' target=_blank>FC游戏列表</a><br>";
 }
 ?>
 <?php
