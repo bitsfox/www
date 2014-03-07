@@ -55,7 +55,7 @@ Mod1 u  :Exec xpdf -papercolor "#6c6c6c"
 Mod1 l	:Exec xp.sh
 #Mod1 l  :Exec gedit
 Mod1 k  :Exec gthumb
-Mod1 j	:Exec ksnapshot
+Mod1 j	:Exec scrot %Y%m%d-%H.%M.%S.png -d 2
 #Mod1 j  :Exec import -window root ~/snapst01.jpeg
 #Mod1 u  :Exec xpdf /workarea/mydata/LinuxCfunc.pdf
 #Mod1 u  :Exec kpdf
@@ -68,7 +68,7 @@ Mod1 F2 :Exec fbrun
 174 :Exec amixer sset Master,0 1-
 160 :Exec amixer sset Master,0 toggle
 
-# current window commands
+# current window commands---all actions can be used see window commands
 Mod1 F4 :Close
 Mod1 F9 :Minimize
 Mod1 F10 :Maximize
@@ -79,6 +79,8 @@ Mod1 m  :Maximize
 Mod1 n  :Minimize
 Mod1 v  :MaximizeVertical
 Mod1 b  :MaximizeHorizontal
+Mod1 c  :SetLayer Top
+Mod1 x  :SetLayer Normal
 Mod1 q  :Close
 Control Mod1 Left  :MoveTo 0 * Left
 Control Mod1 Up    :MoveTo * 0 Top

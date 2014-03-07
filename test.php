@@ -39,6 +39,7 @@ if($pflag==0)
 	echo "<br><a href='./tin16/fengshen.php' target=_blank>FC封神榜</a><br>";
 	echo "<a href='./tin16/warsong/indexp1.htm' target=_blank>MD梦幻模拟战2</a><br>";
 	echo "<a href='./tin16/FC_namelist.html' target=_blank>FC游戏列表</a><br>";
+	echo "<a href='./tin16/CastleVania2/castle2.php' target=_blank>FC恶魔城2</a><br>";
 }
 ?>
 <?php
