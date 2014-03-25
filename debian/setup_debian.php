@@ -202,12 +202,15 @@ export LC_ALL=\"en_US.utf8\"
 export LANG=\"en_US.utf8\"
 export LANGUAGE=\"en_US.utf8\"
 </font><br><font color=red size=4>
-关于声音音量的保存，安装alsa-utils包即可实现设定音量的保存。
-关于屏幕亮度的保存，每次开机屏幕亮度都会自动恢复到系统默认的亮度，但是可以在~/.bashrc文件中添加：
+(1)关于声音音量的保存，安装alsa-utils包即可实现设定音量的保存。
+(2)关于屏幕亮度的保存，每次开机屏幕亮度都会自动恢复到系统默认的亮度，但是可以在~/.bashrc文件中添加：
 echo 9 > /sys/class/backlight/acpi_video0/brightness
 来实现每次登录后的自动调整。
-关于分辨率的设定，xrandr命令集成在xorg包中，如果没有安装xorg（比如我，只安装了xserver-xorg和xinit）则不会有xrandr
-
+(3)关于分辨率的设定，xrandr命令集成在xorg包中，如果没有安装xorg（比如我，只安装了xserver-xorg和xinit）则不会有xrandr
+(4)关于firefox安装flash player11的说明，flashplayer的网站上有flashplayer的deb安装包，不过该包的flashplayer版本是10.0
+在同一下载页面还有tar.bz的安装包，这个是版本11的。下载该包解压，得到一个usr/目录和libflashplayer.so文件以及一个readme
+文件，查看readme文件可知安装方法：拷贝so文件至'BrowserPluginsLocation'目录下，该目录为 ~/.mozilla/plugins/或者
+/usr/lib/mozilla/plugins/这个目录。然后cp -r usr/* /usr即可。
 </font></pre>";
 ?>
 
