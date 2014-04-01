@@ -65,5 +65,6 @@ echo "<font size=5>一些现在不用的链接放在了这里：</font><br>";
 <a href='./fx.tar.bz2'>fluxbox_set</a>&nbsp;&nbsp;&nbsp;<a href='./.bashrc'>bashrc</a>&nbsp;&nbsp;&nbsp;
 <a href='./YaHei.Consolas.1.11b.ttf'>yahei</a>&nbsp;&nbsp;&nbsp;<br>
 <a  href="ftp://fr2.rpmfind.net/linux/freshrpms/fedora/linux/8" target=_blank>Fedora 8 source1</a>&nbsp;&nbsp;&nbsp;<a href="http://ayo.freshrpms.net/fedora/linux/8/i386/fres   hrpms/RPMS/" target=_blank>Fedora 8 source2</a>&nbsp;&nbsp;&nbsp;<a href="http://www.mjmwired.net/resources/mjm-fedora-f8.html" target=_blank>Personal Fedora 8 Install   ation Guide</a><br>470110929&nbsp;&nbsp;&nbsp;1524844431&nbsp;&nbsp;&nbsp;</font>
+<a href='./html5/h05.html' target=_blank>html5</a>&nbsp;&nbsp;&nbsp;<a href='./html5/h051.html' target=_blank>kick ass2</a>&nbsp;&nbsp;&nbsp;<a href='./html5/h052.html' target=_blank>pacific</a>
 <br><a href="./sss.php" target=_blank>关键字查询</a><br>
 </center>
