@@ -89,6 +89,32 @@ scp链接方式： scp -P643 -r root@192.168.1.120:/var/www/php ./
   mysql>use 数据库
   然后使用source命令，后面参数为脚本文件（如这里用到的.sql）
   mysql>source d:\ta_test.sql
+数据库表结构的修改及查看comment
+1.添加一个字段：
+alter table station add transcode varchar(20) comment '传输标志字段';
+2.查看备注信息：
+mysql> show full fields from station;
++-----------+-------------+-----------------+------+-----+---------+----------------+---------------------------------+--------------------+
+| Field     | Type        | Collation       | Null | Key | Default | Extra          | Privileges                      | Comment            |
++-----------+-------------+-----------------+------+-----+---------+----------------+---------------------------------+--------------------+
+| sname     | varchar(20) | utf8_general_ci | YES  |     | NULL    |                | select,insert,update,references | 站点名称           |
+| sid       | int(11)     | NULL            | NO   | PRI | NULL    | auto_increment | select,insert,update,references |                    |
+| phone     | varchar(12) | utf8_general_ci | YES  |     | NULL    |                | select,insert,update,references |                    |
+| addr      | varchar(40) | utf8_general_ci | YES  |     | NULL    |                | select,insert,update,references |                    |
+| contact   | varchar(10) | utf8_general_ci | YES  |     | NULL    |                | select,insert,update,references | 联系人             |
+| transcode | varchar(20) | utf8_general_ci | YES  |     | NULL    |                | select,insert,update,references | 传输标志字节       |
++-----------+-------------+-----------------+------+-----+---------+----------------+---------------------------------+--------------------+
+6 rows in set (0.00 sec)
+或者：
+show create table station;
+3.修改一个字段：
+可以使用change和modify两种方式，区别在于，change可以修改指定字段的名称和属性。而modify只修改属性：
+用change如果不修改字段名的时候也要写两次字段名（相同的）：
+alter table station change sname sname varchar(20) comment '站点名称';
+或者使用：
+alter table station modify sname varchar(20) comment '站点名称';
+
+
 
  门禁系统所用的数据库账户： 
 grant select,insert,update,delete,create,drop on ta_test.* to 'taenv'@'localhost' identified by 'taenv2014';

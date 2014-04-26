@@ -148,55 +148,55 @@ if(isset($_SESSION["loguser"]) && isset($_SESSION["logpwd"]))
 else
 {die("hi guys,you died now!!");}
 ?>
-<body onload="time()">
+<body onload="time()"><a name=a01></a>
 <form name="form1" method="post" action="main01.php">
 <table class="aaaa"><tr><td width=70% align=left valign=top>
 <div class="menu">
 <ul>
-<li><a class="hide" href="../menu/index.html">查看视频</a>
+<li><a class="hide" href="#a01">查看视频</a>
     <ul>
-    <li><a href="../menu/zero_dollars.html" title="按检测站房分类查看">按站点查看</a></li>
-    <li><a href="../menu/embed.html" title="按日期顺序查看">按日期查看</a></li>
-    <li><a href="../menu/form.html" title="查看已确认作弊的视频">重点视频</a></li>
+    <li><a href="#a01" title="按检测站房分类查看">按站点查看</a></li>
+    <li><a href="#a01" title="按日期顺序查看">按日期查看</a></li>
+    <li><a href="#a01" title="查看已确认作弊的视频">重点视频</a></li>
     </ul>
 </li>
-<li><a class="hide" href="index.html">查看图片</a>
+<li><a class="hide" href="#a02">查看图片</a>
     <ul>
-    <li><a href="spies.html" title="按站点查看视频截图">按站点查看截图</a></li>
-    <li><a href="vertical.html" title="按日期查看视频截图">按日期查看截图</a></li>
-    <li><a href="expand.html" title="查看确认作弊的视频截图">重点图片</a></li>
+    <li><a href="#a01" title="按站点查看视频截图">按站点查看截图</a></li>
+    <li><a href="#a01" title="按日期查看视频截图">按日期查看截图</a></li>
+    <li><a href="#a01" title="查看确认作弊的视频截图">重点图片</a></li>
     </ul>
 </li>
-<li><a class="hide" href="../layouts/index.html">门禁错误记录</a>
+<li><a class="hide" href="#a01">门禁错误记录</a>
     <ul>
-    <li><a href="../layouts/bodyfix.html" title="查看系统错误">系统错误</a></li>
-    <li><a href="../layouts/body2.html" title="查看现场端错误">现场端错误</a></li>
-    <li><a href="../layouts/body4.html" title="添加错误记录">添加记录</a></li>
-    <li><a href="../layouts/body5.html" title="查看一般警告">警告记录</a></li>
+    <li><a href="#a01" title="查看系统错误">系统错误</a></li>
+    <li><a href="#a01" title="查看现场端错误">现场端错误</a></li>
+    <li><a href="#a01" title="添加错误记录">添加记录</a></li>
+    <li><a href="#a01" title="查看一般警告">警告记录</a></li>
     </ul>
 </li>
-<li><a class="hide" href="../boxes/index.html">交流区</a>
+<li><a class="hide" href="#a01">交流区</a>
     <ul>
-    <li><a href="spies.html" title="进入公告栏">公告栏</a></li>
-    <li><a href="vertical.html" title="进入聊天室">聊天室</a></li>
+    <li><a href="#a01" title="进入公告栏">公告栏</a></li>
+    <li><a href="#a01" title="进入聊天室">聊天室</a></li>
     </ul>
 </li>
-<li><a class="hide" href="../mozilla/index.html">待开发1</a>
+<li><a class="hide" href="#a01">待开发1</a>
     <ul>
-    <li><a href="../mozilla/dropdown.html" title="该菜单目前未用1">待添加1</a></li>
-    <li><a href="../mozilla/cascade.html" title="该菜单目前未用2">待添加2</a></li>
-    <li><a href="../mozilla/content.html" title="该菜单目前未用3">待添加3</a></li>
-    <li><a href="../mozilla/moxbox.html" title="该菜单目前未用4">待添加4</a></li>
-    <li><a href="../mozilla/rainbow.html" title="该菜单目前未用5">待添加5</a></li>
-    <li><a href="../mozilla/snooker.html" title="该菜单目前未用6">待添加6</a></li>
-    <li><a href="../mozilla/target.html" title="该菜单目前未用7">带添加7</a></li>
+    <li><a href="#a01" title="该菜单目前未用1">待添加1</a></li>
+    <li><a href="#a01" title="该菜单目前未用2">待添加2</a></li>
+    <li><a href="#a01" title="该菜单目前未用3">待添加3</a></li>
+    <li><a href="#a01" title="该菜单目前未用4">待添加4</a></li>
+    <li><a href="#a01" title="该菜单目前未用5">待添加5</a></li>
+    <li><a href="#a01" title="该菜单目前未用6">待添加6</a></li>
+    <li><a href="#a01" title="该菜单目前未用7">带添加7</a></li>
     </ul>
 </li>
-<li><a class="hide" href="../ie/index.html">待开发2</a>
+<li><a class="hide" href="#a02">待开发2</a>
     <ul>
-    <li><a href="../ie/exampleone.html" title="该菜单目前未用1">待添加1</a></li>
-    <li><a href="../ie/weft.html" title="W该菜单目前未用2">待添加2</a></li>
-    <li><a href="../ie/exampletwo.html" title="该菜单目前未用3">待添加3</a></li>
+    <li><a href="#a02" title="该菜单目前未用1">待添加1</a></li>
+    <li><a href="#a02" title="W该菜单目前未用2">待添加2</a></li>
+    <li><a href="#a02" title="该菜单目前未用3">待添加3</a></li>
     </ul>
 </li>
 </ul>
@@ -236,7 +236,7 @@ if(isset($_POST["sub2"]))
 	</ul>
 </div>
 
-<br><br><br><br><br><br><hr>
+<br><br><br><br><br><br><hr><a name=a02></a>
 <div class="cutpage" id="page">
 <a href="#"><span>上一页</span></a><a href="#" class="current" id="cutpage"><span>1</span></a><a href="#"><span>2</span></a><a href="#"><span>3</span></a><a href="#"><span>4</span></a><a href="#"><span>3</span></a><a href="#"><span>4</span></a><a href="#"><span>5</span></a><a href="#"><span>6</span></a><a href="#"><span>7</span></a><a href="#"><span>8</span></a><a href="#"><span>9</span></a><a href="#"><span>10</span></a><a href="#"><span>11</span></a><a href="#"><span>14</span></a><a href="#"><span>124</span></a><a href="#"><span>下一页</span></a>
 </div>

@@ -3,8 +3,8 @@
  $_SESSION["loguser"]="";
  $_SESSION["logpwd"]="";
  $L_HOST="localhost";
- $L_USER="root";
- $L_PASSWORD="";
+ $L_USER="taenv";
+ $L_PASSWORD="taenv2014";
  $L_DBNAME="ta_test";
 ?>
 

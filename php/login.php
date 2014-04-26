@@ -1,4 +1,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script>
+history.forward();
+</script>
 <?php
 include_once("varset.php"); 
 unset($_SESSION["loguser"]);

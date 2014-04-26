@@ -118,7 +118,7 @@ function add_result()
 <?php
 	if($myindex==1)
 	{
-		echo "<meta http-equiv=\"Refresh\" content=\"3;URL=./login.php\" />";
+		echo "<meta http-equiv=\"Refresh\" content=\"2;URL=./login.php\" />";
 		echo "<br><br><br><br><center>3秒后系统自动跳回原页面</center>";
 	}
 	if($myindex==0)
