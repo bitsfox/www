@@ -1,0 +1,99 @@
+<a name=server01></a><font size=4><pre>
+<font color=red size=4>这里记录下所有服务器设置操作的细节及问题</font>
+
+一、关于修改ssh端口后登录的问题：
+服务器暂时设置643端口为ssh的通讯端口，修改端口后连接服务器时命令为：
+ssh root@192.168.1.120 -p643
+目前没有测试的是这种方式用于git该是怎样的书写形式？
+二、关于mysql的相关问题：
+1、带用户名和密码的登录，由于以前我个人使用都是不设置密码的，所以这回还是有些小小的麻烦，首先登录形式为：
+mysql -uroot -ppassword
+根据测试结果，用户名和密码必须紧跟在相关参数后，不能有空格。但是密码可以不输入：
+mysql -uroot -p
+这样会比较安全的输入密码。
+2、php和mysql乱码的问题，这个问题相当普遍，但是只要能做到php文件所用编码和mysql编码一致就没有这些问题了。
+我的php一直使用utf-8，所以，在不更改默认mysql的编码设置时会有乱码产生的。这里有两种方式可以避免：
+（1）在php文件中需要对数据库进行操作时加入：
+mysql_query("SET NAMES 'UTF-8'");这样可以保持两者编码的一致，这时在php中不会产生乱码了，但是如果使用mysql
+的shell环境查看数据库时显示的仍然是乱码，这是因为默认的mysql编码没有改变，在shell下通过命令：
+show variables like '%char%';查看mysql的编码设置会有如下设置：
+| Variable_name | Value |
++--------------------------+----------------------------+
+| character_set_client | utf8 |
+| character_set_connection | utf8 |
+| character_set_database | latin1 |
+| character_set_filesystem | binary |
+| character_set_results | utf8 |
+| character_set_server | latin1 |
+| character_set_system | utf8 |
+| character_sets_dir | /usr/share/mysql/charsets/ |
++--------------------------+----------------------------+
+
+此时一个奇怪的现象是，这些由php写入的记录在shell下看起来是乱码，但是在php中显示正常，如果在shell下手动添加一
+条记录，这条记录在shell下会正常显示没有乱码，因此这里出现的乱码问题应该是shell所用编码的不同造成的，我尝试
+使用不同的编码方式显示：在mysql下输入命令： set names gbk(gb2312\utf8)都有不同的乱码显示，但当我使用latin1编码
+时竟然正常的显示中文了，看来shell还是保持了mysql默认的编码格式。我们无需对shell进行永久的修改，仅仅在我们使用
+shell时输入该命令能正常查看即可。从上面的编码设置来看，我们知道database和server仍然使用其默认的编码latin1，这
+就是我们要在php中使用第一种方法避免乱码的原因，因此要彻底改变这一状况，我们需要用就修改设置，如此我们就能不再
+通过第一种方式就可达到编码一致，这就是第二种方式：
+（2）通过修改mysql的配置文件实现编码一致：
+以debian为例，mysql的配置为/etc/mysql/my.cnf，在[mysqld]节下添加：
+character-set-server=utf8
+保存修改，重启服务 /etc/init.d/mysql restart，此时在查看编码设置会有如下显示：
+mysql> show variables like '%char%';
++--------------------------+----------------------------+
+| Variable_name | Value |
++--------------------------+----------------------------+
+| character_set_client | utf8 |
+| character_set_connection | utf8 |
+| character_set_database | utf8 |
+| character_set_filesystem | binary |
+| character_set_results | utf8 |
+| character_set_server | utf8 |
+| character_set_system | utf8 |
+| character_sets_dir | /usr/share/mysql/charsets/ |
++--------------------------+----------------------------+
+此时dayabase和server都已修改为utf8编码了，这时在php文件中就可以不需要第一种的做法仍可以保持编码一致了，但是要注意
+的是修改之前建立的数据库其编码格式仍然是原来的latin1。
+这里还应注意的一点是，在mysql5.1之前，对配置文件修改是如下形式：
+default-character-set=utf8
+而其后版本对[mysqld]的修改不能在是这条语句了，不然重启mysql服务时会失败。必须改为character-set-server=utf8
+
+三、服务器的一些密码设置：
+mysql : root taenv2014
+login : 默认
+apache 默认端口修改为：8053
+ssh 默认端口修改为：643
+服务器配置的eth0：192.168.1.120
+服务器配置的eth1：dhcp
+
+ssh连接方式： ssh root@192.168.1.120 -p643
+git连接方式： git remote add origin ssh://root@192.168.1.120:643/workarea/git-depot/www.git
+scp链接方式： scp -P643 -r root@192.168.1.120:/var/www/php ./
+数据库备份及恢复:
+几个常用用例：
+1.导出整个数据库
+ mysqldump -u 用户名 -p 数据库名 > 导出的文件名    
+ mysqldump -u wcnc -p ta_test > ta_test.sql
+2.导出一个表
+ mysqldump -u 用户名 -p 数据库名 表名> 导出的文件名
+ mysqldump -u wcnc -p ta_test usrtab> ta_test_usrtab.sql
+3.导出一个数据库结构
+  mysqldump -u wcnc -p -d --add-drop-table ta_test >d:\ta_test_struct.sql
+ -d 没有数据 --add-drop-table 在每个create语句之前增加一个drop table 
+4.导入数据库
+  常用source 命令
+  进入mysql数据库控制台，
+  如mysql -u root -p 
+  
+  mysql>use 数据库
+  然后使用source命令，后面参数为脚本文件（如这里用到的.sql）
+  mysql>source d:\ta_test.sql
+
+ 门禁系统所用的数据库账户： 
+grant select,insert,update,delete,create,drop on ta_test.* to 'taenv'@'localhost' identified by 'taenv2014';
+</pre></font>
+
+
+
+
