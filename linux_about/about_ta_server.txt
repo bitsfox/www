@@ -118,8 +118,44 @@ alter table station modify sname varchar(20) comment '站点名称';
 
  门禁系统所用的数据库账户： 
 grant select,insert,update,delete,create,drop on ta_test.* to 'taenv'@'localhost' identified by 'taenv2014';
-</pre></font>
+</pre></font><br>
+<a name=server02></a><font size=4><pre>
+<font color=red size=4>ip摄像头视频流的存储和转换</font>
+ip摄像头一般是以服务端的形式提供视频访问的，也就是他自身实现一个web服务端，固定一个端口来侦听客户端的访问请求的。
+为了对内网和外网提供访问，他一般还具有upnp和动态域名解析功能。一个典型的实例就是我刚进行过测试的easyN系列ip摄像头。
+基于这一特点，他所提供的视频流数据是一种被动式的（服务器形式的）。而数据形式一般为videostream.cgi和videostream.asf等形式。
+其中前一种形式的数据流可直接被主流浏览器直接以视频资料形式显示播放（测试的结果在window下的播放效果明显强于linux下）。
+而后一种asf文件格式的数据流是可由mplayer之类的视频播放器直接播放的，当然这两种格式的数据流都可以抓取并保存为文件。
+下面为在linux下抓取、保存、转换视频类型的操作：
+
+对cgi格式的直接播放，在firefox等浏览器下直接输入待播放的流文件地址：
+http://192.168.1.103:81/videostream.cgi?user=admin&pwd= 即可播放，在linux下流畅度差些。
+对asf格式的直接播放，使用mplayer:
+mplayer http://admin:@192.168.1.103:81/videostream.asf
+
+对asf（cgi的同样操作）格式的流文件抓取保存：
+wget http://admin:@192.168.1.103:81/videostream.asf
+手动操作时抓取一定时间后CTRL_C结束抓取。
+
+为便于对抓取的文件在web上进行应用，可将抓取的asf文件转换为mp4文件，以便与使用html5的特性轻松的播放。
+ffmpeg -i videostream.asf -f mp4 -an aaa.mp4
+注意：该操作的关键参数就是an,他是audio no的简写，知道了他的简写他的意义就很明白了，还有个参数是-vn video no的简写，
+只生成音频文件，哈哈。能够实现这个操作的没几个人！我也是费劲艰辛在某个英文资料网站上才学到的。^-^
+说到了ffmpeg,在提下他的屏幕录像吧：
+ffmpeg -f x11grab -r 24 -s 800x600 -i :0.0 ./kkk.mpg
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+</pre></font><br>
