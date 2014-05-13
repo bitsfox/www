@@ -11,7 +11,8 @@ echo "<a href=./order.php#ord051>组成员管理工具gpasswd</a><br>";
 echo "<a href=./order.php#ord052>用户帐号修改工具usermod</a><br>";
 echo "<a href=./order.php#ord06>磁盘检查和修复命令e2fsck,fsck</a><br>";
 echo "<a href=./order.php#ord07>分区和格式化命令mkfs,fdisk</a><br>";
-echo "<a href=./order.php#ord071>常用抓屏工具</a><br><br>";
+echo "<a href=./order.php#ord071>常用抓屏工具</a><br>";
+echo "<a href=./order.php#ord072>xset</a><br><br>";
 echo "三、GNU实用工具程序<br>";
 echo "<a href=./order.php#ord08>objcopy</a><br>";
 echo "<a href=./order.php#ord09>查看elf可执行文件格式的两个命令objdump,readelf</a><br>";
@@ -264,6 +265,28 @@ echo "<a name=ord071></a><font color=red>常用抓屏工具</font><br>
     操作抓图：scrot action.png -e 'mv $f ~/images/'，该命令将抓取的图像移动到 ~/images/ 目录。显然，操作图像的功能由 e 选项开启，
 	其中的 $f 代表原图的路径／文件名。
 </font></pre><br><br>";
+echo "<a name=ord072></a><font size=4 color=blue>xset 使用</font>
+<font color=black size=3><pre>
+参数
+必要参数
+b 关闭报警音
+c 关闭键盘声音
+q 显示现在的设置
+s 屏幕保护设置
+r 按键信号设置
+
+$ vi .xession
+#添加，关闭xwindows的报警
+xset b off
+$ vi .inputrc
+#添加，关闭shell里的报警
+set bell-style none
+$ vi .vimrc
+#添加，设置vi里的报警为闪屏，如果闪屏也不要那就加入set vb t_vb= 
+set vb
+
+</pre></font><br><br>
+";
 echo "<a name=ord08></a><font size=4 color=blue>三、GNU实用工具程序</font>";
 echo "<font size=3 color=black><pre>
 <font color=red>1、objcopy命令简介</font>
