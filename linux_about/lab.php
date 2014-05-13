@@ -16,7 +16,14 @@ echo "<table border=0 width=100%><tr><td width=20%><a href=./lab.php#lab01>lsof�
 <td width=20%><a href=./lab_a.php#asm1604 target=_blank>字体设置、查看相关命令</a></td>
 <td width=20%><a href=./lab_a.php#asm1605 target=_blank>linux下多机种模拟器mednafen介绍</a></td>
 <td width=20%><a href=./lab_a.php#asm1606 target=_blank>mysql记录中文乱码</a></td>
-<td width=20%><a href=./lab_b.php target=_blank>服务器建设笔记</a></td></tr></table>";
+<td width=20%><a href=./lab_b.php target=_blank>服务器建设笔记</a></td></tr>
+<tr>
+<td width=20%><a href=./lab_b.php#server02 target=_blank>ip摄像头视频流的相关操作</a></td>
+<td width=20%></td>
+<td width=20%></td>
+<td width=20%></td>
+<td width=20%></td>
+</tr></table>";
 echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
 echo "<a name=lab01></a><font color=#ff0000>lsof用法: 例如查询tcp3306端口的状态： lsof -i:3306</font><br>";
 echo "<font color=#0000ff>打包的命令</font><br><pre>

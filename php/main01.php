@@ -221,8 +221,8 @@ if(isset($_POST["sub2"]))
 
 <div class="center major-list-outer">
 	<ul class="major-list">
-		<li class="major-item" id="dx"><a href="#" target="_blank"><span class="txt-hide front-face"></span><span class="back-face"></span></a></li>
-		<li class="major-item" id="rj"><a href="#" target="_blank"><span class="txt-hide front-face"></span><span class="back-face"></span></a></li>
+		<li class="major-item" id="dx" title="demo"><a href="./video-js/vd.html" target="_blank"><span class="txt-hide front-face"></span><span class="back-face"></span></a></li>
+		<li class="major-item" id="rj"><a href="./video-js/vdd.html" target="_blank"><span class="txt-hide front-face"></span><span class="back-face"></span></a></li>
 		<li class="major-item" id="jx"><a href="#" target="_blank"><span class="txt-hide front-face"></span><span class="back-face"></span></a></li>
 		<li class="major-item" id="gdz"><a href="#" target="_blank"><span class="txt-hide front-face"></span><span class="back-face"></span></a></li>
 		<li class="major-item" id="jsj"><a href="#" target="_blank"><span class="txt-hide front-face"></span><span class="back-face"></span></a></li>
