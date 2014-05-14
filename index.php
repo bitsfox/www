@@ -1,80 +1,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<style type="text/css">
-body{background-color:white;font-family:Arial, Helvetica, sans-serif;font-size:12px;text-align:center}
-.align-center{
-	margin:10 auto;		/* 居中 这个是必须的，，其它的属性非必须 */
-	width:200px;		/* 给个宽度 顶到浏览器的两边就看不出居中效果了 */
-	background:white;		/* 背景色 */
-	text-align:center; 	/* 文字等内容居中 #292929 */
-	font-size:12px;
-}
-.aaaa { width:100%; border:0px ; margin:0px auto; padding:0px; font-size:12px; background:white}
-</style>
-<!--弹出菜单-->
-<style type="text/css">
-/* common styling */
-/* set up the overall width of the menu div, the font and the margins */
-.menu {
-font-family: arial, sans-serif; 
-width:850px; 
-margin:0; 
-margin:5px 0;
-}
-/* remove the bullets and set the margin and padding to zero for the unordered list */
-.menu ul {
-padding:0; 
-margin:0;
-list-style-type: none;
-}
-/* float the list so that the items are in a line and their position relative so that the drop down list will appear in the right place underneath each list item */
-.menu ul li {
-float:left; 
-position:relative;
-}
-/* style the links to be 104px wide by 30px high with a top and right border 1px solid white. Set the background color and the font size. */
-.menu ul li a, .menu ul li a:visited {
-display:block; 
-text-align:center; 
-text-decoration:none; 
-width:124px; 
-height:27px; 
-color:#000; 
-border:1px solid #fff;
-border-width:1px 1px 0 0;
-background:#c9c9a7; 
-line-height:27px; 
-font-size:11px;
-}
-/* make the dropdown ul invisible */
-.menu ul li ul {
-display: none;
-}
-/* specific to non IE browsers */
-/* set the background and foreground color of the main menu li on hover */
-.menu ul li:hover a {
-color:#fff; 
-background:#b3ab79;
-}
-/* make the sub menu ul visible and position it beneath the main menu list item */
-.menu ul li:hover ul {
-display:block; 
-position:absolute; 
-top:28px; 
-left:0; 
-width:125px;
-}
-/* style the background and foreground color of the submenu links */
-.menu ul li:hover ul li a {
-display:block; 
-background:#faeec7; 
-color:#000;
-}
-/* style the background and forground colors of the links on hover */
-.menu ul li:hover ul li a:hover {
-background:#dfc184; 
-color:#000;
-}
-</style>
+<?php
+include_once("./mystyle.css");
+//<link href="mystyle.css" rel="stylesheet" type="text/css">
+?>
 <!--显示时间的函数-->
  <script language=Javascript> 
    function time(){
@@ -82,7 +10,7 @@ color:#000;
 	       t_div = document.getElementById('showtime');
 		      var now=new Date()
 				      //替换div内容 
-				     t_div.innerHTML = "现在是"+now.getFullYear()
+				     t_div.innerHTML =now.getFullYear()
 					     +"年"+(now.getMonth()+1)+"月"+now.getDate()
 						     +"日"+now.getHours()+"时"+now.getMinutes()
 							     +"分"+now.getSeconds()+"秒";
@@ -90,12 +18,8 @@ color:#000;
 			     setTimeout(time,1000);
 				   }
 </script>
-<?php
-
-
-?>
 <body onload="time()"><a name=a01></a>
-<table class="aaaa"><tr><td width=70% align=left valign=top>
+<table class="aaaa"><tr><td width=750px align=left valign=top>
 <div class="menu">
 <ul>
 <li><a class="hide" href="#a01">站内普通资料</a>
@@ -182,18 +106,31 @@ color:#000;
     </ul>
 </li>
 </ul>
-</td><td width=12% align=left valign=center>
+</td><td width=150px align=left valign=center>
 欢迎光临<font color=red size=2>tybitsfox</font>小站 
-</td><td width=18% align=left valign=top>
+</td><td align=left valign=top>
 <div class="align-center" id="showtime"></div>
 </td></tr>
 <tr>
-<form name="form1" method="post" action="index_new.php">
-<td width=70% ></td><td colspan=2 align=left>
-<br><?php include_once("./sss.php") ?>
+<form name="form1" method="post" action="index.php">
+<td width=750px ></td><td colspan=2 align=left>
+<br><table class="aaaa" >
+<tr><td align=left width=100px><input type=hidden name=action value=search size=0>站内查询关键字：</td>
+<td align=left valign=middle width=160px><input type=text name=keyword size=20 /></td>
+<td align=left valign=middle><input type=submit value="查 询" /></td></tr>
 </form>
 </td></tr>
 </table>
+<?php
+if($_POST[action]==search)
+{
+	echo "查询结果：<br>";
+	$g=$_POST[keyword];
+	$msg=system("/var/www/sch $g",$ret);
+	//echo "$msg";
+}
+?>
+
 
 
 
