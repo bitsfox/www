@@ -2,6 +2,7 @@
 <?php
 include_once("./mystyle.css");
 //<link href="mystyle.css" rel="stylesheet" type="text/css">
+//测试证明：使用include_once和<link href="mystyle.css" ..>这两种方法都可以实现css功能
 ?>
 <!--显示时间的函数-->
  <script language=Javascript> 
