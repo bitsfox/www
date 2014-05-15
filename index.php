@@ -131,7 +131,14 @@ if($_POST[action]==search)
 	//echo "$msg";
 }
 ?>
-
+</tr></table>
+<table class="aaaa" border=1><tr>
+	<td width=30%>
+		<a href="./index_new.php" target=_blank>测试链接</a><br>
+		<a href="./ttt01.php" target=_blank>test</a>
+	</td>
+<td>hello</td>
+</tr></table>
 
 
 
