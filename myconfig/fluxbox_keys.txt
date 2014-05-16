@@ -24,8 +24,10 @@ OnTitlebar Double Mouse1 :Shade
 # right click on the titlebar for a menu of options
 OnTitlebar Mouse3 :WindowMenu
 
-# alt-tab
+# alt-tab	这种写法是依次显示全部工作区的窗口
 Mod1 Tab :NextWindow {groups}
+#这是仅在当前工作区的窗口切换
+Mod1 Tab :NextWindow {groups} (workspace=[current])  !! FBCV13 !!
 Mod1 Shift Tab :PrevWindow {groups}
 
 # cycle through tabs in the current window
@@ -79,6 +81,7 @@ Mod1 m  :Maximize
 Mod1 n  :Minimize
 Mod1 v  :MaximizeVertical
 Mod1 b  :MaximizeHorizontal
+#顶层窗口的切换：
 Mod1 c  :SetLayer Top
 Mod1 x  :SetLayer Normal
 Mod1 q  :Close
