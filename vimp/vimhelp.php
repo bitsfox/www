@@ -294,6 +294,8 @@ ctags:
 返回只需要按下Ctrl + T .
 
 TagList 插件:
+下载地址：<a href=http://www.vim.org/scripts/script.php?script_id=273 target=_blank>http://www.vim.org/scripts/script.php?script_id=273</a>
+
 高效地浏览源码, 其功能就像vc中的workpace, 那里面列出了当前文件中的所有宏,全局变量, 函数名等.
 使用方法:
 帮助文档：taglist.txt
