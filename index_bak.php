@@ -1,10 +1,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <?php
 // <a href="https://74.125.71.105" target=_blank>GOOGLE</a>
-echo "<font size=5 color=#ff0000><center>欢迎光临tybitsfox的小站\n</center>";
-echo "<center>";
+if($_COOKIE["chose"] == "new")
+{
+	echo "<script>window.location.href='./index.php'</script>";
+}
+else
+{
+echo "<font size=5 color=#ff0000><center>欢迎光临tybitsfox的小站\n</center></font>";
+echo "<table width=100% border=0 cellpadding=0 cellspan=0><tr><td width=10%><td width=80%><font size=5 color=#ff0000><center>";
 echo date("Y年m月d日H:i:s");
-echo "</center></font>";
+echo "</center></font></td><td width=10%><font size=2><a href='./chgmain_idx.php?usersel=new'>使用新版主页</a></font></td></tr></table>";
 ?>
 <font size=4>
 <br><hr size=4 width=100%><br>
@@ -68,3 +74,6 @@ echo "<font size=5>一些现在不用的链接放在了这里：</font><br>";
 <a href='./html5/h05.html' target=_blank>html5</a>&nbsp;&nbsp;&nbsp;<a href='./html5/h051.html' target=_blank>kick ass2</a>&nbsp;&nbsp;&nbsp;<a href='./html5/h053.html' target=_blank>pacific</a>
 <br><a href="./sss.php" target=_blank>关键字查询</a><br>
 </center>
+<?php
+}
+?>

@@ -15,6 +15,13 @@
 				   }
 </script>
 <?php
+if($_COOKIE["chose"] == "old")
+{
+	echo "<script>window.location.href='./index_bak.php'</script>";
+}
+else
+{
+
 include_once("./mystyle.css");
 echo "<body onload='time()'><a name=a01></a>";
 echo "<table class='aaaa'><tr><td width=750px align=left valign=top>";
@@ -69,7 +76,8 @@ if($_POST[action]==search)
 	//echo "$msg";
 }
 echo "</td></tr></table></form> </td></tr></table>";
-
+echo "<a href='./chgmain_idx.php?usersel=old'>返回老版主页</a>";
+}
 //echo "end of search....<br>";
 ?><!--
 <br>
