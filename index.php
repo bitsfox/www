@@ -76,7 +76,8 @@ if($_POST[action]==search)
 	//echo "$msg";
 }
 echo "</td></tr></table></form> </td></tr></table>";
-echo "<a href='./chgmain_idx.php?usersel=old'>返回老版主页</a>";
+echo "<a href='./chgmain_idx.php?usersel=old'>返回老版主页</a><br><br>";
+echo "<a href='./www/index.php' target=_blank>进入lims系统</a>";
 }
 //echo "end of search....<br>";
 ?><!--

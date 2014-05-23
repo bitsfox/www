@@ -1,11 +1,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <?php
-//phpinfo();
-extension_loaded('ffmpeg') or die("error loading");
+phpinfo();
+/*extension_loaded('ffmpeg') or die("error loading");
 $ffmpegInstance = new ffmpeg_movie("./movie/pacific.mp4");
 echo "getFrameHeight: " . $ffmpegInstance->getFrameHeight()."<br>";
 echo "getFrameWidth: " . $ffmpegInstance->getFrameWidth()."<br>"; 
-echo "<br>end<br>";
+echo "<br>end<br>";*/
 ?>
 <?php/*
 if (! extension_loaded (ffmpeg)) exit ('ffmpeg was not loaded ');
