@@ -78,6 +78,7 @@ if($_POST[action]==search)
 echo "</td></tr></table></form> </td></tr></table>";
 echo "<a href='./chgmain_idx.php?usersel=old'>返回老版主页</a><br><br>";
 echo "<a href='./www/index.php' target=_blank>进入lims系统</a>";
+echo "<br><br><a href='./php-chunked-xhtml/index.html' target=_blank>php</a>";
 }
 //echo "end of search....<br>";
 ?><!--
