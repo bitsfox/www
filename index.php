@@ -68,7 +68,7 @@ for($i=0;$i<9;$i++)
 }
 mysql_close($conn);
 echo "</td><td colspan=2 align=left valign=top><form name='form1' method='post' action='index.php'><table class='aaaa'><tr><td align=left width=100px><input type=hidden name=action value=search size=0>站内查询关键字：</td><td align=left width=160px><input type=text name=keyword size=20 /></td><td align=left><input type=submit value='查 询' /></td></tr><tr><td colspan=3>";
-if($_POST[action]==search)
+if($_POST[action]=="search")
 {
 	echo "查询结果：<br>";
 	$g=$_POST[keyword];
