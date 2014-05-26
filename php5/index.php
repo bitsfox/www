@@ -34,7 +34,10 @@ $aq->connect_db();
 $aa=$aq->query_db();
 $i=count($aa);
 if($i>0)
-{print_r($aa);}
+{
+	echo "<br><font color=green>".$i."</font><br>";
+	print_r($aa);
+}
 else
 {echo "count=0";}
 //下面采用不一样的调用方式，看看this是否能用
