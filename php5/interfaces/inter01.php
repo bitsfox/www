@@ -86,6 +86,10 @@ class psql_db implements psql_def
 			return $arry;
 		}
 	}
+	public function show_msg($outmsg)
+	{
+		echo "<font size=2 color=2>".$outmsg."</font><br>";
+	}
 }//}}}
 //{{{ class sql implements psql_def
 class sql implements psql_def
@@ -105,16 +109,42 @@ class sql implements psql_def
 	}
 	public function connect_db()
 	{
-		$conn_str="host=".$this->ary[0]." dbname=".$this->ary[1]." user=".$this->ary[2]." password=".$this->ary[3];
-		echo $conn_str."<br>";
+		$conn_str="host=".$this->ary[2]." dbname=".$this->ary[3]." user=".$this->ary[0]." password=".$this->ary[1];
+		//echo $conn_str."<br>";
+		self::$db=pg_connect($conn_str);
+		if(self::$db==FALSE)
+		{
+			die("connect database error");
+		}
 	}
 	public function query_db()
 	{
-		self::$db=1;
-		print_r($this->ary);
+		$ay=array();
+		if(self::$db==FALSE)
+		{
+			$this->connect_db();
+		}
+		$con="select * from basemsg";
+		$result=pg_query(self::$db,$con);
+		if(!$result)
+		{
+			show_msg("pg_query error!");
+			return FALSE;
+		}
+		while($row=pg_fetch_row($result))
+		{
+			array_push($ay,$row);
+		}
+		print_r($ay);
+		return $ay;
+		/*print_r($this->ary);
 		echo "<br>";
+		return $this->ary;*/
 	}
-
+	public function show_msg($outmsg)
+	{
+		echo "<font size=2 color=2>".$outmsg."</font><br>";
+	}
 }//}}}
 
 ?>

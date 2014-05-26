@@ -20,6 +20,7 @@ interface psql_def
 	//return source
 	public function connect_db();//数据库连接函数。
 	public function query_db();//取得数据
+	public function show_msg($outmsg);//
 }
 ?>
 

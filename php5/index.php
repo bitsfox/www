@@ -31,7 +31,12 @@ else
 }*/
 $aq=new sql();
 $aq->connect_db();
-$aq->query_db();
+$aa=$aq->query_db();
+$i=count($aa);
+if($i>0)
+{print_r($aa);}
+else
+{echo "count=0";}
 //下面采用不一样的调用方式，看看this是否能用
 /*实施证明，如果不对类进行实例化，而直接使用下面的方式调用函数时，并且在函数中使用了this指针，就会出现
 Fatal error: Using $this when not in object context in /var/www/php5/interfaces/inter01.php on line 108

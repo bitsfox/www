@@ -174,6 +174,11 @@ t02:t02.c
 
 
 </font></pre>";
+echo "<hr width=80%>
+<a name=postgresql01></a><center><font size=5 color=blue>postgresql介绍</font></center>
+<pre>";
+include_once("./linux_about/about_postgresql.txt");
+echo "</pre>";
 ?>
 
 
