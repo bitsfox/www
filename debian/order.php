@@ -284,7 +284,7 @@ set bell-style none
 $ vi .vimrc
 #添加，设置vi里的报警为闪屏，如果闪屏也不要那就加入set vb t_vb= 
 set vb
-
+注：xset 和 xrandr 等命令都包含在xorg安装包内，如果需要，先安装apt-get install xorg
 </pre></font><br><br>
 ";
 echo "<a name=ord08></a><font size=4 color=blue>三、GNU实用工具程序</font>";

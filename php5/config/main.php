@@ -8,5 +8,5 @@ $tybitsfox['corename']		=	"tiny";
 $database['user']			=	"root";
 $database['passwd']			=	"taenv2014";
 $database['host']			=	"localhost";
-$database['dbname']			=	"ty001";
+$database['dbname']			=	"ty004";
 ?>
