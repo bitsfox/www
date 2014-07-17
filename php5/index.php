@@ -46,4 +46,7 @@ Fatal error: Using $this when not in object context in /var/www/php5/interfaces/
 类似的错误提示
 sql::connect_db();
 */
+include_once("template/02/a01.html");
+include_once("template/02/a2.html");
+include_once("template/02/a3.html");
 ?>

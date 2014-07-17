@@ -2,12 +2,12 @@
 <?php
 if($_GET['usersel']=="new")
 {
-	setcookie("chose","new",time()+36000*100);
+	setcookie("chose","new",time()+36000*24);
 	echo "<script>window.location.href='./index.php'</script>";
 }
 else
 {
-	setcookie("chose","old",time()+36000*100);
+	setcookie("chose","old",time()+36000*24);
 	echo "<script>window.location.href='./index_bak.php'</script>";
 }
 ?>
