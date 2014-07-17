@@ -44,8 +44,30 @@ echo "<br><hr size=2 width=80%>
 六、建立完新库后，将服务器上的库加入本地：git remote add origin https://github.com/tybitsfox/www.git<br>
 虽然在github上注明可以使用ssh但是git@github.com:tybitsfox/www.git并不可用。只能使用https的链接了<br>
 运行：git push origin master,输入你注册的名用户和密码就可以推送了。在新建的页面上给出的命令是<br>
-git push -u origin master。我还没弄明白这个u参数到底何用。 
+git push -u origin master。我还没弄明白这个u参数到底何用。<br> 
 七、删除github上的一个仓库：登录->选择Repositories->选择待删除的仓库->右上角settings->进入删除。
 <br></font>";
+echo "<a name=\"koding\"></a>";
+echo "<pre><font color=red size=5>koding应用的简单介绍</font>
+1、在本地机上运行ssh-keygen 生成 .ssh/id_rsa.pub文件。
+将该文件内容拷贝至koding.com中->个人设置->ssh key里面,并保存。
+2、在本地~/.ssh/下建立config文件。并添加下列内容：
+Host *.kd.io
+ User bitsfox
+#ProxyCommand ssh %r@ssh.koding.com nc %h %p
+ ProxyCommand ssh %r@68.68.97.75 nc %h %p
+保存该文件，注意，域名ssh.koding.com可能会被狗日的和谐。所以我使用
+了ip地址。
+3、清空本地的known_hosts文件（之前如果没正确链接到koding时这是必须
+的一步）。
+4、在本地shell中输入：
+ssh vm-0.bitsfox.koding.kd.io
+连接成功～～～
+scp ./php5.tar.bz2  vm-0.bitsfox.koding.kd.io:Web/
+
+web访问的网址为：https://bitsfox.koding.kd.io/
+
+</pre><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
+
 ?>
 
