@@ -16,5 +16,8 @@ echo "<font size=2 color=blue>十二、<a href='./diveintopython3/index.html' ta
 echo "<font size=2 color=blue>十三、<a href='./woodpecker.org.cn/abyteofpython_cn/chinese/index.html' target=_blank>python</a></font><br><br>";
 echo "<font size=2 color=blue>十四、<a href='./all_tools/ssh/ssh.php#koding' target=_blank>koding使用</a></font><br><br>";
 echo "<font size=2 color=blue>十五、<a href='./all_tools/database/mssql.php' target=_blank>数据库</a></font><br><br>";
+echo "<font size=2 color=blue>十六、<a href='./all_tools/irc.php' target=_blank>IRC</a></font><br><br>";
+
+
 
 ?>
