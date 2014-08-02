@@ -1,0 +1,89 @@
+/*基本信息*/
+html,body
+{
+	height:100%;
+	margin: 0;
+	padding: 0;
+	background-color: #f3f3f3;
+	font: normal 12px Arial, Helvetica, sans-serif;
+	color: #444444;
+}
+/*body {font:12px Tahoma;margin:0px;text-align:center;background:#FFF;}*/
+a:link,a:visited {font-size:12px;text-decoration: none;}
+a:hover{}
+
+/*页面层容器*/
+/*#container {width:800px;height:600px;margin:10px auto}
+*/
+/*页面头部*/
+#header {background:url(logo.gif) no-repeat}
+#menu {padding:20px 20px 0 0}
+#menu ul {float:right;list-style:none;margin:0px;}
+#menu ul li {float:left;display:block;line-height:30px;margin:0 10px}
+#menu ul li a:link,#menu ul li a:visited {font-weight:bold;color:#666}
+#menu ul li a:hover{}
+.menuDiv {width:1px;height:28px;background:#999}
+#banner {background:url(banner.jpg) 0 30px no-repeat;width:730px;margin:auto;height:240px;border-bottom:5px solid #EFEFEF;clear:both}
+
+/*页面主体*/
+#pagebody {width:800px;margin:0 auto;height:400px;background:#CCFF00}
+
+/*页面底部*/
+#footer {width:800px;margin:0 auto;height:50px;background:#00FFFF}
+
+/* Content Rounded Box */
+.ContentContainer
+{
+	border: 1px #E0E0E0 solid;
+	margin: 0;
+	padding: 0;
+	box-shadow: 3px 3px 5px #636363;
+}
+.ContentContainerHeadline
+{
+	background-color: #E0E0E0;
+	margin: 0;
+	padding: 7px;
+	font-size: 14px;
+	font-weight: bold;
+	text-shadow: 0 1px #FFFFFF;
+	color: #555555;
+}
+.ContentContainerContent
+{
+	margin: 0;
+	padding: 0;
+}
+
+#Container
+{
+	background-color: white;
+	margin: 0 auto;
+	padding: 0;
+	width: 968px;
+}
+#ContainerClear
+{
+	clear: both;
+}
+#HomeSummary
+{
+	width: 100%;
+	margin-bottom: 15px;
+}
+#HomeLeft
+{
+	float: left;
+	width: 355px;
+	padding: 0;
+}
+#HomeRight
+{
+	float: right;
+	width: 355px;
+}
+
+
+
+
+

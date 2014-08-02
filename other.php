@@ -169,4 +169,8 @@ func()
 }
 func
 </pre></font>");
+echo "<font color=#0000ff><center>批量改名、去除^M小脚本</center><br></font><pre>";
+include_once("sed.txt");
+echo "</pre>";
+
 ?>

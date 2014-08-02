@@ -79,7 +79,11 @@ function add_result()
 //	mysql_query("SET NAMES 'UTF-8'");
 //    mysql_query("SET CHARACTER SET 'UTF-8'");
 //	mysql_query("SET CHARACTER_SET_RESULTS 'UTF-8'");	
+<<<<<<< HEAD
 	$sqlstr="insert into usrtab (uname,upasswd) values ('$_POST[user]','$_POST[password]')";
+=======
+	$sqlstr="insert into usrtab (uname,upasswd,lvl) values ('$_POST[user]','$_POST[password]',0)";
+>>>>>>> 3eae0f457ed7d1b9166609a1bc1baeb34c0ea1b1
 	$result=MYSQL_query($sqlstr,$conn);
 	if($result)
 	{
@@ -118,7 +122,7 @@ function add_result()
 <?php
 	if($myindex==1)
 	{
-		echo "<meta http-equiv=\"Refresh\" content=\"3;URL=./login.php\" />";
+		echo "<meta http-equiv=\"Refresh\" content=\"2;URL=./login.php\" />";
 		echo "<br><br><br><br><center>3秒后系统自动跳回原页面</center>";
 	}
 	if($myindex==0)

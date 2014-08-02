@@ -1,9 +1,30 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <?php
 echo ("<center><font size=5 color=#ff00ff>为了保存我在贴吧的一些文章，特转存至此。以后有些心得杂谈不再贴吧放出</font></center>");
-echo ("<br><hr size=2 width=80% color=green>");
+echo ("<br><hr size=2 width=90% color=green>");
+echo "<table width=90% cellpadding=0 cellspacing=0 border=0><tr><td width=25%>";
+echo "<a href=./setup.php#hack01>计算机操作系统与矩阵文明</a></td>";
+echo "<td width=25%><a href=./setup.php#hack02>xp+fbsd7.2+suse10安装心得（一）</a></td>";
+echo "<td width=25%><a href=./setup.php#hack03>xp+fbsd7.2+suse10安装心得（二）</a></td>";
+echo "<td width=25%><a href=./setup.php#hack04>哭诉freebsd7.2</a></td>";
+echo "</tr><tr>";
+echo "<td width=25%><a href=./setup.php#hack05>xterm调整窗口列宽</a></td>";
+echo "<td width=25%><a href=./setup.php#hack06>VIM设置代码折叠</a></td>";
+echo "<td width=25%><a href=./setup.php#hack07>fedora8 使用mplayer播放的问题</a></td>";
+echo "<td width=25%><a href=./setup.php#hack08>用xmms时原来默认的音频设置</a></td>";
+echo "</tr><tr>";
+echo "<td width=25%><a href=./setup.php#hack09>有名管道fifo和wait共用的问题</a></td>";
+echo "<td width=25%><a href=./setup.php#hack10>汇编中如何实现sleep的系统调用</a></td>";
+echo "<td width=25%><a href=./setup.php#hack11>xmame玩cps2缺失文件</a></td>";
+echo "<td width=25%><a href=./setup.php#hack12>让你的printf函数丰富多彩</a></td>";
+echo "</tr><tr>";
+echo "<td width=25%><a href=./setup.php#hack13>MSSQL相关操作</a></td>";
+echo "<td width=25%></td>";
+echo "<td width=25%></td>";
+echo "<td width=25%></td>";
+echo "</tr></table><br><br><br><br>";
 echo "<font size=3 color=blue><pre>";
-echo "电脑母体—电脑矩阵（矩阵在英文里是母体的意思）
+echo "<a name=hack01></a>电脑母体—电脑矩阵（矩阵在英文里是母体的意思）
 
 黑客帝国中的电脑母体（Matrix）的意思是控制，并不是什么矩阵。
 
@@ -160,7 +181,7 @@ urce世界就是真实世界的反映0 　　矩阵系列电影本质上讲的
 的反抗情绪会导致矩阵系统运行的不稳定，就把这些人的大脑都接入真实机器世界中智能程序运行的那个系统中，影片中把这个系统称之为source ,其中设立了zion，
 把那些反抗者集中到这个系统中来，并使其成为一个矩阵进化的工具。Architect是现实的巨型电脑管理程序以个体智能生命身份出现在矩阵中的形式。";
 echo "</pre><br>";
-echo ("<hr size=2 width=80%>");
+echo ("<a name=hack02></a><hr size=2 width=80%>");
 echo ("<font size=3 color=blue>一、xp+freebsd7.2+suse10安装心得（一）</font><br>");
 echo ("<font size=2 color=black><pre>
 本来想要上来大诉一番苦水的，一觉醒来，苦水都被消化了，还是谈点感受和心得吧。只把自己的喜悦和心得与大家分享下，使各位在以后的安装过程中少绕些弯道：
@@ -296,7 +317,7 @@ LC_ALL > LC_* > LANG，设置了LANG就不用设置LC_CTYPE了。
 只是他的格式~~~还得需要转换工具，不然就得装gimp，gimp我根本不会用。
 </pre></font>");
 echo ("<br><hr size=2 width=80% color=green>");
-echo ("<font size=3 color=blue>二、xp+freebsd7.2+suse10安装心得（二）</font>");
+echo ("<a name=hack03></a><font size=3 color=blue>二、xp+freebsd7.2+suse10安装心得（二）</font>");
 echo ("<font size=2 color=black><pre>
 慢慢来～～我先把freebsd72说完再说suse
 1、在xterm中解决中文显示及输入的问题：
@@ -341,7 +362,7 @@ echo ("<font size=2 color=#123456><pre>
 locale）已经设置好以后安装的。make应会根据当前的环境做相应的调整，而无需安装后再手动设置了。如果是这样的话，那么再 ports xterm的操作也无需修改
 makefile了。xterm我没有试，仅是猜测。 </pre></font>");
 echo ("<br><hr size=2 width=80% color=green>");
-echo ("<font size=3 color=blue>三、哭诉freebsd7.2~~~~~~~~~</font>");
+echo ("<a name=hack04></a><font size=3 color=blue>三、哭诉freebsd7.2~~~~~~~~~</font>");
 echo ("<font size=2 color=black><pre>
 经过2个多星期的折腾，我又回到了fedora 8。
 虽然通过这次安装有不少收获，虽然对freebsd7.2的体验还是那么激动人心，虽然已经无视了无法自动关闭电源（实际上，如果fb在我的本本可用，我准备通过比较linux
@@ -360,7 +381,7 @@ typhoon_wolf
 我新买的320GB硬盘被不知道什么东西改成16 heads了，导致分区边界柱面无法对齐。还好当时是试验阶段，还没往上放数据。fdisk /dev/sdb，专家模式，给改回来了。
 </pre></font>");
 echo ("<br><hr size=2 width=80% color=green>");
-echo ("<font size=3 color=blue>四、xterm调整窗口列宽</font>");
+echo ("<a name=hack05></a><font size=3 color=blue>四、xterm调整窗口列宽</font>");
 echo ("<font size=2 color=black><pre>
 不知道为什么网上的很多介绍怎么都是：XTerm.geometry: 80*24 （~/.Xdefaults）
 这种设置方式起码在我的系统上根本不可行，在终端手动启动一个xterm的话总是有错误提示，而且也无法实现调整。看了下man xterm和X(7)。有效的写法应该是：
@@ -369,7 +390,7 @@ XTerm*geometry: 72
 #about geometry,see man X(7)，设置为72列。
 </pre></font>");
 echo ("<br><hr size=2 width=80% color=green>");
-echo ("<font size=3 color=blue>五、VIM设置代码折叠（转）</font>");
+echo ("<a name=hack06></a><font size=3 color=blue>五、VIM设置代码折叠（转）</font>");
 echo ("<font size=2 color=black><pre>
 1. 折叠方式
 可用选项 'foldmethod' 来设定折叠方式：set fdm=*****。
@@ -420,7 +441,7 @@ zE     除去 (Eliminate) 窗口里“所有”的折叠。
 命令就可以在你标记的范围内实现折叠和展开。
 </pre></font>");
 echo ("<br><hr size=2 width=80% color=green>");
-echo ("<font size=3 color=blue>六、fedora8 使用mplayer播放的问题－drvc.dll (drvc.so)</font>");
+echo ("<a name=hack07></a><font size=3 color=blue>六、fedora8 使用mplayer播放的问题－drvc.dll (drvc.so)</font>");
 echo ("<font size=2 color=black><pre>
 错误的表现是打开mplayer时有缺失文件的错误提示：
 打开视频解码器: [realvid] RealVideo decoder
@@ -441,7 +462,7 @@ yum install libstdc++.so.5。然后问题解决。有些不能播放的片子完
 /usr/lib/wincodecs/。对于第二种方法我没有测试。
 </pre></font>");
 echo ("<br><hr size=2 width=80% color=green>");
-echo ("<font size=3 color=blue>七、luxbox下使用xmms时原来默认的音频设置为：default pcm device:default.....</font>");
+echo ("<a name=hack08></a><font size=3 color=blue>七、luxbox下使用xmms时原来默认的音频设置为：default pcm device:default.....</font>");
 echo ("<font size=2 color=black><pre>
 1  	 fedora8 kde下pulseaudio的启动	
 在gnome下：是通过gnome-session启动的
@@ -477,7 +498,7 @@ default pcm device:default。在这个设置下无法播放。必需要改为hw:
 作者：零家捣蛋精灵 
 </pre></font>");
 echo ("<br><hr size=2 width=80% color=green>");
-echo ("<font size=3 color=blue>八、有名管道fifo和wait共用的问题~</font>");
+echo ("<a name=hack09></a><font size=3 color=blue>八、有名管道fifo和wait共用的问题~</font>");
 echo ("<font size=2 color=black><pre>
 1  	 有名管道fifo和wait共用的问题~
 	
@@ -565,7 +586,7 @@ void sig_chd()
 对此信号进行屏蔽或忽略会引发一个EPIPE错误退出。感谢中国Linux论坛的wandys版主~
 </pre></font>");
 echo ("<br><hr size=2 width=80% color=green>");
-echo ("<font size=3 color=blue>九、在汇编代码中如何实现sleep的系统调用？？</font>");
+echo ("<a name=hack10></a><font size=3 color=blue>九、在汇编代码中如何实现sleep的系统调用？？</font>");
 echo ("<font size=2 color=black><pre>
 在syscall.h中定义了绝大部分的系统函数调用，唯独没有SYS_sleep的定义,我该如何在汇*编中实现sleep的调用？？？
 
@@ -724,14 +745,14 @@ return 0;
 作者：零家捣蛋精灵 
 </pre></font>");
 echo ("<br><hr size=2 width=80% color=green>");
-echo ("<font size=3 color=blue>十、分享～～xmame玩cps2缺失文件大全</font>");
+echo ("<a name=hack11></a><font size=3 color=blue>十、分享～～xmame玩cps2缺失文件大全</font>");
 echo ("<font size=2 color=black><pre>
 http://cps2shock.emu-france.info/
 下载所需的文件，解压并添加到romzip文件中。就可以玩sfa2 sfa3
 等cps2游戏了。
 </pre></font>");
 echo ("<br><hr size=2 width=80% color=green>");
-echo ("<font size=3 color=blue>十一、让你的printf函数丰富多彩～</font>");
+echo ("<a name=hack12></a><font size=3 color=blue>十一、让你的printf函数丰富多彩～</font>");
 echo ("<font size=2 color=black><pre>
 看个例子:
 int main(int argc,char **argv)
@@ -784,6 +805,7 @@ int main(int argc,char **argv)
 		</pre></font>");
 echo ("<br><hr size=2 width=80% color=green>");
 echo ("<br><br>");
-echo ("<hr size=2 width=80%>");
-
+echo ("<hr size=2 width=80% color=green><pre>");
+include_once("mssql.txt");
+echo "</pre></font>";
 ?>
