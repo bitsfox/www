@@ -211,6 +211,41 @@ echo 9 > /sys/class/backlight/acpi_video0/brightness
 在同一下载页面还有tar.bz的安装包，这个是版本11的。下载该包解压，得到一个usr/目录和libflashplayer.so文件以及一个readme
 文件，查看readme文件可知安装方法：拷贝so文件至'BrowserPluginsLocation'目录下，该目录为 ~/.mozilla/plugins/或者
 /usr/lib/mozilla/plugins/这个目录。然后cp -r usr/* /usr即可。
+</font><font color=blue size=4>
+安装完后还有一些必须安装的包，在这里记录下：
+apt-get install gcc   --gcc的安装
+apt-get install kernel-package  --所有编译相关的库及应用安装（包括make）
+apt-get install linux-headers-3.2.0-4-686-pae  --安装内科模块所需的kernel源文件
+apt-get install fcitx-googlepinyin  --输入法
+
+无线网卡的安装：
+在系统安装界面可以选择存在的两块网卡（单位本本，debian7才认无线卡）虽然提示固件的缺失但是忽略掉即可，
+选择无线网卡作为首选网卡，选择找到的wifi，输入链接密码，即可链接。但是当指定使用dhcp链接时，设置不会写入到
+/etc/network/interface文件中，必须手动添加。同时必须保留默认的对lo的设置，如果屏蔽掉lo的设置则一些对localhost
+的访问全部无法实现（我的mysql一开始就犯了这个错误）。
+
+另外一个特殊的情况就是mysql客户端不能以root@localhost链接的问题：
+ERROR 1045 (28000): Access denied for user root@localhost (using password: NO)
+解决方法：
+直接使用/etc/mysql/debian.cnf文件中[client]节提供的用户名和密码登录:
+# mysql -udebian-sys-maint -p
+Enter password: <输入[client]节的密码>
+mysql>use mysql;   --指定数据库
+mysql> UPDATE user SET Password=PASSWORD(’newpassword’) where USER=’root’;
+mysql> FLUSH PRIVILEGES;
+mysql> quit 
+完成后即可正常登录了。
+					   
+-------------------------------------------------------
+关于新版主页的登录问题：
+由于新版使用了数据库来保存页面的数据，因此必须在数据库中加入其相应的数据库资料和用户。
+网页数据库数据的导出：mysqldump web_data > web_data.sql
+导入：mysql web_data < web_data.sql
+数据库用户的添加：
+grant select,insert,update,create,drop on web_data.* to 'taenv'@'localhost' identified by 'password';
+
+这样就可以使用新版的主页了。
+							   
 </font></pre>";
 ?>
 
