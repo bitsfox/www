@@ -205,6 +205,7 @@ tls_on_connect_ports=465
 做完这两步后，重新加载配置update-exim4.conf && invoke-rc.d exim4 restart就完成了
 至于exim4的配置（dpkg-reconfigure exim4-config）中要求的:
 寄信使用的 smarthost 的 IP 地址或主机名: smtp.163.com::465 <--这里就不必指定端口了
+2014-08-13补充：在不使用ssl（465端口）协议时，端口（25）就不必做映射,一样能成功收发。
 ----补充完成----</font>";
 echo "</pre></font></td><td width=10%></td></tr><table>";
 
