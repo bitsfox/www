@@ -9,12 +9,15 @@
 #boot.s 源代码：
 .code16
 .text
-BOOTSRG=0x7c0   #只需添加本行和下一行的代码，在配合链接时指定.text段地
+BOOTSRG = 0x7c0   #只需添加本行和下一行的代码，在配合链接时指定.text段地
 #址即可实现脚本定位的功能。
-	jmp $BOOTSRG,$go
-go:	mov %cs,%ax
+	jmp $BOOTSEG,$go
+go:
+	mov %cs,%ax
 	mov %ax,%ds
 	mov %ax,%es
+	mov %ax,%ss
+	mov $0x800,%sp
 	call disp_1
 	jmp .
 disp_1:
@@ -22,25 +25,27 @@ disp_1:
 	mov %ax,%bp
 	mov $16,%cx
 	mov $0x1301,%ax
-	mov $0x0c,%bx
+	mov $0xc,%bx
 	mov $0x1206,%dx
 	int $0x10
 	ret
-msg:.ascii "hello os world! "
-.org 510
-.word 0xaa55
+msg:	.ascii "hello OS world "
+.org	510
+.word	0xaa55
 
 #makefile 源代码：
-boot.o:boot.s
-	as -o boot.o boot.s
-boot.elf:boot.o
-	ld -o boot.elf boot.o -Ttext 0 
+boot.img:boot.bin
+	dd bs=512 if=boot.bin of=boot.img count=1
+	dd bs=512 if=/dev/zero of=boot.img seek=1 count=2879
 boot.bin:boot.elf
 	objcopy -R .pdr -R .comment -R .note -S -O binary boot.elf boot.bin
-boot.img:boot.bin
-	dd if=boot.bin of=boot.img bs=512 count=1
-	dd if=/dev/zero of=boot.img skip=1 seek=1 bs=512 count=2879
-#end of all code
+boot.elf:boot.o
+	ld -o boot.elf boot.o -Ttext 0
+boot.o:boot.s
+	as -o boot.o boot.s
+clean:
+	rm boot.o boot.elf boot.bin
+
 这样就可以使用as轻松完成一个16位引导程序的编写了。
 
 
