@@ -11,6 +11,7 @@ echo "六、<a href='./gtkabout.php' target=_blank>GTK文档</a><br><br>";
 echo "七、<a href='./android.php' target=_blank>Android开发</a><br><br></font>";
 echo "八、<a href='./php_about.php' target=_blank>PHP相关</a><br><br></font>";
 echo "九、<a href='./qqfarm.php#postgresql01' target=_blank>PostgreSQL数据库</a><br><br></font>";
+echo "十、<a href='./qqfarm.php#aspx01' target=_blank>在asp.net中调用VC的DLL</a><br><br></font>";
 
 
 ?>

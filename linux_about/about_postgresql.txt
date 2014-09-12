@@ -48,6 +48,7 @@ psql exampledb < exampledb.sql
 create database ty001;
 grant all privileges on database db_name to root;
 完成了上述操作后，就可以连接登录该数据库了，虽然该数据库的拥有者不是root
+退出postgres账户，使用新账户root进行登录：psql -d ty001  然后输入密码即可登录。
 要想改变拥有者可使用：
 alter database db_name owner to root;
 

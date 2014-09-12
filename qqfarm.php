@@ -179,6 +179,9 @@ echo "<hr width=80%>
 <pre>";
 include_once("./linux_about/about_postgresql.txt");
 echo "</pre>";
+echo "<hr width=80%>
+<a name=aspx01></a>";
+include_once("./linux_about/aspx.txt");
 ?>
 
 
