@@ -21,6 +21,9 @@ interface psql_def
 	public function connect_db();//数据库连接函数。
 	public function query_db();//取得数据
 	public function show_msg($outmsg);//
+	public function get_table_name();//去的表名
+	public function get_struct($tbname);//取得表结构
+	public function get_result($conn);//取得记录。
 }
 ?>
 

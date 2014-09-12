@@ -1,0 +1,115 @@
+<div id="left_id" class="shadow_class">
+<br>
+<div id="lmenu_id">
+<ul>
+<?php
+	$num=count($dmenuitem);
+	for($i=0;$i<$num;$i++)
+	{
+		echo "<li><a href='".$dmenulink[$i]."'>".$dmenuitem[$i]."</a><li>";
+	}
+?>
+</ul></div>
+</div>
+<div id="right_id"><div id="clear_id"></div>
+<form name="abcd" method="POST" action="index.php">
+<div id="right_top_id">
+<center>当前操作：<font color=red>查询数据库</font></center>
+</div>
+<div id="right_top_id" class="shadow_class">
+<?php
+require_once("interfaces/inter01.php");
+echo "<div><a id='a_id' href='".$sdmenulink[0]."'>".$sdmenu[0]."</a></div>";
+echo "<div><hr color=#999></div>";
+$str=str_replace(" ","+",$_GET["action"]);
+if(base64_decode($str)=="gettable")
+{
+	if(isset($aq))
+	{unset($aq);}
+	$aq=new sql();
+	$aq->connect_db();
+	$aa=$aq->get_table_name();
+	$a1=count($aa);
+	for($j=0;$j<$a1;$j++)
+	{
+		$vab=base64_encode($aa[$j]);
+		echo "<div id='ltab_id'>".$aa[$j]."</div><div id='rtab_id'><a id='a_id' href='".$sdmenulink[1].$vab."'>".$sdmenu[1]."</a></div><div id='rtab_id'><a id='a_id' href='".$sdmenulink[2].$vab."'>".$sdmenu[2]."</a></div>";
+		echo "<div id='clear_id'></div>";
+	}
+}
+?>
+</div>
+<?php
+if(isset($_GET["stru"]))
+{
+	$si=0;
+	$aa[0]="结构";$aa[1]="序号";$aa[2]="字段名";$aa[3]="字段类型";$aa[4]="数值长度";$aa[5]="字符长度";$aa[6]="非空值";
+	$str=str_replace(" ","+",$_GET["val"]);
+}
+else
+{
+	if(isset($_GET["result"]))
+	{
+		$si=1;
+		$aa[0]="记录";$aa[1]="字段1";$aa[2]="字段2";$aa[3]="字段3";$aa[4]="字段4";$aa[5]="字段5";$aa[6]="字段6";
+		$str=str_replace(" ","+",$_GET["val"]);
+	}
+	else
+		$si=2;
+}
+if($si<2)
+{
+	$dbname=base64_decode($str);
+	echo "<div id='right_top_id' class='shadow_class'>";
+	echo "<div>表：<font color=red>".$dbname."</font> ".$aa[0].":</div>";
+	echo "<div><hr color=#999></div>";
+	echo "<div id='field_id'><ul><li>$aa[1]</li><li>$aa[2]</li><li>$aa[3]</li><li>$aa[4]</li><li>$aa[5]</li><li>$aa[6]</li></ul></div>";
+	echo "<div id='clear_id'></div>";
+	$ay=array();
+	if(isset($aq))
+	{
+		if($si==0)
+			$ay=$aq->get_struct($dbname);
+		else
+		{
+			$conn="select * from ".$dbname;
+			$ay=$aq->get_result($conn);
+		}
+	}
+	else
+	{
+
+		$aq=new sql();
+		if($si==0)
+			$ay=$aq->get_struct($dbname);
+		else
+		{
+			$conn="select * from ".$dbname;
+			$ay=$aq->get_result($conn);
+		}
+	}
+	$i=count($ay);
+	$ay1=array();
+	for($j=0;$j<$i;$j++)
+	{
+		echo "<div id='result_id'><ul>";
+		$ay1=$ay[$j];
+		$cnt=count($ay1);
+		for($k=0;$k<$cnt;$k++)
+		{
+			echo "<li>".$ay1[$k]."</li>";
+		}
+		echo "</ul></div><div id='clear_id'></div>";
+	}
+	echo "<div id='clear_id'></div>";
+	echo "</div>";
+}
+?>
+</div>
+
+</div></form>
+</body>
+</html>
+
+
+

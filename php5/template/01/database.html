@@ -1,0 +1,61 @@
+<div id="left_id" class="shadow_class">
+<br>
+<div id="lmenu_id">
+<ul>
+<?php
+	$num=count($dmenuitem);
+	for($i=0;$i<$num;$i++)
+	{
+		echo "<li><a href='".$dmenulink[$i]."'>".$dmenuitem[$i]."</a><li>";
+	}
+?>
+</ul></div>
+</div><div id="right_id"><div id="clear_id"></div>
+<form name="abc" method="POST" action="index.php">
+<div id="right_top_id" class="shadow_class">
+<?php
+echo "数据库类型： ".$database['dbtype']."<br>";
+echo "数据库名称： ".$database['dbname']."<br>";
+echo "服务器： ".$database['host']."<br>";
+echo "用户名： ".$database['user']."<br>";
+?>
+<br>
+<div class="select_style">
+ <div>
+ <select>
+  <option>看见效果了吧A</option>
+  <option>看见效果了吧B</option>
+  <option>看见效果了吧C</option>
+  <option>看见效果了吧D</option>
+  <option>看见效果了吧E</option>
+  <option>看见效果了吧F</option>
+ </select>
+ </div>
+</div>
+<br>
+<div>
+<input type="text" name="danwei" id="text_id" value="泰安市环境保护局" />
+</div>
+<div><br>
+<input type="submit" name="vvv" id="button_id" value="确定"/>
+</div><div><br>
+<a class="ListButton" href="index.php?action=add">
+<img alt="" src="images/icons/add_user.png"></img>
+<div>Add User</div></a>
+</div>
+<br><div id="clear_id"></div>
+<div><br>
+<a class="ListButton" href="index.php?action=add">确定</a>
+</div><br>
+<div><br><div id="clear_id"></div>
+<input type="submit" name="www" id="button_id" value="sure" /></div>
+<br><br>
+</div>
+</div></form>
+</body>
+</html>
+
+
+
+
+

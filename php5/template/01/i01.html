@@ -1,0 +1,20 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<link href="css/base.css" rel="stylesheet" type="text/css" media="all" />
+<title>aaaa</title>
+</head>
+<body>
+<div id="container_id">
+	<div id="header_id"></div>
+	<div id="menu_id">
+	<ul>
+<?php
+	$cnt=count($menuitem);
+	for($i=0;$i<$cnt;$i++)
+	{
+		echo "<li><a href='".$menulink[$i]."'>".$menuitem[$i]."</a><li><li class='menudiv_class'></li>";
+	}
+?>
+	</ul></div><div id="clear_id"></div>
+

@@ -90,6 +90,35 @@ class psql_db implements psql_def
 	{
 		echo "<font size=2 color=2>".$outmsg."</font><br>";
 	}
+	public function get_table_name()
+	{
+		if(self::$db == FALSE)
+		{
+			return;
+		}
+		$conn="select tablename from pg_table where tablename not like 'pg%' and tablename no like 'sql_%'";
+		$result=pg_query(self::$db,$conn);
+		if(!$result)
+		{
+			echo "result error!<br>";
+			return;
+		}
+		$ay=array();$i=0;
+		while($row=pg_fetch_row($result))
+		{
+			$ay[$i]=$row[0];
+			$i++;
+		}
+		return $ay;
+	}
+	public function get_struct($tbname)
+	{
+		$database['tbname']=$tbname;
+	}
+	public function get_result($conn)
+	{
+		return;
+	}
 }//}}}
 //{{{ class sql implements psql_def
 class sql implements psql_def
@@ -144,6 +173,67 @@ class sql implements psql_def
 	public function show_msg($outmsg)
 	{
 		echo "<font size=2 color=2>".$outmsg."</font><br>";
+	}
+	public function get_table_name()
+	{
+		if(self::$db == FALSE)
+		{
+			return;
+		}
+		$conn="select tablename from pg_tables where tablename not like 'pg%' and tablename not like 'sql_%'";
+		$result=pg_query(self::$db,$conn);
+		if(!$result)
+		{
+			echo "result error!<br>";
+			return;
+		}
+		$ay=array();$i=0;
+		while($row=pg_fetch_row($result))
+		{
+			$ay[$i]=$row[0];
+			$i++;
+		}
+		return $ay;
+	}
+	public function get_struct($tbname)
+	{
+		global $database;
+		$database['tbname']=$tbname;
+		$conn=$database['struct1'].$tbname.$database['struct2'];
+	//	$conn=$database['struct'];
+	//	echo $conn;
+	//	return;
+		if(self::$db == FALSE)
+			return;
+		$result=pg_query(self::$db,$conn);
+		if(!$result)
+		{
+			echo "result error!<br>";
+			return;
+		}
+		$ay=array();
+		while($row=pg_fetch_row($result))
+		{
+			array_push($ay,$row);
+		}
+		return $ay;
+	}
+	public function get_result($conn)
+	{
+		if(self::$db == FALSE)
+		{return;}
+		$result=pg_query(self::$db,$conn);
+		if(!$result)
+		{
+			echo "result error!<br>";
+			return;
+		}
+		$ay=array();
+		while($row=pg_fetch_row($result))
+		{
+			array_push($ay,$row);
+		}
+		return $ay;
 	}
 }//}}}
 
