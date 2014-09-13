@@ -182,6 +182,9 @@ echo "</pre>";
 echo "<hr width=80%>
 <a name=aspx01></a>";
 include_once("./linux_about/aspx.txt");
+echo "<hr width=80%>
+<a name=php01></a>";
+include_once("./linux_about/php_extern.txt");
 ?>
 
 

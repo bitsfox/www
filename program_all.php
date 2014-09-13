@@ -8,10 +8,11 @@ echo "三、<a href='./linux_about/alllinux.html' target=_blank>linux 汇编</a>
 echo "四、<a href='./qqfarm.php' target=_blank>mysql 编程</a><br><br>";
 echo "五、<a href='./unixfaq/book1.htm' target=_blank>UNIX Programming FAQ</a><br><br>";
 echo "六、<a href='./gtkabout.php' target=_blank>GTK文档</a><br><br>";
-echo "七、<a href='./android.php' target=_blank>Android开发</a><br><br></font>";
-echo "八、<a href='./php_about.php' target=_blank>PHP相关</a><br><br></font>";
-echo "九、<a href='./qqfarm.php#postgresql01' target=_blank>PostgreSQL数据库</a><br><br></font>";
-echo "十、<a href='./qqfarm.php#aspx01' target=_blank>在asp.net中调用VC的DLL</a><br><br></font>";
+echo "七、<a href='./android.php' target=_blank>Android开发</a><br><br>";
+echo "八、<a href='./php_about.php' target=_blank>PHP相关</a><br><br>";
+echo "九、<a href='./qqfarm.php#postgresql01' target=_blank>PostgreSQL数据库</a><br><br>";
+echo "十、<a href='./qqfarm.php#aspx01' target=_blank>在asp.net中调用VC的DLL</a><br><br>";
+echo "十一、<a href='./qqfarm.php#php01' target=_blank>在PHP中调用动态链接库so</a><br><br></font>";
 
 
 ?>
