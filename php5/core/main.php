@@ -3,7 +3,7 @@ if($_POST["vvv"]!="")
 {
 // 通过测试，使用location.href和使用设置_GET[]值都能达到目的	
 // 从效果来看，设置_GET显然更好。
-	$_GET["id"]=base64_encode($menuitem[4]);
+	$_GET["id"]=base64_encode($menuitem[2]);
 	$_GET["user"]=base64_encode("root");
 	echo "<br>".$_POST["vvv"]."and".$_POST["www"]."<br>";
 //	echo "<script>window.location.href='".$menulink[4]."'</script>";
