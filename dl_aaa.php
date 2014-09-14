@@ -1,11 +1,9 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <?php
-//	dl("bitsfox_php.so");
-	$j='o';
-//	$j{33}='';
-	$i=hello_str();
-	echo "ooo".$i."aaaa".$j."<br>";
-	$k=strlen("<font color=red size=4>hello world</font>");
-	echo $k."<br>".hello_php();
+//	dl("bitsfox.so");
+	echo get_version(1)."<br>";
+	$j="./aaa.txt";
+	echo read_file($j);
 
 
 		

@@ -69,7 +69,8 @@ PHP_FUNCTION(in_tstr)
 	long int le;
 	long int result;
 	len=100;	//看so中memset()的长度为100;
-	ch=emalloc(len); //在这个接口函数内分配空间供so函数使用
+	ch=emalloc(len); //在这个接口函数内分配空间供so函数使用,在这里不要使用char ch[100]这样的定义。
+//这样的定义将不能以返回值或参数的形式使用。	
 //下面这个参数分析的函数是用于该接口有参数传入时的分析，所以在这里没用。	
 //  if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC,"s",&s1,&len)==FAILURE)
 //	{return;}
@@ -96,7 +97,8 @@ make install 这里记住安装到的目录,如/usr/lib/php5/20100525+lfs。以�
 	echo "test: ".$i."str:".$j;
 ?&gt;
 7、修改/etc/php5/apache2/php.ini,加入：
-extension_dir = /usr/lib/php5/20100525+lfs
+extension_dir = /usr/lib/php5/20100525+lfs  <font color=red> &lt;-注意：请将你的扩展安装在默认位置（make install的位置），
+并且不要随意添加或修改这个值，因为他可能会影响到你系统上其他扩展的应用！对该位置的确认可以使用php-config</font>
 extension = bitsfox_php.so
 保存退出，重启apache2
 cd /etc/init.d
