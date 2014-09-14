@@ -14,7 +14,7 @@ int tadd()
 }
 int tstr(char *ch)
 {
-//这里传入的字符串必须在扩展模块实例化过的。
+//这里传入的指针必须在扩展模块分配过空间的。
 	memset(ch,0,100);
 	snprintf(ch,100,"hello world!");
 	return 0;
@@ -40,10 +40,10 @@ install:
 17:  dnl Make sure that the comment is aligned:
 18:  [  --enable-hello           Enable hello support])
 然后运行phpize生成configure等配置文件。
-4、编辑php_bitsfox_php.h文件，将你动态链接库so中需要调用的函数扩展模块的格式在此声明：
+4、编辑php_bitsfox_php.h文件，将你动态链接库so中需要调用的函数扩展模块的函数在此声明：
 PHP_FUNCTION(in_tadd);
 PHP_FUNCTION(in_tstr);
-注意：这里定义的是扩展模块的接口，而非你so中的函数，你的函数是通过这些接口调用实现的。
+注意：这里定义的是扩展模块的接口函数，而非你so中的函数，你的函数是通过这些接口调用实现的。
 所以，这些接口是和你的函数对应的。
 5、编辑bitsfox_php.c文件，实现你扩展模块接口：
 首先添加程序入口：
@@ -63,8 +63,8 @@ PHP_FUNCTION(in_tadd)
 PHP_FUNCTION(in_tstr)
 {//注意这里参数的做法，原so函数有参数，并通过参数返回结果。如果本接口函数和so函数保持一致的话
 //那么用户在使用该接口时就要分配该参数的空间。这样做等于把麻烦交给了用户，因此我们应在这里解决
-//这一问题，字符串空间在这里申请，这样该接口就没有必要再有传入参数了（也就是参数和原so函数不一致）
-//而这个接口的返回值也设定成字符串了	
+//这一问题，字符串空间在这里申请，这样该接口就没有必要再有传入参数了（也就是接口函数的参数和原
+//so函数不一致）,而且这个接口函数的返回值也设定成字符串了	
 	char *ch;
 	long int le;
 	long int result;
