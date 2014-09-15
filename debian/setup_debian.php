@@ -202,7 +202,8 @@ export LC_ALL=\"en_US.utf8\"
 export LANG=\"en_US.utf8\"
 export LANGUAGE=\"en_US.utf8\"
 </font><br><font color=red size=4>
-(1)关于声音音量的保存，安装alsa-utils包即可实现设定音量的保存。
+(1)关于声音音量的保存，安装alsa-utils包即可实现设定音量的保存。在使用alsamixer调节音量时不小心将主声道设为了静音，静音的
+标志是MM，正常应为oo，可选中主声道后按m切换。
 (2)关于屏幕亮度的保存，每次开机屏幕亮度都会自动恢复到系统默认的亮度，但是可以在~/.bashrc文件中添加：
 echo 9 > /sys/class/backlight/acpi_video0/brightness
 来实现每次登录后的自动调整。
