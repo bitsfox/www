@@ -65,7 +65,26 @@ ssh vm-0.bitsfox.koding.kd.io
 连接成功～～～
 scp ./php5.tar.bz2  vm-0.bitsfox.koding.kd.io:Web/
 
-web访问的网址为：https://bitsfox.koding.kd.io/
+web访问的网址为：
+<a href='https://tybitsfox.koding.kd.io' target=_blank>https://tybitsfox.koding.kd.io/</a>
+<a href='https://tybitsfox.kd.io' target=_blank>https://tybitsfox.kd.io/</a>
+第一中网址总能访问到正常的网页，第二种必须要将域名tybitsfox.kd.io与虚拟服务器链接：
+链接的方法是在用户的environments界面将两者链接起来：用鼠标拖出一条线来链接....
+<img src='./111.png'>
+5、在虚拟服务器上使用mysql:
+koding的虚拟服务器默认安装了mysql，你可以直接使用你的登录名如tybitsfox进入mysql，
+但是由于没有授权所以进入mysql也什么都做不了，要取得授权就必须先以root的身份登录
+mysql，在控制台下可以使用help phpmyadmin来查询phpmyadmin的使用，由查询可知，在服
+务器上使用mysqladmin -u root password NEWPASSWORD 为root账户设定一个新密码。设置
+成功后就可使用root登录mysql，并且建立新的数据库以及为你的普通账户赋予权限了：
+grant select,insert,update,create,drop on web_data.* to 'taenv'@'localhost' identified by 'password';
+
+6、虚拟服务器的激活，未付费的用户在虚拟控制台关闭15分钟后，虚拟服务器即关闭，比在提供web服务。
+而此时因为虚拟控制台没有启动所以也无法通过ssh链接激活，只能通过登录网页<a href='https://koding.com/' target=_blank>koding登录</a>来激活
+控制台开启web服务。
+7、文件的上传，可通过上面介绍的scp来将本地文件上传至服务器，但是由于ssh有时会链接不上，为做后
+备，我又使用了github来传递文件：https://github.com/tybitsfox/git_trans.git 这个仓库将作为本地与
+koding虚拟服务器传送文件的桥梁。
 
 </pre><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
 
