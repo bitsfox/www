@@ -19,8 +19,8 @@ echo "<td width=25%><a href=./setup.php#hack11>xmame玩cps2缺失文件</a></td>
 echo "<td width=25%><a href=./setup.php#hack12>让你的printf函数丰富多彩</a></td>";
 echo "</tr><tr>";
 echo "<td width=25%><a href=./setup.php#hack13>MSSQL相关操作</a></td>";
-echo "<td width=25%></td>";
-echo "<td width=25%></td>";
+echo "<td width=25%><a href=./setup.php#rdesktop>远程桌面连接工具rdesktop</a></td>";
+echo "<td width=25%><a href=./setup.php#mpg123>mpg123的循环播放</td>";
 echo "<td width=25%></td>";
 echo "</tr></table><br><br><br><br>";
 echo "<font size=3 color=blue><pre>";
@@ -808,4 +808,58 @@ echo ("<br><br>");
 echo ("<hr size=2 width=80% color=green><pre>");
 include_once("mssql.txt");
 echo "</pre></font>";
+echo "<br><br><br><br><br><a name=mpg123></a><hr size=2 width=80% color=green><pre>
+<center><font color=red size=5>mpg123的循环播放</font></center>
+MPG123，听音乐最好能使用一个表（文件）把要播放的歌曲目录存在表里面:view plaincopy to clipboardprint?
+find . -name \"*.mp3\" | sed 's/\.\///' | sort > list.lst 
+find . -name \"*.mp3\" | sed 's/\.\///' | sort > list.lst  播放的时候就可以：view plaincopy to clipboardprint?
+mpg123 --list list.lst 
+mpg123 --list list.lst如果要循环的话可以加入--loop选项：view plaincopy to clipboardprint?
+mpg123 --loop -1  songname.mp3   
+//-1(<0)的数表示无限循环，也可以指定确定的次数。只能是单首循环。  
+//这个--loop 参数如果用来播放List（文件）中的歌曲时  
+//是不能够达到重头到尾的重复播放的效果的，只是循环第一首。  
+//如果要循环目录内容的话，目前可以：  
+mpg123 --list list.lst -Z   
+//用于随机循环播放 
+mpg123 --loop -1  songname.mp3
+//-1(<0)的数表示无限循环，也可以指定确定的次数。只能是单首循环。
+//这个--loop 参数如果用来播放List（文件）中的歌曲时
+//是不能够达到重头到尾的重复播放的效果的，只是循环第一首。//如果要循环目录内容的话，目前可以：
+mpg123 --list list.lst -Z
+//用于随机循环播放 
+<br><br><br><br><br><br>
+<br><br><br><br><br><br>
+<br><br><br><br><br><br>
+<a name=rdesktop></a><hr size=2 width=80% color=green>
+<center><font color=red size=5>rdesktop简介</font></center>
+rdesktop是linux下支持Windows远程桌面连接的客户端程序，在linux系统下可通过它远程访问Windows桌面，支持多种版本。rdesktop是
+sourceforge下支持GPL协议的一个开源项目，采用RDP（Remote Desktop Protocol,远程桌面协议），几乎可以连接windows的所有版本，
+诸如NT 4 Terminal Server, 2000, XP, 2003, 2003 R2, Vista, 2008, 7, and 2008 R2等。目前，rdesktop可运行于所有的基于X window
+平台的Unix系统中.
+具体使用方法要先打开终端，然后输入以下命令：
+rdesktop -u yourname -p password -g 1024*720 192.168.0.2
+rdesktop为使用远程桌面连接的命令；
+-u 用户名，yourname处为目标客户端的用户名；
+-f : 默认全屏， 需要用Ctrl-Alt-Enter组合键进行全屏模式切换。
+-p 客户端用户的密码；
+-g 分辨率， 中间用“x”连接，可省略，省略后默认为全屏显示；
+192.168.0.1 目标客户端的IP地址
+-d 域名，列如域INC 那么参数就是 -d inc
+-r 多媒体重新定向 比如开启声音 -r sound 使用本地的声卡 -r sound : local 开启u盘：-r disk:usb=/mnt/usbdevice
+例如：
+rdesktop -a 16 58.56.98.77:8400
+rdesktop -a 16 58.56.98.76:8400
+<br><br><br><br><br><br>
+<br><br><br><br><br><br>
+<br><br><br><br><br><br>
+
+
+
+
+
+
+
+</pre>";
+
 ?>
