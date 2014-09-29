@@ -85,7 +85,8 @@ grant select,insert,update,create,drop on web_data.* to 'taenv'@'localhost' iden
 7、文件的上传，可通过上面介绍的scp来将本地文件上传至服务器，但是由于ssh有时会链接不上，为做后
 备，我又使用了github来传递文件：https://github.com/tybitsfox/git_trans.git 这个仓库将作为本地与
 koding虚拟服务器传送文件的桥梁。
-
+8、长时间（24小时）不登录的话，不仅网站而且连数据库也关闭了，再次打开数据库的操作：
+sudo service mysql restart
 </pre><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
 
 ?>
