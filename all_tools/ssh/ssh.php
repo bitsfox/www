@@ -87,6 +87,13 @@ grant select,insert,update,create,drop on web_data.* to 'taenv'@'localhost' iden
 koding虚拟服务器传送文件的桥梁。
 8、长时间（24小时）不登录的话，不仅网站而且连数据库也关闭了，再次打开数据库的操作：
 sudo service mysql restart
+-----------------------2014-10-1起koding网站进行了升级----------------------------------
+不管是控制台登录还是网站的url都进行了很大的改动，上面的很多做法已不再适用：
+1、新的web网址为固定的，但很难记了：<a href='http://utkk49ccbca1.tybitsfox.koding.io/' target=_blank>http://utkk49ccbca1.tybitsfox.koding.io/</a>
+2、旧网站及vm控制台数据的迁移：在新的用户目录下默认存放了一个脚本程序：migrate.sh，运行该脚本，
+如果无误的话会将你原来的所有的数据资料都拷贝至~/Backup/目录下。
+3、一些新的操作及配置参看主菜单中的contact support。
+
 </pre><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
 
 ?>
