@@ -549,6 +549,8 @@ DX＝初始化通信口号(0＝COM1，1＝COM2，……)
 82H —进程终止C2H —鼠标图形
 83H —事件等待C3H —设置WatcHdog超时
 84H —读游戏杆C4H —可编程选项选择
+<font color=blue>88H —读取0~~640kB内存的大小
+E8H —读取实际拥有的物理内存大小</font>
 (1)、功能00H
 功能描述：开盒式磁带机马达
 入口参数：AH＝00H
@@ -698,6 +700,43 @@ AL＝00H~7FH——串行再重用设备
 功能描述：设置WatcHdog超时，仅在PS/2中有效，在此从略
 (24)、功能C4H
 功能描述：可编程选项选择，仅在PS/2中有效，在此从略
+<font color=blue>（25）、功能88H
+功能描述：读取系统0~~640KB之间的内存大小
+入口参数：AH=88H
+出口参数：AX中保存着0~~640KB之间的内存大小值，单位KB
+（26）、功能E8H
+功能描述：读取实际拥有物理内存的大小，单位为字节
+入口参数：
+eax=0xe820
+ebx=0
+ecx=Address Range Descriptor Structure结构的大小，一般为>=20
+edx=0x534d4150 ('SMAP') 中断处理据此判断内存块的类型
+es:di-->指向Address Range Descriptor Structure结构的地址
+返回值：
+CF clear 表示操作成功
+es:di->指向最后一个结构BaseAddrLow+LengthLow的头指针
+实际的内存数应为每个结构的LengthLow的和再加0x8000 <--这是我测试的结果。    
+ecx=结构大小，一般为20
+eax=0x534d4150（'SMAP'）
+ebx=0
+该中断应循环调用直至ebx==0并且CF清零，此时取得的每个结构的的LengthLow之和
+再加0x8000就是实际内存大小了。
+-----------Address Range Descriptor Structure结构-------------
+偏移       名称                描述
+0          BaseAddrLow         基地址的低32位
+4          BaseAddrHigh        基地址的高32位
+8          LengthLow           长度(字节)的低32位
+12         LengthHigh          长度(字节)的高32位
+16         Type                这个地址范围的地址类型
+其中类型双字的含义为：
+1          AddressRangeMemory  这个内存段是一段可以被OS使用的RAM
+2          AddressRangeReserved这个地址段正在被使用,或者被系统保留,所以一定不要被OS使用
+Other      Undefined           保留为未来使用,任何其它值都必需被OS认为是AddressRangeReserved
+如下一些原因造成BIOS将某个内存段标记为AddressRangeReserved:
+这个地址范围包含着系统ROM；
+这个地址范围包含着被ROM使用的RAM；
+这个地址范围被用作系统设备内存映射；
+这个地址范围由于某种原因,不适合被标准设备用作设备内存空间。</font>
 <a name=boot05></a><font size=3 color=red>5、键盘服务(Keyboard Service——INT 16H)</font>
 00H、10H —从键盘读入字符03H —设置重复率
 01H、11H —读取键盘状态04H —设置键盘点击
