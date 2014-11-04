@@ -9,6 +9,9 @@ echo "</pre><br><br>";
 echo "<a name=bochs></a><font color=red font=5>bochs的配置</font><pre>";
 include_once("./about_boch.txt");
 echo "</pre>";
+echo "<a name=kernel2></a><pre>";
+include_once("./kernel2.txt");
+echo "</pre>";
 ?>
 
 

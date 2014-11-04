@@ -17,7 +17,8 @@ echo "<a href=./boot.php#boot08 target=_blank>BIOS中断--直接系统服务</a>
 echo "<font size=4>&nbsp;&nbsp;&nbsp;二、Linux 2.6内核的编译步骤及模块动态加载：<br><br>";
 echo "<a href=./modules_setup.php target=_blank>Linux 2.6内核的编译步骤及模块动态加载</a><br><br>";
 echo "<a href=./modules_call.php target=_blank>Linux 2.6版内核中通过模块获取sys_call_table地址的方法</a><br><br>";
-echo "<a href=./24_26.php target=_blank>2.4与2.6内核模块和驱动</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=boot.php#bochs target=_blank>bochs配置简介</a><br><br>";
+echo "<a href=./24_26.php target=_blank>2.4与2.6内核模块和驱动</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=boot.php#bochs target=_blank>bochs配置简介</a>";
+echo "&nbsp;&nbsp;&nbsp;&nbsp;<a href=boot.php#kernel2 target=_blank>定值检索</a><br><br>";
 echo "<font size=4>&nbsp;&nbsp;&nbsp;三、引导程序boot：<br><br>";
 echo "<a href=./boot.php target=_blank>引导程序boot的编写及生成</a><br><br>";
 echo "</td><td width=50% valign=top>";

@@ -66,8 +66,8 @@ ssh vm-0.bitsfox.koding.kd.io
 scp ./php5.tar.bz2  vm-0.bitsfox.koding.kd.io:Web/
 
 web访问的网址为：
-<a href='https://tybitsfox.koding.kd.io' target=_blank>https://tybitsfox.koding.kd.io/</a>
-<a href='https://tybitsfox.kd.io' target=_blank>https://tybitsfox.kd.io/</a>
+<a href='http://tybitsfox.koding.io' target=_blank>http://tybitsfox.koding.io/</a>
+<a href='https://tybitsfox.koding.io' target=_blank>https://tybitsfox.koding.io/</a>
 第一中网址总能访问到正常的网页，第二种必须要将域名tybitsfox.kd.io与虚拟服务器链接：
 链接的方法是在用户的environments界面将两者链接起来：用鼠标拖出一条线来链接....
 <img src='./111.png'>

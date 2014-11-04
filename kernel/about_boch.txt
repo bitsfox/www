@@ -36,3 +36,26 @@ romimage: file=$BXSHARE/BIOS-bochs-latest
 格式不对，应写为：
 cpu: ips=1000000
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
