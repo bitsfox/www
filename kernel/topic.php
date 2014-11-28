@@ -362,7 +362,12 @@ i=strlen(ch);
 for(j=0;j<5;j++)
 	ch[i+j]='v';
 printf(\"%s\\n\",ch);
-因此在内核编程时应尽量避免使用这种定义方式，也就是所有变量的长度应明确指定。另外一种定义方式我也进行了测试就是char *p=\"tybitsfox\";样
+因此在内核编程时应尽量避免使用这种定义方式，<font color=red>(新的认识：在C语言中，依旧遵循.data.text的定义方式，只不过他的处理稍有不同。
+当仅声明了全局变量，而未对其赋值时，或者定义的全局变量是个只读属性的值时，c的编译器只会为其预留出存储空间，因为没有赋值，所以编译器认为
+在data段中没有需要保存的数据，这时预留的空间会体现在text段，包括我们定义的结构体也是这种处理方式。只有对定义的全局变量赋初始值后，编译器
+才会认为有需要保存的数据，并且他会在text代码段后面整数页4k的开始处添加最少一页的空间作为数据段data的空间，也只有这时，代码段和数据段才正
+式的分开来，这也就是为上么我上面定义字符串的内容时生成的模块要远远大于我认为的模块大小。实施上并非是对字符串变量赋值，仅对一个整数变量赋
+值依然是这种情形)</font>也就是所有变量的长度应明确指定。另外一种定义方式我也进行了测试就是char *p=\"tybitsfox\";样
 式的定义。存在这种定义的c源代码在编译时通过objdump -x查看其编译的模块会发现多出来一个.rodata的段，也就是只读段，这种定义的字符串在c语言
 中编译链接成可执行文件时是不能修改的。不知与汇编模块链接后是否还有只读的特性？：）至于最开始汇编与c生成的模块的链接顺序的问题，我想到了
 一个暂时性的解决方案：就是将汇编文件中的变量定义放在一个单独的文件中。这样链接的顺序为：
@@ -385,6 +390,120 @@ a1.o:a1.c clsscr.h
 
 解决了c与汇编文件的混编问题，下一步就可以建立和完善我的内核库了。
 
+
+
+
+</font></pre>
+";
+echo "<a name=d_asm></a><center><font color=red size=5>用c函数编写内核代码的另一个意外</font></center>
+<pre><font size=3>
+又遇到一个问题，耽误了一天的时间。内核的初始代码已经初步完成，转入到了正式内核的代码中了，现在已经可以转由c来加速编程进度了，并且很多内核核心数
+据也可以通过c的结构指针来轻松的管理和使用了，然而一个意外的错误竟然再次打断了我的进度，不过我也有幸因此而对内核以及c函数的编译有了更深入的了解！
+错误发生在一个由c写成的函数，该函数的功能是获取各核心数据结构的指针。我使用了switch做分支处理获取不同数据结构的指针，当分支（case）的数量少于5个
+的时候，一切正常。然而当在增加分支时（有多于5个case）这个函数竟然失去了作用。不仅如此，该函数甚至不能返回。这两种情况的代码可以通过objdump轻易的
+比较出来，原来在这两种情况下gnuc的编译器生成代码的方式并不相同！
+当分支较少时（4个分支）生成的代码要繁琐些，不过他确是以一种顺序的方式执行的：
+00000000 &lt;klocate&gt;:
+   0:   55                      push   %ebp
+   1:   89 e5                   mov    %esp,%ebp
+   3:   83 ec 10                sub    $0x10,%esp
+   6:   c7 45 fc 12 00 00 00    movl   $0x12,-0x4(%ebp)
+   d:   8b 45 08                mov    0x8(%ebp),%eax
+  10:   83 f8 01                cmp    $0x1,%eax
+  13:   74 1e                   je     33 &lt;klocate+0x33&gt;
+  15:   83 f8 01                cmp    $0x1,%eax
+  18:   7f 06                   jg     20 &lt;klocate+0x20&gt;
+  1a:   85 c0                   test   %eax,%eax
+  1c:   74 0e                   je     2c &lt;klocate+0x2c&gt;
+  1e:   eb 2b                   jmp    4b &lt;klocate+0x4b&gt;
+  20:   83 f8 02                cmp    $0x2,%eax
+  23:   74 16                   je     3b &lt;klocate+0x3b&gt;
+  25:   83 f8 03                cmp    $0x3,%eax
+  28:   74 19                   je     43 &lt;klocate+0x43&gt;
+  2a:   eb 1f                   jmp    4b &lt;klocate+0x4b&gt;
+  2c:   8b 45 fc                mov    -0x4(%ebp),%eax
+  2f:   8b 00                   mov    (%eax),%eax
+  31:   eb 1d                   jmp    50 &lt;klocate+0x50&gt;
+  33:   8b 45 fc                mov    -0x4(%ebp),%eax
+  36:   8b 40 08                mov    0x8(%eax),%eax
+  39:   eb 15                   jmp    50 &lt;klocate+0x50&gt;
+  3b:   8b 45 fc                mov    -0x4(%ebp),%eax
+  3e:   8b 40 10                mov    0x10(%eax),%eax
+  41:   eb 0d                   jmp    50 &lt;klocate+0x50&gt;
+  43:   8b 45 fc                mov    -0x4(%ebp),%eax
+  46:   8b 40 18                mov    0x18(%eax),%eax
+  49:   eb 05                   jmp    50 &lt;klocate+0x50&gt;
+  4b:   b8 00 00 00 00          mov    $0x0,%eax
+  50:   c9                      leave  
+  51:   c3                      ret   
+在看看多分支(11个)时的情形：
+00000000 &lt;klocate&gt;:
+   0:   55                      push   %ebp
+   1:   89 e5                   mov    %esp,%ebp
+   3:   83 ec 10                sub    $0x10,%esp
+   6:   c7 45 fc 12 00 00 00    movl   $0x12,-0x4(%ebp)
+   d:   83 7d 08 0a             cmpl   $0xa,0x8(%ebp)
+  11:   77 66                   ja     79 &lt;klocate+0x79&gt;
+  13:   8b 45 08                mov    0x8(%ebp),%eax
+  16:   c1 e0 02                shl    $0x2,%eax
+  19:   05 00 00 00 00          add    $0x0,%eax
+  1e:   8b 00                   mov    (%eax),%eax
+  20:   ff e0                   jmp    *%eax
+  22:   8b 45 fc                mov    -0x4(%ebp),%eax
+  25:   8b 00                   mov    (%eax),%eax
+  27:   eb 55                   jmp    7e &lt;klocate+0x7e&gt;
+  29:   8b 45 fc                mov    -0x4(%ebp),%eax
+  2c:   8b 40 08                mov    0x8(%eax),%eax
+  2f:   eb 4d                   jmp    7e &lt;klocate+0x7e&gt;
+  31:   8b 45 fc                mov    -0x4(%ebp),%eax
+  34:   8b 40 10                mov    0x10(%eax),%eax
+  37:   eb 45                   jmp    7e &lt;klocate+0x7e&gt;
+  39:   8b 45 fc                mov    -0x4(%ebp),%eax
+  3c:   8b 40 18                mov    0x18(%eax),%eax
+  3f:   eb 3d                   jmp    7e &lt;klocate+0x7e&gt;
+  41:   8b 45 fc                mov    -0x4(%ebp),%eax
+  44:   8b 40 20                mov    0x20(%eax),%eax
+  47:   eb 35                   jmp    7e &lt;klocate+0x7e&gt;
+  49:   8b 45 fc                mov    -0x4(%ebp),%eax
+  4c:   8b 40 28                mov    0x28(%eax),%eax
+  4f:   eb 2d                   jmp    7e &lt;klocate+0x7e&gt;
+  51:   8b 45 fc                mov    -0x4(%ebp),%eax
+  54:   8b 40 30                mov    0x30(%eax),%eax
+  57:   eb 25                   jmp    7e &lt;klocate+0x7e&gt;
+  59:   8b 45 fc                mov    -0x4(%ebp),%eax
+  5c:   8b 40 38                mov    0x38(%eax),%eax
+  5f:   eb 1d                   jmp    7e &lt;klocate+0x7e&gt;
+  61:   8b 45 fc                mov    -0x4(%ebp),%eax
+  64:   8b 40 40                mov    0x40(%eax),%eax
+  67:   eb 15                   jmp    7e &lt;klocate+0x7e&gt;
+  69:   8b 45 fc                mov    -0x4(%ebp),%eax
+  6c:   8b 40 44                mov    0x44(%eax),%eax
+  6f:   eb 0d                   jmp    7e &lt;klocate+0x7e&gt;
+  71:   8b 45 fc                mov    -0x4(%ebp),%eax
+  74:   8b 40 48                mov    0x48(%eax),%eax
+  77:   eb 05                   jmp    7e &lt;klocate+0x7e&gt;
+  79:   b8 00 00 00 00          mov    $0x0,%eax
+  7e:   c9                      leave  
+  7f:   c3                      ret
+在多分支代码中关键的处理是eip13~~20的那几条汇编语句：
+  13:   8b 45 08                mov    0x8(%ebp),%eax
+  16:   c1 e0 02                shl    $0x2,%eax
+  19:   05 00 00 00 00          add    $0x0,%eax
+  1e:   8b 00                   mov    (%eax),%eax
+  20:   ff e0                   jmp    *%eax
+他处理的逻辑实现是：取传入的switch值，将该值存入eax，然后将其乘4，再将其加0，然后结果作为地址取出该地址保存的值仍存入eax，再以eax中的值作为地址跳
+转到该地址处。并且自EIP20以后看不到了比较语句，说明通过上面的计算获取了需要转到的那个case的地址处了。（注意：c编译器的这种处理方式仅是适用于各个
+case值是顺序递增的情形，其他情形我也不想讨论了）然而只看上面的几行代码我们还是不能确定目标地址到底存放在哪。因为这里我dump的是o文件，仅仅是编译后
+的文件。如果我们再dump执行完链接的文件就会发现那条加0的语句会被重定位信息所替换而成为模块可执行的地址信息。这时就会发现该地址一般指向了当前模块所
+有可执行代码后面的位置。在通过objdump -x查看段节信息我们就会发现这段c的代码与平时我们写的汇编代码有所不同，他多出了.rodata段和.eh_frame段。其中.eh_frame
+段是做异常处理的，用于计算函数调用栈。我们可以忽略他，rodata是个只读数据段。并且只读数据段中的信息与跳转地址的计算可以吻合上。看来GNU的C函数编译、
+链接还是用到了这个段。虽然执行方式弄清楚了，而那个只读数据段也不会影响我内核程序的执行，可为何就是不能执行呢？为此我又去翻看linux的内核代码。也没
+发现他的处理与我的有何不同，再查看makefile中编译和链接的各个参数，也没有能影响rodata的参数！可为何我的代码就不能正常执行呢？？再从网上搜遍rodata的
+相关资料也没有效的方法甚至提示！无奈之下在从头查看我之前的代码吧，当看到gdt的定义时，我突然发现问题的所在了！原来我把代码段和数据段分割了开来，我当
+初的设想就是要把这两个段独立开来，想要内核尽量的洁净。而问题也正是由此产生了。因为rodata是由c代码编译生成的，他放在了我默认的代码中！而上面的取内存
+操作数和取地址操作所默认的段应该是数据段！--这是gunc的编译器所规定的，也就是默认的gnuc编译器代码生成的前提（默认）条件是代码段和数据段必须是在一个
+地址范围内！到此问题就解决了，但是我还是验证了一下这个正确的想法：在调用这个函数之前我将代码段中rodata的定位信息拷贝到了我的数据段相同的偏移地址处，
+然后调用这个函数，果然成功！
 
 
 
