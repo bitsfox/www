@@ -4,7 +4,8 @@ echo "<font size=6 color=#ff0000><center>内核准备资料</center></font><br><
 echo "<table border=0 width=100%><tr width=100%><td width=50% valign=top>";
 echo "<font size=4>&nbsp;&nbsp;&nbsp;一、硬件资料：<br><br>";
 echo "<a href=./8042.php target=_blank>Intel 8042键盘控制器详细介绍</a><br><br>";
-echo "<a href=./8259A/4-3.htm target=_blank>8259A中断控制器</a><br><br>";
+echo "<a href=./8259A/mine.php#8259A target=_blank>8259A中断控制器</a><br><br>";
+echo "<a href=./8259A/mine.php#cmos target=_blank>CMOS信息</a><br><br>";
 echo "<a href=./8253.php target=_blank>8253可编程定时器</a><br><br>";
 echo "<a href=./boot.php#boot01 target=_blank>BIOS中断--显示服务INT10H</a><br><br>";
 echo "<a href=./boot.php#boot02 target=_blank>BIOS中断--直接磁盘服务INT13H</a><br><br>";
