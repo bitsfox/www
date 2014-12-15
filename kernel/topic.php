@@ -244,6 +244,79 @@ echo "<a name=floppy></a><center><font color=red size=5>关于软驱驱动编程
 		 |  ----------------IDEC 无须设置
 		 -------------------工作模式，0：询问模式，1：单字节传输模式，2：块字节传输模式，3：dma级联模式
 
+<center>状态字节0 （ST0）
+<table border=1 width=70%> 
+<tr>
+<td width=5%>位</td>
+<td width=15%>名称</td>
+<td width=80%>说明</td></tr>
+<tr>
+<td width=5%>7 6</td>
+<td width=15%>ST0_INTR 中断原因。</td>
+<td width=80%>00 – 命令正常结束；<font color=red>01 – 命令异常结束；</font> 10 – 命令无效；11 – 软盘驱动器状态改变。</td></tr>
+<tr>
+<td width=5%>5</td>
+<td width=15%>ST0_SE</td>
+<td width=80%>寻道操作或重新校正操作结束。（Seek End） </td></tr>
+<tr>
+<td width=5%>4</td>
+<td width=15%>ST0_ECE</td>
+<td width=80%>设备检查出错（零磁道校正出错）。（Equip. Check Error）</td></tr>
+<tr>
+<td width=5%>3</td>
+<td width=15%>ST0_NR</td>
+<td width=80%>软驱未就绪。（Not Ready）</td></tr>
+<tr>
+<td width=5%>2</td>
+<td width=15%>ST0_HA</td>
+<td width=80%>磁头地址。中断时磁头号。（Head Address）</td></tr>
+<tr>
+<td width=5%>1 0</td>
+<td width=15%>ST0_DS</td>
+<td width=80%>驱动器选择号（发生中断时驱动器号）。（Drive Select） 00-11分别对应驱动器0-3。</td></tr>
+</table>
+状态字节1 （ST1）
+<table border=1 width=70%> 
+<tr>
+<td width=5%>位</td>
+<td width=15%>名称</td>
+<td width=80%>说明</td></tr>
+<tr>
+<td width=5%>7</td>
+<td width=15%>ST1_EOC</td>
+<td width=80%>访问超过磁道上最大扇区号EOT。（End of Cylinder）</td></tr>
+<tr>
+<td width=5%>6</td>
+<td width=15%></td>
+<td width=80%>未使用（0）。</td></tr>
+<tr>
+<td width=5%>5</td>
+<td width=15%></td>
+<td width=80%></td></tr>
+<tr>
+<td width=5%>4</td>
+<td width=15%></td>
+<td width=80%></td></tr>
+<tr>
+<td width=5%>3</td>
+<td width=15%></td>
+<td width=80%></td></tr>
+<tr>
+<td width=5%>2</td>
+<td width=15%></td>
+<td width=80%></td></tr>
+<tr>
+<td width=5%>1</td>
+<td width=15%></td>
+<td width=80%></td></tr>
+<tr>
+<td width=5%>0</td>
+<td width=15%></td>
+<td width=80%></td></tr>
+
+</table>
+</center>
+
 </font></pre>";
 echo "<a name=lcall></a>
 <pre><font color=blue size=3><center>----------2014-11-8远调用及常量定义心得---------------</center>
