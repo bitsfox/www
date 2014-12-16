@@ -291,29 +291,67 @@ echo "<a name=floppy></a><center><font color=red size=5>关于软驱驱动编程
 <td width=80%>未使用（0）。</td></tr>
 <tr>
 <td width=5%>5</td>
-<td width=15%></td>
-<td width=80%></td></tr>
+<td width=15%>ST1_CRC</td>
+<td width=80%>CRC校验出错</td></tr>
 <tr>
 <td width=5%>4</td>
-<td width=15%></td>
-<td width=80%></td></tr>
+<td width=15%>ST1_OR</td>
+<td width=80%>数据传输超时，DMA控制器故障。（Over Run）</td></tr>
 <tr>
 <td width=5%>3</td>
 <td width=15%></td>
-<td width=80%></td></tr>
+<td width=80%>未使用（0）。 </td></tr>
 <tr>
 <td width=5%>2</td>
-<td width=15%></td>
-<td width=80%></td></tr>
+<td width=15%>ST1_ND</td>
+<td width=80%>未找到指定的扇区。（No Data - unreadable）</td></tr>
 <tr>
 <td width=5%>1</td>
-<td width=15%></td>
-<td width=80%></td></tr>
+<td width=15%>ST1_WP</td>
+<td width=80%>写保护。（Write Protect）</td></tr>
 <tr>
 <td width=5%>0</td>
+<td width=15%>ST1_MAM</td>
+<td width=80%>未找到扇区地址标志ID AM。（Missing Address Mask）</td></tr>
+</table>
+状态字节2 （ST2）
+<table border=1 width=70%> 
+<tr>
+<td width=5%>位</td>
+<td width=15%>名称</td>
+<td width=80%>说明</td></tr>
+<tr>
+<td width=5%>7</td>
 <td width=15%></td>
-<td width=80%></td></tr>
-
+<td width=80%>未使用（0）</td></tr>
+<tr>
+<td width=5%>6</td>
+<td width=15%>ST2_CM</td>
+<td width=80%>SK=0时，读数据遇到删除标志。（Control Mark = deleted）</td></tr>
+<tr>
+<td width=5%>5</td>
+<td width=15%>ST2_CRC</td>
+<td width=80%>扇区数据场CRC校验出错</td></tr>
+<tr>
+<td width=5%>4</td>
+<td width=15%>ST2_WC</td>
+<td width=80%>扇区ID信息的磁道号C不符。（Wrong Cylinder）</td></tr>
+<tr>
+<td width=5%>3</td>
+<td width=15%>ST2_SEH</td>
+<td width=80%>检索（扫描）条件满足要求。（Scan Equal Hit）</td></tr>
+<tr>
+<td width=5%>2</td>
+<td width=15%>ST2_SNS</td>
+<td width=80%>检索条件不满足要求。（Scan Not Satisfied）</td></tr>
+<tr>
+<td width=5%>1</td>
+<td width=15%>ST2_BC</td>
+<td width=80%>扇区ID信息的磁道号C=0xFF，磁道坏。（Bad Cylinder）</td></tr>
+<tr>
+<td width=5%>0</td>
+<td width=15%>ST2_MAM</td>
+<td width=80%>未找到扇区数据标志DATA AM。（Missing Address Mask）</td></tr>
 </table>
 </center>
 
