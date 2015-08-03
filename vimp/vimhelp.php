@@ -324,6 +324,32 @@ q             关闭taglist窗口
 &lt;F1&gt;          显示帮助 
 </pre></font></td><td width=10%></td></tr></table>";
 
+echo "<hr width=80% size=2><center><font size=5 color=#ff0000>七、gvim的简单使用</font></center>";
+echo "<table border=0 width=100%><tr width=100%><td width=10%></td><td width=80%><font size=4 color=black><pre>
+1、配置文件：gvim依然使用vim默认的配置：~/.vimrc，一些gui独有的设置可直接添加至上述配置文件中，如：
+\"gvim 去除工具栏
+set guioptions-=T
+\"gvim 去除菜单栏
+set guioptions-=m
+\"gvim 除右边滚动条
+set guioptions-=r
+\"设定在任何模式下鼠标都可用
+\"set mouse=a 
+\"设置用于GUI图形用户界面的字体列表。
+set guifont=SimSun\ 12  
+\"当禁止了声音提示后，gvim默认会使用闪屏提示，关闭闪屏提示的设置为：
+au GuiEnter * set t_vb=
+-------以上基本就是我在gvim下所需的设置了-------
+在我看来gvim最大的好处就是可以使用更加丰富的配色，从而使界面配色更加柔和，仅此而已。
+另外，如果你使用fcitx输入法，那么gvim在退出时还有个小小的瑕疵：就是退出后会有诸如：
+(gvim:9719): Gdk-CRITICAL **: IA__gdk_cairo_region....这样的警告提示，虽然不影响使用，但是略显不完美。
+经过我个人测试，这个警告并不总是出现，当时用菜单项的退出时，不会出现这个警告，但是在使用:q命令退出时就会
+出现。通过在网上查找，发现该错误的产生是由于和fcitx输入法的gtk2前端有冲突，在我的机器上，查看fcitx安装的
+相关包：aptitude search fcitx 可发现确实安装有fcitx-frontend-gtk2，而且还有fcitx-frontend-gtk3的包。
+使用命令：apt-get remove fcitx-frontend-gtk2 卸载掉该包，问题就可完美解决，并且不会对fcitx造成影响。
+
+
+</pre></font></td><td width=10%></td></tr></table>";
 
 echo "<br><br><a href='./VIM: index.html' target=_blank>vim about</a>";
 ?>
