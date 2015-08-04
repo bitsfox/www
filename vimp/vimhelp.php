@@ -347,10 +347,37 @@ au GuiEnter * set t_vb=
 出现。通过在网上查找，发现该错误的产生是由于和fcitx输入法的gtk2前端有冲突，在我的机器上，查看fcitx安装的
 相关包：aptitude search fcitx 可发现确实安装有fcitx-frontend-gtk2，而且还有fcitx-frontend-gtk3的包。
 使用命令：apt-get remove fcitx-frontend-gtk2 卸载掉该包，问题就可完美解决，并且不会对fcitx造成影响。
+</pre></font></td><td width=10%></td></tr></table>";
+echo "<hr width=80% size=2><center><font size=5 color=#ff0000>八、xterm和vim256色的使用</font></center>";
+echo "<table border=0 width=100%><tr width=100%><td width=10%></td><td width=80%><font size=4 color=black><pre>
+首先，确保系统已经安装了相关的支持：
+find /lib/terminfo /usr/share/terminfo -name \"*256*\"  如果没有相应文件，则安装：
+aptitude install ncurses-term
+aptitude install ncurses-base
+如使用xterm时，此时上述查找目录中应该有xterm-256color文件,此时若要使得256色生效还需一些配置：
+方法一：
+编辑 ~/.Xdefaults文件，添加：
+*customization: -color
+XTerm*termName:  xterm-256color
+保存退出后执行：xrdb -merge ~/.Xdefaults
+测试目前支持的颜色数：
+tput colors
+应该显示为256,查看变量TERM echo $TERM 应该显示的是xterm-256color
+该方法测试可行，但是不能开机自动加载。
+方法二：
+编辑 ~/.bashrc文件，添加：
+export TERM=xterm-256color
+该方法能保证登录后自动设置为256色
+方法三：
+编辑 ~/.Xresources,添加：
+XTerm*termName:  xterm-256color
+该方法也能保证自动加载设置
 
+
+这里是我搜罗的一些<a href='./colors.tar.bz2'>漂亮的配色方案</a>，其中在vim下我最喜欢吸血鬼的
+主题（dracula）,在gvim下也有一个漂亮的solarized配色。
 
 </pre></font></td><td width=10%></td></tr></table>";
-
 echo "<br><br><a href='./VIM: index.html' target=_blank>vim about</a>";
 ?>
 
