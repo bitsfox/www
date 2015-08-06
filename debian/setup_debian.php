@@ -224,7 +224,67 @@ apt-get install fcitx-googlepinyin  --输入法
 选择无线网卡作为首选网卡，选择找到的wifi，输入链接密码，即可链接。但是当指定使用dhcp链接时，设置不会写入到
 /etc/network/interface文件中，必须手动添加。同时必须保留默认的对lo的设置，如果屏蔽掉lo的设置则一些对localhost
 的访问全部无法实现（我的mysql一开始就犯了这个错误）。
+--------------------------2015-8-6添加，关于网络的选择使用和配置的相关内容----------------------------------
+Debian关于网络配置以及网络选择的相关操作
+1、相关网站的链接：
+https://wiki.debian.org/WiFi/
+2、相关命令：
+ifconfig,iwconfig,route -n,ifup,ifdown,ifquery,iwlist
+具体用法请使用man
+3、相关配置：
+/etc/network/interfaces，记录下我单位本本的配置：
 
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+address	192.168.0.11
+netmask	255.255.255.0
+network	192.168.0.0
+broadcast 192.168.0.255
+gateway 192.168.0.1
+dns-nameservers 202.102.134.68
+
+#auto wlan0
+iface wlan_home inet static
+address 192.168.1.118
+netmask 255.255.255.0
+network 192.168.1.0
+gateway 192.168.1.1
+dns-nameservers 202.102.134.68
+wpa-ssid bitsfox
+wpa-psk tybitsfox6806
+
+#auto wlan0
+iface wlan_work inet static
+address 192.168.0.118
+netmask 255.255.255.0
+network 192.168.0.0
+gateway 192.168.0.1
+dns-nameservers 202.102.134.68
+wpa-ssid Tenda_07BE70
+wpa-psk 851639666
+
+该配置默认启动eth0,当需要链接wifi时，首先:
+ifdown eth0
+ip addr flush dev eth0
+ifup wlan0=wlan_work	(在办公室，连接办公室的wifi)
+或：
+ifup wlan0=wlan_home	(在家，连接家里的wifi)
+切换时：ifdown wlan0;ifup eth0
+
+另外，在进行wifi切换时容易出现：RTNETLINK answers: File exists 错误
+网上查询这个错误产生的大部分原因是由于服务冲突引起的：
+/etc/init.d/network 和 /etc/init.d/NetworkManager
+但是，我的机器上没有manager管理服务，所以肯定不是由于服务冲突引起的。
+还有一种可能，就是某些网络服务（例如apache等）已经应用了之前的设置，对于这种情况
+可以尝试使用如下命令刷新：
+ip addr flush dev eth0(or wlan0)
+这样应该能解决错误。
+
+
+------------------------------------------------------------------------------------------------------------
 另外一个特殊的情况就是mysql客户端不能以root@localhost链接的问题：
 ERROR 1045 (28000): Access denied for user root@localhost (using password: NO)
 解决方法：
