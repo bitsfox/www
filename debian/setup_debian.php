@@ -254,7 +254,7 @@ network 192.168.1.0
 gateway 192.168.1.1
 dns-nameservers 202.102.134.68
 wpa-ssid bitsfox
-wpa-psk tybitsfox6806
+wpa-psk mypassword
 
 #auto wlan0
 iface wlan_work inet static
@@ -264,7 +264,7 @@ network 192.168.0.0
 gateway 192.168.0.1
 dns-nameservers 202.102.134.68
 wpa-ssid Tenda_07BE70
-wpa-psk 851639666
+wpa-psk mypassword
 
 该配置默认启动eth0,当需要链接wifi时，首先:
 ifdown eth0
