@@ -41,7 +41,8 @@ if($pflag==0)
 	echo "<a href='./tin16/FC_namelist.html' target=_blank>FC游戏列表</a><br>";
 	echo "<a href='./tin16/CastleVania2/castle2.php' target=_blank>FC恶魔城2</a><br>";
 	echo "<a href='./tin16/mddahanghai2.php' target=_blank>MD大航海时代2</a><br>";
-	echo "<a href='./tin16/zzjb_mm2r.php' target=_blank>nds mm2r</a><br><br><br>";
+	echo "<a href='./tin16/zzjb_mm2r.php' target=_blank>nds mm2r</a><br>";
+	echo "<a href='./tin16/zzjb_mmr.php' target=_blank>sfc mmr</a><br><br><br><br><br>";
 }
 ?>
 <?php
