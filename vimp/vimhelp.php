@@ -44,6 +44,18 @@ echo "<br><table border=0 width=100%><tr width=100%><td width=10%></td><td width
  \"设置编写代码所在行始终在距最底行10行：
  set scrolloff=10
  \"注意：上面的设置必须有10行以上的空格行才有效。
+ set tw=142
+ \"tw=textwidth,设置自动换行每行的长度
+ set fo+=mM
+ \"fo=formatoptions,设置亚洲字在换行中的分割。
+ \" m - Also break at a multi-byte character above 255. This is useful for
+ \" Asian text where every character is a word on its own.
+ \" M - When joining lines, don't insert a space before or after a
+ \" multi-byte character. Overrules the 'B' flag.
+ \"set formatoptions+=mM
+ \" 对已经存在的文本，不做自动换行处理，只有新输入文本的才会触发。
+ \" 如要对已存在的文本应用自动换行，只要选中它们，然后按gq就可以了。
+
 </pre></font></td><td width=10%></td></tr></table>";
 echo "<hr width=80% size=2><center><font size=5 color=#ff0000>三、.vimrc中文帮助文档的下载安装</font></center>";
 echo "<br><table border=0 width=100%><tr width=100%><td width=10%></td><td width=80%><font size=4 color=black><pre>
