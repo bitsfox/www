@@ -306,7 +306,13 @@ mysql> quit
 grant select,insert,update,create,drop on web_data.* to 'taenv'@'localhost' identified by 'password';
 
 这样就可以使用新版的主页了。
-							   
+
+<font color=red size=5>在使用apt-get update更新时提示没有公钥的问题解决</font>
+执行：
+gpg --keyserver subkeys.pgp.net --recv 2B90D010
+gpg --export --armor 2B90D010 | apt-key add -
+其中：2B90D010为提示的公钥的后8位，如果不是root权限的话，apt-key 命令之前加sodu
+这样就可以添加新的公钥了
 </font></pre>";
 ?>
 
