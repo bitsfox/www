@@ -12,6 +12,12 @@ echo "</pre>";
 echo "<a name=kernel2></a><pre>";
 include_once("./kernel2.txt");
 echo "</pre>";
+echo "<a name=kernel3></a>";
+echo "
+<table border=0 width=100%><tr width=100%>
+<td width=100% align=center><img src='./ascii.jpeg' /></td><td width=10%></td>
+</tr>
+</table>";
 ?>
 
 

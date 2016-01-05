@@ -269,5 +269,79 @@ In a one horse open sleigh
 </pre></td>
 <td width=10%></td></tr>";
 
+echo "<tr width=100%><td colspan=4 width=100%><center><font color=red size=5>Everything I Do,I Do It For You</font></center></td></tr>";
+echo "<tr><td width=10%></td><td width=30%><pre><font color=blue>
+Look into my eyes
+You will see what you mean to me
+Search your heart search your soul
+And when you find me there you'll search no more
+Don't tell me it's not worth trying for
+You can't tell me it's not worth dying for
+You know it's true
+Everything I do
+I do it for you
+Look into your heart
+You will find there's nothing there to hide
+Take me as I am take my life
+I would give it all I would sacrifice
+Don't tell me it's not worth fighting for
+I can't help it there's nothing I want more
+You know it's true
+Everything I do
+I do it for you
+There's no love
+Like your love
+And no other
+Could give more love
+There's no where
+Unless you're there
+All the time all the way
+Ah you can't tell me it's not worth trying for
+I can't help it there's nothing I want more
+Yeah I would fight for you
+I'd lie for you
+Walk the wire for you
+Yeah I'd die for you
+You know it's true
+Everything I do
+I do it for you
+</font></pre></td>
+<td width=30%><pre>
+透过我的双眸
+你就会明白,你对我意味着什么
+寻找你的内心,寻找你的灵魂
+到你找到我,你将别无他求
+别告诉我,这不值得为之尝试
+你不能告诉我,这不值得为之付出生命
+你知道这都是真的
+我做的一切
+皆是为了你
+透过你的心灵
+你会发现,我心中没有什么可以隐藏
+请接收我的一切,接受我的生命
+我愿意付出一切,我愿意牺牲自己
+请不要告诉我,这不值得为之而奋斗
+我不能抗拒,我别无所求
+你知道这是真的
+我做的一切
+皆是为了你
+在没有什么爱
+如你的爱炽烈
+像也没有其他人
+可以给我更多爱
+我别无去处
+除非有你在
+任何时间,任何方式 
+你不能告诉我,这不值得为之尝试
+我不能抗拒,我别无所求
+我会为你而战
+我愿意为你而存在
+我会为你不顾一切
+我会为你而死
+你知道这都是真的
+我所做的一切
+皆是为了你
+</pre></td>
+<td width=10%></td></tr>";
 echo "</table>";
 ?>
