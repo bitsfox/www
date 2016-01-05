@@ -3,7 +3,7 @@
 echo "<pre>
 <a name=8259A></a>
 <center><font color=red size=5>8259A中断控制器</font></center>
-pdf文档的相关资料请参看：linux0.11kerlen <font color=blue>P222</font>(zathura)另一个资料：<a href=4-3.htm target=_blank>8259A中断控制器</a>
+pdf文档的相关资料请参看：linux0.11kerlen <font color=blue>P222</font> <font color=blue>P31</font>(zathura)另一个资料：<a href=4-3.htm target=_blank>8259A中断控制器</a>
 我已经顺利的完成了两级级联的8259A中断控制器的编程，目前编程主要涉及的是对两个芯片初始化、中断号的重新设定、工作方式和屏蔽中断请求的操作。
 对8259A进一步的测试还没有进行，以后有时间会慢慢测试的。有关8259A详细的资料请看pdf文档，这里仅记录下我在实际操作过程中对8259A的认识和理解
 下面所说都是针对两级级联的情况：
