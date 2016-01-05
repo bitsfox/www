@@ -17,12 +17,12 @@ echo "<a href=./boot.php#boot06 target=_blank>BIOS中断--并行口服务INT17H<
 echo "<a href=./boot.php#boot07 target=_blank>BIOS中断--时钟服务INT1AH</a><br><br>";
 echo "<a href=./boot.php#boot08 target=_blank>BIOS中断--直接系统服务</a><br><br>";
 echo "<font size=4>&nbsp;&nbsp;&nbsp;二、Linux 2.6内核的编译步骤及模块动态加载：<br><br>";
-echo "<a href=./modules_setup.php target=_blank>Linux 2.6内核的编译步骤及模块动态加载</a><br><br>";
+echo "<a href=./modules_setup.php target=_blank>Linux 2.6内核的编译步骤及模块动态加载</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=boot.php#kernel3 target=_blank>ASCII码表</a><br><br>";
 echo "<a href=./modules_call.php target=_blank>Linux 2.6版内核中通过模块获取sys_call_table地址的方法</a><br><br>";
 echo "<a href=./24_26.php target=_blank>2.4与2.6内核模块和驱动</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=boot.php#bochs target=_blank>bochs配置简介</a>";
 echo "&nbsp;&nbsp;&nbsp;&nbsp;<a href=boot.php#kernel2 target=_blank>定值检索</a><br><br>";
 echo "<font size=4>&nbsp;&nbsp;&nbsp;三、引导程序boot：<br><br>";
-echo "<a href=./boot.php target=_blank>引导程序boot的编写及生成</a><br><br>";
+echo "<a href=./boot.php target=_blank>引导程序boot的编写及生成</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=./bios_data.php target=_blank>aaa</a><br><br>";
 echo "</td><td width=50% valign=top>";
 echo "<font size=4>&nbsp;&nbsp;&nbsp;四、杂谈、心得:<br><br>";
 echo "<a href=./topic_dir.php target=_blank>linux0.11内核学习杂谈、心得</a><br><br>";
