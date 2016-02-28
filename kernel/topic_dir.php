@@ -8,5 +8,5 @@ echo "<a href=topic.php#lcall>远调用及常量定义心得</a><br><br>";
 echo "<a href=topic.php#task>关于任务切换和中断门、陷阱门的心得</a><br><br>";
 echo "<a href=topic.php#c_asm>关于汇编和c混编重定位的问题</a><br><br>";
 echo "<a href=topic.php#d_asm>用c函数编写内核代码的另一个意外</a><br><br>";
-
+echo "<a href=topic.php#d_page>启用分页机制后，任务切换出现的意外</a><br><br>";
 ?>
