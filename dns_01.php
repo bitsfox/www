@@ -10,6 +10,8 @@ echo "<a href='https://www.github.com' target=_blank>GitHub</a><br>";
 echo "<a href='https://bitbucket.org/' target=_blank>bitbucket</a><br>";
 echo "<a href='https://tybitsfox.kd.io/' target=_blank>我的koding主页</a><br>";
 echo "<a href='http://tybitsfox.ys168.com' target=_blank>我的永硕网盘</a><br>";
+echo "<a href='http://vdisk.weibo.com' target=_blank>我的微盘</a><br>";
+
 //$i=read_file("./aaaa.txt");
 //echo "<br><br><br><br> test:".$i."<br>";
 
