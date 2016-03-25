@@ -1,0 +1,54 @@
+关于vbox(virtualbox)加载个人内核测试的说明：
+1、img文件的转换，vbox默认不能加载img文件，但是他有个工具用于转换img文件到vdi或vhd格式的文件
+vboxmanage convertdd boot.img boot.vdi --format vdi(or vhd)
+其中vdi格式为virtualbox自有的一个格式规范，而vhd则为微软公布的一个规范，该规范可查阅。我对硬盘
+的设置将参照vhd格式，之前我的bochrc中对硬盘参数的设置太随意（cylinder 20,head 16,sector 63）不
+符合vbox认可的各种规范，这也导致了我的初期测试进行不下去。
+vhd格式中规定的参数格式为：
+Dynamic Disk header fields 
+Copy of hard disk footer (512 bytes) 
+Dynamic Disk Header (1024 bytes) 
+BAT (Block Allocation table) 
+Data Block 1 
+Data Block 2 
+…
+Data Block n 
+Hard Disk Footer (512 bytes) 
+
+Hard disk footer fields 	Size (bytes) 
+
+Cookie 						8 
+Features					4 
+File Format Version			4 
+Data Offset					8 
+Time Stamp					4 
+Creator Application			4 
+Creator Version				4 
+Creator Host OS				4 
+Original Size				8 
+Current Size				8 
+Disk Geometry				4 
+Disk Type					4 
+Checksum					4 
+Unique Id					16 
+Saved State					1 
+Reserved					427
+其中，涉及硬盘参数设置的Disk Geometry的含义为：
+Disk Geometry 
+This field stores the cylinder, heads, and sectors per track value for the hard 
+disk.  
+Disk Geometry field 		Size (bytes) 
+Cylinder					2 
+Heads						1 
+Sectors per track/cylinder 	1 
+通过测试，发现其柱面数的存储格式为大头（big endding）
+另外，这里的参数设定不能简单的通过修改vhd文件实现，因为这些都是vhd规范按照你设定的
+硬盘大小来自动决定的。
+
+
+  
+ 
+
+ 
+
+
