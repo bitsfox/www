@@ -304,6 +304,11 @@ ctags:
 新增加的声明或者变量无法检索到。
 把光标定位到某一函数或变量名上, 按下 Ctar + ], vim就可以自动切换到该函数或变量的定义处!
 返回只需要按下Ctrl + T .
+ctags --list-maps 可以查看默认支持的文件类型。如果有其默认不支持的文件类型，可使用下列命令添加：
+ctags -R --langmap=Asm:+.inc
+其中加号表示在默认文件类型上追加新的文件类型，没有加号的话仅会支持你添加的类型。
+
+
 
 TagList 插件:
 下载地址：<a href=http://www.vim.org/scripts/script.php?script_id=273 target=_blank>http://www.vim.org/scripts/script.php?script_id=273</a>
