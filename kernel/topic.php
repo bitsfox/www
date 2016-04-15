@@ -653,4 +653,43 @@ page not present 页不存在!,并且cr2中存储的地址为0x40，cr3:0。查�
 
 </font></pre>
 ";
+echo "<a name=d_label></a><center><font color=red size=5>AT&T语法中对标号的释义</font></center>
+<pre><font size=3>
+关于call和jmp对标号（函数入口地址）的操作：
+正常情况下，AT&T的对标号的使用规则为：
+--假定：
+cls：
+    push %es 
+    ... 
+--假定结束  
+operator \$cls 是取标号的地址
+operator cls  是取该地址所存储的值
+当operator 是move指令时，上述描述是正确的，但是有些指令并非如此，
+例如当operator是leal时，此时的写法就是 leal cls,%eax，这里eax中将取得
+cls的地址偏移。
+同样的对于call和jmp操作，其对标号含义的处理也与move指令不同，按照move指令
+对标号的释义，call和jmp都应该是call \$cls，jmp \$cls，但是这种写法确是错误的
+编译时会给出参数类型不匹配的提示，正确的做法是 call cls，jmp cls 
+也就是call和jmp指令对标号的释义等同于leal指令，那么\$cls这种写法对call和jmp 
+是否能被解释为地址偏移呢？考虑到远跳转（调用）的做法，我测试了：
+call $8,\$cls，jmp $8,\$cls
+这种写法是正确的，而：
+call $8,cls，jmp $8,cls
+这种写法在编译时又提示为操作类型不匹配！！
+综上所述：我感觉AT&T语法在标号的处理上有些不统一，当然了，规定就是规定，你按
+照这些既定的规定做就可以了，但确实需要注意！
+
+
+
+
+
+
+
+
+
+
+
+
+</font></pre>
+";
 ?>
