@@ -15,9 +15,21 @@ div{text-align:center;}
 {background-color:#F3F3F3;width:100%;margin:0 auto;padding:0px 0;}
 </style>
 <?php
+function get_full()
+{
+	$str=__FILE__;
+	$i=strlen($str)-strlen("login.php");
+	$st=substr($str,0,$i);
+	define("FULL_PATH",$st);
+}
+get_full();
+?>
+<?php
 header("Content-Type:text/html;charset=UTF-8");
 session_start();
-require_once("interface/main.php");
+$str=constant("FULL_PATH")."interface/main.php";
+//require_once("interface/main.php");
+require_once($str);
 if($_SESSION['leftcnt'] < 0)
 {
 //	header("Refresh:2 url=./index.php");

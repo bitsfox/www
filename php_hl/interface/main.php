@@ -1,14 +1,10 @@
 <?php
-//session_start();
+session_start();
 //确保包含了全局变量的定义文件
-$ifile	=	"./config/main.php";
-if((!is_array($tybitsfox)) && is_file($ifile))
-	require_once($ifile);
-else
-	die("error!!");
-//包含接口的定义文件
-require_once("./include/inter_def.php");
-
+$ifile=constant("FULL_PATH")."config/main.php";
+require_once($ifile);
+$st=constant("FULL_PATH")."include/inter_def.php";
+require_once($st);
 
 //{{{ class my_init implements inter_base_def
 class my_init implements inter_base_def
