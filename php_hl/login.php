@@ -42,9 +42,9 @@ if($_SESSION['logok'] == $tybitsfox['corename'])
 	die();
 }
 ?>
-<html><head><title>山东汇力污染源监控平台</title></head><body>
+<html><head><title><?php echo $tybitsfox['title'];?></title></head><body>
 <form name="login" method="post" action="login.php">
-<div><h2>山东汇力公司污染源监控平台登录</h2></div>
+<div><h2><?php echo $tybitsfox['logmsg']?></h2></div>
 <div class='ass_class'>
 <div id='div1'>
 <ul><li id='da1'>用户名：</li><li id='da2'><input type='text' name='user' size=30 /></li></ul>

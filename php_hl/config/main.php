@@ -12,6 +12,12 @@
 	$tybitsfox['www_path']		=	"/var/www";
 	$tybitsfox['version']		=	"0.0.0.1";
 	$tybitsfox['corename']		=	"tiny";
+//山东汇力公司污染源监控平台登录
+	$tybitsfox['logmsg']		=	"shdl_logmsg";
+//山东汇力公司污染源监控平台	
+	$tybitsfox['title']			=	"sdhl_title"; 
+//山东汇力公司污染源监控用户注册
+	$tybitsfox['regmsg']		=	"sdhl_regmsg";	
 //数据库信息：
 	$database['host']			=	"localhost";
 	$database['type']			=	"MYSQL";
