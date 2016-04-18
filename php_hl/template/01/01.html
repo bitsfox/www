@@ -1,0 +1,40 @@
+<script type="text/javascript">
+function unreg()
+{
+	location.href="template/t01/login1.php";
+}
+</script>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<?php
+session_start();
+if(!defined("FULL_PATH"))
+{
+	$s1=dirname(__FILE__);
+	$s2=strstr($s1,"php_hl");
+	$i=strlen($s1)-strlen($s2);
+	$s2=substr($s1,0,$i)."php_hl/";
+	define("FULL_PATH",$s2);
+}
+$str="<link href='".constant('FULL_PATH')."css/base.css rel='stylesheet' type='text/css' media='all'/>";
+echo $str;
+?>
+<link href="css/base.css" rel="stylesheet" type="text/css" media="all" />
+<title>aaaa</title>
+</head>
+<body>
+<div id="container_id">
+    <div id="header_id"></div>
+    <div id="menu_id">
+    <ul>
+<?php
+    $cnt=count($menuitem);
+    for($i=0;$i<$cnt;$i++)
+    {
+        echo "<li><a href='".$menulnk[$i]."'>".$menuitem[$i]."</a><li><li class='menudiv_class'></li>";
+    }
+	$st="<li>&nbsp;&nbsp;&nbsp;&nbsp;<font color=red>欢迎 </font>[ <a href='javascript:void(0)' onclick ='unreg()' />".$_SESSION['user']."</a> ]</li><li class='menudiv_class'></li>";
+	echo $st;
+?>
+    </ul></div><div id="clear_id"></div>

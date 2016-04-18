@@ -16,22 +16,25 @@ div{text-align:center;}
 </style>
 <?php
 session_start();
-if(!defined(constant("FULL_PATH")))
+if(!isset($_SESSION['leftcnt']))
+	$_SESSION['leftcnt']=4;
+else
+{
+	if($_SESSION['leftcnt']<=0)
+		die("fuck you~");
+}
+if(!defined("FULL_PATH"))
 {
 	$s1=dirname(__FILE__);
 	$s2=strstr($s1,"php_hl");
-	$i=strlen($s1)-strlen($s2)+7;
-	$s2=substr($s1,0,$i);
+	$i=strlen($s1)-strlen($s2);
+	$s2=substr($s1,0,$i)."php_hl/";
 	define("FULL_PATH",$s2);
 }
-$st="/var/www";
-$re=& Registry::getInstance();
-$re->set('AAAAS',$st);
-//$re=& Registry::getInstance();
-//$st1=& $re->get('AAAAS');
 $str=constant("FULL_PATH")."config/main.php";
-echo $str;
-die();
+require_once($str);
+$str=constant("FULL_PATH")."interface/main.php";
+require_once($str);
 ?>
 <?php
 header("Content-Type:text/html;charset=UTF-8");
@@ -49,12 +52,48 @@ global $tybitsfox;
 <div id='div1'>
 <ul><li id='da1'>用户名：</li><li id='da2'><input type='text' name='user' size=30 /></li></ul>
 <ul><li id='da1'>密码：</li><li id='da2'><input type='password' name='password' size=30 /></li></ul>
-<ul><li id='da1'>再次输入密码：</li><li id='da2'><input type='password' name='password' size=30 /></li></ul>
+<ul><li id='da1'>再次输入密码：</li><li id='da2'><input type='password' name='password1' size=30 /></li></ul>
 <ul><li id='da3'><input type='submit' name='submit' value='确定'/></li></ul>
 </div></div>
 
 </body></html>
-
+<?php
+if($_POST['submit'] == true)
+{
+	$_SESSION['leftcnt']-=1;
+	$a=$_POST['user'];$b=$_POST['password'];$c=$_POST['password1'];
+	$len=strlen($a);
+	if(($len<3) || ($len>15))
+	{
+		die("<div>用户名输入有误</div>");
+	}
+	$len=strlen($b);
+	if(($len<3) || ($len>15))
+	{
+		die("<div>密码输入有误</div>");
+	}
+	if(strcmp($b,$c) !=0)
+	{
+		die("<div>两次输入的密码不一致</div>");
+	}
+	if(_reg_db($_POST['user'],$_POST['password']) != 0)
+	{
+		die("<div>该用户已存在，请另选用户名</div>");
+	}
+	else
+	{
+		$_SESSION['logok'] = $tybitsfox['corename'];
+		$_SESSION['leftcnt'] = 4;	$_SESSION['user']	= $_POST['user'];
+		echo "<div>恭喜你注册成功！系统3秒钟后自动跳转</div>";
+//		header("Refresh:3 url=../../index.php");
+	}
+}
+else
+{
+	if(!isset($_SESSION['leftcnt']))
+		$_SESSION['leftcnt']=4;
+}
+?>
 
 
 

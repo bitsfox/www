@@ -1,5 +1,13 @@
 <?php
 session_start();
+if(!defined("FULL_PATH"))
+{
+	$s1=dirname(__FILE__);
+	$s2=strstr($s1,"php_hl");
+	$i=strlen($s1)-strlen($s2);
+	$s2=substr($s1,0,$i)."php_hl/";
+	define("FULL_PATH",$s2);
+}
 //确保包含了全局变量的定义文件
 $ifile=constant("FULL_PATH")."config/main.php";
 require_once($ifile);
@@ -107,7 +115,29 @@ function _verf_db($u,$p)
 //{{{function _reg_db($u,$p)
 function _reg_db($u,$p)
 {
-
+	global $database;
+	$i=0;
+	$conn=MYSQL_connect($database['host'],$database['user'],$database['pwd']) or die("connect die: ".MYSQL_error());
+	MYSQL_select_db($database['dbname']) or die("select_db die: ".MYSQL_error());
+	$result=mysql_query($database['logstr'],$conn) or die("query die: ".MYSQL_error());
+	while($rows=mysql_fetch_row($result))
+	{
+		if($rows[0] == $u)
+		{
+			$i=1;break;
+		}
+	}
+	mysql_free_result($result);
+	if($i !=0 )
+	{
+		mysql_close($conn);
+		return $i;
+	}
+	$str=sprintf($database['regstr'],$u,$p);
+	$result=mysql_query($str,$conn) or die("query die again: ".mysql_error());
+//	mysql_free_result($res); mysql_query返回值不一定都是资源型的（查询时是），此时的写入返回值是bool型的，所以不能（也不用）释放
+	mysql_close($conn);
+	return 0;
 }
 
 ?>
