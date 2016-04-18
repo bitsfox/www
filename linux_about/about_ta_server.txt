@@ -11,6 +11,10 @@
 根据测试结果，用户名和密码必须紧跟在相关参数后，不能有空格。但是密码可以不输入：
 <font color=red size=3>mysql -uroot -p</font>
 这样会比较安全的输入密码。
+<font color='#0000ff' size=3>2016-4-18添加，关于新增用户的说明：
+create user 'sdhl'@'localhost' identified by 'sdhl2016';
+grant all on env2016.* to 'sdhl'@'localhost';
+以上两条命令就是建立一个新用户sdhl并设置其密码，然后将数据库env2016的所有操作权限赋予该用户。</font>
 2、php和mysql乱码的问题，这个问题相当普遍，但是只要能做到php文件所用编码和mysql编码一致就没有这些问题了。
 我的php一直使用utf-8，所以，在不更改默认mysql的编码设置时会有乱码产生的。这里有两种方式可以避免：
 （1）在php文件中需要对数据库进行操作时加入：
