@@ -85,7 +85,7 @@ if($_POST['submit'] == true)
 		$_SESSION['logok'] = $tybitsfox['corename'];
 		$_SESSION['leftcnt'] = 4;	$_SESSION['user']	= $_POST['user'];
 		echo "<div>恭喜你注册成功！系统3秒钟后自动跳转</div>";
-//		header("Refresh:3 url=../../index.php");
+		header("Refresh:3 url=../../index.php");
 	}
 }
 else
