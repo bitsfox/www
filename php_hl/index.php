@@ -12,16 +12,9 @@ if(!defined("FULL_PATH"))
 $str=constant("FULL_PATH")."interface/main.php";
 require_once($str);
 _verf_fox();
-/*echo "<a href = 'javascript:void(0)' onclick = 'unreg()'>注销</a>";
-$obj=new my_init();
-$ary=array($obj->get_base_dir(),$obj->get_conf_dir(),$obj->get_temp_dir(),$obj->get_incl_dir(),$obj->get_core_dir(),$obj->get_intr_dir());
-$str=implode(",",$ary);
-echo $str; */
 global $tybitsfox;
 $str=constant("FULL_PATH")."template/01/01.html";
 include_once($str);
-//$st=constant("FULL_PATH")."template/01/m01.html";
-//include_once($st);
 switch($arun[0])
 {
 	case 0:
@@ -33,7 +26,6 @@ switch($arun[0])
 	case 3:
 		break;
 };
-//echo "</div></body></html>";
 ?>
 <script type="text/javascript">
 function unreg()
