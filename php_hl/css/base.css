@@ -25,7 +25,7 @@ a:hover {color:blue;}
 .menudiv_class
 {width:1px;height:28px;background-color:#999;}
 #left_id
-{background-color:#F3F3F3;width:20%;height:600px;margin:0;padding:10px 5px;float:left;}
+{background-color:#F3F3F3;width:20%;height:500px;margin:0;padding:10px 5px;float:left;}
 .shadow_class
 {border:1px #E0E0E0 solid;box-shadow:5px 5px 8px #636363;}
 #right_id

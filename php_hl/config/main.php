@@ -41,4 +41,7 @@
 	$menulnk[3]				=	"test1.php";
 	$menulnk[4]				=	"test1.php";
 	$menulnk[5]				=	"test1.php";
+//
+	$arun[0]				=	0;
+	$arun[1]				=	0;	
 ?>

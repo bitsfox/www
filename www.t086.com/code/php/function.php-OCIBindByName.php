@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta content="text/html; charset=gb2312" http-equiv=Content-Type>
+<title>PHP - 函数:OCIBindByName()</title>
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+<div id="top"><a href="http://www.itlearner.com">IT学习者</a> -&gt; <a href="../">技术文档</a> -&gt; <a href="../php/">PHP 完全中文手册</a>
+</div>
+
+
+
+
+<div align=center>
+<table border=0 width=70%><tr>
+<td valign=middle width=20><hr size=1 width=100%></td>
+<td valign=middle nowrap><font color=e06060 size=+2><b>函数:OCIBindByName()</b></font></td>
+<td valign=middle width=100%><hr size=1 width=100%></td>
+</tr></table></div><p>
+<div align=center><table border=0 width=70%><tr><td>
+<div align=right><a href="group.php-38.php" alt="group.php?38">Oracle 8 数据库函数库</a></div><br><h1><font color=0000bb>OCIBindByName</font></h1><p>
+让动态 SQL 可使用 PHP 变量。<p>
+<font color=ff8000>语法:</font> <b>boolean OCIBindByName(int stmt, string ph_name, mixed &variable, int length, int [type]);</b><p>
+<font color=ff8000>返回值:</font> 布尔值<p>
+<font color=ff8000>函数种类:</font> 数据库功能<p>
+<p><table border=0 cellspacing=0 cellpadding=0 width=100% height=1><tr><td height=1 bgcolor=c0c0c0><table border=0 cellspacing=0 cellpadding=0><tr><td></td></tr></table></td></tr>
+<tr><td align=left><font color=ff8000>内容说明</font></td></tr></table><p>本函数用来定义指定的 PHP 变量，使其能供动态的 SQL 指令 (Oracle Placeholder) 使用。在大小写的问题上要注意一下，因为 Oracle 数据库中的字段名称其实都是大写的名字。参数 stmt 是经过 Oracle 解析 (OCIParse) 后的字符串指针。参数 ph_name 即为欲供动态 SQL 指令所使用的变量。参数 variable 前面一定要加 & 符号，表 PHP 变量位址。参数 length 为资料的长度，若设为 -1 则使用指定的 variable 资料最大值。参数 type 可省略，其值有 OCI_B_FILE (二进位文件)、OCI_B_CFILE (文字文件)、OCI_B_CLOB (文字 LOB)、OCI_B_BLOB (位 LOB) 及 OCI_B_ROWID (ROWID) 等数种。治募注意的是欲使用 Oracle 8 中特有的新资料类型 LOB/ROWID/BFILE 等时，需要先执行 <a href="function.php-OCINewDescriptor.php" alt="function.php?OCINewDescriptor">OCINewDescriptor()</a> 函数，同时必须要将 length 参数设成 -1。执行本函数成功则返回 true 值。<p>
+<p><table border=0 cellspacing=0 cellpadding=0 width=100% height=1><tr><td height=1 bgcolor=c0c0c0><table border=0 cellspacing=0 cellpadding=0><tr><td></td></tr></table></td></tr>
+<tr><td align=left><font color=ff8000>使用范例</font></td></tr></table><p><font color="#000000">
+这个范例是&nbsp;thies@digicol.de&nbsp;所提出的，它加入三笔资料到&nbsp;emp&nbsp;资料表中，并使用&nbsp;ROWID&nbsp;来更新资料。<br><br><font color="#0000BB">&lt;?php<br>$conn&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000BB">OCILogon</font><font color="#007700">(</font><font color="#DD0000">"scott"</font><font color="#007700">,&nbsp;</font><font color="#DD0000">"tiger"</font><font color="#007700">);<br></font><font color="#0000BB">$stmt&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000BB">OCIParse</font><font color="#007700">(</font><font color="#0000BB">$conn</font><font color="#007700">,</font><font color="#DD0000">"insert&nbsp;into&nbsp;emp&nbsp;(empno,&nbsp;ename)&nbsp;"</font><font color="#007700">.</font><font color="#DD0000">"values&nbsp;(:empno,:ename)&nbsp;"</font><font color="#007700">.</font><font color="#DD0000">"returning&nbsp;ROWID&nbsp;into&nbsp;:rid"</font><font color="#007700">);<br></font><font color="#0000BB">$data&nbsp;</font><font color="#007700">=&nbsp;array(</font><font color="#0000BB">1111&nbsp;</font><font color="#007700">=&gt;&nbsp;</font><font color="#DD0000">"Larry"</font><font color="#007700">,&nbsp;</font><font color="#0000BB">2222&nbsp;</font><font color="#007700">=&gt;&nbsp;</font><font color="#DD0000">"Bill"</font><font color="#007700">,&nbsp;</font><font color="#0000BB">3333&nbsp;</font><font color="#007700">=&gt;&nbsp;</font><font color="#DD0000">"Jim"</font><font color="#007700">);<br></font><font color="#0000BB">$rowid&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000BB">OCINewDescriptor</font><font color="#007700">(</font><font color="#0000BB">$conn</font><font color="#007700">,&nbsp;</font><font color="#0000BB">OCI_D_ROWID</font><font color="#007700">);<br></font><font color="#0000BB">OCIBindByName</font><font color="#007700">(</font><font color="#0000BB">$stmt</font><font color="#007700">,&nbsp;</font><font color="#DD0000">":empno"</font><font color="#007700">,&nbsp;&amp;</font><font color="#0000BB">$empno</font><font color="#007700">,&nbsp;</font><font color="#0000BB">32</font><font color="#007700">);<br></font><font color="#0000BB">OCIBindByName</font><font color="#007700">(</font><font color="#0000BB">$stmt</font><font color="#007700">,&nbsp;</font><font color="#DD0000">":ename"</font><font color="#007700">,&nbsp;&amp;</font><font color="#0000BB">$ename</font><font color="#007700">,&nbsp;</font><font color="#0000BB">32</font><font color="#007700">);<br></font><font color="#0000BB">OCIBindByName</font><font color="#007700">(</font><font color="#0000BB">$stmt</font><font color="#007700">,&nbsp;</font><font color="#DD0000">":rid"</font><font color="#007700">,&nbsp;&amp;</font><font color="#0000BB">$rowid</font><font color="#007700">,&nbsp;-</font><font color="#0000BB">1</font><font color="#007700">,&nbsp;</font><font color="#0000BB">OCI_B_ROWID</font><font color="#007700">);<br></font><font color="#0000BB">$update&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000BB">OCIParse</font><font color="#007700">(</font><font color="#0000BB">$conn</font><font color="#007700">,&nbsp;</font><font color="#DD0000">"update&nbsp;emp&nbsp;set&nbsp;sal&nbsp;=&nbsp;:sal&nbsp;where&nbsp;ROWID&nbsp;=&nbsp;:rid"</font><font color="#007700">);<br></font><font color="#0000BB">OCIBindByName</font><font color="#007700">(</font><font color="#0000BB">$update</font><font color="#007700">,&nbsp;</font><font color="#DD0000">":rid"</font><font color="#007700">,&nbsp;&amp;</font><font color="#0000BB">$rowid</font><font color="#007700">,&nbsp;-</font><font color="#0000BB">1</font><font color="#007700">,&nbsp;</font><font color="#0000BB">OCI_B_ROWID</font><font color="#007700">);<br></font><font color="#0000BB">OCIBindByName</font><font color="#007700">(</font><font color="#0000BB">$update</font><font color="#007700">,&nbsp;</font><font color="#DD0000">":sal"</font><font color="#007700">,&nbsp;&amp;</font><font color="#0000BB">$sal</font><font color="#007700">,&nbsp;</font><font color="#0000BB">32</font><font color="#007700">);<br></font><font color="#0000BB">$sal&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000BB">10000</font><font color="#007700">;<br>while&nbsp;(list(</font><font color="#0000BB">$empno</font><font color="#007700">,&nbsp;</font><font color="#0000BB">$ename</font><font color="#007700">)&nbsp;=&nbsp;</font><font color="#0000BB">each</font><font color="#007700">(</font><font color="#0000BB">$data</font><font color="#007700">))&nbsp;{<br>&nbsp;&nbsp;</font><font color="#0000BB">OCIExecute</font><font color="#007700">(</font><font color="#0000BB">$stmt</font><font color="#007700">);<br>&nbsp;&nbsp;</font><font color="#0000BB">OCIExecute</font><font color="#007700">(</font><font color="#0000BB">$update</font><font color="#007700">);<br>}&nbsp;<br></font><font color="#0000BB">$rowid</font><font color="#007700">-&gt;</font><font color="#0000BB">free</font><font color="#007700">();<br></font><font color="#0000BB">OCIFreeStatement</font><font color="#007700">(</font><font color="#0000BB">$update</font><font color="#007700">);<br></font><font color="#0000BB">OCIFreeStatement</font><font color="#007700">(</font><font color="#0000BB">$stmt</font><font color="#007700">);<br></font><font color="#0000BB">$stmt&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000BB">OCIParse</font><font color="#007700">(</font><font color="#0000BB">$conn</font><font color="#007700">,&nbsp;</font><font color="#DD0000">"select&nbsp;*&nbsp;from&nbsp;emp&nbsp;where&nbsp;empno&nbsp;in&nbsp;(1111,2222,3333)"</font><font color="#007700">);<br></font><font color="#0000BB">OCIExecute</font><font color="#007700">(</font><font color="#0000BB">$stmt</font><font color="#007700">);<br>while&nbsp;(</font><font color="#0000BB">OCIFetchInto</font><font color="#007700">(</font><font color="#0000BB">$stmt</font><font color="#007700">,&nbsp;&amp;</font><font color="#0000BB">$arr</font><font color="#007700">,&nbsp;</font><font color="#0000BB">OCI_ASSOC</font><font color="#007700">))&nbsp;{<br>&nbsp;&nbsp;</font><font color="#0000BB">var_dump</font><font color="#007700">(</font><font color="#0000BB">$arr</font><font color="#007700">);<br>}<br></font><font color="#0000BB">OCIFreeStatement</font><font color="#007700">(</font><font color="#0000BB">$stmt</font><font color="#007700">);<br></font><font color="#FF8000">/*&nbsp;删除刚加在&nbsp;emp&nbsp;资料表中的三笔资料&nbsp;*/<br></font><font color="#0000BB">$stmt&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000BB">OCIParse</font><font color="#007700">(</font><font color="#0000BB">$conn</font><font color="#007700">,&nbsp;</font><font color="#DD0000">"delete&nbsp;from&nbsp;emp&nbsp;where&nbsp;empno&nbsp;in&nbsp;(1111,2222,3333)"</font><font color="#007700">);<br></font><font color="#0000BB">OCIExecute</font><font color="#007700">(</font><font color="#0000BB">$stmt</font><font color="#007700">);<br></font><font color="#0000BB">OCIFreeStatement</font><font color="#007700">(</font><font color="#0000BB">$stmt</font><font color="#007700">);<br></font><font color="#0000BB">OCILogoff</font><font color="#007700">(</font><font color="#0000BB">$conn</font><font color="#007700">);<br></font><font color="#0000BB">?&gt;</font>
+</font>
+<p><hr size=1><br><p>
+</td></tr></table></div>
+<p>
+<div align=center>
+<table border=0><tr><td>[  <a href="function.php-OCIDefineByName.php" alt="function.php?OCIDefineByName">上一页</a> 
+      </td>
+      <td>　<a href="../php/" alt="PHP">PHP中文手册</a>　</td>
+      <td> <a href="function.php-OCILogon.php" alt="function.php?OCILogon">下一页</a>  ]</td></tr></table>
+
+</div><p>
+
+<div align="center">
+    <p><a href="../php/">PHP 首页</a> | <a href="guide.php.php">PHP 导读</a> | <a href="4.php.php">PHP 
+      函数库</a> | <a href="funcindex.php.php">PHP 函数索引</a> | <a href="5.php.php">PHP 
+      范例程序</a></p>
+	<script type="text/javascript" src="/js/code.js"></script>
+</div>
+</body>
+</html>
