@@ -138,7 +138,71 @@ function _reg_db($u,$p)
 //	mysql_free_result($res); mysql_query返回值不一定都是资源型的（查询时是），此时的写入返回值是bool型的，所以不能（也不用）释放
 	mysql_close($conn);
 	return 0;
-}
+}//}}}
+//{{{ class tb_wsc implements tab_wushuichang
+class tb_wsc implements tab_wushuichang
+{
+	private $ay,$cy;
+	private $dy;
+	public function __construct()
+	{
+		$this->ay=array("编号","单位名称","COD","氨氮","累计流量");
+		$this->cy=array("监测值","标准值");
+		//only for test!
+		$ey=array("1","清源水务一污","入口","164","--","23.10","--","--");
+		array_push($this->dy,$ey);
+		$ey=array("1","清源水务一污","出口","22","50","0.42","8","8744659");
+		array_push($this->dy,$ey);
+		$ey=array("2","康龙排水","入口","398","--","46.83","--","--");
+		array_push($this->dy,$ey);
+		$ey=array("2","康龙排水","出口","38","50","1.77","5","5131181");
+		array_push($this->dy,$ey);
+	}
+	public function show_header()
+	{
+		$s1="<table width=97% class='imagetable'><tr>";
+		$s2="<th width=10% rowspan=2 align=center>".$this->ay[0]."</th>";
+		$s1.=$s2;
+		$s2="<th width=30% rowspan=2 align=center>".$this->ay[1]."</th>";
+		$s1.=$s2;
+		$s2="<th width=20% colspan=2 align=center>".$this->ay[2]."</th>";
+		$s1.=$s2;
+		$s2="<th width=20% colspan=2 align=center>".$this->ay[3]."</th>";
+		$s1.=$s2;
+		$s2="<th width=20% rowspan=2 align=center>".$this->ay[4]."</th></tr><tr>";
+		$s1.=$s2;
+		$s2="<th width=10% align=center>".$this->cy[0]."</th>";
+		$s1.=$s2;
+		$s2="<th width=10% align=center>".$this->cy[1]."</th>";
+		$s1.=$s2;
+		$s2="<th width=10% align=center>".$this->cy[0]."</th>";
+		$s1.=$s2;
+		$s2="<th width=10% align=center>".$this->cy[1]."</th></tr>";
+		$s1.=$s2;
+		echo $s1;
+	}
+	public function show_body()
+	{
+		$i=count($this->dy);
+		echo "count is:".$i;
+		return;
+		for($j=0;$j<$i;$j++)
+		{
+			$fy=$this->dy[$j++];
+			$s1="<tr><td width=%10 rowspan=2>".$fy[0]."</td><td width=25% rowspan=2>".$fy[1]."</td>";
+			$s1.="<td width=5%>".$fy[2]."</td><td width=10%>".$fy[3]."</td><td width=10%>".$fy[4]."</td>";
+			$s1.="<td width=10%>".$fy[5]."</td><td width=10%>".$fy[6]."</td><td width=20%>".$fy[7]."</td></tr>";
+			$fy=$this->dy[$j];
+			$s1.="<tr><td width=5%>".$fy[2]."</td><td width=10%>".$fy[3]."</td><td width=10%>".$fy[4]."</td>";
+			$s1.="<td width=10%>".$fy[5]."</td><td width=10%>".$fy[6]."</td><td width=20%>".$fy[7]."</td></tr>";
+			echo $s1;
+		}
+	}
+	public function show_tail()
+	{echo "</table>";}
+}//}}}
+
+
 
 ?>
 

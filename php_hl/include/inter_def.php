@@ -21,7 +21,13 @@ interface sql_def
 	public function query_db();//数据库操作函数
 	public function close_db();//关闭数据库
 }
-
+//下面的接口定义了污水厂的显示界面实现
+interface tab_wushuichang
+{
+	public function show_header();//表头的显示
+	public function show_body();//表内容的显示
+	public function show_tail();//表尾的显示
+}
 
 ?>
 

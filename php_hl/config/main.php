@@ -35,12 +35,12 @@
 	$menuitem[3]			=	"废水明晰";
 	$menuitem[4]			=	"废气明晰";
 	$menuitem[5]			=	"污水厂明晰";
-	$menulnk[0]				=	"http://5566.org";
-	$menulnk[1]				=	"test1.php";
-	$menulnk[2]				=	"test1.php";
-	$menulnk[3]				=	"test1.php";
-	$menulnk[4]				=	"test1.php";
-	$menulnk[5]				=	"test1.php";
+	$menulnk[0]				=	"index.php?pgcnt=".base64_encode("template/01/m01.html");
+	$menulnk[1]				=	"index.php?pgcnt=".base64_encode("template/01/m02.html");
+	$menulnk[2]				=	"index.php?pgcnt=".base64_encode("template/01/m03.html");
+	$menulnk[3]				=	"index.php?pgcnt=".base64_encode("template/01/m04.html");
+	$menulnk[4]				=	"index.php?pgcnt=".base64_encode("template/01/m05.html");
+	$menulnk[5]				=	"index.php?pgcnt=".base64_encode("template/01/m06.html");
 //
 	$arun[0]				=	0;
 	$arun[1]				=	0;	

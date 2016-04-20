@@ -15,17 +15,16 @@ _verf_fox();
 global $tybitsfox;
 $str=constant("FULL_PATH")."template/01/01.html";
 include_once($str);
-switch($arun[0])
+if($_GET['pgcnt'] == NULL)
 {
-	case 0:
-		$str=constant("FULL_PATH")."template/01/m01.html";
-		require_once($str);
-		break;
-	case 1:
-	case 2:
-	case 3:
-		break;
-};
+	echo "</div></body></html>";
+}	
+else
+{
+	$st=str_replace(' ','+',$_GET['pgcnt']);
+	$str=constant("FULL_PATH").base64_decode($st);
+	require_once($str);
+}
 ?>
 <script type="text/javascript">
 function unreg()
