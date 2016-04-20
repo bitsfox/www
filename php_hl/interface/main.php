@@ -143,7 +143,7 @@ function _reg_db($u,$p)
 class tb_wsc implements tab_wushuichang
 {
 	private $ay,$cy;
-	private $dy;
+	private $dy=array();
 	public function __construct()
 	{
 		$this->ay=array("编号","单位名称","COD","氨氮","累计流量");
@@ -151,11 +151,11 @@ class tb_wsc implements tab_wushuichang
 		//only for test!
 		$ey=array("1","清源水务一污","入口","164","--","23.10","--","--");
 		array_push($this->dy,$ey);
-		$ey=array("1","清源水务一污","出口","22","50","0.42","8","8744659");
+		$ey=array("2","清源水务一污","出口","22","50","0.42","8","8744659");
 		array_push($this->dy,$ey);
-		$ey=array("2","康龙排水","入口","398","--","46.83","--","--");
+		$ey=array("3","康龙排水","入口","398","--","46.83","--","--");
 		array_push($this->dy,$ey);
-		$ey=array("2","康龙排水","出口","38","50","1.77","5","5131181");
+		$ey=array("4","康龙排水","出口","38","50","1.77","5","5131181");
 		array_push($this->dy,$ey);
 	}
 	public function show_header()
@@ -183,19 +183,17 @@ class tb_wsc implements tab_wushuichang
 	}
 	public function show_body()
 	{
-		$i=count($this->dy);
-		echo "count is:".$i;
-		return;
-		for($j=0;$j<$i;$j++)
+		for($k=0;$k<5;$k++)
 		{
-			$fy=$this->dy[$j++];
-			$s1="<tr><td width=%10 rowspan=2>".$fy[0]."</td><td width=25% rowspan=2>".$fy[1]."</td>";
-			$s1.="<td width=5%>".$fy[2]."</td><td width=10%>".$fy[3]."</td><td width=10%>".$fy[4]."</td>";
-			$s1.="<td width=10%>".$fy[5]."</td><td width=10%>".$fy[6]."</td><td width=20%>".$fy[7]."</td></tr>";
-			$fy=$this->dy[$j];
-			$s1.="<tr><td width=5%>".$fy[2]."</td><td width=10%>".$fy[3]."</td><td width=10%>".$fy[4]."</td>";
-			$s1.="<td width=10%>".$fy[5]."</td><td width=10%>".$fy[6]."</td><td width=20%>".$fy[7]."</td></tr>";
-			echo $s1;
+			$i=count($this->dy);
+			for($j=0;$j<$i;$j++)
+			{
+				$fy=$this->dy[$j];
+				$s1="<tr><td width=%10>".$fy[0]."</td><td width=30%>".$fy[1].$fy[2]."</td>";
+				$s1.="<td width=10%>".$fy[3]."</td><td width=10%>".$fy[4]."</td>";
+				$s1.="<td width=10%>".$fy[5]."</td><td width=10%>".$fy[6]."</td><td width=20%>".$fy[7]."</td></tr>";
+				echo $s1;
+			}
 		}
 	}
 	public function show_tail()
