@@ -352,6 +352,32 @@ class tb_fq implements tab_show
 	public function show_tail()
 	{echo "</table>";}
 }//}}}
+//{{{class tb_left implements tab_show
+class tb_left implements tab_show
+{
+	private $ay,$cy;
+	private $dy;
+	public function __construct()
+	{
+		$ay=array("市直","泰山区","岱岳区","东平县","宁阳县","肥城市","新泰市");//控制区域
+		$cy=array("国控","省控","市控","县控");//控制级别
+		$dy=array("小时值","日均值");//数据类型
+	}
+	public function show_header()
+	{
+		echo "<br>";
+	}
+	public function show_body()
+	{}
+	public function show_tail()
+	{}
+}
+
+
+
+
+
+
 ?>
 
 

@@ -17,11 +17,16 @@ if(!defined("FULL_PATH"))
 	$s2=substr($s1,0,$i)."php_hl/";
 	define("FULL_PATH",$s2);
 }
-$str="<link href='".constant('FULL_PATH')."css/base.css rel='stylesheet' type='text/css' media='all'/>";
+$str="<link href='css/base.css' rel='stylesheet' type='text/css' media='all'/>";
+echo $str;
+$str=constant("FULL_PATH")."config/main.php";
+require_once($str);
+global $tybitsfox;
+$str="<title>".$tybitsfox['title']."</title>";
 echo $str;
 ?>
-<link href="css/base.css" rel="stylesheet" type="text/css" media="all" />
-<title>aaaa</title>
+<!-- <link href="css/base.css" rel="stylesheet" type="text/css" media="all" /> 
+<title>aaaa</title>  -->
 </head>
 <body>
 <div id="container_id">
