@@ -5,7 +5,8 @@ if($_POST["vvv"]!="")
 // 从效果来看，设置_GET显然更好。
 	$_GET["id"]=base64_encode($menuitem[2]);
 	$_GET["user"]=base64_encode("root");
-	echo "<br>".$_POST["vvv"]."and".$_POST["www"]."<br>";
+//	echo "<br>".$_POST["vvv"]."and".$_POST["www"]."<br>";
+	echo "<br>".$_POST["vvv"]."and".$_POST["sel01"]."<br>";
 //	echo "<script>window.location.href='".$menulink[4]."'</script>";
 }
 if($_POST["www"]!="")

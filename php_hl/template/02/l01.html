@@ -1,22 +1,15 @@
-<!--
-<html><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<?php
-session_start();
-if(!defined("FULL_PATH"))
-{
-	$s1=dirname(__FILE__);
-	$s2=strstr($s1,"php_hl");
-	$i=strlen($s1)-strlen($s2);
-	$s2=substr($s1,0,$i)."php_hl/";
-	define("FULL_PATH",$s2);
-}
-$str="<link href='".constant('FULL_PATH')."css/base.css rel='stylesheet' type='text/css' media='all'/>";
-echo $str;
-?>
-<body>   -->
 <center>当前浏览：污染源-废水</center>
-
-<!--
-<body>
-</html>    -->
+<?php
+	global $menulnk;
+	echo "<form name='form_left1' method='post' action='./".$menulnk[0]."'>";
+//	echo "<form name='form_left1' method='post' action='./index.php?pgcnt=".base64_encode('template/01/m01.html')."'>";
+	$a= new tb_sleft();
+	$a->show_header();
+	$a->show_body();
+//	$a->show_tail();
+?>
+<center><?php
+echo $_POST['sel2'];
+?></center>
+</form>
+</body></html>

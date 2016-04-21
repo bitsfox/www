@@ -1,6 +1,8 @@
 html,body
 {width:100%;margin:0;padding:0;background-color:#F3F3F3;
-font: normal 12px Arial, Helvetica, sans-serif;
+/*font: normal 11px Arial, Helvetica, sans-serif; */
+font-family: "YaHei Consolas Hybrid",verdana,arial,sans-serif;
+font-size:12px;
 color:#444444;
 }
 /*你麻痹！还有顺序，草草草！所以我讨厌这些脚本式的编程---如果这能叫编程的话。*/
@@ -72,23 +74,43 @@ table.imagetable td {
 {background-color:#F3F3F3;margin:0 auto;padding:4px 0;}
 #lmenu_id ul li
 {margin:3px 0px;line-height:40px;display:block;padding:0;}
+.dvmsg
+{
+	width:140px;
+ 	height:20px;
+	font-family: "YaHei Consolas Hybrid",verdana,arial,sans-serif;
+	font-size: 12px;
+	color:#444444;
+	float:left;
+}
 .select_style {width:120px; height:20px; overflow:hidden; /*background:url(../images/hh2_128.png) no-repeat 215px;*/
 border:1px solid #ccc;
 -moz-border-radius: 5px; /* Gecko browsers */
 -webkit-border-radius: 5px; /* Webkit browsers */
 border-radius:5px;
 outline:none;
+float:left;
 }
 .select_style select { padding:0px; background:transparent; width:140px;font-size: 12px;color:#444444; border:none; height:20px;
--webkit-appearance: none; /*for Webkit browsers*/outline:none;
+-webkit-appearance: none; /*for Webkit browsers*/outline:none;font-family: "YaHei Consolas Hybrid",verdana,arial,sans-serif;
 }
 
 #text_id
-{background-color: #F3F3F3;overflow:hidden; border:1px #C0C0C0 solid; font-size: 12px;color:#444444;height:20px;width:120px;}
+{
+	background-color: #F3F3F3;
+	overflow:hidden; 
+	border:1px #C0C0C0 solid; 
+	font-family: "YaHei Consolas Hybrid",verdana,arial,sans-serif;
+	font-size: 12px;
+	color:#444444;
+	height:20px;
+	width:120px;
+}
 #button_id
 {
 	background-color: #F3F3F3;
 	border: 1px #C0C0C0 solid;
+	font-family: "YaHei Consolas Hybrid",verdana,arial,sans-serif;
 	font-size:12px;color:#444444;
 	height:24px;width:60px;
 }

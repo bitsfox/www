@@ -352,25 +352,57 @@ class tb_fq implements tab_show
 	public function show_tail()
 	{echo "</table>";}
 }//}}}
-//{{{class tb_left implements tab_show
-class tb_left implements tab_show
+//{{{class tb_sleft implements tab_show
+class tb_sleft implements tab_show
 {
 	private $ay,$cy;
 	private $dy;
 	public function __construct()
 	{
-		$ay=array("市直","泰山区","岱岳区","东平县","宁阳县","肥城市","新泰市");//控制区域
-		$cy=array("国控","省控","市控","县控");//控制级别
-		$dy=array("小时值","日均值");//数据类型
+		$this->ay=array("市直","泰山区","岱岳区","东平县","宁阳县","肥城市","新泰市");//控制区域
+		$this->cy=array("国控","省控","市控","县控");//控制级别
+		$this->dy=array("小时值","日均值");//数据类型
 	}
 	public function show_header()
 	{
-		echo "<br>";
+		$i=count($this->ay);
+		if(isset($_POST["sel1"]))
+			$k=$_POST["sel1"];
+		else
+			$k=0;
+		$s1="<br><div class='dvmsg'>控制区域：</div><div class='select_style'><select name='sel1'>";
+		for($j=0;$j<$i;$j++)
+		{
+			if($j == $k)
+				$s1.="<option value=".$j." selected='selected'>".$this->ay[$j]."</option>";
+			else
+				$s1.="<option value=".$j.">".$this->ay[$j]."</option>";
+		}
+		$s1.="</select></div><div id='clear_id'></div>";
+		echo $s1;	//end of control area
+		if(isset($_POST["sel2"]))
+			$k=$_POST["sel2"];
+		else
+			$k=0;
+		$i=count($this->cy);
+		$s1="<br><div class='dvmsg'>控制级别：</div><div class='select_style'><select name='sel2'>";
+		for($j=0;$j<$i;$j++)
+		{
+			if($j == $k)
+				$s1.="<option value=".$j." selected='selected'>".$this->cy[$j]."</option>";
+			else
+				$s1.="<option value=".$j.">".$this->cy[$j]."</option>";
+		}
+		$s1.="</select></div><div id='clear_id'></div>";
+		echo $s1;	//end of control level
+		
+
+		echo "<br><br><center><input type='submit' id='button_id' name='submit' value='应用'></center>";
 	}
 	public function show_body()
 	{}
 	public function show_tail()
-	{}
+	{echo "</body></html>";}
 }
 
 
