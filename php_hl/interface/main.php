@@ -139,8 +139,8 @@ function _reg_db($u,$p)
 	mysql_close($conn);
 	return 0;
 }//}}}
-//{{{ class tb_wsc implements tab_wushuichang
-class tb_wsc implements tab_wushuichang
+//{{{ class tb_wsc implements tab_show
+class tb_wsc implements tab_show
 {
 	private $ay,$cy;
 	private $dy=array();
@@ -151,7 +151,7 @@ class tb_wsc implements tab_wushuichang
 		//only for test!
 		$ey=array("1","清源水务一污","入口","164","--","23.10","--","--");
 		array_push($this->dy,$ey);
-		$ey=array("2","清源水务一污","出口","22","50","0.42","8","8744659");
+		$ey=array("2","清源水务一污","出口","22","50","8.42","8","8744659");
 		array_push($this->dy,$ey);
 		$ey=array("3","康龙排水","入口","398","--","46.83","--","--");
 		array_push($this->dy,$ey);
@@ -190,8 +190,14 @@ class tb_wsc implements tab_wushuichang
 			{
 				$fy=$this->dy[$j];
 				$s1="<tr><td width=%10>".$fy[0]."</td><td width=30%>".$fy[1].$fy[2]."</td>";
-				$s1.="<td width=10%>".$fy[3]."</td><td width=10%>".$fy[4]."</td>";
-				$s1.="<td width=10%>".$fy[5]."</td><td width=10%>".$fy[6]."</td><td width=20%>".$fy[7]."</td></tr>";
+				if(($fy[3]>$fy[4]) && ($fy[4]>0))
+					$s1.="<td width=10% id='tdid'>".$fy[3]."</td><td width=10%>".$fy[4]."</td>";
+				else
+					$s1.="<td width=10%>".$fy[3]."</td><td width=10%>".$fy[4]."</td>";
+				if(($fy[5]>$fy[6]) && ($fy[6]>0))
+					$s1.="<td width=10% id='tdid'>".$fy[5]."</td><td width=10%>".$fy[6]."</td><td width=20%>".$fy[7]."</td></tr>";
+				else
+					$s1.="<td width=10%>".$fy[5]."</td><td width=10%>".$fy[6]."</td><td width=20%>".$fy[7]."</td></tr>";
 				echo $s1;
 			}
 		}
@@ -199,9 +205,153 @@ class tb_wsc implements tab_wushuichang
 	public function show_tail()
 	{echo "</table>";}
 }//}}}
-
-
-
+//{{{class tb_fs implements tab_show
+class tb_fs implements tab_show
+{
+	private $ay,$cy;
+	private $dy=array();
+	public function __construct()
+	{
+		$this->ay=array("编号","单位名称","COD","氨氮","累计流量");
+		$this->cy=array("监测值","标准值");
+		//only for test!
+		$ey=array("1","泰山康平纳毛纺织","137","200","--","--","1679356");
+		array_push($this->dy,$ey);
+		$ey=array("2","泰山石膏股份有限公司","186","500","3.3","45","1742970");
+		array_push($this->dy,$ey);
+		$ey=array("3","岱银纺织","100","200","8.83","20","53114940");
+		array_push($this->dy,$ey);
+		$ey=array("4","新矿集团盐化公司","63","60","5.19","10","275402");
+		array_push($this->dy,$ey);
+		$ey=array("5","泰安中泰纸业有限公司","14","60","0.61","10","2660074");
+		array_push($this->dy,$ey);
+	}
+	public function show_header()
+	{
+		$s1="<table width=97% class='imagetable'><tr>";
+		$s2="<th width=10% rowspan=2 align=center>".$this->ay[0]."</th>";
+		$s1.=$s2;
+		$s2="<th width=30% rowspan=2 align=center>".$this->ay[1]."</th>";
+		$s1.=$s2;
+		$s2="<th width=20% colspan=2 align=center>".$this->ay[2]."</th>";
+		$s1.=$s2;
+		$s2="<th width=20% colspan=2 align=center>".$this->ay[3]."</th>";
+		$s1.=$s2;
+		$s2="<th width=20% rowspan=2 align=center>".$this->ay[4]."</th></tr><tr>";
+		$s1.=$s2;
+		$s2="<th width=10% align=center>".$this->cy[0]."</th>";
+		$s1.=$s2;
+		$s2="<th width=10% align=center>".$this->cy[1]."</th>";
+		$s1.=$s2;
+		$s2="<th width=10% align=center>".$this->cy[0]."</th>";
+		$s1.=$s2;
+		$s2="<th width=10% align=center>".$this->cy[1]."</th></tr>";
+		$s1.=$s2;
+		echo $s1;
+	}
+	public function show_body()
+	{
+		for($k=0;$k<2;$k++)
+		{
+			$i=count($this->dy);
+			for($j=0;$j<$i;$j++)
+			{
+				$fy=$this->dy[$j];
+				$s1="<tr><td width=%10>".$fy[0]."</td><td width=30%>".$fy[1]."</td>";
+				if(($fy[2]>$fy[3]) && ($fy[3]>0))
+					$s1.="<td width=10% id='tdid'>".$fy[2]."</td><td width=10%>".$fy[3]."</td>";
+				else
+					$s1.="<td width=10%>".$fy[2]."</td><td width=10%>".$fy[3]."</td>";
+				if(($fy[4]>$fy[5]) && ($fy[5]>0))
+					$s1.="<td width=10% id='tdid'>".$fy[4]."</td><td width=10%>".$fy[5]."</td><td width=20%>".$fy[6]."</td></tr>";
+				else
+					$s1.="<td width=10%>".$fy[4]."</td><td width=10%>".$fy[5]."</td><td width=20%>".$fy[6]."</td></tr>";
+				echo $s1;
+			}
+		}
+	}
+	public function show_tail()
+	{echo "</table>";}
+}//}}}
+//{{{class tb_fq implements tab_show
+class tb_fq implements tab_show
+{
+	private $ay,$cy;
+	private $dy=array();
+	public function __construct()
+	{
+		$this->ay=array("编号","单位名称","SO2","NOx","烟尘","废气排放量");
+		$this->cy=array("监测值","标准值");
+		//only for test!
+		$ey=array("1","泰山玻璃纤维","133","200","222","300","13","30","13156");
+		array_push($this->dy,$ey);
+		$ey=array("2","泰山石膏股份有限公司","4","200","81","200","7","30","107005");
+		array_push($this->dy,$ey);
+		$ey=array("3","泰山东城热电","299","200","97","200","5","30","347814");
+		array_push($this->dy,$ey);
+		$ey=array("4","新矿集团泰山盐化工分公司热电厂","7","200","57","200","14","30","402034");
+		array_push($this->dy,$ey);
+		$ey=array("5","岱岳精制盐","127","200","109","200","8","30","116827");
+		array_push($this->dy,$ey); 
+	}
+	public function show_header()
+	{
+		$s1="<table width=97% class='imagetable'><tr>";
+		$s2="<th width=6% rowspan=2 align=center>".$this->ay[0]."</th>";
+		$s1.=$s2;
+		$s2="<th width=30% rowspan=2 align=center>".$this->ay[1]."</th>";
+		$s1.=$s2;
+		$s2="<th width=16% colspan=2 align=center>".$this->ay[2]."</th>";
+		$s1.=$s2;
+		$s2="<th width=16% colspan=2 align=center>".$this->ay[3]."</th>";
+		$s1.=$s2;
+		$s2="<th width=16% colspan=2 align=center>".$this->ay[4]."</th>";//;</tr><tr>";
+		$s1.=$s2;
+		$s2="<th width=16% rowspan=2 align=center>".$this->ay[5]."</th></tr><tr>";
+		$s1.=$s2;
+		$s2="<th width=8% align=center>".$this->cy[0]."</th>";
+		$s1.=$s2;
+		$s2="<th width=8% align=center>".$this->cy[1]."</th>";
+		$s1.=$s2;
+		$s2="<th width=8% align=center>".$this->cy[0]."</th>";
+		$s1.=$s2;
+		$s2="<th width=8% align=center>".$this->cy[1]."</th>";
+		$s1.=$s2;
+		$s2="<th width=8% align=center>".$this->cy[0]."</th>";
+		$s1.=$s2;
+		$s2="<th width=8% align=center>".$this->cy[1]."</th></tr>";
+		$s1.=$s2;
+		echo $s1;
+	}
+	public function show_body()
+	{
+		$i=count($this->dy);
+		for($j=0;$j<$i;$j++)
+		{
+			$fy=$this->dy[$j];
+			$s1="<tr><td width=%6>".$fy[0]."</td><td width=30%>".$fy[1]."</td>";
+			if($fy[2]>$fy[3])
+				$s2="<td width=8% id='tdid'>".$fy[2]."</td>";
+			else
+				$s2="<td width=8%>".$fy[2]."</td>";
+			$s1.=$s2."<td width=8%>".$fy[3]."</td>";
+			if($fy[4]>$fy[5])
+				$s2="<td width=8% id='tdid'>".$fy[4]."</td>";
+			else
+				$s2="<td width=8%>".$fy[4]."</td>";
+			$s1.=$s2."<td width=8%>".$fy[5]."</td>";
+			if($fy[6]>$fy[7])
+				$s2="<td width=8% id='tdid'>".$fy[6]."</td>";
+			else
+				$s2="<td width=8%>".$fy[6]."</td>";
+			$s1.=$s2."<td width=8%>".$fy[7]."</td>";
+			$s1.="<td width=16%>".$fy[8]."</td></tr>";
+			echo $s1;
+		}
+	}
+	public function show_tail()
+	{echo "</table>";}
+}//}}}
 ?>
 
 

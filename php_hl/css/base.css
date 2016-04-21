@@ -59,6 +59,14 @@ table.imagetable td {
 	border-style: solid;
 	border-color: #999999;
 }
+#tdid{
+	background:#dcddc0 url('./hltb2.jpg');
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #999999;
+	color:#ff0000
+}
 
 #lmenu_id
 {background-color:#F3F3F3;margin:0 auto;padding:4px 0;}
