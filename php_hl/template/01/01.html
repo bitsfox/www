@@ -4,6 +4,7 @@ function unreg()
 	location.href="template/t01/login1.php";
 }
 </script>
+<script language="JavaScript" src="./css/mydate.js"></script>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -19,8 +20,8 @@ if(!defined("FULL_PATH"))
 }
 $str="<link href='css/base.css' rel='stylesheet' type='text/css' media='all'/>";
 echo $str;
-$str=constant("FULL_PATH")."config/main.php";
-require_once($str);
+//$str=constant("FULL_PATH")."config/main.php";
+//require_once($str);
 global $tybitsfox;
 $str="<title>".$tybitsfox['title']."</title>";
 echo $str;
@@ -39,7 +40,8 @@ echo $str;
     {
         echo "<li><a href='".$menulnk[$i]."'>".$menuitem[$i]."</a><li><li class='menudiv_class'></li>";
     }
-	$st="<li>&nbsp;&nbsp;&nbsp;&nbsp;<font color=red>欢迎 </font>[ <a href='javascript:void(0)' onclick ='unreg()' />".$_SESSION['user']."</a> ]</li><li class='menudiv_class'></li>";
+	$st="<li>&nbsp;&nbsp;&nbsp;&nbsp;<font color=red>欢迎 </font>[ <a href='javascript:void(0)' onclick ='unreg()' />";
+	$st.=$_SESSION['user']."</a> ]</li><li class='menudiv_class'></li>";
 	echo $st;
 ?>
     </ul></div><div id="clear_id"></div>

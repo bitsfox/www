@@ -27,15 +27,15 @@ a:hover {color:blue;}
 .menudiv_class
 {width:1px;height:28px;background-color:#999;}
 #left_id
-{background-color:#F3F3F3;width:20%;height:620px;margin:0;padding:10px 5px;float:left;overflow:auto;}
+{background-color:#F3F3F3;width:20%;margin:0;padding:10px 5px;float:left;overflow:auto;} /*height:620px*/
 #left_id ul li
 {margin:0;width:90%;padding:0;} /*hidden,auto,scroll*/
 .shadow_class
 {border:1px #E0E0E0 solid;box-shadow:5px 5px 8px #636363;}
 #right_id
-{background-color:#F3F3F3;width:75%;height:620px;margin:0;padding:0;float:right;}
+{background-color:#F3F3F3;width:75%;margin:0;padding:0;float:right;} /*height:620px*/
 #right_top_id
-{width:100%;margin:0 5px 30px 5px;height:620px;padding:10px 5px;background-color:#F3F3F3;overflow:auto;}
+{width:100%;margin:0 5px 30px 5px;padding:10px 5px;background-color:#F3F3F3;overflow:auto;} /*height:620px*/
 #right_top_id ul li
 {margin:0;padding:0;} /*hidden,auto,scroll*/
 /*for table used */
@@ -76,14 +76,18 @@ table.imagetable td {
 {margin:3px 0px;line-height:40px;display:block;padding:0;}
 .dvmsg
 {
-	width:140px;
+/*	width:120px;  */
+	width: 48%;
  	height:20px;
 	font-family: "YaHei Consolas Hybrid",verdana,arial,sans-serif;
 	font-size: 12px;
 	color:#444444;
 	float:left;
 }
-.select_style {width:120px; height:20px; overflow:hidden; /*background:url(../images/hh2_128.png) no-repeat 215px;*/
+.select_style {
+/*width:120px; */
+width:48%;
+height:20px; overflow:hidden; /*background:url(../images/hh2_128.png) no-repeat 215px;*/
 border:1px solid #ccc;
 -moz-border-radius: 5px; /* Gecko browsers */
 -webkit-border-radius: 5px; /* Webkit browsers */

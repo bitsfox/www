@@ -357,11 +357,15 @@ class tb_sleft implements tab_show
 {
 	private $ay,$cy;
 	private $dy;
+	private $nowtile,$rq;
 	public function __construct()
 	{
+  		date_default_timezone_set("PRC");
+  		$this->nowtime = time();
+  		$this->rq = date("Y-m-d",$this->nowtime);
 		$this->ay=array("市直","泰山区","岱岳区","东平县","宁阳县","肥城市","新泰市");//控制区域
 		$this->cy=array("国控","省控","市控","县控");//控制级别
-		$this->dy=array("小时值","日均值");//数据类型
+		$this->dy=array("实时值","日均值");//数据类型
 	}
 	public function show_header()
 	{
@@ -395,15 +399,34 @@ class tb_sleft implements tab_show
 		}
 		$s1.="</select></div><div id='clear_id'></div>";
 		echo $s1;	//end of control level
-		
-
-		echo "<br><br><center><input type='submit' id='button_id' name='submit' value='应用'></center>";
+		if(isset($_POST["sel3"]))
+			$k=$_POST["sel3"];
+		else
+			$k=0;
+		$i=count($this->dy);
+		$s1="<br><div class='dvmsg'>数据类型：</div><div class='select_style'><select name='sel3'>";
+		for($j=0;$j<$i;$j++)
+		{
+			if($j == $k)
+				$s1.="<option value=".$j." selected='selected'>".$this->dy[$j]."</option>";
+			else
+				$s1.="<option value=".$j.">".$this->dy[$j]."</option>";
+		}
+		$s1.="</select></div><div id='clear_id'></div>";
+		echo $s1;	//end of data type
 	}
 	public function show_body()
-	{}
+	{
+		$s1="<br><div class='dvmsg'>日均值日期:</div>";
+		$s1.="<div class='dvmsg'><input type='text' id='text_id' name='starttime' onfocus='MyCalendar.SetDate(this)' value='".$this->rq."'/>";
+		$s1.="</div><div id='clear_id'></div>";
+		echo $s1;
+		$s1="<br><br><center><input type='submit' id='button_id' name='submit' value='应用'></center>";
+		echo $s1;
+	}
 	public function show_tail()
 	{echo "</body></html>";}
-}
+}//}}}
 
 
 

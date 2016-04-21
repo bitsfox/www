@@ -1,13 +1,3 @@
-<style>
-#clear
-{clear:both;}
-ul li{list-style-type:none;}
-div{text-align:center;}
-.aas_class
-{background-color:#F3F3F3;margin:0 auto;padding:0;width:30%;}
-#div1
-{background-color:#F3F3F3;width:30%;margin:0 auto;padding:20px 0;}
-</style>
 <?php
 if(!defined("FULL_PATH"))
 {
@@ -41,19 +31,23 @@ if($_SESSION['logok'] == $tybitsfox['corename'])
 	}
 }
 ?>
-<html><head><title><?php echo $tybitsfox['title'];?></title></head><body>
+<html><head><title><?php echo $tybitsfox['title'];?></title>
+<link href='css/extra.css' rel='stylesheet' type='text/css' media='all'/>
+</head><body>
 <form name="login" method="post" action="login.php">
 <div><h2><?php echo $tybitsfox['logmsg']?></h2></div>
-<div class='ass_class'>
-<div id='div1'>
+<!-- <div id='div1'> -->
+<div class='dvmsg'>
 <table width=100% border=0>
-<tr><td width=30%>用户名：</td><td width=40%><input type='text' name='user' size=30 /></td><td width=30%></td></tr>
-<tr><td width=30%>密  码：</td><td width=40%><input type='password' name='password' size=30 /></td><td width=30%></td></tr>
-<tr><td width=30%>验证码：</td><td width=40%><input type='text' name='verf' size=30 /></td>
+<tr><td width=30%>用户名：</td><td width=40%><input type='text' id='text_id' name='user' size=30 /></td><td width=30%></td></tr>
+<tr><td width=30%>密  码：</td><td width=40%><input type='password' id='text_id' name='password' size=30 /></td><td width=30%></td></tr>
+<tr><td width=30%>验证码：</td><td width=40%><input type='text' id='text_id' name='verf' size=30 /></td>
 <td width=30%><img src="ta_verf1.php" title="点击更换图片" onclick="this.src=this.src+'?'+Math.random();" /></td>
-<tr><td colspan=3 width=100% align=center><br><input type='submit' name='submit' value='登录'/> &nbsp;&nbsp;&nbsp;&nbsp;
-<input type='reset' name='reset' value="重置"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./template/t01/reg.php'>注册</a></td></tr>
-</table></div></div></form></body></html>
+<tr><td colspan=3 width=100% align=center><br><input type='submit' id='button_id' name='submit' value='登录'/> &nbsp;&nbsp;&nbsp;&nbsp;
+<input type='reset' id='button_id' name='reset' value="重置"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./template/t01/reg.php'>注册</a></td></tr>
+</table>    
+
+</div></div></form></body></html> 
 <?php
 function check_verf()
 {
