@@ -5,6 +5,7 @@ font-family: "YaHei Consolas Hybrid",verdana,arial,sans-serif;
 font-size:12px;
 color:#444444;
 }
+select::-ms-expand { display: none; }
 /*你麻痹！还有顺序，草草草！所以我讨厌这些脚本式的编程---如果这能叫编程的话。*/
 a:link,a:visited {color:gray;text-decoration:none}
 /*{font-size: 150%;text-decoration:underline;}*/
@@ -89,13 +90,21 @@ table.imagetable td {
 width:48%;
 height:20px; overflow:hidden; /*background:url(../images/hh2_128.png) no-repeat 215px;*/
 border:1px solid #ccc;
+/*appearance:none;*/	   
 -moz-border-radius: 5px; /* Gecko browsers */
 -webkit-border-radius: 5px; /* Webkit browsers */
 border-radius:5px;
 outline:none;
 float:left;
 }
-.select_style select { padding:0px; background:transparent; width:140px;font-size: 12px;color:#444444; border:none; height:20px;
+.select_style select { 
+padding:0px; 
+background:transparent; 
+width:160px;
+font-size: 12px;
+color:#444444; 
+border:none; 
+height:20px;
 -webkit-appearance: none; /*for Webkit browsers*/outline:none;font-family: "YaHei Consolas Hybrid",verdana,arial,sans-serif;
 }
 
