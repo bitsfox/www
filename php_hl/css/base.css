@@ -87,7 +87,7 @@ table.imagetable td {
 }
 .select_style {
 /*width:120px; */
-width:48%;
+width:40%;
 height:20px; overflow:hidden; /*background:url(../images/hh2_128.png) no-repeat 215px;*/
 border:1px solid #ccc;
 /*appearance:none;*/	   
@@ -100,7 +100,7 @@ float:left;
 .select_style select { 
 padding:0px; 
 background:transparent; 
-width:160px;
+width:140px;
 font-size: 12px;
 color:#444444; 
 border:none; 
@@ -117,7 +117,7 @@ height:20px;
 	font-size: 12px;
 	color:#444444;
 	height:20px;
-	width:120px;
+	width:115px;
 }
 #button_id
 {
