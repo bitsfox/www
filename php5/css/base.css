@@ -45,11 +45,27 @@ border:1px solid #ccc;
 -webkit-border-radius: 5px; /* Webkit browsers */
 border-radius:5px;
 outline:none;
-}
+}/*
 .select_style select { padding:0px; background:transparent; width:140px;font-size: 12px;color:#444444; border:none; height:20px;
--webkit-appearance: none; /*for Webkit browsers*/outline:none;
-}
+-webkit-appearance: none;*/ /*for Webkit browsers*//*outline:none;
+}*/
+.select_style select {
+  /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+  /*border: solid 1px #000;*/
+  width:120px;
+  /*很关键：将默认的select选择框样式清除
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+*/
+  /*在选择框的最右侧中间显示小箭头图片*/
+  background: url("./arrow.png") no-repeat scroll right center transparent;
 
+
+  /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+  padding-right: 14px;
+}
+select::-ms-expand { display: none; }
 #text_id
 {background-color: #F3F3F3;overflow:hidden; border:1px #C0C0C0 solid; font-size: 12px;color:#444444;height:20px;width:120px;}
 #button_id
