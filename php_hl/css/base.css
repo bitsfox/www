@@ -85,6 +85,15 @@ table.imagetable td {
 	color:#444444;
 	float:left;
 }
+.dvmsg1
+{
+	width: 34%;
+ 	height:20px;
+	font-family: "YaHei Consolas Hybrid",verdana,arial,sans-serif;
+	font-size: 12px;
+	color:#444444;
+	float:left;
+}
 .select_style {
 /*width:120px; */
 width:40%;
@@ -106,6 +115,39 @@ color:#444444;
 border:none; 
 height:20px;
 -webkit-appearance: none; /*for Webkit browsers*/outline:none;font-family: "YaHei Consolas Hybrid",verdana,arial,sans-serif;
+}
+.select_style1 {
+/*width:120px; */
+width:55%;
+height:20px; overflow:hidden; /*background:url(../images/hh2_128.png) no-repeat 215px;*/
+border:1px solid #ccc;
+/*appearance:none;*/	   
+-moz-border-radius: 5px; /* Gecko browsers */
+-webkit-border-radius: 5px; /* Webkit browsers */
+border-radius:5px;
+outline:none;
+float:left;
+}
+.select_style1 select { 
+padding:0px; 
+background:transparent; 
+width:115%; /*140px;*/
+font-size: 12px;
+color:#444444; 
+border:none; 
+height:20px;
+-webkit-appearance: none; /*for Webkit browsers*/outline:none;font-family: "YaHei Consolas Hybrid",verdana,arial,sans-serif;
+}
+#text1_id
+{
+	background-color: #F3F3F3;
+	overflow:hidden; 
+	border:1px #C0C0C0 solid; 
+	font-family: "YaHei Consolas Hybrid",verdana,arial,sans-serif;
+	font-size: 12px;
+	color:#444444;
+	height:20px;
+	width:100px;
 }
 
 #text_id

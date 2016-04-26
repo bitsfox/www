@@ -361,8 +361,15 @@ class tb_sleft implements tab_show
 	public function __construct()
 	{
   		date_default_timezone_set("PRC");
-  		$this->nowtime = time();
-  		$this->rq = date("Y-m-d",$this->nowtime);
+		if($_POST['starttime'])
+		{
+			$this->rq=$_POST['starttime'];
+		}
+		else
+		{
+  			$this->nowtime = time();
+  			$this->rq = date("Y-m-d",$this->nowtime);
+		}
 		$this->ay=array("市直","泰山区","岱岳区","东平县","宁阳县","肥城市","新泰市");//控制区域
 		$this->cy=array("国控","省控","市控","县控");//控制级别
 		$this->dy=array("实时值","日均值");//数据类型
@@ -425,10 +432,105 @@ class tb_sleft implements tab_show
 		echo $s1;
 	}
 	public function show_tail()
-	{echo "</body></html>";}
+	{}
 }//}}}
-
-
+//{{{class tb_mxleft implements tab_show 明晰的左边栏
+class tb_mxleft implements tab_show
+{
+	private $ay,$cy;
+	private $dy;
+	private $nowtile,$rq;
+	private $ey=array();
+	public function __construct()
+	{
+  		date_default_timezone_set("PRC");
+		if($_POST['starttime'])
+		{
+			$this->rq=$_POST['starttime'];
+		}
+		else
+		{
+  			$this->nowtime = time();
+  			$this->rq = date("Y-m-d",$this->nowtime);
+		}
+		//only for test!!
+		$this->ay=array("市直","泰山区","岱岳区","东平县","宁阳县","肥城市","新泰市");//控制区域
+		$this->cy=array("泰山华艺纸业","泰安康平纳毛纺织","泰山啤酒","泰山石膏股份有限公司","山东泰山生力源集团","山东泰安制药厂");
+		array_push($this->ey,$this->cy);
+		$this->cy=array("泰山玻纤慢庄分厂","岱银纺织","山东春雪羊绒制品");
+		array_push($this->ey,$this->cy);
+		$this->cy=array("泰安富泰毛纺织","鲁怡针织印染","新矿集团盐化公司","泰安金辉制衣","泰安中泰纸业有限公司");
+		array_push($this->ey,$this->cy);
+		$this->cy=array("国控","省控","市控","县控");//控制级别
+		$this->dy=array("实时值","日均值");//数据类型
+	}
+	public function show_header()
+	{
+		$i=count($this->ay);
+		if(isset($_POST["sel1"]))
+			$k=$_POST["sel1"];
+		else
+			$k=0;
+		$s1="<br><div class='dvmsg'>控制区域：</div><div class='select_style'><select name='sel1'>";
+		for($j=0;$j<$i;$j++)
+		{
+			if($j == $k)
+				$s1.="<option value=".$j." selected='selected'>".$this->ay[$j]."</option>";
+			else
+				$s1.="<option value=".$j.">".$this->ay[$j]."</option>";
+		}
+		$s1.="</select></div><div id='clear_id'></div>";
+		echo $s1;	//end of control area
+		$i=count($this->ey);
+		if($k>=$i)
+			die("get array count error");
+		$this->cy=$this->ey[$k];
+		if(isset($_POST["sel2"]))
+			$k=$_POST["sel2"];
+		else
+			$k=0;
+//		$i=count($this->cy);
+		$s1="<br><div class='dvmsg1'>单位名称：</div><div class='select_style1'><select name='sel2'>";
+		for($j=0;$j<$i;$j++)
+		{
+			if($j == $k)
+				$s1.="<option value=".$j." selected='selected'>".$this->cy[$j]."</option>";
+			else
+				$s1.="<option value=".$j.">".$this->cy[$j]."</option>";
+		}
+		$s1.="</select></div><div id='clear_id'></div>";
+		echo $s1;	//end of control level
+		if(isset($_POST["sel3"]))
+			$k=$_POST["sel3"];
+		else
+			$k=0;
+		$i=count($this->dy);
+		$s1="<br><div class='dvmsg'>数据类型：</div><div class='select_style'><select name='sel3'>";
+		for($j=0;$j<$i;$j++)
+		{
+			if($j == $k)
+				$s1.="<option value=".$j." selected='selected'>".$this->dy[$j]."</option>";
+			else
+				$s1.="<option value=".$j.">".$this->dy[$j]."</option>";
+		}
+		$s1.="</select></div><div id='clear_id'></div>";
+		echo $s1;	//end of data type
+	}
+	public function show_body()
+	{
+		$s1="<br><div class='dvmsg'>日均值日期:</div>";
+		$s1.="<div class='dvmsg'><input type='text' id='text1_id' name='starttime' onfocus='MyCalendar.SetDate(this)' value='".$this->rq."'/>";
+		$s1.="</div><div id='clear_id'></div>";
+		echo $s1;
+		$s1="<br><br><div class='dwmsg'><input type='radio' name='radio1' value='数据以表格显示' checked />数据以表格显示";
+		$s1.="<input type='radio' name='radio1' value='数据以图形显示' />数据以图形显示</div>";
+		echo $s1;
+		$s1="<br><br><center><input type='submit' id='button_id' name='submit' value='应用'></center>";
+		echo $s1;
+	}
+	public function show_tail()
+	{}
+}//}}}
 
 
 
