@@ -44,4 +44,5 @@
 //
 	$arun[0]				=	0;
 	$arun[1]				=	0;	
+	$arry					=	array();
 ?>

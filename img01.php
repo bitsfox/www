@@ -115,7 +115,7 @@ province.fireEvent("onchange");
 </script>
 </head>
 <body>
-省份:<select id="province" onchange= "changeProvince()"></select>
+省份:<select id="province" onchange= "javascript:changeProvince()"></select>
 城市:<select id="city"></select>
 </body>
 </html> 

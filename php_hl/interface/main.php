@@ -453,14 +453,20 @@ class tb_mxleft implements tab_show
   			$this->nowtime = time();
   			$this->rq = date("Y-m-d",$this->nowtime);
 		}
+		global $arry;
+		if(!is_array($arry))
+			$arry=array();
 		//only for test!!
 		$this->ay=array("市直","泰山区","岱岳区","东平县","宁阳县","肥城市","新泰市");//控制区域
 		$this->cy=array("泰山华艺纸业","泰安康平纳毛纺织","泰山啤酒","泰山石膏股份有限公司","山东泰山生力源集团","山东泰安制药厂");
 		array_push($this->ey,$this->cy);
+		array_push($arry,$this->cy);
 		$this->cy=array("泰山玻纤慢庄分厂","岱银纺织","山东春雪羊绒制品");
 		array_push($this->ey,$this->cy);
+		array_push($arry,$this->cy);
 		$this->cy=array("泰安富泰毛纺织","鲁怡针织印染","新矿集团盐化公司","泰安金辉制衣","泰安中泰纸业有限公司");
 		array_push($this->ey,$this->cy);
+		array_push($arry,$this->cy);
 		$this->cy=array("国控","省控","市控","县控");//控制级别
 		$this->dy=array("实时值","日均值");//数据类型
 	}
@@ -471,7 +477,7 @@ class tb_mxleft implements tab_show
 			$k=$_POST["sel1"];
 		else
 			$k=0;
-		$s1="<br><div class='dvmsg'>控制区域：</div><div class='select_style'><select name='sel1'>";
+		$s1="<br><div class='dvmsg'>控制区域：</div><div class='select_style'><select name='sel1' id='sel11'  onchange = 'onsss()'>";
 		for($j=0;$j<$i;$j++)
 		{
 			if($j == $k)
