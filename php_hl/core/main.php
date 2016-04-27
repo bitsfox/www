@@ -1,4 +1,8 @@
 <?php
+/*本文件定义一些独立功能的函数
+ 
+ 	2016-4-17 田勇 alias tybitsfox
+ */
 session_start();
 if(!defined("FULL_PATH"))
 {
@@ -11,87 +15,46 @@ if(!defined("FULL_PATH"))
 //确保包含了全局变量的定义文件
 $ifile=constant("FULL_PATH")."config/main.php";
 require_once($ifile);
-$st=constant("FULL_PATH")."include/inter_def.php";
-require_once($st);
-//{{{class tb_qleft implements tab_show
-class tb_qleft implements tab_show
+//{{{ function array_ptoj() 一个php数组转js数组的函数
+/*虽然在php5.4以后有了一个非常好用的Json_encode,json_decode函数
+  但是该函数还是具有一定的局限性，例如他目前仅支持uft-8编码
+  所以，我想用最基本的方法实现一个类似功能的函数调用。
+  由于急于使用，目前仅实现我所需的转换功能：key:ignore value: as a array
+ 的情况进行转换。本函数会先检测在用的php版本，如果高于5.2则直接调用json_encode;
+ 返回值：string
+ 在javascript中赋值应：
+ var st=<?php echo array_ptoj($inary);?>
+ */
+function array_ptoj($inary)
 {
-	private $ay,$cy;
-	private $dy;
-	private $nowtile,$rq;
-	public function __construct()
+	if(version_compare(PHP_VERSION,"5.2")>0)
+		return json_encode($inary,JSON_UNESCAPED_UNICODE);
+	$st="error";
+	if(!is_array($inary))
+		return $st;
+	$flag1=0;
+	$i=count($inary);
+	$ay1=array();
+	$ay1=array_values($inary);
+	$str="[[";
+	for($j=0;$j<$i;$j++)
 	{
-  		date_default_timezone_set("PRC");
-  		$this->nowtime = time();
-  		$this->rq = date("Y-m-d",$this->nowtime);
-		$this->ay=array("市直","泰山区","岱岳区","东平县","宁阳县","肥城市","新泰市");//控制区域
-		$this->cy=array("国控","省控","市控","县控");//控制级别
-		$this->dy=array("小时值","日均值");//数据类型
-	}
-	public function show_header()
-	{
-		$i=count($this->ay);
-		if(isset($_POST["sel1"]))
-			$k=$_POST["sel1"];
-		else
-			$k=0;
-		$s1="<br><div class='dvmsg'>控制区域：</div><div class='select_style'><select name='sel1'>";
-		for($j=0;$j<$i;$j++)
+		$ay2=$ay1[$j];
+		if(!is_array($ay2))
+			return $st;
+		$k=count($ay2);
+		for($l=0;$l<$k;$l++)
 		{
-			if($j == $k)
-				$s1.="<option value=".$j." selected='selected'>".$this->ay[$j]."</option>";
-			else
-				$s1.="<option value=".$j.">".$this->ay[$j]."</option>";
+			$ay3=$ay2[$l];
+			if(is_array($ay3) || is_object($ay3))
+				return $st;
+			$str.="'".$ay3."',";
 		}
-		$s1.="</select></div><div id='clear_id'></div>";
-		echo $s1;	//end of control area
-		if(isset($_POST["sel2"]))
-			$k=$_POST["sel2"];
-		else
-			$k=0;
-		$i=count($this->cy);
-		$s1="<br><div class='dvmsg'>控制级别：</div><div class='select_style'><select name='sel2'>";
-		for($j=0;$j<$i;$j++)
-		{
-			if($j == $k)
-				$s1.="<option value=".$j." selected='selected'>".$this->cy[$j]."</option>";
-			else
-				$s1.="<option value=".$j.">".$this->cy[$j]."</option>";
-		}
-		$s1.="</select></div><div id='clear_id'></div>";
-		echo $s1;	//end of control level
-		if(isset($_POST["sel3"]))
-			$k=$_POST["sel3"];
-		else
-			$k=0;
-		$i=count($this->dy);
-		$s1="<br><div class='dvmsg'>数据类型：</div><div class='select_style'><select name='sel3'>";
-		for($j=0;$j<$i;$j++)
-		{
-			if($j == $k)
-				$s1.="<option value=".$j." selected='selected'>".$this->dy[$j]."</option>";
-			else
-				$s1.="<option value=".$j.">".$this->dy[$j]."</option>";
-		}
-		$s1.="</select></div><div id='clear_id'></div>";
-		echo $s1;	//end of data type
+		$str=substr($str,0,(strlen($str)-1));
+		$str.="],[";
 	}
-	public function show_body()
-	{
-		$s1="<br><div class='dvmsg'>日均值日期:</div>";
-		$s1.="<div class='dvmsg'><input type='text' id='text_id' name='starttime' onfocus='MyCalendar.SetDate(this)' value='".$this->rq."'/>";
-		$s1.="</div><div id='clear_id'></div>";
-		echo $s1;
-		$s1="<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
-		$s1.="<center><input type='submit' id='button_id' name='submit' value='应用'></center>";
-		echo $s1;
-	}
-	public function show_tail()
-	{echo "</body></html>";}
-}//}}}
-
-
-
+	$st=substr($str,0,(strlen($str)-3));
+	$st.="]]";
+	return $st;
+}
 ?>
-
-
