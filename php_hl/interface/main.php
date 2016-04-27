@@ -425,7 +425,7 @@ class tb_sleft implements tab_show
 	public function show_body()
 	{
 		$s1="<br><div class='dvmsg'>日均值日期:</div>";
-		$s1.="<div class='dvmsg'><input type='text' id='text_id' name='starttime' onfocus='MyCalendar.SetDate(this)' value='".$this->rq."'/>";
+		$s1.="<div class='dvmsg'><input type='text' id='text1_id' name='starttime' onfocus='MyCalendar.SetDate(this)' value='".$this->rq."'/>";
 		$s1.="</div><div id='clear_id'></div>";
 		echo $s1;
 		$s1="<br><br><center><input type='submit' id='button_id' name='submit' value='应用'></center>";
@@ -473,11 +473,11 @@ class tb_mxleft implements tab_show
 	public function show_header()
 	{
 		$i=count($this->ay);
-		if(isset($_POST["sel1"]))
-			$k=$_POST["sel1"];
+		if(isset($_POST["sel1p"]))
+			$k=$_POST["sel1p"];
 		else
 			$k=0;
-		$s1="<br><div class='dvmsg'>控制区域：</div><div class='select_style'><select name='sel1' id='sel11'  onchange = 'onsss()'>";
+		$s1="<br><div class='dvmsg'>控制区域：</div><div class='select_style'><select name='sel1p' id='sel1p' onchange = 'onsss()'>";
 		for($j=0;$j<$i;$j++)
 		{
 			if($j == $k)
@@ -491,12 +491,12 @@ class tb_mxleft implements tab_show
 		if($k>=$i)
 			die("get array count error");
 		$this->cy=$this->ey[$k];
-		if(isset($_POST["sel2"]))
-			$k=$_POST["sel2"];
+		if(isset($_POST["sel2p"]))
+			$k=$_POST["sel2p"];
 		else
 			$k=0;
 //		$i=count($this->cy);
-		$s1="<br><div class='dvmsg1'>单位名称：</div><div class='select_style1'><select name='sel2'>";
+		$s1="<br><div class='dvmsg1'>单位名称：</div><div class='select_style1'><select name='sel2p' id='sel2p'>";
 		for($j=0;$j<$i;$j++)
 		{
 			if($j == $k)
@@ -528,8 +528,26 @@ class tb_mxleft implements tab_show
 		$s1.="<div class='dvmsg'><input type='text' id='text1_id' name='starttime' onfocus='MyCalendar.SetDate(this)' value='".$this->rq."'/>";
 		$s1.="</div><div id='clear_id'></div>";
 		echo $s1;
-		$s1="<br><br><div class='dwmsg'><input type='radio' name='radio1' value='数据以表格显示' checked />数据以表格显示";
-		$s1.="<input type='radio' name='radio1' value='数据以图形显示' />数据以图形显示</div>";
+		$s1="<br><br><div class='dwmsg'>";
+		if(isset($_POST['radio1']))
+		{
+			if($_POST['radio1'] == 1)
+				$k=0;
+			else
+				$k=1;
+		}
+		else
+			$k=0;
+		if($k==0)
+		{
+			$s1.="<input type='radio' name='radio1' value=1 checked />数据以表格显示";
+			$s1.="<input type='radio' name='radio1' value=2 />数据以图形显示</div>";
+		}
+		else
+		{
+			$s1.="<input type='radio' name='radio1' value=1 />数据以表格显示";
+			$s1.="<input type='radio' name='radio1' value=2 checked/>数据以图形显示</div>";
+		}
 		echo $s1;
 		$s1="<br><br><center><input type='submit' id='button_id' name='submit' value='应用'></center>";
 		echo $s1;

@@ -19,9 +19,24 @@ echo $_POST['starttime'];
 var jary=<?php echo json_encode($arry,JSON_UNESCAPED_UNICODE);?>;
 function onsss()
 {
-	var i=jary.length;
-	var av=jary[i-1];
-	alert(av);
+//	var u=document.getelementsbyname('sel1p');
+	var x=document.getElementById("sel1p");
+	var i=x.selectedIndex;
+//	alert(x.selectedIndex);
+	if(i>jary.length)
+		alert('length error!');
+	var av=jary[i];
+//	alert(av);
+	var v=document.getElementById('sel2p');
+	v.options.length=0;	//clear
+	var j=av.length;
+	for(i=0;i<j;i++)
+	{
+		var aa=new Option;
+		aa.value=i;
+		aa.text=av[i];
+		v.add(aa);
+	} 
 }
 //var ja=jary(i-1);
 </script>
