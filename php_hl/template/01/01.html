@@ -1,4 +1,6 @@
 <script type="text/javascript">
+var sc=screen.width;
+document.cookie="screen="+sc;
 function unreg()
 {
 	location.href="template/t01/login1.php";
@@ -20,11 +22,12 @@ if(!defined("FULL_PATH"))
 }
 $str="<link href='css/base.css' rel='stylesheet' type='text/css' media='all'/>";
 echo $str;
-//$str=constant("FULL_PATH")."config/main.php";
-//require_once($str);
 global $tybitsfox;
 $str="<title>".$tybitsfox['title']."</title>";
 echo $str;
+global $scr_width;
+$scr_width=$_COOKIE['screen'];
+$scr_width*=0.9*0.75;
 ?>
 <!-- <link href="css/base.css" rel="stylesheet" type="text/css" media="all" /> 
 <title>aaaa</title>  -->

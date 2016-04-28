@@ -29,8 +29,13 @@
 		}
 		else
 		{	
-			$s1="<img src='template/01/img01.php' width=100 height=100/>";
-			echo $s1;
+			$rb=new tb_mxright_g();
+			$rb->show_header();
+		//	$rb->show_tail();
+			$rb->show_body();
+		//	$cd=$_COOKIE['screen']; $cd*=0.9*0.75;
+			global $scr_width;
+			echo $scr_width;
 		}
 	?>
 <!--	<img src="template/01/img01.php" width=100 height=100/>

@@ -239,22 +239,26 @@ class tb_mxright_g implements tab_show
 	}//2016-4-28 test ok! so i can focus on my graphic-code
 	public function show_header()
 	{//no use in this class,so put the init data here
-		range_ary();
+		$this->range_ary();
 	}
 	public function show_body()
 	{//values trans by global variable,so just show a picture here
-		$s1="<img src='core/graph/g01.php' width= ".constant('gxlen')." height= ".constant('gylen')." />";
+		global $scr_width,$scr_height;
+		$s1="<img src='core/graph/g01.php' width= ".$scr_width." height= ".$scr_height." />";
 		echo $s1;
 	}
 	public function show_tail()
-	{}
+	{
+	//	$s1=realpath('.');
+	//	echo $s1;
+	}
 	//{{{
 	protected function range_ary()
 	{
 		global $gx,$gy,$gdata,$gsc;
 		$m1=0;$m2=0;
 		$xy=$this->dy[0][1];
-		$days=get_days_by_month($xy);
+		$days=$this->get_days_by_month($xy);
 		if(isset($_POST['sel3']))
 			$tflag=$_POST['sel3'];//日均值
 		else
@@ -280,12 +284,12 @@ class tb_mxright_g implements tab_show
 		//每一个子串是一组数据，画一条线
 		for($j=0,$k=0;$j<$i;$j++)
 		{
-			$xa=$this->dy[j];
+			$xa=$this->dy[$j];
 			if($tflag==0)
 			{//小时值
 				if($k>23)
 					break;
-				$l=get_hour($xa[1]);
+				$l=$this->get_hour($xa[1]);
 				while($k<$l)
 				{
 					array_push($xx,0);$k++;
@@ -306,7 +310,7 @@ class tb_mxright_g implements tab_show
 			{//日均值
 				if($k>$days)
 					break;
-				$l=get_day($xa[1]);
+				$l=$this->get_day($xa[1]);
 				while($k<$l)
 				{
 					array_push($xx,0);$k++;
