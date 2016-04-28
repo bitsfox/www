@@ -45,4 +45,11 @@
 	$arun[0]				=	0;
 	$arun[1]				=	0;	
 	$arry					=	array();
+//下面的数组用于绘制图形	
+	$gx						=	array();
+	$gy						=	array();
+	$gdata					=	array();
+	$gsc					=	0;
+	define("gxlen",600);
+	define("gylen",350);
 ?>
