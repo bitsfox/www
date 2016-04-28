@@ -53,7 +53,7 @@ class tb_mxleft implements tab_show
 		array_push($this->ey,$this->cy);
 		array_push($arry,$this->cy);
 //		$this->cy=array("国控","省控","市控","县控");//控制级别
-		$this->dy=array("实时值","日均值");//数据类型
+		$this->dy=array("小时值","日均值","小时超标值","日均超标值");//数据类型
 	}
 	public function show_header()
 	{
@@ -140,26 +140,25 @@ class tb_mxleft implements tab_show
 	public function show_tail()
 	{}
 }//}}}
-
-//{{{class tb_mxright_t implements tab_show 明晰的右边栏
+//{{{class tb_mxright_t implements tab_show 明晰的右边栏-表格显示
 class tb_mxright_t implements tab_show
 {
 	private $ay,$cy;
 	private $dy=array();
 	public function __construct()
 	{//now no data,these only for test!
-		$this->ay=array("编号","单位名称","COD","氨氮","累计流量");
+		$this->ay=array("编号","时间","COD","氨氮","累计流量");
 		$this->cy=array("监测值","标准值");
 		//only for test!
-		$ey=array("1","泰山康平纳毛纺织","137","200","--","--","1679356");
+		$ey=array("1","2016-04-22:15:20","37","60","11.34","10","1679356");
 		array_push($this->dy,$ey);
-		$ey=array("2","泰山石膏股份有限公司","186","500","3.3","45","1742970");
+		$ey=array("2","2016-04-22:16:20","56","60","3.3","10","16842970");
 		array_push($this->dy,$ey);
-		$ey=array("3","岱银纺织","100","200","8.83","20","53114940");
+		$ey=array("3","2016-04-22:17:20","47","60","8.83","10","16884940");
 		array_push($this->dy,$ey);
-		$ey=array("4","新矿集团盐化公司","63","60","5.19","10","275402");
+		$ey=array("4","2016-04-22:18:20","63","60","5.19","10","16925402");
 		array_push($this->dy,$ey);
-		$ey=array("5","泰安中泰纸业有限公司","14","60","0.61","10","2660074");
+		$ey=array("5","2016-04-22:19:20","54","60","6.1","10","1697074");
 		array_push($this->dy,$ey);
 	}
 	public function show_header()
@@ -209,5 +208,145 @@ class tb_mxright_t implements tab_show
 	public function show_tail()
 	{echo "</table>";}
 }//}}}
+//{{{class tb_mxright_g implements tab_show 明晰的右边栏-图形显示
+class tb_mxright_g implements tab_show
+{
+	private $ay=array();
+	private $cy=array();
+	private $dy=array();
+	public function __construct()
+	{//now no data,these only for test!
+		for($i=0;$i<24;$i++)
+		{
+			$str=$i."时";
+			array_push($this->ay,$str);
+		}
+		for($i=0;$i<70;$i+=10)
+			array_push($this->cy,$i);
+//		$this->ay=array("编号","时间","COD","氨氮","累计流量");
+//		$this->cy=array("监测值","标准值");
+		//only for test!
+		$ey=array("1","2016-04-22:15:20","37","60","11.34","10","1679356");
+		array_push($this->dy,$ey);
+		$ey=array("2","2016-04-22:16:20","56","60","3.3","10","16842970");
+		array_push($this->dy,$ey);
+		$ey=array("3","2016-04-22:17:20","47","60","8.83","10","16884940");
+		array_push($this->dy,$ey);
+		$ey=array("4","2016-04-22:18:20","63","60","5.19","10","16925402");
+		array_push($this->dy,$ey);
+		$ey=array("5","2016-04-22:19:20","54","60","6.1","10","1697074");
+		array_push($this->dy,$ey);
+	}//2016-4-28 test ok! so i can focus on my graphic-code
+	public function show_header()
+	{//no use in this class,so put the init data here
+		range_ary();
+	}
+	public function show_body()
+	{//values trans by global variable,so just show a picture here
+		$s1="<img src='core/graph/g01.php' width= ".constant('gxlen')." height= ".constant('gylen')." />";
+		echo $s1;
+	}
+	public function show_tail()
+	{}
+	//{{{
+	protected function range_ary()
+	{
+		global $gx,$gy,$gdata,$gsc;
+		$m1=0;$m2=0;
+		$xy=$this->dy[0][1];
+		$days=get_days_by_month($xy);
+		if(isset($_POST['sel3']))
+			$tflag=$_POST['sel3'];//日均值
+		else
+			$tflag=0;//小时均值
+		if($tflag == 0)
+		{//取得横坐标
+			for($i=0;$i<24;$i++)
+			{
+				$s1=$i."时";
+				array_push($gx,$s1);
+			}
+		}
+		else
+		{//取得横坐标
+			for($i=0;$i<$days;$i++)
+			{
+				$s1=$i."日";
+				array_push($gx,$s1);
+			}
+		}
+		$i=count($this->dy);
+		$xx=array();$xy=array();
+		//每一个子串是一组数据，画一条线
+		for($j=0,$k=0;$j<$i;$j++)
+		{
+			$xa=$this->dy[j];
+			if($tflag==0)
+			{//小时值
+				if($k>23)
+					break;
+				$l=get_hour($xa[1]);
+				while($k<$l)
+				{
+					array_push($xx,0);$k++;
+					array_push($xy,0);
+				}
+				if($k == $l)
+				{
+					if($m1 < $xa[2])
+						$m1=$xa[2];
+					if($m2 < $xa[4])
+						$m2=$xa[4];
+					array_push($xx,$xa[2]);
+					array_push($xy,$xa[4]);
+					$k++;
+				}
+			}
+			else
+			{//日均值
+				if($k>$days)
+					break;
+				$l=get_day($xa[1]);
+				while($k<$l)
+				{
+					array_push($xx,0);$k++;
+					array_push($xy,0);
+				}
+				if($k == $l)
+				{
+					if($m1 < $xa[2])
+						$m1=$xa[2];
+					if($m2 < $xa[4])
+						$m2=$xa[4];
+					array_push($xx,$xa[2]);
+					array_push($xy,$xa[4]);
+				}
+			}
+		}
+		array_push($gdata,$xx);
+		array_push($gdata,$xy);
+//设定图形比例：最大值*1.1
+		if($m1>$m2)
+			$gsc=$m1*1.1;
+		else
+			$gsc=$m2*1.1;
+	}//}}}
+	protected function get_hour($tmfmt)
+	{//format: 2016-04-22:08:12:35
+		return substr($tmfmt,11,2);
+	}
+	protected function get_day($tmfmt)
+	{ return substr($tmfmt,5,2);}
+	protected function get_days_by_month($tmfmt)
+	{//取得指定月份的天数
+		$month=substr($tmfmt,5,2);
+		$year=substr($tmfmt,0,4);
+		return mktime(0,0,0,$month+1,0,$year);
+	}
+}//}}}
+
+
+
+
 
 ?>
