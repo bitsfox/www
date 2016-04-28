@@ -16,9 +16,26 @@
 	<div id="right_id">
 	<div id="clear_id"></div>
 	<div id="right_top_id" class="shadow_class">
-	<img src="template/01/img01.php" width=100 height=100/>
+	<?php
+		$i=0;
+		if(isset($_POST['radio1']))
+			$i=$_POST['radio1']-1;
+		if($i == 0)
+		{
+			$tb=new tb_mxright_t();
+			$tb->show_header();
+			$tb->show_body();
+			$tb->show_tail();
+		}
+		else
+		{	
+			$s1="<img src='template/01/img01.php' width=100 height=100/>";
+			echo $s1;
+		}
+	?>
+<!--	<img src="template/01/img01.php" width=100 height=100/>
 
-<!--	<table class='imagetable'><tr><th>aaa</th><th>bbb</th></tr>
+	<table class='imagetable'><tr><th>aaa</th><th>bbb</th></tr>
 	<tr><td>cccc</td><td>dddd</td></tr></table>   -->
 	</div>
 	</div>

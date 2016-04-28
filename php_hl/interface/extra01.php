@@ -53,7 +53,7 @@ class tb_mxleft implements tab_show
 		array_push($this->ey,$this->cy);
 		array_push($arry,$this->cy);
 //		$this->cy=array("国控","省控","市控","县控");//控制级别
-		$this->dy=array("实时值","日均值");//数据类型
+		$this->dy=array("小时值","日均值","小时超标值","日均超标值");//数据类型
 	}
 	public function show_header()
 	{
@@ -140,26 +140,25 @@ class tb_mxleft implements tab_show
 	public function show_tail()
 	{}
 }//}}}
-
-//{{{class tb_mxright_t implements tab_show 明晰的右边栏
+//{{{class tb_mxright_t implements tab_show 明晰的右边栏-表格显示
 class tb_mxright_t implements tab_show
 {
 	private $ay,$cy;
 	private $dy=array();
 	public function __construct()
 	{//now no data,these only for test!
-		$this->ay=array("编号","单位名称","COD","氨氮","累计流量");
+		$this->ay=array("编号","时间","COD","氨氮","累计流量");
 		$this->cy=array("监测值","标准值");
 		//only for test!
-		$ey=array("1","泰山康平纳毛纺织","137","200","--","--","1679356");
+		$ey=array("1","2016-04-22:15:20","37","60","11.34","10","1679356");
 		array_push($this->dy,$ey);
-		$ey=array("2","泰山石膏股份有限公司","186","500","3.3","45","1742970");
+		$ey=array("2","2016-04-22:16:20","56","60","3.3","10","16842970");
 		array_push($this->dy,$ey);
-		$ey=array("3","岱银纺织","100","200","8.83","20","53114940");
+		$ey=array("3","2016-04-22:17:20","47","60","8.83","10","16884940");
 		array_push($this->dy,$ey);
-		$ey=array("4","新矿集团盐化公司","63","60","5.19","10","275402");
+		$ey=array("4","2016-04-22:18:20","63","60","5.19","10","16925402");
 		array_push($this->dy,$ey);
-		$ey=array("5","泰安中泰纸业有限公司","14","60","0.61","10","2660074");
+		$ey=array("5","2016-04-22:19:20","54","60","6.1","10","1697074");
 		array_push($this->dy,$ey);
 	}
 	public function show_header()
@@ -209,5 +208,45 @@ class tb_mxright_t implements tab_show
 	public function show_tail()
 	{echo "</table>";}
 }//}}}
+//{{{class tb_mxright_g implements tab_show 明晰的右边栏-图形显示
+class tb_mxright_g implements tab_show
+{
+	private $ay=array();
+	private $cy=array();
+	private $dy=array();
+	public function __construct()
+	{//now no data,these only for test!
+		for($i=0;$i<24;$i++)
+		{
+			$str=$i."时";
+			array_push($this->ay,$str);
+		}
+		for($i=0;$i<70;$i+=10)
+			array_push($this->cy,$i);
+//		$this->ay=array("编号","时间","COD","氨氮","累计流量");
+//		$this->cy=array("监测值","标准值");
+		//only for test!
+		$ey=array("1","2016-04-22:15:20","37","60","11.34","10","1679356");
+		array_push($this->dy,$ey);
+		$ey=array("2","2016-04-22:16:20","56","60","3.3","10","16842970");
+		array_push($this->dy,$ey);
+		$ey=array("3","2016-04-22:17:20","47","60","8.83","10","16884940");
+		array_push($this->dy,$ey);
+		$ey=array("4","2016-04-22:18:20","63","60","5.19","10","16925402");
+		array_push($this->dy,$ey);
+		$ey=array("5","2016-04-22:19:20","54","60","6.1","10","1697074");
+		array_push($this->dy,$ey);
+	}//2016-4-28 test ok! so i can focus on my graphic-code
+	public function show_header()
+	{}
+	public function show_body()
+	{}
+	public function show_tail()
+	{}
+}//}}}
+
+
+
+
 
 ?>
