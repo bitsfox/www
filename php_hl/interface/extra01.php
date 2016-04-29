@@ -243,9 +243,9 @@ class tb_mxright_g implements tab_show
 	}
 	public function show_body()
 	{//values trans by global variable,so just show a picture here
-		global $scr_width,$scr_height;
-		$s1="<img src='core/graph/g01.php' width= ".$scr_width." height= ".$scr_height." />";
-		echo $s1;
+	//	global $scr_width,$scr_height;
+	//	$s1="<img src='core/graph/g01.php' width= ".$scr_width." height= ".$scr_height." />";
+	//	echo $s1;
 	}
 	public function show_tail()
 	{
@@ -273,7 +273,7 @@ class tb_mxright_g implements tab_show
 		}
 		else
 		{//取得横坐标
-			for($i=0;$i<$days;$i++)
+			for($i=1;$i<=$days;$i++)
 			{
 				$s1=$i."日";
 				array_push($gx,$s1);
@@ -357,7 +357,7 @@ class tb_mxright_g implements tab_show
 	{//取得指定月份的天数
 		$month=substr($tmfmt,5,2);
 		$year=substr($tmfmt,0,4);
-		return mktime(0,0,0,$month+1,0,$year);
+		return date("d",mktime(0,0,0,$month+1,0,$year));
 	}
 }//}}}
 

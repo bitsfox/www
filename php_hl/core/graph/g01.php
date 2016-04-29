@@ -11,18 +11,22 @@ if(!defined("FULL_PATH"))
 }
 $str=constant("FULL_PATH")."config/main.php";
 require_once($str);
-global $scr_width,$scr_height,$gx,$gy;
+$scr_width=$_SESSION['gra_width'];
+$gx=$_SESSION['gra_gx'];
+?>
+<?php
+//global $scr_width,$scr_height,$gx,$gy;	
 $im = imagecreatetruecolor($scr_width, $scr_height); //创建画布
 $red = imagecolorallocate($im, 255, 0, 0); //设置一个颜色变量为红色
 $blue = imagecolorallocate($im,0,0,255);//设置蓝色
 $background_color = imagecolorallocate($im,255,255,255); //白色
 $black = imagecolorallocate($im,0,0,0); //黑色
 imagefill($im,0,0,$background_color);
+$s1=(string)$scr_width;
+imagestring($im,5,10,10,$s1,$red);
 imageline($im,40,40,40,$scr_height-40,$black);
 imageline($im,40,$scr_height-40,$scr_width-40,$scr_height-40,$black);
-$ay=$gx[0];
-$i=count($ay);
-$i=24;
+$i=count($gx);
 if($i<25)
 	$j=4;
 else
@@ -43,7 +47,6 @@ $font="YaHei.Consolas.1.11b.ttf";
 //$s1=realpath('.');
 //imagestring($im,5,10,10,$s1,$red);
 imagettftext($im,16,90,80,280,$red,$font,"泰安市环保局 田勇");
-
 header('Content-type:image/png'); //通知浏览器这不是文本而是一个图片
 imagepng($im);
 imagedestroy($im);

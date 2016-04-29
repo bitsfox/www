@@ -29,12 +29,23 @@
 		}
 		else
 		{	
+			global $scr_width,$scr_height,$gx;
 			$rb=new tb_mxright_g();
 			$rb->show_header();
 		//	$rb->show_tail();
-			$rb->show_body();
+		//	$rb->show_body();
 		//	$cd=$_COOKIE['screen']; $cd*=0.9*0.75;
-			global $scr_width;
+			if(isset($_SESSION['gra_width']))
+			{
+				unset($_SESSION['gra_width']);
+				unset($_SESSION['gra_gx']);
+			}
+			$_SESSION['gra_width'] = $scr_width;
+			//$_SESSION['gra_gx']	= array();
+			$_SESSION['gra_gx'] = $gx;
+			//print_r($_SESSION['gra_gx']);
+		    $s1="<img src='core/graph/g01.php' width= ".$scr_width." height= ".$scr_height." />";
+			echo $s1;
 			echo $scr_width;
 		}
 	?>
