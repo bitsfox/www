@@ -50,6 +50,6 @@
 	$gy						=	array();
 	$gdata					=	array();
 	$gsc					=	0;
-	$scr_width				=	690; //1024*0.9*0.75
+	$scr_width				=	690;
 	$scr_height				=	470; 
 ?>

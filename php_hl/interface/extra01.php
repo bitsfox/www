@@ -281,6 +281,7 @@ class tb_mxright_g implements tab_show
 		}
 		$i=count($this->dy);
 		$xx=array();$xy=array();
+		$v1=0;$v2=0;
 		//每一个子串是一组数据，画一条线
 		for($j=0,$k=0;$j<$i;$j++)
 		{
@@ -289,6 +290,7 @@ class tb_mxright_g implements tab_show
 			{//小时值
 				if($k>23)
 					break;
+				$v1=$xa[3];$v2=$xa[5];
 				$l=$this->get_hour($xa[1]);
 				while($k<$l)
 				{
@@ -329,11 +331,21 @@ class tb_mxright_g implements tab_show
 		}
 		array_push($gdata,$xx);
 		array_push($gdata,$xy);
-//设定图形比例：最大值*1.1
+//设定图形比例： 固定为标准的2:1
 		if($m1>$m2)
-			$gsc=$m1*1.1;
+			$gsc=$m1;
 		else
-			$gsc=$m2*1.1;
+			$gsc=$m2;
+		unset($xx);unset($xy);
+		$xx=array();$xy=array();
+		//固定8个刻度
+		for($i=0;$i<8;$i++)
+		{
+			array_push($xx,($v1/4)*($i+1));
+			array_push($xy,($v2/4)*($i+1));
+		}
+		array_push($gy,$xx);
+		array_push($gy,$xy);
 	}//}}}
 	protected function get_hour($tmfmt)
 	{//format: 2016-04-22:08:12:35
