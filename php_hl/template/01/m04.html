@@ -39,11 +39,14 @@
 			{
 				unset($_SESSION['gra_width']);
 				unset($_SESSION['gra_gx']);
+				unset($_SESSION['gra_gy']);
+				unset($_SESSION['gra_gdata']);
 			}
-			$_SESSION['gra_width'] = $scr_width;
-			//$_SESSION['gra_gx']	= array();
+			$_SESSION['gra_width'] = array($scr_width,$scr_height);
 			$_SESSION['gra_gx'] = $gx;
-			//print_r($_SESSION['gra_gx']);
+			$_SESSION['gra_gy'] = $gy;
+			$_SESSION['gra_gdata'] = $gdata;
+			//print_r($_SESSION['gra_gdata']);
 		    $s1="<img src='core/graph/g01.php' width= ".$scr_width." height= ".$scr_height." />";
 			echo $s1;
 			echo $scr_width;

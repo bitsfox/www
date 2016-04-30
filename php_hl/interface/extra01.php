@@ -329,6 +329,16 @@ class tb_mxright_g implements tab_show
 				}
 			}
 		}
+		if(tflag==0) //小时值
+			$k=24;
+		else
+			$k=$days;
+		$i=count($xx);
+		for($j=$i;$j<$k;$j++)
+		{
+			array_push($xx,0);
+			array_push($xy,0);
+		}
 		array_push($gdata,$xx);
 		array_push($gdata,$xy);
 //设定图形比例： 固定为标准的2:1
@@ -338,12 +348,22 @@ class tb_mxright_g implements tab_show
 			$gsc=$m2;
 		unset($xx);unset($xy);
 		$xx=array();$xy=array();
-		//固定8个刻度
-		for($i=0;$i<8;$i++)
+		//固定5个刻度
+		for($i=0;$i<4;$i++)
 		{
-			array_push($xx,($v1/4)*($i+1));
-			array_push($xy,($v2/4)*($i+1));
+			$aa1=sprintf("%0.2f",($v1/3)*($i+1));
+			$aa2=sprintf("%0.2f",($v2/3)*($i+1));
+			array_push($xx,$aa1);
+			array_push($xy,$aa2);
 		}
+		if($m1<($v1*2))//最后一个刻度应该是标准的2倍或者最大超标值
+			$m1=$v1*2;
+		if($m2<($v2*2))
+			$m2=$v2*2;
+		$aa1=sprintf("%0.2f",$m1);
+		$aa2=sprintf("%0.2f",$m2);
+		array_push($xx,$m1);
+		array_push($xy,$m2);
 		array_push($gy,$xx);
 		array_push($gy,$xy);
 	}//}}}
