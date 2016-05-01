@@ -1,19 +1,36 @@
 	<div id="left_id" class="shadow_class">明晰操作栏<ul>
 	<?php
-		for($i=0;$i<60;$i++)
+		session_start();
+		if(!defined("FULL_PATH"))
 		{
-			echo "<li>dddaaaaaaaaaaaaaaaaaaaddddddddddddddddaaaaaaaaaaaaaaaaa</li>";
+			$s1=dirname(__FILE__);
+			$s2=strstr($s1,"php_hl");
+			$i=strlen($s1)-strlen($s2);
+			$s2=substr($s1,0,$i)."php_hl/";
+			define("FULL_PATH",$s2);
 		}
+		$str=constant("FULL_PATH")."template/02/l06.html";
+		require_once($str);
+		$str=constant("FULL_PATH")."include/inter_def.php";
+		require_once($str);
 	?> 
 	</ul></div>
 	<div id="right_id">
 	<div id="clear_id"></div>
 	<div id="right_top_id" class="shadow_class">
-	<br><br><center>这里是<font color=red>主页</font>，请选择你要进行的操作</center><ul>
 	<?php
-		for($i=0;$i<80;$i++)
+		$str=constant("FULL_PATH")."interface/extra02.php";
+		require_once($str);
+		if(!isset($_POST['radio1']))
+		{}
+		else
 		{
-			echo "<li>aaassssssssssssssssssssssssssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaallllllllllllllllllllllllllllllllllllllllllllllllllllllllllaaaaaaaaaaaaaaaassssssssssssssssssssssssssd</li>";
+			if($_POST['radio1'] == 2)
+			{
+				$a=new fs_mx_g();
+				$a->analysis_post();
+				echo "hahhahah";
+			}
 		}
 	?>
 	</ul></div>

@@ -28,7 +28,18 @@ interface tab_show
 	public function show_body();//表内容的显示
 	public function show_tail();//表尾的显示
 }
-
+//下面的接口定义了图形显示所需数据的准备实现
+interface gra_data
+{//接口定义的必须是public类型
+/*attention:
+  该接口与tab_show不同，不直接参与显示界面的生成，而仅仅是实现显示数据的准备和
+  序列化工作。所以，在具体实现时，应考虑同时继承本接口和sql_def接口。
+ */	
+	public function range_xway();//横坐标信息生成
+	public function range_yway();//纵坐标信息生成
+	public function range_ary();//显示数据的序列化
+	public function analysis_post();//对post传递值的处理
+}
 ?>
 
 

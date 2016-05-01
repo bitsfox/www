@@ -63,7 +63,7 @@ class msql implements sql_def
 	{return $database['type'];}
 	public function connect_db()
 	{
-		$this->conn=MYSQL_connect($str) or die("connect die: ".MYSQL_error());
+		$this->conn=MYSQL_connect($this->str) or die("connect die: ".MYSQL_error());
 		return $this->conn;
 	}
 	public function query_db()

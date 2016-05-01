@@ -362,8 +362,8 @@ class tb_mxright_g implements tab_show
 			$m2=$v2*2;
 		$aa1=sprintf("%0.2f",$m1);
 		$aa2=sprintf("%0.2f",$m2);
-		array_push($xx,$m1);
-		array_push($xy,$m2);
+		array_push($xx,$aa1);
+		array_push($xy,$aa2);
 		array_push($gy,$xx);
 		array_push($gy,$xy);
 	}//}}}

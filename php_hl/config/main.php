@@ -50,4 +50,5 @@
 	$gsc					=	0;
 	$scr_width				=	690;
 	$scr_height				=	470; 
+	$yway_cnt				=	6;		//纵坐标的刻度个数
 ?>
