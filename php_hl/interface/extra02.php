@@ -193,6 +193,7 @@ public function query_db()
 				array_push($this->xway,$a1);
 			}
 		}
+		$_SESSION['fs_g_xway'] = $this->xway;
 	}//}}}
 //{{{public function range_yway()
 	public function range_yway()
@@ -243,10 +244,16 @@ public function query_db()
 		array_push($a2,$y1);
 		array_push($this->yway,$a1);
 		array_push($this->yway,$a2);
+		$_SESSION['fs_g_yway'] = $this->yway;
 	}//}}}
 //{{{public function range_ary()
 	public function range_ary()
 	{
+		if($this->method == 0)
+			die("order by function exec error!");
+		if($this->method < 0x100)
+			$this->do_db();
+		
 
 	}//}}}	
 //{{{public function __destruct()
@@ -300,10 +307,13 @@ private function init_data()
 //{{{private function do_db()
 	private function do_db()
 	{
-		$this->connect_db();
+/*		$this->connect_db();
 		$this->make_sql_str();
 		$this->query_db();
 		$this->close_db();
+*/
+//only for test! because no data,onw only emulate get data from database!
+				
 		$this->method |= 0x100;
 	}//}}}
 }
