@@ -42,8 +42,6 @@
 	$menulnk[4]				=	"index.php?pgcnt=".base64_encode("template/01/m05.html");
 	$menulnk[5]				=	"index.php?pgcnt=".base64_encode("template/01/m06.html");
 //
-	$arun[0]				=	0;
-	$arun[1]				=	0;	
 	$arry					=	array();
 //下面的数组用于绘制图形	
 	$gx						=	array();
