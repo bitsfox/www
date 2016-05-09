@@ -395,7 +395,6 @@ XTerm*termName:  xterm-256color
 主题（dracula）,在gvim下也有一个漂亮的solarized配色。
 
 </pre></font></td><td width=10%></td></tr></table>";
-echo "<br><br><a href='./VIM: index.html' target=_blank>vim about</a>";
 ?>
 
 
