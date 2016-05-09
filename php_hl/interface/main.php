@@ -289,18 +289,18 @@ class tb_fq implements tab_show
 	private $dy=array();
 	public function __construct()
 	{
-		$this->ay=array("编号","单位名称","SO2","NOx","烟尘","废气排放量");
+		$this->ay=array("编号","单位名称","SO2","NOx","烟尘","氧量","废气排放量");
 		$this->cy=array("监测值","标准值");
 		//only for test!
-		$ey=array("1","泰山玻璃纤维","133","200","222","300","13","30","13156");
+		$ey=array("1","泰山玻璃纤维","133","200","222","300","13","30","12","13156");
 		array_push($this->dy,$ey);
-		$ey=array("2","泰山石膏股份有限公司","4","200","81","200","7","30","107005");
+		$ey=array("2","泰山石膏股份有限公司","4","200","81","200","7","30","6","107005");
 		array_push($this->dy,$ey);
-		$ey=array("3","泰山东城热电","299","200","97","200","5","30","347814");
+		$ey=array("3","泰山东城热电","299","200","97","200","5","30","13","347814");
 		array_push($this->dy,$ey);
-		$ey=array("4","新矿集团泰山盐化工分公司热电厂","7","200","57","200","14","30","402034");
+		$ey=array("4","新矿集团泰山盐化工分公司热电厂","7","200","57","200","14","30","8","402034");
 		array_push($this->dy,$ey);
-		$ey=array("5","岱岳精制盐","127","200","109","200","8","30","116827");
+		$ey=array("5","岱岳精制盐","127","200","109","200","8","30","9","116827");
 		array_push($this->dy,$ey); 
 	}
 	public function show_header()
@@ -308,7 +308,7 @@ class tb_fq implements tab_show
 		$s1="<table width=97% class='imagetable'><tr>";
 		$s2="<th width=6% rowspan=2 align=center>".$this->ay[0]."</th>";
 		$s1.=$s2;
-		$s2="<th width=30% rowspan=2 align=center>".$this->ay[1]."</th>";
+		$s2="<th width=20% rowspan=2 align=center>".$this->ay[1]."</th>";
 		$s1.=$s2;
 		$s2="<th width=16% colspan=2 align=center>".$this->ay[2]."</th>";
 		$s1.=$s2;
@@ -316,7 +316,9 @@ class tb_fq implements tab_show
 		$s1.=$s2;
 		$s2="<th width=16% colspan=2 align=center>".$this->ay[4]."</th>";//;</tr><tr>";
 		$s1.=$s2;
-		$s2="<th width=16% rowspan=2 align=center>".$this->ay[5]."</th></tr><tr>";
+		$s2="<th width=10% rowspan=2 align=center>".$this->ay[5]."</th>";
+		$s1.=$s2;
+		$s2="<th width=16% rowspan=2 align=center>".$this->ay[6]."</th></tr><tr>";
 		$s1.=$s2;
 		$s2="<th width=8% align=center>".$this->cy[0]."</th>";
 		$s1.=$s2;
@@ -338,7 +340,7 @@ class tb_fq implements tab_show
 		for($j=0;$j<$i;$j++)
 		{
 			$fy=$this->dy[$j];
-			$s1="<tr><td width=%6>".$fy[0]."</td><td width=30%>".$fy[1]."</td>";
+			$s1="<tr><td width=%6>".$fy[0]."</td><td width=20%>".$fy[1]."</td>";
 			if($fy[2]>$fy[3])
 				$s2="<td width=8% id='tdid'>".$fy[2]."</td>";
 			else
@@ -354,7 +356,8 @@ class tb_fq implements tab_show
 			else
 				$s2="<td width=8%>".$fy[6]."</td>";
 			$s1.=$s2."<td width=8%>".$fy[7]."</td>";
-			$s1.="<td width=16%>".$fy[8]."</td></tr>";
+			$s1.="<td width=10%>".$fy[8]."</td>";
+			$s1.="<td width=16%>".$fy[9]."</td></tr>";
 			echo $s1;
 		}
 	}
