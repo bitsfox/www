@@ -98,4 +98,4 @@ SQL>insert into mytable(emp_id,name,age) values(1,'maiyo',24);
 SQL>update mytable set age = 25 where name = 'maiyo';
 删除表数据
 SQL>delete mytable where name = 'maiyo';
-
+<a href='#header'>返回</a>
