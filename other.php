@@ -97,7 +97,9 @@ iconv -f GB2312 -t UTF-8 16.html >a16.html
 			       iconv -f GB2312 -t UTF-8 \$i > ../unixfaq/\$i
 			fi
 		done
-
+<font color=blue>去除文件中每行开头的空格或者TAB:
+cat uora01.txt | sed 's/^[ \\t]*//g' >uuora01.txt
+</font>
 </pre><br>
 ");
 echo "<font color=#0000ff><center>amarok播放器的应用</center><br><pre>

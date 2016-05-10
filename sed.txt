@@ -9,6 +9,8 @@ do
 	j=${c1/%asp/html}
 	sed -e 's/.$//' $i > $j
 done
+<font color=red>单独去除一个文件中dos格式^M的做法： sed -e 's/.$//' dos.txt > linux.txt
+单独转换一个linux格式文件为dos文件的做法： sed -e 's/$/\r/ unix.file > dos.file'</font>
 #将unix格式的文件转换为dos格式的文件时使用：sed -e 's/$/\r/ unix.file > dos.file'
 #bash ${ } 用法总结 
 #假设我们定义了一个变量为：
