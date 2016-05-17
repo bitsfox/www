@@ -57,11 +57,11 @@ cat bbb.txt | sed 's/^[ \t]*//g' &gt; aaa.txt
 cat bbb.txt | sed 's/[ \t]*$//g' &gt;aaa.txt
 
 去除dos格式的^M: 
-ed -e 's/.$//' dos.txt &gt; linux.txt
+sed -e 's/.$//' dos.txt &gt; linux.txt
 转换为dos格式：
 sed -e 's/$/\r/' unix.file &gt; dos.file
 
 转换GB2312为UTF-8编码：
 cat g16.txt | iconv -f GB2312 -t UTF-8 &gt;u16.txt
-<font&gt><a href="#header">返回</a>;
+</font><a href="#header">返回</a>;
 
