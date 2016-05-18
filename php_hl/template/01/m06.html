@@ -21,6 +21,8 @@
 	<?php
 		$str=constant("FULL_PATH")."interface/extra02.php";
 		require_once($str);
+		$str=constant("FULL_PATH")."interface/main.php";
+		require_once($str);
 		if(!isset($_POST['radio1']))
 		{}
 		else
@@ -32,6 +34,7 @@
 				echo "hahhahah";
 			}
 		}
+		get_danwei();
 	?>
 	</ul></div>
 	</div>

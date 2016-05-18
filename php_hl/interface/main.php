@@ -447,7 +447,24 @@ class tb_sleft implements tab_show
 	{}
 }//}}}
 
-
+//use mysqi
+function get_danwei()
+{
+	global $database;
+//	$mysql=new mysqli("127.0.0.1",$database['user'],$database['pwd'],$database['dbname'],3306);
+	$mysqli=mysqli_connect("127.0.0.1",$database['user'],$database['pwd'],$database['dbname'],3306);
+	if(mysqli_connect_errno())
+		die("database connect error");
+	mysqli_set_charset($mysqli,"utf8");
+	$res=mysqli_query($mysqli,"SELECT * from zd_info");
+	while($row=mysqli_fetch_row($res))
+	{
+		$str="uid=".$row[0]." mncode=".$row[1]." dwid=".$row[2]." uname=".$row[3]."<br>";
+		echo $str;
+	}
+	mysqli_free_result($res);
+	mysqli_close($mysqli);
+}
 
 
 ?>
