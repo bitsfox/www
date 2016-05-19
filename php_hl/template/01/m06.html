@@ -23,6 +23,8 @@
 		require_once($str);
 		$str=constant("FULL_PATH")."interface/main.php";
 		require_once($str);
+		$str=constant("FULL_PATH")."interface/main01.php";
+		require_once($str);
 		if(!isset($_POST['radio1']))
 		{}
 		else
@@ -34,7 +36,9 @@
 				echo "hahhahah";
 			}
 		}
-		get_danwei();
+		//get_danwei();
+		$i="2013";
+		crt_conn($i);
 	?>
 	</ul></div>
 	</div>
