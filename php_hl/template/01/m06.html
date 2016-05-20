@@ -1,4 +1,4 @@
-	<div id="left_id" class="shadow_class">明晰操作栏<ul>
+	<div id="left_id" class="shadow_class">
 	<?php
 		session_start();
 		if(!defined("FULL_PATH"))
@@ -14,7 +14,7 @@
 		$str=constant("FULL_PATH")."include/inter_def.php";
 		require_once($str);
 	?> 
-	</ul></div>
+	</div>
 	<div id="right_id">
 	<div id="clear_id"></div>
 	<div id="right_top_id" class="shadow_class">
@@ -37,9 +37,9 @@
 			}
 		}
 		//get_danwei();
-		$i="2013";
-		crt_conn($i);
+		$i="2018";
+		crt_conn();
 	?>
-	</ul></div>
+	</div>
 	</div>
 </div></body></html>	
