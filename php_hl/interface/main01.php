@@ -149,6 +149,7 @@ function get_unit($y)
 {
 	if(!isset($_SESSION['sys_level']))
 		die("控制区域错误，无法取得相应的站点信息");
+	$mysqli=mysqli_connect();
 	if($_SESSION['sys_level'] == 0) //县区级
 	{
 		$cy=$y[0];
@@ -156,11 +157,209 @@ function get_unit($y)
 	}
 	else
 	{
-		if($_SESSION['sys_level'] == 1)//国家级
+		if($_SESSION['sys_level'] == 1)//省级
 		{
+			$i=count($y);
+			for($j=0;$j<$i;$j++)
+			{
+				$cy=$y[$j];
+				$m=intval($cy[0])+1;
+				$n=$m+98;
+				//注意：下面的语句应该是取站点表中的数据，但是目前站点表的数据太少，所以为了测试改取单位表的数据
+				$s1="SELECT dwid,dname,ctlvl FROM dw_info WHERE aid BETWEEN ".$m." AND ".$n;
 
+
+			}
 		}
 	}
 }//}}}
+////////////////////////////////////////////////////////////////
+//{{{class mx_listbox implements listbox_data
+class mx_listbox implements listbox_data
+{
+	private $db=array(); //数据库服务器信息数组
+	private $ay,$cy;	//ay是控制区域列表框的数据数组,cy是站点信息列表框的数据数组
+//	public $mysqli,$res;
+	public function __construct()
+	{
+		$this->ay=array();
+		$this->cy=array();$this->db=array();
+	}
+	public function __destruct()
+	{
+		unset($db);
+		unset($ay);
+		unset($cy);
+	}
+	public function get_used_db($y)
+	{
+		global $DB_ADDR_TY,$DB_PORT_TY,$DB_NAME_TY,$DB_PWD_TY;
+		global $DB_USER_TY;
+		if($y != NULL)
+			$i=intval($y);
+		else
+			$i=$this->get_cur_year();
+		if(!isset($DB_ADDR_TY[$i]))
+			die("你所选择的日期".$i."年，没有数据！");
+		$this->db=array();
+		array_push($this->db,$DB_ADDR_TY[$i]);
+		array_push($this->db,$DB_PORT_TY[$i]);
+		array_push($this->db,$DB_NAME_TY[$i]);
+		array_push($this->db,$DB_USER_TY);
+		array_push($this->db,$DB_PWD_TY);
+	}
+	public function get_cur_year()
+	{
+		$dy=array();
+		$dy=getdate(time());
+		return $dy['year'];
+	}
+	public function get_ctlarea($y)
+	{
+		$this->get_used_db($y);
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if(mysqli_connect_errno())
+			die("connect error");
+		mysqli_set_charset($mysqli,"utf8");
+		$res=mysqli_query($mysqli,"select aid,aname from area_info where bused = 1");
+		if(mysqli_num_rows($res) != 1)
+		{
+			mysqli_free_result($res);
+			mysqli_close($mysqli);
+			die("严重错误！行政区划的设定错误！");
+		}
+		$row=mysqli_fetch_row($res);
+		$this->ay=array();
+		if($row[0]%10000 == 0) //省级系统
+		{
+			$_SESSION['sys_level'] = 1;
+			$i=intval($row[0])+1;
+			$j=$i+9998;
+			$s1="SELECT aid,aname FROM area_info WHERE aid between ".$i." AND ".$j." AND aid%100 = 0";		
+		}
+		else
+		{
+			if($row[0]%100 == 0) //地市级系统
+			{
+				$_SESSION['sys_level'] = 2;
+				$i=intval($row[0])+1;
+				$j=$i+98;
+				$s1="SELECT aid,aname FROM area_info WHERE aid between ".$i." AND ".$j;
+			}
+			else
+			{
+				$_SESSION['sys_level'] = 0; //县区级系统
+				array_push($this->ay,$row);
+			}
+		}
+		mysqli_free_result($res);
+		if($_SESSION['sys_level'] > 0)
+		{
+			$res=mysqli_query($mysqli,$s1);
+			while($row=mysqli_fetch_row($res))
+			{
+				$by=array($row[0],$row[1]);
+				array_push($this->ay,$by);
+			}
+			mysqli_free_result($res);
+		}
+		mysqli_close($mysqli);
+//		return $ay;
+	}
+	public function get_unit($y)
+	{
+		//var_dump($this->ay);
+		if(!isset($_SESSION['sys_level']))
+			die("控制区域错误，无法取得相应的站点信息");
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if(mysqli_connect_errno())
+			die("connect error");
+		mysqli_set_charset($mysqli,"utf8");
+		if($_SESSION['sys_level'] == 0) //县区级
+		{
+			$s1="SELECT uname,uid FROM dw_info WHERE aid = ".$this->ay[0];
+			$this->cy=array();
+			$dy=array();
+			$res=mysqli_query($mysqli,$s1);
+			//$i=mysqli_num_rows($res);
+			while($row=mysqli_fetch_row($res))
+			{
+				array_push($dy,$row);
+			}
+			array_push($this->cy,$dy);
+			mysqli_free_result($res);
+			mysqli_close($mysqli);
+			return;
+		}
+		if($_SESSION['sys_level'] == 1) //省级
+		{
+			$i=count($this->ay);
+			$this->cy=array();
+			for($j=0;$j<$i;$j++)
+			{
+				$dy=$this->ay[$j];
+				$m=intval($cy[0])+1;
+				$n=$m+98;
+				$s1="SELECT dwid,dname,ctlvl FROM dw_info WHERE aid BETWEEN ".$m." AND ".$n;
+				$ey=array();
+				$res=mysqli_query($mysqli,$s1);
+				while($row=mysqli_fetch_row($res))
+				{
+					array_push($ey,$row);
+				}
+				array_push($this->cy,$ey);
+				mysqli_free_result($res);
+			}
+			mysqli_close($mysqli);
+			return;
+		}
+		if($_SESSION['sys_level'] == 2) //地市级
+		{
+			$i=count($this->ay);
+			$this->cy=array();
+			for($j=0;$j<$i;$j++)
+			{
+				$dy=$this->ay[$j];
+				$s1="SELECT dwid,dname,ctlvl FROM dw_info WHERE aid = ".$dy[0];
+				$ey=array();
+				$res=mysqli_query($mysqli,$s1);
+				while($row=mysqli_fetch_row($res))
+				{
+					array_push($ey,$row);
+				}
+				array_push($this->cy,$ey);
+				mysqli_free_result($res);
+			}
+			mysqli_close($mysqli);
+		}
+		return;
+	}
+	public function show($x)
+	{
+		$aid=$this->ay[$x][1];//aname
+		echo $aid."<br>";
+		if($x >= count($this->cy))
+			echo "too long!!!";
+		$i=count($this->cy[$x]);
+		$str="<ul>";
+		for($j=0;$j<$i;$j++)
+		{
+			$a=$this->cy[$x][$j];
+			$str.="<li>".$a[1]."</li>";
+		}
+		$str.="</ul>";
+		echo $str;
+	}
+}//}}}
+
+
+
+
+
+
+
+
+
+
 
 ?>
