@@ -3,11 +3,13 @@
 //	$ar=array();
 	global $menulnk;
 	echo "<form name='form_left6' method='post' action='./".$menulnk[5]."'>";
-	$a= new tb_mxleft();
+//	$a= new tb_mxleft();
+	$a= new tb_mxleft_e();
 	$a->show_header();
 	$a->show_body();
 	global $arry;
 	$a->show_tail();
+	echo "aaaaa<br>bbbbb";
 //	echo json_encode($arry,JSON_UNESCAPED_UNICODE);
 //	if(function_exists("array_ptoj"))
 ?>
@@ -27,15 +29,22 @@ function onsss()
 	if(i>jary.length)
 		alert('length error!');
 	var av=jary[i];
+	var y=document.getElementById("sel3p");
+	var k=y.selectedIndex;
+	if(k > av.length)
+		alert('length error again');
+	var bv=av[k];
 //	alert(av);
 	var v=document.getElementById('sel2p');
 	v.options.length=0;	//clear
-	var j=av.length;
+//	var j=av.length;
+	var j=bv.length;
 	for(i=0;i<j;i++)
 	{
 		var aa=new Option;
 		aa.value=i;
-		aa.text=av[i];
+//		aa.text=av[i];
+		aa.text=bv[i][1];
 		v.add(aa);
 	} 
 }

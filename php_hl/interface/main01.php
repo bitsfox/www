@@ -25,180 +25,44 @@ if(!defined("FULL_PATH"))
 	$s2=substr($s1,0,$i)."php_hl/";
 	define("FULL_PATH",$s2);
 }//}}}
-//{{{ require global variables is include!
-if(!isset($database))
-{
-	$str=constant("FULL_PATH")."config/main.php";
-	require_once($str);
-}//}}}
-//{{{ test to use mysqi
-function get_danwei()
-{
-	global $database;
-//	$mysql=new mysqli("127.0.0.1",$database['user'],$database['pwd'],$database['dbname'],3306);
-	$mysqli=mysqli_connect("127.0.0.1",$database['user'],$database['pwd'],$database['dbname'],3306);
-	if(mysqli_connect_errno())
-		die("database connect error");
-	mysqli_set_charset($mysqli,"utf8");
-	$res=mysqli_query($mysqli,"SELECT * from zd_info");
-	while($row=mysqli_fetch_row($res))
-	{
-		$str="uid=".$row[0]." mncode=".$row[1]." dwid=".$row[2]." uname=".$row[3]."<br>";
-		echo $str;
-	}
-	mysqli_free_result($res);
-	mysqli_close($mysqli);
-}//}}}
-//{{{function get_used_db($y) 基本功能函数，用来确定当前要使用的服务器及数据库
-/*
-函数功能：取得当前要使用的服务器及数据库的资料。
-传入参数：为空，则取得当前年度所用的服务器及数据库资料
-		  否则，传入参数为用户指定要访问的年份。
-返回值：  成功：为包含服务器ip，port,数据库名称，用户及密码的数组。
-		  失败：die输出信息。
- */
-function get_used_db($y)
-{
-	global $DB_ADDR_TY,$DB_PORT_TY,$DB_NAME_TY,$DB_PWD_TY;
-	global $DB_USER_TY;
-	if($y != NULL)
-		$i=intval($y);
-	else
-		$i=get_cur_year();
-	if(!isset($DB_ADDR_TY[$i]))
-		die("你所选择的日期".$i."年，没有数据！");
-	$dbay=array();
-	array_push($dbay,$DB_ADDR_TY[$i]);
-	array_push($dbay,$DB_PORT_TY[$i]);
-	array_push($dbay,$DB_NAME_TY[$i]);
-	array_push($dbay,$DB_USER_TY);
-	array_push($dbay,$DB_PWD_TY);
-	return $dbay;
-}//}}}
-//{{{function get_cur_year() 原子函数,实现取得当前年份
-function get_cur_year()
-{
-	$ay=array();
-	$ay=getdate(time());
-	return $ay['year'];
-}//}}}
-//{{{function get_ctlarea($y) 基本功能函数，取得控制区域
-/*
-函数功能： 取得控制区域信息
-传入参数：为空，则取得当前年度所用的服务器及数据库资料
-		  否则，传入参数为用户指定要访问的年份。
-返回值：  成功： 1、设置_SESSION['sys_level']变量，2、返回取得的控制区域信息的数组
-		  失败： die输出信息.
- */
-function get_ctlarea($y)
-{
-	$ay=array();
-	$ay=get_used_db($y);
-	$mysqli=mysqli_connect($ay[0],$ay[3],$ay[4],$ay[2],$ay[1]);
-	if(mysqli_connect_errno())
-		die("connect error");
-	mysqli_set_charset($mysqli,"utf8");
-	$res=mysqli_query($mysqli,"select aid,aname from area_info where bused = 1");
-	if(mysqli_num_rows($res) != 1)
-	{
-		mysqli_free_result($res);
-		mysqli_close($mysqli);
-		die("严重错误！行政区划的设定错误！");
-	}
-	$row=mysqli_fetch_row($res);
-	$ay=array();
-	if($row[0]%10000 == 0) //省级系统
-	{
-		$_SESSION['sys_level'] = 1;
-		$i=intval($row[0])+1;
-		$j=$i+9998;
-		$s1="SELECT aid,aname FROM area_info WHERE aid between ".$i." AND ".$j." AND aid%100 = 0";		
-	}
-	else
-	{
-		if($row[0]%100 == 0) //地市级系统
-		{
-			$_SESSION['sys_level'] = 2;
-			$i=intval($row[0])+1;
-			$j=$i+98;
-			$s1="SELECT aid,aname FROM area_info WHERE aid between ".$i." AND ".$j;
-		}
-		else
-		{
-			$_SESSION['sys_level'] = 0; //县区级系统
-			array_push($ay,$row);
-		}
-	}
-	mysqli_free_result($res);
-	if($_SESSION['sys_level'] > 0)
-	{
-		$res=mysqli_query($mysqli,$s1);
-		while($row=mysqli_fetch_row($res))
-		{
-			$by=array($row[0],$row[1]);
-			array_push($ay,$by);
-		}
-		mysqli_free_result($res);
-	}
-	mysqli_close($mysqli);
-	return $ay;
-}//}}}
-//{{{ function get_unit($y) 基本功能函数，取得站点信息
-/**/
-function get_unit($y)
-{
-	if(!isset($_SESSION['sys_level']))
-		die("控制区域错误，无法取得相应的站点信息");
-	$mysqli=mysqli_connect();
-	if($_SESSION['sys_level'] == 0) //县区级
-	{
-		$cy=$y[0];
-		$s1="SELECT uname,uid FROM zd_info WHERE aid = ".$cy[0];
-	}
-	else
-	{
-		if($_SESSION['sys_level'] == 1)//省级
-		{
-			$i=count($y);
-			for($j=0;$j<$i;$j++)
-			{
-				$cy=$y[$j];
-				$m=intval($cy[0])+1;
-				$n=$m+98;
-				//注意：下面的语句应该是取站点表中的数据，但是目前站点表的数据太少，所以为了测试改取单位表的数据
-				$s1="SELECT dwid,dname,ctlvl FROM dw_info WHERE aid BETWEEN ".$m." AND ".$n;
-
-
-			}
-		}
-	}
-}//}}}
-////////////////////////////////////////////////////////////////
-//{{{class mx_listbox implements listbox_data
-class mx_listbox implements listbox_data
+$str=constant("FULL_PATH")."config/main.php";
+require_once($str);
+$str=constant("FULL_PATH")."include/inter_def.php";
+require_once($str);
+////////////////////////////////////////////////////////////
+//{{{class tb_mxleft_e implements tab_show,listbox_data
+class tb_mxleft_e implements tab_show
 {
 	private $db=array(); //数据库服务器信息数组
 	private $ay,$cy;	//ay是控制区域列表框的数据数组,cy是站点信息列表框的数据数组
-//	public $mysqli,$res;
+	private $nowtile,$rq;
+	private $my,$ny;	//控制级别和数据类型
+//{{{public function __construct()
 	public function __construct()
 	{
-		$this->ay=array();
-		$this->cy=array();$this->db=array();
-	}
-	public function __destruct()
-	{
-		unset($db);
-		unset($ay);
-		unset($cy);
-	}
-	public function get_used_db($y)
+  		date_default_timezone_set("PRC");
+		if($_POST['starttime'])
+		{
+			$this->rq=$_POST['starttime'];
+		}
+		else
+		{
+  			$this->nowtime = time();
+  			$this->rq = date("Y-m-d",$this->nowtime);
+		}
+		//一下三个函数仅与取得数据有关，在构造函数中调用。
+		$this->get_used_db();
+		$this->get_ctlarea();
+		$this->get_unit();
+		$this->my=array("国控","省控","市控","县控","其他");//控制级别
+		$this->ny=array("小时值","日均值","小时超标值","日均超标值");//数据类型
+	}//}}}
+//{{{public function get_used_db()
+	public function get_used_db()
 	{
 		global $DB_ADDR_TY,$DB_PORT_TY,$DB_NAME_TY,$DB_PWD_TY;
 		global $DB_USER_TY;
-		if($y != NULL)
-			$i=intval($y);
-		else
-			$i=$this->get_cur_year();
+		$i=intval($this->rq);
 		if(!isset($DB_ADDR_TY[$i]))
 			die("你所选择的日期".$i."年，没有数据！");
 		$this->db=array();
@@ -207,16 +71,18 @@ class mx_listbox implements listbox_data
 		array_push($this->db,$DB_NAME_TY[$i]);
 		array_push($this->db,$DB_USER_TY);
 		array_push($this->db,$DB_PWD_TY);
-	}
+	}//}}}
+//{{{public function get_cur_year() no use..
 	public function get_cur_year()
 	{
 		$dy=array();
 		$dy=getdate(time());
 		return $dy['year'];
-	}
-	public function get_ctlarea($y)
+	}//}}}
+//{{{public function get_ctlarea()
+	public function get_ctlarea()
 	{
-		$this->get_used_db($y);
+	//	$this->get_used_db($y);
 		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
 		if(mysqli_connect_errno())
 			die("connect error");
@@ -265,9 +131,13 @@ class mx_listbox implements listbox_data
 		}
 		mysqli_close($mysqli);
 //		return $ay;
-	}
-	public function get_unit($y)
+	}//}}}
+//{{{public function get_unit()
+	public function get_unit()
 	{
+		global $arry;
+		if(!is_array($arry))
+			$arry=array();
 		//var_dump($this->ay);
 		if(!isset($_SESSION['sys_level']))
 			die("控制区域错误，无法取得相应的站点信息");
@@ -275,39 +145,86 @@ class mx_listbox implements listbox_data
 		if(mysqli_connect_errno())
 			die("connect error");
 		mysqli_set_charset($mysqli,"utf8");
+//		mysqli_close($mysqli);
 		if($_SESSION['sys_level'] == 0) //县区级
 		{
-			$s1="SELECT uname,uid FROM dw_info WHERE aid = ".$this->ay[0];
+			$s1="SELECT dname,dwid,ctlvl FROM dw_info WHERE aid = ".$this->ay[0][0];
 			$this->cy=array();
-			$dy=array();
+			for($i=0;$i<5;$i++)
+				$dy[$i]=array();
 			$res=mysqli_query($mysqli,$s1);
 			//$i=mysqli_num_rows($res);
 			while($row=mysqli_fetch_row($res))
 			{
-				array_push($dy,$row);
+			//	array_push($dy[$row[2]],$row);数据出错，可能越界
+				switch($row[2])
+				{//这样处理可以保证不越界
+				case 0:
+					array_push($dy[0],$row);
+					break;
+				case 1:
+					array_push($dy[1],$row);
+					break;
+				case 2:
+					array_push($dy[2],$row);
+					break;
+				case 3:
+					array_push($dy[3],$row);
+					break;
+				case 4:
+					array_push($dy[4],$row);
+					break;
+				};
 			}
-			array_push($this->cy,$dy);
+			$ey=array();
+			for($i=0;$i<5;$i++)
+				array_push($ey,$dy[$i]);
+			array_push($this->cy,$ey); //保证与省及市控的处理一致
+			array_push($arry,$ey);//同步全局变量
+			//一下三个函数仅与取得数据有关，在构造函数中调用。
 			mysqli_free_result($res);
 			mysqli_close($mysqli);
 			return;
 		}
 		if($_SESSION['sys_level'] == 1) //省级
 		{
+			for($i=0;$i<5;$i++)
+				$dy[$i]=array();
 			$i=count($this->ay);
 			$this->cy=array();
 			for($j=0;$j<$i;$j++)
 			{
-				$dy=$this->ay[$j];
-				$m=intval($cy[0])+1;
+				$fy=$this->ay[$j];
+				$m=intval($fy[0])+1;
 				$n=$m+98;
 				$s1="SELECT dwid,dname,ctlvl FROM dw_info WHERE aid BETWEEN ".$m." AND ".$n;
 				$ey=array();
 				$res=mysqli_query($mysqli,$s1);
 				while($row=mysqli_fetch_row($res))
 				{
-					array_push($ey,$row);
+					switch($row[2])
+					{
+					case 0:
+						array_push($dy[0],$row);
+						break;
+					case 1:
+						array_push($dy[1],$row);
+						break;
+					case 2:
+						array_push($dy[2],$row);
+						break;
+					case 3:
+						array_push($dy[3],$row);
+						break;
+					case 4:
+						array_push($dy[4],$row);
+						break;
+					};
 				}
+				for($k=0;$k<5;$k++)
+					array_push($ey,$dy[$k]);
 				array_push($this->cy,$ey);
+				array_push($arry,$ey);//同步全局变量
 				mysqli_free_result($res);
 			}
 			mysqli_close($mysqli);
@@ -319,43 +236,105 @@ class mx_listbox implements listbox_data
 			$this->cy=array();
 			for($j=0;$j<$i;$j++)
 			{
-				$dy=$this->ay[$j];
-				$s1="SELECT dwid,dname,ctlvl FROM dw_info WHERE aid = ".$dy[0];
+				$zy=$this->ay[$j];
+				$s1="SELECT dwid,dname,ctlvl FROM dw_info WHERE aid = ".$zy[0];
 				$ey=array();
+				for($k=0;$k<5;$k++)
+					$dy[$k]=array();
 				$res=mysqli_query($mysqli,$s1);
 				while($row=mysqli_fetch_row($res))
 				{
-					array_push($ey,$row);
+					//array_push($ey,$row);
+					switch($row[2])
+					{
+					case 0:
+						array_push($dy[0],$row);
+						break;
+					case 1:
+						array_push($dy[1],$row);
+						break;
+					case 2:
+						array_push($dy[2],$row);
+						break;
+					case 3:
+						array_push($dy[3],$row);
+						break;
+					case 4:
+						array_push($dy[4],$row);
+						break;
+					};
 				}
+				for($k=0;$k<5;$k++)
+					array_push($ey,$dy[$k]);
 				array_push($this->cy,$ey);
+				array_push($arry,$ey);//同步全局变量
 				mysqli_free_result($res);
 			}
 			mysqli_close($mysqli);
 		}
 		return;
-	}
-	public function show($x)
+	}//}}}
+//{{{public function show_header()
+	public function show_header()
 	{
-		$aid=$this->ay[$x][1];//aname
-		echo $aid."<br>";
-		if($x >= count($this->cy))
-			echo "too long!!!";
-		$i=count($this->cy[$x]);
-		$str="<ul>";
+		$i=count($this->ay);
+		if(isset($_POST["sel1p"]))
+			$k=$_POST["sel1p"];
+		else
+			$k=0;
+		$s1="<br><div class='dvmsg'>控制区域：</div><div class='select_style'><select name='sel1p' id='sel1p' onchange = 'onsss()'>";
 		for($j=0;$j<$i;$j++)
 		{
-			$a=$this->cy[$x][$j];
-			$str.="<li>".$a[1]."</li>";
+			$by=$this->ay[$j];
+			if($by[0] == $k)
+				$s1.="<option value=".$k." selected='selected'>".$by[1]."</option>";
+			else
+				$s1.="<option value=".$k.">".$by[1]."</option>";
 		}
-		$str.="</ul>";
-		echo $str;
-	}
+		$s1.="</select></div><div id='clear_id'></div>";
+		if(isset($_POST["sel3p"]))
+			$k1=$_POST["sel3p"];
+		else
+			$k1=0;
+		$s1.="<br><div class='dvmsg'>控制级别：</div><div class='select_style'><select name='sel3p' id='sel3p' onchange = 'onsss()'>";
+		for($j=0;$j<5;$j++)
+		{
+			if($k1 == $j)
+				$s1.="<option value= ".$j." selected='selected'>".$this->my[$j]."</option>";
+			else
+				$s1.="<option value= ".$j.">".$this->my[$j]."</option>";
+		}
+		$s1.="</select></div><div id='clear_id'></div>";
+		echo $s1;	//end of control area and control level
+		$i=count($this->cy);
+		if($k >= $i)
+			die("get array count error");
+		unset($by);
+		$by=$this->cy[$k];
+		if(isset($_POST["sel2p"]))
+			$k2 = $_POST["sel2p"];
+		else
+			$k2 = 0;
+		$dy=$by[$k1]; //取得不同控制级别的单位数组
+		$i=count($dy);
+		$s1="<br><div class='dvmsg1'>单位名称：</div><div class='select_style1'><select name='sel2p' id='sel2p'>";
+		for($j=0;$j<$i;$j++)
+		{
+			if($dy[$j][0] == $k2)
+				$s1.="<option value=".$dy[$j][0]." selected='selected'>".$dy[$j][1]."</option>";
+			else
+				$s1.="<option value=".$dy[$j][0].">".$dy[$j][1]."</option>";
+		}
+		$s1.="</select></div><div id='clear_id'></div>";
+		echo $s1;
+	}//}}}
+//{{{public function show_body()
+	public function show_body()
+	{}//}}}
+//{{{public function show_tail()
+	public function show_tail()
+	{}//}}}
 }//}}}
-
-
-
-
-
 
 
 

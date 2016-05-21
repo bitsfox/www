@@ -22,6 +22,8 @@ $st=constant("FULL_PATH")."core/main.php";
 require_once($st);
 $st=constant("FULL_PATH")."interface/extra01.php";
 require_once($st);
+$st=constant("FULL_PATH")."interface/main01.php";
+require_once($st);
 
 //{{{ class my_init implements inter_base_def
 class my_init implements inter_base_def
