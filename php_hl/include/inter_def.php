@@ -46,7 +46,7 @@ interface listbox_data
 	public function get_used_db();//取得待访问的数据库服务器和数据库访问相关信息
 	public function get_cur_year();//取得当前的年份
 	public function get_ctlarea();//取得控制区域列表框中数据的函数
-	public function get_unit();	//取得站点名称列表框中数据的函数
+	public function get_unit($y);	//取得站点名称列表框中数据的函数
 }
 
 

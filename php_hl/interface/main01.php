@@ -51,9 +51,14 @@ class tb_mxleft_e implements tab_show
   			$this->rq = date("Y-m-d",$this->nowtime);
 		}
 		//一下三个函数仅与取得数据有关，在构造函数中调用。
-		$this->get_used_db();
-		$this->get_ctlarea();
-		$this->get_unit();
+//		$this->get_used_db();
+//		$this->get_ctlarea();
+//		$this->get_unit();
+		global $arry;
+		$a=new init_tab($this->rq);
+		$this->ay=$a->get_ctlarea();
+		$a->get_unit($this->ay);
+		$this->cy=$arry;
 		$this->my=array("国控","省控","市控","县控","其他");//控制级别
 		$this->ny=array("小时值","日均值","小时超标值","日均超标值");//数据类型
 	}//}}}
@@ -335,7 +340,204 @@ class tb_mxleft_e implements tab_show
 	public function show_tail()
 	{}//}}}
 }//}}}
-
+/////////////////////////////////////////////////////////////
+//{{{class init_tab implements listbox_data
+class init_tab implements listbox_data
+{
+	private $conn,$str_sj,$str_ds;
+	private $str_uxq,$str_usj,$str_uds;
+	private $rq,$db;
+//{{{public function __construct($y)	
+	public function __construct($y)
+	{
+		if($y != NULL)
+			$this->rq=intval($y);
+		else
+			$this->get_cur_year();
+		$this->get_used_db();
+		$this->conn="SELECT aid,aname FROM area_info WHERE bused = 1";
+		$this->str_sj="SELECT aid,aname FROM area_info WHERE aid BETWEEN %u AND %u AND aid%100 = 0";
+		$this->str_ds="SELECT aid,aname FROM area_info WHERE aid BETWEEN %u AND %u";
+		$this->str_uxq="SELECT dname,dwid,ctlvl FROM dw_info WHERE aid = %u";	//临时测试用，正式的应为取自zd_info!!!
+		$this->str_usj="SELECT dwid,dname,ctlvl FROM dw_info WHERE aid BETWEEN %u AND %u";//同上
+		$this->str_uds="SELECT dwid,dname,ctlvl FROM dw_info WHERE aid = %u";//同上！
+	}//}}}
+//{{{public function __destruct()
+	public function __destruct()
+	{
+		unset($this->db);
+	}//}}}
+//{{{public function get_cur_year()
+	public function get_cur_year()
+	{
+		$dy=array();
+		$dy=getdate(time());
+		$this->rq= $dy['year'];
+	}//}}}
+//{{{public function get_used_db()
+	public function get_used_db()
+	{
+		global $DB_ADDR_TY,$DB_PORT_TY,$DB_NAME_TY,$DB_PWD_TY;
+		global $DB_USER_TY;
+		$i=intval($this->rq);
+		if(!isset($DB_ADDR_TY[$i]))
+			die("你所选择的日期".$i."年，没有数据！");
+		$this->db=array();
+		array_push($this->db,$DB_ADDR_TY[$i]);
+		array_push($this->db,$DB_PORT_TY[$i]);
+		array_push($this->db,$DB_NAME_TY[$i]);
+		array_push($this->db,$DB_USER_TY);
+		array_push($this->db,$DB_PWD_TY);
+	}//}}}
+//{{{public function get_ctlarea()
+	public function get_ctlarea()
+	{
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if(mysqli_connect_errno())
+			die("connect error");
+		mysqli_set_charset($mysqli,"utf8");
+		$res=mysqli_query($mysqli,$this->conn);
+		if(mysqli_num_rows($res) != 1)
+		{
+			mysqli_free_result($res);
+			mysqli_close($mysqli);
+			die("严重错误！行政区划的设定错误！");
+		}
+		$row=mysqli_fetch_row($res);
+		$ay=array();
+		if($row[0]%10000 == 0) //省级系统
+		{
+			$_SESSION['sys_level'] = 1;
+			$i=intval($row[0])+1;
+			$j=$i+9998;
+			$s1=sprintf($this->str_sj,$i,$j);
+		}
+		else
+		{
+			if($row[0]%100 == 0) //地市级系统
+			{
+				$_SESSION['sys_level'] = 2;
+				$i=intval($row[0])+1;
+				$j=$i+98;
+				$s1=sprintf($this->str_ds,$i,$j);
+			}
+			else
+			{
+				$_SESSION['sys_level'] = 0; //县区级系统
+				array_push($ay,$row);
+			}
+		}
+		mysqli_free_result($res);
+		if($_SESSION['sys_level'] > 0)
+		{
+			$res=mysqli_query($mysqli,$s1);
+			while($row=mysqli_fetch_row($res))
+				array_push($ay,$row);
+			mysqli_free_result($res);
+		}
+		mysqli_close($mysqli);
+		return $ay;
+	}//}}}
+//{{{public function get_unit($y)
+	public function get_unit($y)
+	{
+		global $arry;
+		if(!is_array($arry))
+			$arry=array();
+		if(!is_array($y))
+			die("缺少传入参数或参数错误！");
+		if(!isset($_SESSION['sys_level']))
+			die("控制区域错误，无法取得相应的站点信息");
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if(mysqli_connect_errno())
+			die("connect error");
+		mysqli_set_charset($mysqli,"utf8");
+		if($_SESSION['sys_level'] == 0) //县区级
+		{
+			$s1=sprintf($this->str_uxq,$y[0][0]);
+			for($i=0;$i<5;$i++)
+				$dy[$i]=array();
+			$res=mysqli_query($mysqli,$s1);
+			while($row=mysqli_fetch_row($res))
+			{
+				if($row[2] > 4)
+				{
+					mysqli_free_result($res);
+					mysqli_close($mysqli);
+					die("越界错误！");
+				}
+				array_push($dy[$row[2]],$row);
+			}
+			$ey=array();
+			for($i=0;$i<5;$i++)
+				array_push($ey,$dy[$i]);
+			array_push($arry,$ey);//保证与省市控的处理一致，并同步全局变量
+			mysqli_free_result($res);
+			mysqli_close($mysqli);
+			return;
+		}
+		if($_SESSION['sys_level'] == 1) //省级
+		{
+			$i=count($y);
+			for($j=0;$j<$i;$j++)
+			{
+				for($k=0;$k<5;$k++)
+					$dy[$k]=array();
+				$cy=$y[$j];
+				$m=intval($cy[0])+1;
+				$n=$m+98;
+				$s1=sprintf($this->str_usj,$m,$n);
+				$res=mysqli_query($mysqli,$s1);
+				while($row=mysqli_fetch_row($res))
+				{
+					if($row[2] > 4)
+					{
+						mysqli_free_result($res);
+						mysqli_close($mysqli);
+						die("越界错误1！");
+					}
+					array_push($dy[$row[2]],$row);
+				}
+				$ey=array();
+				for($k=0;$k<5;$k++)
+					array_push($ey,$dy[$k]);
+				array_push($arry,$ey);//并同步全局变量
+				mysqli_free_result($res);
+			}
+			mysqli_close($mysqli);
+			return;
+		}
+		if($_SESSION['sys_level'] == 2) //地市级
+		{
+			$i=count($y);
+			for($j=0;$j<$i;$j++)
+			{
+				$cy=$y[$j];
+				$s1=sprintf($this->str_uds,$cy[0]);
+				for($k=0;$k<5;$k++)
+					$dy[$k]=array();
+				$res=mysqli_query($mysqli,$s1);
+				while($row=mysqli_fetch_row($res))
+				{
+					if($row[2] > 4)
+					{
+						mysqli_free_result($res);
+						mysqli_close($mysqli);
+						die("越界错误1！");
+					}
+					array_push($dy[$row[2]],$row);
+				}
+				$ey=array();
+				for($k=0;$k<5;$k++)
+					array_push($ey,$dy[$k]);
+				array_push($arry,$ey);//并同步全局变量
+				mysqli_free_result($res);
+			}
+			mysqli_close($mysqli);
+			return;
+		}
+	}//}}}
+}//}}}
 
 
 
