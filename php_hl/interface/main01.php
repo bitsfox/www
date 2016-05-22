@@ -35,7 +35,7 @@ class tb_mxleft_e implements tab_show
 {
 	private $db=array(); //数据库服务器信息数组
 	private $ay,$cy;	//ay是控制区域列表框的数据数组,cy是站点信息列表框的数据数组
-	private $nowtile,$rq;
+	private $nowtime,$rq;
 	private $my,$ny;	//控制级别和数据类型
 //{{{public function __construct()
 	public function __construct()
@@ -50,10 +50,6 @@ class tb_mxleft_e implements tab_show
   			$this->nowtime = time();
   			$this->rq = date("Y-m-d",$this->nowtime);
 		}
-		//一下三个函数仅与取得数据有关，在构造函数中调用。
-//		$this->get_used_db();
-//		$this->get_ctlarea();
-//		$this->get_unit();
 		global $arry;
 		$a=new init_tab($this->rq);
 		$this->ay=$a->get_ctlarea();
@@ -61,223 +57,6 @@ class tb_mxleft_e implements tab_show
 		$this->cy=$arry;
 		$this->my=array("国控","省控","市控","县控","其他");//控制级别
 		$this->ny=array("小时值","日均值","小时超标值","日均超标值");//数据类型
-	}//}}}
-//{{{public function get_used_db()
-	public function get_used_db()
-	{
-		global $DB_ADDR_TY,$DB_PORT_TY,$DB_NAME_TY,$DB_PWD_TY;
-		global $DB_USER_TY;
-		$i=intval($this->rq);
-		if(!isset($DB_ADDR_TY[$i]))
-			die("你所选择的日期".$i."年，没有数据！");
-		$this->db=array();
-		array_push($this->db,$DB_ADDR_TY[$i]);
-		array_push($this->db,$DB_PORT_TY[$i]);
-		array_push($this->db,$DB_NAME_TY[$i]);
-		array_push($this->db,$DB_USER_TY);
-		array_push($this->db,$DB_PWD_TY);
-	}//}}}
-//{{{public function get_cur_year() no use..
-	public function get_cur_year()
-	{
-		$dy=array();
-		$dy=getdate(time());
-		return $dy['year'];
-	}//}}}
-//{{{public function get_ctlarea()
-	public function get_ctlarea()
-	{
-	//	$this->get_used_db($y);
-		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
-		if(mysqli_connect_errno())
-			die("connect error");
-		mysqli_set_charset($mysqli,"utf8");
-		$res=mysqli_query($mysqli,"select aid,aname from area_info where bused = 1");
-		if(mysqli_num_rows($res) != 1)
-		{
-			mysqli_free_result($res);
-			mysqli_close($mysqli);
-			die("严重错误！行政区划的设定错误！");
-		}
-		$row=mysqli_fetch_row($res);
-		$this->ay=array();
-		if($row[0]%10000 == 0) //省级系统
-		{
-			$_SESSION['sys_level'] = 1;
-			$i=intval($row[0])+1;
-			$j=$i+9998;
-			$s1="SELECT aid,aname FROM area_info WHERE aid between ".$i." AND ".$j." AND aid%100 = 0";		
-		}
-		else
-		{
-			if($row[0]%100 == 0) //地市级系统
-			{
-				$_SESSION['sys_level'] = 2;
-				$i=intval($row[0])+1;
-				$j=$i+98;
-				$s1="SELECT aid,aname FROM area_info WHERE aid between ".$i." AND ".$j;
-			}
-			else
-			{
-				$_SESSION['sys_level'] = 0; //县区级系统
-				array_push($this->ay,$row);
-			}
-		}
-		mysqli_free_result($res);
-		if($_SESSION['sys_level'] > 0)
-		{
-			$res=mysqli_query($mysqli,$s1);
-			while($row=mysqli_fetch_row($res))
-			{
-				$by=array($row[0],$row[1]);
-				array_push($this->ay,$by);
-			}
-			mysqli_free_result($res);
-		}
-		mysqli_close($mysqli);
-//		return $ay;
-	}//}}}
-//{{{public function get_unit()
-	public function get_unit()
-	{
-		global $arry;
-		if(!is_array($arry))
-			$arry=array();
-		//var_dump($this->ay);
-		if(!isset($_SESSION['sys_level']))
-			die("控制区域错误，无法取得相应的站点信息");
-		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
-		if(mysqli_connect_errno())
-			die("connect error");
-		mysqli_set_charset($mysqli,"utf8");
-//		mysqli_close($mysqli);
-		if($_SESSION['sys_level'] == 0) //县区级
-		{
-			$s1="SELECT dname,dwid,ctlvl FROM dw_info WHERE aid = ".$this->ay[0][0];
-			$this->cy=array();
-			for($i=0;$i<5;$i++)
-				$dy[$i]=array();
-			$res=mysqli_query($mysqli,$s1);
-			//$i=mysqli_num_rows($res);
-			while($row=mysqli_fetch_row($res))
-			{
-			//	array_push($dy[$row[2]],$row);数据出错，可能越界
-				switch($row[2])
-				{//这样处理可以保证不越界
-				case 0:
-					array_push($dy[0],$row);
-					break;
-				case 1:
-					array_push($dy[1],$row);
-					break;
-				case 2:
-					array_push($dy[2],$row);
-					break;
-				case 3:
-					array_push($dy[3],$row);
-					break;
-				case 4:
-					array_push($dy[4],$row);
-					break;
-				};
-			}
-			$ey=array();
-			for($i=0;$i<5;$i++)
-				array_push($ey,$dy[$i]);
-			array_push($this->cy,$ey); //保证与省及市控的处理一致
-			array_push($arry,$ey);//同步全局变量
-			//一下三个函数仅与取得数据有关，在构造函数中调用。
-			mysqli_free_result($res);
-			mysqli_close($mysqli);
-			return;
-		}
-		if($_SESSION['sys_level'] == 1) //省级
-		{
-			for($i=0;$i<5;$i++)
-				$dy[$i]=array();
-			$i=count($this->ay);
-			$this->cy=array();
-			for($j=0;$j<$i;$j++)
-			{
-				$fy=$this->ay[$j];
-				$m=intval($fy[0])+1;
-				$n=$m+98;
-				$s1="SELECT dwid,dname,ctlvl FROM dw_info WHERE aid BETWEEN ".$m." AND ".$n;
-				$ey=array();
-				$res=mysqli_query($mysqli,$s1);
-				while($row=mysqli_fetch_row($res))
-				{
-					switch($row[2])
-					{
-					case 0:
-						array_push($dy[0],$row);
-						break;
-					case 1:
-						array_push($dy[1],$row);
-						break;
-					case 2:
-						array_push($dy[2],$row);
-						break;
-					case 3:
-						array_push($dy[3],$row);
-						break;
-					case 4:
-						array_push($dy[4],$row);
-						break;
-					};
-				}
-				for($k=0;$k<5;$k++)
-					array_push($ey,$dy[$k]);
-				array_push($this->cy,$ey);
-				array_push($arry,$ey);//同步全局变量
-				mysqli_free_result($res);
-			}
-			mysqli_close($mysqli);
-			return;
-		}
-		if($_SESSION['sys_level'] == 2) //地市级
-		{
-			$i=count($this->ay);
-			$this->cy=array();
-			for($j=0;$j<$i;$j++)
-			{
-				$zy=$this->ay[$j];
-				$s1="SELECT dwid,dname,ctlvl FROM dw_info WHERE aid = ".$zy[0];
-				$ey=array();
-				for($k=0;$k<5;$k++)
-					$dy[$k]=array();
-				$res=mysqli_query($mysqli,$s1);
-				while($row=mysqli_fetch_row($res))
-				{
-					//array_push($ey,$row);
-					switch($row[2])
-					{
-					case 0:
-						array_push($dy[0],$row);
-						break;
-					case 1:
-						array_push($dy[1],$row);
-						break;
-					case 2:
-						array_push($dy[2],$row);
-						break;
-					case 3:
-						array_push($dy[3],$row);
-						break;
-					case 4:
-						array_push($dy[4],$row);
-						break;
-					};
-				}
-				for($k=0;$k<5;$k++)
-					array_push($ey,$dy[$k]);
-				array_push($this->cy,$ey);
-				array_push($arry,$ey);//同步全局变量
-				mysqli_free_result($res);
-			}
-			mysqli_close($mysqli);
-		}
-		return;
 	}//}}}
 //{{{public function show_header()
 	public function show_header()
@@ -322,7 +101,7 @@ class tb_mxleft_e implements tab_show
 			$k2 = 0;
 		$dy=$by[$k1]; //取得不同控制级别的单位数组
 		$i=count($dy);
-		$s1="<br><div class='dvmsg1'>单位名称：</div><div class='select_style1'><select name='sel2p' id='sel2p'>";
+		$s1="<br><div class='dvmsg1'>站点名称：</div><div class='select_style1'><select name='sel2p' id='sel2p'>";
 		for($j=0;$j<$i;$j++)
 		{
 			if($dy[$j][0] == $k2)
@@ -335,7 +114,48 @@ class tb_mxleft_e implements tab_show
 	}//}}}
 //{{{public function show_body()
 	public function show_body()
-	{}//}}}
+	{
+		if(isset($_POST['sel3']))
+			$k=$_POST['sel3'];
+		else
+			$k=0;
+		$s1="<br><div class='dvmsg'>数据类型：</div><div class='select_style'><select name='sel3' id='sel3'>";
+		for($i=0;$i<4;$i++)
+		{
+			if($i==$k)
+				$s1.="<option value= ".$i." selected='selected'>".$this->ny[$i]."</option>";
+			else
+				$s1.="<option value= ".$i." >".$this->ny[$i]."</option>";
+		}
+		$s1.="</select></div><div id='clear_id'></div>";
+		echo $s1;
+		$s1="<br><div class='dvmsg'>日期选择：</div><div class='dvmsg'><input type='text' id='text1_id' name='starttime' onfocus='MyCalendar.SetDate(this)' value='".$this->rq."'/>";
+		$s1.="</div><div id='clear_id'></div>";
+		echo $s1;
+		if(isset($_POST['radio1']))
+		{
+			if($_POST['radio1'] == 1)
+				$k=0;
+			else
+				$k=1;
+		}
+		else
+			$k=0;
+		$s1="<br><br><div class='dwmsg'>";
+		if($k==0)
+		{
+			$s1.="<input type='radio' name='radio1' value=1 checked />数据以表格显示";
+			$s1.="<input type='radio' name='radio1' value=2 />数据以图形显示</div>";
+		}
+		else
+		{
+			$s1.="<input type='radio' name='radio1' value=1 />数据以表格显示";
+			$s1.="<input type='radio' name='radio1' value=2 checked/>数据以图形显示</div>";
+		}
+		echo $s1;
+		$s1="<br><br><center><input type='submit' id='button_id' name='submit' value='应用'></center>";
+		echo $s1;
+	}//}}}
 //{{{public function show_tail()
 	public function show_tail()
 	{}//}}}
@@ -538,9 +358,180 @@ class init_tab implements listbox_data
 		}
 	}//}}}
 }//}}}
+////////////////////////////////////////////////////////////
+//{{{class tb_sleft_e implements tab_show
+class tb_sleft_e implements tab_show
+{
+	private $db; //数据库服务器信息数组
+	private $ay; //ay是控制区域列表框的数据数组
+	private $rq;
+	private $cy,$dy;	//控制级别和数据类型
+//{{{public function __construct()
+	public function __construct()
+	{
+  		date_default_timezone_set("PRC");
+		if($_POST['starttime'])
+		{
+			$this->rq=$_POST['starttime'];
+		}
+		else
+		{
+  			$nowtime = time();
+  			$this->rq = date("Y-m-d",$nowtime);
+		}
+		$a=new init_tab($this->rq);
+		$this->ay=$a->get_ctlarea();
+		$this->cy=array("国控","省控","市控","县控","其他");//控制级别
+		$this->dy=array("实时值","日均值");//数据类型
+	}//}}}
+//{{{public function __destruct()
+	public function __destruct()
+	{unset($this->db);unset($this->ay);unset($this->my);}//}}}
+//{{{public function show_heaer()
+	public function show_header()
+	{
+		$i=count($this->ay);
+		if(isset($_POST['sel1']))
+			$k=$_POST['sel1'];
+		else
+			$k=0;
+		$s1="<br><div class='dvmsg'>控制区域：</div><div class='select_style'><select name='sel1'>";
+		for($j=0;$j<$i;$j++)
+		{
+			$by=$this->ay[$j];
+			if($by[0] == $k)
+				$s1.="<option value=".$by[0]." selected='selected'>".$by[1]."</option>";
+			else
+				$s1.="<option value=".$by[0].">".$by[1]."</option>";
+		}
+		$s1.="</select></div><div id='clear_id'></div>";
+		echo $s1;	//end of control area
+		if(isset($_POST["sel2"]))
+			$k=$_POST["sel2"];
+		else
+			$k=0;
+		$i=count($this->cy);
+		$s1="<br><div class='dvmsg'>控制级别：</div><div class='select_style'><select name='sel2'>";
+		for($j=0;$j<$i;$j++)
+		{
+			if($j == $k)
+				$s1.="<option value=".$j." selected='selected'>".$this->cy[$j]."</option>";
+			else
+				$s1.="<option value=".$j.">".$this->cy[$j]."</option>";
+		}
+		$s1.="</select></div><div id='clear_id'></div>";
+		echo $s1;	//end of control level
+		if(isset($_POST["sel3"]))
+			$k=$_POST["sel3"];
+		else
+			$k=0;
+		$i=count($this->dy);
+		$s1="<br><div class='dvmsg'>数据类型：</div><div class='select_style'><select name='sel3'>";
+		for($j=0;$j<$i;$j++)
+		{
+			if($j == $k)
+				$s1.="<option value=".$j." selected='selected'>".$this->dy[$j]."</option>";
+			else
+				$s1.="<option value=".$j.">".$this->dy[$j]."</option>";
+		}
+		$s1.="</select></div><div id='clear_id'></div>";
+		echo $s1;	//end of data type
+	}//}}}
+//{{{public function show_body()
+	public function show_body()
+	{
+		$s1="<br><div class='dvmsg'>日均值日期:</div>";
+		$s1.="<div class='dvmsg'><input type='text' id='text1_id' name='starttime' onfocus='MyCalendar.SetDate(this)' value='".$this->rq."'/>";
+		$s1.="</div><div id='clear_id'></div>";
+		echo $s1;
+		$s1="<br><br><center><input type='submit' id='button_id' name='submit' value='应用'></center>";
+		echo $s1;
+	}//}}}
+//{{{public function show_tail()
+	public function show_tail()
+	{}//}}}
+}//}}}
+////////////////////////////////////////////////////////////
+//{{{ class data_sright implements main_data
+class data_sright implements main_data
+{
+	private $db,$ins;	//目标数据库相关信息，传入的查询条件。
+	private $con_std,$con_val; //解析后生成的执行标准查询字符串和项目数据查询字符串
+	private $say,$vay;  //标准数据数组，项目数据数组
+//{{{ public function __construct($y)
+	public function __construct()
+	{
+		if(!isset($_POST['starttime']))
+			die("参数传递错误！starttime");
+		if(!isset($_POST['sel1']))
+			die("参数传递错误！sel1");
+		if(!isset($_POST['sel2']))
+			die("参数传递错误！sel2");
+		if(!isset($_POST['sel3']))
+			die("参数传递错误！sel3");
+		if(!isset($_SESSION['sys_level']))
+			die("初始化信息错误！sys_level");
+		$i=intval($_POST['starttime']);
+		$this->get_used_db($i);
 
 
+	}//}}}
+//{{{public function get_used_db($y)
+	public function get_used_db($y)
+	{
+		global $DB_ADDR_TY,$DB_PORT_TY,$DB_NAME_TY,$DB_PWD_TY;
+		global $DB_USER_TY;
+		if(!isset($DB_ADDR_TY[$y]))
+			die("你所选择的日期".$i."年，没有数据！");
+		$this->db=array();
+		array_push($this->db,$DB_ADDR_TY[$i]);
+		array_push($this->db,$DB_PORT_TY[$i]);
+		array_push($this->db,$DB_NAME_TY[$i]);
+		array_push($this->db,$DB_USER_TY);
+		array_push($this->db,$DB_PWD_TY);
+	}//}}}
+//{{{public function parse_sql()
+	public function parse_sql()
+	{//废水,县区级
+		switch($_SESSION['sys_level'])
+		{
+		case 0: //县区级
+			$s1="SELECT b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM (SELECT b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM fs_h_master a,zd_info b WHERE a.uid = b.uid AND a.date > date_add(now(),interval -2 hour) AND b.aid = %u AND b.utype = %d AND b.ctlvl = %d ORDER BY a.date DESC) as e,fs_h_master as a,zd_info as b GROUP BY a.uid";
+			$this->con_val=sprintf($s1,$_POST['sel1'],0,$_POST['sel2']);
+			break;
+		case 1://省级
+			$s1="SELECT b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM (SELECT b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM fs_h_master a,zd_info b WHERE a.uid = b.uid AND a.date > date_add(now(),interval -2 hour) AND b.aid BETWEEN %u AND %u AND b.utype = %d AND b.ctlvl = %d ORDER BY a.date DESC) as e,fs_h_master as a,zd_info as b GROUP BY a.uid";
+			$i=intval($_POST['sel1'])+1;
+			$j=$i+98;
+			$this->con_val=sprintf($s1,$i,$j,0,$_POST['sel2']);
+			break;
+		case 2://地市级
+			$s1="SELECT b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM (SELECT b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM fs_h_master a,zd_info b WHERE b.aid = %u  AND b.utype = %d AND b.ctlvl = %d AND a.date > date_add(now(),interval -2 hour) AND a.uid = b.uid ORDER BY a.date DESC) as e,fs_h_master as a,zd_info as b GROUP BY a.uid";//这个是优化过的SQL查询字符串，前两个没有优化。
+			$this->con_val=sprintf($s1,$_POST['sel1'],0,$_POST['sel2']);
+			break;
+		};
+	}//}}}
+//{{{public function get_std()
+	public function get_std()
+	{
+	}//}}}
+//{{{public function get_unit()
+	public function get_unit()
+	{
+	}//}}}
 
-
+}//}}}
+/*废气的查询字符串：
+		case 0: //县区级
+			$s1="SELECT b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg from (SELECT b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM fs_h_master a,zd_info b WHERE a.uid = b.uid AND a.date > date_add(now(),interval -5 minute) AND b.aid = %u AND b.utype = %d AND b.ctlvl = %d ORDER BY a.date DESC) as e,fs_h_master as a,zd_info as b GROUP BY a.uid";
+			break;
+		case 1://省级
+			$s1="SELECT b.uname,a.code,a.nhx,a.ll_sh,a.ll_jg FROM fs_h_master a,zd_info b WHERE a.uid = b.uid AND a.date > date_add(now(),interval -5 minute) AND b.aid BETWEEN %u AND %u AND b.utype = %d AND b.ctlvl = %d ORDER BY a.date DESC GROUP BY a.uid";
+			break;
+ */
 
 ?>
+
+
+
+

@@ -48,7 +48,14 @@ interface listbox_data
 	public function get_ctlarea();//取得控制区域列表框中数据的函数
 	public function get_unit($y);	//取得站点名称列表框中数据的函数
 }
-
+//下面的接口定义了右边栏数据及标准的取得
+interface main_data
+{
+	public function get_used_db($y);	//取得待访问的数据库服务器和数据库访问相关信息
+	public function parse_sql();	//解析并生成访问字符串
+	public function get_std();		//取得标准
+	public function get_unit();		//取得数据
+}
 
 
 
