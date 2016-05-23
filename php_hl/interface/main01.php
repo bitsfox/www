@@ -473,8 +473,6 @@ class data_sright implements main_data
 			die("初始化信息错误！sys_level");
 		$i=intval($_POST['starttime']);
 		$this->get_used_db($i);
-
-
 	}//}}}
 //{{{public function get_used_db($y)
 	public function get_used_db($y)
@@ -496,20 +494,26 @@ class data_sright implements main_data
 		switch($_SESSION['sys_level'])
 		{
 		case 0: //县区级
-			$s1="SELECT b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM (SELECT b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM fs_h_master a,zd_info b WHERE a.uid = b.uid AND a.date > date_add(now(),interval -2 hour) AND b.aid = %u AND b.utype = %d AND b.ctlvl = %d ORDER BY a.date DESC) as e,fs_h_master as a,zd_info as b GROUP BY a.uid";
-			$this->con_val=sprintf($s1,$_POST['sel1'],0,$_POST['sel2']);
+			$s1="SELECT e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT a.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info as b LEFT JOIN fs_h_master as a ON b.uid = a.uid AND a.date > date_add(now(),interval -2 hour) WHERE b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$this->con_val=sprintf($s1,$_POST['sel2']);
 			break;
 		case 1://省级
-			$s1="SELECT b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM (SELECT b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM fs_h_master a,zd_info b WHERE a.uid = b.uid AND a.date > date_add(now(),interval -2 hour) AND b.aid BETWEEN %u AND %u AND b.utype = %d AND b.ctlvl = %d ORDER BY a.date DESC) as e,fs_h_master as a,zd_info as b GROUP BY a.uid";
+			$s1="SELECT e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN fs_h_master AS a ON a.date > date_add(now(),interval -2 hour) AND a.uid = b.uid WHERE b.aid BETWEEN %u AND %u AND b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) as e GROUP BY e.uid";
 			$i=intval($_POST['sel1'])+1;
 			$j=$i+98;
-			$this->con_val=sprintf($s1,$i,$j,0,$_POST['sel2']);
+			$this->con_val=sprintf($s1,$i,$j,$_POST['sel2']);
 			break;
 		case 2://地市级
-			$s1="SELECT b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM (SELECT b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM fs_h_master a,zd_info b WHERE b.aid = %u  AND b.utype = %d AND b.ctlvl = %d AND a.date > date_add(now(),interval -2 hour) AND a.uid = b.uid ORDER BY a.date DESC) as e,fs_h_master as a,zd_info as b GROUP BY a.uid";//这个是优化过的SQL查询字符串，前两个没有优化。
-			$this->con_val=sprintf($s1,$_POST['sel1'],0,$_POST['sel2']);
+			$s1="SELECT e,uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN fs_h_master AS a ON a.date > date_add(now(),interval -2 hour) AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) as GROUP BY e.uid";
+			$this->con_val=sprintf($s1,$_POST['sel1'],$_POST['sel2']);
+			break;
+		default:
+			$this->con_val="sys_level=".$_SESSION['sys_level'];
 			break;
 		};
+		echo $this->con_val;
+		$s1="SELECT b.uid,a.std1,a.std1_area,a.std2 FROM gb_std a,zd_info b WHERE b.utype = 0 AND b.ctlvl = %d AND b.uid = a.uid AND b.sttm < %s AND b.edtm > %s ORDER BY b.uid,a.iid";
+		
 	}//}}}
 //{{{public function get_std()
 	public function get_std()
@@ -521,15 +525,20 @@ class data_sright implements main_data
 	}//}}}
 
 }//}}}
-/*废气的查询字符串：
-		case 0: //县区级
+//{{{废气的查询字符串：
+/*		case 0: //县区级
 			$s1="SELECT b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg from (SELECT b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM fs_h_master a,zd_info b WHERE a.uid = b.uid AND a.date > date_add(now(),interval -5 minute) AND b.aid = %u AND b.utype = %d AND b.ctlvl = %d ORDER BY a.date DESC) as e,fs_h_master as a,zd_info as b GROUP BY a.uid";
 			break;
 		case 1://省级
 			$s1="SELECT b.uname,a.code,a.nhx,a.ll_sh,a.ll_jg FROM fs_h_master a,zd_info b WHERE a.uid = b.uid AND a.date > date_add(now(),interval -5 minute) AND b.aid BETWEEN %u AND %u AND b.utype = %d AND b.ctlvl = %d ORDER BY a.date DESC GROUP BY a.uid";
 			break;
  */
+/*
 
+mysql> select e.uname,e.date,e.cod from (select b.uid,b.uname,a.date,a.cod from zd_info b left join fs_h_master a on b.uid = a.uid and a.date > date_add(now(),interval -15 day) where b.utype = 0 AND b.ctlvl = 0 order by a.date desc) as e group by e.uid;
+
+*/
+//}}}
 ?>
 
 

@@ -17,9 +17,14 @@
 	<div id="clear_id"></div>
 	<div id="right_top_id" class="shadow_class">
 	<br><br>
-<!--	<table class='imagetable'><tr><th>aaa</th><th>bbb</th></tr>
-	<tr><td>cccc</td><td>dddd</td></tr></table>   -->
-	echo "hello";
+<?php
+	if(isset($_POST['starttime']))
+	{
+		$a= new data_sright();
+		$a->parse_sql();
+		echo "hello";
+	}
+?>	
 	</div>
 	</div>
 </div></body></html>	
