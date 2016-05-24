@@ -1,23 +1,3 @@
-<center>当前浏览：废水明晰</center>
-<?php
-//	$ar=array();
-	global $menulnk;
-	echo "<form name='form_left6' method='post' action='./".$menulnk[5]."'>";
-//	$a= new tb_mxleft();
-	$a= new tb_mxleft_e();
-	$a->show_header();
-	$a->show_body();
-	global $arry;
-	$a->show_tail();
-//	echo json_encode($arry,JSON_UNESCAPED_UNICODE);
-//	if(function_exists("array_ptoj"))
-?>
-<center><?php
-echo $_POST['starttime'];
-?></center>
-</form>
-<!-- </body></html> -->
-<script language="javascript" type="text/javascript"> 
 var jary=<?php echo json_encode($arry,JSON_UNESCAPED_UNICODE);?>;
 function onsss()
 {
@@ -43,4 +23,4 @@ function onsss()
 		v.add(aa);
 	} 
 }
-</script>
+

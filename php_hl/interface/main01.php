@@ -387,7 +387,7 @@ class tb_sleft_e implements tab_show
 //{{{public function __destruct()
 	public function __destruct()
 	{unset($this->db);unset($this->ay);unset($this->my);}//}}}
-//{{{public function show_heaer()
+//{{{public function show_header()
 	public function show_header()
 	{
 		$i=count($this->ay);

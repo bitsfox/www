@@ -14,12 +14,11 @@ interface inter_base_def
 	public function get_intr_dir();//取得interface目录的函数
 }
 //下面的接口定义了数据库的基本操作
-interface sql_def
+interface sqli_def
 {
-	public function get_db_type();//取得数据库类型
-	public function connect_db();//数据库连接函数
-	public function query_db();//数据库操作函数
-	public function close_db();//关闭数据库
+	public function get_cur_year();//取得当前年份
+	public function get_used_db();//取得目标数据库的信息
+	public function query_db($n);//数据库操作函数
 }
 //下面的接口定义了所有的显示界面的实现
 interface tab_show

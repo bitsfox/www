@@ -24,75 +24,73 @@ $st=constant("FULL_PATH")."interface/extra01.php";
 require_once($st);
 $st=constant("FULL_PATH")."interface/main01.php";
 require_once($st);
-
-//{{{ class my_init implements inter_base_def
-class my_init implements inter_base_def
+///////////////////////////////////////////////////////////////
+//{{{class login_init implements sqli_def
+class login_init implements sqli_def
 {
-	public function __construct()
-	{//定义常量
-		global $tybitsfox;
-		define("BASE_DIR",$tybitsfox['www_path']."/php_hl");
-		define("TEMP_DIR",constant("BASE_DIR")."/template");
-		define("INCL_DIR",constant("BASE_DIR")."/include");
-		define("CONF_DIR",constant("BASE_DIR")."/config");
-		define("CORE_DIR",constant("BASE_DIR")."/core");
-		define("INTR_DIR",constant("BASE_DIR")."/interface");
-	}
-	public function get_base_dir()
-	{return constant("BASE_DIR");}
-	public function get_conf_dir()
-	{return constant("CONF_DIR");}
-	public function get_temp_dir()
-	{return constant("TEMP_DIR");}
-	public function get_incl_dir()
-	{return constant("INCL_DIR");}
-	public function get_core_dir()
-	{return constant("CORE_DIR");}
-	public function get_intr_dir()
-	{return constant("INTR_DIR");}
-}//}}}
-//{{{class msql implements sql_def
-class msql implements sql_def
-{
-	private $str;
-	private $conn=NULL;
-	public function __construct()
+	private $conn_reg,$conn_log,$db;//
+	private $rq;
+//{{{public function __construct($u,$p)
+	public function __construct($u,$p)
 	{
-		global $database;
-		$this->str="'".$database['host']."','".$database['user']."','".$database['pwd']."'";
-	}
-	public function get_db_type()
-	{return $database['type'];}
-	public function connect_db()
+		if(($u == NULL) || ($p == NULL))
+			die("请指定用户名和密码");
+		$this->get_cur_year();
+		$this->conn_log="SELECT * FROM auth";
+		$this->conn_reg=sprintf("INSERT INTO auth(user,pwd) VALUES('%s','%s')",$u,$p);
+		$this->get_used_db();
+	}//}}}
+//{{{public function get_cur_year()
+	public function get_cur_year()
 	{
-		$this->conn=MYSQL_connect($this->str) or die("connect die: ".MYSQL_error());
-		return $this->conn;
-	}
-	public function query_db()
+		$dy=array();
+		$dy=getdate(time());
+		$this->rq= $dy['year'];
+	}//}}}
+//{{{public function get_used_db()
+	public function get_used_db()
 	{
-		global $database;
-		if($this->conn == NULL)
-			$this->connect_db();
-		MYSQL_select_db($database['dbname']) or die("select_db die:".MYSQL_error());
-		$result=mysql_query($database['logstr'],$this->conn) or die("query die:".MYSQL_error());
+		global $DB_ADDR_TY,$DB_PORT_TY,$DB_NAME_TY,$DB_PWD_TY;
+		global $DB_USER_TY;
+		$i=intval($this->rq);
+		if(!isset($DB_ADDR_TY[$i]))
+			die("你所选择的日期".$i."年，没有数据！");
+		$this->db=array();
+		array_push($this->db,$DB_ADDR_TY[$i]);
+		array_push($this->db,$DB_PORT_TY[$i]);
+		array_push($this->db,$DB_NAME_TY[$i]);
+		array_push($this->db,$DB_USER_TY);
+		array_push($this->db,$DB_PWD_TY);
+	}//}}}
+//{{{public function query_db($n)
+	public function query_db($n)
+	{
 		$ay=array();
-		while($rows=mysql_fetch_row($result))
-			array_push($ay,$row);
-		MYSQL_free_result($result);
+		if(!is_array($this->db))
+			$this->get_used_db();
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if(mysqli_connect_errno())
+			die("connect error");
+		mysqli_set_charset($mysqli,"utf8");
+		switch($n)
+		{
+		case 0:// login
+			$res=mysqli_query($mysqli,$this->conn_log);
+			while($row=mysqli_fetch_row($res))
+				array_push($ay,$row);
+			mysqli_free_result($res);
+			mysqli_close($mysqli);
+			break;
+		case 1://register
+			$res=mysqli_query($mysqli,$this->conn_reg);
+			mysqli_close($mysqli);
+			if($res != TRUE)
+				die("用户注册失败！");
+			return TRUE;
+		};
 		return $ay;
-	}
-	public function close_db()
-	{
-		MYSQL_close($this->conn);
-		$this->conn=NULL;
-	}
-	public function __destruct()
-	{
-		if($this->conn != NULL)
-			$this->close_db();
-	}
-}
-//}}}
+	}//}}}
+}//}}}
 //这里定义一个Session验证的函数
 //{{{function _verf_fox()
 function _verf_fox()
@@ -104,50 +102,30 @@ function _verf_fox()
 //{{{function _verf_db($u,$p)
 function _verf_db($u,$p)
 {
-	global $database;
-	$i=1;
-	$conn=MYSQL_connect($database['host'],$database['user'],$database['pwd']) or die("connect die: ".MYSQL_error());
-	MYSQL_select_db($database['dbname']) or die("select_db die: ".MYSQL_error());
-	$result=mysql_query($database['logstr'],$conn) or die("query die: ".MYSQL_error());
-//	$ay=array();
-	while($rows=mysql_fetch_row($result))
+	$a=new login_init($u,$p);
+	$ay=$a->query_db(0);
+	$i=count($ay);
+	for($j=0;$j<$i;$j++)
 	{
-	//	array_push($ay,$row);
-	//	print_r($rows);
-		if(($rows[0] == $u) && ($rows[1] == $p))
-		{
-			$i=0;break;
-		}
+		$row=$ay[$j];
+		if(($row[0] == $u) && ($row[1] == $p))
+			return 0;
 	}
-	MYSQL_free_result($result);
-	MYSQL_close($conn);
-	return $i;
+	return 1; 
 }//}}}
 //{{{function _reg_db($u,$p)
 function _reg_db($u,$p)
 {
-	global $database;
-	$i=0;
-	$conn=MYSQL_connect($database['host'],$database['user'],$database['pwd']) or die("connect die: ".MYSQL_error());
-	MYSQL_select_db($database['dbname']) or die("select_db die: ".MYSQL_error());
-	$result=mysql_query($database['logstr'],$conn) or die("query die: ".MYSQL_error());
-	while($rows=mysql_fetch_row($result))
+	$a=new login_init($u,$p);
+	$ay=$a->query_db(0);
+	$i=count($ay);
+	for($j=0;$j<$i;$j++)
 	{
-		if($rows[0] == $u)
-		{
-			$i=1;break;
-		}
+		$row=$ay[$j];
+		if($row[0] == $u)
+			die("该帐号已被注册，请更换名称重新注册");
 	}
-	mysql_free_result($result);
-	if($i !=0 )
-	{
-		mysql_close($conn);
-		return $i;
-	}
-	$str=sprintf($database['regstr'],$u,$p);
-	$result=mysql_query($str,$conn) or die("query die again: ".mysql_error());
-//	mysql_free_result($res); mysql_query返回值不一定都是资源型的（查询时是），此时的写入返回值是bool型的，所以不能（也不用）释放
-	mysql_close($conn);
+	$a->query_db(1);
 	return 0;
 }//}}}
 //{{{ class tb_wsc implements tab_show
@@ -369,9 +347,11 @@ class tb_fq implements tab_show
 //{{{class tb_sleft implements tab_show
 class tb_sleft implements tab_show
 {
-	private $ay,$cy;
-	private $dy;
-	private $nowtile,$rq;
+	private $db; //数据库服务器信息数组
+	private $ay; //ay是控制区域列表框的数据数组
+	private $rq;
+	private $cy,$dy;	//控制级别和数据类型
+//{{{public function __construct()
 	public function __construct()
 	{
   		date_default_timezone_set("PRC");
@@ -381,27 +361,33 @@ class tb_sleft implements tab_show
 		}
 		else
 		{
-  			$this->nowtime = time();
-  			$this->rq = date("Y-m-d",$this->nowtime);
+  			$nowtime = time();
+  			$this->rq = date("Y-m-d",$nowtime);
 		}
-		$this->ay=array("市直","泰山区","岱岳区","东平县","宁阳县","肥城市","新泰市");//控制区域
-		$this->cy=array("国控","省控","市控","县控");//控制级别
+		$a=new init_tab($this->rq);
+		$this->ay=$a->get_ctlarea();
+		$this->cy=array("国控","省控","市控","县控","其他");//控制级别
 		$this->dy=array("实时值","日均值");//数据类型
-	}
+	}//}}}
+//{{{public function __destruct()
+	public function __destruct()
+	{unset($this->db);unset($this->ay);unset($this->my);}//}}}
+//{{{public function show_header()
 	public function show_header()
 	{
 		$i=count($this->ay);
-		if(isset($_POST["sel1"]))
-			$k=$_POST["sel1"];
+		if(isset($_POST['sel1']))
+			$k=$_POST['sel1'];
 		else
 			$k=0;
 		$s1="<br><div class='dvmsg'>控制区域：</div><div class='select_style'><select name='sel1'>";
 		for($j=0;$j<$i;$j++)
 		{
-			if($j == $k)
-				$s1.="<option value=".$j." selected='selected'>".$this->ay[$j]."</option>";
+			$by=$this->ay[$j];
+			if($by[0] == $k)
+				$s1.="<option value=".$by[0]." selected='selected'>".$by[1]."</option>";
 			else
-				$s1.="<option value=".$j.">".$this->ay[$j]."</option>";
+				$s1.="<option value=".$by[0].">".$by[1]."</option>";
 		}
 		$s1.="</select></div><div id='clear_id'></div>";
 		echo $s1;	//end of control area
@@ -435,7 +421,8 @@ class tb_sleft implements tab_show
 		}
 		$s1.="</select></div><div id='clear_id'></div>";
 		echo $s1;	//end of data type
-	}
+	}//}}}
+//{{{public function show_body()
 	public function show_body()
 	{
 		$s1="<br><div class='dvmsg'>日均值日期:</div>";
@@ -444,9 +431,10 @@ class tb_sleft implements tab_show
 		echo $s1;
 		$s1="<br><br><center><input type='submit' id='button_id' name='submit' value='应用'></center>";
 		echo $s1;
-	}
+	}//}}}
+//{{{public function show_tail()
 	public function show_tail()
-	{}
+	{}//}}}
 }//}}}
 
 
