@@ -23,26 +23,14 @@
 		require_once($str);
 		$str=constant("FULL_PATH")."interface/main.php";
 		require_once($str);
-		$str=constant("FULL_PATH")."interface/main01.php";
-		require_once($str);
 		if(!isset($_POST['radio1']))
 		{}
 		else
 		{
 			if($_POST['radio1'] == 2)
 			{
-				$a=new fs_mx_g();
-				$a->analysis_post();
-				echo "hahhahah";
 			}
 		}
-		//get_danwei();
-/*		$i="2018";
-		$a=new mx_listbox();
-		$a->get_ctlarea();
-		$a->get_unit();
-		$i=4;
-		$a->show($i); */
 	?>
 	</div>
 	</div>

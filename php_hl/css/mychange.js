@@ -1,6 +1,7 @@
-var jary=<?php echo json_encode($arry,JSON_UNESCAPED_UNICODE);?>;
 function onsss()
 {
+	//var jary=document.getElementById("arry");
+	//alert(jary);
 	var x=document.getElementById("sel1p");
 	var i=x.selectedIndex;
 	if(i>jary.length)
@@ -23,4 +24,3 @@ function onsss()
 		v.add(aa);
 	} 
 }
-

@@ -1,10 +1,8 @@
-<center>当前浏览：废水明晰</center>
+<center>当前浏览：污水厂明晰</center>
 <?php
-//	$ar=array();
 	global $menulnk;
 	echo "<form name='form_left6' method='post' action='./".$menulnk[5]."'>";
-//	$a= new tb_mxleft();
-	$a= new tb_mxleft_e();
+	$a= new tb_mxleft_wsc();
 	$a->show_header();
 	$a->show_body();
 	global $arry;
@@ -16,31 +14,9 @@
 echo $_POST['starttime'];
 ?></center>
 </form>
-<!-- </body></html> -->
 <script language="javascript" type="text/javascript"> 
 var jary=<?php echo json_encode($arry,JSON_UNESCAPED_UNICODE);?>;
-function onsss()
-{
-	var x=document.getElementById("sel1p");
-	var i=x.selectedIndex;
-	if(i>jary.length)
-		alert('length error!');
-	var av=jary[i];
-	var y=document.getElementById("sel3p");
-	var k=y.selectedIndex;
-	if(k > av.length)
-		alert('length error again');
-	var bv=av[k];
-	var v=document.getElementById('sel2p');
-	v.options.length=0;	//clear
-//	var j=av.length;
-	var j=bv.length;
-	for(i=0;i<j;i++)
-	{
-		var aa=new Option;
-		aa.value=i;
-		aa.text=bv[i][1];
-		v.add(aa);
-	} 
-}
 </script>
+<script language="JavaScript" src="./css/mychange.js"></script>
+
+<!-- </body></html> -->

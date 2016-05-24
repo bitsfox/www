@@ -3,7 +3,7 @@
 //	$ar=array();
 	global $menulnk;
 	echo "<form name='form_left4' method='post' action='./".$menulnk[3]."'>";
-	$a= new tb_mxleft();
+	$a= new tb_mxleft_fs();
 	$a->show_header();
 	$a->show_body();
 	global $arry;
@@ -15,29 +15,8 @@
 echo intval($_POST['starttime']);
 ?></center>
 </form>
-<!-- </body></html> -->
 <script language="javascript" type="text/javascript"> 
 var jary=<?php echo json_encode($arry,JSON_UNESCAPED_UNICODE);?>;
-function onsss()
-{
-//	var u=document.getelementsbyname('sel1p');
-	var x=document.getElementById("sel1p");
-	var i=x.selectedIndex;
-//	alert(x.selectedIndex);
-	if(i>jary.length)
-		alert('length error!');
-	var av=jary[i];
-//	alert(av);
-	var v=document.getElementById('sel2p');
-	v.options.length=0;	//clear
-	var j=av.length;
-	for(i=0;i<j;i++)
-	{
-		var aa=new Option;
-		aa.value=i;
-		aa.text=av[i];
-		v.add(aa);
-	} 
-}
-//var ja=jary(i-1);
 </script>
+<script language="JavaScript" src="./css/mychange.js"></script>
+<!-- </body></html> -->
