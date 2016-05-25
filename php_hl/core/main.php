@@ -13,8 +13,11 @@ if(!defined("FULL_PATH"))
 	define("FULL_PATH",$s2);
 }
 //确保包含了全局变量的定义文件
-$ifile=constant("FULL_PATH")."config/main.php";
-require_once($ifile);
+if(!defined("SDHL_GBL"))
+{
+	$ifile=constant("FULL_PATH")."config/main.php";
+	require_once($ifile);
+}	
 //{{{ function array_ptoj() 一个php数组转js数组的函数
 /*虽然在php5.4以后有了一个非常好用的Json_encode,json_decode函数
   但是该函数还是具有一定的局限性，例如他目前仅支持uft-8编码

@@ -7,6 +7,7 @@
  */
 ?>
 <?php
+	define("SDHL_GBL","sdhl_2016");
 //版本信息和路径
 	$tybitsfox['www_path']		=	"/var/www";
 	$tybitsfox['version']		=	"0.0.0.1";

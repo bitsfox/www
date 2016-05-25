@@ -2,7 +2,7 @@
 <?php
 	global $menulnk;
 	echo "<form name='form_left2' method='post' action='./".$menulnk[4]."'>";
-	$a= new tb_mxleft_fq();
+	$a= new tb_mxleft_wsc(1);
 	$a->show_header();
 	$a->show_body();
 	global $arry;

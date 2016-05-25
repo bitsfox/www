@@ -22,13 +22,6 @@ if(!defined("FULL_PATH"))
 	$s2=substr($s1,0,$i)."php_hl/";
 	define("FULL_PATH",$s2);
 }
-//确保包含了全局变量的定义文件
-$ifile=constant("FULL_PATH")."config/main.php";
-require_once($ifile);
-$st=constant("FULL_PATH")."include/inter_def.php";
-require_once($st);
-$st=constant("FULL_PATH")."core/main.php";
-require_once($st);
 $st=constant("FULL_PATH")."interface/extra01.php";
 require_once($st);
 ///////////////////////////////////////////////////////////////
@@ -205,23 +198,41 @@ class tb_wsc implements tab_show
 class tb_fs implements tab_show
 {
 	private $ay,$cy;
-	private $dy=array();
+	private $dy;
+//{{{public function __construct()	
 	public function __construct()
 	{
 		$this->ay=array("编号","单位名称","COD","氨氮","累计流量");
 		$this->cy=array("监测值","标准值");
-		//only for test!
-		$ey=array("1","泰山康平纳毛纺织","137","200","--","--","1679356");
-		array_push($this->dy,$ey);
-		$ey=array("2","泰山石膏股份有限公司","186","500","3.3","45","1742970");
-		array_push($this->dy,$ey);
-		$ey=array("3","岱银纺织","100","200","8.83","20","53114940");
-		array_push($this->dy,$ey);
-		$ey=array("4","新矿集团盐化公司","63","60","5.19","10","275402");
-		array_push($this->dy,$ey);
-		$ey=array("5","泰安中泰纸业有限公司","14","60","0.61","10","2660074");
-		array_push($this->dy,$ey);
-	}
+		$a=new data_sright();
+		$a->parse_sql();
+		$y=$a->get_unit();
+		$i=count($y);
+		$this->dy=array();
+		for($j=0;$j<$i;$j++)
+		{
+			$ey=array();
+			$x=$y[$j];
+			array_push($ey,$j);
+			array_push($ey,$x[0]);
+			if($x[1] == NULL)
+				array_push($ey,"---");
+			else
+				array_push($ey,$x[1]);
+			array_push($ey,200);	//standard
+			if($x[2] == NULL)
+				array_push($ey,"---");
+			else
+				array_push($ey,$x[2]);
+			array_push($ey,40);
+			if($x[3] == NULL)
+				array_push($ey,"---");
+			else
+				array_push($ey,$x[3]);
+			array_push($this->dy,$ey);			
+		}
+	}//}}}
+//{{{public function show_header()	
 	public function show_header()
 	{
 		$s1="<table width=97% class='imagetable'><tr>";
@@ -244,30 +255,32 @@ class tb_fs implements tab_show
 		$s2="<th width=10% align=center>".$this->cy[1]."</th></tr>";
 		$s1.=$s2;
 		echo $s1;
-	}
+	}//}}}
+//{{{public function show_body()	
 	public function show_body()
 	{
-		for($k=0;$k<2;$k++)
+		$i=count($this->dy);
+		for($j=0;$j<$i;$j++)
 		{
-			$i=count($this->dy);
-			for($j=0;$j<$i;$j++)
-			{
-				$fy=$this->dy[$j];
-				$s1="<tr><td width=%10>".$fy[0]."</td><td width=30%>".$fy[1]."</td>";
-				if(($fy[2]>$fy[3]) && ($fy[3]>0))
-					$s1.="<td width=10% id='tdid'>".$fy[2]."</td><td width=10%>".$fy[3]."</td>";
-				else
-					$s1.="<td width=10%>".$fy[2]."</td><td width=10%>".$fy[3]."</td>";
-				if(($fy[4]>$fy[5]) && ($fy[5]>0))
-					$s1.="<td width=10% id='tdid'>".$fy[4]."</td><td width=10%>".$fy[5]."</td><td width=20%>".$fy[6]."</td></tr>";
-				else
-					$s1.="<td width=10%>".$fy[4]."</td><td width=10%>".$fy[5]."</td><td width=20%>".$fy[6]."</td></tr>";
-				echo $s1;
-			}
+			$fy=$this->dy[$j];
+			$s1="<tr><td width=%10>".$fy[0]."</td><td width=30%>".$fy[1]."</td>";
+			if(($fy[2]>$fy[3]) && ($fy[3]>0))
+				$s1.="<td width=10% id='tdid'>".$fy[2]."</td><td width=10%>".$fy[3]."</td>";
+			else
+				$s1.="<td width=10%>".$fy[2]."</td><td width=10%>".$fy[3]."</td>";
+			if(($fy[4]>$fy[5]) && ($fy[5]>0))
+				$s1.="<td width=10% id='tdid'>".$fy[4]."</td><td width=10%>".$fy[5]."</td><td width=20%>".$fy[6]."</td></tr>";
+			else
+				$s1.="<td width=10%>".$fy[4]."</td><td width=10%>".$fy[5]."</td><td width=20%>".$fy[6]."</td></tr>";
+			echo $s1;
 		}
-	}
+	}//}}}
+//{{{public function show_tail()	
 	public function show_tail()
-	{echo "</table>";}
+	{echo "</table>";}//}}}
+//{{{public function __destruct()
+	public function __destruct()
+	{unset($this->ay);unset($this->cy);unset($this->dy);}//}}}
 }//}}}
 //{{{class tb_fq implements tab_show
 class tb_fq implements tab_show
@@ -351,7 +364,8 @@ class tb_fq implements tab_show
 	public function show_tail()
 	{echo "</table>";}
 }//}}}
-//{{{class tb_sleft implements tab_show
+///////////////////////////////////////////////////////////
+//{{{class tb_sleft implements tab_show 所有实时数据查看的控制界面类
 class tb_sleft implements tab_show
 {
 	private $db; //数据库服务器信息数组
@@ -359,8 +373,15 @@ class tb_sleft implements tab_show
 	private $rq;
 	private $cy,$dy;	//控制级别和数据类型
 //{{{public function __construct()
-	public function __construct()
+	public function __construct($y)
 	{
+		if(($y == 1) || ($y == 2) || ($y == 3))
+		{
+			if($y==3)
+				$y=0;
+		}
+		else
+		{die("参数错误2！！");}	
   		date_default_timezone_set("PRC");
 		if($_POST['starttime'])
 		{
@@ -371,14 +392,17 @@ class tb_sleft implements tab_show
   			$nowtime = time();
   			$this->rq = date("Y-m-d",$nowtime);
 		}
-		$a=new init_tab($this->rq);
+		$x=array();
+		array_push($x,$this->rq);
+		array_push($x,$y);
+		$a=new init_tab($x);
 		$this->ay=$a->get_ctlarea();
 		$this->cy=array("国控","省控","市控","县控","其他");//控制级别
 		$this->dy=array("实时值","日均值");//数据类型
 	}//}}}
 //{{{public function __destruct()
 	public function __destruct()
-	{unset($this->db);unset($this->ay);unset($this->my);}//}}}
+	{unset($this->db);unset($this->ay);unset($this->cy);unset($this->dy);}//}}}
 //{{{public function show_header()
 	public function show_header()
 	{
@@ -386,7 +410,7 @@ class tb_sleft implements tab_show
 		if(isset($_POST['sel1']))
 			$k=$_POST['sel1'];
 		else
-			$k=0;
+			$k=$this->ay[0][0];
 		$s1="<br><div class='dvmsg'>控制区域：</div><div class='select_style'><select name='sel1'>";
 		for($j=0;$j<$i;$j++)
 		{
@@ -720,8 +744,15 @@ class tb_mxleft_wsc implements tab_show
 	private $rq;
 	private $my,$ny;	//控制级别和数据类型
 //{{{public function __construct()
-	public function __construct()
+	public function __construct($y)
 	{
+		if(($y == 3)||($y == 1)||($y == 2))
+		{
+			if($y == 3)
+				$y=0;
+		}
+		else
+		{die("参数错误0A1！！");}
   		date_default_timezone_set("PRC");
 		if($_POST['starttime'])
 		{
@@ -734,7 +765,7 @@ class tb_mxleft_wsc implements tab_show
 		}
 		global $arry;$x=array();
 		array_push($x,$this->rq);
-		array_push($x,2);
+		array_push($x,$y);
 		$a=new init_tab($x);
 		$this->ay=$a->get_ctlarea();
 		$a->get_unit($this->ay);
@@ -844,285 +875,6 @@ class tb_mxleft_wsc implements tab_show
 //{{{public function show_tail()
 	public function show_tail()
 	{}//}}}
-}//}}}
-////////////////////////////////////////////////////////////
-//{{{ class data_sright implements main_data 主界面数据及标准的获取类
-class data_sright implements main_data
-{
-	private $db,$ins;	//目标数据库相关信息，传入的查询条件。
-	private $con_std,$con_val; //解析后生成的执行标准查询字符串和项目数据查询字符串
-	private $say,$vay;  //标准数据数组，项目数据数组
-//{{{ public function __construct($y)
-	public function __construct()
-	{
-		if(!isset($_POST['starttime']))
-			die("参数传递错误！starttime");
-		if(!isset($_POST['sel1p']))
-			die("参数传递错误！sel1p");
-		if(!isset($_POST['sel2p']))
-			die("参数传递错误！sel2p");
-		if(!isset($_POST['sel3p']))
-			die("参数传递错误！sel3p");
-		if(!isset($_SESSION['sys_level']))
-			die("初始化信息错误！sys_level");
-		$i=intval($_POST['starttime']);
-		$this->get_used_db($i);
-	}//}}}
-//{{{public function get_used_db($y)
-	public function get_used_db($y)
-	{
-		global $DB_ADDR_TY,$DB_PORT_TY,$DB_NAME_TY,$DB_PWD_TY;
-		global $DB_USER_TY;
-		if(!isset($DB_ADDR_TY[$y]))
-			die("你所选择的日期".$i."年，没有数据！");
-		$this->db=array();
-		array_push($this->db,$DB_ADDR_TY[$i]);
-		array_push($this->db,$DB_PORT_TY[$i]);
-		array_push($this->db,$DB_NAME_TY[$i]);
-		array_push($this->db,$DB_USER_TY);
-		array_push($this->db,$DB_PWD_TY);
-	}//}}}
-//{{{public function parse_sql()
-	public function parse_sql()
-	{//废水,县区级
-		switch($_SESSION['sys_level'])
-		{
-		case 0: //县区级
-			$s1="SELECT e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT a.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info as b LEFT JOIN fs_h_master as a ON b.uid = a.uid AND a.date > date_add(now(),interval -2 hour) WHERE b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
-			$this->con_val=sprintf($s1,$_POST['sel3p']);
-			break;
-		case 1://省级
-			$s1="SELECT e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN fs_h_master AS a ON a.date > date_add(now(),interval -2 hour) AND a.uid = b.uid WHERE b.aid BETWEEN %u AND %u AND b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
-			$i=intval($_POST['sel1'])+1;
-			$j=$i+98;
-			$this->con_val=sprintf($s1,$i,$j,$_POST['sel3p']);
-			break;
-		case 2://地市级
-			$s1="SELECT e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN fs_h_master AS a ON a.date > date_add(now(),interval -2 hour) AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
-			$this->con_val=sprintf($s1,$_POST['sel1p'],$_POST['sel3p']);
-			break;
-		default:
-			$this->con_val="sys_level=".$_SESSION['sys_level'];
-			break;
-		};
-		echo $this->con_val;
-		$s1="SELECT b.uid,a.std1,a.std1_area,a.std2 FROM gb_std a,zd_info b WHERE b.utype = 0 AND b.ctlvl = %d AND b.uid = a.uid AND b.sttm < %s AND b.edtm > %s ORDER BY b.uid,a.iid";
-		
-	}//}}}
-//{{{public function get_std()
-	public function get_std()
-	{
-	}//}}}
-//{{{public function get_unit()
-	public function get_unit()
-	{
-	}//}}}
-
-}//}}}
-/////////////////////////////////////////////////////////////
-//{{{class init_tab implements listbox_data 控制界面数据的获取类
-class init_tab implements listbox_data
-{
-	private $conn,$str_sj,$str_ds;
-	private $str_uxq,$str_usj,$str_uds;
-	private $rq,$db,$utp;
-//{{{public function __construct($y)	
-	public function __construct($y)
-	{
-		if(!is_array($y))
-			die("参数错误！");
-		if(($y[1] == 0)||($y[1] == 1)||($y[1] == 2))
-		{	$this->utp=$y[1];}
-		else
-			die("参数错误11！");
-		if($y[0] != 0)
-			$this->rq=intval($y[0]);
-		else
-			$this->get_cur_year();
-		$this->get_used_db();
-		$this->conn="SELECT aid,aname FROM area_info WHERE bused = 1";
-		$this->str_sj="SELECT aid,aname FROM area_info WHERE aid BETWEEN %u AND %u AND aid%100 = 0";
-		$this->str_ds="SELECT aid,aname FROM area_info WHERE aid BETWEEN %u AND %u";
-		$this->str_uxq="SELECT uid,uname,ctlvl FROM zd_info WHERE utype = %d";//对于县区级，所有站点的aid都一样，所以无需判断
-		$this->str_usj="SELECT uid,uname,ctlvl FROM zd_info WHERE utype = %d AND aid BETWEEN %u AND %u";//省级，需要获取在一定区间内的aid
-		$this->str_uds="SELECT uid,uname,ctlvl FROM zd_info WHERE utype = %d AND aid = %u";//地市级，需要获取等于指定的aid
-	}//}}}
-//{{{public function __destruct()
-	public function __destruct()
-	{
-		unset($this->db);
-	}//}}}
-//{{{public function get_cur_year()
-	public function get_cur_year()
-	{
-		$dy=array();
-		$dy=getdate(time());
-		$this->rq= $dy['year'];
-	}//}}}
-//{{{public function get_used_db()
-	public function get_used_db()
-	{
-		global $DB_ADDR_TY,$DB_PORT_TY,$DB_NAME_TY,$DB_PWD_TY;
-		global $DB_USER_TY;
-		$i=intval($this->rq);
-		if(!isset($DB_ADDR_TY[$i]))
-			die("你所选择的日期".$i."年，没有数据！");
-		$this->db=array();
-		array_push($this->db,$DB_ADDR_TY[$i]);
-		array_push($this->db,$DB_PORT_TY[$i]);
-		array_push($this->db,$DB_NAME_TY[$i]);
-		array_push($this->db,$DB_USER_TY);
-		array_push($this->db,$DB_PWD_TY);
-	}//}}}
-//{{{public function get_ctlarea()
-	public function get_ctlarea()
-	{
-		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
-		if(mysqli_connect_errno())
-			die("connect error");
-		mysqli_set_charset($mysqli,"utf8");
-		$res=mysqli_query($mysqli,$this->conn);
-		if(mysqli_num_rows($res) != 1)
-		{
-			mysqli_free_result($res);
-			mysqli_close($mysqli);
-			die("严重错误！行政区划的设定错误！");
-		}
-		$row=mysqli_fetch_row($res);
-		$ay=array();
-		if($row[0]%10000 == 0) //省级系统
-		{
-			$_SESSION['sys_level'] = 1;
-			$i=intval($row[0])+1;
-			$j=$i+9998;
-			$s1=sprintf($this->str_sj,$i,$j);
-		}
-		else
-		{
-			if($row[0]%100 == 0) //地市级系统
-			{
-				$_SESSION['sys_level'] = 2;
-				$i=intval($row[0])+1;
-				$j=$i+98;
-				$s1=sprintf($this->str_ds,$i,$j);
-			}
-			else
-			{
-				$_SESSION['sys_level'] = 0; //县区级系统
-				array_push($ay,$row);
-			}
-		}
-		mysqli_free_result($res);
-		if($_SESSION['sys_level'] > 0)
-		{
-			$res=mysqli_query($mysqli,$s1);
-			while($row=mysqli_fetch_row($res))
-				array_push($ay,$row);
-			mysqli_free_result($res);
-		}
-		mysqli_close($mysqli);
-		return $ay;
-	}//}}}
-//{{{public function get_unit($y)
-	public function get_unit($y)
-	{
-		global $arry;
-		if(!is_array($arry))
-			$arry=array();
-		if(!is_array($y))
-			die("缺少传入参数或参数错误！");
-		if(!isset($_SESSION['sys_level']))
-			die("控制区域错误，无法取得相应的站点信息");
-		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
-		if(mysqli_connect_errno())
-			die("connect error");
-		mysqli_set_charset($mysqli,"utf8");
-		if($_SESSION['sys_level'] == 0) //县区级
-		{
-			//$s1=sprintf($this->str_uxq,$y[0][0]);
-			$s1=sprintf($this->str_uxq,$this->utp);
-			for($i=0;$i<5;$i++)
-				$dy[$i]=array();
-			$res=mysqli_query($mysqli,$s1);
-			while($row=mysqli_fetch_row($res))
-			{
-				if($row[2] > 4)
-				{
-					mysqli_free_result($res);
-					mysqli_close($mysqli);
-					die("越界错误！");
-				}
-				array_push($dy[$row[2]],$row);
-			}
-			$ey=array();
-			for($i=0;$i<5;$i++)
-				array_push($ey,$dy[$i]);
-			array_push($arry,$ey);//保证与省市控的处理一致，并同步全局变量
-			mysqli_free_result($res);
-			mysqli_close($mysqli);
-			return;
-		}
-		if($_SESSION['sys_level'] == 1) //省级
-		{
-			$i=count($y);
-			for($j=0;$j<$i;$j++)
-			{
-				for($k=0;$k<5;$k++)
-					$dy[$k]=array();
-				$cy=$y[$j];
-				$m=intval($cy[0])+1;
-				$n=$m+98;
-				$s1=sprintf($this->str_usj,$this->utp,$m,$n);
-				$res=mysqli_query($mysqli,$s1);
-				while($row=mysqli_fetch_row($res))
-				{
-					if($row[2] > 4)
-					{
-						mysqli_free_result($res);
-						mysqli_close($mysqli);
-						die("越界错误1！");
-					}
-					array_push($dy[$row[2]],$row);
-				}
-				$ey=array();
-				for($k=0;$k<5;$k++)
-					array_push($ey,$dy[$k]);
-				array_push($arry,$ey);//并同步全局变量
-				mysqli_free_result($res);
-			}
-			mysqli_close($mysqli);
-			return;
-		}
-		if($_SESSION['sys_level'] == 2) //地市级
-		{
-			$i=count($y);
-			for($j=0;$j<$i;$j++)
-			{
-				$cy=$y[$j];
-				$s1=sprintf($this->str_uds,$this->utp,$cy[0]);
-				for($k=0;$k<5;$k++)
-					$dy[$k]=array();
-				$res=mysqli_query($mysqli,$s1);
-				while($row=mysqli_fetch_row($res))
-				{
-					if($row[2] > 4)
-					{
-						mysqli_free_result($res);
-						mysqli_close($mysqli);
-						die("越界错误1！");
-					}
-					array_push($dy[$row[2]],$row);
-				}
-				$ey=array();
-				for($k=0;$k<5;$k++)
-					array_push($ey,$dy[$k]);
-				array_push($arry,$ey);//并同步全局变量
-				mysqli_free_result($res);
-			}
-			mysqli_close($mysqli);
-			return;
-		}
-	}//}}}
 }//}}}
 ?>
 
