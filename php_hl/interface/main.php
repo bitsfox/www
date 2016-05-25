@@ -477,18 +477,20 @@ class tb_mxleft_fs implements tab_show
 	}//}}}
 //{{{public function show_header()
 	public function show_header()
-	{
+	{//由于POST['sel1']和POST['sel2']改为传送aid和uid，不再是列表项序号了，因此必须要有个变量来保存序号。因为序号关系到
+	//多维数组的序号选择。
+		$num=0;
 		$i=count($this->ay);
 		if(isset($_POST["sel1p"]))
 			$k=$_POST["sel1p"];
 		else
-			$k=0;
+			$k=$this->ay[0][0];
 		$s1="<br><div class='dvmsg'>控制区域：</div><div class='select_style'><select name='sel1p' id='sel1p' onchange = 'onsss()'>";
 		for($j=0;$j<$i;$j++)
 		{
 			$by=$this->ay[$j];
 			if($by[0] == $k)
-				$s1.="<option value=".$by[0]." selected='selected'>".$by[1]."</option>";
+			{$s1.="<option value=".$by[0]." selected='selected'>".$by[1]."</option>";$num=$j;}
 			else
 				$s1.="<option value=".$by[0].">".$by[1]."</option>";
 		}
@@ -501,28 +503,28 @@ class tb_mxleft_fs implements tab_show
 		for($j=0;$j<5;$j++)
 		{
 			if($k1 == $j)
-				$s1.="<option value= ".$j." selected='selected'>".$this->my[$j]."</option>";
+			{$s1.="<option value= ".$j." selected='selected'>".$this->my[$j]."</option>";}
 			else
 				$s1.="<option value= ".$j.">".$this->my[$j]."</option>";
 		}
 		$s1.="</select></div><div id='clear_id'></div>";
 		echo $s1;	//end of control area and control level
 		$i=count($this->cy);
-		if($k >= $i)
+		if($num >= $i)
 			die("get array count error");
 		unset($by);
-		$by=$this->cy[$k];
+		$by=$this->cy[$num];
+		$dy=$by[$k1]; //取得不同控制级别的单位数组
+		$i=count($dy);
 		if(isset($_POST["sel2p"]))
 			$k2 = $_POST["sel2p"];
 		else
-			$k2 = 0;
-		$dy=$by[$k1]; //取得不同控制级别的单位数组
-		$i=count($dy);
+			$k2 = $dy[0][0];
 		$s1="<br><div class='dvmsg1'>站点名称：</div><div class='select_style1'><select name='sel2p' id='sel2p'>";
 		for($j=0;$j<$i;$j++)
 		{
 			if($dy[$j][0] == $k2)
-				$s1.="<option value=".$dy[$j][0]." selected='selected'>".$dy[$j][1]."</option>";
+			{$s1.="<option value=".$dy[$j][0]." selected='selected'>".$dy[$j][1]."</option>";$num1=$j;}
 			else
 				$s1.="<option value=".$dy[$j][0].">".$dy[$j][1]."</option>";
 		}
@@ -610,17 +612,18 @@ class tb_mxleft_fq implements tab_show
 //{{{public function show_header()
 	public function show_header()
 	{
+		$num=0;	
 		$i=count($this->ay);
 		if(isset($_POST["sel1p"]))
 			$k=$_POST["sel1p"];
 		else
-			$k=0;
+			$k=$this->ay[0][0];
 		$s1="<br><div class='dvmsg'>控制区域：</div><div class='select_style'><select name='sel1p' id='sel1p' onchange = 'onsss()'>";
 		for($j=0;$j<$i;$j++)
 		{
 			$by=$this->ay[$j];
 			if($by[0] == $k)
-				$s1.="<option value=".$by[0]." selected='selected'>".$by[1]."</option>";
+			{$s1.="<option value=".$by[0]." selected='selected'>".$by[1]."</option>";$num=$j;}
 			else
 				$s1.="<option value=".$by[0].">".$by[1]."</option>";
 		}
@@ -640,21 +643,21 @@ class tb_mxleft_fq implements tab_show
 		$s1.="</select></div><div id='clear_id'></div>";
 		echo $s1;	//end of control area and control level
 		$i=count($this->cy);
-		if($k >= $i)
+		if($num >= $i)
 			die("get array count error");
 		unset($by);
-		$by=$this->cy[$k];
+		$by=$this->cy[$num];
+		$dy=$by[$k1]; //取得不同控制级别的单位数组
+		$i=count($dy);
 		if(isset($_POST["sel2p"]))
 			$k2 = $_POST["sel2p"];
 		else
-			$k2 = 0;
-		$dy=$by[$k1]; //取得不同控制级别的单位数组
-		$i=count($dy);
+			$k2 = $dy[0][0];
 		$s1="<br><div class='dvmsg1'>站点名称：</div><div class='select_style1'><select name='sel2p' id='sel2p'>";
 		for($j=0;$j<$i;$j++)
 		{
 			if($dy[$j][0] == $k2)
-				$s1.="<option value=".$dy[$j][0]." selected='selected'>".$dy[$j][1]."</option>";
+			{$s1.="<option value=".$dy[$j][0]." selected='selected'>".$dy[$j][1]."</option>";$num1=$j;}
 			else
 				$s1.="<option value=".$dy[$j][0].">".$dy[$j][1]."</option>";
 		}
@@ -742,17 +745,18 @@ class tb_mxleft_wsc implements tab_show
 //{{{public function show_header()
 	public function show_header()
 	{
+		$num=0;
 		$i=count($this->ay);
 		if(isset($_POST["sel1p"]))
 			$k=$_POST["sel1p"];
 		else
-			$k=0;
+			$k=$this->ay[0][0];
 		$s1="<br><div class='dvmsg'>控制区域：</div><div class='select_style'><select name='sel1p' id='sel1p' onchange = 'onsss()'>";
 		for($j=0;$j<$i;$j++)
 		{
 			$by=$this->ay[$j];
 			if($by[0] == $k)
-				$s1.="<option value=".$by[0]." selected='selected'>".$by[1]."</option>";
+			{$s1.="<option value=".$by[0]." selected='selected'>".$by[1]."</option>";$num=$j;}
 			else
 				$s1.="<option value=".$by[0].">".$by[1]."</option>";
 		}
@@ -772,16 +776,16 @@ class tb_mxleft_wsc implements tab_show
 		$s1.="</select></div><div id='clear_id'></div>";
 		echo $s1;	//end of control area and control level
 		$i=count($this->cy);
-		if($k >= $i)
+		if($num >= $i)
 			die("get array count error");
 		unset($by);
-		$by=$this->cy[$k];
+		$by=$this->cy[$num];
+		$dy=$by[$k1]; //取得不同控制级别的单位数组
+		$i=count($dy);
 		if(isset($_POST["sel2p"]))
 			$k2 = $_POST["sel2p"];
 		else
-			$k2 = 0;
-		$dy=$by[$k1]; //取得不同控制级别的单位数组
-		$i=count($dy);
+			$k2 = $dy[0][0];
 		$s1="<br><div class='dvmsg1'>站点名称：</div><div class='select_style1'><select name='sel2p' id='sel2p'>";
 		for($j=0;$j<$i;$j++)
 		{
@@ -853,12 +857,12 @@ class data_sright implements main_data
 	{
 		if(!isset($_POST['starttime']))
 			die("参数传递错误！starttime");
-		if(!isset($_POST['sel1']))
-			die("参数传递错误！sel1");
-		if(!isset($_POST['sel2']))
-			die("参数传递错误！sel2");
-		if(!isset($_POST['sel3']))
-			die("参数传递错误！sel3");
+		if(!isset($_POST['sel1p']))
+			die("参数传递错误！sel1p");
+		if(!isset($_POST['sel2p']))
+			die("参数传递错误！sel2p");
+		if(!isset($_POST['sel3p']))
+			die("参数传递错误！sel3p");
 		if(!isset($_SESSION['sys_level']))
 			die("初始化信息错误！sys_level");
 		$i=intval($_POST['starttime']);
@@ -885,17 +889,17 @@ class data_sright implements main_data
 		{
 		case 0: //县区级
 			$s1="SELECT e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT a.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info as b LEFT JOIN fs_h_master as a ON b.uid = a.uid AND a.date > date_add(now(),interval -2 hour) WHERE b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
-			$this->con_val=sprintf($s1,$_POST['sel2']);
+			$this->con_val=sprintf($s1,$_POST['sel3p']);
 			break;
 		case 1://省级
-			$s1="SELECT e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN fs_h_master AS a ON a.date > date_add(now(),interval -2 hour) AND a.uid = b.uid WHERE b.aid BETWEEN %u AND %u AND b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) as e GROUP BY e.uid";
+			$s1="SELECT e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN fs_h_master AS a ON a.date > date_add(now(),interval -2 hour) AND a.uid = b.uid WHERE b.aid BETWEEN %u AND %u AND b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
 			$i=intval($_POST['sel1'])+1;
 			$j=$i+98;
-			$this->con_val=sprintf($s1,$i,$j,$_POST['sel2']);
+			$this->con_val=sprintf($s1,$i,$j,$_POST['sel3p']);
 			break;
 		case 2://地市级
-			$s1="SELECT e,uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN fs_h_master AS a ON a.date > date_add(now(),interval -2 hour) AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) as GROUP BY e.uid";
-			$this->con_val=sprintf($s1,$_POST['sel1'],$_POST['sel2']);
+			$s1="SELECT e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN fs_h_master AS a ON a.date > date_add(now(),interval -2 hour) AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$this->con_val=sprintf($s1,$_POST['sel1p'],$_POST['sel3p']);
 			break;
 		default:
 			$this->con_val="sys_level=".$_SESSION['sys_level'];

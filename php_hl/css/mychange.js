@@ -19,8 +19,13 @@ function onsss()
 	for(i=0;i<j;i++)
 	{
 		var aa=new Option;
-		aa.value=i;
+		aa.value=bv[i][0];
 		aa.text=bv[i][1];
 		v.add(aa);
 	} 
+}
+function onssa()
+{
+	var v=document.getElementById('sel2p');
+	var i=v.selectedIndex;
 }
