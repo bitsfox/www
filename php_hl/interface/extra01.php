@@ -28,21 +28,31 @@ class data_sright implements main_data
 {
 	private $db,$ins;	//目标数据库相关信息，传入的查询条件。
 	private $con_std,$con_val; //解析后生成的执行标准查询字符串和项目数据查询字符串
-	private $say,$vay;  //标准数据数组，项目数据数组
+	private $para;
 //{{{ public function __construct()
 	public function __construct()
 	{
+		$i=0;
 		if(!isset($_POST['starttime']))
-			die("");
-		if(!isset($_POST['sel1']))
-			die("参数传递错误！sel1");
-		if(!isset($_POST['sel2']))
-			die("参数传递错误！sel2");
-		if(!isset($_POST['sel3']))
-			die("参数传递错误！sel3");
-		if(!isset($_SESSION['sys_level']))
-			die("初始化信息错误！sys_level");
-		$i=intval($_POST['starttime']);
+		{//这种处理方式可以保证没有submit之前，就能正常的显示主界面的数据
+			if(!isset($_SESSION['INTR_SEND']))
+				die("严重错误！Session变量错误！");
+			$this->para=array();
+			$this->para[0]=$_SESSION['INTR_SEND'];//控制区域aid
+			$this->para[1]=0;//控制级别
+			$this->para[2]=0;//数据类型
+			$ay=array();
+			$ay=getdate(time());
+			$i=$ay['year'];
+		}
+		else
+		{//正常的从post传递
+			$this->para=array();
+			$this->para[0]=$_POST['sel1'];
+			$this->para[1]=$_POST['sel2'];
+			$this->para[2]=$_POST['sel3'];
+			$i=intval($_POST['starttime']);
+		}
 		$this->get_used_db($i);
 	}//}}}
 //{{{public function get_used_db($y)
@@ -66,17 +76,17 @@ class data_sright implements main_data
 		{
 		case 0: //县区级
 			$s1="SELECT e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT a.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info as b LEFT JOIN fs_h_master as a ON b.uid = a.uid AND a.date > date_add(now(),interval -2 hour) WHERE b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
-			$this->con_val=sprintf($s1,$_POST['sel2']);
+			$this->con_val=sprintf($s1,$this->para[1]);
 			break;
 		case 1://省级
 			$s1="SELECT e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN fs_h_master AS a ON a.date > date_add(now(),interval -2 hour) AND a.uid = b.uid WHERE b.aid BETWEEN %u AND %u AND b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
-			$i=intval($_POST['sel1'])+1;
+			$i=intval($this->para[0])+1;
 			$j=$i+98;
-			$this->con_val=sprintf($s1,$i,$j,$_POST['sel2']);
+			$this->con_val=sprintf($s1,$i,$j,$this->para[1]);
 			break;
 		case 2://地市级
 			$s1="SELECT e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN fs_h_master AS a ON a.date > date_add(now(),interval -1 month) AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
-			$this->con_val=sprintf($s1,$_POST['sel1'],$_POST['sel2']);
+			$this->con_val=sprintf($s1,$this->para[0],$this->para[1]);
 			break;
 		default:
 			$this->con_val="sys_level=".$_SESSION['sys_level'];
@@ -89,7 +99,7 @@ class data_sright implements main_data
 //{{{public function get_std()
 	public function get_std()
 	{
-		$this->say=array();
+		$say=array();return $say;
 	}//}}}
 //{{{public function get_unit()
 	public function get_unit()
@@ -98,12 +108,11 @@ class data_sright implements main_data
 		if(mysqli_connect_errno())
 			die("connect error");
 		mysqli_set_charset($mysqli,"utf8");
-		if($res=mysqli_query($mysqli,"$this->con_val"))
+		if($res=mysqli_query($mysqli,$this->con_val))
 		{
-		$res=mysqli_query($mysqli,$this->con_val);
-			$this->vay=array();
+			$vay=array();
 			while($row=mysqli_fetch_row($res))
-				array_push($this->vay,$row);
+				array_push($vay,$row);
 			mysqli_free_result($res);
 		}
 		else
@@ -113,10 +122,191 @@ class data_sright implements main_data
 			die("mysql query error!<br>".mysqli_error($mysqli));
 		}
 		mysqli_close($mysqli);
-		return $this->vay;
+		return $vay;
 	}//}}}
 
 }//}}}
+////////////////////////////////////////////////////////////
+//{{{class data_qright implements main_data 废气实时主界面数据及标准的获取类
+class data_qright implements main_data
+{
+	private $db;	//目标数据库的相关信息
+	private $con_std,$con_val;//解析后生成的执行标准查询和数据查询SQL字符串
+	private $para;//传入的参数
+//{{{public function __construct()
+	public function __construct()
+	{
+		$i=0;
+		if(!isset($_POST['starttime']))
+		{//这种处理方式可以保证没有submit之前，就能正常的显示主界面的数据
+			if(!isset($_SESSION['INTR_SEND']))
+				die("严重错误！Session变量错误！");
+			$this->para=array();
+			$this->para[0]=$_SESSION['INTR_SEND'];//控制区域aid
+			$this->para[1]=0;//控制级别
+			$this->para[2]=0;//数据类型
+			$ay=array();
+			$ay=getdate(time());
+			$i=$ay['year'];
+		}
+		else
+		{//正常的从post传递
+			$this->para=array();
+			$this->para[0]=$_POST['sel1'];
+			$this->para[1]=$_POST['sel2'];
+			$this->para[2]=$_POST['sel3'];
+			$i=intval($_POST['starttime']);
+		}
+		$this->get_used_db($i);
+	}//}}}	
+//{{{public function __destruct()
+	public function __destruct()
+	{
+		unset($this->db);unset($this->con_std);unset($this->con_val);
+	}//}}}
+//{{{public function get_used_db($y)
+	public function get_used_db($y)
+	{
+		global $DB_ADDR_TY,$DB_PORT_TY,$DB_NAME_TY,$DB_PWD_TY;
+		global $DB_USER_TY;
+		if(!isset($DB_ADDR_TY[$y]))
+			die("你所选择的日期".$i."年，没有数据！");
+		$this->db=array();
+		array_push($this->db,$DB_ADDR_TY[$y]);
+		array_push($this->db,$DB_PORT_TY[$y]);
+		array_push($this->db,$DB_NAME_TY[$y]);
+		array_push($this->db,$DB_USER_TY);
+		array_push($this->db,$DB_PWD_TY);
+	}//}}}
+//{{{public function parse_sql()
+	public function parse_sql()
+	{//废气
+		switch($_SESSION['sys_level'])
+		{
+		case 0://县区级
+			$s1="SELECT e.uname,e.so2,e.nox,e.dust,e.o2,e.dll FROM (SELECT b.uid,b.uname,a.so2,a.nox,a.dust,a.o2,a.dll FROM zd_info as b LEFT JOIN fq_m_master as a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE b.utype = 1 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$this->con_val=sprintf($s1,$this->para[1]);
+			break;
+		case 1://省级
+			$s1="SELECT e.uname,e.so2,e.nox,e.dust,e.o2,e.dll FROM (SELECT b.uid,b.uname,a.so2,a.nox,a.dust,a.o2,a.dll FROM zd_info as b LEFT JOIN fq_m_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid  WHERE b.aid BETWEEN %u AND %u AND b.utype = 1 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$i=intval($this->para[0])+1;
+			$j=$i+98;
+			$this->con_val=sprintf($s1,$i,$j,$this->para[1]);
+			break;
+		case 2://地市级
+			$s1="SELECT e.uname,e.so2,e.nox,e.dust,e.o2,e.dll FROM (SELECT b.uid,b.uname,a.so2,a.nox,a.dust,a.o2,a.dll FROM zd_info AS b LEFT JOIN fq_m_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 1 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$this->con_val=sprintf($s1,$this->para[0],$this->para[1]);
+			break;
+		default:
+			$this->con_val="sys_level=".$_SESSION['sys_level'];
+			break;
+		};
+		$s1="SELECT b.uid,a.std1,a.std1_area,a.std2 FROM gb_std a,zd_info b WHERE b.utype = 0 AND b.ctlvl = %d AND b.uid = a.uid AND b.sttm < %s AND b.edtm > %s ORDER BY b.uid,a.iid";
+	}//}}}
+//{{{public function get_std()
+	public function get_std()
+	{$say=array();return $say;}//}}}
+//{{{public function get_unit()
+	public function get_unit()
+	{
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if(mysqli_connect_errno())
+			die("connect error");
+		mysqli_set_charset($mysqli,"utf8");
+		if($res=mysqli_query($mysqli,$this->con_val))
+		{
+			$vay=array();
+			while($row=mysqli_fetch_row($res))
+				array_push($vay,$row);
+			mysqli_free_result($res);
+		}
+		else
+		{
+			$s1=mysqli_error($mysqli);
+			mysqli_close($mysqli);
+			var_dump($this->db);
+			die("mysql query error!<br>".$s1);
+		}
+		mysqli_close($mysqli);
+		return $vay;
+	}//}}}
+}//}}}
+////////////////////////////////////////////////////////////
+//{{{class data_wsright implements main_data
+class data_wsright implements main_data
+{
+	private $db;	//目标数据库的相关信息
+	private $con_std,$con_val;//解析后生成的执行标准查询和数据查询SQL字符串
+	private $para;//传入的参数
+//{{{public function __construct()
+	public function __construct()
+	{
+		$i=0;
+		if(!isset($_POST['starttime']))
+		{//这种处理方式可以保证没有submit之前，就能正常的显示主界面的数据
+			if(!isset($_SESSION['INTR_SEND']))
+				die("严重错误！Session变量错误！");
+			$this->para=array();
+			$this->para[0]=$_SESSION['INTR_SEND'];//控制区域aid
+			$this->para[1]=0;//控制级别
+			$this->para[2]=0;//数据类型
+			$ay=array();
+			$ay=getdate(time());
+			$i=$ay['year'];
+		}
+		else
+		{//正常的从post传递
+			$this->para=array();
+			$this->para[0]=$_POST['sel1'];
+			$this->para[1]=$_POST['sel2'];
+			$this->para[2]=$_POST['sel3'];
+			$i=intval($_POST['starttime']);
+		}
+		$this->get_used_db($i);
+	}//}}}
+//{{{public function __destruct()
+	public function __destruct()
+	{
+		unset($this->db);unset($this->con_std);unset($this->con_val);
+	}//}}}
+//{{{public function get_used_db($y)
+	public function get_used_db($y)
+	{
+		global $DB_ADDR_TY,$DB_PORT_TY,$DB_NAME_TY,$DB_PWD_TY;
+		global $DB_USER_TY;
+		if(!isset($DB_ADDR_TY[$y]))
+			die("你所选择的日期".$i."年，没有数据！");
+		$this->db=array();
+		array_push($this->db,$DB_ADDR_TY[$y]);
+		array_push($this->db,$DB_PORT_TY[$y]);
+		array_push($this->db,$DB_NAME_TY[$y]);
+		array_push($this->db,$DB_USER_TY);
+		array_push($this->db,$DB_PWD_TY);
+	}//}}}
+//{{{public function parse_sql()
+	public function parse_sql()
+	{//污水厂
+		switch($_SESSION['sys_level'])
+		{
+		case 0://县市区
+			$s1="SELECT e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN wsc_h_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE b.utype = 2 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$this->con_val=sprintf($s1,$this->para[1]);
+			break;
+		case 1://省级
+			$s1="SELECT e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN wsc_h_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE a.aid BETWEEN %u AND %u AND b.utype = 2 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$i=intval($this->para[0])+1;
+			$j=$i+98;
+			$this->con_val=sprintf($s1,$i,$j,$this->para[1]);
+			break;
+		case 2://地市级
+			$s1="SELECT e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN wsc_h_master AS a ON a.date > date_add(now(),interval -2 month)) AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 2 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+		};
+	}//}}}
+
+
+
+}//}}}
+
 /////////////////////////////////////////////////////////////
 //{{{class init_tab implements listbox_data 控制界面数据的获取类
 class init_tab implements listbox_data

@@ -286,13 +286,49 @@ class tb_fs implements tab_show
 class tb_fq implements tab_show
 {
 	private $ay,$cy;
-	private $dy=array();
+	private $dy;
 	public function __construct()
 	{
 		$this->ay=array("编号","单位名称","SO2","NOx","烟尘","氧量","废气排放量");
 		$this->cy=array("监测值","标准值");
+		$a=new data_qright();
+		$a->parse_sql();
+		$y=$a->get_unit();
+		$i=count($y);
+		$this->dy=array();
+		for($j=0;$j<$i;$j++)
+		{
+			$ey=array();
+			$x=$y[$j];
+			array_push($ey,$j);
+			array_push($ey,$x[0]);
+			if($x[1] == NULL)
+				array_push($ey,"---");
+			else
+				array_push($ey,$x[1]);
+			array_push($ey,"100");					//standard
+			if($x[2] == NULL)
+				array_push($ey,"---");
+			else
+				array_push($ey,$x[2]);
+			array_push($ey,"60");					//standard
+			if($x[3] == NULL)
+				array_push($ey,"---");
+			else
+				array_push($ey,$x[3]);
+			array_push($ey,"20");					//standard
+			if($x[4] == NULL)
+				array_push($ey,"---");
+			else
+				array_push($ey,$x[4]);
+			if($x[5] == NULL)
+				array_push($ey,"---");
+			else
+				array_push($ey,$x[5]);
+			array_push($this->dy,$ey);
+		}
 		//only for test!
-		$ey=array("1","泰山玻璃纤维","133","200","222","300","13","30","12","13156");
+/*		$ey=array("1","泰山玻璃纤维","133","200","222","300","13","30","12","13156");
 		array_push($this->dy,$ey);
 		$ey=array("2","泰山石膏股份有限公司","4","200","81","200","7","30","6","107005");
 		array_push($this->dy,$ey);
@@ -301,7 +337,7 @@ class tb_fq implements tab_show
 		$ey=array("4","新矿集团泰山盐化工分公司热电厂","7","200","57","200","14","30","8","402034");
 		array_push($this->dy,$ey);
 		$ey=array("5","岱岳精制盐","127","200","109","200","8","30","9","116827");
-		array_push($this->dy,$ey); 
+		array_push($this->dy,$ey);  */
 	}
 	public function show_header()
 	{
@@ -410,7 +446,7 @@ class tb_sleft implements tab_show
 		if(isset($_POST['sel1']))
 			$k=$_POST['sel1'];
 		else
-			$k=$this->ay[0][0];
+		{$k=$this->ay[0][0];$_SESSION['INTR_SEND']=$k;}
 		$s1="<br><div class='dvmsg'>控制区域：</div><div class='select_style'><select name='sel1'>";
 		for($j=0;$j<$i;$j++)
 		{
@@ -467,278 +503,9 @@ class tb_sleft implements tab_show
 	public function show_tail()
 	{}//}}}
 }//}}}
-
-
 ////////////////////////////////////////////////////////////
-//{{{class tb_mxleft_fs implements tab_show  废水明晰的控制界面
-class tb_mxleft_fs implements tab_show
-{
-	private $ay,$cy;	//ay是控制区域列表框的数据数组,cy是站点信息列表框的数据数组
-	private $rq;
-	private $my,$ny;	//控制级别和数据类型
-//{{{public function __construct()
-	public function __construct()
-	{
-  		date_default_timezone_set("PRC");
-		if($_POST['starttime'])
-		{
-			$this->rq=$_POST['starttime'];
-		}
-		else
-		{
-  			$nowtime = time();
-  			$this->rq = date("Y-m-d",$nowtime);
-		}
-		global $arry;$x=array();
-		array_push($x,$this->rq);
-		array_push($x,0);
-		$a=new init_tab($x);
-		$this->ay=$a->get_ctlarea();
-		$a->get_unit($this->ay);
-		$this->cy=$arry;
-		$this->my=array("国控","省控","市控","县控","其他");//控制级别
-		$this->ny=array("小时值","日均值","小时超标值","日均超标值");//数据类型
-	}//}}}
-//{{{public function show_header()
-	public function show_header()
-	{//由于POST['sel1']和POST['sel2']改为传送aid和uid，不再是列表项序号了，因此必须要有个变量来保存序号。因为序号关系到
-	//多维数组的序号选择。
-		$num=0;
-		$i=count($this->ay);
-		if(isset($_POST["sel1p"]))
-			$k=$_POST["sel1p"];
-		else
-			$k=$this->ay[0][0];
-		$s1="<br><div class='dvmsg'>控制区域：</div><div class='select_style'><select name='sel1p' id='sel1p' onchange = 'onsss()'>";
-		for($j=0;$j<$i;$j++)
-		{
-			$by=$this->ay[$j];
-			if($by[0] == $k)
-			{$s1.="<option value=".$by[0]." selected='selected'>".$by[1]."</option>";$num=$j;}
-			else
-				$s1.="<option value=".$by[0].">".$by[1]."</option>";
-		}
-		$s1.="</select></div><div id='clear_id'></div>";
-		if(isset($_POST["sel3p"]))
-			$k1=$_POST["sel3p"];
-		else
-			$k1=0;
-		$s1.="<br><div class='dvmsg'>控制级别：</div><div class='select_style'><select name='sel3p' id='sel3p' onchange = 'onsss()'>";
-		for($j=0;$j<5;$j++)
-		{
-			if($k1 == $j)
-			{$s1.="<option value= ".$j." selected='selected'>".$this->my[$j]."</option>";}
-			else
-				$s1.="<option value= ".$j.">".$this->my[$j]."</option>";
-		}
-		$s1.="</select></div><div id='clear_id'></div>";
-		echo $s1;	//end of control area and control level
-		$i=count($this->cy);
-		if($num >= $i)
-			die("get array count error");
-		unset($by);
-		$by=$this->cy[$num];
-		$dy=$by[$k1]; //取得不同控制级别的单位数组
-		$i=count($dy);
-		if(isset($_POST["sel2p"]))
-			$k2 = $_POST["sel2p"];
-		else
-			$k2 = $dy[0][0];
-		$s1="<br><div class='dvmsg1'>站点名称：</div><div class='select_style1'><select name='sel2p' id='sel2p'>";
-		for($j=0;$j<$i;$j++)
-		{
-			if($dy[$j][0] == $k2)
-			{$s1.="<option value=".$dy[$j][0]." selected='selected'>".$dy[$j][1]."</option>";$num1=$j;}
-			else
-				$s1.="<option value=".$dy[$j][0].">".$dy[$j][1]."</option>";
-		}
-		$s1.="</select></div><div id='clear_id'></div>";
-		echo $s1;
-	}//}}}
-//{{{public function show_body()
-	public function show_body()
-	{
-		if(isset($_POST['sel3']))
-			$k=$_POST['sel3'];
-		else
-			$k=0;
-		$s1="<br><div class='dvmsg'>数据类型：</div><div class='select_style'><select name='sel3' id='sel3'>";
-		for($i=0;$i<4;$i++)
-		{
-			if($i==$k)
-				$s1.="<option value= ".$i." selected='selected'>".$this->ny[$i]."</option>";
-			else
-				$s1.="<option value= ".$i." >".$this->ny[$i]."</option>";
-		}
-		$s1.="</select></div><div id='clear_id'></div>";
-		echo $s1;
-		$s1="<br><div class='dvmsg'>日期选择：</div><div class='dvmsg'><input type='text' id='text1_id' name='starttime' onfocus='MyCalendar.SetDate(this)' value='".$this->rq."'/>";
-		$s1.="</div><div id='clear_id'></div>";
-		echo $s1;
-		if(isset($_POST['radio1']))
-		{
-			if($_POST['radio1'] == 1)
-				$k=0;
-			else
-				$k=1;
-		}
-		else
-			$k=0;
-		$s1="<br><br><div class='dwmsg'>";
-		if($k==0)
-		{
-			$s1.="<input type='radio' name='radio1' value=1 checked />数据以表格显示";
-			$s1.="<input type='radio' name='radio1' value=2 />数据以图形显示</div>";
-		}
-		else
-		{
-			$s1.="<input type='radio' name='radio1' value=1 />数据以表格显示";
-			$s1.="<input type='radio' name='radio1' value=2 checked/>数据以图形显示</div>";
-		}
-		echo $s1;
-		$s1="<br><br><center><input type='submit' id='button_id' name='submit' value='应用'></center>";
-		echo $s1;
-	}//}}}
-//{{{public function show_tail()
-	public function show_tail()
-	{}//}}}
-}//}}}
-////////////////////////////////////////////////////////////
-//{{{class tb_mxleft_fq implements tab_show  废气明晰的控制界面
-class tb_mxleft_fq implements tab_show
-{
-	private $ay,$cy;	//ay是控制区域列表框的数据数组,cy是站点信息列表框的数据数组
-	private $rq;
-	private $my,$ny;	//控制级别和数据类型
-//{{{public function __construct()
-	public function __construct()
-	{
-  		date_default_timezone_set("PRC");
-		if($_POST['starttime'])
-		{
-			$this->rq=$_POST['starttime'];
-		}
-		else
-		{
-  			$nowtime = time();
-  			$this->rq = date("Y-m-d",$nowtime);
-		}
-		global $arry;$x=array();
-		array_push($x,$this->rq);
-		array_push($x,1);
-		$a=new init_tab($x);
-		$this->ay=$a->get_ctlarea();
-		$a->get_unit($this->ay);
-		$this->cy=$arry;
-		$this->my=array("国控","省控","市控","县控","其他");//控制级别
-		$this->ny=array("小时值","日均值","小时超标值","日均超标值");//数据类型
-	}//}}}
-//{{{public function show_header()
-	public function show_header()
-	{
-		$num=0;	
-		$i=count($this->ay);
-		if(isset($_POST["sel1p"]))
-			$k=$_POST["sel1p"];
-		else
-			$k=$this->ay[0][0];
-		$s1="<br><div class='dvmsg'>控制区域：</div><div class='select_style'><select name='sel1p' id='sel1p' onchange = 'onsss()'>";
-		for($j=0;$j<$i;$j++)
-		{
-			$by=$this->ay[$j];
-			if($by[0] == $k)
-			{$s1.="<option value=".$by[0]." selected='selected'>".$by[1]."</option>";$num=$j;}
-			else
-				$s1.="<option value=".$by[0].">".$by[1]."</option>";
-		}
-		$s1.="</select></div><div id='clear_id'></div>";
-		if(isset($_POST["sel3p"]))
-			$k1=$_POST["sel3p"];
-		else
-			$k1=0;
-		$s1.="<br><div class='dvmsg'>控制级别：</div><div class='select_style'><select name='sel3p' id='sel3p' onchange = 'onsss()'>";
-		for($j=0;$j<5;$j++)
-		{
-			if($k1 == $j)
-				$s1.="<option value= ".$j." selected='selected'>".$this->my[$j]."</option>";
-			else
-				$s1.="<option value= ".$j.">".$this->my[$j]."</option>";
-		}
-		$s1.="</select></div><div id='clear_id'></div>";
-		echo $s1;	//end of control area and control level
-		$i=count($this->cy);
-		if($num >= $i)
-			die("get array count error");
-		unset($by);
-		$by=$this->cy[$num];
-		$dy=$by[$k1]; //取得不同控制级别的单位数组
-		$i=count($dy);
-		if(isset($_POST["sel2p"]))
-			$k2 = $_POST["sel2p"];
-		else
-			$k2 = $dy[0][0];
-		$s1="<br><div class='dvmsg1'>站点名称：</div><div class='select_style1'><select name='sel2p' id='sel2p'>";
-		for($j=0;$j<$i;$j++)
-		{
-			if($dy[$j][0] == $k2)
-			{$s1.="<option value=".$dy[$j][0]." selected='selected'>".$dy[$j][1]."</option>";$num1=$j;}
-			else
-				$s1.="<option value=".$dy[$j][0].">".$dy[$j][1]."</option>";
-		}
-		$s1.="</select></div><div id='clear_id'></div>";
-		echo $s1;
-	}//}}}
-//{{{public function show_body()
-	public function show_body()
-	{
-		if(isset($_POST['sel3']))
-			$k=$_POST['sel3'];
-		else
-			$k=0;
-		$s1="<br><div class='dvmsg'>数据类型：</div><div class='select_style'><select name='sel3' id='sel3'>";
-		for($i=0;$i<4;$i++)
-		{
-			if($i==$k)
-				$s1.="<option value= ".$i." selected='selected'>".$this->ny[$i]."</option>";
-			else
-				$s1.="<option value= ".$i." >".$this->ny[$i]."</option>";
-		}
-		$s1.="</select></div><div id='clear_id'></div>";
-		echo $s1;
-		$s1="<br><div class='dvmsg'>日期选择：</div><div class='dvmsg'><input type='text' id='text1_id' name='starttime' onfocus='MyCalendar.SetDate(this)' value='".$this->rq."'/>";
-		$s1.="</div><div id='clear_id'></div>";
-		echo $s1;
-		if(isset($_POST['radio1']))
-		{
-			if($_POST['radio1'] == 1)
-				$k=0;
-			else
-				$k=1;
-		}
-		else
-			$k=0;
-		$s1="<br><br><div class='dwmsg'>";
-		if($k==0)
-		{
-			$s1.="<input type='radio' name='radio1' value=1 checked />数据以表格显示";
-			$s1.="<input type='radio' name='radio1' value=2 />数据以图形显示</div>";
-		}
-		else
-		{
-			$s1.="<input type='radio' name='radio1' value=1 />数据以表格显示";
-			$s1.="<input type='radio' name='radio1' value=2 checked/>数据以图形显示</div>";
-		}
-		echo $s1;
-		$s1="<br><br><center><input type='submit' id='button_id' name='submit' value='应用'></center>";
-		echo $s1;
-	}//}}}
-//{{{public function show_tail()
-	public function show_tail()
-	{}//}}}
-}//}}}
-////////////////////////////////////////////////////////////
-//{{{class tb_mxleft_wsc implements tab_show  污水厂明晰的控制界面
-class tb_mxleft_wsc implements tab_show
+//{{{class tb_mxleft implements tab_show  所有明晰的控制界面类
+class tb_mxleft implements tab_show
 {
 	private $ay,$cy;	//ay是控制区域列表框的数据数组,cy是站点信息列表框的数据数组
 	private $rq;
