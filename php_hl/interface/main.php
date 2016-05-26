@@ -132,21 +132,41 @@ function _reg_db($u,$p)
 class tb_wsc implements tab_show
 {
 	private $ay,$cy;
-	private $dy=array();
+	private $dy;
+//{{{public function __construct()	
 	public function __construct()
 	{
 		$this->ay=array("编号","单位名称","COD","氨氮","累计流量");
 		$this->cy=array("监测值","标准值");
-		//only for test!
-		$ey=array("1","清源水务一污","入口","164","--","23.10","--","--");
-		array_push($this->dy,$ey);
-		$ey=array("2","清源水务一污","出口","22","50","8.42","8","8744659");
-		array_push($this->dy,$ey);
-		$ey=array("3","康龙排水","入口","398","--","46.83","--","--");
-		array_push($this->dy,$ey);
-		$ey=array("4","康龙排水","出口","38","50","1.77","5","5131181");
-		array_push($this->dy,$ey);
-	}
+		$a=new data_wsright();
+		$a->parse_sql();
+		$y=$a->get_unit();
+		$i=count($y);
+		$this->dy=array();
+		for($j=0;$j<$i;$j++)
+		{
+			$ey=array();
+			$x=$y[$j];
+			array_push($ey,$j);
+			array_push($ey,$x[0]);
+			if($x[1] == NULL)
+				array_push($ey,"---");
+			else
+				array_push($ey,$x[1]);
+			array_push($ey,200);	//standard
+			if($x[2] == NULL)
+				array_push($ey,"---");
+			else
+				array_push($ey,$x[2]);
+			array_push($ey,40);
+			if($x[3] == NULL)
+				array_push($ey,"---");
+			else
+				array_push($ey,$x[3]);
+			array_push($this->dy,$ey);			
+		}
+	}//}}}
+//{{{public function show_header()
 	public function show_header()
 	{
 		$s1="<table width=97% class='imagetable'><tr>";
@@ -169,30 +189,29 @@ class tb_wsc implements tab_show
 		$s2="<th width=10% align=center>".$this->cy[1]."</th></tr>";
 		$s1.=$s2;
 		echo $s1;
-	}
+	}//}}}
+//{{{public function show_body()
 	public function show_body()
 	{
-		for($k=0;$k<5;$k++)
+		$i=count($this->dy);
+		for($j=0;$j<$i;$j++)
 		{
-			$i=count($this->dy);
-			for($j=0;$j<$i;$j++)
-			{
-				$fy=$this->dy[$j];
-				$s1="<tr><td width=%10>".$fy[0]."</td><td width=30%>".$fy[1].$fy[2]."</td>";
-				if(($fy[3]>$fy[4]) && ($fy[4]>0))
-					$s1.="<td width=10% id='tdid'>".$fy[3]."</td><td width=10%>".$fy[4]."</td>";
-				else
-					$s1.="<td width=10%>".$fy[3]."</td><td width=10%>".$fy[4]."</td>";
-				if(($fy[5]>$fy[6]) && ($fy[6]>0))
-					$s1.="<td width=10% id='tdid'>".$fy[5]."</td><td width=10%>".$fy[6]."</td><td width=20%>".$fy[7]."</td></tr>";
-				else
-					$s1.="<td width=10%>".$fy[5]."</td><td width=10%>".$fy[6]."</td><td width=20%>".$fy[7]."</td></tr>";
-				echo $s1;
-			}
+			$fy=$this->dy[$j];
+			$s1="<tr><td width=%10>".$fy[0]."</td><td width=30%>".$fy[1]."</td>";
+			if(($fy[2]>$fy[3]) && ($fy[3]>0))
+				$s1.="<td width=10% id='tdid'>".$fy[2]."</td><td width=10%>".$fy[3]."</td>";
+			else
+				$s1.="<td width=10%>".$fy[2]."</td><td width=10%>".$fy[3]."</td>";
+			if(($fy[4]>$fy[5]) && ($fy[5]>0))
+				$s1.="<td width=10% id='tdid'>".$fy[4]."</td><td width=10%>".$fy[5]."</td><td width=20%>".$fy[6]."</td></tr>";
+			else
+				$s1.="<td width=10%>".$fy[4]."</td><td width=10%>".$fy[5]."</td><td width=20%>".$fy[6]."</td></tr>";
+			echo $s1;
 		}
-	}
+	}//}}}
+//{{{public function show_tail()
 	public function show_tail()
-	{echo "</table>";}
+	{echo "</table>";}//}}}
 }//}}}
 //{{{class tb_fs implements tab_show
 class tb_fs implements tab_show

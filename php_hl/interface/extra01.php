@@ -299,11 +299,40 @@ class data_wsright implements main_data
 			$this->con_val=sprintf($s1,$i,$j,$this->para[1]);
 			break;
 		case 2://地市级
-			$s1="SELECT e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN wsc_h_master AS a ON a.date > date_add(now(),interval -2 month)) AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 2 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$s1="SELECT e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN wsc_h_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 2 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$this->con_val=sprintf($s1,$this->para[0],$this->para[1]);
+			break;
 		};
 	}//}}}
-
-
+//{{{public function get_std()
+	public function get_std()
+	{
+		$say=array();return $say;
+	}//}}}
+//{{{public function get_unit()
+	public function get_unit()
+	{
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if(mysqli_connect_errno())
+			die("connect error");
+		mysqli_set_charset($mysqli,"utf8");
+		if($res=mysqli_query($mysqli,$this->con_val))
+		{
+			$vay=array();
+			while($row=mysqli_fetch_row($res))
+				array_push($vay,$row);
+			mysqli_free_result($res);
+		}
+		else
+		{
+			$s1=mysqli_error($mysqli);
+			mysqli_close($mysqli);
+			var_dump($this->db);
+			die("mysql query error!<br>".$s1."<br>"."$this->con_val");
+		}
+		mysqli_close($mysqli);
+		return $vay;
+	}//}}}
 
 }//}}}
 
