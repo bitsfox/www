@@ -140,34 +140,7 @@ class tb_wsc implements tab_show
 		$this->cy=array("监测值","标准值");
 		$a=new data_wsright();
 		$a->parse_sql();
-//		$y=$a->get_unit();
 		$this->dy=$a->get_std();
-//		print_r($this->dy);
-//		die("");
-//		$i=count($y);
-//		$this->dy=array();
-/*		for($j=0;$j<$i;$j++)
-		{
-			$ey=array();
-			$x=$y[$j];
-			array_push($ey,$j);
-			array_push($ey,$x[0]);
-			if($x[1] == NULL)
-				array_push($ey,"---");
-			else
-				array_push($ey,$x[1]);
-			array_push($ey,200);	//standard
-			if($x[2] == NULL)
-				array_push($ey,"---");
-			else
-				array_push($ey,$x[2]);
-			array_push($ey,40);
-			if($x[3] == NULL)
-				array_push($ey,"---");
-			else
-				array_push($ey,$x[3]);
-			array_push($this->dy,$ey);			
-		} */
 	}//}}}
 //{{{public function show_header()
 	public function show_header()
@@ -228,31 +201,7 @@ class tb_fs implements tab_show
 		$this->cy=array("监测值","标准值");
 		$a=new data_sright();
 		$a->parse_sql();
-		$y=$a->get_unit();
-		$i=count($y);
-		$this->dy=array();
-		for($j=0;$j<$i;$j++)
-		{
-			$ey=array();
-			$x=$y[$j];
-			array_push($ey,$j);
-			array_push($ey,$x[0]);
-			if($x[1] == NULL)
-				array_push($ey,"---");
-			else
-				array_push($ey,$x[1]);
-			array_push($ey,200);	//standard
-			if($x[2] == NULL)
-				array_push($ey,"---");
-			else
-				array_push($ey,$x[2]);
-			array_push($ey,40);
-			if($x[3] == NULL)
-				array_push($ey,"---");
-			else
-				array_push($ey,$x[3]);
-			array_push($this->dy,$ey);			
-		}
+		$this->dy=$a->get_std();
 	}//}}}
 //{{{public function show_header()	
 	public function show_header()
@@ -315,51 +264,7 @@ class tb_fq implements tab_show
 		$this->cy=array("监测值","标准值");
 		$a=new data_qright();
 		$a->parse_sql();
-		$y=$a->get_unit();
-		$i=count($y);
-		$this->dy=array();
-		for($j=0;$j<$i;$j++)
-		{
-			$ey=array();
-			$x=$y[$j];
-			array_push($ey,$j);
-			array_push($ey,$x[0]);
-			if($x[1] == NULL)
-				array_push($ey,"---");
-			else
-				array_push($ey,$x[1]);
-			array_push($ey,"100");					//standard
-			if($x[2] == NULL)
-				array_push($ey,"---");
-			else
-				array_push($ey,$x[2]);
-			array_push($ey,"60");					//standard
-			if($x[3] == NULL)
-				array_push($ey,"---");
-			else
-				array_push($ey,$x[3]);
-			array_push($ey,"20");					//standard
-			if($x[4] == NULL)
-				array_push($ey,"---");
-			else
-				array_push($ey,$x[4]);
-			if($x[5] == NULL)
-				array_push($ey,"---");
-			else
-				array_push($ey,$x[5]);
-			array_push($this->dy,$ey);
-		}
-		//only for test!
-/*		$ey=array("1","泰山玻璃纤维","133","200","222","300","13","30","12","13156");
-		array_push($this->dy,$ey);
-		$ey=array("2","泰山石膏股份有限公司","4","200","81","200","7","30","6","107005");
-		array_push($this->dy,$ey);
-		$ey=array("3","泰山东城热电","299","200","97","200","5","30","13","347814");
-		array_push($this->dy,$ey);
-		$ey=array("4","新矿集团泰山盐化工分公司热电厂","7","200","57","200","14","30","8","402034");
-		array_push($this->dy,$ey);
-		$ey=array("5","岱岳精制盐","127","200","109","200","8","30","9","116827");
-		array_push($this->dy,$ey);  */
+		$this->dy=$a->get_std();
 	}
 	public function show_header()
 	{

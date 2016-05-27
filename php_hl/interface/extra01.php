@@ -41,6 +41,7 @@ class data_sright implements main_data
 			$this->para[0]=$_SESSION['INTR_SEND'];//控制区域aid
 			$this->para[1]=0;//控制级别
 			$this->para[2]=0;//数据类型
+			$this->para[3]=date("Y-m-d",time());
 			$ay=array();
 			$ay=getdate(time());
 			$i=$ay['year'];
@@ -51,6 +52,7 @@ class data_sright implements main_data
 			$this->para[0]=$_POST['sel1'];
 			$this->para[1]=$_POST['sel2'];
 			$this->para[2]=$_POST['sel3'];
+			$this->para[3]=$_POST['starttime'];
 			$i=intval($_POST['starttime']);
 		}
 		$this->get_used_db($i);
@@ -75,31 +77,124 @@ class data_sright implements main_data
 		switch($_SESSION['sys_level'])
 		{
 		case 0: //县区级
-			$s1="SELECT e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT a.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info as b LEFT JOIN fs_h_master as a ON b.uid = a.uid AND a.date > date_add(now(),interval -2 hour) WHERE b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$s1="SELECT e.uid,e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT a.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info as b LEFT JOIN fs_h_master as a ON b.uid = a.uid AND a.date > date_add(now(),interval -2 hour) WHERE b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
 			$this->con_val=sprintf($s1,$this->para[1]);
+			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.utype = 0 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN  b.sttm AND b.edtm";
+			$s2=$this->para[3]." 00:00:01";
+			$this->con_std=sprintf($s1,$this->para[1],$s2);
 			break;
 		case 1://省级
-			$s1="SELECT e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN fs_h_master AS a ON a.date > date_add(now(),interval -2 hour) AND a.uid = b.uid WHERE b.aid BETWEEN %u AND %u AND b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$s1="SELECT e.uid,e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN fs_h_master AS a ON a.date > date_add(now(),interval -2 hour) AND a.uid = b.uid WHERE b.aid BETWEEN %u AND %u AND b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
 			$i=intval($this->para[0])+1;
 			$j=$i+98;
 			$this->con_val=sprintf($s1,$i,$j,$this->para[1]);
+			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.aid BETWEEN %u AND %u AND a.utype = 0 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN  b.sttm AND b.edtm";
+			$s2=$this->para[3]." 00:00:01";
+			$this->con_std=sprintf($s1,$i,$j,$this->para[1],$s2);
 			break;
 		case 2://地市级
-			$s1="SELECT e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN fs_h_master AS a ON a.date > date_add(now(),interval -1 month) AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$s1="SELECT e.uid,e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN fs_h_master AS a ON a.date > date_add(now(),interval -1 month) AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
 			$this->con_val=sprintf($s1,$this->para[0],$this->para[1]);
+			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.aid = %u AND a.utype = 0 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN b.sttm AND b.edtm";
+			$s2=$this->para[3]." 00:00:01";
+			$this->con_std=sprintf($s1,$this->para[0],$this->para[1],$s2);
 			break;
 		default:
 			$this->con_val="sys_level=".$_SESSION['sys_level'];
 			break;
 		};
-	//	echo $this->con_val;
-		$s1="SELECT b.uid,a.std1,a.std1_area,a.std2 FROM gb_std a,zd_info b WHERE b.utype = 0 AND b.ctlvl = %d AND b.uid = a.uid AND b.sttm < %s AND b.edtm > %s ORDER BY b.uid,a.iid";
-		
 	}//}}}
 //{{{public function get_std()
 	public function get_std()
-	{
-		$say=array();return $say;
+	{//本函数实现本类结果完整的输出
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if(mysqli_connect_errno())
+			die("connect error");
+		mysqli_set_charset($mysqli,"utf8");
+		if($res=mysqli_query($mysqli,$this->con_std))
+		{
+			$vay=array();
+			while($row=mysqli_fetch_row($res))
+				array_push($vay,$row);
+			mysqli_free_result($res);
+		}
+		else
+		{
+			$s1=mysqli_error($mysqli);
+			mysqli_close($mysqli);
+			die($s1."<br>".$this->con_std);
+		}
+		mysqli_close($mysqli);
+		$i=count($vay);
+		$by=array();
+		for($j=0;$j<$i;$j++)
+		{
+			$ay=$vay[$j];
+			if(strlen($ay[3]) == 8)
+			{
+				$s1=substr($ay[3],0,4); //取得开始的日期
+				$b1=intval($s1);
+				$s1=substr($ay[3],4,4); //取得结束日期
+				$b2=intval($s1);
+				$s1=substr($this->para[3],5,5);
+				$a1=intval($s1);$a1*=100;
+				$a2=intval(substr($s1,3,2));
+				$a1+=$a2;				//取得记录的日期
+				if(($a1>=$b1) && ($a1<=$b2))
+				{
+					if(intval($ay[1]) == 316) //cod
+						$by[$ay[0]][0]=$ay[2];
+					else
+						$by[$ay[0]][1]=$ay[2];
+				} //使用标准1
+				else
+				{
+					if(intval($ay[1]) == 316) //cod
+						$by[$ay[0]][0]=$ay[4];
+					else
+						$by[$ay[0]][1]=$ay[4];
+				}//使用标准2
+			}
+			else
+			{
+				if(strlen($ay[3])>1)
+				{
+					$s1=strval(strlen($ay[3]));
+					die($s1);
+				}
+				if(intval($ay[1]) == 316)
+					$by[$ay[0]][0]=$ay[2];//cod
+				else
+					$by[$ay[0]][1]=$ay[2];//nhx
+			}
+		}
+//		print_r($by);
+		$cy=$this->get_unit();
+		$i=count($cy);
+		$ey=array();
+		for($j=0;$j<$i;$j++)
+		{
+			$y=$cy[$j];
+			$x=array();
+			$x[0]=$j;
+			$x[1]=$y[1]; //name
+			if($y[2] == NULL)
+				$x[2]="---";
+			else
+				$x[2]=$y[2];//cod
+			$x[3]=$by[$y[0]][0]; //std cod
+			if($y[3] == NULL)
+				$x[4]="---";
+			else
+				$x[4]=$y[3];//nhx
+			$x[5]=$by[$y[0]][1];//std nhx
+			if($y[4] == NULL)
+				$x[6]="---";
+			else
+				$x[6]=$y[4];//ll
+			array_push($ey,$x);
+		}
+		return $ey;
 	}//}}}
 //{{{public function get_unit()
 	public function get_unit()
@@ -145,6 +240,7 @@ class data_qright implements main_data
 			$this->para[0]=$_SESSION['INTR_SEND'];//控制区域aid
 			$this->para[1]=0;//控制级别
 			$this->para[2]=0;//数据类型
+			$this->para[3]=date("Y-m-d",time());
 			$ay=array();
 			$ay=getdate(time());
 			$i=$ay['year'];
@@ -155,6 +251,7 @@ class data_qright implements main_data
 			$this->para[0]=$_POST['sel1'];
 			$this->para[1]=$_POST['sel2'];
 			$this->para[2]=$_POST['sel3'];
+			$this->para[3]=$_POST['starttime'];
 			$i=intval($_POST['starttime']);
 		}
 		$this->get_used_db($i);
@@ -184,18 +281,27 @@ class data_qright implements main_data
 		switch($_SESSION['sys_level'])
 		{
 		case 0://县区级
-			$s1="SELECT e.uname,e.so2,e.nox,e.dust,e.o2,e.dll FROM (SELECT b.uid,b.uname,a.so2,a.nox,a.dust,a.o2,a.dll FROM zd_info as b LEFT JOIN fq_m_master as a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE b.utype = 1 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$s1="SELECT e.uid,e.uname,e.so2,e.nox,e.dust,e.o2,e.dll FROM (SELECT b.uid,b.uname,a.so2,a.nox,a.dust,a.o2,a.dll FROM zd_info as b LEFT JOIN fq_m_master as a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE b.utype = 1 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
 			$this->con_val=sprintf($s1,$this->para[1]);
+			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.utype = 1 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN  b.sttm AND b.edtm";
+			$s2=$this->para[3]." 00:00:01";
+			$this->con_std=sprintf($s1,$this->para[1],$s2);
 			break;
 		case 1://省级
-			$s1="SELECT e.uname,e.so2,e.nox,e.dust,e.o2,e.dll FROM (SELECT b.uid,b.uname,a.so2,a.nox,a.dust,a.o2,a.dll FROM zd_info as b LEFT JOIN fq_m_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid  WHERE b.aid BETWEEN %u AND %u AND b.utype = 1 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$s1="SELECT e.uid,e.uname,e.so2,e.nox,e.dust,e.o2,e.dll FROM (SELECT b.uid,b.uname,a.so2,a.nox,a.dust,a.o2,a.dll FROM zd_info as b LEFT JOIN fq_m_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid  WHERE b.aid BETWEEN %u AND %u AND b.utype = 1 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
 			$i=intval($this->para[0])+1;
 			$j=$i+98;
 			$this->con_val=sprintf($s1,$i,$j,$this->para[1]);
+			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.aid BETWEEN %u AND %u AND a.utype = 1 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN  b.sttm AND b.edtm";
+			$s2=$this->para[3]." 00:00:01";
+			$this->con_std=sprintf($s1,$i,$j,$this->para[1],$s2);
 			break;
 		case 2://地市级
-			$s1="SELECT e.uname,e.so2,e.nox,e.dust,e.o2,e.dll FROM (SELECT b.uid,b.uname,a.so2,a.nox,a.dust,a.o2,a.dll FROM zd_info AS b LEFT JOIN fq_m_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 1 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$s1="SELECT e.uid,e.uname,e.so2,e.nox,e.dust,e.o2,e.dll FROM (SELECT b.uid,b.uname,a.so2,a.nox,a.dust,a.o2,a.dll FROM zd_info AS b LEFT JOIN fq_m_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 1 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
 			$this->con_val=sprintf($s1,$this->para[0],$this->para[1]);
+			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.aid = %u AND a.utype = 1 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN  b.sttm AND b.edtm";
+			$s2=$this->para[3]." 00:00:01";
+			$this->con_std=sprintf($s1,$this->para[0],$this->para[1],$s2);
 			break;
 		default:
 			$this->con_val="sys_level=".$_SESSION['sys_level'];
@@ -205,7 +311,119 @@ class data_qright implements main_data
 	}//}}}
 //{{{public function get_std()
 	public function get_std()
-	{$say=array();return $say;}//}}}
+	{
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if(mysqli_connect_errno())
+			die("connect error");
+		mysqli_set_charset($mysqli,"utf8");
+		if($res=mysqli_query($mysqli,$this->con_std))
+		{
+			$vay=array();
+			while($row=mysqli_fetch_row($res))
+				array_push($vay,$row);
+			mysqli_free_result($res);
+		}
+		else
+		{
+			$s1=mysqli_error($mysqli);
+			mysqli_close($mysqli);
+			die($s1."<br>".$this->con_std);
+		}
+		mysqli_close($mysqli);
+		$i=count($vay);
+		$by=array();
+		for($j=0;$j<$i;$j++)
+		{
+			$ay=$vay[$j];
+			if(strlen($ay[3]) == 8)
+			{
+				$s1=substr($ay[3],0,4); //取得开始的日期
+				$b1=intval($s1);
+				$s1=substr($ay[3],4,4); //取得结束日期
+				$b2=intval($s1);
+				$s1=substr($this->para[3],5,5);
+				$a1=intval($s1);$a1*=100;
+				$a2=intval(substr($s1,3,2));
+				$a1+=$a2;				//取得记录的日期
+				if(($a1>=$b1) && ($a1<=$b2))
+				{
+					if(intval($ay[1]) == 101) //so2
+						$by[$ay[0]][0]=$ay[2];
+					else
+					{
+						if(intval($ay[1]) == 102) //nox
+							$by[$ay[0]][1]=$ay[2];
+						else //207
+							$by[$ay[0]][2]=$ay[2]; //dust
+					}
+				} //使用标准1
+				else
+				{
+					if(intval($ay[1]) == 101) //so2
+						$by[$ay[0]][0]=$ay[4];
+					else
+					{
+						if(intval($ay[1]) == 102) //nox
+							$by[$ay[0]][1]=$ay[4];
+						else//207
+							$by[$ay[0]][2]=$ay[4];//dust
+					}
+				}//使用标准2
+			}
+			else
+			{
+				if(strlen($ay[3])>1)
+				{
+					$s1=strval(strlen($ay[3]));
+					die($s1);
+				}
+				if(intval($ay[1]) == 101) //so2
+					$by[$ay[0]][0]=$ay[2];
+				else
+				{
+					if(intval($ay[1]) == 102) //nox
+						$by[$ay[0]][1]=$ay[2];
+					else //207
+						$by[$ay[0]][2]=$ay[2];//dust
+				}
+			}
+		}
+		$cy=$this->get_unit();
+		$i=count($cy);
+		$ey=array();
+		for($j=0;$j<$i;$j++)
+		{
+			$y=$cy[$j];
+			$x=array();
+			$x[0]=$j;	//序号
+			$x[1]=$y[1]; //uname
+			if($y[2] == NULL)
+				$x[2]="---";
+			else
+				$x[2]=$y[2]; //so2
+			$x[3]=$by[$y[0]][0]; //std so2
+			if($y[3] == NULL)
+				$x[4]="---";
+			else
+				$x[4]=$y[3];//nox
+			$x[5]=$by[$y[0]][1]; //nox std
+			if($y[4] == NULL)
+				$x[6]="---";
+			else
+				$x[6]=$y[4];//dust
+			$x[7]=$by[$y[0]][2]; //dust std
+			if($y[5] == NULL)
+				$x[8]="---";
+			else
+				$x[8]=$y[5];//o2
+			if($y[6] == NULL)
+				$x[9]="---";
+			else
+				$x[9]=$y[6];//dll
+			array_push($ey,$x);
+		}
+		return $ey;
+	}//}}}
 //{{{public function get_unit()
 	public function get_unit()
 	{
@@ -341,7 +559,6 @@ class data_wsright implements main_data
 		$by=array();
 		for($j=0;$j<$i;$j++)
 		{
-			$ay=array();
 			$ay=$vay[$j];
 			if(strlen($ay[3]) == 8)
 			{
