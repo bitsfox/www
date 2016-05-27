@@ -232,7 +232,7 @@ class data_qright implements main_data
 	}//}}}
 }//}}}
 ////////////////////////////////////////////////////////////
-//{{{class data_wsright implements main_data
+//{{{class data_wsright implements main_data 污水厂实时主界面数据及标准的获取类
 class data_wsright implements main_data
 {
 	private $db;	//目标数据库的相关信息
@@ -250,6 +250,7 @@ class data_wsright implements main_data
 			$this->para[0]=$_SESSION['INTR_SEND'];//控制区域aid
 			$this->para[1]=0;//控制级别
 			$this->para[2]=0;//数据类型
+			$this->para[3]=date("Y-m-d",time());
 			$ay=array();
 			$ay=getdate(time());
 			$i=$ay['year'];
@@ -260,6 +261,7 @@ class data_wsright implements main_data
 			$this->para[0]=$_POST['sel1'];
 			$this->para[1]=$_POST['sel2'];
 			$this->para[2]=$_POST['sel3'];
+			$this->para[3]=$_POST['starttime'];
 			$i=intval($_POST['starttime']);
 		}
 		$this->get_used_db($i);
@@ -289,25 +291,123 @@ class data_wsright implements main_data
 		switch($_SESSION['sys_level'])
 		{
 		case 0://县市区
-			$s1="SELECT e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN wsc_h_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE b.utype = 2 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$s1="SELECT e.uid,e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN wsc_h_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE b.utype = 2 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
 			$this->con_val=sprintf($s1,$this->para[1]);
+			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.utype = 2 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN  b.sttm AND b.edtm";
+			$s2=$this->para[3]." 00:00:01";
+			$this->con_std=sprintf($s1,$this->para[1],$s2);
 			break;
 		case 1://省级
-			$s1="SELECT e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN wsc_h_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE a.aid BETWEEN %u AND %u AND b.utype = 2 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$s1="SELECT e.uid,e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN wsc_h_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE a.aid BETWEEN %u AND %u AND b.utype = 2 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
 			$i=intval($this->para[0])+1;
 			$j=$i+98;
 			$this->con_val=sprintf($s1,$i,$j,$this->para[1]);
+			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.aid BETWEEN %u AND %u AND a.utype = 2 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN  b.sttm AND b.edtm";
+			$s2=$this->para[3]." 00:00:01";
+			$this->con_std=sprintf($s1,$i,$j,$this->para[1],$s2);
 			break;
 		case 2://地市级
-			$s1="SELECT e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN wsc_h_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 2 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$s1="SELECT e.uid,e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN wsc_h_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 2 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
 			$this->con_val=sprintf($s1,$this->para[0],$this->para[1]);
+			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.aid = %u AND a.utype = 2 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN  b.sttm AND b.edtm";
+			$s2=$this->para[3]." 00:00:01";
+			$this->con_std=sprintf($s1,$this->para[0],$this->para[1],$s2);
 			break;
 		};
+		$s1="select a.uid,b.iid,b.std1,b.std1_area,b.std2 from zd_info a,gb_std b where a.aid = 370901 and a.utype = 2 and a.ctlvl = 0 and a.uid = b.uid and '2016-05-28 10:00:00' > b.sttm and '2016-05-28 10:00:00' < b.edtm";
 	}//}}}
 //{{{public function get_std()
 	public function get_std()
-	{
-		$say=array();return $say;
+	{//该函数原本只是用来获取标准数据的，现改为先获取标准然后调用get_unit()函数获取数据，最后整合数据并返回整合的数组
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if(mysqli_connect_errno())
+			die("connect error");
+		mysqli_set_charset($mysqli,"utf8");
+		if($res=mysqli_query($mysqli,$this->con_std))
+		{
+			$vay=array();
+			while($row=mysqli_fetch_row($res))
+				array_push($vay,$row);
+			mysqli_free_result($res);
+		}
+		else
+		{
+			$s1=mysqli_error($mysqli);
+			mysqli_close($mysqli);
+			die($s1."<br>".$this->con_std);
+		}
+		mysqli_close($mysqli);
+		$i=count($vay);
+		$by=array();
+		for($j=0;$j<$i;$j++)
+		{
+			$ay=array();
+			$ay=$vay[$j];
+			if(strlen($ay[3]) == 8)
+			{
+				$s1=substr($ay[3],0,4); //取得开始的日期
+				$b1=intval($s1);
+				$s1=substr($ay[3],4,4); //取得结束日期
+				$b2=intval($s1);
+				$s1=substr($this->para[3],5,5);
+				$a1=intval($s1);$a1*=100;
+				$a2=intval(substr($s1,3,2));
+				$a1+=$a2;				//取得记录的日期
+				if(($a1>=$b1) && ($a1<=$b2))
+				{
+					if(intval($ay[1]) == 316) //cod
+						$by[$ay[0]][0]=$ay[2];
+					else
+						$by[$ay[0]][1]=$ay[2];
+				} //使用标准1
+				else
+				{
+					if(intval($ay[1]) == 316) //cod
+						$by[$ay[0]][0]=$ay[4];
+					else
+						$by[$ay[0]][1]=$ay[4];
+				}//使用标准2
+			}
+			else
+			{
+				if(strlen($ay[3])>1)
+				{
+					$s1=strval(strlen($ay[3]));
+					die($s1);
+				}
+				if(intval($ay[1]) == 316)
+					$by[$ay[0]][0]=$ay[2];//cod
+				else
+					$by[$ay[0]][1]=$ay[2];//nhx
+			}
+		}
+		//
+		$cy=$this->get_unit();
+		$i=count($cy);
+		$ey=array();
+		for($j=0;$j<$i;$j++)
+		{
+			$y=$cy[$j];
+			$x=array();
+			$x[0]=$j;
+			$x[1]=$y[1]; //name
+			if($y[2] == NULL)
+				$x[2]="---";
+			else
+				$x[2]=$y[2];//cod
+			$x[3]=$by[$y[0]][0]; //std cod
+			if($y[3] == NULL)
+				$x[4]="---";
+			else
+				$x[4]=$y[3];//nhx
+			$x[5]=$by[$y[0]][1];//std nhx
+			if($y[4] == NULL)
+				$x[6]="---";
+			else
+				$x[6]=$y[4];//ll
+			array_push($ey,$x);
+		}
+		return $ey;
 	}//}}}
 //{{{public function get_unit()
 	public function get_unit()

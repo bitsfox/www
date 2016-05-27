@@ -140,10 +140,13 @@ class tb_wsc implements tab_show
 		$this->cy=array("监测值","标准值");
 		$a=new data_wsright();
 		$a->parse_sql();
-		$y=$a->get_unit();
-		$i=count($y);
-		$this->dy=array();
-		for($j=0;$j<$i;$j++)
+//		$y=$a->get_unit();
+		$this->dy=$a->get_std();
+//		print_r($this->dy);
+//		die("");
+//		$i=count($y);
+//		$this->dy=array();
+/*		for($j=0;$j<$i;$j++)
 		{
 			$ey=array();
 			$x=$y[$j];
@@ -164,7 +167,7 @@ class tb_wsc implements tab_show
 			else
 				array_push($ey,$x[3]);
 			array_push($this->dy,$ey);			
-		}
+		} */
 	}//}}}
 //{{{public function show_header()
 	public function show_header()
