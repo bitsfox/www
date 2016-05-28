@@ -138,13 +138,10 @@ function _reg_db($u,$p)
 //{{{ class tb_wsc implements tab_show 污水厂实时主界面显示类
 class tb_wsc implements tab_show
 {
-	private $ay,$cy;
 	private $dy;
 //{{{public function __construct()	
 	public function __construct()
 	{
-		$this->ay=array("编号","单位名称","COD","氨氮","累计流量");
-		$this->cy=array("监测值","标准值");
 		$a=new data_wsright();
 		$a->parse_sql();
 		$this->dy=$a->get_std();
@@ -152,60 +149,49 @@ class tb_wsc implements tab_show
 //{{{public function show_header()
 	public function show_header()
 	{
-		$s1="<table width=97% class='imagetable'><tr>";
-		$s2="<th width=10% rowspan=2 align=center>".$this->ay[0]."</th>";
-		$s1.=$s2;
-		$s2="<th width=30% rowspan=2 align=center>".$this->ay[1]."</th>";
-		$s1.=$s2;
-		$s2="<th width=20% colspan=2 align=center>".$this->ay[2]."</th>";
-		$s1.=$s2;
-		$s2="<th width=20% colspan=2 align=center>".$this->ay[3]."</th>";
-		$s1.=$s2;
-		$s2="<th width=20% rowspan=2 align=center>".$this->ay[4]."</th></tr><tr>";
-		$s1.=$s2;
-		$s2="<th width=10% align=center>".$this->cy[0]."</th>";
-		$s1.=$s2;
-		$s2="<th width=10% align=center>".$this->cy[1]."</th>";
-		$s1.=$s2;
-		$s2="<th width=10% align=center>".$this->cy[0]."</th>";
-		$s1.=$s2;
-		$s2="<th width=10% align=center>".$this->cy[1]."</th></tr>";
-		$s1.=$s2;
-		echo $s1;
+		global $FSS_HEADER;
+		echo $FSS_HEADER;
 	}//}}}
 //{{{public function show_body()
 	public function show_body()
 	{
+		global $FSS_BODY_1,$FSS_BODY_RED,$FSS_BODY_NOR,$FSS_BODY_LL;
+		$str="";
 		$i=count($this->dy);
 		for($j=0;$j<$i;$j++)
 		{
 			$fy=$this->dy[$j];
-			$s1="<tr><td width=%10>".$fy[0]."</td><td width=30%>".$fy[1]."</td>";
-			if(($fy[2]>$fy[3]) && ($fy[3]>0))
-				$s1.="<td width=10% id='tdid'>".$fy[2]."</td><td width=10%>".$fy[3]."</td>";
+			$s1=sprintf($FSS_BODY_1,$fy[0],$fy[1],$fy[2]);
+			$str.=$s1;
+			if(($fy[3]>$fy[4]) && ($fy[4]>0))
+				$s1=sprintf($FSS_BODY_RED,$fy[3],$fy[4]);
 			else
-				$s1.="<td width=10%>".$fy[2]."</td><td width=10%>".$fy[3]."</td>";
-			if(($fy[4]>$fy[5]) && ($fy[5]>0))
-				$s1.="<td width=10% id='tdid'>".$fy[4]."</td><td width=10%>".$fy[5]."</td><td width=20%>".$fy[6]."</td></tr>";
+				$s1=sprintf($FSS_BODY_NOR,$fy[3],$fy[4]);
+			$str.=$s1;
+			if(($fy[5]>$fy[6]) && ($fy[6]>0))
+				$s1=sprintf($FSS_BODY_RED,$fy[5],$fy[6]);
 			else
-				$s1.="<td width=10%>".$fy[4]."</td><td width=10%>".$fy[5]."</td><td width=20%>".$fy[6]."</td></tr>";
-			echo $s1;
+				$s1=sprintf($FSS_BODY_NOR,$fy[5],$fy[6]);
+			$str.=$s1;
+			$s1=sprintf($FSS_BODY_LL,$fy[7],$fy[8],$fy[9]);
+			$str.=$s1;
 		}
+		echo $str;
 	}//}}}
 //{{{public function show_tail()
 	public function show_tail()
-	{echo "</table>";}//}}}
+	{
+		global $FSS_HEADER_END;
+		echo $FSS_HEADER_END;
+	}//}}}
 }//}}}
 //{{{class tb_fs implements tab_show 废水实时主界面显示类
 class tb_fs implements tab_show
 {
-	private $ay,$cy;
 	private $dy;
 //{{{public function __construct()	
 	public function __construct()
 	{
-		$this->ay=array("编号","单位名称","COD","氨氮","累计流量");
-		$this->cy=array("监测值","标准值");
 		$a=new data_sright();
 		$a->parse_sql();
 		$this->dy=$a->get_std();
@@ -213,49 +199,41 @@ class tb_fs implements tab_show
 //{{{public function show_header()	
 	public function show_header()
 	{
-		$s1="<table width=97% class='imagetable'><tr>";
-		$s2="<th width=10% rowspan=2 align=center>".$this->ay[0]."</th>";
-		$s1.=$s2;
-		$s2="<th width=30% rowspan=2 align=center>".$this->ay[1]."</th>";
-		$s1.=$s2;
-		$s2="<th width=20% colspan=2 align=center>".$this->ay[2]."</th>";
-		$s1.=$s2;
-		$s2="<th width=20% colspan=2 align=center>".$this->ay[3]."</th>";
-		$s1.=$s2;
-		$s2="<th width=20% rowspan=2 align=center>".$this->ay[4]."</th></tr><tr>";
-		$s1.=$s2;
-		$s2="<th width=10% align=center>".$this->cy[0]."</th>";
-		$s1.=$s2;
-		$s2="<th width=10% align=center>".$this->cy[1]."</th>";
-		$s1.=$s2;
-		$s2="<th width=10% align=center>".$this->cy[0]."</th>";
-		$s1.=$s2;
-		$s2="<th width=10% align=center>".$this->cy[1]."</th></tr>";
-		$s1.=$s2;
-		echo $s1;
+		global $FSS_HEADER;
+		echo $FSS_HEADER;
 	}//}}}
 //{{{public function show_body()	
 	public function show_body()
 	{
+		global $FSS_BODY_1,$FSS_BODY_RED,$FSS_BODY_NOR,$FSS_BODY_LL;
+		$str="";
 		$i=count($this->dy);
 		for($j=0;$j<$i;$j++)
 		{
 			$fy=$this->dy[$j];
-			$s1="<tr><td width=%10>".$fy[0]."</td><td width=30%>".$fy[1]."</td>";
-			if(($fy[2]>$fy[3]) && ($fy[3]>0))
-				$s1.="<td width=10% id='tdid'>".$fy[2]."</td><td width=10%>".$fy[3]."</td>";
+			$s1=sprintf($FSS_BODY_1,$fy[0],$fy[1],$fy[2]);
+			$str.=$s1;
+			if(($fy[3]>$fy[4]) && ($fy[4]>0))
+				$s1=sprintf($FSS_BODY_RED,$fy[3],$fy[4]);
 			else
-				$s1.="<td width=10%>".$fy[2]."</td><td width=10%>".$fy[3]."</td>";
-			if(($fy[4]>$fy[5]) && ($fy[5]>0))
-				$s1.="<td width=10% id='tdid'>".$fy[4]."</td><td width=10%>".$fy[5]."</td><td width=20%>".$fy[6]."</td></tr>";
+				$s1=sprintf($FSS_BODY_NOR,$fy[3],$fy[4]);
+			$str.=$s1;
+			if(($fy[5]>$fy[6]) && ($fy[6]>0))
+				$s1=sprintf($FSS_BODY_RED,$fy[5],$fy[6]);
 			else
-				$s1.="<td width=10%>".$fy[4]."</td><td width=10%>".$fy[5]."</td><td width=20%>".$fy[6]."</td></tr>";
-			echo $s1;
+				$s1=sprintf($FSS_BODY_NOR,$fy[5],$fy[6]);
+			$str.=$s1;
+			$s1=sprintf($FSS_BODY_LL,$fy[7],$fy[8],$fy[9]);
+			$str.=$s1;
 		}
+		echo $str;
 	}//}}}
 //{{{public function show_tail()	
 	public function show_tail()
-	{echo "</table>";}//}}}
+	{
+		global $FSS_HEADER_END;
+		echo $FSS_HEADER_END;
+	}//}}}
 //{{{public function __destruct()
 	public function __destruct()
 	{unset($this->ay);unset($this->cy);unset($this->dy);}//}}}
@@ -263,76 +241,54 @@ class tb_fs implements tab_show
 //{{{class tb_fq implements tab_show 废气实时主界面显示类
 class tb_fq implements tab_show
 {
-	private $ay,$cy;
 	private $dy;
 	public function __construct()
 	{
-		$this->ay=array("编号","单位名称","SO2","NOx","烟尘","氧量","废气排放量");
-		$this->cy=array("监测值","标准值");
 		$a=new data_qright();
 		$a->parse_sql();
 		$this->dy=$a->get_std();
 	}
 	public function show_header()
 	{
-		$s1="<table width=97% class='imagetable'><tr>";
-		$s2="<th width=6% rowspan=2 align=center>".$this->ay[0]."</th>";
-		$s1.=$s2;
-		$s2="<th width=20% rowspan=2 align=center>".$this->ay[1]."</th>";
-		$s1.=$s2;
-		$s2="<th width=16% colspan=2 align=center>".$this->ay[2]."</th>";
-		$s1.=$s2;
-		$s2="<th width=16% colspan=2 align=center>".$this->ay[3]."</th>";
-		$s1.=$s2;
-		$s2="<th width=16% colspan=2 align=center>".$this->ay[4]."</th>";//;</tr><tr>";
-		$s1.=$s2;
-		$s2="<th width=10% rowspan=2 align=center>".$this->ay[5]."</th>";
-		$s1.=$s2;
-		$s2="<th width=16% rowspan=2 align=center>".$this->ay[6]."</th></tr><tr>";
-		$s1.=$s2;
-		$s2="<th width=8% align=center>".$this->cy[0]."</th>";
-		$s1.=$s2;
-		$s2="<th width=8% align=center>".$this->cy[1]."</th>";
-		$s1.=$s2;
-		$s2="<th width=8% align=center>".$this->cy[0]."</th>";
-		$s1.=$s2;
-		$s2="<th width=8% align=center>".$this->cy[1]."</th>";
-		$s1.=$s2;
-		$s2="<th width=8% align=center>".$this->cy[0]."</th>";
-		$s1.=$s2;
-		$s2="<th width=8% align=center>".$this->cy[1]."</th></tr>";
-		$s1.=$s2;
-		echo $s1;
+		global $FQS_HEADER;
+		echo $FQS_HEADER;
 	}
 	public function show_body()
 	{
+		global $FQS_BODY_1,$FQS_BODY_RED,$FQS_BODY_NOR,$FQS_BODY_LL;
+		$str="";
 		$i=count($this->dy);
 		for($j=0;$j<$i;$j++)
 		{
-			$fy=$this->dy[$j];
-			$s1="<tr><td width=%6>".$fy[0]."</td><td width=20%>".$fy[1]."</td>";
-			if($fy[2]>$fy[3])
-				$s2="<td width=8% id='tdid'>".$fy[2]."</td>";
+			$y=$this->dy[$j];
+			$s1=sprintf($FQS_BODY_1,$y[0],$y[1],$y[2]);
+			$str.=$s1;
+			if(($y[3]>$y[4]) && ($y[4]>0))
+				$s1=sprintf($FQS_BODY_RED,$y[3],$y[4]);
 			else
-				$s2="<td width=8%>".$fy[2]."</td>";
-			$s1.=$s2."<td width=8%>".$fy[3]."</td>";
-			if($fy[4]>$fy[5])
-				$s2="<td width=8% id='tdid'>".$fy[4]."</td>";
+				$s1=sprintf($FQS_BODY_NOR,$y[3],$y[4]);
+			$str.=$s1;
+			if(($y[5]>$y[6]) && ($y[6]>0))
+				$s1=sprintf($FQS_BODY_RED,$y[5],$y[6]);
 			else
-				$s2="<td width=8%>".$fy[4]."</td>";
-			$s1.=$s2."<td width=8%>".$fy[5]."</td>";
-			if($fy[6]>$fy[7])
-				$s2="<td width=8% id='tdid'>".$fy[6]."</td>";
+				$s1=sprintf($FQS_BODY_NOR,$y[5],$y[6]);
+			$str.=$s1;
+			if(($y[7]>$y[8]) && ($y[8]>0))
+				$s1=sprintf($FQS_BODY_RED,$y[7],$y[8]);
 			else
-				$s2="<td width=8%>".$fy[6]."</td>";
-			$s1.=$s2."<td width=8%>".$fy[7]."</td>";
-			$s1.="<td width=10%>".$fy[8]."</td>";
-			$s1.="<td width=16%>".$fy[9]."</td></tr>";
-			echo $s1;
+				$s1=sprintf($FQS_BODY_NOR,$y[7],$y[8]);
+			$str.=$s1;
+			$s1=sprintf($FQS_BODY_LL,$y[9],$y[10]);
+			$str.=$s1;
 		}
+		echo $str;
+
 	}
 	public function show_tail()
-	{echo "</table>";}
+	{
+		global $FQS_HEADER_END;
+		echo $FQS_HEADER_END;
+	}
 }//}}}
 ///////////////////////////////////////////////////////////
 //{{{class tb_sleft implements tab_show 所有实时数据查看的控制界面类
@@ -737,6 +693,7 @@ class tb_fq_mx implements tab_show
 				$s1=sprintf($FQ_BODY_RED,$y[6],$y[7]);
 			else
 				$s1=sprintf($FQ_BODY_NOR,$y[6],$y[7]);
+			$str.=$s1;
 			$s1=sprintf($FQ_BODY_LL,$y[8],$y[9]);
 			$str.=$s1;
 		}

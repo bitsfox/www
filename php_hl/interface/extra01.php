@@ -61,14 +61,14 @@ class data_sright implements main_data
 		switch($_SESSION['sys_level'])
 		{
 		case 0: //县区级
-			$s1="SELECT e.uid,e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT a.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info as b LEFT JOIN fs_h_master as a ON b.uid = a.uid AND a.date > date_add(now(),interval -2 hour) WHERE b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$s1="SELECT e.uid,e.uname,e.date,e.cod,e.nhx,e.ll_sh,e.ll_jg,e.ll_lj FROM (SELECT a.uid,b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg,a.ll_lj FROM zd_info as b LEFT JOIN fs_h_master as a ON b.uid = a.uid AND a.date > date_add(now(),interval -2 hour) WHERE b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
 			$this->con_val=sprintf($s1,$this->para[1]);
 			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.utype = 0 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN  b.sttm AND b.edtm";
 			$s2=$this->para[3]." 00:00:01";
 			$this->con_std=sprintf($s1,$this->para[1],$s2);
 			break;
 		case 1://省级
-			$s1="SELECT e.uid,e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN fs_h_master AS a ON a.date > date_add(now(),interval -2 hour) AND a.uid = b.uid WHERE b.aid BETWEEN %u AND %u AND b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$s1="SELECT e.uid,e.uname,e.date,e.cod,e.nhx,e.ll_sh,e.ll_jg,e.ll_lj FROM (SELECT b.uid,b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg,a.ll_lj FROM zd_info AS b LEFT JOIN fs_h_master AS a ON a.date > date_add(now(),interval -2 hour) AND a.uid = b.uid WHERE b.aid BETWEEN %u AND %u AND b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
 			$i=intval($this->para[0])+1;
 			$j=$i+98;
 			$this->con_val=sprintf($s1,$i,$j,$this->para[1]);
@@ -77,7 +77,7 @@ class data_sright implements main_data
 			$this->con_std=sprintf($s1,$i,$j,$this->para[1],$s2);
 			break;
 		case 2://地市级
-			$s1="SELECT e.uid,e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN fs_h_master AS a ON a.date > date_add(now(),interval -1 month) AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$s1="SELECT e.uid,e.uname,e.date,e.cod,e.nhx,e.ll_sh,e.ll_jg,e.ll_lj FROM (SELECT b.uid,b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg,a.ll_lj FROM zd_info AS b LEFT JOIN fs_h_master AS a ON a.date > date_add(now(),interval -1 month) AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
 			$this->con_val=sprintf($s1,$this->para[0],$this->para[1]);
 			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.aid = %u AND a.utype = 0 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN b.sttm AND b.edtm";
 			$s2=$this->para[3]." 00:00:01";
@@ -160,22 +160,25 @@ class data_sright implements main_data
 		{
 			$y=$cy[$j];
 			$x=array();
-			$x[0]=$j;
+			$x[0]=intval($j)+1;
 			$x[1]=$y[1]; //name
 			if($y[2] == NULL)
-				$x[2]="---";
+			{
+				$x[2]="---";$x[3]="---";$x[4]=$by[$y[0]][0];
+				$x[5]="---";$x[6]=$by[$y[0]][1];
+				$x[7]="---";$x[8]="---";$x[9]="---";
+			}
 			else
-				$x[2]=$y[2];//cod
-			$x[3]=$by[$y[0]][0]; //std cod
-			if($y[3] == NULL)
-				$x[4]="---";
-			else
-				$x[4]=$y[3];//nhx
-			$x[5]=$by[$y[0]][1];//std nhx
-			if($y[4] == NULL)
-				$x[6]="---";
-			else
-				$x[6]=$y[4];//ll
+			{
+				$x[2]=substr($y[2],5,11);//date
+				$x[3]=$y[3];//cod
+				$x[4]=$by[$y[0]][0]; //std cod
+				$x[5]=$y[4];//nhx
+				$x[6]=$by[$y[0]][1];//std nhx
+				$x[7]=$y[5];//ll_sh
+				$x[8]=$y[6];//ll_jg
+				$x[9]=$y[7]; //ll_lj
+			}
 			array_push($ey,$x);
 		}
 		return $ey;
@@ -265,14 +268,14 @@ class data_qright implements main_data
 		switch($_SESSION['sys_level'])
 		{
 		case 0://县区级
-			$s1="SELECT e.uid,e.uname,e.so2,e.nox,e.dust,e.o2,e.dll FROM (SELECT b.uid,b.uname,a.so2,a.nox,a.dust,a.o2,a.dll FROM zd_info as b LEFT JOIN fq_m_master as a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE b.utype = 1 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$s1="SELECT e.uid,e.uname,e.date,e.so2,e.nox,e.dust,e.o2,e.dll FROM (SELECT b.uid,b.uname,a.date,a.so2,a.nox,a.dust,a.o2,a.dll FROM zd_info as b LEFT JOIN fq_m_master as a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE b.utype = 1 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
 			$this->con_val=sprintf($s1,$this->para[1]);
 			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.utype = 1 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN  b.sttm AND b.edtm";
 			$s2=$this->para[3]." 00:00:01";
 			$this->con_std=sprintf($s1,$this->para[1],$s2);
 			break;
 		case 1://省级
-			$s1="SELECT e.uid,e.uname,e.so2,e.nox,e.dust,e.o2,e.dll FROM (SELECT b.uid,b.uname,a.so2,a.nox,a.dust,a.o2,a.dll FROM zd_info as b LEFT JOIN fq_m_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid  WHERE b.aid BETWEEN %u AND %u AND b.utype = 1 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$s1="SELECT e.uid,e.uname,e.date,e.so2,e.nox,e.dust,e.o2,e.dll FROM (SELECT b.uid,b.uname,a.date,a.so2,a.nox,a.dust,a.o2,a.dll FROM zd_info as b LEFT JOIN fq_m_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid  WHERE b.aid BETWEEN %u AND %u AND b.utype = 1 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
 			$i=intval($this->para[0])+1;
 			$j=$i+98;
 			$this->con_val=sprintf($s1,$i,$j,$this->para[1]);
@@ -281,7 +284,7 @@ class data_qright implements main_data
 			$this->con_std=sprintf($s1,$i,$j,$this->para[1],$s2);
 			break;
 		case 2://地市级
-			$s1="SELECT e.uid,e.uname,e.so2,e.nox,e.dust,e.o2,e.dll FROM (SELECT b.uid,b.uname,a.so2,a.nox,a.dust,a.o2,a.dll FROM zd_info AS b LEFT JOIN fq_m_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 1 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$s1="SELECT e.uid,e.uname,e.date,e.so2,e.nox,e.dust,e.o2,e.dll FROM (SELECT b.uid,b.uname,a.date,a.so2,a.nox,a.dust,a.o2,a.dll FROM zd_info AS b LEFT JOIN fq_m_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 1 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
 			$this->con_val=sprintf($s1,$this->para[0],$this->para[1]);
 			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.aid = %u AND a.utype = 1 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN  b.sttm AND b.edtm";
 			$s2=$this->para[3]." 00:00:01";
@@ -379,31 +382,23 @@ class data_qright implements main_data
 		{
 			$y=$cy[$j];
 			$x=array();
-			$x[0]=$j;	//序号
+			$x[0]=intval($j)+1;	//序号
 			$x[1]=$y[1]; //uname
-			if($y[2] == NULL)
-				$x[2]="---";
+			if($y[2] == NULL) 
+			{
+				$x[2]="---";$x[3]="---";$x[4]=$by[$y[0]][0];
+				$x[5]="---";$x[6]=$by[$y[0]][1];
+				$x[7]="---";$x[8]=$by[$y[0]][2];
+				$x[9]="---";$x[10]="---";
+			}
 			else
-				$x[2]=$y[2]; //so2
-			$x[3]=$by[$y[0]][0]; //std so2
-			if($y[3] == NULL)
-				$x[4]="---";
-			else
-				$x[4]=$y[3];//nox
-			$x[5]=$by[$y[0]][1]; //nox std
-			if($y[4] == NULL)
-				$x[6]="---";
-			else
-				$x[6]=$y[4];//dust
-			$x[7]=$by[$y[0]][2]; //dust std
-			if($y[5] == NULL)
-				$x[8]="---";
-			else
-				$x[8]=$y[5];//o2
-			if($y[6] == NULL)
-				$x[9]="---";
-			else
-				$x[9]=$y[6];//dll
+			{
+				$x[2]=substr($y[2],5,11);
+				$x[3]=$y[3];$x[4]=$by[$y[0]][0];
+				$x[5]=$y[4];$x[6]=$by[$y[0]][1];
+				$x[7]=$y[5];$x[8]=$by[$y[0]][2];
+				$x[9]=$y[6];$x[10]=$y[7];
+			}
 			array_push($ey,$x);
 		}
 		return $ey;
@@ -493,14 +488,14 @@ class data_wsright implements main_data
 		switch($_SESSION['sys_level'])
 		{
 		case 0://县市区
-			$s1="SELECT e.uid,e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN wsc_h_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE b.utype = 2 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$s1="SELECT e.uid,e.uname,e.date,e.cod,e.nhx,e.ll_sh,e.ll_jg,e.ll_lj FROM (SELECT b.uid,b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg,a.ll_lj FROM zd_info AS b LEFT JOIN wsc_h_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE b.utype = 2 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
 			$this->con_val=sprintf($s1,$this->para[1]);
 			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.utype = 2 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN  b.sttm AND b.edtm";
 			$s2=$this->para[3]." 00:00:01";
 			$this->con_std=sprintf($s1,$this->para[1],$s2);
 			break;
 		case 1://省级
-			$s1="SELECT e.uid,e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN wsc_h_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE a.aid BETWEEN %u AND %u AND b.utype = 2 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$s1="SELECT e.uid,e.uname,e.date,e.cod,e.nhx,e.ll_sh,e.ll_jg,e.ll_lj FROM (SELECT b.uid,b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg,a.ll_lj FROM zd_info AS b LEFT JOIN wsc_h_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE a.aid BETWEEN %u AND %u AND b.utype = 2 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
 			$i=intval($this->para[0])+1;
 			$j=$i+98;
 			$this->con_val=sprintf($s1,$i,$j,$this->para[1]);
@@ -509,7 +504,7 @@ class data_wsright implements main_data
 			$this->con_std=sprintf($s1,$i,$j,$this->para[1],$s2);
 			break;
 		case 2://地市级
-			$s1="SELECT e.uid,e.uname,e.cod,e.nhx,e.ll_sh,e.ll_jg FROM (SELECT b.uid,b.uname,a.cod,a.nhx,a.ll_sh,a.ll_jg FROM zd_info AS b LEFT JOIN wsc_h_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 2 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$s1="SELECT e.uid,e.uname,e.date,e.cod,e.nhx,e.ll_sh,e.ll_jg,e.ll_lj FROM (SELECT b.uid,b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg,a.ll_lj FROM zd_info AS b LEFT JOIN wsc_h_master AS a ON a.date > date_add(now(),interval -2 month) AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 2 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
 			$this->con_val=sprintf($s1,$this->para[0],$this->para[1]);
 			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.aid = %u AND a.utype = 2 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN  b.sttm AND b.edtm";
 			$s2=$this->para[3]." 00:00:01";
@@ -590,22 +585,25 @@ class data_wsright implements main_data
 		{
 			$y=$cy[$j];
 			$x=array();
-			$x[0]=$j;
+			$x[0]=intval($j)+1;
 			$x[1]=$y[1]; //name
 			if($y[2] == NULL)
-				$x[2]="---";
+			{
+				$x[2]="---";$x[3]="---";$x[4]=$by[$y[0]][0];
+				$x[5]="---";$x[6]=$by[$y[0]][1];
+				$x[7]="---";$x[8]="---";$x[9]="---";
+			}
 			else
-				$x[2]=$y[2];//cod
-			$x[3]=$by[$y[0]][0]; //std cod
-			if($y[3] == NULL)
-				$x[4]="---";
-			else
-				$x[4]=$y[3];//nhx
-			$x[5]=$by[$y[0]][1];//std nhx
-			if($y[4] == NULL)
-				$x[6]="---";
-			else
-				$x[6]=$y[4];//ll
+			{
+				$x[2]=substr($y[2],5,11);//date
+				$x[3]=$y[3];//cod
+				$x[4]=$by[$y[0]][0]; //std cod
+				$x[5]=$y[4];//nhx
+				$x[6]=$by[$y[0]][1];//std nhx
+				$x[7]=$y[5];//ll_sh
+				$x[8]=$y[6];//ll_jg
+				$x[9]=$y[7]; //ll_lj
+			}
 			array_push($ey,$x);
 		}
 		return $ey;

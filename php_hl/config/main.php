@@ -80,10 +80,51 @@
 								<th width=8%% align=center>监测值</th><th width=8%% align=center>标准值</th>
 								<th width=8%% align=center>监测值</th><th width=8%% align=center>标准值</th>
 								<th width=8%% align=center>监测值</th><th width=8%% align=center>标准值</th></tr>";
-	$FQ_BODY_1				=	"<tr><td width=%%6 >%d</td><td width=20%% >%s</td>";
+	$FQ_BODY_1				=	"<tr><td width=5%% >%d</td><td width=20%% >%s</td>";
 	$FQ_BODY_RED			=	"<td width=8%% id='tdid'>%0.2f</td><td width=8%% >%0.2f</td>";
 	$FQ_BODY_NOR			=	"<td width=8%% >%0.2f</td><td width=8%% >%0.2f</td>";
 	$FQ_BODY_LL				=	"<td width=10%% >%0.2f</td><td width=16%% >%u</td></tr>";
 	$FQ_HEADER_END			=	"</table>";
+////////////////////废水和污水厂实时/////////////////////////////////////////////
+	$FSS_HEADER				=	"<table width=97%% class='imagetable'><tr><th width=5%% rowspan=2 align=center>编号</th>
+								 <th width=15%% rowspan=2 align=center>站点名称</th><th width=10%% rowspan=2 align=center>上传时间</th>
+								 <th width=20%% colspan=2 align=center>COD</th><th width=20%% colspan=2 align=center>氨氮</th>
+								 <th width=30%% colspan=3 align=center>流量</th></tr><tr>
+								 <th width=10%% align=center>监测值</th><th width=10%% align=center>标准值</th>
+								 <th width=10%% align=center>监测值</th><th width=10%% align=center>标准值</th>
+								 <th width=10%% align=center>瞬时流量</th><th width=10%% align=center>间隔流量</th>
+								 <th width=10%% align=center>累计流量</th></tr>";
+	$FSS_BODY_1				=	"<tr><td width=5%% >%d</td><td width=15%% >%s</td><td width=10%% >%s</td>";
+	$FSS_BODY_RED			=	"<td width=10%% id='tdid'>%s</td><td width=10%% >%s</td>";
+	$FSS_BODY_NOR			=	"<td width=10%% >%s</td><td width=10%% >%s</td>";
+	$FSS_BODY_LL			=	"<td width=10%% >%s</td><td width=10%% >%s</td><td width=10%% >%s</td></tr>";	
+	$FSS_HEADER_END			=	"</table>";
+/////////////////////废气实时/////////////////////////////////////////////////////////
+	$FQS_HEADER				=	"<table width=97%% class='imagetable'><tr><th width=5%% rowspan=2 align=center>编号</th>
+								<th width=19%% rowspan=2 align=center>站点名称</th><th width=10%% rowspan=2 align=center>上传时间</th>
+								<th width=16%% colspan=2 align=center>SO2</th>
+								<th width=16%% colspan=2 align=center>NOx</th><th width=16%% colspan=2 align=center>烟尘</th>
+								<th width=8%% rowspan=2 align=center>氧量</th><th width=10%% rowspan=2 align=center>废气排放量</th></tr><tr>
+								<th width=8%% align=center>监测值</th><th width=8%% align=center>标准值</th>
+								<th width=8%% align=center>监测值</th><th width=8%% align=center>标准值</th>
+								<th width=8%% align=center>监测值</th><th width=8%% align=center>标准值</th></tr>";
+	$FQS_BODY_1				=	"<tr><td width=5%% >%d</td><td width=19%% >%s</td><td width=10%% >%s</td>";
+	$FQS_BODY_RED			=	"<td width=8%% id='tdid'>%s</td><td width=8%% >%s</td>";
+	$FQS_BODY_NOR			=	"<td width=8%% >%s</td><td width=8%% >%s</td>";
+	$FQS_BODY_LL			=	"<td width=8%% >%s</td><td width=10%% >%s</td></tr>";
+	$FQS_HEADER_END			=	"</table>";
+	
+	
+
+
+
 
 ?>
+
+
+
+
+
+
+
+
