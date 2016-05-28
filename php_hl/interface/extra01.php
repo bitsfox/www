@@ -6,22 +6,6 @@
  	2016-4-17  田勇 alias tybitsfox
  */
 session_start();
-if(!defined("FULL_PATH"))
-{
-	$s1=dirname(__FILE__);
-	$s2=strstr($s1,"php_hl");
-	$i=strlen($s1)-strlen($s2);
-	$s2=substr($s1,0,$i)."php_hl/";
-	define("FULL_PATH",$s2);
-}
-//确保包含了全局变量的定义文件
-$ifile=constant("FULL_PATH")."config/main.php";
-require_once($ifile);
-$st=constant("FULL_PATH")."include/inter_def.php";
-require_once($st);
-$st=constant("FULL_PATH")."core/main.php";
-require_once($st);
-
 ////////////////////////////////////////////////////////////
 //{{{ class data_sright implements main_data 废水实时主界面数据及标准的获取类
 class data_sright implements main_data
@@ -652,7 +636,372 @@ class data_wsright implements main_data
 	}//}}}
 
 }//}}}
-
+///////////////////////////////////////////////////////////
+//{{{class data_sright_mx implements main_data 废水及污水厂明晰主界面数据及标准的获取类
+class data_sright_mx implements main_data
+{
+	private $db;//目标数据库相关信息
+	private $con_std,$con_val; //解析后生成的执行标准查询字符串和项目数据查询字符串
+	private $para; //保存post传入的参数
+	private $w;
+//{{{public function __construct($y)
+	public function __construct($y)
+	{
+		$i=0;
+		$this->para=array();
+		$this->w=$y;// y=1 废水 y=2 污水厂
+		if(!isset($_POST['starttime']))
+		{
+			if(!isset($_SESSION['INTR_SEND']))
+				die("符合当前控制级别和控制区域的站点为空，请指定查询的站点!");
+			$this->para[0]=$_SESSION['INTR_SEND'];//uid,这里和实时界面传递的参数不同，不再是aid
+			$this->para[1]=0;//控制级别
+			$this->para[2]=0;//数据类型
+			$this->para[3]=date("Y-m-d",time()); //默认日期
+			$ay=array();
+			$ay=getdate(time());
+			$i=$ay['year'];
+		}
+		else
+		{//这是正常的从post传递
+			$this->para[0]=$_POST['sel2p'];
+			$this->para[1]=$_POST['sel3p'];
+			$this->para[2]=$_POST['sel3'];
+			$this->para[3]=$_POST['starttime'];
+			$i=intval($_POST['starttime']);			
+		}
+		$this->get_used_db($i);
+	}//}}}
+//{{{public function __destruct()
+	public function __destruct()
+	{
+		unset($this->db);unset($this->con_std);unset($this->con_val);
+	}//}}}
+//{{{public function get_used_db($y)
+	public function get_used_db($y)
+	{
+		global $DB_ADDR_TY,$DB_PORT_TY,$DB_NAME_TY,$DB_PWD_TY;
+		global $DB_USER_TY;
+		if(!isset($DB_ADDR_TY[$y]))
+			die("你所选择的日期".$i."年，没有数据！");
+		$this->db=array();
+		array_push($this->db,$DB_ADDR_TY[$y]);
+		array_push($this->db,$DB_PORT_TY[$y]);
+		array_push($this->db,$DB_NAME_TY[$y]);
+		array_push($this->db,$DB_USER_TY);
+		array_push($this->db,$DB_PWD_TY);
+	}//}}}
+//{{{public function parse_sql()
+	public function parse_sql()
+	{//废水
+		if($this->w == 1)
+		{
+			$s1="SELECT date,cod,nhx,ll_sh,ll_jg,ll_lj FROM fs_h_master WHERE uid = %u AND date > date_add(now(),interval -2 month) ORDER BY date";
+			$this->con_val=sprintf($s1,$this->para[0]);
+			$s1="SELECT iid,std1,std1_area,std2 FROM gb_std WHERE uid = %u AND '%s' BETWEEN sttm AND edtm";
+			$s2=$this->para[3]." 00:00:01";
+			$this->con_std=sprintf($s1,$this->para[0],$s2);
+		}
+		else
+		{
+			$s1="SELECT date,cod,nhx,ll_sh,ll_jg,ll_lj FROM wsc_h_master WHERE uid = %u AND date > date_add(now(),interval -2 month) ORDER BY date";
+			$this->con_val=sprintf($s1,$this->para[0]);
+			$s1="SELECT iid,std1,std1_area,std2 FROM gb_std WHERE uid = %u AND '%s' BETWEEN sttm AND edtm";
+			$s2=$this->para[3]." 00:00:01";
+			$this->con_std=sprintf($s1,$this->para[0],$s2);
+		}
+	}//}}}
+//{{{public function get_std()
+	public function get_std()
+	{
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if(mysqli_connect_errno())
+			die("connect error");
+		mysqli_set_charset($mysqli,"utf8");
+		if($res=mysqli_query($mysqli,$this->con_std))
+		{
+			$vay=array();
+			while($row=mysqli_fetch_row($res))
+				array_push($vay,$row);
+			mysqli_free_result($res);
+		}
+		else
+		{
+			$s1=mysqli_error($mysqli);
+			mysqli_close($mysqli);
+			die("mysql query error!<br>".$s1."<br>"."$this->con_std");
+		}
+		mysqli_close($mysqli);
+		$i=count($vay);
+		$by=array();
+		for($j=0;$j<$i;$j++)
+		{
+			$ay=$vay[$j];
+			if(strlen($ay[2]) == 8)
+			{
+				$s1=substr($ay[2],0,4); //取得开始的日期
+				$b1=intval($s1);
+				$s1=substr($ay[2],4,4); //取得结束日期
+				$b2=intval($s1);
+				$s1=substr($this->para[3],5,5);
+				$a1=intval($s1);$a1*=100;
+				$a2=intval(substr($s1,3,2));
+				$a1+=$a2;				//取得记录的日期
+				if(($a1>=$b1) && ($a1<=$b2))
+				{
+					if(intval($ay[0]) == 316) //cod
+						$by[0] = $ay[1];//cod
+					else
+						$by[1] = $ay[1];//nhx
+				}
+				else //使用标准2
+				{
+					if(intval($ay[0]) == 316) //cod
+						$by[0] = $ay[3];
+					else
+						$by[1] = $ay[3];
+				}
+			}
+			else
+			{
+				if(intval($ay[0]) == 316) //cod
+					$by[0] = $ay[1];//cod
+				else
+					$by[1] = $ay[1];//nhx
+			}
+		}
+		$cy=$this->get_unit();
+		$i=count($cy);
+		$ey=array();
+		for($j=0;$j<$i;$j++)
+		{
+			$y=$cy[$j];
+			$x=array();
+			$x[0]=$j;	//序号
+			$x[1]=$y[0];//date
+			$x[2]=$y[1];//cod
+			$x[3]=$by[0];//cod std
+			$x[4]=$y[2];//nhx
+			$x[5]=$by[1];//nhx std
+			$x[6]=$y[3];//ll_sh
+			$x[7]=$y[4];//ll_jg
+			$x[8]=$y[5];//ll_lj
+			array_push($ey,$x);
+		}
+		return $ey;
+	}//}}}
+//{{{public function get_unit()
+	public function get_unit()
+	{
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if(mysqli_connect_errno())
+			die("connect error");
+		mysqli_set_charset($mysqli,"utf8");
+		if($res=mysqli_query($mysqli,$this->con_val))
+		{
+			$vay=array();
+			while($row=mysqli_fetch_row($res))
+				array_push($vay,$row);
+			mysqli_free_result($res);
+		}
+		else
+		{
+			$s1=mysqli_error($mysqli);
+			mysqli_close($mysqli);
+//			var_dump($this->db);
+//			print_r($this->db);
+			die("mysql query error!<br>".$s1."<br>"."$this->con_val");
+		}
+		mysqli_close($mysqli);
+		return $vay;
+	}//}}}
+}//}}}
+///////////////////////////////////////////////////////////////////////////
+//{{{class data_qright_mx implements main_data 废气明晰主界面数据及标准的获取类
+class data_qright_mx implements main_data
+{
+	private $db;//目标数据库相关信息
+	private $con_std,$con_val; //解析后生成的执行标准查询字符串和项目数据查询字符串
+	private $para; //保存post传入的参数
+//{{{public function __construct()
+	public function __construct()
+	{
+		$i=0;
+		$this->para=array();
+		if(!isset($_POST['starttime']))
+		{
+			if(!isset($_SESSION['INTR_SEND']))
+				die("符合当前控制级别和控制区域的站点为空，请指定查询的站点!");
+			$this->para[0]=$_SESSION['INTR_SEND'];//uid,这里和实时界面传递的参数不同，不再是aid
+			$this->para[1]=0;//控制级别
+			$this->para[2]=0;//数据类型
+			$this->para[3]=date("Y-m-d",time()); //默认日期
+			$ay=array();
+			$ay=getdate(time());
+			$i=$ay['year'];
+		}
+		else
+		{//这是正常的从post传递
+			$this->para[0]=$_POST['sel2p'];
+			$this->para[1]=$_POST['sel3p'];
+			$this->para[2]=$_POST['sel3'];
+			$this->para[3]=$_POST['starttime'];
+			$i=intval($_POST['starttime']);			
+		}
+		$this->get_used_db($i);
+	}//}}}
+//{{{public function __destruct()
+	public function __destruct()
+	{
+		unset($this->db);unset($this->con_std);unset($this->con_val);
+	}//}}}
+//{{{public function get_used_db($y)
+	public function get_used_db($y)
+	{
+		global $DB_ADDR_TY,$DB_PORT_TY,$DB_NAME_TY,$DB_PWD_TY;
+		global $DB_USER_TY;
+		if(!isset($DB_ADDR_TY[$y]))
+			die("你所选择的日期".$i."年，没有数据！");
+		$this->db=array();
+		array_push($this->db,$DB_ADDR_TY[$y]);
+		array_push($this->db,$DB_PORT_TY[$y]);
+		array_push($this->db,$DB_NAME_TY[$y]);
+		array_push($this->db,$DB_USER_TY);
+		array_push($this->db,$DB_PWD_TY);
+	}//}}}
+//{{{public function parse_sql()
+	public function parse_sql()
+	{//废气
+		$s1="SELECT date,so2,nox,dust,o2,dll FROM fq_m_master WHERE uid = %u AND date > date_add(now(),interval -2 month) ORDER BY date";
+		$this->con_val=sprintf($s1,$this->para[0]);
+		$s1="SELECT iid,std1,std1_area,std2 FROM gb_std WHERE uid = %u AND '%s' BETWEEN sttm AND edtm";
+		$s2=$this->para[3]." 00:00:01";
+		$this->con_std=sprintf($s1,$this->para[0],$s2);
+	}//}}}
+//{{{public function get_std()
+	public function get_std()
+	{
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if(mysqli_connect_errno())
+			die("connect error");
+		mysqli_set_charset($mysqli,"utf8");
+		if($res=mysqli_query($mysqli,$this->con_std))
+		{
+			$vay=array();
+			while($row=mysqli_fetch_row($res))
+				array_push($vay,$row);
+			mysqli_free_result($res);
+		}
+		else
+		{
+			$s1=mysqli_error($mysqli);
+			mysqli_close($mysqli);
+			die("mysql query error!<br>".$s1."<br>"."$this->con_std");
+		}
+		mysqli_close($mysqli);
+		$i=count($vay);
+		$by=array();
+		for($j=0;$j<$i;$j++)
+		{
+			$ay=$vay[$j];
+			if(strlen($ay[2]) == 8)
+			{
+				$s1=substr($ay[2],0,4); //取得开始的日期
+				$b1=intval($s1);
+				$s1=substr($ay[2],4,4); //取得结束日期
+				$b2=intval($s1);
+				$s1=substr($this->para[3],5,5);
+				$a1=intval($s1);$a1*=100;
+				$a2=intval(substr($s1,3,2));
+				$a1+=$a2;				//取得记录的日期
+				if(($a1>=$b1) && ($a1<=$b2))
+				{
+					if(intval($ay[0]) == 101) //so2
+						$by[0]=$ay[1];
+					else
+					{
+						if(intval($ay[0]) == 102) //nox
+							$by[1]=$ay[1];
+						else //207
+							$by[2]=$ay[1]; //dust
+					}
+				} //使用标准1
+				else
+				{
+					if(intval($ay[0]) == 101) //so2
+						$by[0]=$ay[3];
+					else
+					{
+						if(intval($ay[0]) == 102) //nox
+							$by[1]=$ay[3];
+						else//207
+							$by[2]=$ay[3];//dust
+					}
+				}//使用标准2
+			}
+			else
+			{
+				if(strlen($ay[2])>1)
+				{
+					$s1=strval(strlen($ay[3]));
+					die($s1);
+				}
+				if(intval($ay[0]) == 101) //so2
+					$by[0]=$ay[1];
+				else
+				{
+					if(intval($ay[0]) == 102) //nox
+						$by[1]=$ay[1];
+					else //207
+						$by[2]=$ay[1];//dust
+				}
+			}
+		}
+		$cy=$this->get_unit();
+		$i=count($cy);
+		$ey=array();
+		for($j=0;$j<$i;$j++)
+		{
+			$y=$cy[$j];
+			$x=array();
+			$x[0]=intval($j)+1; //序号
+			$x[1]=$y[0];		//date
+			$x[2]=$y[1];		//so2
+			$x[3]=$by[0];		//so2 std
+			$x[4]=$y[2];		//nox
+			$x[5]=$by[1];		//nox std
+			$x[6]=$y[3];		//dust
+			$x[7]=$by[2];		//dust std
+			$x[8]=$y[4];		//o2
+			$x[9]=$y[5];		//dll
+			array_push($ey,$x);
+		}
+		return $ey;
+	}//}}}
+//{{{public function get_unit()
+	public function get_unit()
+	{
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if(mysqli_connect_errno())
+			die("connect error");
+		mysqli_set_charset($mysqli,"utf8");
+		if($res=mysqli_query($mysqli,$this->con_val))
+		{
+			$vay=array();
+			while($row=mysqli_fetch_row($res))
+				array_push($vay,$row);
+			mysqli_free_result($res);
+		}
+		else
+		{
+			$s1=mysqli_error($mysqli);
+			mysqli_close($mysqli);
+			die("mysql query error!<br>".$s1."<br>"."$this->con_val");
+		}
+		mysqli_close($mysqli);
+		return $vay;
+	}//}}}
+}//}}}
 /////////////////////////////////////////////////////////////
 //{{{class init_tab implements listbox_data 控制界面数据的获取类
 class init_tab implements listbox_data
@@ -858,7 +1207,6 @@ class init_tab implements listbox_data
 		}
 	}//}}}
 }//}}}
-
 
 ?>
 <?php

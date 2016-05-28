@@ -22,6 +22,13 @@ if(!defined("FULL_PATH"))
 	$s2=substr($s1,0,$i)."php_hl/";
 	define("FULL_PATH",$s2);
 }
+//确保包含了全局变量的定义文件
+$ifile=constant("FULL_PATH")."config/main.php";
+require_once($ifile);
+$st=constant("FULL_PATH")."include/inter_def.php";
+require_once($st);
+$st=constant("FULL_PATH")."core/main.php";
+require_once($st);
 $st=constant("FULL_PATH")."interface/extra01.php";
 require_once($st);
 ///////////////////////////////////////////////////////////////
@@ -128,7 +135,7 @@ function _reg_db($u,$p)
 	$a->query_db(1);
 	return 0;
 }//}}}
-//{{{ class tb_wsc implements tab_show
+//{{{ class tb_wsc implements tab_show 污水厂实时主界面显示类
 class tb_wsc implements tab_show
 {
 	private $ay,$cy;
@@ -189,7 +196,7 @@ class tb_wsc implements tab_show
 	public function show_tail()
 	{echo "</table>";}//}}}
 }//}}}
-//{{{class tb_fs implements tab_show
+//{{{class tb_fs implements tab_show 废水实时主界面显示类
 class tb_fs implements tab_show
 {
 	private $ay,$cy;
@@ -253,7 +260,7 @@ class tb_fs implements tab_show
 	public function __destruct()
 	{unset($this->ay);unset($this->cy);unset($this->dy);}//}}}
 }//}}}
-//{{{class tb_fq implements tab_show
+//{{{class tb_fq implements tab_show 废气实时主界面显示类
 class tb_fq implements tab_show
 {
 	private $ay,$cy;
@@ -510,7 +517,7 @@ class tb_mxleft implements tab_show
 		if(isset($_POST["sel2p"]))
 			$k2 = $_POST["sel2p"];
 		else
-			$k2 = $dy[0][0];
+		{$k2 = $dy[0][0];$_SESSION['INTR_SEND']=$k2;}
 		$s1="<br><div class='dvmsg1'>站点名称：</div><div class='select_style1'><select name='sel2p' id='sel2p'>";
 		for($j=0;$j<$i;$j++)
 		{
@@ -570,6 +577,181 @@ class tb_mxleft implements tab_show
 	public function show_tail()
 	{}//}}}
 }//}}}
+////////////////////////////////////////////////////////////
+//{{{class tb_fs_mx	implements tab_show 废水明晰主界面显示类
+class tb_fs_mx implements tab_show
+{
+	private $dy;
+//{{{public function __construct()
+	public function __construct()
+	{
+		$a=new data_sright_mx(1);
+		$a->parse_sql();
+		$this->dy=$a->get_std();
+	}//}}}
+//{{{public function __destruct()
+	public function __destruct()
+	{unset($this->dy);}//}}}
+//{{{public function show_header()
+	public function show_header()
+	{
+		global $FS_HEADER;
+		echo $FS_HEADER;
+	}//}}}
+//{{{public function show_body()
+	public function show_body()
+	{
+		global $FS_BODY_1,$FS_BODY_RED,$FS_BODY_NOR,$FS_BODY_LL;
+		$str="";
+		$i=count($this->dy);
+		if($i>10)
+			$i=10;
+		for($j=0;$j<$i;$j++)
+		{
+			$y=$this->dy[$j];
+			$s1=sprintf($FS_BODY_1,$y[0],$y[1]);
+			$str.=$s1;
+			if(($y[2]>$y[3]) && ($y[3]>0))
+				$s1=sprintf($FS_BODY_RED,$y[2],$y[3]);
+			else
+				$s1=sprintf($FS_BODY_NOR,$y[2],$y[3]);
+			$str.=$s1;
+			if(($y[4]>$y[5]) && ($y[5]>0))
+				$s1=sprintf($FS_BODY_RED,$y[4],$y[5]);
+			else
+				$s1=sprintf($FS_BODY_NOR,$y[4],$y[5]);
+			$str.=$s1;
+			$s1=sprintf($FS_BODY_LL,$y[6],$y[7],$y[8]);
+			$str.=$s1;
+		}
+		echo $str;
+	}//}}}	
+//{{{public function show_tail()
+	public function show_tail()
+	{
+		global $FS_HEADER_END;
+		echo $FS_HEADER_END;
+	}//}}}
+}//}}}
+////////////////////////////////////////////////////////////
+//{{{class tb_wsc_mx implements tab_show 污水厂明晰主界面显示类
+class tb_wsc_mx implements tab_show
+{
+	private $dy;
+//{{{public function __construct()
+	public function __construct()
+	{
+		$a=new data_sright_mx(2);
+		$a->parse_sql();
+		$this->dy=$a->get_std();
+	}//}}}
+//{{{public function __destruct()
+	public function __destruct()
+	{unset($this->dy);}//}}}
+//{{{public function show_header()
+	public function show_header()
+	{
+		global $FS_HEADER;
+		echo $FS_HEADER;
+	}//}}}
+//{{{public function show_body()
+	public function show_body()
+	{
+		global $FS_BODY_1,$FS_BODY_RED,$FS_BODY_NOR,$FS_BODY_LL;
+		$str="";
+		$i=count($this->dy);
+		if($i>10)
+			$i=10;
+		for($j=0;$j<$i;$j++)
+		{
+			$y=$this->dy[$j];
+			$s1=sprintf($FS_BODY_1,$y[0],$y[1]);
+			$str.=$s1;
+			if(($y[2]>$y[3]) && ($y[3]>0))
+				$s1=sprintf($FS_BODY_RED,$y[2],$y[3]);
+			else
+				$s1=sprintf($FS_BODY_NOR,$y[2],$y[3]);
+			$str.=$s1;
+			if(($y[4]>$y[5]) && ($y[5]>0))
+				$s1=sprintf($FS_BODY_RED,$y[4],$y[5]);
+			else
+				$s1=sprintf($FS_BODY_NOR,$y[4],$y[5]);
+			$str.=$s1;
+			$s1=sprintf($FS_BODY_LL,$y[6],$y[7],$y[8]);
+			$str.=$s1;
+		}
+		echo $str;
+	}//}}}
+//{{{public function show_tail()
+	public function show_tail()
+	{
+		global $FS_HEADER_END;
+		echo $FS_HEADER_END;
+	}//}}}
+}//}}}
+////////////////////////////////////////////////////////////
+//{{{class tb_fq_mx implements tab_show 废气明晰主界面显示类
+class tb_fq_mx implements tab_show
+{
+	private $dy;
+//{{{public function __construct()
+	public function __construct()
+	{
+		$a=new data_qright_mx();
+		$a->parse_sql();
+		$this->dy=$a->get_std();
+	}//}}}
+//{{{public function __destruct()
+	public function __destruct()
+	{unset($this->dy);}//}}}
+//{{{public function show_header()
+	public function show_header()
+	{
+		global $FQ_HEADER;
+		echo $FQ_HEADER;
+	}//}}}
+//{{{public function show_body()
+	public function show_body()
+	{
+		global $FQ_BODY_1,$FQ_BODY_RED,$FQ_BODY_NOR,$FQ_BODY_LL;
+		$str="";
+		$i=count($this->dy);
+		if($i>10)
+			$i=10;
+		for($j=0;$j<$i;$j++)
+		{
+			$y=$this->dy[$j];
+			$s1=sprintf($FQ_BODY_1,$y[0],$y[1]);
+			$str.=$s1;
+			if(($y[2]>$y[3]) && ($y[3]>0))
+				$s1=sprintf($FQ_BODY_RED,$y[2],$y[3]);
+			else
+				$s1=sprintf($FQ_BODY_NOR,$y[2],$y[3]);
+			$str.=$s1;
+			if(($y[4]>$y[5]) && ($y[5]>0))
+				$s1=sprintf($FQ_BODY_RED,$y[4],$y[5]);
+			else
+				$s1=sprintf($FQ_BODY_NOR,$y[4],$y[5]);
+			$str.=$s1;
+			if(($y[6]>$y[7]) && ($y[7]>0))
+				$s1=sprintf($FQ_BODY_RED,$y[6],$y[7]);
+			else
+				$s1=sprintf($FQ_BODY_NOR,$y[6],$y[7]);
+			$s1=sprintf($FQ_BODY_LL,$y[8],$y[9]);
+			$str.=$s1;
+		}
+		echo $str;
+	}//}}}
+//{{{public function show_tail()
+	public function show_tail()
+	{
+		global $FQ_HEADER_END;
+		echo $FQ_HEADER_END;
+	}//}}}
+}//}}}
+
+
+
 ?>
 
 

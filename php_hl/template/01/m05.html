@@ -16,14 +16,20 @@
 	<div id="right_id">
 	<div id="clear_id"></div>
 	<div id="right_top_id" class="shadow_class">
-	<br><br>
 <?php
-	if(isset($_POST['starttime']))
-	{
-		$a= new data_sright();
-		$a->parse_sql();
-		echo "hello";
-	}
+		$i=0;
+		if(isset($_POST['radio1']))
+			$i=$_POST['radio1']-1;
+		if($i == 0)
+		{
+			$a=new tb_fq_mx();
+			$a->show_header();
+			$a->show_body();
+			$a->show_tail();
+		}
+		else
+		{
+		}
 ?>	
 	</div>
 	</div>

@@ -59,7 +59,31 @@
 	$DB_NAME_TY				=	array('2016'=>'env2016','2017'=>'env2017');
 	$DB_USER_TY				=	"sdhl";
 	$DB_PWD_TY				=	"sdhl2016";
-
-
+/////////////////废水和污水厂////////////////////////////////////////////
+	$FS_HEADER				=	"<table width=97%% class='imagetable'><tr><th width=10%% rowspan=2 align=center>编号</th>
+								 <th width=20%% rowspan=2 align=center>时间</th><th width=20%% colspan=2 align=center>COD</th>
+								 <th width=20%% colspan=2 align=center>氨氮</th><th width=30%% colspan=3 align=center>流量</th></tr><tr>
+								 <th width=10%% align=center>监测值</th><th width=10%% align=center>标准值</th>
+								 <th width=10%% align=center>监测值</th><th width=10%% align=center>标准值</th>
+								 <th width=10%% align=center>瞬时流量</th><th width=10%% align=center>间隔流量</th>
+								 <th width=10%% align=center>累计流量</th></tr>";
+	$FS_BODY_1				=	"<tr><td width=10%% >%d</td><td width=20%% >%s</td>";
+	$FS_BODY_RED			=	"<td width=10%% id='tdid'>%0.2f</td><td width=10%% >%0.2f</td>";
+	$FS_BODY_NOR			=	"<td width=10%% >%0.2f</td><td width=10%% >%0.2f</td>";
+	$FS_BODY_LL				=	"<td width=10%% >%u</td><td width=10%% >%u</td><td width=10%% >%u</td></tr>";	
+	$FS_HEADER_END			=	"</table>";
+////////////////////废气//////////////////////////////////////
+	$FQ_HEADER				=	"<table width=97%% class='imagetable'><tr><th width=6%% rowspan=2 align=center>编号</th>
+								<th width=20%% rowspan=2 align=center>时间</th><th width=16%% colspan=2 align=center>SO2</th>
+								<th width=16%% colspan=2 align=center>NOx</th><th width=16%% colspan=2 align=center>烟尘</th>
+								<th width=10%% rowspan=2 align=center>氧量</th><th width=16%% rowspan=2 align=center>废气排放量</th></tr><tr>
+								<th width=8%% align=center>监测值</th><th width=8%% align=center>标准值</th>
+								<th width=8%% align=center>监测值</th><th width=8%% align=center>标准值</th>
+								<th width=8%% align=center>监测值</th><th width=8%% align=center>标准值</th></tr>";
+	$FQ_BODY_1				=	"<tr><td width=%%6 >%d</td><td width=20%% >%s</td>";
+	$FQ_BODY_RED			=	"<td width=8%% id='tdid'>%0.2f</td><td width=8%% >%0.2f</td>";
+	$FQ_BODY_NOR			=	"<td width=8%% >%0.2f</td><td width=8%% >%0.2f</td>";
+	$FQ_BODY_LL				=	"<td width=10%% >%0.2f</td><td width=16%% >%u</td></tr>";
+	$FQ_HEADER_END			=	"</table>";
 
 ?>

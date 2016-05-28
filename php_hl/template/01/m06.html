@@ -17,14 +17,18 @@
 	<div id="clear_id"></div>
 	<div id="right_top_id" class="shadow_class">
 	<?php
-		if(!isset($_POST['radio1']))
-		{}
-		else
+		$i=0;
+		if(isset($_POST['radio1']))
+			$i=$_POST['radio1']-1;
+		if($i == 0)
 		{
-			if($_POST['radio1'] == 2)
-			{
-			}
+			$a=new tb_wsc_mx();
+			$a->show_header();
+			$a->show_body();
+			$a->show_tail();
 		}
+		else
+		{}
 	?>
 	</div>
 	</div>
