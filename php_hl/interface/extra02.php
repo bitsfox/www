@@ -79,11 +79,11 @@ class mx_g implements gra_data
 			$max[0]=0;$max[1]=0;$max[2]=0;
 			for($j=0;$j<$i;$j++)
 			{
-				if($max[0] > $this->gdata[$j][2])
+				if($max[0] < $this->gdata[$j][2])
 					$max[0]=$this->gdata[$j][2];	//max so2
-				if($max[1] > $this->gdata[$j][4])
+				if($max[1] < $this->gdata[$j][4])
 					$max[1]=$this->gdata[$j][4];	//max nox
-				if($max[2] > $this->gdata[$j][6])
+				if($max[2] < $this->gdata[$j][6])
 					$max[2]=$this->gdata[$j][6];	//max dust
 			}
 		}
@@ -91,11 +91,12 @@ class mx_g implements gra_data
 		{
 			$std[0]=$this->gdata[0][3];//cod std
 			$std[1]=$this->gdata[0][5];//mhx std
+			$max[0]=0;$max[1]=0;
 			for($j=0;$j<$i;$j++)
 			{
-				if($max[0] > $this->gdata[$j][2])
+				if($max[0] < $this->gdata[$j][2])
 					$max[0]=$this->gdata[$j][2];	//max cod
-				if($max[1] > $this->gdata[$j][4])
+				if($max[1] < $this->gdata[$j][4])
 					$max[1]=$this->gdata[$j][4];	//max nhx
 			}
 		}
