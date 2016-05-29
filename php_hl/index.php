@@ -26,12 +26,6 @@ else
 	require_once($str);
 }
 ?>
-<script type="text/javascript">
-function unreg()
-{
-	location.href="template/t01/login1.php";
-}
-</script>
 
 
 

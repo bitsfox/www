@@ -31,6 +31,8 @@ $st=constant("FULL_PATH")."core/main.php";
 require_once($st);
 $st=constant("FULL_PATH")."interface/extra01.php";
 require_once($st);
+$st=constant("FULL_PATH")."interface/extra02.php";
+require_once($st);
 ///////////////////////////////////////////////////////////////
 //{{{class login_init implements sqli_def
 class login_init implements sqli_def
@@ -429,6 +431,7 @@ class tb_mxleft implements tab_show
 		$this->cy=$arry;
 		$this->my=array("国控","省控","市控","县控","其他");//控制级别
 		$this->ny=array("小时值","日均值","小时超标值","日均超标值");//数据类型
+
 	}//}}}
 //{{{public function show_header()
 	public function show_header()

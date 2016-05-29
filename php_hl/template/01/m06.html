@@ -28,8 +28,20 @@
 			$a->show_tail();
 		}
 		else
-		{}
+		{
+			$a=new mx_g(2);
+			$a->range_xway();
+			$a->range_yway();
+			$a->range_ary();
+			$i=$_COOKIE['screen'];
+			if(($i == NULL) || ($i < 100))
+				$i=1000;
+			$xs=floor($i*0.67);$xy=500;
+		    $s1="<img src='core/graph/g02.php' width= ".$xs." height= ".$xy." />";
+			echo $s1;
+		}
 	?>
 	</div>
 	</div>
-</div></body></html>	
+</div></body>
+</html>	

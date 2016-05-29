@@ -26,11 +26,6 @@ echo $str;
 global $tybitsfox;
 $str="<title>".$tybitsfox['title']."</title>";
 echo $str;
-global $scr_width;
-$scr_width=$_COOKIE['screen'];
-$scr_width*=0.9*0.75;
-$scr_width/=100;
-$scr_width=floor($scr_width)*100;
 ?>
 <!-- <link href="css/base.css" rel="stylesheet" type="text/css" media="all" /> 
 <title>aaaa</title>  -->
@@ -59,4 +54,8 @@ $scr_width=floor($scr_width)*100;
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
 	</div>
 </div></body></html>	
+<script type="text/javascript">
+var width = window.screen.width;
+document.cookie="screen="+width;
+</script>
 -->
