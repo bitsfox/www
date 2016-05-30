@@ -29,6 +29,30 @@
 		}
 		else
 		{	
+			$a=new mx_g(1);
+			$a->range_xway();
+			$a->range_yway();
+			if($a->range_ary() < 1)
+				die("当前选定的站点没有数据");
+			$i=$_COOKIE['screen'];
+			if(($i == NULL) || ($i < 100))
+				$i=1000;
+			$xs=floor($i*0.67);$xy=500;
+		    $s1="<img src='core/graph/g02.php' width= ".$xs." height= ".$xy." />";
+			echo $s1;
+		}
+	?>
+<!--	<img src="template/01/img01.php" width=100 height=100/>
+
+	<table class='imagetable'><tr><th>aaa</th><th>bbb</th></tr>
+	<tr><td>cccc</td><td>dddd</td></tr></table>   -->
+	</div>
+	</div>
+</div></body></html>	
+
+<?php
+//{{{
+			/*
 			global $scr_width,$scr_height,$gx;
 			$rb=new tb_mxright_g();
 			$rb->show_header();
@@ -51,14 +75,7 @@
 			echo $s1;
 			//echo $scr_width;
 			//$yy=$gdata;
-			//print_r($yy);
-		}
-	?>
-<!--	<img src="template/01/img01.php" width=100 height=100/>
-
-	<table class='imagetable'><tr><th>aaa</th><th>bbb</th></tr>
-	<tr><td>cccc</td><td>dddd</td></tr></table>   -->
-	</div>
-	</div>
-</div></body></html>	
-
+			//print_r($yy);  
+			*/
+//}}}
+?>

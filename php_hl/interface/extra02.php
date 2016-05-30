@@ -132,6 +132,7 @@ class mx_g implements gra_data
 			}
 		}
 		$_SESSION['fs_g_data']=$ay;
+		return count($ay);
 	}//}}}
 //{{{public function analysis_post()
 	public function analysis_post()	//对post传递值的处理

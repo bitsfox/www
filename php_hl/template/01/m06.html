@@ -32,7 +32,8 @@
 			$a=new mx_g(2);
 			$a->range_xway();
 			$a->range_yway();
-			$a->range_ary();
+			if($a->range_ary() < 1)
+				die("当前选定的站点没有数据");
 			$i=$_COOKIE['screen'];
 			if(($i == NULL) || ($i < 100))
 				$i=1000;
