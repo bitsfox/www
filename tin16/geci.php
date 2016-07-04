@@ -344,4 +344,145 @@ I do it for you
 </pre></td>
 <td width=10%></td></tr>";
 echo "</table>";
+echo "
+	<center><font color= red size=5>demons</font></center>
+<table width=100% border=0><tr><td width=10%><td width=40%>	
+	<pre><font color=blue>
+When the days are cold 
+And the cards all fold 
+And the saints we see 
+Are all made of gold 
+When your dreams all fail 
+And the ones we hail 
+Are the worst of all 
+And the blood’s run stale 
+I want to hide the truth 
+I want to shelter you 
+But with the beast inside 
+There’s nowhere we can hide 
+No matter what we breed 
+We still are made of greed 
+This is my kingdom come 
+This is my kingdom come 
+When you feel my heat 
+Look into my eyes 
+It’s where my demons hide 
+It’s where my demons hide 
+Don’t get too close 
+It’s dark inside 
+It’s where my demons hide 
+It’s where my demons hide 
+When the curtain’s call 
+Is the last of all 
+When the lights fade out 
+All the sinners crawl 
+So they dug your grave 
+And the masquerade 
+Will come calling out 
+At the mess you made 
+Don’t want to let you down 
+But I am hell bound 
+Though this is all for you 
+Don’t want to hide the truth 
+No matter what we breed 
+We still are made of greed 
+This is my kingdom come 
+This is my kingdom come 
+When you feel my heat 
+Look into my eyes 
+It’s where my demons hide 
+It’s where my demons hide 
+Don’t get too close 
+It’s dark inside 
+It’s where my demons hide 
+It’s where my demons hide 
+For 7
+They say it's what you make 
+I say it's up to fate 
+It's woven in my soul 
+I need to let you go 
+For 7
+Your eyes, they shine so bright 
+I want to save their light 
+I can't escape this now 
+Unless you show me how 
+When you feel my heat 
+Look into my eyes 
+It’s where my demons hide 
+It’s where my demons hide 
+Don’t get too close 
+It’s dark inside 
+It’s where my demons hide 
+It’s where my demons hide 
+</font></pre></td><td width=40%><pre>
+当暗无天日
+当希望落空
+我们看见的圣人们啊
+熠熠闪光，遥不可及
+当梦想沦落
+当深陷逆境
+这是最黑暗的日子吧
+连血液都跟着腐朽
+我想隐藏这真相
+帮你构筑虚拟的天堂
+但我内心的野兽
+蠢蠢欲动，呼之欲出
+不管我们以何为食
+贪念是我们的本质
+我的欲望王国已经筑起
+我的欲望王国已经筑起
+当你感受到我的炽热
+请凝视我的双眸
+那里藏着我内心的恶魔
+那里藏着我内心的恶魔
+不要靠我太近
+这里再无光明
+那里藏着我内心的恶魔
+那里藏着我内心的恶魔
+当所有的一切落幕
+这就是结束了吗
+当所有光都熄灭
+罪恶开始蠢蠢欲动
+他们掘翻你的坟墓
+揭穿你的伪装
+大声尖叫吧
+在这一片狼藉中
+我不想你受伤害
+却被困束，无能为力
+尽管我所做的一切都是为了你
+不想掩藏这真相
+不管我们以何为食
+贪念是我们的本质
+我的欲望王国已经筑起
+我的欲望王国已经筑起
+当你感受到我的炽热
+请凝视我的双眸
+那里藏着我内心的恶魔
+那里藏着我内心的恶魔
+不要靠我太近
+这里再无光明
+那里藏着我内心的恶魔
+那里藏着我内心的恶魔
+他们说你是始作俑者
+在我看来只是命运弄人
+这是命中注定
+我必须任你远离
+你的双眸，闪烁迷人
+我多想留住那光芒
+此刻我再也无法逃避
+除非你告诉我这是对的
+当你感受到我的炽热
+当你感受到我的炽热
+请凝视我的双眸
+那里藏着我内心的恶魔
+那里藏着我内心的恶魔
+不要靠我太近
+这里再无光明
+那里藏着我内心的恶魔
+那里藏着我内心的恶魔
+</pre></td><td width=10%></tr></table>
+";
+
+
+
 ?>
