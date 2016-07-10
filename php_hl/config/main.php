@@ -5,6 +5,18 @@
 
  	2016-4-17  田勇 alias tybitsfox
  */
+session_start();
+if(!defined("FULL_PATH"))
+{
+	$s1=dirname(__FILE__);
+	$s2=strstr($s1,"php_hl");
+	$i=strlen($s1)-strlen($s2);
+	$s2=substr($s1,0,$i)."php_hl/";
+	define("FULL_PATH",$s2);
+}
+//确保包含了全局变量的定义文件
+$str11=constant("FULL_PATH")."config/setup.php";
+require_once($str11);
 ?>
 <?php
 	define("SDHL_GBL","sdhl_2016");
@@ -54,9 +66,10 @@
 	$yway_cnt				=	6;		//纵坐标的刻度个数
 
 /////////////////下面添加的用于按年度访问不同数据库服务器上的数据
-	$DB_ADDR_TY				=	array('2016'=>'127.0.0.1','2017'=>'127.0.0.1');
-	$DB_PORT_TY				=	array('2016'=>3306,'2017'=>3306);
-	$DB_NAME_TY				=	array('2016'=>'env2016','2017'=>'env2017');
+//	$DB_ADDR_TY				=	array('2016'=>'127.0.0.1','2017'=>'127.0.0.1');
+//	$DB_PORT_TY				=	array('2016'=>3306,'2017'=>3306);
+//	$DB_NAME_TY				=	array('2016'=>'env2016','2017'=>'env2017');
+//include_once("./config/setup.php");
 	$DB_USER_TY				=	"sdhl";
 	$DB_PWD_TY				=	"sdhl2016";
 /////////////////废水和污水厂////////////////////////////////////////////
