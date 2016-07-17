@@ -1,0 +1,81 @@
+create user 'sdhl'@'localhost' identified by 'sdhl2016';
+grant all on env2016.* to 'sdhl'@'localhost';
+
+<center><font size=5 color=red>关于windows下mysql的优化</font></center>
+生成了550M的测试数据（一个月，96个废气站点）在windows下表现糟糕！一个select count(*)竟然要用1分20秒。
+同样的机器配置，将数据导入linux下的数据库，执行select count(*) 只用了1秒多点，效率相差了近百倍！
+为确保比较结果的正确性，又将数据导入我的thinkpad本本上的mysql数据库（linux下）测试依然是1秒多。看来
+这种效率的差别是决定不能容忍的了，对比linux和windows下mysql的配置文件，差别不是很大，为确保一致，将
+linux下的配置移至windows下，测试无效。进入mysql查看加载的插件(linux下)：
+mysql&gt; show plugins;
++--------------------------+----------+--------------------+---------+---------+
+| Name                     | Status   | Type               | Library | License |
++--------------------------+----------+--------------------+---------+---------+
+| binlog                   | ACTIVE   | STORAGE ENGINE     | NULL    | GPL     |
+| mysql_native_password    | ACTIVE   | AUTHENTICATION     | NULL    | GPL     |
+| mysql_old_password       | ACTIVE   | AUTHENTICATION     | NULL    | GPL     |
+| MRG_MYISAM               | ACTIVE   | STORAGE ENGINE     | NULL    | GPL     |
+| CSV                      | ACTIVE   | STORAGE ENGINE     | NULL    | GPL     |
+| MyISAM                   | ACTIVE   | STORAGE ENGINE     | NULL    | GPL     |
+| MEMORY                   | ACTIVE   | STORAGE ENGINE     | NULL    | GPL     |
+| PERFORMANCE_SCHEMA       | ACTIVE   | STORAGE ENGINE     | NULL    | GPL     |
+| FEDERATED                | DISABLED | STORAGE ENGINE     | NULL    | GPL     |
+| ARCHIVE                  | ACTIVE   | STORAGE ENGINE     | NULL    | GPL     |
+| BLACKHOLE                | ACTIVE   | STORAGE ENGINE     | NULL    | GPL     |
+| InnoDB                   | ACTIVE   | STORAGE ENGINE     | NULL    | GPL     |
+| INNODB_TRX               | ACTIVE   | INFORMATION SCHEMA | NULL    | GPL     |
+| INNODB_LOCKS             | ACTIVE   | INFORMATION SCHEMA | NULL    | GPL     |
+| INNODB_LOCK_WAITS        | ACTIVE   | INFORMATION SCHEMA | NULL    | GPL     |
+| INNODB_CMP               | ACTIVE   | INFORMATION SCHEMA | NULL    | GPL     |
+| INNODB_CMP_RESET         | ACTIVE   | INFORMATION SCHEMA | NULL    | GPL     |
+| INNODB_CMPMEM            | ACTIVE   | INFORMATION SCHEMA | NULL    | GPL     |
+| INNODB_CMPMEM_RESET      | ACTIVE   | INFORMATION SCHEMA | NULL    | GPL     |
+| INNODB_BUFFER_PAGE       | ACTIVE   | INFORMATION SCHEMA | NULL    | GPL     |
+| INNODB_BUFFER_PAGE_LRU   | ACTIVE   | INFORMATION SCHEMA | NULL    | GPL     |
+| INNODB_BUFFER_POOL_STATS | ACTIVE   | INFORMATION SCHEMA | NULL    | GPL     |
+| partition                | ACTIVE   | STORAGE ENGINE     | NULL    | GPL     |
++--------------------------+----------+--------------------+---------+---------+
+mysql&gt; show engines;
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| Engine             | Support | Comment                                                        | Transactions | XA   | Savepoints |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| MyISAM             | YES     | MyISAM storage engine                                          | NO           | NO   | NO         |
+| CSV                | YES     | CSV storage engine                                             | NO           | NO   | NO         |
+| MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables      | NO           | NO   | NO         |
+| BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears) | NO           | NO   | NO         |
+| PERFORMANCE_SCHEMA | YES     | Performance Schema                                             | NO           | NO   | NO         |
+| MRG_MYISAM         | YES     | Collection of identical MyISAM tables                          | NO           | NO   | NO         |
+| ARCHIVE            | YES     | Archive storage engine                                         | NO           | NO   | NO         |
+| FEDERATED          | NO      | Federated MySQL storage engine                                 | NULL         | NULL | NULL       |
+| InnoDB             | DEFAULT | Supports transactions, row-level locking, and foreign keys     | YES          | YES  | YES        |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+mysql&gt; show global variables like 'have_%';
++----------------------+----------+
+| Variable_name        | Value    |
++----------------------+----------+
+| have_compress        | YES      |
+| have_crypt           | YES      |
+| have_csv             | YES      |
+| have_dynamic_loading | YES      |
+| have_geometry        | YES      |
+| have_innodb          | YES      |
+| have_ndbcluster      | NO       |
+| have_openssl         | DISABLED |
+| have_partitioning    | YES      |
+| have_profiling       | YES      |
+| have_query_cache     | YES      |
+| have_rtree_keys      | YES      |
+| have_ssl             | DISABLED |
+| have_symlink         | YES      |
++----------------------+----------+
+查看数据库的数据引擎：
+show table status from env2016;
+结果数据引擎都是使用的InnoDB引擎。
+虽然查看windows下my.ini配置文件，显示采用的默认引擎也是InnoDB，但是show global variables like 'have_%'命令查询的结果却是
+没有安装InnoDB数据引擎!!这可能就是问题所在了，为了证实，准备在windows下安装InnoDB引擎：
+
+
+
+
+
+
