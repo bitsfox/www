@@ -106,10 +106,60 @@ makefile中的变量大小写敏感，引用时需$(var)或者\${var},单字符�
 	vpath %.h /include/foo
 	VPATH称为一般搜索，vpath称为选择性搜索
 <font color=red size=4>六、大型项目管理-递归式make</font>
+	测试用目录结构：
+	myproject
+		|
+		|-----include
+		|
+		|-----lib------db
+		|	   |
+		|	   ----codec
+		|	   |
+		|	   ----ui
+		|		   
+		|-----app----player
+		|
+		|-----doc
+	在顶层目录myproject下有个总的makefile，在lib/db,codec,ui目录下各有独立的makefile
+	在主目录app下的player目录中也有独立的makefile。现在要在顶层目录下的makefile文件中递归调用
+	各个子目录下的makefile。各makefile实现如下：
+----db/makefile：---------------
+all:
+    @echo 'update lib_db code'
+----codec/makefile:-------------
+all:
+    @echo 'update lib_codec code'
+----ui/makefile:----------------
+all:
+    @echo 'update lib_ui code'
+----app/player/makefile:--------
+all:
+    @echo 'update main program'
+----------sub End----------------
+----------makefile--------------
+lib_ui	:=	lib/ui
+lib_codec	:=	lib/codec
+lib_db	:=	lib/db
+lib_all	:=	$(lib_ui) $(lib_codec) $(lib_db)
+player	:=	app/player
 
+.PHONY:	all $(player) $(lib_all)
+all: $(player) $(lib_all)
 
+$(player) $(lib_all):
+	$(MAKE) --directory=$@
+----------End------------------
 
-
+这里采用了一个伪目标（假想工作目标）作为条件的技巧：
+all: $(player) $(lib_all)
+一保证各个目录（变量）得以无条件执行:
+$(player) $(lib_all):
+	$(MAKE) --directory=$@
+而命令语句非常的简单：
+	$(MAKE) --directory=$@
+	或者：
+	$(MAKE) -C $@
+该命令首先进入指定的目录，然后执行该目录下的makefile文件。	  
 
 
 
