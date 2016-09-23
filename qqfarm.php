@@ -176,6 +176,7 @@ t02:t02.c
 </font></pre>";
 echo "<hr width=80%>
 <a name=postgresql01></a><center><font size=5 color=blue>postgresql介绍</font></center>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;2016年9月添加的带有c接口介绍的8.1版本手册 &nbsp;&nbsp;<a href='postgresql/pgsqldoc-8.1c/index.html' target=_blank>postgresql8.1</a>
 <pre>";
 include_once("./linux_about/about_postgresql.txt");
 echo "</pre>";
