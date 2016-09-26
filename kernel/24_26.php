@@ -32,7 +32,7 @@ KERNEL_VERSION(major, minor, release) － 由主、从、修订版本号构造�
 #Makefile2.4
 KVER=$(shell uname -r) 
 KDIR=/lib/modules/$(KVER)/build
-OBJS=mymodule.o";
+OBJS=mymodule.o<br>";
 echo "CFLAGS=-D__KERNEL__ -I$(KDIR)/include -DMODULE -D__KERNEL_SYSCALLS__ -DEXPORT_SYMTAB
   -O2 -fomit-frame-pointer  -Wall  -DMODVERSIONS -include $(KDIR)/include/linux/modversions.h
 all: $(OBJS)
