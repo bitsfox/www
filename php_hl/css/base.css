@@ -20,7 +20,7 @@ a:hover {color:blue;}
 #clear_id
 {clear:both;}
 #header_id
-{background: #F3F3F3 url(./logo.jpg) no-repeat;margin:0 auto;padding:0;float:left;width:40%;height:90px;}
+{background: #F3F3F3 url(./logo.png) no-repeat;margin:0 auto;padding:0;float:left;width:40%;height:90px;}
 #menu_id
 {background-color:#F3F3F3;width:60%;margin:0 auto;padding:20px 0;float:right;}
 #menu_id ul li

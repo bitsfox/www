@@ -46,6 +46,9 @@ if($_SESSION['leftcnt'] < 0)
 global $tybitsfox;
 ?>
 <html><head><title><?php echo $tybitsfox['title'];?></title></head><body>
+<?php
+die("<center><font color=blue size=5>新用户的密码获取，请与管理员联系</font></center>");
+?>
 <form name="register" method="post" action="./reg.php">
 <div><h2><?php echo $tybitsfox['regmsg'];?></h2></div>
 <div class='ass_class'>
@@ -55,7 +58,7 @@ global $tybitsfox;
 <ul><li id='da1'>再次输入密码：</li><li id='da2'><input type='password' name='password1' size=30 /></li></ul>
 <ul><li id='da3'><input type='submit' name='submit' value='确定'/></li></ul>
 </div></div>
-
+</form>
 </body></html>
 <?php
 if($_POST['submit'] == true)

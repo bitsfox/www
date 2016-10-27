@@ -89,7 +89,7 @@ else
 	if(!isset($_SESSION['leftcnt']))
 		$_SESSION['leftcnt']=4;
 }
-
+require_once("template/03/foot.php");
 ?>
 
 
