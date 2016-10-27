@@ -74,6 +74,9 @@ ssh 默认端口修改为：643
 ssh连接方式： <font color=red size=3>ssh root@192.168.1.120 -p643</font>
 git连接方式： <font color=red size=3>git remote add origin ssh://root@192.168.1.120:643/workarea/git-depot/www.git</font>
 scp链接方式： <font color=red size=3>scp -P643 -r root@192.168.1.120:/var/www/php ./</font>
+git远程空仓库的建立：<font color=red size=3>git init --bare workdir.git</font>这样建立起来的空仓库才能将本地分支remote 到 origin
+
+
 数据库备份及恢复:
 几个常用用例：
 1.导出整个数据库
