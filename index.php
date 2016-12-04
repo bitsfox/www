@@ -26,20 +26,22 @@ include_once("./mystyle.css");
 echo "<body onload='time()'><a name=a01></a>";
 echo "<table class='aaaa'><tr><td width=750px align=left valign=top>";
 echo "<div class='menu'><ul>";
-$conn=mysql_connect("localhost","taenv","taenv2014");
-if(! $conn)
-{die("connect err: ".mysql_error());}
-mysql_select_db("web_data",$conn);
-mysql_query("set names utf8",$conn);
+$conn=mysqli_connect("localhost","taenv","taenv2014","web_data");
+//if(! $conn)
+if(mysqli_connect_errno())
+{die("connect err");}
+//mysql_select_db("web_data",$conn);
+//mysql_query("set names utf8",$conn);
+mysqli_set_charset($conn,"utf8");
 for($i=0;$i<6;$i++)
 {
 //	$sqlstr="select count(*) from menu_tb where idx = ".$i;
 	$sqlstr="select * from menu_tb where idx = ".$i;
-	$result=mysql_query($sqlstr,$conn);
-	if(!$result)
-	{die("valid error");}
+	$result=mysqli_query($conn,$sqlstr);
+//	if(!$result)
+//	{die("valid error");}
 	$j=0;
-	while($row=mysql_fetch_row($result))
+	while($row=mysqli_fetch_row($result))
 	{
 		if($j==0)
 		{
@@ -51,22 +53,23 @@ for($i=0;$i<6;$i++)
 	echo "</ul></li>";
 //	$j=$row[0];
 	//echo "idx = ".$j."<br>";
-	mysql_free_result($result);
+	mysqli_free_result($result);
 }
 echo "</ul></li></ul></td><td width=150px align=left valign=center>欢迎光临<font color=red size=2>tybitsfox</font>小站</td><td align=left valign=top><div class='align-center' id='showtime'></div></td></tr><tr><td align=left valign=top><font color=red>我经常访问的热点链接：</font><br>";//</table>";
 $sqlstr="select * from menu_tb order by count desc";
-$result=mysql_query($sqlstr,$conn);
-if(!$result)
+$result=mysqli_query($conn,$sqlstr);
+/*if(!$result)
 {
 	mysql_close($conn);
 	die("valid error!!!");
-}
+}*/
 for($i=0;$i<9;$i++)
 {
-	$row=mysql_fetch_row($result);
+	$row=mysqli_fetch_row($result);
 	echo "<br><a href='./openall.php?subid=".$row[5]."&submenu=".$row[1]."&url=".$row[3]."' title='".$row[4]."' target=_blank>".$row[1]."</a><br>";
 }
-mysql_close($conn);
+mysqli_free_result($result);
+mysqli_close($conn);
 //echo "</td><td colspan=2 align=left valign=top><form name='form1' method='post' action='index.php'><table class='aaaa'><tr><td align=left width=100px><input type=hidden name=action value=search size=0>站内查询关键字：</td><td align=left width=160px><input type=text name=keyword size=20 /></td><td align=left><input type=submit value='查 询' /></td></tr><tr><td colspan=3>";
 echo "</td><td colspan=2 align=left valign=top><form name='form1' method='get' action='http://www.baidu.com/s' target=_blank><table class='aaaa'><tr><td align=left width=100px><input type=hidden name=action value=search size=0>站外搜索：</td><td align=left width=160px><input type=text name=word size=20 /></td><td align=left><input type=submit value='搜 索' /></td></tr><tr><td colspan=3>";
 if($_POST[action]=="search")
