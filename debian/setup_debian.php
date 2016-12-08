@@ -2,6 +2,8 @@
 <?php
 echo "<center><font size=5 color=red>debian安装笔记</font></center>";
 echo "<hr width=80% size=2 color=blue>";
+include_once("set_debian_new.php");
+echo "<hr width=80% size=2 color=blue>";
 echo "<center><font size=3 color=black>2013-10-10 thinkpad安装debian7简述</font></center><br>";
 echo "<font color=blue>1、由于debian7采用了3.04的内核，所以我的小黑的ATI显卡已经的到了完美支持，无需再进行内核编译和使用testing<br>";
 echo "版本的xserver了。安装完基本系统之后，apt-get install xserver-xorg xinit就能完美的显示了。<br>";
