@@ -60,6 +60,21 @@ echo "修改完源后，开始执行更新：apt-get update
 	aptitude search libsdl
 	apt-get install libsdl1.2-dev
 	apt-get install libsdl-ttf2.0-0
+6、 oss驱动的添加，由于我喜欢的一些老旧的程序还在使用oss音频系统，而现在的linux版本已基本上不再支持oss了，所以只能自己解决。
+	比如我喜欢的xmame.x11这个一个非常优秀而简易的街机模拟器，我感觉比新版本的mame要好用的多。可是他却需要oss支持，首次启动时会提示：
+	/dev/dsp：No such file or directory，此时游戏只有图像没有声音。解决的方法是：
+	1、手动建立该文件：
+		mknod /dev/dsp c 14 3 
+		chmod 666 /dev/dsp
+	再次运行xmame,如果还是出现错误提示，则表示oss内核模块没有加载。
+	2、手动加载内核模块：
+		modprobe snd-pcm-oss
+		modprobe snd-mixer-oss
+	这两个模块一般在：/lib/module/4.8.0-1-686-pae/kernel/sound/core/oss目录下
+	如果想以后系统启动时自动加载这两个模块的话，可在/etc/modules文件中添加：
+	snd-pcm-oss
+	snd-mixer-oss	
+
 至此，一个基本系统已经搭建完成。还有重要的一点，安装新系统前，一定要将常用软件的配置文件备份。例如vim，fluxbox，conky，bash等等等等
 待新系统装完后直接将备份文件拷贝回来，那真是爽的一逼！
 </font></pre>";
