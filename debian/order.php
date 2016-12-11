@@ -285,8 +285,20 @@ $ vi .vimrc
 #添加，设置vi里的报警为闪屏，如果闪屏也不要那就加入set vb t_vb= 
 set vb
 注：xset 和 xrandr 等命令都包含在xorg安装包内，如果需要，先安装apt-get install xorg
-</pre></font><br><br>
-";
+xset -dpms          # Disable DPMS
+xset +dpms          # Enable DPMS
+xset s off          # Disable screen blanking
+xset s 150          # Blank the screen after 150 seconds
+xset dpms 300 600 900       # Set standby, suspend, & off times (in seconds)
+xset dpms force standby     # Immediately go into standby mode
+xset dpms force suspend     # Immediately go into suspend mode
+xset dpms force off     # Immediately turn off the monitor
+xset -q             # Query current settings
+
+setterm -blank 10           # Blank the screen in 10 minutes
+setterm -powersave on       # Put the monitor into VESA power saving mode
+setterm -powerdown 20       # Set the VESA powerdown to 20 minutes
+</pre></font><br><br>";
 echo "<a name=ord08></a><font size=4 color=blue>三、GNU实用工具程序</font>";
 echo "<font size=3 color=black><pre>
 <font color=red>1、objcopy命令简介</font>
