@@ -74,7 +74,10 @@ echo "修改完源后，开始执行更新：apt-get update
 	如果想以后系统启动时自动加载这两个模块的话，可在/etc/modules文件中添加：
 	snd-pcm-oss
 	snd-mixer-oss	
-
+7、 debian8 ssh允许root登录的设置：
+	修改/etc/ssh/sshd.conf，然后重启ssh就能远程登录了：
+	PermitRootLogin yes
+	PermitEmptyPasswords no
 至此，一个基本系统已经搭建完成。还有重要的一点，安装新系统前，一定要将常用软件的配置文件备份。例如vim，fluxbox，conky，bash等等等等
 待新系统装完后直接将备份文件拷贝回来，那真是爽的一逼！
 </font></pre>";

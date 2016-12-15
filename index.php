@@ -29,7 +29,7 @@ echo "<div class='menu'><ul>";
 $conn=mysqli_connect("localhost","taenv","taenv2014","web_data");
 //if(! $conn)
 if(mysqli_connect_errno())
-{die("connect err");}
+{die("connect errsssss");}
 //mysql_select_db("web_data",$conn);
 //mysql_query("set names utf8",$conn);
 mysqli_set_charset($conn,"utf8");
