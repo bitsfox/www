@@ -1,4 +1,4 @@
-<?php
+/*<?php
 //{{{
 putenv('GDFONTPATH='.realpath('.'));
 session_start();
@@ -111,7 +111,7 @@ imagettftext($im,10,0,$sw-200,40,$blue,$font,$s2);
 header('Content-type:image/png'); //通知浏览器这不是文本而是一个图片
 imagepng($im);
 imagedestroy($im);  //}}}
-?>
+?> */
 <?php
 //{{{设置运行的环境变量，从session和cookie取得传入的参数
 putenv('GDFONTPATH='.realpath('.'));
@@ -232,14 +232,22 @@ for($j=0;$j<$i;$j++)
 	array_push($zzy1,$py);
 }//得到全部坐标
 $i=count($zzy);
-for($j=1;$j<$i;$j++)
+//2016-12-17修改，小时值数据（24）采用柱状图表示，日均值（一个月）采用曲线图表示
+if($i>24)
 {
-	$py=$zzy[$j-1];
-	$py1=$zzy[$j];
-	imageline($im,$py[0],$py[1],$py1[0],$py1[1],$red);
-	$py=$zzy1[$j-1];
-	$py1=$zzy1[$j];
-	imageline($im,$py[0],$py[1],$py1[0],$py1[1],$blue);
+	for($j=1;$j<$i;$j++)
+	{
+		$py=$zzy[$j-1];
+		$py1=$zzy[$j];
+		imageline($im,$py[0],$py[1],$py1[0],$py1[1],$red);
+		$py=$zzy1[$j-1];
+		$py1=$zzy1[$j];
+		imageline($im,$py[0],$py[1],$py1[0],$py1[1],$blue);
+	}
+}
+else
+{//小时值，采用柱状图
+
 }
 //}}}
 $s1="红色曲线：COD";
