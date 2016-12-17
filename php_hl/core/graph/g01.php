@@ -247,7 +247,14 @@ if($i>24)
 }
 else
 {//小时值，采用柱状图
-
+	$vv=$xstep/2;
+	for($j=0;$j<$i;$j++)
+	{
+		$py=$zzy($j);
+		imagerectangle($im,$py[0],$py[1],$py[0]+$vv,$oy,$red);
+		$py1=$zzy1($j);
+		imagerectangle($im,$py1[0]+$vv,$py1[1],$py1[0]+$xstep,$oy,$blue);
+	}
 }
 //}}}
 $s1="红色曲线：COD";
