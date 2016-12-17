@@ -70,11 +70,11 @@ class data_sright implements main_data
 		switch($_SESSION['sys_level'])
 		{
 		case 0: //县区级
-			$s1="SELECT e.uid,e.uname,e.date,e.cod,e.nhx,e.ll_sh,e.ll_jg,e.ll_lj FROM (SELECT a.uid,b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg,a.ll_lj FROM zd_info as b LEFT JOIN fs_h_master as a ON b.uid = a.uid AND a.date > date_add(now(),interval -2 hour) WHERE b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$s1="SELECT e.uid,e.uname,e.date,e.cod,e.nhx,e.ll_sh,e.ll_jg,e.ll_lj FROM (SELECT b.uid,b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg,a.ll_lj FROM zd_info as b LEFT JOIN fs_h_master as a ON b.uid = a.uid AND a.date > date_add(now(),interval -2 hour) WHERE b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
 			$this->con_val=sprintf($s1,$this->para[1]);
-			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.utype = 0 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN  b.sttm AND b.edtm";
+			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.aid = %u AND a.utype = 0 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN  b.sttm AND b.edtm";
 			$s2=$this->para[3]." 00:00:01";
-			$this->con_std=sprintf($s1,$this->para[1],$s2);
+			$this->con_std=sprintf($s1,$this->para[0],$this->para[1],$s2);
 			break;
 		case 1://省级
 			$s1="SELECT e.uid,e.uname,e.date,e.cod,e.nhx,e.ll_sh,e.ll_jg,e.ll_lj FROM (SELECT b.uid,b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg,a.ll_lj FROM zd_info AS b LEFT JOIN fs_h_master AS a ON a.date > date_add(now(),interval -2 hour) AND a.uid = b.uid WHERE b.aid BETWEEN %u AND %u AND b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
