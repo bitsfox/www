@@ -134,7 +134,7 @@ for($j=0;$j<$i;$j++)
 				$m=$std+floor($std*$ey[$l]/$maxv[$l]);
 			else
 				$m=floor($std*$ey[$l]/$stdv[$l]);
-			$o=$ox+$j*$xstep;
+			$o=$ox+$j*$xstep*2;
 			$dy[0]=$o;$dy[1]=$oy-$m;
 			array_push($ay[$l],$dy);
 		}
@@ -149,7 +149,7 @@ for($j=0;$j<$i;$j++)
 				$m=$std+floor($std*$ey[$l]/$maxv[$l]);
 			else
 				$m=floor($std*$ey[$l]/$stdv[$l]);
-			$o=$ox+$j*$xstep;
+			$o=$ox+$j*$xstep*2;
 			$dy[0]=$o;$dy[1]=$oy-$m;
 			array_push($ay[$l],$dy);
 		}

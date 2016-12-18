@@ -702,17 +702,25 @@ class data_sright_mx implements main_data
 	public function parse_sql()
 	{//废水
 		if($this->w == 1)
-		{
-			$s1="SELECT date,cod,nhx,ll_sh,ll_jg,ll_lj FROM fs_h_master WHERE uid = %u AND date > date_add(now(),interval -2 month) ORDER BY date";
-			$this->con_val=sprintf($s1,$this->para[0]);
+		{//目前仅是小时值，没有超标值和日均值。
+//			$s1="SELECT date,cod,nhx,ll_sh,ll_jg,ll_lj FROM fs_h_master WHERE uid = %u AND date > date_add(now(),interval -2 month) ORDER BY date";
+			$s1="SELECT date,cod,nhx,ll_sh,ll_jg,ll_lj FROM fs_h_master WHERE uid = %u AND date BETWEEN '%s' AND '%s' ORDER BY date";
+			$s2=$this->para[3]." 00:00:00";
+			$s3=$this->para[3]." 23:59:59";
+			$this->con_val=sprintf($s1,$this->para[0],$s2,$s3);
+//			$this->con_val=sprintf($s1,$this->para[0]);
 			$s1="SELECT iid,std1,std1_area,std2 FROM gb_std WHERE uid = %u AND '%s' BETWEEN sttm AND edtm";
 			$s2=$this->para[3]." 00:00:01";
 			$this->con_std=sprintf($s1,$this->para[0],$s2);
 		}
 		else
 		{
-			$s1="SELECT date,cod,nhx,ll_sh,ll_jg,ll_lj FROM wsc_h_master WHERE uid = %u AND date > date_add(now(),interval -2 month) ORDER BY date";
-			$this->con_val=sprintf($s1,$this->para[0]);
+//			$s1="SELECT date,cod,nhx,ll_sh,ll_jg,ll_lj FROM wsc_h_master WHERE uid = %u AND date > date_add(now(),interval -2 month) ORDER BY date";
+			$s1="SELECT date,cod,nhx,ll_sh,ll_jg,ll_lj FROM wsc_h_master WHERE uid = %u AND date BETWEEN '%s' AND '%s' ORDER BY date";
+			$s2=$this->para[3]." 00:00:00";
+			$s3=$this->para[3]." 23:59:59";
+			$this->con_val=sprintf($s1,$this->para[0],$s2,$s3);			
+//			$this->con_val=sprintf($s1,$this->para[0]);
 			$s1="SELECT iid,std1,std1_area,std2 FROM gb_std WHERE uid = %u AND '%s' BETWEEN sttm AND edtm";
 			$s2=$this->para[3]." 00:00:01";
 			$this->con_std=sprintf($s1,$this->para[0],$s2);

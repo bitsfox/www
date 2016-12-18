@@ -563,8 +563,8 @@ class tb_fs_mx implements tab_show
 		global $FS_BODY_1,$FS_BODY_RED,$FS_BODY_NOR,$FS_BODY_LL;
 		$str="";
 		$i=count($this->dy);
-		if($i>10)
-			$i=10;
+		if($i>31)
+			$i=31;
 		for($j=0;$j<$i;$j++)
 		{
 			$y=$this->dy[$j];
@@ -619,8 +619,8 @@ class tb_wsc_mx implements tab_show
 		global $FS_BODY_1,$FS_BODY_RED,$FS_BODY_NOR,$FS_BODY_LL;
 		$str="";
 		$i=count($this->dy);
-		if($i>10)
-			$i=10;
+		if($i>31)
+			$i=31;
 		for($j=0;$j<$i;$j++)
 		{
 			$y=$this->dy[$j];
@@ -675,8 +675,8 @@ class tb_fq_mx implements tab_show
 		global $FQ_BODY_1,$FQ_BODY_RED,$FQ_BODY_NOR,$FQ_BODY_LL;
 		$str="";
 		$i=count($this->dy);
-		if($i>10)
-			$i=10;
+		if($i>31)
+			$i=31;
 		for($j=0;$j<$i;$j++)
 		{
 			$y=$this->dy[$j];
