@@ -126,7 +126,8 @@ require_once($str11);
 	$FQS_BODY_NOR			=	"<td width=8%% >%s</td><td width=8%% >%s</td>";
 	$FQS_BODY_LL			=	"<td width=8%% >%s</td><td width=10%% >%s</td></tr>";
 	$FQS_HEADER_END			=	"</table>";
-	
+//////////////////////////////2016-12-19添加无效值的定义/////////////////////////////
+		
 	
 
 
