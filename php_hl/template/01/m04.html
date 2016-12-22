@@ -38,7 +38,10 @@
 			if(($i == NULL) || ($i < 100))
 				$i=1000;
 			$xs=floor($i*0.67);$xy=500;
-		    $s1="<img src='core/graph/g02.php' width= ".$xs." height= ".$xy." />";
+			if($_SESSION['gra_tp'] == 2) //废水超标 =0 小时值 =1 日均值 =2 小时超标 =3 日均超标
+		   		$s1="<img src='core/graph/g03.php' width= ".$xs." height= ".$xy." />";
+			else
+		   		$s1="<img src='core/graph/g02.php' width= ".$xs." height= ".$xy." />";
 			echo $s1;
 		}
 	?>
@@ -56,33 +59,3 @@ require_once("template/03/foot.php");
 ?>	
 	</div>
 </body></html>	
-
-<?php
-//{{{
-			/*
-			global $scr_width,$scr_height,$gx;
-			$rb=new tb_mxright_g();
-			$rb->show_header();
-		//	$rb->show_tail();
-		//	$rb->show_body();
-		//	$cd=$_COOKIE['screen']; $cd*=0.9*0.75;
-			if(isset($_SESSION['gra_width']))
-			{
-				unset($_SESSION['gra_width']);
-				unset($_SESSION['gra_gx']);
-				unset($_SESSION['gra_gy']);
-				unset($_SESSION['gra_gdata']);
-			}
-			$_SESSION['gra_width'] = array($scr_width,$scr_height);
-			$_SESSION['gra_gx'] = $gx;
-			$_SESSION['gra_gy'] = $gy;
-			$_SESSION['gra_gdata'] = $gdata;
-			//print_r($_SESSION['gra_gdata']);
-		    $s1="<img src='core/graph/g01.php' width= ".$scr_width." height= ".$scr_height." />";
-			echo $s1;
-			//echo $scr_width;
-			//$yy=$gdata;
-			//print_r($yy);  
-			*/
-//}}}
-?>

@@ -39,6 +39,7 @@ class mx_g implements gra_data
 		unset($_SESSION['fs_g_xway']);
 		unset($_SESSION['fs_g_yway']);
 		unset($_SESSION['fs_g_data']);
+		unset($_SESSION['gra_tp']);
 	}//}}}
 //{{{public function __destruct()
 	public function __destruct()
@@ -110,28 +111,94 @@ class mx_g implements gra_data
 	{//虽然目前的gdata中包含了所有的数据，但是用于显示的只是其中一小部分，因此先精简一下再传递
 		$ay=array();
 		$i=count($this->gdata);
-		if($this->w == 0) //废气
-		{
-			for($j=0;$j<$i;$j++)
+		if($this->d > 1)//先判断超标值
+		{//超标值不需要添加无效值，超标值使用柱状图显示	
+			if($this->w == 0) //废气
 			{
-				$by=array();
-				$by[0]=$this->gdata[$j][2];		//get so2
-				$by[1]=$this->gdata[$j][4];		//get nox
-				$by[2]=$this->gdata[$j][6];		//get dust
-				array_push($ay,$by);
+				for($j=0;$j<$i;$j++)
+				{
+					$by=array();
+					$by[0]=$this->gdata[$j][2];		//get so2
+					$by[1]=$this->gdata[$j][4];		//get nox
+					$by[2]=$this->gdata[$j][6];		//get dust
+					$by[3]=$this->gdata[$j][1];		//2016-12-21添加，由日期确定显示位置
+					array_push($ay,$by);
+				}
+			}
+			else
+			{
+				for($j=0;$j<$i;$j++)
+				{
+					$by=array();
+					$by[0]=$this->gdata[$j][2];		//get cod
+					$by[1]=$this->gdata[$j][4];		//get nhx
+					$by[2]=$this->gdata[$j][1];		//2016-12-21添加，由日期确定显示位置
+					array_push($ay,$by);
+				}
 			}
 		}
 		else
-		{
-			for($j=0;$j<$i;$j++)
+		{//不是超标值的话要添加无效值
+			$l=0;
+			if($this->w == 0)//废气，废气的小时和日均值都是step=1,合并处理
 			{
-				$by=array();
-				$by[0]=$this->gdata[$j][2];		//get cod
-				$by[1]=$this->gdata[$j][4];		//get nhx
-				array_push($ay,$by);
+				for($j=0;$j<$i;$j++)
+				{//废气小时值不会这种情况的，因为这不是实测值，而是计算生成的。
+//而我在计算时已经对无效的小时值进行了处理，所以，这里不会出现添加无效值的情况。但
+//为保持代码的一致，还是保留了添加无效值的代码						
+					$by=array();
+					$str=$this->gdata[$j][1];
+					if($this->d == 0)//小时值
+						$m=intval(substr($str,11,2));//取得当前记录的小时数
+					else
+						$m=intval(substr($str,8,2));//取得当前记录的天数
+					while($l < $m)
+					{
+						$l+=1;
+						$by[0]=constant("IGN_VAL");
+						$by[1]=constant("IGN_VAL");
+						$by[2]=constant("IGN_VAL");
+						array_push($ay,$by);
+						$by=array();
+					}
+					$by[0]=$this->gdata[$j][2];	//so2
+					$by[1]=$this->gdata[$j][4];	//nox
+					$by[2]=$this->gdata[$j][6]; //dust
+					array_push($ay,$by);
+					$l+=1;
+				}
+			}
+			else
+			{//废水,废水的小时值step=2,日均值step=1
+				$n=1;$l=0;
+				for($j=0;$j<$i;$j++)
+				{
+					$by=array();
+					$str=$this->gdata[$j][1];
+					if($this->d == 0)
+					{
+						$m=intval(substr($str,11,2));//取得当前记录的小时数
+						$n=2;
+					}
+					else
+						$m=intval(substr($str,8,2));//取得当前记录的天数
+					while($l < $m)
+					{
+						$l+=$n;
+						$by[0]=constant("IGN_VAL");
+						$by[1]=constant("IGN_VAL");
+						array_push($ay,$by);
+						$by=array();
+					}
+					$by[0]=$this->gdata[$j][2];		//get cod
+					$by[1]=$this->gdata[$j][4];		//get nhx
+					array_push($ay,$by);
+					$l+=$n;
+				}
 			}
 		}
 		$_SESSION['fs_g_data']=$ay;
+		$_SESSION['gra_tp']=$this->d;
 		return count($ay);
 	}//}}}
 //{{{public function analysis_post()
@@ -139,7 +206,7 @@ class mx_g implements gra_data
 	{}//}}}
 //{{{protected function get_days_by_month($tmfmt)
 	protected function get_days_by_month($tmfmt)
-	{//取得指定月份的天数
+	{//取得指定月份的天数2016-12-21 10:34:23
 		$month=substr($tmfmt,5,2);
 		$year=substr($tmfmt,0,4);
 		return date("d",mktime(0,0,0,$month+1,0,$year));

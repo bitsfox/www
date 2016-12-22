@@ -645,7 +645,7 @@ class data_wsright implements main_data
 }//}}}
 ///////////////////////////////////////////////////////////
 //{{{class data_sright_mx implements main_data 废水及污水厂明晰主界面数据及标准的获取类
-class data_sright_mx implements main_data
+class data_sright_mx implements main_data_ex
 {
 	private $db;//目标数据库相关信息
 	private $con_std,$con_val; //解析后生成的执行标准查询字符串和项目数据查询字符串
@@ -700,31 +700,49 @@ class data_sright_mx implements main_data
 	}//}}}
 //{{{public function parse_sql()
 	public function parse_sql()
-	{//废水
-		if($this->w == 1)
-		{//目前仅是小时值，没有超标值和日均值。
-//			$s1="SELECT date,cod,nhx,ll_sh,ll_jg,ll_lj FROM fs_h_master WHERE uid = %u AND date > date_add(now(),interval -2 month) ORDER BY date";
-			$s1="SELECT date,cod,nhx,ll_sh,ll_jg,ll_lj FROM fs_h_master WHERE uid = %u AND date BETWEEN '%s' AND '%s' ORDER BY date";
-			$s2=$this->para[3]." 00:00:00";
+	{
+		switch($this->para[2])
+		{
+			case 0://小时值
+				if($this->w == 1)//废水
+					$s1="SELECT date,cod,nhx,ll_sh,ll_jg,ll_lj FROM fs_h_master WHERE uid = %u AND date BETWEEN '%s' AND '%s' ORDER BY date";
+				else //污水厂
+					$s1="SELECT date,cod,nhx,ll_sh,ll_jg,ll_lj FROM wsc_h_master WHERE uid = %u AND date BETWEEN '%s' AND '%s' ORDER BY date";
+				break;
+			case 1://日均值
+				if($this->w == 1)
+					$s1="SELECT date,cod,nhx,ll_sh,ll_jg,ll_lj FROM fs_d_master WHERE uid = %u AND date BETWEEN '%s' AND '%s' ORDER BY date";
+				else
+					$s1="SELECT date,cod,nhx,ll_sh,ll_jg,ll_lj FROM wsc_d_master WHERE uid = %u AND date BETWEEN '%s' AND '%s' ORDER BY date";
+				break;
+//注意：这里的超标查询字符串不完善，还需要和执行标准的比较，所以，要在取得了执行标准后在完善：" AND (cod >= %0.2f OR nhx >= %0.2f) ORDER BY date";
+			case 2://小时超标值
+				if($this->w == 1)
+					$s1="SELECT date,cod,nhx,ll_sh,ll_jg,ll_lj FROM fs_h_master WHERE uid = %u AND date BETWEEN '%s' AND '%s'";
+				else
+					$s1="SELECT date,cod,nhx,ll_sh,ll_jg,ll_lj FROM wsc_h_master WHERE uid = %u AND date BETWEEN '%s' AND '%s'";
+				break;
+			case 3://日均超标值
+				if($this->w == 1)
+					$s1="SELECT date,cod,nhx,ll_sh,ll_jg,ll_lj FROM fs_d_master WHERE uid = %u AND date BETWEEN '%s' AND '%s'";
+				else
+					$s1="SELECT date,cod,nhx,ll_sh,ll_jg,ll_lj FROM wsc_d_master WHERE uid = %u AND date BETWEEN '%s' AND '%s'";
+				break;
+		}
+		if(($this->para[2] == 1) || ($this->para[2] == 3))
+		{
+			$s2=substr($this->para[3],0,8)."01 00:00:00";
 			$s3=$this->para[3]." 23:59:59";
-			$this->con_val=sprintf($s1,$this->para[0],$s2,$s3);
-//			$this->con_val=sprintf($s1,$this->para[0]);
-			$s1="SELECT iid,std1,std1_area,std2 FROM gb_std WHERE uid = %u AND '%s' BETWEEN sttm AND edtm";
-			$s2=$this->para[3]." 00:00:01";
-			$this->con_std=sprintf($s1,$this->para[0],$s2);
 		}
 		else
 		{
-//			$s1="SELECT date,cod,nhx,ll_sh,ll_jg,ll_lj FROM wsc_h_master WHERE uid = %u AND date > date_add(now(),interval -2 month) ORDER BY date";
-			$s1="SELECT date,cod,nhx,ll_sh,ll_jg,ll_lj FROM wsc_h_master WHERE uid = %u AND date BETWEEN '%s' AND '%s' ORDER BY date";
 			$s2=$this->para[3]." 00:00:00";
 			$s3=$this->para[3]." 23:59:59";
-			$this->con_val=sprintf($s1,$this->para[0],$s2,$s3);			
-//			$this->con_val=sprintf($s1,$this->para[0]);
-			$s1="SELECT iid,std1,std1_area,std2 FROM gb_std WHERE uid = %u AND '%s' BETWEEN sttm AND edtm";
-			$s2=$this->para[3]." 00:00:01";
-			$this->con_std=sprintf($s1,$this->para[0],$s2);
 		}
+		$this->con_val=sprintf($s1,$this->para[0],$s2,$s3);//这里暂时不对超标值进行处理。
+		$s1="SELECT iid,std1,std1_area,std2 FROM gb_std WHERE uid = %u AND '%s' BETWEEN sttm AND edtm";
+		$s2=$this->para[3]." 00:00:01";
+		$this->con_std=sprintf($s1,$this->para[0],$s2);
 	}//}}}
 //{{{public function get_std()
 	public function get_std()
@@ -785,7 +803,8 @@ class data_sright_mx implements main_data
 					$by[1] = $ay[1];//nhx
 			}
 		}
-		$cy=$this->get_unit();
+//2016-12-20 修改，到这里标准值已经取得，可以对超标值的查询关键字符串进行最终格式化了		
+		$cy=$this->get_unit($by);
 		$i=count($cy);
 		$ey=array();
 		for($j=0;$j<$i;$j++)
@@ -805,13 +824,18 @@ class data_sright_mx implements main_data
 		}
 		return $ey;
 	}//}}}
-//{{{public function get_unit()
-	public function get_unit()
+//{{{public function get_unit($pp)
+	public function get_unit($pp)
 	{
 		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
 		if(mysqli_connect_errno())
 			die("connect error");
 		mysqli_set_charset($mysqli,"utf8");
+		if($this->para[2] >1)
+		{//这里，要完善对超标查询字符串的构造
+			$s1=$this->con_val." AND (cod >= %0.2f OR nhx >= %0.2f) ORDER BY date";
+			$this->con_val=sprintf($s1,$pp[0],$pp[1]);			
+		}
 		if($res=mysqli_query($mysqli,$this->con_val))
 		{
 			$vay=array();
@@ -1360,6 +1384,195 @@ class init_tab implements listbox_data
 
 
 
+///////////////////////////////////////////////////////////
+//{{{class bak_data_sright_mx implements main_data 废水及污水厂明晰主界面数据及标准的获取类
+/*class bak_data_sright_mx implements main_data
+{
+	private $db;//目标数据库相关信息
+	private $con_std,$con_val; //解析后生成的执行标准查询字符串和项目数据查询字符串
+	private $para; //保存post传入的参数
+	private $w;
+//{{{public function __construct($y)
+	public function __construct($y)
+	{
+		$i=0;
+		$this->para=array();
+		$this->w=$y;// y=1 废水 y=2 污水厂
+		if(!isset($_POST['starttime']))
+		{
+			if(!isset($_SESSION['INTR_SEND']))
+				die("符合当前控制级别和控制区域的站点为空，请指定查询的站点!");
+			$this->para[0]=$_SESSION['INTR_SEND'];//uid,这里和实时界面传递的参数不同，不再是aid
+			$this->para[1]=0;//控制级别
+			$this->para[2]=0;//数据类型
+			$this->para[3]=date("Y-m-d",time()); //默认日期
+			$ay=array();
+			$ay=getdate(time());
+			$i=$ay['year'];
+		}
+		else
+		{//这是正常的从post传递
+			$this->para[0]=$_POST['sel2p'];
+			$this->para[1]=$_POST['sel3p'];
+			$this->para[2]=$_POST['sel3'];
+			$this->para[3]=$_POST['starttime'];
+			$i=intval($_POST['starttime']);			
+		}
+		$this->get_used_db($i);
+	}//}}}
+//{{{public function __destruct()
+	public function __destruct()
+	{
+		unset($this->db);unset($this->con_std);unset($this->con_val);
+	}//}}}
+//{{{public function get_used_db($y)
+	public function get_used_db($y)
+	{
+		global $DB_ADDR_TY,$DB_PORT_TY,$DB_NAME_TY,$DB_PWD_TY;
+		global $DB_USER_TY;
+		if(!isset($DB_ADDR_TY[$y]))
+			die("你所选择的日期".$i."年，没有数据！");
+		$this->db=array();
+		array_push($this->db,$DB_ADDR_TY[$y]);
+		array_push($this->db,$DB_PORT_TY[$y]);
+		array_push($this->db,$DB_NAME_TY[$y]);
+		array_push($this->db,$DB_USER_TY);
+		array_push($this->db,$DB_PWD_TY);
+	}//}}}
+//{{{public function parse_sql()
+	public function parse_sql()
+	{//废水
+		if($this->w == 1)
+		{//目前仅是小时值，没有超标值和日均值。
+//			$s1="SELECT date,cod,nhx,ll_sh,ll_jg,ll_lj FROM fs_h_master WHERE uid = %u AND date > date_add(now(),interval -2 month) ORDER BY date";
+			$s1="SELECT date,cod,nhx,ll_sh,ll_jg,ll_lj FROM fs_h_master WHERE uid = %u AND date BETWEEN '%s' AND '%s' ORDER BY date";
+			$s2=$this->para[3]." 00:00:00";
+			$s3=$this->para[3]." 23:59:59";
+			$this->con_val=sprintf($s1,$this->para[0],$s2,$s3);
+//			$this->con_val=sprintf($s1,$this->para[0]);
+			$s1="SELECT iid,std1,std1_area,std2 FROM gb_std WHERE uid = %u AND '%s' BETWEEN sttm AND edtm";
+			$s2=$this->para[3]." 00:00:01";
+			$this->con_std=sprintf($s1,$this->para[0],$s2);
+		}
+		else
+		{
+//			$s1="SELECT date,cod,nhx,ll_sh,ll_jg,ll_lj FROM wsc_h_master WHERE uid = %u AND date > date_add(now(),interval -2 month) ORDER BY date";
+			$s1="SELECT date,cod,nhx,ll_sh,ll_jg,ll_lj FROM wsc_h_master WHERE uid = %u AND date BETWEEN '%s' AND '%s' ORDER BY date";
+			$s2=$this->para[3]." 00:00:00";
+			$s3=$this->para[3]." 23:59:59";
+			$this->con_val=sprintf($s1,$this->para[0],$s2,$s3);			
+//			$this->con_val=sprintf($s1,$this->para[0]);
+			$s1="SELECT iid,std1,std1_area,std2 FROM gb_std WHERE uid = %u AND '%s' BETWEEN sttm AND edtm";
+			$s2=$this->para[3]." 00:00:01";
+			$this->con_std=sprintf($s1,$this->para[0],$s2);
+		}
+	}//}}}
+//{{{public function get_std()
+	public function get_std()
+	{
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if(mysqli_connect_errno())
+			die("connect error");
+		mysqli_set_charset($mysqli,"utf8");
+		if($res=mysqli_query($mysqli,$this->con_std))
+		{
+			$vay=array();
+			while($row=mysqli_fetch_row($res))
+				array_push($vay,$row);
+			mysqli_free_result($res);
+		}
+		else
+		{
+			$s1=mysqli_error($mysqli);
+			mysqli_close($mysqli);
+			die("mysql query error!<br>".$s1."<br>"."$this->con_std");
+		}
+		mysqli_close($mysqli);
+		$i=count($vay);
+		$by=array();
+		for($j=0;$j<$i;$j++)
+		{
+			$ay=$vay[$j];
+			if(strlen($ay[2]) == 8)
+			{
+				$s1=substr($ay[2],0,4); //取得开始的日期
+				$b1=intval($s1);
+				$s1=substr($ay[2],4,4); //取得结束日期
+				$b2=intval($s1);
+				$s1=substr($this->para[3],5,5);
+				$a1=intval($s1);$a1*=100;
+				$a2=intval(substr($s1,3,2));
+				$a1+=$a2;				//取得记录的日期
+				if(($a1>=$b1) && ($a1<=$b2))
+				{
+					if(intval($ay[0]) == 316) //cod
+						$by[0] = $ay[1];//cod
+					else
+						$by[1] = $ay[1];//nhx
+				}
+				else //使用标准2
+				{
+					if(intval($ay[0]) == 316) //cod
+						$by[0] = $ay[3];
+					else
+						$by[1] = $ay[3];
+				}
+			}
+			else
+			{
+				if(intval($ay[0]) == 316) //cod
+					$by[0] = $ay[1];//cod
+				else
+					$by[1] = $ay[1];//nhx
+			}
+		}
+		$cy=$this->get_unit();
+		$i=count($cy);
+		$ey=array();
+		for($j=0;$j<$i;$j++)
+		{
+			$y=$cy[$j];
+			$x=array();
+			$x[0]=$j;	//序号
+			$x[1]=$y[0];//date
+			$x[2]=$y[1];//cod
+			$x[3]=$by[0];//cod std
+			$x[4]=$y[2];//nhx
+			$x[5]=$by[1];//nhx std
+			$x[6]=$y[3];//ll_sh
+			$x[7]=$y[4];//ll_jg
+			$x[8]=$y[5];//ll_lj
+			array_push($ey,$x);
+		}
+		return $ey;
+	}//}}}
+//{{{public function get_unit()
+	public function get_unit()
+	{
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if(mysqli_connect_errno())
+			die("connect error");
+		mysqli_set_charset($mysqli,"utf8");
+		if($res=mysqli_query($mysqli,$this->con_val))
+		{
+			$vay=array();
+			while($row=mysqli_fetch_row($res))
+				array_push($vay,$row);
+			mysqli_free_result($res);
+		}
+		else
+		{
+			$s1=mysqli_error($mysqli);
+			mysqli_close($mysqli);
+//			var_dump($this->db);
+//			print_r($this->db);
+			die("mysql query error!<br>".$s1."<br>"."$this->con_val");
+		}
+		mysqli_close($mysqli);
+		return $vay;
+	}//}}}
+}*/
+//}}}
 
 
 ?>

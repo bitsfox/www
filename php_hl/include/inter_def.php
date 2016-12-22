@@ -55,7 +55,18 @@ interface main_data
 	public function get_std();		//取得标准
 	public function get_unit();		//取得数据
 }
-
+//2016-12-20 将明晰显示的右边栏数据及标准的取得定一个新的接口，该接口是main_data的一个扩展
+interface main_data_ex
+{
+	public function get_used_db($y);	//取得待访问的数据库服务器和数据库访问相关信息
+	public function parse_sql();	//解析并生成访问字符串
+	public function get_std();		//取得标准
+	public function get_unit($pp);		//取得数据
+//	public function hour_range_unit($dt);	//按小时顺序（若存在无效数据则需插入表示无效数据的记录）重新排列
+//	public function day_range_unit($dt);	//按日顺序（若存在无效数据则需插入表示无效数据的记录）重新排列
+//	public function geth($tm);	//取得date字符串中的小时
+//	public function getd($tm);	//取得daye字符串中的日
+}
 
 
 
