@@ -50,9 +50,9 @@ imageline($im,$ox+$ow,$oy,$ox+$ow-10,$oy-5,$black);
 imageline($im,$ox,$oy-$oh,$ox-5,$oy-$oh+10,$black);
 //}}}
 ///////////////////////////////////////////////
-$ay=$gd[0];$i=count($gd);
-$s1="count is:".$i."base is:".count($ay);
-imagettftext($im,10,0,80,80,$red,$font,$s1);
+//$ay=$gd[0];$i=count($xd);
+//$s1="count is:".$i."base is:".count($ay);
+//imagettftext($im,10,0,80,80,$red,$font,$s1);
 //////////////////////////////////////////////////
 //{{{首先画出横坐标和纵坐标的刻度
 $i=count($xd)-1;
@@ -115,30 +115,138 @@ for($i=1;$i<=10;$i++)
 $i=count($xd);		//确定是小时值还是日均值 =24为小时值
 $std=$ystep*5;		//标准的长度
 $stdv=$yd[0];$maxv=$yd[1]; //取得标准值和最大值
-$k=count($stdv);	//确定是废水，污水厂还是废气。=3为水，=4为气
+$k=count($stdv);	//确定是废水，污水厂还是废气。=2为水，=3为气
 $j=count($gd);		//超标记录的条数
 unset($ay);unset($by);
+$ay=array();
 if($i == 24) //小时值
 {
-	if($k == 3) //废水或污水长
+	if($k == 2) //废水或污水长
 	{
+		$gg="vvv";
 		for($l=0;$l<$j;$l++)
-		{
+		{	
+			$gg=" vvvvvsss";
+			$by=array();
 			$ey=$gd[$l];
 			$str=$ey[2];//取得日期
 			$tm1=substr($str,11,2); //取得小时数
 			if($ey[0] > $stdv[0]) //cod
-
+				$m=$std+floor($std*$ey[0]/$maxv[0]);
+			else
+				$m=floor($std*$ey[0]/$stdv[0]);
+			$by[0]=$ox+$tm1*$xstep;$by[1]=$oy-$m;
+			$by[2]=$by[0]+floor($xstep/2);$by[3]=$oy;
+			array_push($ay,$by);
+			if($ey[1] > $stdv[1]) //nhx
+				$m=$std+floor($std*$ey[1]/$maxv[1]);
+			else
+				$m=floor($std*$ey[1]/$stdv[1]);
+			$by=array();
+			$by[0]=$ox+$tm1*$xstep+floor($xstep/2);$by[1]=$oy-$m;
+			$by[2]=$by[0]+floor($xstep/2);$by[3]=$oy;
+			array_push($ay,$by);
 		}
 	}
 	else //废气
-	{}
+	{
+		$gg="www";
+		for($l=0;$l<$j;$l++)
+		{
+			$by=array();
+			$ey=$gd[$l];
+			$str=$ey[3];//取得日期
+			$tm1=substr($str,11,2); //取得小时数
+			if($ey[0] == constant('IGN_VAL')) //so2
+			{//无效值不画
+				$by[0]=0;$by[1]=0;$by[2]=1;$by[3]=1;
+			}
+			else
+			{
+				if($ey[0] > $stdv[0]) //so2
+					$m=$std+floor($std*$ey[0]/$maxv[0]);
+				else
+					$m=floor($std*$ey[0]/$stdv[0]);
+				$by[0]=$ox+$tm1*$xstep;$by[1]=$oy-$m;
+				$by[2]=$by[0]+floor($xstep/3);$by[3]=$oy;
+			}
+			array_push($ay,$by);
+			$by=array();
+			if($ey[1] == constant('IGN_VAL')) //nox
+			{//无效值不画
+				$by[0]=0;$by[1]=0;$by[2]=1;$by[3]=1;
+			}
+			else
+			{
+				if($ey[1] > $stdv[1]) //so2
+					$m=$std+floor($std*$ey[1]/$maxv[1]);
+				else
+					$m=floor($std*$ey[1]/$stdv[1]);
+				$by[0]=$ox+$tm1*$xstep+floor($xstep/3);$by[1]=$oy-$m;
+				$by[2]=$by[0]+floor($xstep/3);$by[3]=$oy;
+			}
+			array_push($ay,$by);
+			$by=array();
+			if($ey[2] == constant('IGN_VAL')) //dust
+			{//无效值不画
+				$by[0]=0;$by[1]=0;$by[2]=1;$by[3]=1;
+			}
+			else
+			{
+				if($ey[2] > $stdv[2]) //dust
+					$m=$std+floor($std*$ey[2]/$maxv[2]);
+				else
+					$m=floor($std*$ey[2]/$stdv[2]);
+				$by[0]=$ox+$tm1*$xstep+floor($xstep*2/3);$by[1]=$oy-$m;
+				$by[2]=$by[0]+floor($xstep/3);$by[3]=$oy;
+			}
+			array_push($ay,$by);
+			$by=array();
+		}
+	}
 }
 else //日均值
 {
+	if($k == 3) //废水或污水长
+	{
+	//	for($l=0;$l<)
+	}
+	else
+	{
+	}
 }
-
-
+$i=count($ay);
+$s1="count is:".$i.$gg;
+imagettftext($im,10,0,80,80,$red,$font,$s1);
+$k=count($stdv);
+$col[0]=$red;$col[1]=$blue;$col[2]=$black;
+$l=0;
+for($j=0;$j<$i;$j++)
+{
+	$x1=$ay[$j][0];$y1=$ay[$j][1];
+	$x2=$ay[$j][2];$y2=$ay[$j][3];
+	imagerectangle($im,$x1,$y1,$x2,$y2,$col[$l]);
+	if($l >= ($k-1))
+		$l=0;
+	else
+		$l++;
+}
+if($k == 2)
+{
+	$s1="红色曲线：COD";
+	imagettftext($im,10,0,$sw-200,20,$red,$font,$s1);
+	$s2="蓝色曲线：氨氮";
+	imagettftext($im,10,0,$sw-200,40,$blue,$font,$s2);
+}
+else
+{
+	$s1="红色曲线：SO2";
+	imagettftext($im,10,0,$sw-200,20,$red,$font,$s1);
+	$s2="蓝色曲线：氮氧化物";
+	imagettftext($im,10,0,$sw-200,40,$blue,$font,$s2);
+	$s1="黑色曲线：烟尘";
+	imagettftext($im,10,0,$sw-200,60,$black,$font,$s1);
+}
 header('Content-type:image/png'); //通知浏览器这不是文本而是一个图片
 imagepng($im);
 imagedestroy($im);
