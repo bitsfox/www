@@ -32,8 +32,18 @@ class data_sright implements main_data
 				die("严重错误！Session变量错误！");
 			$this->para=array();
 			$this->para[0]=$_SESSION['INTR_SEND'];//控制区域aid
-			$this->para[1]=0;//控制级别
-			$this->para[2]=0;//数据类型
+			if(isset($_SESSION['EXCEL_OUT']))
+			{
+				$this->para[0]=$_SESSION['SEL_1'];
+				$this->para[1]=$_SESSION['SEL_2'];
+				$this->para[2]=$_SESSION['SEL_3'];
+				unset($_SESSION['EXCEL_OUT']);
+			}
+			else
+			{
+				$this->para[1]=0;//控制级别
+				$this->para[2]=0;//数据类型
+			}
 			$this->para[3]=date("Y-m-d",time());
 			$ay=array();
 			$ay=getdate(time());
@@ -42,9 +52,19 @@ class data_sright implements main_data
 		else
 		{//正常的从post传递
 			$this->para=array();
-			$this->para[0]=$_POST['sel1'];
-			$this->para[1]=$_POST['sel2'];
-			$this->para[2]=$_POST['sel3'];
+			if(isset($_SESSION['EXCEL_OUT']))
+			{
+				$this->para[0]=$_SESSION['SEL_1'];
+				$this->para[1]=$_SESSION['SEL_2'];
+				$this->para[2]=$_SESSION['SEL_3'];
+				unset($_SESSION['EXCEL_OUT']);
+			}
+			else
+			{
+				$this->para[0]=$_POST['sel1'];
+				$this->para[1]=$_POST['sel2'];
+				$this->para[2]=$_POST['sel3'];
+			}
 			$this->para[3]=$_POST['starttime'];
 			$i=intval($_POST['starttime']);
 		}
@@ -454,8 +474,18 @@ class data_wsright implements main_data
 				die("严重错误！Session变量错误！");
 			$this->para=array();
 			$this->para[0]=$_SESSION['INTR_SEND'];//控制区域aid
-			$this->para[1]=0;//控制级别
-			$this->para[2]=0;//数据类型
+			if(isset($_SESSION['EXCEL_OUT']))
+			{
+				$this->para[0]=$_SESSION['SEL_1'];
+				$this->para[1]=$_SESSION['SEL_2'];
+				$this->para[2]=$_SESSION['SEL_3'];
+				unset($_SESSION['EXCEL_OUT']);
+			}
+			else
+			{
+				$this->para[1]=0;//控制级别
+				$this->para[2]=0;//数据类型
+			}
 			$this->para[3]=date("Y-m-d",time());
 			$ay=array();
 			$ay=getdate(time());
@@ -464,9 +494,19 @@ class data_wsright implements main_data
 		else
 		{//正常的从post传递
 			$this->para=array();
-			$this->para[0]=$_POST['sel1'];
-			$this->para[1]=$_POST['sel2'];
-			$this->para[2]=$_POST['sel3'];
+			if(isset($_SESSION['EXCEL_OUT']))
+			{
+				$this->para[0]=$_SESSION['SEL_1'];
+				$this->para[1]=$_SESSION['SEL_2'];
+				$this->para[2]=$_SESSION['SEL_3'];
+				unset($_SESSION['EXCEL_OUT']);
+			}
+			else
+			{
+				$this->para[0]=$_POST['sel1'];
+				$this->para[1]=$_POST['sel2'];
+				$this->para[2]=$_POST['sel3'];
+			}
 			$this->para[3]=$_POST['starttime'];
 			$i=intval($_POST['starttime']);
 		}

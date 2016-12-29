@@ -336,7 +336,7 @@ class tb_sleft implements tab_show
 	{
 		$i=count($this->ay);
 		if(isset($_POST['sel1']))
-			$k=$_POST['sel1'];
+		{$k=$_POST['sel1'];$_SESSION['SEL_1']=$k;}
 		else
 		{$k=$this->ay[0][0];$_SESSION['INTR_SEND']=$k;}
 		$s1="<br><div class='dvmsg'>控制区域：</div><div class='select_style'><select name='sel1'>";
@@ -351,7 +351,7 @@ class tb_sleft implements tab_show
 		$s1.="</select></div><div id='clear_id'></div>";
 		echo $s1;	//end of control area
 		if(isset($_POST["sel2"]))
-			$k=$_POST["sel2"];
+		{$k=$_POST["sel2"];$_SESSION['SEL_2']=$k;}
 		else
 			$k=0;
 		$i=count($this->cy);
@@ -366,7 +366,7 @@ class tb_sleft implements tab_show
 		$s1.="</select></div><div id='clear_id'></div>";
 		echo $s1;	//end of control level
 		if(isset($_POST["sel3"]))
-			$k=$_POST["sel3"];
+		{$k=$_POST["sel3"];$_SESSION['SEL_3']=$k;}
 		else
 			$k=0;
 		$i=count($this->dy);
@@ -388,8 +388,12 @@ class tb_sleft implements tab_show
 		$s1.="<div class='dvmsg'><input type='text' id='text1_id' name='starttime' onfocus='MyCalendar.SetDate(this)' value='".$this->rq."'/>";
 		$s1.="</div><div id='clear_id'></div>";
 		echo $s1;
-		$s1="<br><br><center><input type='submit' id='button_id' name='submit' value='应用'></center>";
+		$s1="<br><br><center><input type='submit' id='button_id' name='submit' value='应用' title='点击开始查询'>";
+		$s1.="&nbsp;<a href='javascript:void(0)' onclick ='oooii()' /><img src='css/excel.png' title='导出为excel' /></a></center>";
+//		echo $s1;
+//		$s1="&nbsp;&nbsp;&nbsp;&nbsp;<a href='javascript:void(0)' onclick ='oooii()' /><img src='css/excel24.png' /></a>";
 		echo $s1;
+
 	}//}}}
 //{{{public function show_tail()
 	public function show_tail()
