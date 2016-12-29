@@ -29,7 +29,7 @@
 		}
 		else
 		{
-			$a=new mx_g(2);
+			$a=new mx_g(2); //污水厂
 			$a->range_xway();
 			$a->range_yway();
 			if($a->range_ary() < 1)
@@ -38,7 +38,10 @@
 			if(($i == NULL) || ($i < 100))
 				$i=1000;
 			$xs=floor($i*0.67);$xy=500;
-		    $s1="<img src='core/graph/g02.php' width= ".$xs." height= ".$xy." />";
+			if($_SESSION['gra_tp'] > 1) //超标值的显示使用g03
+		   		$s1="<img src='core/graph/g03.php' width= ".$xs." height= ".$xy." />";
+			else
+		  		$s1="<img src='core/graph/g01.php' width= ".$xs." height= ".$xy." />";
 			echo $s1;
 		}
 	?>

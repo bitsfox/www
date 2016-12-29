@@ -38,10 +38,10 @@
 			if(($i == NULL) || ($i < 100))
 				$i=1000;
 			$xs=floor($i*0.67);$xy=500;
-			if($_SESSION['gra_tp'] == 2) //废水超标 =0 小时值 =1 日均值 =2 小时超标 =3 日均超标
+			if($_SESSION['gra_tp'] > 1) //废水超标 =0 小时值 =1 日均值 =2 小时超标 =3 日均超标
 		   		$s1="<img src='core/graph/g03.php' width= ".$xs." height= ".$xy." />";
 			else
-		   		$s1="<img src='core/graph/g02.php' width= ".$xs." height= ".$xy." />";
+		   		$s1="<img src='core/graph/g01.php' width= ".$xs." height= ".$xy." />";
 			echo $s1;
 		}
 	?>

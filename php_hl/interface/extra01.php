@@ -644,7 +644,7 @@ class data_wsright implements main_data
 
 }//}}}
 ///////////////////////////////////////////////////////////
-//{{{class data_sright_mx implements main_data 废水及污水厂明晰主界面数据及标准的获取类
+//{{{class data_sright_mx implements main_data_ex 废水及污水厂明晰主界面数据及标准的获取类
 class data_sright_mx implements main_data_ex
 {
 	private $db;//目标数据库相关信息
@@ -730,12 +730,12 @@ class data_sright_mx implements main_data_ex
 				break;
 		}
 		if(($this->para[2] == 1) || ($this->para[2] == 3))
-		{
+		{//日均值相关的日期设定
 			$s2=substr($this->para[3],0,8)."01 00:00:00";
 			$s3=$this->para[3]." 23:59:59";
 		}
 		else
-		{
+		{//小时值相关的日期设定
 			$s2=$this->para[3]." 00:00:00";
 			$s3=$this->para[3]." 23:59:59";
 		}
@@ -856,8 +856,8 @@ class data_sright_mx implements main_data_ex
 	}//}}}
 }//}}}
 ///////////////////////////////////////////////////////////////////////////
-//{{{class data_qright_mx implements main_data 废气明晰主界面数据及标准的获取类
-class data_qright_mx implements main_data
+//{{{class data_qright_mx implements main_data_x 废气明晰主界面数据及标准的获取类
+class data_qright_mx implements main_data_ex
 {
 	private $db;//目标数据库相关信息
 	private $con_std,$con_val; //解析后生成的执行标准查询字符串和项目数据查询字符串
@@ -911,8 +911,32 @@ class data_qright_mx implements main_data
 //{{{public function parse_sql()
 	public function parse_sql()
 	{//废气
-		$s1="SELECT date,so2,nox,dust,o2,dll FROM fq_m_master WHERE uid = %u AND date > date_add(now(),interval -2 month) ORDER BY date";
-		$this->con_val=sprintf($s1,$this->para[0]);
+		switch($this->para[2])
+		{
+			case 0://小时值
+				$s1="SELECT date,so2,nox,dust,o2,dll FROM fq_h_master WHERE uid = %u AND date BETWEEN '%s' AND '%s' ORDER BY date";
+				break;
+			case 1://日均值
+				$s1="SELECT date,so2,nox,dust,o2,dll FROM fq_d_master WHERE uid = %u AND date BETWEEN '%s' AND '%s' ORDER BY date";
+				break;
+			case 2://小时超标值 --这里同样不是完整的SQLSTR
+				$s1="SELECT date,so2,nox,dust,o2,dll FROM fq_h_master WHERE uid = %u AND date BETWEEN '%s' AND '%s'";
+				break;
+			case 3://日均超标
+				$s1="SELECT date,so2,nox,dust,o2,dll FROM fq_d_master WHERE uid = %u AND date BETWEEN '%s' AND '%s'";
+				break;
+		}
+		if(($this->para[2] == 1) || ($this->para[2] == 3))
+		{//日均值相关的日期设定
+			$s2=substr($this->para[3],0,8)."01 00:00:00";
+			$s3=$this->para[3]." 23:59:59";
+		}
+		else
+		{//小时值相关的日期设定
+			$s2=$this->para[3]." 00:00:00";
+			$s3=$this->para[3]." 23:59:59";
+		}
+		$this->con_val=sprintf($s1,$this->para[0],$s2,$s3);//这里暂时不对超标值进行处理。
 		$s1="SELECT iid,std1,std1_area,std2 FROM gb_std WHERE uid = %u AND '%s' BETWEEN sttm AND edtm";
 		$s2=$this->para[3]." 00:00:01";
 		$this->con_std=sprintf($s1,$this->para[0],$s2);
@@ -996,7 +1020,8 @@ class data_qright_mx implements main_data
 				}
 			}
 		}
-		$cy=$this->get_unit();
+//2016-12-23 修改		
+		$cy=$this->get_unit($by);
 		$i=count($cy);
 		$ey=array();
 		for($j=0;$j<$i;$j++)
@@ -1017,13 +1042,18 @@ class data_qright_mx implements main_data
 		}
 		return $ey;
 	}//}}}
-//{{{public function get_unit()
-	public function get_unit()
+//{{{public function get_unit($pp)
+	public function get_unit($pp)
 	{
 		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
 		if(mysqli_connect_errno())
 			die("connect error");
 		mysqli_set_charset($mysqli,"utf8");
+		if($this->para[2] > 1)
+		{//超标值，需要完善查询字符串
+			$s1=$this->con_val." AND (so2 >= %0.2f OR nox >= %0.2f OR dust >= %0.2f) ORDER BY date";
+			$this->con_val=sprintf($s1,$pp[0],$pp[1],$pp[2]);
+		}
 		if($res=mysqli_query($mysqli,$this->con_val))
 		{
 			$vay=array();
