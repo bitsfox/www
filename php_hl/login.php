@@ -22,7 +22,7 @@ if($_SESSION['leftcnt'] <= 0)
 	die("fuck you~");
 }
 global $tybitsfox;
-if($_SESSION['logok'] == $tybitsfox['corename'])
+if(isset($_SESSION['logok']) && ($_SESSION['logok'] == $tybitsfox['corename']))
 {
 	if(isset($_SESSION['user']))
 	{
@@ -55,7 +55,8 @@ function check_verf()
 		return true;
 	return false;
 }
-if($_POST['submit'] == true)
+//if($_POST['submit'] == true)
+if(isset($_POST['submit']))
 {
 	if(check_verf())
 	{

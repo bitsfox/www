@@ -94,6 +94,24 @@ table.imagetable td {
 	color:#444444;
 	float:left;
 }
+.dvmsg2
+{
+	width: 38%;
+ 	height:20px;
+	font-family: "YaHei Consolas Hybrid",verdana,arial,sans-serif;
+	font-size: 12px;
+	color:#444444;
+	float:left;
+}
+.dvmsg3
+{
+	width: 20%;
+ 	height:20px;
+	font-family: "YaHei Consolas Hybrid",verdana,arial,sans-serif;
+	font-size: 12px;
+	color:#444444;
+	float:right;
+}
 .select_style {
 /*width:120px; */
 width:40%;

@@ -13,7 +13,9 @@
 
  	2016-4-17  田勇 alias tybitsfox
  */
-session_start();
+//2017-1-1添加session的状态判断,避免log中的错误提示
+if(session_status() != PHP_SESSION_ACTIVE)
+	session_start();
 if(!defined("FULL_PATH"))
 {
 	$s1=dirname(__FILE__);
@@ -311,7 +313,7 @@ class tb_sleft implements tab_show
 		else
 		{die("参数错误2！！");}	
   		date_default_timezone_set("PRC");
-		if($_POST['starttime'])
+		if(isset($_POST['starttime']))
 		{
 			$this->rq=$_POST['starttime'];
 		}
@@ -320,6 +322,7 @@ class tb_sleft implements tab_show
   			$nowtime = time();
   			$this->rq = date("Y-m-d",$nowtime);
 		}
+		$_SESSION['SEL_5']=$this->rq;
 		$x=array();
 		array_push($x,$this->rq);
 		array_push($x,$y);
@@ -336,9 +339,9 @@ class tb_sleft implements tab_show
 	{
 		$i=count($this->ay);
 		if(isset($_POST['sel1']))
-		{$k=$_POST['sel1'];$_SESSION['SEL_1']=$k;}
+		{$k=$_POST['sel1'];$_SESSION['SEL_1']=$k;$_SESSION['INTR_SEND']=$k;}
 		else
-		{$k=$this->ay[0][0];$_SESSION['INTR_SEND']=$k;}
+		{$k=$this->ay[0][0];$_SESSION['SEL_1']=$k;$_SESSION['INTR_SEND']=$k;}
 		$s1="<br><div class='dvmsg'>控制区域：</div><div class='select_style'><select name='sel1'>";
 		for($j=0;$j<$i;$j++)
 		{
@@ -353,7 +356,7 @@ class tb_sleft implements tab_show
 		if(isset($_POST["sel2"]))
 		{$k=$_POST["sel2"];$_SESSION['SEL_2']=$k;}
 		else
-			$k=0;
+		{$k=0;$_SESSION['SEL_2']=$k;}
 		$i=count($this->cy);
 		$s1="<br><div class='dvmsg'>控制级别：</div><div class='select_style'><select name='sel2'>";
 		for($j=0;$j<$i;$j++)
@@ -368,7 +371,7 @@ class tb_sleft implements tab_show
 		if(isset($_POST["sel3"]))
 		{$k=$_POST["sel3"];$_SESSION['SEL_3']=$k;}
 		else
-			$k=0;
+		{$k=0;$_SESSION['SEL_3']=$k;}
 		$i=count($this->dy);
 		$s1="<br><div class='dvmsg'>数据类型：</div><div class='select_style'><select name='sel3'>";
 		for($j=0;$j<$i;$j++)
@@ -388,10 +391,8 @@ class tb_sleft implements tab_show
 		$s1.="<div class='dvmsg'><input type='text' id='text1_id' name='starttime' onfocus='MyCalendar.SetDate(this)' value='".$this->rq."'/>";
 		$s1.="</div><div id='clear_id'></div>";
 		echo $s1;
-		$s1="<br><br><center><input type='submit' id='button_id' name='submit' value='应用' title='点击开始查询'>";
-		$s1.="&nbsp;<a href='javascript:void(0)' onclick ='oooii()' /><img src='css/excel.png' title='导出为excel' /></a></center>";
-//		echo $s1;
-//		$s1="&nbsp;&nbsp;&nbsp;&nbsp;<a href='javascript:void(0)' onclick ='oooii()' /><img src='css/excel24.png' /></a>";
+		$s1="<br><br><div class='dvmsg2'></div><div class='dvmsg2'><input type='submit' id='button_id' name='submit' value='应用' title='点击开始查询'></div>";
+		$s1.="<div class='dvmsg3'><a href='javascript:void(0)' onclick ='oooii()' /><img src='css/excel24.png' title='导出为excel' /></a></div><div id='clear_id'></div>";
 		echo $s1;
 
 	}//}}}
@@ -417,7 +418,7 @@ class tb_mxleft implements tab_show
 		else
 		{die("参数错误0A1！！");}
   		date_default_timezone_set("PRC");
-		if($_POST['starttime'])
+		if(isset($_POST['starttime']))
 		{
 			$this->rq=$_POST['starttime'];
 		}
@@ -426,6 +427,7 @@ class tb_mxleft implements tab_show
   			$nowtime = time();
   			$this->rq = date("Y-m-d",$nowtime);
 		}
+		$_SESSION['SEL_5']=$this->rq;
 		global $arry;$x=array();
 		array_push($x,$this->rq);
 		array_push($x,$y);
@@ -443,9 +445,9 @@ class tb_mxleft implements tab_show
 		$num=0;
 		$i=count($this->ay);
 		if(isset($_POST["sel1p"]))
-			$k=$_POST["sel1p"];
+		{$k=$_POST["sel1p"];$_SESSION['SEL_1']=$k;}
 		else
-			$k=$this->ay[0][0];
+		{$k=$this->ay[0][0];$_SESSION['SEL_1']=$k;}
 		$s1="<br><div class='dvmsg'>控制区域：</div><div class='select_style'><select name='sel1p' id='sel1p' onchange = 'onsss()'>";
 		for($j=0;$j<$i;$j++)
 		{
@@ -457,9 +459,9 @@ class tb_mxleft implements tab_show
 		}
 		$s1.="</select></div><div id='clear_id'></div>";
 		if(isset($_POST["sel3p"]))
-			$k1=$_POST["sel3p"];
+		{$k1=$_POST["sel3p"];$_SESSION['SEL_2']=$k1;}
 		else
-			$k1=0;
+		{$k1=0;$_SESSION['SEL_2']=$k1;}
 		$s1.="<br><div class='dvmsg'>控制级别：</div><div class='select_style'><select name='sel3p' id='sel3p' onchange = 'onsss()'>";
 		for($j=0;$j<5;$j++)
 		{
@@ -478,9 +480,12 @@ class tb_mxleft implements tab_show
 		$dy=$by[$k1]; //取得不同控制级别的单位数组
 		$i=count($dy);
 		if(isset($_POST["sel2p"]))
-			$k2 = $_POST["sel2p"];
+		{$k2 = $_POST["sel2p"];$_SESSION['SEL_3'] = $k2;$_SESSION['INTR_SEND'] = $k2;}
 		else
-		{$k2 = $dy[0][0];$_SESSION['INTR_SEND']=$k2;}
+		{
+			if($i>0)
+			{$k2 = $dy[0][0];$_SESSION['SEL_3'] = $k2;$_SESSION['INTR_SEND']= $k2;}
+		}
 		$s1="<br><div class='dvmsg1'>站点名称：</div><div class='select_style1'><select name='sel2p' id='sel2p'>";
 		for($j=0;$j<$i;$j++)
 		{
@@ -496,9 +501,9 @@ class tb_mxleft implements tab_show
 	public function show_body()
 	{
 		if(isset($_POST['sel3']))
-			$k=$_POST['sel3'];
+		{$k=$_POST['sel3'];$_SESSION['SEL_4']=$k;}
 		else
-			$k=0;
+		{$k=0;$_SESSION['SEL_4']=$k;}
 		$s1="<br><div class='dvmsg'>数据类型：</div><div class='select_style'><select name='sel3' id='sel3'>";
 		for($i=0;$i<4;$i++)
 		{
@@ -533,7 +538,10 @@ class tb_mxleft implements tab_show
 			$s1.="<input type='radio' name='radio1' value=2 checked/>数据以图形显示</div>";
 		}
 		echo $s1;
-		$s1="<br><br><center><input type='submit' id='button_id' name='submit' value='应用'></center>";
+		$s1="<br><br><div class='dvmsg2'></div><div class='dvmsg2'><input type='submit' id='button_id' name='submit' value='应用' title='点击开始查询'></div>";
+		$s1.="<div class='dvmsg3'><a href='javascript:void(0)' onclick ='oooii()' /><img src='css/excel24.png' title='导出为excel' /></a></div><div id='clear_id'></div>";
+//		$s1="<br><br><center><input type='submit' id='button_id' name='submit' value='应用' title='点击开始查询'>";
+//		$s1.="&nbsp;<a href='javascript:void(0)' onclick ='oooii()' /><img src='css/excel.png' title='导出为excel' /></a></center>";
 		echo $s1;
 	}//}}}
 //{{{public function show_tail()

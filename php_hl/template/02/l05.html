@@ -7,10 +7,8 @@
 	$a->show_body();
 	global $arry;
 //	$a->show_tail();
+	$_SESSION['EXCEL_TYPE']=5;
 ?>
-<center><?php
-echo $_POST['sel2p'];
-?></center>
 </form>
 <script language="javascript" type="text/javascript"> 
 var jary=<?php echo json_encode($arry,JSON_UNESCAPED_UNICODE);?>;

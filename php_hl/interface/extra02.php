@@ -8,7 +8,9 @@
 /*本文件现为测试文件，目的为使用重新定义的接口来实现图形的显示
 
  */
-session_start();
+//2017-1-1添加session的状态判断,避免log中的错误提示
+if(session_status() != PHP_SESSION_ACTIVE)
+	session_start();
 /////////////////////////////////////////////////////////////
 //{{{class mx_g implements gra_data
 class mx_g implements gra_data

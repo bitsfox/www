@@ -8,12 +8,10 @@
 	$a->show_body();
 	global $arry;
 	$a->show_tail();
+	$_SESSION['EXCEL_TYPE']=4;
 //	echo json_encode($arry,JSON_UNESCAPED_UNICODE);
 //	if(function_exists("array_ptoj"))
 ?>
-<center><?php
-echo intval($_POST['starttime']);
-?></center>
 </form>
 <script language="javascript" type="text/javascript"> 
 var jary=<?php echo json_encode($arry,JSON_UNESCAPED_UNICODE);?>;

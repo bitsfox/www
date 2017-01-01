@@ -5,7 +5,9 @@
 
  	2016-4-17  田勇 alias tybitsfox
  */
-session_start();
+//2017-1-1添加session的状态判断,避免log中的错误提示
+if(session_status() != PHP_SESSION_ACTIVE)
+	session_start();
 if(!defined("FULL_PATH"))
 {
 	$s1=dirname(__FILE__);
@@ -37,17 +39,19 @@ class data_sright implements main_data
 				$this->para[0]=$_SESSION['SEL_1'];
 				$this->para[1]=$_SESSION['SEL_2'];
 				$this->para[2]=$_SESSION['SEL_3'];
+				$this->para[3]=$_SESSION['SEL_5'];
+				$i=intval($this->para[3]);			
 				unset($_SESSION['EXCEL_OUT']);
 			}
 			else
 			{
 				$this->para[1]=0;//控制级别
 				$this->para[2]=0;//数据类型
+				$this->para[3]=date("Y-m-d",time());
+				$ay=array();
+				$ay=getdate(time());
+				$i=$ay['year'];
 			}
-			$this->para[3]=date("Y-m-d",time());
-			$ay=array();
-			$ay=getdate(time());
-			$i=$ay['year'];
 		}
 		else
 		{//正常的从post传递
@@ -57,6 +61,8 @@ class data_sright implements main_data
 				$this->para[0]=$_SESSION['SEL_1'];
 				$this->para[1]=$_SESSION['SEL_2'];
 				$this->para[2]=$_SESSION['SEL_3'];
+				$this->para[3]=$_SESSION['SEL_5'];
+				$i=intval($this->para[3]);			
 				unset($_SESSION['EXCEL_OUT']);
 			}
 			else
@@ -64,9 +70,9 @@ class data_sright implements main_data
 				$this->para[0]=$_POST['sel1'];
 				$this->para[1]=$_POST['sel2'];
 				$this->para[2]=$_POST['sel3'];
+				$this->para[3]=$_POST['starttime'];
+				$i=intval($_POST['starttime']);
 			}
-			$this->para[3]=$_POST['starttime'];
-			$i=intval($_POST['starttime']);
 		}
 		$this->get_used_db($i);
 	}//}}}
@@ -254,21 +260,45 @@ class data_qright implements main_data
 				die("严重错误！Session变量错误！");
 			$this->para=array();
 			$this->para[0]=$_SESSION['INTR_SEND'];//控制区域aid
-			$this->para[1]=0;//控制级别
-			$this->para[2]=0;//数据类型
-			$this->para[3]=date("Y-m-d",time());
-			$ay=array();
-			$ay=getdate(time());
-			$i=$ay['year'];
+			if(isset($_SESSION['EXCEL_OUT']))
+			{
+				$this->para[0]=$_SESSION['SEL_1'];
+				$this->para[1]=$_SESSION['SEL_2'];
+				$this->para[2]=$_SESSION['SEL_3'];
+				$this->para[3]=$_SESSION['SEL_5'];
+				$i=intval($this->para[3]);			
+				unset($_SESSION['EXCEL_OUT']);
+			}
+			else
+			{
+				$this->para[1]=0;//控制级别
+				$this->para[2]=0;//数据类型
+				$this->para[3]=date("Y-m-d",time());
+				$ay=array();
+				$ay=getdate(time());
+				$i=$ay['year'];
+			}
 		}
 		else
 		{//正常的从post传递
 			$this->para=array();
-			$this->para[0]=$_POST['sel1'];
-			$this->para[1]=$_POST['sel2'];
-			$this->para[2]=$_POST['sel3'];
-			$this->para[3]=$_POST['starttime'];
-			$i=intval($_POST['starttime']);
+			if(isset($_SESSION['EXCEL_OUT']))
+			{
+				$this->para[0]=$_SESSION['SEL_1'];
+				$this->para[1]=$_SESSION['SEL_2'];
+				$this->para[2]=$_SESSION['SEL_3'];
+				$this->para[3]=$_SESSION['SEL_5'];
+				$i=intval($this->para[3]);			
+				unset($_SESSION['EXCEL_OUT']);
+			}
+			else
+			{
+				$this->para[0]=$_POST['sel1'];
+				$this->para[1]=$_POST['sel2'];
+				$this->para[2]=$_POST['sel3'];
+				$this->para[3]=$_POST['starttime'];
+				$i=intval($_POST['starttime']);
+			}
 		}
 		$this->get_used_db($i);
 	}//}}}	
@@ -479,17 +509,19 @@ class data_wsright implements main_data
 				$this->para[0]=$_SESSION['SEL_1'];
 				$this->para[1]=$_SESSION['SEL_2'];
 				$this->para[2]=$_SESSION['SEL_3'];
+				$this->para[3]=$_SESSION['SEL_5'];
+				$i=intval($this->para[3]);			
 				unset($_SESSION['EXCEL_OUT']);
 			}
 			else
 			{
 				$this->para[1]=0;//控制级别
 				$this->para[2]=0;//数据类型
+				$this->para[3]=date("Y-m-d",time());
+				$ay=array();
+				$ay=getdate(time());
+				$i=$ay['year'];
 			}
-			$this->para[3]=date("Y-m-d",time());
-			$ay=array();
-			$ay=getdate(time());
-			$i=$ay['year'];
 		}
 		else
 		{//正常的从post传递
@@ -499,6 +531,8 @@ class data_wsright implements main_data
 				$this->para[0]=$_SESSION['SEL_1'];
 				$this->para[1]=$_SESSION['SEL_2'];
 				$this->para[2]=$_SESSION['SEL_3'];
+				$this->para[3]=$_SESSION['SEL_5'];
+				$i=intval($this->para[3]);			
 				unset($_SESSION['EXCEL_OUT']);
 			}
 			else
@@ -506,9 +540,9 @@ class data_wsright implements main_data
 				$this->para[0]=$_POST['sel1'];
 				$this->para[1]=$_POST['sel2'];
 				$this->para[2]=$_POST['sel3'];
+				$this->para[3]=$_POST['starttime'];
+				$i=intval($_POST['starttime']);
 			}
-			$this->para[3]=$_POST['starttime'];
-			$i=intval($_POST['starttime']);
 		}
 		$this->get_used_db($i);
 	}//}}}
@@ -702,20 +736,44 @@ class data_sright_mx implements main_data_ex
 			if(!isset($_SESSION['INTR_SEND']))
 				die("符合当前控制级别和控制区域的站点为空，请指定查询的站点!");
 			$this->para[0]=$_SESSION['INTR_SEND'];//uid,这里和实时界面传递的参数不同，不再是aid
-			$this->para[1]=0;//控制级别
-			$this->para[2]=0;//数据类型
-			$this->para[3]=date("Y-m-d",time()); //默认日期
-			$ay=array();
-			$ay=getdate(time());
-			$i=$ay['year'];
+			if(isset($_SESSION['EXCEL_OUT']))
+			{
+				$this->para[0]=$_SESSION['SEL_3'];
+				$this->para[1]=$_SESSION['SEL_2'];
+				$this->para[2]=$_SESSION['SEL_4'];
+				$this->para[3]=$_SESSION['SEL_5'];
+				$i=intval($this->para[3]);			
+				unset($_SESSION['EXCEL_OUT']);
+			}
+			else
+			{
+				$this->para[1]=0;//控制级别
+				$this->para[2]=0;//数据类型
+				$this->para[3]=date("Y-m-d",time()); //默认日期
+				$ay=array();
+				$ay=getdate(time());
+				$i=$ay['year'];
+			}
 		}
 		else
 		{//这是正常的从post传递
-			$this->para[0]=$_POST['sel2p'];
-			$this->para[1]=$_POST['sel3p'];
-			$this->para[2]=$_POST['sel3'];
-			$this->para[3]=$_POST['starttime'];
-			$i=intval($_POST['starttime']);			
+			if(isset($_SESSION['EXCEL_OUT']))
+			{
+				$this->para[0]=$_SESSION['SEL_3'];
+				$this->para[1]=$_SESSION['SEL_2'];
+				$this->para[2]=$_SESSION['SEL_4'];
+				$this->para[3]=$_SESSION['SEL_5'];
+				$i=intval($this->para[3]);			
+				unset($_SESSION['EXCEL_OUT']);
+			}
+			else
+			{
+				$this->para[0]=$_POST['sel2p'];
+				$this->para[1]=$_POST['sel3p'];
+				$this->para[2]=$_POST['sel3'];
+				$this->para[3]=$_POST['starttime'];
+				$i=intval($_POST['starttime']);			
+			}
 		}
 		$this->get_used_db($i);
 	}//}}}
@@ -912,20 +970,44 @@ class data_qright_mx implements main_data_ex
 			if(!isset($_SESSION['INTR_SEND']))
 				die("符合当前控制级别和控制区域的站点为空，请指定查询的站点!");
 			$this->para[0]=$_SESSION['INTR_SEND'];//uid,这里和实时界面传递的参数不同，不再是aid
-			$this->para[1]=0;//控制级别
-			$this->para[2]=0;//数据类型
-			$this->para[3]=date("Y-m-d",time()); //默认日期
-			$ay=array();
-			$ay=getdate(time());
-			$i=$ay['year'];
+			if(isset($_SESSION['EXCEL_OUT']))
+			{
+				$this->para[0]=$_SESSION['SEL_3'];
+				$this->para[1]=$_SESSION['SEL_2'];
+				$this->para[2]=$_SESSION['SEL_4'];
+				$this->para[3]=$_SESSION['SEL_5'];
+				$i=intval($this->para[3]);			
+				unset($_SESSION['EXCEL_OUT']);
+			}
+			else
+			{
+				$this->para[1]=0;//控制级别
+				$this->para[2]=0;//数据类型
+				$this->para[3]=date("Y-m-d",time()); //默认日期
+				$ay=array();
+				$ay=getdate(time());
+				$i=$ay['year'];
+			}
 		}
 		else
 		{//这是正常的从post传递
-			$this->para[0]=$_POST['sel2p'];
-			$this->para[1]=$_POST['sel3p'];
-			$this->para[2]=$_POST['sel3'];
-			$this->para[3]=$_POST['starttime'];
-			$i=intval($_POST['starttime']);			
+			if(isset($_SESSION['EXCEL_OUT']))
+			{
+				$this->para[0]=$_SESSION['SEL_3'];
+				$this->para[1]=$_SESSION['SEL_2'];
+				$this->para[2]=$_SESSION['SEL_4'];
+				$this->para[3]=$_SESSION['SEL_5'];
+				$i=intval($this->para[3]);			
+				unset($_SESSION['EXCEL_OUT']);
+			}
+			else
+			{
+				$this->para[0]=$_POST['sel2p'];
+				$this->para[1]=$_POST['sel3p'];
+				$this->para[2]=$_POST['sel3'];
+				$this->para[3]=$_POST['starttime'];
+				$i=intval($_POST['starttime']);			
+			}
 		}
 		$this->get_used_db($i);
 	}//}}}

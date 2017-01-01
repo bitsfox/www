@@ -110,8 +110,22 @@ case 3://wsc
 	$a->show_tail();
 	break;
 case 4://fsmx
+	$a=new tb_fs_mx();
+	$a->show_header();
+	$a->show_body();
+	$a->show_tail();
+	break;
 case 5://fqmx
+	$a=new tb_fq_mx();
+	$a->show_header();
+	$a->show_body();
+	$a->show_tail();
+	break;
 case 6://wscmx
+	$a=new tb_wsc_mx();
+	$a->show_header();
+	$a->show_body();
+	$a->show_tail();
 	break;	
 }
 echo "</body></html>";

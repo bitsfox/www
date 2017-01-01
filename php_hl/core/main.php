@@ -3,7 +3,9 @@
  
  	2016-4-17 田勇 alias tybitsfox
  */
-session_start();
+//2017-1-1添加session的状态判断,避免log中的错误提示
+if(session_status() != PHP_SESSION_ACTIVE)
+	session_start();
 if(!defined("FULL_PATH"))
 {
 	$s1=dirname(__FILE__);

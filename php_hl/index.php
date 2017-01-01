@@ -15,7 +15,8 @@ _verf_fox();
 global $tybitsfox;
 $str=constant("FULL_PATH")."template/01/01.html";
 include_once($str);
-if($_GET['pgcnt'] == NULL)
+//if($_GET['pgcnt'] == NULL)
+if(!isset($_GET['pgcnt']))
 {
 	echo "</div></body></html>";
 }	
