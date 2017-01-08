@@ -768,7 +768,10 @@ class data_sright_mx implements main_data_ex
 			}
 			else
 			{
-				$this->para[0]=$_POST['sel2p'];
+				if(isset($_POST['sel2p']))
+					$this->para[0]=$_POST['sel2p'];
+				else
+					$this->para[0]=0;
 				$this->para[1]=$_POST['sel3p'];
 				$this->para[2]=$_POST['sel3'];
 				$this->para[3]=$_POST['starttime'];

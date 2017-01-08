@@ -92,8 +92,11 @@ class mx_g implements gra_data
 		}
 		else
 		{
-			$std[0]=$this->gdata[0][3];//cod std
-			$std[1]=$this->gdata[0][5];//mhx std
+			if($i>0)
+			{
+				$std[0]=$this->gdata[0][3];//cod std
+				$std[1]=$this->gdata[0][5];//mhx std
+			}
 			$max[0]=0;$max[1]=0;
 			for($j=0;$j<$i;$j++)
 			{
