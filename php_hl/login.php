@@ -40,7 +40,8 @@ if(isset($_SESSION['logok']) && ($_SESSION['logok'] == $tybitsfox['corename']))
 <div class='dvmsg'>
 <table width=100% border=0>
 <tr><td width=30%>用户名：</td><td width=40%><input type='text' id='text_id' name='user' size=30 /></td><td width=30%></td></tr>
-<tr><td width=30%>密  码：</td><td width=40%><input type='password' id='text_id' name='password' size=30 /></td><td width=30%></td></tr>
+<tr><td width=30%>密  码：</td><td width=40%><input type='password' style='display:none' />
+<input type='password' id='text_id' name='password' size=30 /></td><td width=30%></td></tr>
 <tr><td width=30%>验证码：</td><td width=40%><input type='text' id='text_id' name='verf' size=30 /></td>
 <td width=30%><img src="ta_verf1.php" title="点击更换图片" onclick="this.src=this.src+'?'+Math.random();" /></td></tr>
 <tr><td colspan=3 width=100% align=center><br><input type='submit' id='button_id' name='submit' value='登录'/> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -55,7 +56,6 @@ function check_verf()
 		return true;
 	return false;
 }
-//if($_POST['submit'] == true)
 if(isset($_POST['submit']))
 {
 	if(check_verf())

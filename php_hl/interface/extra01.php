@@ -93,27 +93,38 @@ class data_sright implements main_data
 //{{{public function parse_sql()
 	public function parse_sql()
 	{//废水,县区级
+//2017-1-10添加实时界面中日均值显示
+		if($this->para[2]==0)//实时值
+		{
+			$cur_table="fs_h_master";
+			$cur_date=" > date_add(now(),interval -1 day)";
+		}
+		else
+		{
+			$cur_table="fs_d_master";
+			$cur_date=" = '".$this->para[3]." 00:00:00'";
+		}
 		switch($_SESSION['sys_level'])
 		{
 		case 0: //县区级
-			$s1="SELECT e.uid,e.uname,e.date,e.cod,e.nhx,e.ll_sh,e.ll_jg,e.ll_lj FROM (SELECT b.uid,b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg,a.ll_lj FROM zd_info as b LEFT JOIN fs_h_master as a ON b.uid = a.uid AND a.date > date_add(now(),interval -1 day) WHERE b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
-			$this->con_val=sprintf($s1,$this->para[1]);
+			$s1="SELECT e.uid,e.uname,e.date,e.cod,e.nhx,e.ll_sh,e.ll_jg,e.ll_lj FROM (SELECT b.uid,b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg,a.ll_lj FROM zd_info as b LEFT JOIN %s as a ON b.uid = a.uid AND a.date %s WHERE b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$this->con_val=sprintf($s1,$cur_table,$cur_date,$this->para[1]);
 			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.aid = %u AND a.utype = 0 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN  b.sttm AND b.edtm";
 			$s2=$this->para[3]." 00:00:01";
 			$this->con_std=sprintf($s1,$this->para[0],$this->para[1],$s2);
 			break;
 		case 1://省级
-			$s1="SELECT e.uid,e.uname,e.date,e.cod,e.nhx,e.ll_sh,e.ll_jg,e.ll_lj FROM (SELECT b.uid,b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg,a.ll_lj FROM zd_info AS b LEFT JOIN fs_h_master AS a ON a.date > date_add(now(),interval -1 day) AND a.uid = b.uid WHERE b.aid BETWEEN %u AND %u AND b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$s1="SELECT e.uid,e.uname,e.date,e.cod,e.nhx,e.ll_sh,e.ll_jg,e.ll_lj FROM (SELECT b.uid,b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg,a.ll_lj FROM zd_info AS b LEFT JOIN %s AS a ON a.date %s AND a.uid = b.uid WHERE b.aid BETWEEN %u AND %u AND b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
 			$i=intval($this->para[0])+1;
 			$j=$i+98;
-			$this->con_val=sprintf($s1,$i,$j,$this->para[1]);
+			$this->con_val=sprintf($s1,$cur_table,$cur_date,$i,$j,$this->para[1]);
 			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.aid BETWEEN %u AND %u AND a.utype = 0 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN  b.sttm AND b.edtm";
 			$s2=$this->para[3]." 00:00:01";
 			$this->con_std=sprintf($s1,$i,$j,$this->para[1],$s2);
 			break;
 		case 2://地市级
-			$s1="SELECT e.uid,e.uname,e.date,e.cod,e.nhx,e.ll_sh,e.ll_jg,e.ll_lj FROM (SELECT b.uid,b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg,a.ll_lj FROM zd_info AS b LEFT JOIN fs_h_master AS a ON a.date > date_add(now(),interval -1 day) AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
-			$this->con_val=sprintf($s1,$this->para[0],$this->para[1]);
+			$s1="SELECT e.uid,e.uname,e.date,e.cod,e.nhx,e.ll_sh,e.ll_jg,e.ll_lj FROM (SELECT b.uid,b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg,a.ll_lj FROM zd_info AS b LEFT JOIN %s AS a ON a.date %s AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 0 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$this->con_val=sprintf($s1,$cur_table,$cur_date,$this->para[0],$this->para[1]);
 			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.aid = %u AND a.utype = 0 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN b.sttm AND b.edtm";
 			$s2=$this->para[3]." 00:00:01";
 			$this->con_std=sprintf($s1,$this->para[0],$this->para[1],$s2);
@@ -324,27 +335,38 @@ class data_qright implements main_data
 //{{{public function parse_sql()
 	public function parse_sql()
 	{//废气
+//2017-1-10添加实时界面中日均值显示
+		if($this->para[2]==0)//实时值
+		{
+			$cur_table="fq_m_master";
+			$cur_date=" > date_add(now(),interval -1 day)";
+		}
+		else
+		{
+			$cur_table="fq_d_master";
+			$cur_date=" = '".$this->para[3]." 00:00:00'";
+		}
 		switch($_SESSION['sys_level'])
 		{
 		case 0://县区级
-			$s1="SELECT e.uid,e.uname,e.date,e.so2,e.nox,e.dust,e.o2,e.dll FROM (SELECT b.uid,b.uname,a.date,a.so2,a.nox,a.dust,a.o2,a.dll FROM zd_info as b LEFT JOIN fq_m_master as a ON a.date > date_add(now(),interval -1 day) AND a.uid = b.uid WHERE b.utype = 1 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
-			$this->con_val=sprintf($s1,$this->para[1]);
+			$s1="SELECT e.uid,e.uname,e.date,e.so2,e.nox,e.dust,e.o2,e.dll FROM (SELECT b.uid,b.uname,a.date,a.so2,a.nox,a.dust,a.o2,a.dll FROM zd_info as b LEFT JOIN %s as a ON a.date %s AND a.uid = b.uid WHERE b.utype = 1 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$this->con_val=sprintf($s1,$cur_table,$cur_date,$this->para[1]);
 			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.utype = 1 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN  b.sttm AND b.edtm";
 			$s2=$this->para[3]." 00:00:01";
 			$this->con_std=sprintf($s1,$this->para[1],$s2);
 			break;
 		case 1://省级
-			$s1="SELECT e.uid,e.uname,e.date,e.so2,e.nox,e.dust,e.o2,e.dll FROM (SELECT b.uid,b.uname,a.date,a.so2,a.nox,a.dust,a.o2,a.dll FROM zd_info as b LEFT JOIN fq_m_master AS a ON a.date > date_add(now(),interval -1 day) AND a.uid = b.uid  WHERE b.aid BETWEEN %u AND %u AND b.utype = 1 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$s1="SELECT e.uid,e.uname,e.date,e.so2,e.nox,e.dust,e.o2,e.dll FROM (SELECT b.uid,b.uname,a.date,a.so2,a.nox,a.dust,a.o2,a.dll FROM zd_info as b LEFT JOIN %s AS a ON a.date %s AND a.uid = b.uid  WHERE b.aid BETWEEN %u AND %u AND b.utype = 1 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
 			$i=intval($this->para[0])+1;
 			$j=$i+98;
-			$this->con_val=sprintf($s1,$i,$j,$this->para[1]);
+			$this->con_val=sprintf($s1,$cur_table,$cur_date,$i,$j,$this->para[1]);
 			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.aid BETWEEN %u AND %u AND a.utype = 1 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN  b.sttm AND b.edtm";
 			$s2=$this->para[3]." 00:00:01";
 			$this->con_std=sprintf($s1,$i,$j,$this->para[1],$s2);
 			break;
 		case 2://地市级
-			$s1="SELECT e.uid,e.uname,e.date,e.so2,e.nox,e.dust,e.o2,e.dll FROM (SELECT b.uid,b.uname,a.date,a.so2,a.nox,a.dust,a.o2,a.dll FROM zd_info AS b LEFT JOIN fq_m_master AS a ON a.date > date_add(now(),interval -1 day) AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 1 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
-			$this->con_val=sprintf($s1,$this->para[0],$this->para[1]);
+			$s1="SELECT e.uid,e.uname,e.date,e.so2,e.nox,e.dust,e.o2,e.dll FROM (SELECT b.uid,b.uname,a.date,a.so2,a.nox,a.dust,a.o2,a.dll FROM zd_info AS b LEFT JOIN %s AS a ON a.date %s AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 1 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$this->con_val=sprintf($s1,$cur_table,$cur_date,$this->para[0],$this->para[1]);
 			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.aid = %u AND a.utype = 1 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN  b.sttm AND b.edtm";
 			$s2=$this->para[3]." 00:00:01";
 			$this->con_std=sprintf($s1,$this->para[0],$this->para[1],$s2);
@@ -568,27 +590,38 @@ class data_wsright implements main_data
 //{{{public function parse_sql()
 	public function parse_sql()
 	{//污水厂
+//2017-1-10添加实时界面中日均值显示
+		if($this->para[2]==0)//实时值
+		{
+			$cur_table="wsc_h_master";
+			$cur_date=" > date_add(now(),interval -1 day)";
+		}
+		else
+		{
+			$cur_table="wsc_d_master";
+			$cur_date=" = '".$this->para[3]." 00:00:00'";
+		}
 		switch($_SESSION['sys_level'])
 		{
 		case 0://县市区
-			$s1="SELECT e.uid,e.uname,e.date,e.cod,e.nhx,e.ll_sh,e.ll_jg,e.ll_lj FROM (SELECT b.uid,b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg,a.ll_lj FROM zd_info AS b LEFT JOIN wsc_h_master AS a ON a.date > date_add(now(),interval -1 day) AND a.uid = b.uid WHERE b.utype = 2 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
-			$this->con_val=sprintf($s1,$this->para[1]);
+			$s1="SELECT e.uid,e.uname,e.date,e.cod,e.nhx,e.ll_sh,e.ll_jg,e.ll_lj FROM (SELECT b.uid,b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg,a.ll_lj FROM zd_info AS b LEFT JOIN %s AS a ON a.date %s AND a.uid = b.uid WHERE b.utype = 2 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$this->con_val=sprintf($s1,$cur_table,$cur_date,$this->para[1]);
 			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.utype = 2 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN  b.sttm AND b.edtm";
 			$s2=$this->para[3]." 00:00:01";
 			$this->con_std=sprintf($s1,$this->para[1],$s2);
 			break;
 		case 1://省级
-			$s1="SELECT e.uid,e.uname,e.date,e.cod,e.nhx,e.ll_sh,e.ll_jg,e.ll_lj FROM (SELECT b.uid,b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg,a.ll_lj FROM zd_info AS b LEFT JOIN wsc_h_master AS a ON a.date > date_add(now(),interval -1 day) AND a.uid = b.uid WHERE a.aid BETWEEN %u AND %u AND b.utype = 2 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$s1="SELECT e.uid,e.uname,e.date,e.cod,e.nhx,e.ll_sh,e.ll_jg,e.ll_lj FROM (SELECT b.uid,b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg,a.ll_lj FROM zd_info AS b LEFT JOIN %s AS a ON a.date %s AND a.uid = b.uid WHERE a.aid BETWEEN %u AND %u AND b.utype = 2 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
 			$i=intval($this->para[0])+1;
 			$j=$i+98;
-			$this->con_val=sprintf($s1,$i,$j,$this->para[1]);
+			$this->con_val=sprintf($s1,$cur_table,$cur_date,$i,$j,$this->para[1]);
 			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.aid BETWEEN %u AND %u AND a.utype = 2 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN  b.sttm AND b.edtm";
 			$s2=$this->para[3]." 00:00:01";
 			$this->con_std=sprintf($s1,$i,$j,$this->para[1],$s2);
 			break;
 		case 2://地市级
-			$s1="SELECT e.uid,e.uname,e.date,e.cod,e.nhx,e.ll_sh,e.ll_jg,e.ll_lj FROM (SELECT b.uid,b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg,a.ll_lj FROM zd_info AS b LEFT JOIN wsc_h_master AS a ON a.date > date_add(now(),interval -1 day) AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 2 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
-			$this->con_val=sprintf($s1,$this->para[0],$this->para[1]);
+			$s1="SELECT e.uid,e.uname,e.date,e.cod,e.nhx,e.ll_sh,e.ll_jg,e.ll_lj FROM (SELECT b.uid,b.uname,a.date,a.cod,a.nhx,a.ll_sh,a.ll_jg,a.ll_lj FROM zd_info AS b LEFT JOIN %s AS a ON a.date %s AND a.uid = b.uid WHERE b.aid = %u AND b.utype = 2 AND b.ctlvl = %d ORDER BY a.date DESC) AS e GROUP BY e.uid";
+			$this->con_val=sprintf($s1,$cur_table,$cur_date,$this->para[0],$this->para[1]);
 			$s1="SELECT a.uid,b.iid,b.std1,b.std1_area,b.std2 FROM zd_info AS a,gb_std AS b WHERE a.aid = %u AND a.utype = 2 AND a.ctlvl = %d AND a.uid = b.uid AND '%s' BETWEEN  b.sttm AND b.edtm";
 			$s2=$this->para[3]." 00:00:01";
 			$this->con_std=sprintf($s1,$this->para[0],$this->para[1],$s2);
