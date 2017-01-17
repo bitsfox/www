@@ -1,6 +1,10 @@
 <?php
 echo "<pre><font color=blue size=3>
 <center><font color=red>2016-12-8</font>debian8安装记录</center>
+最前面：debian 7 升级至8的做法：
+	sudo apt-get update
+	sudo apt-get upgrade
+	sudo apt-get dist-upgrade
 一、制作usb安装盘，使用u盘安装
 1、下载引导镜像：http://mirrors.163.com/debian/dists/jessie/main/installer-i386/current/images/hd-media/boot.img.gz 
 2、将上述文件解压，在windows下使用UltraISO将解压后的boot.img引导镜像写入usb：
