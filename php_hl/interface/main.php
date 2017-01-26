@@ -107,6 +107,8 @@ class login_init implements sqli_def
 function _verf_fox()
 {
 	global $tybitsfox;
+	if(isset($_SESSION['logok']))
+		die("you're over!");
 	if($_SESSION['logok'] != $tybitsfox['corename'])
 		die("you're over!");
 }//}}}
