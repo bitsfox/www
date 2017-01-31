@@ -16,8 +16,9 @@ echo "<a href=./order.php#ord072>xset</a><br><br>";
 echo "三、GNU实用工具程序<br>";
 echo "<a href=./order.php#ord08>objcopy</a><br>";
 echo "<a href=./order.php#ord09>查看elf可执行文件格式的两个命令objdump,readelf</a><br>";
+echo "<a href=./order.php#ord101>生成64位可执行程序</a><br>";
 echo "<br><br>";
-echo "<a name=ord01></a><font size=4 color=blue>一、内核安装相关</cont>";
+echo "<a name=ord01></a><font size=4 color=blue>一、内核安装相关</font>";
 echo "<font size=3 color=black><pre>
 <font size=3 color=red>1、make menuconfig: 内核的菜单形式配置命令。</font>
 <font size=3 color=red>2、make && make modules_install： 内核编译及安装命令。</font>
@@ -510,4 +511,7 @@ readelf -a t07  这是查看全部elf信息
 readelf -d t07  用来查看dynamic section信息
 </pre></font>";
 echo "<br><br><br>";
+echo "<a name=ord101></a><font size=4 color=blue>生成64位可执行程序</font></font><pre>";
+include_once("./about_x64.txt");
+echo "</pre><br><br><br>";
 ?>
