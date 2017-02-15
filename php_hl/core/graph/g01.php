@@ -128,7 +128,7 @@ if($k == 2)//废水或污水厂
 	$mx1=$maxv[0]>($stdv[0]*2)?$maxv[0]:($stdv[0]*2);
 	$mx2=$maxv[1]>($stdv[1]*2)?$maxv[1]:($stdv[1]*2);
 	if($i==24)//小时值
-		$nn=2;
+		$nn=1;//$nn=2;
 	else
 		$nn=1;
 	for($l=0;$l<($j-1);$l++)
