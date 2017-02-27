@@ -170,10 +170,46 @@ c01:c01.c
 	gcc -o c10 c01.c -lasm01 -L/workarea/cprogram/mlib/ -I/workarea/cprogram/include/
 
 </pre>
+<hr width=100%><font size=3 color=red>四、内联汇编的两种写法</font>
+<br><br>
+<table width=100% border=1>
+<tr><td width=50% align=center><font color=blue>方式一</font></td><td width=50% align=center><font color=blue>方式二</font></td></tr>
+<tr><td width=50%>
+<pre>
+#include"clsscr.h"
+int main(int argc,char **argv)
+{
+	int i,j,k;
+	i=3;j=5;k=0;
+	__asm__ __volatile__(
+			"movl %1,%%eax\n\t"
+			"movl %2,%%ebx\n\t"
+			"addl %%ebx,%%eax\n\t"
+			"movl %%eax,%0"
+			:"=r"(k)
+			:"a"(i),"b"(j)
+			);
+	printf("k= %d\n",k);
+	return 0;
+}</pre></td><td width=50%>
+<pre>
+#include"clsscr.h"
+int main(int argc,char **argv)
+{
+	int i,j,k;
+	i=3;j=5;k=0;
+	__asm__ __volatile__
+	("movl %1,%%eax;movl %2,%%ebx;addl %%ebx,%%eax;movl %%eax,%0;"
+			:"=r"(k)
+			:"a"(i),"b"(j)
+	);
+	printf("k= %d\n",k);
+	return 0;
+}
 
 
 
-
+</pre></td></tr></table>
 
 
 
