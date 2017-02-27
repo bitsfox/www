@@ -1,7 +1,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <?php
+echo "<a name=a00></a><font size=5><center>my favorite song</center></font><br><br>";
+echo "<a href=#a01>Without you</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#a02>No matter what</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#a03>Edelweiss</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#a04>Jingle Bells</a>&nbsp;&nbsp;&nbsp;&nbsp;";
+echo "<a href=#a05>Everything I Do,I Do It For You</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#a06>demons</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#a07>Eyes On Me</a>";
+echo "<br><br>";
 echo "<table width=100% border=0><tr width=100%><td width=100% colspan=4>
-<center><font color=red size=5>Without you -Harry Nilsson</font></center>
+<a name=a01></a><center><font color=red size=5>Without you -Harry Nilsson</font>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#a00>返回</a></center>
 </td></tr>
 
 <tr width=100%><td width=10%></td><td width=40% align=left>";
@@ -54,7 +58,7 @@ I can't live, I can't give anymore
 我无法生存,如果生命中没有你
 我无法生存,我已再不能忍受
 </pre></td><td width=10%></td></tr>";
-echo "<tr width=100%><td colspan=4 width=100%><center><font color=red size=5>No matter what -Boyzone</font></center></td></tr>";
+echo "<tr width=100%><td colspan=4 width=100%><a name=a02></a><center><font color=red size=5>No matter what -Boyzone</font>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#a00>返回</a></center></td></tr>";
 echo "<tr><td width=10%></td><td width=30%><pre><font color=blue>
 No matter what they tell us
 No matter what they do
@@ -159,7 +163,7 @@ That's all that matters to me
 对我来说，这就是一切
 </pre></td>
 <td width=10%></td></tr>";
-echo "<tr width=100%><td colspan=4 width=100%><center><font color=red size=5>Edelweiss</font></center></td></tr>";
+echo "<tr width=100%><td colspan=4 width=100%><a name=a03></a><center><font color=red size=5>Edelweiss</font>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#a00>返回</a></center></td></tr>";
 echo "<tr><td width=10%></td><td width=30%><pre><font color=blue>
 edelweiss, edelweiss
 every morning you greet me
@@ -194,7 +198,7 @@ bless my homeland forever
 </pre></td>
 <td width=10%></td></tr>";
 
-echo "<tr width=100%><td colspan=4 width=100%><center><font color=red size=5>Jingle Bells</font></center></td></tr>";
+echo "<tr width=100%><td colspan=4 width=100%><a name=a04></a><center><font color=red size=5>Jingle Bells</font>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#a00>返回</a></center></td></tr>";
 echo "<tr><td width=10%></td><td width=30%><pre><font color=blue>
 Dashing through the snow
 On a one-horse open sleigh
@@ -269,7 +273,7 @@ In a one horse open sleigh
 </pre></td>
 <td width=10%></td></tr>";
 
-echo "<tr width=100%><td colspan=4 width=100%><center><font color=red size=5>Everything I Do,I Do It For You</font></center></td></tr>";
+echo "<tr width=100%><td colspan=4 width=100%><a name=a05></a><center><font color=red size=5>Everything I Do,I Do It For You</font>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#a00>返回</a></center></td></tr>";
 echo "<tr><td width=10%></td><td width=30%><pre><font color=blue>
 Look into my eyes
 You will see what you mean to me
@@ -345,7 +349,7 @@ I do it for you
 <td width=10%></td></tr>";
 echo "</table>";
 echo "
-	<center><font color= red size=5>demons</font></center>
+	<a name=a06></a><center><font color= red size=5>demons</font>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#a00>返回</a></center>
 <table width=100% border=0><tr><td width=10%><td width=40%>	
 	<pre><font color=blue>
 When the days are cold 
@@ -480,9 +484,113 @@ It’s where my demons hide
 这里再无光明
 那里藏着我内心的恶魔
 那里藏着我内心的恶魔
-</pre></td><td width=10%></tr></table>
-";
+</pre></td><td width=10%></td></tr>";
+echo "<tr><td colspan=4 width=100%><a name=a07></a><center><font color=red size=5>Eyes On Me</font>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#a00>返回</a></center></td></tr>";
+echo "<tr><td width=10%></td>
+<td width=40%><pre><font color=blue>
 
+Whenever sang my songs
+On the stage , on my own
+Whenever said my words
+Wishing they would be heard
+I saw you smiling at me
+Was it real or just my fantasy
+You’d always be there in the corner
+Of this tiny little bar
+My last night here for you
+samg old songs , just once more
+My last night here with you ?
+Maybe yes , maybe no
+I kind of liked it your way
+How you shyly placed your eyes on me
+Oh , did you ever know ?
+That I had mine on you
+Darling , so there you are
+With that look on your face
+As if you’re never hurt
+As if you’re never down
+Shall I be the one for you
+Who pinches you softly but sure
+If frown is shown then
+I will know that you are on dreamer
+So let me come to you
+Close as I wanted to be
+Close enough for me
+To feel your heart beating fast
+And stay there as I whisper
+How I love you peaceful eyes on me
+Did you ever know
+That I had mine on you
+Darling , so share with me
+Your love if you have enough
+Your tears if you're holding bac
+Or pain if that’s what it is
+How can I let you know
+I’m more than the dress and the voice
+Just reach me out then
+You will know that you’re not dreaming
+Darling , so there you are
+With that look on your face
+As if you’re never hurt
+As if you’re never down
+Shall I be the one for you
+Who pinches you softly but sure
+If frown is shown then
+I will know that you are on dreamer
+</font></pre></td>
+<td width=40%><pre>
+
+每当我独自
+在舞台上唱着歌
+每当我自言自语
+总希望他们能够听到
+我看见你在向我微笑
+这到底是真实还是幻象
+你总是站在那个小酒吧
+不起眼的角落里
+我在这里的最后一夜
+为你再唱一曲老歌
+这是我陪你的最后一夜吗？
+我难置可否
+我喜欢
+你用羞涩的眼光看着我的方式
+哦，你可知道
+我也注视着你啊
+亲爱的，你就站在那里
+脸上还是那样的表情
+仿佛你从未受伤
+似乎你不曾失败
+我能否成为那个
+轻柔地拧你却对你满怀信心的人呢？
+如果你皱起眉头
+我将知道你还未迷失方向
+让我靠近你吧
+如我所愿近到
+足够让我
+感受到你快速的心跳
+并像低声细语般守在你身边
+多喜欢你看着我的平静的目光
+你可知道
+我也注视着你啊
+亲爱的，向我倾诉吧
+你那深沉的爱意
+还有你强忍住的泪水
+与痛苦
+我如何才能让你知道
+我不只是有装扮和声音
+伸手碰一下我
+你将明白自己并非身处梦境
+亲爱的，你就站在那里
+脸上还是那样的表情
+仿佛你从未受伤
+似乎你不曾失败
+我能否成为那个
+轻柔地拧你却对你满怀信心的人呢？
+如果你皱起眉头
+我将知道你还未迷失方向
+</pre></td>
+<td width=10%></td></tr>";
+echo "</table><center><a href=#a00>返回</a></center>";
 
 
 ?>
