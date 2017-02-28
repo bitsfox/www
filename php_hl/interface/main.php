@@ -161,7 +161,7 @@ class tb_wsc implements tab_show
 //{{{public function show_body()
 	public function show_body()
 	{
-		global $FSS_BODY_1,$FSS_BODY_RED,$FSS_BODY_NOR,$FSS_BODY_LL;
+		global $FSS_BODY_1,$FSS_BODY_RED,$FSS_BODY_NOR,$FSS_BODY_LL,$WUXIAO;
 		$str="";
 		$i=count($this->dy);
 		for($j=0;$j<$i;$j++)
@@ -172,12 +172,22 @@ class tb_wsc implements tab_show
 			if(($fy[3]>$fy[4]) && ($fy[4]>0))
 				$s1=sprintf($FSS_BODY_RED,$fy[3],$fy[4]);
 			else
-				$s1=sprintf($FSS_BODY_NOR,$fy[3],$fy[4]);
+			{
+				if($fy[3] >= 0)
+					$s1=sprintf($FSS_BODY_NOR,$fy[3],$fy[4]);
+				else
+					$s1=sprintf($FSS_BODY_NOR,$WUXIAO,$fy[4]);
+			}
 			$str.=$s1;
 			if(($fy[5]>$fy[6]) && ($fy[6]>0))
 				$s1=sprintf($FSS_BODY_RED,$fy[5],$fy[6]);
 			else
-				$s1=sprintf($FSS_BODY_NOR,$fy[5],$fy[6]);
+			{
+				if($fy[5] >= 0)
+					$s1=sprintf($FSS_BODY_NOR,$fy[5],$fy[6]);
+				else
+					$s1=sprintf($FSS_BODY_NOR,$WUXIAO,$fy[6]);
+			}
 			$str.=$s1;
 			$s1=sprintf($FSS_BODY_LL,$fy[7],$fy[8],$fy[9]);
 			$str.=$s1;
@@ -211,7 +221,7 @@ class tb_fs implements tab_show
 //{{{public function show_body()	
 	public function show_body()
 	{
-		global $FSS_BODY_1,$FSS_BODY_RED,$FSS_BODY_NOR,$FSS_BODY_LL;
+		global $FSS_BODY_1,$FSS_BODY_RED,$FSS_BODY_NOR,$FSS_BODY_LL,$WUXIAO;
 		$str="";
 		$i=count($this->dy);
 		for($j=0;$j<$i;$j++)
@@ -222,12 +232,22 @@ class tb_fs implements tab_show
 			if(($fy[3]>$fy[4]) && ($fy[4]>0))
 				$s1=sprintf($FSS_BODY_RED,$fy[3],$fy[4]);
 			else
-				$s1=sprintf($FSS_BODY_NOR,$fy[3],$fy[4]);
+			{
+				if($fy[3] >= 0)
+					$s1=sprintf($FSS_BODY_NOR,$fy[3],$fy[4]);
+				else
+					$s1=sprintf($FSS_BODY_NOR,$WUXIAO,$fy[4]);
+			}
 			$str.=$s1;
 			if(($fy[5]>$fy[6]) && ($fy[6]>0))
 				$s1=sprintf($FSS_BODY_RED,$fy[5],$fy[6]);
 			else
-				$s1=sprintf($FSS_BODY_NOR,$fy[5],$fy[6]);
+			{
+				if($fy[5] >= 0)
+					$s1=sprintf($FSS_BODY_NOR,$fy[5],$fy[6]);
+				else
+					$s1=sprintf($FSS_BODY_NOR,$WUXIAO,$fy[6]);
+			}
 			$str.=$s1;
 			$s1=sprintf($FSS_BODY_LL,$fy[7],$fy[8],$fy[9]);
 			$str.=$s1;
@@ -261,7 +281,7 @@ class tb_fq implements tab_show
 	}
 	public function show_body()
 	{
-		global $FQS_BODY_1,$FQS_BODY_RED,$FQS_BODY_NOR,$FQS_BODY_LL;
+		global $FQS_BODY_1,$FQS_BODY_RED,$FQS_BODY_NOR,$FQS_BODY_LL,$WUXIAO;
 		$str="";
 		$i=count($this->dy);
 		for($j=0;$j<$i;$j++)
@@ -272,17 +292,32 @@ class tb_fq implements tab_show
 			if(($y[3]>$y[4]) && ($y[4]>0))
 				$s1=sprintf($FQS_BODY_RED,$y[3],$y[4]);
 			else
-				$s1=sprintf($FQS_BODY_NOR,$y[3],$y[4]);
+			{
+				if($y[3] >= 0)
+					$s1=sprintf($FQS_BODY_NOR,$y[3],$y[4]);
+				else
+					$s1=sprintf($FQS_BODY_NOR,$WUXIAO,$y[4]);
+			}
 			$str.=$s1;
 			if(($y[5]>$y[6]) && ($y[6]>0))
 				$s1=sprintf($FQS_BODY_RED,$y[5],$y[6]);
 			else
-				$s1=sprintf($FQS_BODY_NOR,$y[5],$y[6]);
+			{
+				if($y[5] >= 0)
+					$s1=sprintf($FQS_BODY_NOR,$y[5],$y[6]);
+				else
+					$s1=sprintf($FQS_BODY_NOR,$WUXIAO,$y[6]);
+			}
 			$str.=$s1;
 			if(($y[7]>$y[8]) && ($y[8]>0))
 				$s1=sprintf($FQS_BODY_RED,$y[7],$y[8]);
 			else
-				$s1=sprintf($FQS_BODY_NOR,$y[7],$y[8]);
+			{
+				if($y[7] >= 0)
+					$s1=sprintf($FQS_BODY_NOR,$y[7],$y[8]);
+				else	
+					$s1=sprintf($FQS_BODY_NOR,$WUXIAO,$y[8]);
+			}
 			$str.=$s1;
 			$s1=sprintf($FQS_BODY_LL,$y[9],$y[10]);
 			$str.=$s1;
@@ -574,7 +609,7 @@ class tb_fs_mx implements tab_show
 //{{{public function show_body()
 	public function show_body()
 	{
-		global $FS_BODY_1,$FS_BODY_RED,$FS_BODY_NOR,$FS_BODY_LL;
+		global $FS_BODY_1,$FS_BODY_RED,$FS_BODY_NOR,$FS_BODY_LL,$WUXIAO;
 		$str="";
 		$i=count($this->dy);
 		if($i>31)
@@ -587,12 +622,22 @@ class tb_fs_mx implements tab_show
 			if(($y[2]>$y[3]) && ($y[3]>0))
 				$s1=sprintf($FS_BODY_RED,$y[2],$y[3]);
 			else
-				$s1=sprintf($FS_BODY_NOR,$y[2],$y[3]);
+			{
+				if($y[2] >= 0)
+					$s1=sprintf($FS_BODY_NOR,$y[2],$y[3]);
+				else
+					$s1=sprintf($FS_BODY_NOR,$WUXIAO,$y[3]);
+			}
 			$str.=$s1;
 			if(($y[4]>$y[5]) && ($y[5]>0))
 				$s1=sprintf($FS_BODY_RED,$y[4],$y[5]);
 			else
-				$s1=sprintf($FS_BODY_NOR,$y[4],$y[5]);
+			{
+				if($y[4] >= 0)
+					$s1=sprintf($FS_BODY_NOR,$y[4],$y[5]);
+				else
+					$s1=sprintf($FS_BODY_NOR,$WUXIAO,$y[5]);
+			}
 			$str.=$s1;
 			$s1=sprintf($FS_BODY_LL,$y[6],$y[7],$y[8]);
 			$str.=$s1;
@@ -630,7 +675,7 @@ class tb_wsc_mx implements tab_show
 //{{{public function show_body()
 	public function show_body()
 	{
-		global $FS_BODY_1,$FS_BODY_RED,$FS_BODY_NOR,$FS_BODY_LL;
+		global $FS_BODY_1,$FS_BODY_RED,$FS_BODY_NOR,$FS_BODY_LL,$WUXIAO;
 		$str="";
 		$i=count($this->dy);
 		if($i>31)
@@ -643,12 +688,22 @@ class tb_wsc_mx implements tab_show
 			if(($y[2]>$y[3]) && ($y[3]>0))
 				$s1=sprintf($FS_BODY_RED,$y[2],$y[3]);
 			else
-				$s1=sprintf($FS_BODY_NOR,$y[2],$y[3]);
+			{
+				if($y[2] >= 0)
+					$s1=sprintf($FS_BODY_NOR,$y[2],$y[3]);
+				else
+					$s1=sprintf($FS_BODY_NOR,$WUXIAO,$y[3]);
+			}
 			$str.=$s1;
 			if(($y[4]>$y[5]) && ($y[5]>0))
 				$s1=sprintf($FS_BODY_RED,$y[4],$y[5]);
 			else
-				$s1=sprintf($FS_BODY_NOR,$y[4],$y[5]);
+			{
+				if($y[4] >= 0)
+					$s1=sprintf($FS_BODY_NOR,$y[4],$y[5]);
+				else
+					$s1=sprintf($FS_BODY_NOR,$WUXIAO,$y[5]);
+			}
 			$str.=$s1;
 			$s1=sprintf($FS_BODY_LL,$y[6],$y[7],$y[8]);
 			$str.=$s1;
@@ -686,7 +741,7 @@ class tb_fq_mx implements tab_show
 //{{{public function show_body()
 	public function show_body()
 	{
-		global $FQ_BODY_1,$FQ_BODY_RED,$FQ_BODY_NOR,$FQ_BODY_LL;
+		global $FQ_BODY_1,$FQ_BODY_RED,$FQ_BODY_NOR,$FQ_BODY_LL,$WUXIAO;
 		$str="";
 		$i=count($this->dy);
 		if($i>31)
@@ -699,17 +754,32 @@ class tb_fq_mx implements tab_show
 			if(($y[2]>$y[3]) && ($y[3]>0))
 				$s1=sprintf($FQ_BODY_RED,$y[2],$y[3]);
 			else
-				$s1=sprintf($FQ_BODY_NOR,$y[2],$y[3]);
+			{
+				if($y[2] >= 0)
+					$s1=sprintf($FQ_BODY_NOR,$y[2],$y[3]);
+				else
+					$s1=sprintf($FQ_BODY_NOR,$WUXIAO,$y[3]);
+			}
 			$str.=$s1;
 			if(($y[4]>$y[5]) && ($y[5]>0))
 				$s1=sprintf($FQ_BODY_RED,$y[4],$y[5]);
 			else
-				$s1=sprintf($FQ_BODY_NOR,$y[4],$y[5]);
+			{
+				if($y[4] >= 0)
+					$s1=sprintf($FQ_BODY_NOR,$y[4],$y[5]);
+				else
+					$s1=sprintf($FQ_BODY_NOR,$WUXIAO,$y[5]);
+			}
 			$str.=$s1;
 			if(($y[6]>$y[7]) && ($y[7]>0))
 				$s1=sprintf($FQ_BODY_RED,$y[6],$y[7]);
 			else
-				$s1=sprintf($FQ_BODY_NOR,$y[6],$y[7]);
+			{
+				if($y[6] >= 0)
+					$s1=sprintf($FQ_BODY_NOR,$y[6],$y[7]);
+				else
+					$s1=sprintf($FQ_BODY_NOR,$WUXIAO,$y[7]);
+			}
 			$str.=$s1;
 			$s1=sprintf($FQ_BODY_LL,$y[8],$y[9]);
 			$str.=$s1;
