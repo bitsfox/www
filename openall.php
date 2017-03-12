@@ -15,6 +15,7 @@ $result=mysqli_query($conn,$sqlstr);
 	die("query error");
 }*/
 mysqli_close($conn);//当前网页计数完毕，开始转向打开网页
-echo "<script>window.location.href='".$_GET[url]."'</script>";
+//echo "<script>window.location.href='".$_GET[url]."'</script>";  <--这种写法w3m打不开
+echo "<meta http-equiv='refresh' content='0;url=".$_GET[url]."'>";
 
 ?>
