@@ -31,7 +31,7 @@ $ox=50;$oy=$sh-40;
 $ow=$sw-60;$oh=$sh-80; //x,y轴的长度
 //确保包含了全局变量的定义文件
 if(!defined("IGN_VAL"))
-	define("IGN_VAL",999.99);	
+	define("IGN_VAL",-100.11);	
 //}}}
 ?>
 <?php
