@@ -44,7 +44,9 @@ if($pflag==0)
 	echo "<a href='./tin16/zzjb_mm2r.php' target=_blank>nds mm2r</a><br>";
 	echo "<a href='./tin16/zzjb_mmr.php' target=_blank>sfc mmr</a><br>";
 	echo "<a href='./tin16/mm3.php' target=_blank>nds mm3</a><br>";
-	echo "<a href='./tin16/bof1.php' target=_blank>龙战士1攻略</a><br><br><br><br>";
+	echo "<a href='./tin16/bof1.php' target=_blank>龙战士1攻略</a><br>";
+	echo "<a href='./tin16/bbb/baishi.php' target=_blank>龙战士31攻略</a><br>";
+	echo "<a href='./tin16/bbb/yinzi.php' target=_blank>龙战士3攻略</a><br><br><br><br>";
 }
 ?>
 <?php
