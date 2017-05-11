@@ -3,7 +3,6 @@
 echo "<center><font color=red size=5>全部师匠所在+技能+属性补正</font></center>";
 echo "<center><table border=1 width=80%><tr>
 <td width=60%><pre>
-1.梅加斯
 师匠名字：梅加斯
 所在地点：马克尼鲁村西南方的?处,贤树残椿
 入门条件：付出全部的所持金（０Ｚ亦可）
@@ -84,11 +83,14 @@ echo "<center><table border=1 width=80%><tr>
 </pre></td>
 <td width=40% align=center><img src='./bof3_pic/bs007.jpg' style='display:block;width:80%;' /></td></tr>
 <td width=60%><pre>
-8.耶米泰
+师匠名字：耶米泰
 达纳矿山东边小屋?处
 能力　　AP+4,智力+4 攻击-2,防御-2
 要求　　10000元
-技能　　心剑*.保护.生命能源（单体智力上升）.★
+习得特技：ＬＶ０２保护
+ＬＶ０４心剑*.
+ＬＶ０６生命能源（单体智力上升）.★
+状态变化：无
 </pre></td>
 <td width=40% align=center><img src='./bof3_pic/bs008.jpg' style='display:block;width:80%;' /></td></tr>
 <td width=60%><pre>

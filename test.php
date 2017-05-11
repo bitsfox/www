@@ -36,17 +36,19 @@ if($pflag==0)
 	echo "<tr><td colspan=3 align=center valign=middle ><input type=submit value=\"登录\" />&nbsp;&nbsp;<input type=reset value=\"重置\" /></td></tr></form>";
 	echo "<table width=100%><tr><td width=100%><br><br></td></tr></table>";
 	include("awnl.php");
-	echo "<br><a href='./tin16/fengshen.php' target=_blank>FC封神榜</a><br>";
-	echo "<a href='./tin16/warsong/indexp1.htm' target=_blank>MD梦幻模拟战2</a><br>";
-	echo "<a href='./tin16/FC_namelist.html' target=_blank>FC游戏列表</a><br>";
-	echo "<a href='./tin16/CastleVania2/castle2.php' target=_blank>FC恶魔城2</a><br>";
-	echo "<a href='./tin16/mddahanghai2.php' target=_blank>MD大航海时代2</a><br>";
-	echo "<a href='./tin16/zzjb_mm2r.php' target=_blank>nds mm2r</a><br>";
-	echo "<a href='./tin16/zzjb_mmr.php' target=_blank>sfc mmr</a><br>";
-	echo "<a href='./tin16/mm3.php' target=_blank>nds mm3</a><br>";
-	echo "<a href='./tin16/bof1.php' target=_blank>龙战士1攻略</a><br>";
-	echo "<a href='./tin16/bbb/bof3.php' target=_blank>龙战士31攻略</a><br>";
-	echo "<a href='./tin16/bbb/yinzi.php' target=_blank>龙战士3攻略</a><br><br><br><br>";
+	echo "<br><center><table width=60%><tr>";
+	echo "<td align=left width=25% ><a href='./tin16/fengshen.php' target=_blank>FC封神榜</a></td>";
+	echo "<td align=left width=25% ><a href='./tin16/warsong/indexp1.htm' target=_blank>MD梦幻模拟战2</a></td>";
+	echo "<td align=left width=25% ><a href='./tin16/FC_namelist.html' target=_blank>FC游戏列表</a></td>";
+	echo "<td align=left width=25% ><a href='./tin16/CastleVania2/castle2.php' target=_blank>FC恶魔城2</a></td></tr><tr>";
+	echo "<td align=left width=25% ><a href='./tin16/mddahanghai2.php' target=_blank>MD大航海时代2</a></td>";
+	echo "<td align=left width=25% ><a href='./tin16/zzjb_mm2r.php' target=_blank>nds mm2r</a></td>";
+	echo "<td align=left width=25% ><a href='./tin16/zzjb_mmr.php' target=_blank>sfc mmr</a></td>";
+	echo "<td align=left width=25% ><a href='./tin16/mm3.php' target=_blank>nds mm3</a></td></tr><tr>";
+	echo "<td align=left width=25% ><a href='./tin16/bof1.php' target=_blank>龙战士1攻略</a></td>";
+	echo "<td align=left width=25% ><a href='./tin16/bbb/bof3.php' target=_blank>龙战士3攻略</a></td>";
+	echo "<td align=left width=25% ></td><td align=left width=25% ></td></tr></table></center>";
+	echo "<br><br>";
 }
 ?>
 <?php
