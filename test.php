@@ -47,7 +47,7 @@ if($pflag==0)
 	echo "<td align=left width=25% ><a href='./tin16/mm3.php' target=_blank>nds mm3</a></td></tr><tr>";
 	echo "<td align=left width=25% ><a href='./tin16/bof1.php' target=_blank>龙战士1攻略</a></td>";
 	echo "<td align=left width=25% ><a href='./tin16/bbb/bof3.php' target=_blank>龙战士3攻略</a></td>";
-	echo "<td align=left width=25% ></td><td align=left width=25% ></td></tr></table></center>";
+	echo "<td align=left width=25% ><a href='./tin16/bbb/bof4.php#begin'>龙战士4攻略</a></td><td align=left width=25% ></td></tr></table></center>";
 	echo "<br><br>";
 }
 ?>
