@@ -6,7 +6,7 @@ echo "<a href='./bof4gonglue.php#begin'>第一章：觉醒的人</a>&nbsp;&nbsp;
 <a href='./bof4gonglue.php#sec_005'>钓鱼地点</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./bof4gonglue.php#sec_006'>习师系统</a>&nbsp;&nbsp;&nbsp;&nbsp;
 <a href='./bof4gonglue.php#sec_007'>合成魔法要点</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./bof4gonglue.php#sec_008'>精灵共同体</a>&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
 <a href='./bof41.php#begin'>问题集绵</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./bof4.php#pic_001'>龙四大地图</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./b44.php' target=_blank>技能</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./b45.php#begin'>人物养成</a><br><br>
-<a href='./b49.php'>对照攻略</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href='./b49.php'>对照攻略</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./bof4_skill.php'>技能详解</a>
 </center><br><br><br><br><br><br><br><br><br><br><br>";
 echo "<a name=pic_001></a>
 <table border=0 width=100%><tr width=100%><td width=10%></td>
