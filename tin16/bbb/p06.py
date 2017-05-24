@@ -2,7 +2,7 @@
 #_*_coding:utf-8_*_
 #又一个普通文本转php的脚本
 
-sf=("./bof4.txt","/tmp/bof4tmp1.txt","./bof49.php")
+sf=("./bbbvvv.txt","/tmp/bof4tmp1.txt","./b49.php")
 f1=file(sf[0],"r")
 f2=file(sf[2],"w")
 

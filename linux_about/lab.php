@@ -7,9 +7,9 @@ echo "<table border=0 width=100%><tr><td width=20%><a href=./lab.php#lab01>lsof�
 <td width=20%><a href=./lab.php#lab05>挂接ntfs分区的说明</a></td></tr><tr>
 <td width=20%><a href=./lab.php#lab06>安装mplayer</a></td><td width=20%><a href=./lab.php#lab07>编写linux共享库</a></td><td width=20%><a href=./lab.php#lab08>Wine Gecko</a>
 </td><td width=20%><a href=./lab.php#lab09>kde下开机自动运行</a></td><td width=20%><a href=./lab.php#lab10>c代码中实现清屏的代码</a></td></tr>
-<tr>><td width=20%><a href=./lab.php#lab11>asm指令表</a></td><td width=20%><a href=./lab.php#lab12>字符串定义</a></td><td width=20%><a href=./lab.php#lab13>
+<tr><td width=20%><a href=./lab.php#lab11>asm指令表</a></td><td width=20%><a href=./lab.php#lab12>字符串定义</a></td><td width=20%><a href=./lab.php#lab13>
 挂载freebsd分区的做法</a></td><td width=20%><a href=./lab.php#lab14>RPM</a></td><td width=20%><a href=./lab.php#lab15>yum install</a></td></tr>
-<tr>><td width=20%><a href=./lab.php#lab16>fceu 安装及配置</a></td><td width=20%><a href=./lab.php#lab17>midi播放</a></td><td width=20%><a href=./lab.php#lab18>wine相关</a>
+<tr><td width=20%><a href=./lab.php#lab16>fceu 安装及配置</a></td><td width=20%><a href=./lab.php#lab17>midi播放</a></td><td width=20%><a href=./lab.php#lab18>wine相关</a>
 </td><td width=20%><a href=./lab_a.php#asm1601 target=_blank>生成16位汇编代码的方法</a></td><td width=20%><a href=./lab_a.php#asm1602 target=_blank>获得系统相关信息的方法
 </a></td></tr><tr>
 <td width=20%><a href=./lab_a.php#asm1603 target=_blank>firefox+vimperator打造文件资源管理器</a></td>
@@ -19,7 +19,7 @@ echo "<table border=0 width=100%><tr><td width=20%><a href=./lab.php#lab01>lsof�
 <td width=20%><a href=./lab_b.php target=_blank>服务器建设笔记</a></td></tr>
 <tr>
 <td width=20%><a href=./lab_b.php#server02 target=_blank>ip摄像头视频流的相关操作</a></td>
-<td width=20%></td>
+<td width=20%><a href='./b50.php' target=_blank>HTML颜色表</a></td>
 <td width=20%></td>
 <td width=20%></td>
 <td width=20%></td>
