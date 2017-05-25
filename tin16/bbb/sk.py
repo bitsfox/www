@@ -24,7 +24,7 @@ while True:
 		break
 	elif line.find(dddd) == 0:
 		line1=line.rstrip()
-		s1="<img src='./bof04_pic/%s%s.jpg' />" % (pic,line1[-2:])
+		s1="<center><img src='./bof4_pic/%s%s.jpg' /></center>" % (pic,line1[-2:])
 		f2.write(s1)
 	else:
 		s1="%s<br>\n" % (line.rstrip())
