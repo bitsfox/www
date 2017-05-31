@@ -39,5 +39,13 @@ echo "<font color=red>葛雷：攻击高，HP多，防御也不赖，具有很�
 <font color=blue>(2)平衡流 开始拜史托鲁，若注重攻击可改拜乌娜，若注重速度改版妖精，最后拜汉</font><br>
 平衡流注重速度，使得其到30+后速度不至于连50大关都过不了,一般练得好的话道30多级也会有着100多的速度，反正排水阵更适合给阿斯拉使用，而葛雷具有各类祝福魔法用来当辅助和物攻候补比较好（比如欧罗奇时三主力不幸挂掉一个？），平衡流唯一不如慢速流的便是防御比慢速流低，AP也有可能比慢速流低些
 </td></tr>";
-echo "</table><br><br><a href='./bof4.php#begin'>返  回</a><br><br></center>";
+echo "</table><br><br><a href='./bof4.php#begin'>返  回</a><br><a name=boss></a><br>";
+#------------2017-5-31添加怪物资料表------------------------------
+echo "<table width=70% border=1>
+<tr><td width=100% align=center><img src='./bof4_pic/m001.jpg' style='display:block;width:80%' /></td></tr>
+<tr><td width=100% align=center><img src='./bof4_pic/m002.jpg' style='display:block;width:80%' /></td></tr>
+<tr><td width=100% align=center><img src='./bof4_pic/m003.jpg' style='display:block;width:80%' /></td></tr>
+<tr><td width=100% align=center><img src='./bof4_pic/m004.jpg' style='display:block;width:80%' /></td></tr>
+<tr><td width=100% align=center><img src='./bof4_pic/boss.jpg' style='display:block;width=70%' /></td></tr>
+</table><br><br><a href='./bof4.php#begin'>返  回</a><br><br></center>";
 ?>
