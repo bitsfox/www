@@ -488,6 +488,12 @@ echo "</td></tr><tr><td width=100% align=center>
 8.游戏屋－－－可以玩游戏里的特别MINIGAME
 </td></tr><tr><td width=100% align=center>
 9保险屋－－－顾名思义－－－有几种不同的保单－－－不同的保单就会有不同的效果－－－若所买的保单在游戏中发挥效果的时候－－－就会损失保单内容的条件－－－例如签了逃跑保单－－－在战斗中逃跑就为必定逃跑－－－这是根据保单的条件达成这次逃跑成功的保费－－－例如扣掉当中的金钱等－－－总之烦事买保险－－－就可保一家平安
-</td></tr></table><a href='./bof4.php#begin'>返  回</a><br>";
+</td></tr>
+<tr><td width=100% align=center>
+<img src='./bof4_pic/bof4jl_000.jpg' style='display:block;width:70%;' />
+</td><tr><tr><td width=100% align=center>
+<img src='./bof4_pic/bof4jl_001.jpg' style='display:block;width:70%;' />
+</td></tr>
+</table><a href='./bof4.php#begin'>返  回</a><br>";
 
 ?>

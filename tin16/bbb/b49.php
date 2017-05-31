@@ -1,6 +1,8 @@
 <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 <?php
-echo '<center><font color=red size=6>超详细剧情攻略</font><br>--by 搜珍玉鏡<br><table width=80% border=1><tr><td width=100%>章節總攬<br>
+echo '<center><font color=red size=6>超详细剧情攻略</font><br>--by 搜珍玉鏡<br>
+<a href="#secone">第一章<a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#sectwo">第二章</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#secthr">第三章</a>
+<table width=80% border=1><tr><td width=100%>章節總攬<br><a name="secone" />
 第一章 引子（めざめしもの）<br>
 第1節 預兆（きざし）<br>
 第2節 和龍相關的事（竜にかかわるもの）<br>
@@ -406,7 +408,7 @@ echo '</td></tr><tr><td width=100%><font color=red>R3.24、咒炮之町基地地
 待浮出水面後<font color=blue>【Ryu】</font>、<font color=green>【葛雷】</font>、<font color=DarkRed>【妮娜】</font>三人發現這裏不正是之前夢中所看到的地方嗎？！不過那時沒夢到三人會被尤那（ユンナ）發現而逮住……<br>
 物品：1生命的碎片1.3.30（布袋），1魔法的碎片（櫥櫃）。<br>
 <font color=DarkCyan>敌人：</font>采采蠅、活鎧甲、槍頭。<br>
-</td></tr></table><a href="./bof4.php#begin">返  回</a><br><table width=80% border=1>';echo '<tr><td width=100%>第二章 永恆（うつろわざるもの）<br>
+</td></tr></table><a href="./bof4.php#begin">返  回</a><br><table width=80% border=1>';echo '<tr><td width=100%>第二章 永恆（うつろわざるもの）<a name="sectwo" /><br>
 第4節 王家之劍（王家の剣）<br>
 魯迪亞地區（ルディア地方）<br>
 <font color=red>R4.1、魯迪亞（ルディア，日景）</font><br>
@@ -821,7 +823,7 @@ echo '</td></tr><tr><td width=100%><font color=red>R7.23、露營場</font><br>
 echo '</td></tr><tr><td width=100%><font color=red>R7.24、？（被遺棄之村）</font><br>
 與阿斯拉一起來到被遺棄之村，卻發現此村的村民已經遭到拉索的毒手，此舉讓阿斯拉頗為不滿！這時拉索叫出僕人艾多（アイトー）攻擊我們，可不管怎麼打都無法傷到艾多，當我們正在苦惱時<font color=blue>【Ryu】</font>已經被打倒了，但是就在<font color=blue>【Ryu】</font>被打倒後他竟變身為凱撒龍（カイザー）借助皇帝吐息打倒艾多。之後凱撒龍又幹掉了拉索和幾個帝國兵，正當他將殺阿斯拉時，<font color=DarkRed>【妮娜】</font>上前阻止<font color=blue>【Ryu】</font>。<br>
 <font color=DarkCyan>敌人：</font>艾多B33-090（金屬、火炎劍2.1.11，無）。<br>
-</td></tr></table><a href="./bof4.php#begin">返  回</a><br><table width=80% border=1>';echo '<tr><td width=100%>第三章 潮流（ながれ）<br>
+</td></tr></table><a href="./bof4.php#begin">返  回</a><br><table width=80% border=1>';echo '<tr><td width=100%>第三章 潮流（ながれ）<a name="secthr" /><br>
 第8節 命運之路（さだめの道行き）<br>
 西大陸南部<br>
 <font color=red>F8.1、索恩村</font><br>
