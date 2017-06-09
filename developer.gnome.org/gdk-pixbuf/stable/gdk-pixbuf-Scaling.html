@@ -19,7 +19,7 @@ $('#s').autocomplete('/symbols/lookup/',
 <div class="refnamediv"><table width="100%"><tbody><tr>
 <td valign="top">
 <h2><span class="refentrytitle"><a name="gdk-pixbuf-Scaling.top_of_page"></a>Scaling</span></h2>
-<p>Scaling — Scaling pixbufs and scaling and compositing pixbufs</p>
+<p>Scaling — Scaling pixbufs and scaling and alpha blending pixbufs</p>
 </td>
 <td align="right" class="gallery_image" valign="top"></td>
 </tr></tbody></table></div>
@@ -117,10 +117,12 @@ $('#s').autocomplete('/symbols/lookup/',
 <div class="refsect1">
 <a name="gdk-pixbuf-Scaling.description"></a><h2>Description</h2>
 <p>The GdkPixBuf contains functions to scale pixbufs, to scale
-pixbufs and composite against an existing image, and to scale
-pixbufs and composite against a solid color or checkerboard.
-Compositing a checkerboard is a common way to show an image with
+pixbufs and alpha blend against an existing image, and to scale
+pixbufs and alpha blend against a solid color or checkerboard.
+Alpha blending a checkerboard is a common way to show an image with
 an alpha channel in image-viewing and editing software.</p>
+<p>Note that in these functions, the terms ‘alpha blending’ and ‘compositing’
+are used synonymously.</p>
 <p>Since the full-featured functions (<a class="link" href="gdk-pixbuf-Scaling.html#gdk-pixbuf-scale" title="gdk_pixbuf_scale ()"><code class="function">gdk_pixbuf_scale()</code></a>,
 <a class="link" href="gdk-pixbuf-Scaling.html#gdk-pixbuf-composite" title="gdk_pixbuf_composite ()"><code class="function">gdk_pixbuf_composite()</code></a>, and <a class="link" href="gdk-pixbuf-Scaling.html#gdk-pixbuf-composite-color" title="gdk_pixbuf_composite_color ()"><code class="function">gdk_pixbuf_composite_color()</code></a>) are
 rather complex to use and have many arguments, two simple
@@ -130,12 +132,27 @@ given size, scale an original image to fit, and then return the
 new pixbuf.</p>
 <p>If the destination pixbuf was created from a readonly source, these
 operations will force a copy into a mutable buffer.</p>
-<p>Scaling and compositing functions take advantage of MMX hardware
+<p>Scaling and alpha blending functions take advantage of MMX hardware
 acceleration on systems where MMX is supported.  If gdk-pixbuf is built
 with the Sun mediaLib library, these functions are instead accelerated
 using mediaLib, which provides hardware acceleration on Intel, AMD,
 and Sparc chipsets.  If desired, mediaLib support can be turned off by
 setting the <code class="literal">GDK_DISABLE_MEDIALIB</code> environment variable.  </p>
+<p>The alpha blending function used is:</p>
+<div class="informalexample">
+  <table border="0" cellpadding="0" cellspacing="0" class="listing_frame">
+    <tbody>
+      <tr>
+        <td align="right" class="listing_lines"><pre>1</pre></td>
+        <td class="listing_code"><pre class="programlisting">Cd <span class="gtkdoc opt">=</span> Cs·As <span class="gtkdoc opt">+</span> <span class="function">Cd</span><span class="gtkdoc opt">(</span><span class="number">1</span><span class="gtkdoc opt">-</span>As<span class="gtkdoc opt">)</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p>
+where <code class="literal">Cd</code> is the destination pixel color, <code class="literal">Cs</code> is the source pixel color,
+and <code class="literal">As</code> is the source pixel alpha.</p>
 <p>The following example demonstrates handling an expose event by
 rendering the appropriate area of a source image (which is scaled
 to fit the widget) onto the widget's window.  The source image is
@@ -145,7 +162,7 @@ image doesn't have an alpha channel, calling
 <a class="link" href="gdk-pixbuf-Scaling.html#gdk-pixbuf-composite-color" title="gdk_pixbuf_composite_color ()"><code class="function">gdk_pixbuf_composite_color()</code></a> function has exactly the same effect
 as calling <a class="link" href="gdk-pixbuf-Scaling.html#gdk-pixbuf-scale" title="gdk_pixbuf_scale ()"><code class="function">gdk_pixbuf_scale()</code></a>.</p>
 <div class="refsect3">
-<a name="id-1.2.10.6.7"></a><h4>Handling an expose event</h4>
+<a name="id-1.2.10.6.11"></a><h4>Handling an expose event</h4>
 <div class="informalexample">
   <table border="0" cellpadding="0" cellspacing="0" class="listing_frame">
     <tbody>
@@ -231,7 +248,13 @@ reasonable quality and speed.</p>
  by creating a sub-pixbuf
 pointing into <em class="parameter"><code>src</code></em>
 ; see <a class="link" href="gdk-pixbuf-Image-Data-in-Memory.html#gdk-pixbuf-new-subpixbuf" title="gdk_pixbuf_new_subpixbuf ()"><code class="function">gdk_pixbuf_new_subpixbuf()</code></a>.</p>
-<p>For more complicated scaling/compositing see <a class="link" href="gdk-pixbuf-Scaling.html#gdk-pixbuf-scale" title="gdk_pixbuf_scale ()"><code class="function">gdk_pixbuf_scale()</code></a>
+<p>If <em class="parameter"><code>dest_width</code></em>
+ and <em class="parameter"><code>dest_height</code></em>
+ are equal to the <em class="parameter"><code>src</code></em>
+ width and height, a
+copy of <em class="parameter"><code>src</code></em>
+ is returned, avoiding any scaling.</p>
+<p>For more complicated scaling/alpha blending see <a class="link" href="gdk-pixbuf-Scaling.html#gdk-pixbuf-scale" title="gdk_pixbuf_scale ()"><code class="function">gdk_pixbuf_scale()</code></a>
 and <a class="link" href="gdk-pixbuf-Scaling.html#gdk-pixbuf-composite" title="gdk_pixbuf_composite ()"><code class="function">gdk_pixbuf_composite()</code></a>.</p>
 <div class="refsect3">
 <a name="gdk-pixbuf-scale-simple.parameters"></a><h4>Parameters</h4>
@@ -391,7 +414,7 @@ gdk_pixbuf_composite_color_simple (<em class="parameter"><code>const <a class="l
  to <em class="parameter"><code>dest_width</code></em>
  x
 <em class="parameter"><code>dest_height</code></em>
- and compositing the result with a checkboard of colors
+ and alpha blending the result with a checkboard of colors
 <em class="parameter"><code>color1</code></em>
  and <em class="parameter"><code>color2</code></em>
 .</p>
@@ -483,7 +506,7 @@ The rectangle (<em class="parameter"><code>dest_x</code></em>
 , <em class="parameter"><code>dest_width</code></em>
 , <em class="parameter"><code>dest_height</code></em>
 )
-is then composited onto the corresponding rectangle of the
+is then alpha blended onto the corresponding rectangle of the
 original destination image.</p>
 <p>When the destination rectangle contains parts not in the source 
 image, the data at the edges of the source image is replicated
@@ -590,7 +613,7 @@ gdk_pixbuf_composite_color (<em class="parameter"><code>const <a class="link" hr
  then translating by <em class="parameter"><code>offset_x</code></em>
  and <em class="parameter"><code>offset_y</code></em>
 ,
-then composites the rectangle (<em class="parameter"><code>dest_x</code></em>
+then alpha blends the rectangle (<em class="parameter"><code>dest_x</code></em>
  ,<em class="parameter"><code>dest_y</code></em>
 , <em class="parameter"><code>dest_width</code></em>
 ,
@@ -600,6 +623,9 @@ colors <em class="parameter"><code>color1</code></em>
  and <em class="parameter"><code>color2</code></em>
  and renders it onto the destination
 image.</p>
+<p>If the source image has no alpha channel, and <em class="parameter"><code>overall_alpha</code></em>
+ is 255, a fast
+path is used which omits the alpha blending and just performs the scaling.</p>
 <p>See <a class="link" href="gdk-pixbuf-Scaling.html#gdk-pixbuf-composite-color-simple" title="gdk_pixbuf_composite_color_simple ()"><code class="function">gdk_pixbuf_composite_color_simple()</code></a> for a simpler variant of this
 function suitable for many tasks.</p>
 <div class="refsect3">
@@ -710,6 +736,9 @@ gdk_pixbuf_rotate_simple (<em class="parameter"><code>const <a class="link" href
                           <em class="parameter"><code><a class="link" href="gdk-pixbuf-Scaling.html#GdkPixbufRotation" title="enum GdkPixbufRotation"><span class="type">GdkPixbufRotation</span></a> angle</code></em>);</pre>
 <p>Rotates a pixbuf by a multiple of 90 degrees, and returns the
 result in a new pixbuf.</p>
+<p>If <em class="parameter"><code>angle</code></em>
+ is 0, a copy of <em class="parameter"><code>src</code></em>
+ is returned, avoiding any rotation.</p>
 <div class="refsect3">
 <a name="gdk-pixbuf-rotate-simple.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table border="0" class="informaltable" width="100%">

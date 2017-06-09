@@ -213,8 +213,8 @@ array <span class="gtkdoc opt">=</span> <span class="function"><a href="glib-Mem
 array<span class="gtkdoc opt">-&gt;</span>data            <span class="gtkdoc opt">=</span> NULL<span class="gtkdoc opt">;</span>
 array<span class="gtkdoc opt">-&gt;</span>len             <span class="gtkdoc opt">=</span> <span class="number">0</span><span class="gtkdoc opt">;</span>
 array<span class="gtkdoc opt">-&gt;</span>alloc           <span class="gtkdoc opt">=</span> <span class="number">0</span><span class="gtkdoc opt">;</span>
-array<span class="gtkdoc opt">-&gt;</span>zero_terminated <span class="gtkdoc opt">= (</span>zero_terminated ? <span class="number">1</span> <span class="gtkdoc opt">:</span> <span class="number">0</span><span class="gtkdoc opt">);</span>
-array<span class="gtkdoc opt">-&gt;</span>clear           <span class="gtkdoc opt">= (</span>clear ? <span class="number">1</span> <span class="gtkdoc opt">:</span> <span class="number">0</span><span class="gtkdoc opt">);</span>
+array<span class="gtkdoc opt">-&gt;</span>zero_terminated <span class="gtkdoc opt">= (</span>zero_terminated <span class="gtkdoc opt">?</span> <span class="number">1</span> <span class="gtkdoc opt">:</span> <span class="number">0</span><span class="gtkdoc opt">);</span>
+array<span class="gtkdoc opt">-&gt;</span>clear           <span class="gtkdoc opt">= (</span>clear <span class="gtkdoc opt">?</span> <span class="number">1</span> <span class="gtkdoc opt">:</span> <span class="number">0</span><span class="gtkdoc opt">);</span>
 array<span class="gtkdoc opt">-&gt;</span>elt_size        <span class="gtkdoc opt">=</span> elt_size<span class="gtkdoc opt">;</span>
 
 <span class="gtkdoc slc">// We can free the block, so it can be reused.</span>

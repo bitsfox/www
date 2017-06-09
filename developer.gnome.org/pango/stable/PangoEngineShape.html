@@ -68,7 +68,7 @@ $('#s').autocomplete('/symbols/lookup/',
 </div>
 <div class="refsect1">
 <a name="PangoEngineShape.object-hierarchy"></a><h2>Object Hierarchy</h2>
-<pre class="screen">    <a href="../../gobject/unstable/gobject-The-Base-Object-Type.html#GObject-struct">GObject</a>
+<pre class="screen">    <a href="../../gobject/stable/gobject-The-Base-Object-Type.html#GObject-struct">GObject</a>
     <span class="lineart">╰──</span> <a class="link" href="pango-Engines.html#PangoEngine">PangoEngine</a>
         <span class="lineart">╰──</span> PangoEngineShape
 </pre>
@@ -100,7 +100,7 @@ function can create instances of the object as follows:</p>
     <tbody>
       <tr>
         <td align="right" class="listing_lines"><pre>1</pre></td>
-        <td class="listing_code"><pre class="programlisting"><span class="usertype">PangoEngine</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">engine </span><span class="symbol">=</span><span class="normal"> </span><span class="function"><a href="../../gobject/unstable/gobject-The-Base-Object-Type.html#g-object-new">g_object_new</a></span><span class="normal"> </span><span class="symbol">(&lt;</span><span class="usertype">em</span><span class="normal"> class</span><span class="symbol">=</span><span class="string">"replaceable"</span><span class="symbol">&gt;&lt;</span><span class="normal">code</span><span class="symbol">&gt;</span><span class="normal">prefix</span><span class="symbol">&lt;/</span><span class="normal">code</span><span class="symbol">&gt;&lt;/</span><span class="normal">em</span><span class="symbol">&gt;</span><span class="normal">_type</span><span class="symbol">,</span><span class="normal"> <a href="../../glib/unstable/glib-Standard-Macros.html#NULL:CAPS">NULL</a></span><span class="symbol">);</span></pre></td>
+        <td class="listing_code"><pre class="programlisting">PangoEngine <span class="gtkdoc opt">*</span>engine <span class="gtkdoc opt">=</span> <span class="function"><a href="../../gobject/stable/gobject-The-Base-Object-Type.html#g-object-new">g_object_new</a></span> <span class="gtkdoc opt">(&lt;</span>em <span class="gtkdoc kwc">class</span><span class="gtkdoc opt">=</span><span class="string">"replaceable"</span><span class="gtkdoc opt">&gt;&lt;</span>code<span class="gtkdoc opt">&gt;</span>prefix<span class="gtkdoc opt">&lt;/</span>code<span class="gtkdoc opt">&gt;&lt;/</span>em<span class="gtkdoc opt">&gt;</span>_type<span class="gtkdoc opt">,</span> NULL<span class="gtkdoc opt">);</span></pre></td>
       </tr>
     </tbody>
   </table>
@@ -127,12 +127,12 @@ function can create instances of the object as follows:</p>
 </tr>
 <tr>
 <td class="parameter_name"><p>class_init</p></td>
-<td class="parameter_description"><p> Class initialization function for the new type, or <a href="../../glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_description"><p> Class initialization function for the new type, or <a href="../../glib/stable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
 <td class="parameter_annotations"><span class="annotation">[<acronym title="NULL may be passed as the value in, out, in-out; or as a return value."><span class="acronym">nullable</span></acronym>]</span></td>
 </tr>
 <tr>
 <td class="parameter_name"><p>instance_init</p></td>
-<td class="parameter_description"><p> Instance initialization function for the new type, or <a href="../../glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_description"><p> Instance initialization function for the new type, or <a href="../../glib/stable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
 <td class="parameter_annotations"><span class="annotation">[<acronym title="NULL may be passed as the value in, out, in-out; or as a return value."><span class="acronym">nullable</span></acronym>]</span></td>
 </tr>
 </tbody>

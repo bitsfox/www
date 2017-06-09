@@ -52,7 +52,7 @@ $('#s').autocomplete('/symbols/lookup/',
 <p>
     </p>
 <p>GTK+ includes application support that is built on top of
-    <a href="../../gio/unstable/GApplication.html#GApplication-struct"><span class="type">GApplication</span></a>. In this tutorial we'll build a simple application by
+    <a href="../../gio/stable/GApplication.html#GApplication-struct"><span class="type">GApplication</span></a>. In this tutorial we'll build a simple application by
     starting from scratch, adding more and more pieces over time. Along
     the way, we'll learn about <a class="link" href="GtkApplication.html" title="GtkApplication"><span class="type">GtkApplication</span></a>, templates, resources,
     application menus, settings, <a class="link" href="GtkHeaderBar.html" title="GtkHeaderBar"><span class="type">GtkHeaderBar</span></a>, <a class="link" href="GtkStack.html" title="GtkStack"><span class="type">GtkStack</span></a>, <a class="link" href="GtkSearchBar.html" title="GtkSearchBar"><span class="type">GtkSearchBar</span></a>,
@@ -67,7 +67,7 @@ $('#s').autocomplete('/symbols/lookup/',
 <div class="titlepage"><div><div><h3 class="title">
 <a name="id-1.2.3.12.5"></a>A trivial application</h3></div></div></div>
 <p>When using <a class="link" href="GtkApplication.html" title="GtkApplication"><span class="type">GtkApplication</span></a>, the <code class="function">main()</code> function can be very
-      simple. We just call <a href="../../gio/unstable/GApplication.html#g-application-run"><code class="function">g_application_run()</code></a> and give it an instance
+      simple. We just call <a href="../../gio/stable/GApplication.html#g-application-run"><code class="function">g_application_run()</code></a> and give it an instance
       of our application class.</p>
 <div class="informalexample">
   <table border="0" cellpadding="0" cellspacing="0" class="listing_frame">
@@ -89,7 +89,7 @@ $('#s').autocomplete('/symbols/lookup/',
 <span class="gtkdoc kwb">int</span>
 <span class="function">main</span> <span class="gtkdoc opt">(</span><span class="gtkdoc kwb">int</span> argc<span class="gtkdoc opt">,</span> <span class="gtkdoc kwb">char</span> <span class="gtkdoc opt">*</span>argv<span class="gtkdoc opt">[])</span>
 <span class="gtkdoc opt">{</span>
-  <span class="keyword">return</span> <span class="function"><a href="../../gio/unstable/GApplication.html#g-application-run">g_application_run</a></span> <span class="gtkdoc opt">(</span><span class="function">G_APPLICATION</span> <span class="gtkdoc opt">(</span><span class="function">example_app_new</span> <span class="gtkdoc opt">()),</span> argc<span class="gtkdoc opt">,</span> argv<span class="gtkdoc opt">);</span>
+  <span class="keyword">return</span> <span class="function"><a href="../../gio/stable/GApplication.html#g-application-run">g_application_run</a></span> <span class="gtkdoc opt">(</span><span class="function">G_APPLICATION</span> <span class="gtkdoc opt">(</span><span class="function">example_app_new</span> <span class="gtkdoc opt">()),</span> argc<span class="gtkdoc opt">,</span> argv<span class="gtkdoc opt">);</span>
 <span class="gtkdoc opt">}</span></pre></td>
       </tr>
     </tbody>
@@ -184,7 +184,7 @@ $('#s').autocomplete('/symbols/lookup/',
   GtkApplication parent<span class="gtkdoc opt">;</span>
 <span class="gtkdoc opt">};</span>
 
-<span class="function"><a href="../../gobject/unstable/gobject-Type-Information.html#G-DEFINE-TYPE:CAPS">G_DEFINE_TYPE</a></span><span class="gtkdoc opt">(</span>ExampleApp<span class="gtkdoc opt">,</span> example_app<span class="gtkdoc opt">,</span> GTK_TYPE_APPLICATION<span class="gtkdoc opt">);</span>
+<span class="function"><a href="../../gobject/stable/gobject-Type-Information.html#G-DEFINE-TYPE:CAPS">G_DEFINE_TYPE</a></span><span class="gtkdoc opt">(</span>ExampleApp<span class="gtkdoc opt">,</span> example_app<span class="gtkdoc opt">,</span> GTK_TYPE_APPLICATION<span class="gtkdoc opt">);</span>
 
 <span class="gtkdoc kwb">static void</span>
 <span class="function">example_app_init</span> <span class="gtkdoc opt">(</span>ExampleApp <span class="gtkdoc opt">*</span>app<span class="gtkdoc opt">)</span>
@@ -232,7 +232,7 @@ $('#s').autocomplete('/symbols/lookup/',
 ExampleApp <span class="gtkdoc opt">*</span>
 <span class="function">example_app_new</span> <span class="gtkdoc opt">(</span><span class="gtkdoc kwb">void</span><span class="gtkdoc opt">)</span>
 <span class="gtkdoc opt">{</span>
-  <span class="keyword">return</span> <span class="function"><a href="../../gobject/unstable/gobject-The-Base-Object-Type.html#g-object-new">g_object_new</a></span> <span class="gtkdoc opt">(</span>EXAMPLE_APP_TYPE<span class="gtkdoc opt">,</span>
+  <span class="keyword">return</span> <span class="function"><a href="../../gobject/stable/gobject-The-Base-Object-Type.html#g-object-new">g_object_new</a></span> <span class="gtkdoc opt">(</span>EXAMPLE_APP_TYPE<span class="gtkdoc opt">,</span>
                        <span class="string">"application-id"</span><span class="gtkdoc opt">,</span> <span class="string">"org.gtk.exampleapp"</span><span class="gtkdoc opt">,</span>
                        <span class="string">"flags"</span><span class="gtkdoc opt">,</span> G_APPLICATION_HANDLES_OPEN<span class="gtkdoc opt">,</span>
                        NULL<span class="gtkdoc opt">);</span>
@@ -293,7 +293,7 @@ ExampleApp <span class="gtkdoc opt">*</span>
   GtkApplicationWindow parent<span class="gtkdoc opt">;</span>
 <span class="gtkdoc opt">};</span>
 
-<span class="function"><a href="../../gobject/unstable/gobject-Type-Information.html#G-DEFINE-TYPE:CAPS">G_DEFINE_TYPE</a></span><span class="gtkdoc opt">(</span>ExampleAppWindow<span class="gtkdoc opt">,</span> example_app_window<span class="gtkdoc opt">,</span> GTK_TYPE_APPLICATION_WINDOW<span class="gtkdoc opt">);</span>
+<span class="function"><a href="../../gobject/stable/gobject-Type-Information.html#G-DEFINE-TYPE:CAPS">G_DEFINE_TYPE</a></span><span class="gtkdoc opt">(</span>ExampleAppWindow<span class="gtkdoc opt">,</span> example_app_window<span class="gtkdoc opt">,</span> GTK_TYPE_APPLICATION_WINDOW<span class="gtkdoc opt">);</span>
 
 <span class="gtkdoc kwb">static void</span>
 <span class="function">example_app_window_init</span> <span class="gtkdoc opt">(</span>ExampleAppWindow <span class="gtkdoc opt">*</span>app<span class="gtkdoc opt">)</span>
@@ -308,7 +308,7 @@ ExampleApp <span class="gtkdoc opt">*</span>
 ExampleAppWindow <span class="gtkdoc opt">*</span>
 <span class="function">example_app_window_new</span> <span class="gtkdoc opt">(</span>ExampleApp <span class="gtkdoc opt">*</span>app<span class="gtkdoc opt">)</span>
 <span class="gtkdoc opt">{</span>
-  <span class="keyword">return</span> <span class="function"><a href="../../gobject/unstable/gobject-The-Base-Object-Type.html#g-object-new">g_object_new</a></span> <span class="gtkdoc opt">(</span>EXAMPLE_APP_WINDOW_TYPE<span class="gtkdoc opt">,</span> <span class="string">"application"</span><span class="gtkdoc opt">,</span> app<span class="gtkdoc opt">,</span> NULL<span class="gtkdoc opt">);</span>
+  <span class="keyword">return</span> <span class="function"><a href="../../gobject/stable/gobject-The-Base-Object-Type.html#g-object-new">g_object_new</a></span> <span class="gtkdoc opt">(</span>EXAMPLE_APP_WINDOW_TYPE<span class="gtkdoc opt">,</span> <span class="string">"application"</span><span class="gtkdoc opt">,</span> app<span class="gtkdoc opt">,</span> NULL<span class="gtkdoc opt">);</span>
 <span class="gtkdoc opt">}</span>
 
 <span class="gtkdoc kwb">void</span>
@@ -397,7 +397,7 @@ Exec<span class="gtkdoc opt">=</span>@bindir@<span class="gtkdoc opt">/</span>ex
 29
 30
 31</pre></td>
-        <td class="listing_code"><pre class="programlisting"><span class="gtkdoc opt">&lt;</span>?xml version<span class="gtkdoc opt">=</span><span class="string">"1.0"</span> encoding<span class="gtkdoc opt">=</span><span class="string">"UTF-8"</span>?<span class="gtkdoc opt">&gt;</span>
+        <td class="listing_code"><pre class="programlisting"><span class="gtkdoc opt">&lt;?</span>xml version<span class="gtkdoc opt">=</span><span class="string">"1.0"</span> encoding<span class="gtkdoc opt">=</span><span class="string">"UTF-8"</span><span class="gtkdoc opt">?&gt;</span>
 <span class="gtkdoc opt">&lt;</span>interface<span class="gtkdoc opt">&gt;</span>
   <span class="gtkdoc opt">&lt;!--</span> interface<span class="gtkdoc opt">-</span>requires gtk<span class="gtkdoc opt">+</span> <span class="number">3.8</span> <span class="gtkdoc opt">--&gt;</span>
   <span class="gtkdoc opt">&lt;</span><span class="gtkdoc kwc">template class</span><span class="gtkdoc opt">=</span><span class="string">"ExampleAppWindow"</span> parent<span class="gtkdoc opt">=</span><span class="string">"GtkApplicationWindow"</span><span class="gtkdoc opt">&gt;</span>
@@ -475,7 +475,7 @@ example_app_window_class_init (ExampleAppWindowClass *class)
 4
 5
 6</pre></td>
-        <td class="listing_code"><pre class="programlisting"><span class="gtkdoc opt">&lt;</span>?xml version<span class="gtkdoc opt">=</span><span class="string">"1.0"</span> encoding<span class="gtkdoc opt">=</span><span class="string">"UTF-8"</span>?<span class="gtkdoc opt">&gt;</span>
+        <td class="listing_code"><pre class="programlisting"><span class="gtkdoc opt">&lt;?</span>xml version<span class="gtkdoc opt">=</span><span class="string">"1.0"</span> encoding<span class="gtkdoc opt">=</span><span class="string">"UTF-8"</span><span class="gtkdoc opt">?&gt;</span>
 <span class="gtkdoc opt">&lt;</span>gresources<span class="gtkdoc opt">&gt;</span>
   <span class="gtkdoc opt">&lt;</span>gresource prefix<span class="gtkdoc opt">=</span><span class="string">"/org/gtk/exampleapp"</span><span class="gtkdoc opt">&gt;</span>
     <span class="gtkdoc opt">&lt;</span>file preprocess<span class="gtkdoc opt">=</span><span class="string">"xml-stripblanks"</span><span class="gtkdoc opt">&gt;</span>window<span class="gtkdoc opt">.</span>ui<span class="gtkdoc opt">&lt;/</span>file<span class="gtkdoc opt">&gt;</span>
@@ -613,7 +613,7 @@ example_app_window_open (ExampleAppWindow *win,
 16
 17
 18</pre></td>
-        <td class="listing_code"><pre class="programlisting"><span class="gtkdoc opt">&lt;</span>?xml version<span class="gtkdoc opt">=</span><span class="string">"1.0"</span>?<span class="gtkdoc opt">&gt;</span>
+        <td class="listing_code"><pre class="programlisting"><span class="gtkdoc opt">&lt;?</span>xml version<span class="gtkdoc opt">=</span><span class="string">"1.0"</span><span class="gtkdoc opt">?&gt;</span>
 <span class="gtkdoc opt">&lt;</span>interface<span class="gtkdoc opt">&gt;</span>
   <span class="gtkdoc opt">&lt;!--</span> interface<span class="gtkdoc opt">-</span>requires gtk<span class="gtkdoc opt">+</span> <span class="number">3.0</span> <span class="gtkdoc opt">--&gt;</span>
   <span class="gtkdoc opt">&lt;</span>menu id<span class="gtkdoc opt">=</span><span class="string">"appmenu"</span><span class="gtkdoc opt">&gt;</span>
@@ -638,7 +638,7 @@ example_app_window_open (ExampleAppWindow *win,
 
 <p>To associate the app menu with the application, we have to call
       <a class="link" href="GtkApplication.html#gtk-application-set-app-menu" title="gtk_application_set_app_menu ()"><code class="function">gtk_application_set_app_menu()</code></a>. Since app menus work by activating
-      <a href="../../gio/unstable/GAction.html#GAction-struct"><span class="type">GActions</span></a>, we also have to add a suitable set of actions to our
+      <a href="../../gio/stable/GAction.html#GAction-struct"><span class="type">GActions</span></a>, we also have to add a suitable set of actions to our
       application.</p>
 <p>Both of these tasks are best done in the <code class="function">startup()</code> vfunc,
       which is guaranteed to be called once for each primary application
@@ -741,7 +741,7 @@ example_app_class_init (ExampleAppClass *class)
 18
 19
 20</pre></td>
-        <td class="listing_code"><pre class="programlisting"><span class="gtkdoc opt">&lt;</span>?xml version<span class="gtkdoc opt">=</span><span class="string">"1.0"</span> encoding<span class="gtkdoc opt">=</span><span class="string">"UTF-8"</span>?<span class="gtkdoc opt">&gt;</span>
+        <td class="listing_code"><pre class="programlisting"><span class="gtkdoc opt">&lt;?</span>xml version<span class="gtkdoc opt">=</span><span class="string">"1.0"</span> encoding<span class="gtkdoc opt">=</span><span class="string">"UTF-8"</span><span class="gtkdoc opt">?&gt;</span>
 <span class="gtkdoc opt">&lt;</span>schemalist<span class="gtkdoc opt">&gt;</span>
   <span class="gtkdoc opt">&lt;</span>schema path<span class="gtkdoc opt">=</span><span class="string">"/org/gtk/exampleapp/"</span> id<span class="gtkdoc opt">=</span><span class="string">"org.gtk.exampleapp"</span><span class="gtkdoc opt">&gt;</span>
     <span class="gtkdoc opt">&lt;</span>key name<span class="gtkdoc opt">=</span><span class="string">"font"</span> type<span class="gtkdoc opt">=</span><span class="string">"s"</span><span class="gtkdoc opt">&gt;</span>
@@ -881,7 +881,7 @@ example_app_window_init (ExampleAppWindow *win)
 68
 69
 70</pre></td>
-        <td class="listing_code"><pre class="programlisting"><span class="gtkdoc opt">&lt;</span>?xml version<span class="gtkdoc opt">=</span><span class="string">"1.0"</span> encoding<span class="gtkdoc opt">=</span><span class="string">"UTF-8"</span>?<span class="gtkdoc opt">&gt;</span>
+        <td class="listing_code"><pre class="programlisting"><span class="gtkdoc opt">&lt;?</span>xml version<span class="gtkdoc opt">=</span><span class="string">"1.0"</span> encoding<span class="gtkdoc opt">=</span><span class="string">"UTF-8"</span><span class="gtkdoc opt">?&gt;</span>
 <span class="gtkdoc opt">&lt;</span>interface<span class="gtkdoc opt">&gt;</span>
   <span class="gtkdoc opt">&lt;!--</span> interface<span class="gtkdoc opt">-</span>requires gtk<span class="gtkdoc opt">+</span> <span class="number">3.8</span> <span class="gtkdoc opt">--&gt;</span>
   <span class="gtkdoc opt">&lt;</span><span class="gtkdoc kwc">template class</span><span class="gtkdoc opt">=</span><span class="string">"ExampleAppPrefs"</span> parent<span class="gtkdoc opt">=</span><span class="string">"GtkDialog"</span><span class="gtkdoc opt">&gt;</span>
@@ -1047,7 +1047,7 @@ example_app_window_init (ExampleAppWindow *win)
   GtkWidget <span class="gtkdoc opt">*</span>transition<span class="gtkdoc opt">;</span>
 <span class="gtkdoc opt">};</span>
 
-<span class="function"><a href="../../gobject/unstable/gobject-Type-Information.html#G-DEFINE-TYPE-WITH-PRIVATE:CAPS">G_DEFINE_TYPE_WITH_PRIVATE</a></span><span class="gtkdoc opt">(</span>ExampleAppPrefs<span class="gtkdoc opt">,</span> example_app_prefs<span class="gtkdoc opt">,</span> GTK_TYPE_DIALOG<span class="gtkdoc opt">)</span>
+<span class="function"><a href="../../gobject/stable/gobject-Type-Information.html#G-DEFINE-TYPE-WITH-PRIVATE:CAPS">G_DEFINE_TYPE_WITH_PRIVATE</a></span><span class="gtkdoc opt">(</span>ExampleAppPrefs<span class="gtkdoc opt">,</span> example_app_prefs<span class="gtkdoc opt">,</span> GTK_TYPE_DIALOG<span class="gtkdoc opt">)</span>
 
 <span class="gtkdoc kwb">static void</span>
 <span class="function">example_app_prefs_init</span> <span class="gtkdoc opt">(</span>ExampleAppPrefs <span class="gtkdoc opt">*</span>prefs<span class="gtkdoc opt">)</span>
@@ -1056,12 +1056,12 @@ example_app_window_init (ExampleAppWindow *win)
 
   priv <span class="gtkdoc opt">=</span> <span class="function">example_app_prefs_get_instance_private</span> <span class="gtkdoc opt">(</span>prefs<span class="gtkdoc opt">);</span>
   <span class="function"><a href="GtkWidget.html#gtk-widget-init-template">gtk_widget_init_template</a></span> <span class="gtkdoc opt">(</span><span class="function">GTK_WIDGET</span> <span class="gtkdoc opt">(</span>prefs<span class="gtkdoc opt">));</span>
-  priv<span class="gtkdoc opt">-&gt;</span>settings <span class="gtkdoc opt">=</span> <span class="function"><a href="../../gio/unstable/GSettings.html#g-settings-new">g_settings_new</a></span> <span class="gtkdoc opt">(</span><span class="string">"org.gtk.exampleapp"</span><span class="gtkdoc opt">);</span>
+  priv<span class="gtkdoc opt">-&gt;</span>settings <span class="gtkdoc opt">=</span> <span class="function"><a href="../../gio/stable/GSettings.html#g-settings-new">g_settings_new</a></span> <span class="gtkdoc opt">(</span><span class="string">"org.gtk.exampleapp"</span><span class="gtkdoc opt">);</span>
 
-  <span class="function"><a href="../../gio/unstable/GSettings.html#g-settings-bind">g_settings_bind</a></span> <span class="gtkdoc opt">(</span>priv<span class="gtkdoc opt">-&gt;</span>settings<span class="gtkdoc opt">,</span> <span class="string">"font"</span><span class="gtkdoc opt">,</span>
+  <span class="function"><a href="../../gio/stable/GSettings.html#g-settings-bind">g_settings_bind</a></span> <span class="gtkdoc opt">(</span>priv<span class="gtkdoc opt">-&gt;</span>settings<span class="gtkdoc opt">,</span> <span class="string">"font"</span><span class="gtkdoc opt">,</span>
                    priv<span class="gtkdoc opt">-&gt;</span>font<span class="gtkdoc opt">,</span> <span class="string">"font"</span><span class="gtkdoc opt">,</span>
                    G_SETTINGS_BIND_DEFAULT<span class="gtkdoc opt">);</span>
-  <span class="function"><a href="../../gio/unstable/GSettings.html#g-settings-bind">g_settings_bind</a></span> <span class="gtkdoc opt">(</span>priv<span class="gtkdoc opt">-&gt;</span>settings<span class="gtkdoc opt">,</span> <span class="string">"transition"</span><span class="gtkdoc opt">,</span>
+  <span class="function"><a href="../../gio/stable/GSettings.html#g-settings-bind">g_settings_bind</a></span> <span class="gtkdoc opt">(</span>priv<span class="gtkdoc opt">-&gt;</span>settings<span class="gtkdoc opt">,</span> <span class="string">"transition"</span><span class="gtkdoc opt">,</span>
                    priv<span class="gtkdoc opt">-&gt;</span>transition<span class="gtkdoc opt">,</span> <span class="string">"active-id"</span><span class="gtkdoc opt">,</span>
                    G_SETTINGS_BIND_DEFAULT<span class="gtkdoc opt">);</span>
 <span class="gtkdoc opt">}</span>
@@ -1072,15 +1072,15 @@ example_app_window_init (ExampleAppWindow *win)
   ExampleAppPrefsPrivate <span class="gtkdoc opt">*</span>priv<span class="gtkdoc opt">;</span>
 
   priv <span class="gtkdoc opt">=</span> <span class="function">example_app_prefs_get_instance_private</span> <span class="gtkdoc opt">(</span><span class="function">EXAMPLE_APP_PREFS</span> <span class="gtkdoc opt">(</span>object<span class="gtkdoc opt">));</span>
-  <span class="function"><a href="../../gobject/unstable/gobject-The-Base-Object-Type.html#g-clear-object">g_clear_object</a></span> <span class="gtkdoc opt">(&amp;</span>priv<span class="gtkdoc opt">-&gt;</span>settings<span class="gtkdoc opt">);</span>
+  <span class="function"><a href="../../gobject/stable/gobject-The-Base-Object-Type.html#g-clear-object">g_clear_object</a></span> <span class="gtkdoc opt">(&amp;</span>priv<span class="gtkdoc opt">-&gt;</span>settings<span class="gtkdoc opt">);</span>
 
-  <span class="function"><a href="../../gobject/unstable/gobject-The-Base-Object-Type.html#G-OBJECT-CLASS:CAPS">G_OBJECT_CLASS</a></span> <span class="gtkdoc opt">(</span>example_app_prefs_parent_class<span class="gtkdoc opt">)-&gt;</span><span class="function">dispose</span> <span class="gtkdoc opt">(</span>object<span class="gtkdoc opt">);</span>
+  <span class="function"><a href="../../gobject/stable/gobject-The-Base-Object-Type.html#G-OBJECT-CLASS:CAPS">G_OBJECT_CLASS</a></span> <span class="gtkdoc opt">(</span>example_app_prefs_parent_class<span class="gtkdoc opt">)-&gt;</span><span class="function">dispose</span> <span class="gtkdoc opt">(</span>object<span class="gtkdoc opt">);</span>
 <span class="gtkdoc opt">}</span>
 
 <span class="gtkdoc kwb">static void</span>
 <span class="function">example_app_prefs_class_init</span> <span class="gtkdoc opt">(</span>ExampleAppPrefsClass <span class="gtkdoc opt">*</span><span class="gtkdoc kwc">class</span><span class="gtkdoc opt">)</span>
 <span class="gtkdoc opt">{</span>
-  <span class="function"><a href="../../gobject/unstable/gobject-The-Base-Object-Type.html#G-OBJECT-CLASS:CAPS">G_OBJECT_CLASS</a></span> <span class="gtkdoc opt">(</span><span class="gtkdoc kwc">class</span><span class="gtkdoc opt">)-&gt;</span>dispose <span class="gtkdoc opt">=</span> example_app_prefs_dispose<span class="gtkdoc opt">;</span>
+  <span class="function"><a href="../../gobject/stable/gobject-The-Base-Object-Type.html#G-OBJECT-CLASS:CAPS">G_OBJECT_CLASS</a></span> <span class="gtkdoc opt">(</span><span class="gtkdoc kwc">class</span><span class="gtkdoc opt">)-&gt;</span>dispose <span class="gtkdoc opt">=</span> example_app_prefs_dispose<span class="gtkdoc opt">;</span>
 
   <span class="function"><a href="GtkWidget.html#gtk-widget-class-set-template-from-resource">gtk_widget_class_set_template_from_resource</a></span> <span class="gtkdoc opt">(</span><span class="function">GTK_WIDGET_CLASS</span> <span class="gtkdoc opt">(</span><span class="gtkdoc kwc">class</span><span class="gtkdoc opt">),</span>
                                                <span class="string">"/org/gtk/exampleapp/prefs.ui"</span><span class="gtkdoc opt">);</span>
@@ -1091,7 +1091,7 @@ example_app_window_init (ExampleAppWindow *win)
 ExampleAppPrefs <span class="gtkdoc opt">*</span>
 <span class="function">example_app_prefs_new</span> <span class="gtkdoc opt">(</span>ExampleAppWindow <span class="gtkdoc opt">*</span>win<span class="gtkdoc opt">)</span>
 <span class="gtkdoc opt">{</span>
-  <span class="keyword">return</span> <span class="function"><a href="../../gobject/unstable/gobject-The-Base-Object-Type.html#g-object-new">g_object_new</a></span> <span class="gtkdoc opt">(</span>EXAMPLE_APP_PREFS_TYPE<span class="gtkdoc opt">,</span> <span class="string">"transient-for"</span><span class="gtkdoc opt">,</span> win<span class="gtkdoc opt">,</span> <span class="string">"use-header-bar"</span><span class="gtkdoc opt">,</span> TRUE<span class="gtkdoc opt">,</span> NULL<span class="gtkdoc opt">);</span>
+  <span class="keyword">return</span> <span class="function"><a href="../../gobject/stable/gobject-The-Base-Object-Type.html#g-object-new">g_object_new</a></span> <span class="gtkdoc opt">(</span>EXAMPLE_APP_PREFS_TYPE<span class="gtkdoc opt">,</span> <span class="string">"transient-for"</span><span class="gtkdoc opt">,</span> win<span class="gtkdoc opt">,</span> <span class="string">"use-header-bar"</span><span class="gtkdoc opt">,</span> TRUE<span class="gtkdoc opt">,</span> NULL<span class="gtkdoc opt">);</span>
 <span class="gtkdoc opt">}</span></pre></td>
       </tr>
     </tbody>
@@ -1199,7 +1199,7 @@ preferences_activated (GSimpleAction *action,
 60
 61
 62</pre></td>
-        <td class="listing_code"><pre class="programlisting"><span class="gtkdoc opt">&lt;</span>?xml version<span class="gtkdoc opt">=</span><span class="string">"1.0"</span> encoding<span class="gtkdoc opt">=</span><span class="string">"UTF-8"</span>?<span class="gtkdoc opt">&gt;</span>
+        <td class="listing_code"><pre class="programlisting"><span class="gtkdoc opt">&lt;?</span>xml version<span class="gtkdoc opt">=</span><span class="string">"1.0"</span> encoding<span class="gtkdoc opt">=</span><span class="string">"UTF-8"</span><span class="gtkdoc opt">?&gt;</span>
 <span class="gtkdoc opt">&lt;</span>interface<span class="gtkdoc opt">&gt;</span>
   <span class="gtkdoc opt">&lt;!--</span> interface<span class="gtkdoc opt">-</span>requires gtk<span class="gtkdoc opt">+</span> <span class="number">3.8</span> <span class="gtkdoc opt">--&gt;</span>
   <span class="gtkdoc opt">&lt;</span><span class="gtkdoc kwc">template class</span><span class="gtkdoc opt">=</span><span class="string">"ExampleAppWindow"</span> parent<span class="gtkdoc opt">=</span><span class="string">"GtkApplicationWindow"</span><span class="gtkdoc opt">&gt;</span>
@@ -1433,7 +1433,7 @@ example_app_window_init (ExampleAppWindow *win)
 97
 98
 99</pre></td>
-        <td class="listing_code"><pre class="programlisting"><span class="gtkdoc opt">&lt;</span>?xml version<span class="gtkdoc opt">=</span><span class="string">"1.0"</span> encoding<span class="gtkdoc opt">=</span><span class="string">"UTF-8"</span>?<span class="gtkdoc opt">&gt;</span>
+        <td class="listing_code"><pre class="programlisting"><span class="gtkdoc opt">&lt;?</span>xml version<span class="gtkdoc opt">=</span><span class="string">"1.0"</span> encoding<span class="gtkdoc opt">=</span><span class="string">"UTF-8"</span><span class="gtkdoc opt">?&gt;</span>
 <span class="gtkdoc opt">&lt;</span>interface<span class="gtkdoc opt">&gt;</span>
   <span class="gtkdoc opt">&lt;!--</span> interface<span class="gtkdoc opt">-</span>requires gtk<span class="gtkdoc opt">+</span> <span class="number">3.8</span> <span class="gtkdoc opt">--&gt;</span>
   <span class="gtkdoc opt">&lt;</span><span class="gtkdoc kwc">template class</span><span class="gtkdoc opt">=</span><span class="string">"ExampleAppWindow"</span> parent<span class="gtkdoc opt">=</span><span class="string">"GtkApplicationWindow"</span><span class="gtkdoc opt">&gt;</span>
@@ -1558,7 +1558,7 @@ example_app_window_init (ExampleAppWindow *win)
 10
 11
 12</pre></td>
-        <td class="listing_code"><pre class="programlisting"><span class="gtkdoc opt">&lt;</span>?xml version<span class="gtkdoc opt">=</span><span class="string">"1.0"</span>?<span class="gtkdoc opt">&gt;</span>
+        <td class="listing_code"><pre class="programlisting"><span class="gtkdoc opt">&lt;?</span>xml version<span class="gtkdoc opt">=</span><span class="string">"1.0"</span><span class="gtkdoc opt">?&gt;</span>
 <span class="gtkdoc opt">&lt;</span>interface<span class="gtkdoc opt">&gt;</span>
   <span class="gtkdoc opt">&lt;!--</span> interface<span class="gtkdoc opt">-</span>requires gtk<span class="gtkdoc opt">+</span> <span class="number">3.0</span> <span class="gtkdoc opt">--&gt;</span>
   <span class="gtkdoc opt">&lt;</span>menu id<span class="gtkdoc opt">=</span><span class="string">"menu"</span><span class="gtkdoc opt">&gt;</span>
@@ -1576,7 +1576,7 @@ example_app_window_init (ExampleAppWindow *win)
 </div>
 
 <p>To connect the menuitem to the show-words setting, we use
-      a <a href="../../gio/unstable/GAction.html#GAction-struct"><span class="type">GAction</span></a> corresponding to the given <a href="../../gio/unstable/GSettings.html#GSettings-struct"><span class="type">GSettings</span></a> key.</p>
+      a <a href="../../gio/stable/GAction.html#GAction-struct"><span class="type">GAction</span></a> corresponding to the given <a href="../../gio/stable/GSettings.html#GSettings-struct"><span class="type">GSettings</span></a> key.</p>
 <div class="informalexample">
 <pre class="programlisting">...
 
@@ -1608,8 +1608,8 @@ example_app_window_init (ExampleAppWindow *win)
 <a name="id-1.2.3.12.12"></a>Properties</h3></div></div></div>
 <p>Widgets and other objects have many useful properties.</p>
 <p>Here we show some ways to use them in new and flexible ways,
-      by wrapping them in actions with <a href="../../gio/unstable/GPropertyAction.html#GPropertyAction-struct"><span class="type">GPropertyAction</span></a> or by binding them
-      with <a href="../../gobject/unstable/GBinding.html#GBinding-struct"><span class="type">GBinding</span></a>.</p>
+      by wrapping them in actions with <a href="../../gio/stable/GPropertyAction.html#GPropertyAction-struct"><span class="type">GPropertyAction</span></a> or by binding them
+      with <a href="../../gobject/stable/GBinding.html#GBinding-struct"><span class="type">GBinding</span></a>.</p>
 <p>To set this up, we add two labels to the header bar in our
       window template, named <em class="parameter"><code>lines_label</code></em> and <em class="parameter"><code>lines</code></em>, and bind them to
       struct members in the private struct, as we've seen a couple of times
@@ -1636,7 +1636,7 @@ example_app_window_init (ExampleAppWindow *win)
 14
 15
 16</pre></td>
-        <td class="listing_code"><pre class="programlisting"><span class="gtkdoc opt">&lt;</span>?xml version<span class="gtkdoc opt">=</span><span class="string">"1.0"</span>?<span class="gtkdoc opt">&gt;</span>
+        <td class="listing_code"><pre class="programlisting"><span class="gtkdoc opt">&lt;?</span>xml version<span class="gtkdoc opt">=</span><span class="string">"1.0"</span><span class="gtkdoc opt">?&gt;</span>
 <span class="gtkdoc opt">&lt;</span>interface<span class="gtkdoc opt">&gt;</span>
   <span class="gtkdoc opt">&lt;!--</span> interface<span class="gtkdoc opt">-</span>requires gtk<span class="gtkdoc opt">+</span> <span class="number">3.0</span> <span class="gtkdoc opt">--&gt;</span>
   <span class="gtkdoc opt">&lt;</span>menu id<span class="gtkdoc opt">=</span><span class="string">"menu"</span><span class="gtkdoc opt">&gt;</span>
@@ -1821,7 +1821,7 @@ example_app_window_init (ExampleAppWindow *win)
 115
 116
 117</pre></td>
-        <td class="listing_code"><pre class="programlisting"><span class="gtkdoc opt">&lt;</span>?xml version<span class="gtkdoc opt">=</span><span class="string">"1.0"</span> encoding<span class="gtkdoc opt">=</span><span class="string">"UTF-8"</span>?<span class="gtkdoc opt">&gt;</span>
+        <td class="listing_code"><pre class="programlisting"><span class="gtkdoc opt">&lt;?</span>xml version<span class="gtkdoc opt">=</span><span class="string">"1.0"</span> encoding<span class="gtkdoc opt">=</span><span class="string">"UTF-8"</span><span class="gtkdoc opt">?&gt;</span>
 <span class="gtkdoc opt">&lt;</span>interface<span class="gtkdoc opt">&gt;</span>
   <span class="gtkdoc opt">&lt;!--</span> interface<span class="gtkdoc opt">-</span>requires gtk<span class="gtkdoc opt">+</span> <span class="number">3.8</span> <span class="gtkdoc opt">--&gt;</span>
   <span class="gtkdoc opt">&lt;</span><span class="gtkdoc kwc">template class</span><span class="gtkdoc opt">=</span><span class="string">"ExampleAppWindow"</span> parent<span class="gtkdoc opt">=</span><span class="string">"GtkApplicationWindow"</span><span class="gtkdoc opt">&gt;</span>

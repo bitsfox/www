@@ -980,7 +980,9 @@ arguments, with the same syntax as <code class="function">printf()</code>. It al
 to type-check the arguments passed to the function.</p>
 <p>Place the attribute after the function declaration, just before the
 semicolon.</p>
-<p>See the GNU C documentation for more details.</p>
+<p>See the
+<a class="ulink" href="https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#index-Wformat-3288" target="_top">GNU C documentation</a>
+for more details.</p>
 <div class="informalexample">
   <table border="0" cellpadding="0" cellspacing="0" class="listing_frame">
     <tbody>
@@ -1011,12 +1013,13 @@ semicolon.</p>
 <tr>
 <td class="parameter_name"><p>format_idx</p></td>
 <td class="parameter_description"><p>the index of the argument corresponding to the
-format string (The arguments are numbered from 1)</p></td>
+format string (the arguments are numbered from 1)</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
 <td class="parameter_name"><p>arg_idx</p></td>
-<td class="parameter_description"><p>the index of the first of the format arguments</p></td>
+<td class="parameter_description"><p>the index of the first of the format arguments, or 0 if
+there are no format arguments</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 </tbody>
@@ -1031,7 +1034,9 @@ format string (The arguments are numbered from 1)</p></td>
 This is used for declaring functions which take a variable number of
 arguments, with the same syntax as <code class="function">scanf()</code>. It allows the compiler
 to type-check the arguments passed to the function.</p>
-<p>See the GNU C documentation for details.</p>
+<p>See the
+<a class="ulink" href="https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#index-Wformat-3288" target="_top">GNU C documentation</a>
+for details.</p>
 <div class="refsect3">
 <a name="G-GNUC-SCANF.parameters"></a><h4>Parameters</h4>
 <div class="informaltable"><table border="0" class="informaltable" width="100%">
@@ -1044,12 +1049,13 @@ to type-check the arguments passed to the function.</p>
 <tr>
 <td class="parameter_name"><p>format_idx</p></td>
 <td class="parameter_description"><p>the index of the argument corresponding to
-the format string (The arguments are numbered from 1)</p></td>
+the format string (the arguments are numbered from 1)</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
 <td class="parameter_name"><p>arg_idx</p></td>
-<td class="parameter_description"><p>the index of the first of the format arguments</p></td>
+<td class="parameter_description"><p>the index of the first of the format arguments, or 0 if
+there are no format arguments</p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 </tbody>

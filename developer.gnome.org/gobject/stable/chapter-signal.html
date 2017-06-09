@@ -201,7 +201,7 @@ $('#s').autocomplete('/symbols/lookup/',
   data1 <span class="gtkdoc opt">=</span> <span class="function"><a href="gobject-Generic-values.html#g-value-peek-pointer">g_value_peek_pointer</a></span> <span class="gtkdoc opt">(</span>param_values <span class="gtkdoc opt">+</span> <span class="number">0</span><span class="gtkdoc opt">);</span>
   data2 <span class="gtkdoc opt">=</span> closure<span class="gtkdoc opt">-&gt;</span>data<span class="gtkdoc opt">;</span>
 
-  callback <span class="gtkdoc opt">= (</span>GMarshalFunc_VOID__INT<span class="gtkdoc opt">) (</span>marshal_data ? marshal_data <span class="gtkdoc opt">:</span> cc<span class="gtkdoc opt">-&gt;</span>callback<span class="gtkdoc opt">);</span>
+  callback <span class="gtkdoc opt">= (</span>GMarshalFunc_VOID__INT<span class="gtkdoc opt">) (</span>marshal_data <span class="gtkdoc opt">?</span> marshal_data <span class="gtkdoc opt">:</span> cc<span class="gtkdoc opt">-&gt;</span>callback<span class="gtkdoc opt">);</span>
 
   <span class="function">callback</span> <span class="gtkdoc opt">(</span>data1<span class="gtkdoc opt">,</span>
             <span class="function">g_marshal_value_peek_int</span> <span class="gtkdoc opt">(</span>param_values <span class="gtkdoc opt">+</span> <span class="number">1</span><span class="gtkdoc opt">),</span>

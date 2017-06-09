@@ -100,7 +100,7 @@ $('#s').autocomplete('/symbols/lookup/',
 </div>
 <div class="refsect1">
 <a name="pango-Vertical-Text.object-hierarchy"></a><h2>Object Hierarchy</h2>
-<pre class="screen">    <a href="../../gobject/unstable/gobject-Enumeration-and-Flag-Types.html">GEnum</a>
+<pre class="screen">    <a href="../../gobject/stable/gobject-Enumeration-and-Flag-Types.html">GEnum</a>
     <span class="lineart">├──</span> PangoGravity
     <span class="lineart">╰──</span> PangoGravityHint
 </pre>
@@ -168,9 +168,9 @@ and gravity hint using <a class="link" href="pango-Text-Attributes.html#pango-at
 </div>
 <div class="refsect3">
 <a name="PANGO-GRAVITY-IS-IMPROPER.returns"></a><h4>Returns</h4>
-<p> <a href="../../glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if <em class="parameter"><code>gravity</code></em>
+<p> <a href="../../glib/stable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if <em class="parameter"><code>gravity</code></em>
 is <a class="link" href="pango-Vertical-Text.html#PANGO-GRAVITY-WEST:CAPS"><code class="literal">PANGO_GRAVITY_WEST</code></a> or <a class="link" href="pango-Vertical-Text.html#PANGO-GRAVITY-NORTH:CAPS"><code class="literal">PANGO_GRAVITY_NORTH</code></a>,
-<a href="../../glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</p>
+<a href="../../glib/stable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</p>
 </div>
 <p class="since">Since: <a class="link" href="api-index-1-32.html#api-index-1.32">1.32</a></p>
 </div>
@@ -196,9 +196,9 @@ is <a class="link" href="pango-Vertical-Text.html#PANGO-GRAVITY-WEST:CAPS"><code
 </div>
 <div class="refsect3">
 <a name="PANGO-GRAVITY-IS-VERTICAL.returns"></a><h4>Returns</h4>
-<p> <a href="../../glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if <em class="parameter"><code>gravity</code></em>
+<p> <a href="../../glib/stable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if <em class="parameter"><code>gravity</code></em>
 is <a class="link" href="pango-Vertical-Text.html#PANGO-GRAVITY-EAST:CAPS"><code class="literal">PANGO_GRAVITY_EAST</code></a> or <a class="link" href="pango-Vertical-Text.html#PANGO-GRAVITY-WEST:CAPS"><code class="literal">PANGO_GRAVITY_WEST</code></a>,
-<a href="../../glib/unstable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</p>
+<a href="../../glib/stable/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</p>
 </div>
 <p class="since">Since: <a class="link" href="api-index-1-16.html#api-index-1.16">1.16</a></p>
 </div>
@@ -229,7 +229,7 @@ in a <a class="link" href="pango-Glyph-Storage.html#PangoMatrix"><span class="ty
 <p> the gravity of <em class="parameter"><code>matrix</code></em>
 , which will never be
 <a class="link" href="pango-Vertical-Text.html#PANGO-GRAVITY-AUTO:CAPS"><code class="literal">PANGO_GRAVITY_AUTO</code></a>, or <a class="link" href="pango-Vertical-Text.html#PANGO-GRAVITY-SOUTH:CAPS"><code class="literal">PANGO_GRAVITY_SOUTH</code></a> if <em class="parameter"><code>matrix</code></em>
-is <a href="../../glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a></p>
+is <a href="../../glib/stable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a></p>
 </div>
 <p class="since">Since: <a class="link" href="api-index-1-16.html#api-index-1.16">1.16</a></p>
 </div>
@@ -288,7 +288,7 @@ with <em class="parameter"><code>script</code></em>
 <pre class="programlisting"><a class="link" href="pango-Vertical-Text.html#PangoGravity" title="enum PangoGravity"><span class="returnvalue">PangoGravity</span></a>
 pango_gravity_get_for_script_and_width
                                (<em class="parameter"><code><a class="link" href="pango-Scripts-and-Languages.html#PangoScript" title="enum PangoScript"><span class="type">PangoScript</span></a> script</code></em>,
-                                <em class="parameter"><code><a href="../../glib/unstable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> wide</code></em>,
+                                <em class="parameter"><code><a href="../../glib/stable/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> wide</code></em>,
                                 <em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravity" title="enum PangoGravity"><span class="type">PangoGravity</span></a> base_gravity</code></em>,
                                 <em class="parameter"><code><a class="link" href="pango-Vertical-Text.html#PangoGravityHint" title="enum PangoGravityHint"><span class="type">PangoGravityHint</span></a> hint</code></em>);</pre>
 <p>Based on the script, East Asian width, base gravity, and hint,
@@ -320,7 +320,7 @@ preferred gravity of <em class="parameter"><code>script</code></em>
 </tr>
 <tr>
 <td class="parameter_name"><p>wide</p></td>
-<td class="parameter_description"><p><a href="../../glib/unstable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> for wide characters as returned by <a href="../../glib/unstable/glib-Unicode-Manipulation.html#g-unichar-iswide"><code class="function">g_unichar_iswide()</code></a></p></td>
+<td class="parameter_description"><p><a href="../../glib/stable/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> for wide characters as returned by <a href="../../glib/stable/glib-Unicode-Manipulation.html#g-unichar-iswide"><code class="function">g_unichar_iswide()</code></a></p></td>
 <td class="parameter_annotations"> </td>
 </tr>
 <tr>
