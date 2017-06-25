@@ -2,6 +2,8 @@
 <?php
 echo "<center><font size=5 color=red>debian安装笔记</font></center>";
 echo "<hr width=80% size=2 color=blue>";
+include_once("debian9_setup.php");
+echo "<hr width=80% size=2 color=blue>";
 include_once("set_debian_new.php");
 echo "<hr width=80% size=2 color=blue>";
 echo "<center><font size=3 color=black>2013-10-10 thinkpad安装debian7简述</font></center><br>";
