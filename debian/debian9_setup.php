@@ -38,12 +38,12 @@ echo"软件的安装：
 	apt-get install audacious
 	apt-get install mpg123
 	apt-get install mplayer
-12、拷贝epsxe运行所必须的库文件：/usr/lib/i386-linux-gnu/libcrypto.so.1.0.0,这个库文件在debian9的版本为1.0.1，但是epsxe不能使用新版本的库，只能将debian8下面的
-	拷贝过来。这个切记，不然我在linux下最爱的模拟器就不能运行了。
+12、拷贝epsxe运行所必须的库文件：/usr/lib/i386-linux-gnu/libcrypto.so.1.0.0,这个库文件在debian9的版本为1.0.1，但是epsxe不能使用新版本的库，
+	只能将debian8下面的拷贝过来。这个切记，不然我在linux下最爱的模拟器就不能运行了。
 	另一个epsxe所需的库文件是libSDL_ttf-2.0.so.0，不过这个库文件在debian9下可以直接安装：
 	apt-get install libsdl_ttf2.0-0
 13、安装一些游戏所需的包：
-	apt-get install libsdl1.2-dev";
+	apt-get install libsdl1.2-dev<br>";
 echo "14、安装常用工具：
 	apt-get install git
 	apt-get install zathura
@@ -51,9 +51,12 @@ echo "14、安装常用工具：
 	apt-get install firefox-esr-l10n-zh-cn
 	apt-get install scrot
 	apt-get conky
-	其中conky的改变比较大，首先其配置文件格式有了很大变化，虽然目前原来的格式还能用，但我还是决定改为新格式，并且配置文件由原来的~/.conkyrc改为了~/.config/conky/conky.conf
-	另外一个打的变化就是conky配置文件中对exec类的命令使用不像以前支持的那么好了，也就是如果一个配置文件中使用的exec太多就会出现刷新问题，致使有些信息显示缺失（虽然是暂时的）
-	，不过这也促使我下决心修改以前的调用程序了，原来我也有这种感觉，调用程序太多或者调用太频繁肯定要导致资源的浪费。在修改完程序，减少了配置文件中对exec的使用次数后问题解决。
+	其中conky的改变比较大，首先其配置文件格式有了很大变化，虽然目前原来的格式还能用，但我还是决定改为新格式，并且配置文件由原来的~/.conkyrc
+	改为了~/.config/conky/conky.conf。
+	另外一个大的变化就是conky配置文件中对exec类的命令使用不像以前支持的那么好了，也就是如果一个配置文件中使用的exec太多就会出现刷新问题，
+	致使有些信息显示缺失（虽然是暂时的）。
+	不过这也促使我下决心修改以前的调用程序了，原来我也有这种感觉，调用程序太多或者调用太频繁肯定要导致资源的浪费。在修改完程序，减少了配置文
+	件中对exec的使用次数后问题解决。
 15、安装lamp
 	apache是在安装基本系统时，选择了安装web服务，所以已经安装，这里可以在浏览器里输入localhost
 	测试是否可以打开默认的apache界面
@@ -90,7 +93,8 @@ echo "<center><font color=blue>----------------------------------至此安装基
 	改为
 	PermitRootLogin yes
 2、网络的配置
-	debian9的网络配置文件/etc/network/interface比原来的简化了很多，同时对网络设备的命名变得比较蛋疼，一般的有线设备会命名为enp[数字]s[数字]，无线设备命名为wlp[数字]s[数字]
+	debian9的网络配置文件/etc/network/interface比原来的简化了很多，同时对网络设备的命名变得比较蛋疼，一般的有线设备会命名为enp[数字]s[数字]，
+	无线设备命名为wlp[数字]s[数字]
 	像我的thinkpad上无线设备命名为：wlp8s0,有线为：enp5s0
 	一般配置文件的写法为：
 allow-hotplug enp3s0
