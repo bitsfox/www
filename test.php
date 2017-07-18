@@ -37,17 +37,18 @@ if($pflag==0)
 	echo "<table width=100%><tr><td width=100%><br><br></td></tr></table>";
 	include("awnl.php");
 	echo "<br><center><table width=60%><tr>";
-	echo "<td align=left width=25% ><a href='./tin16/fengshen.php' target=_blank>FC封神榜</a></td>";
-	echo "<td align=left width=25% ><a href='./tin16/warsong/indexp1.htm' target=_blank>MD梦幻模拟战2</a></td>";
-	echo "<td align=left width=25% ><a href='./tin16/FC_namelist.html' target=_blank>FC游戏列表</a></td>";
-	echo "<td align=left width=25% ><a href='./tin16/CastleVania2/castle2.php' target=_blank>FC恶魔城2</a></td></tr><tr>";
-	echo "<td align=left width=25% ><a href='./tin16/mddahanghai2.php' target=_blank>MD大航海时代2</a></td>";
-	echo "<td align=left width=25% ><a href='./tin16/zzjb_mm2r.php' target=_blank>nds mm2r</a></td>";
-	echo "<td align=left width=25% ><a href='./tin16/zzjb_mmr.php' target=_blank>sfc mmr</a></td>";
-	echo "<td align=left width=25% ><a href='./tin16/mm3.php' target=_blank>nds mm3</a></td></tr><tr>";
-	echo "<td align=left width=25% ><a href='./tin16/bof1.php' target=_blank>龙战士1攻略</a></td>";
-	echo "<td align=left width=25% ><a href='./tin16/bbb/bof3.php' target=_blank>龙战士3攻略</a></td>";
-	echo "<td align=left width=25% ><a href='./tin16/bbb/bof4.php#begin' target=_blank>龙战士4攻略</a></td><td align=left width=25% ></td></tr></table></center>";
+	echo "<td align=center width=25% ><a href='./tin16/fengshen.php' target=_blank>FC封神榜</a></td>";
+	echo "<td align=center width=25% ><a href='./tin16/warsong/indexp1.htm' target=_blank>MD梦幻模拟战2</a></td>";
+	echo "<td align=center width=25% ><a href='./tin16/FC_namelist.html' target=_blank>FC游戏列表</a></td>";
+	echo "<td align=center width=25% ><a href='./tin16/CastleVania2/castle2.php' target=_blank>FC恶魔城2</a></td></tr><tr>";
+	echo "<td align=center width=25% ><a href='./tin16/mddahanghai2.php' target=_blank>MD大航海时代2</a></td>";
+	echo "<td align=center width=25% ><a href='./tin16/zzjb_mm2r.php' target=_blank>nds mm2r</a></td>";
+	echo "<td align=center width=25% ><a href='./tin16/zzjb_mmr.php' target=_blank>sfc mmr</a></td>";
+	echo "<td align=center width=25% ><a href='./tin16/mm3.php' target=_blank>nds mm3</a></td></tr><tr>";
+	echo "<td align=center width=25% ><a href='./tin16/bof1.php' target=_blank>龙战士1攻略</a></td>";
+	echo "<td align=center width=25% ><a href='./tin16/bbb/bof3.php' target=_blank>龙战士3攻略</a></td>";
+	echo "<td align=center width=25% ><a href='./tin16/bbb/bof4.php#begin' target=_blank>龙战士4攻略</a></td>";
+	echo "<td align=center width=25% ><a href='./tin16/ccc/ff5.php#begin' target=_blank>最终幻想5a</a></td></tr></table></center>";
 	echo "<br><br>";
 }
 ?>

@@ -88,6 +88,8 @@ echo "<table border=0 width=100%><tr width=100%><td width=10%></td><td width=80%
 	% 代表针对被编辑文件的每一行进行后续操作
 	$ 代表一行的结尾处
 	^ 代表一行的开头处
+5、删除dos结束符： :%s/^M//g
+   ^M的输入为：ctrl+v ctrl+m
 <font size=4 color=red>&lt;二&gt; 拷贝, 删除与粘贴</font>
 在 vi 中 y 表示拷贝, d 表示删除, p 表示粘贴. 其中拷贝与删除是与光标移动命令
 结合的, 看几个例子就能够明白了.
