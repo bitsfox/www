@@ -793,7 +793,15 @@ class tb_fq_mx implements tab_show
 		echo $FQ_HEADER_END;
 	}//}}}
 }//}}}
+//{{{ class tb_fs implements tab_show
+class tb_fs implements tab_show
+{
+	private $pnt;
+	public function __construct()
+	{
+	}
 
+}//}}}
 
 
 ?>
