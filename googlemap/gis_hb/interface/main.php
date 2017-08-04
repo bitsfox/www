@@ -878,14 +878,14 @@ class gis_ctl implements tab_show
 		if(isset($_POST['sel2']))
 		{$k=$_POST['sel2'];$_SESSION['SEL_2']=$k;}
 		else
-		{$k=$i-1;$_SESSION['SEL_2']=$k;}
+		{$k=$this->ay[$i-1];$_SESSION['SEL_2']=$k;}
 		$s1="<br><div class='dvmsg'>年度选择：</div><div class='select_style'><select name='sel2'>";
 		for($j=0;$j<$i;$j++)
 		{
-			if($j == $k)
-				$s1.="<option value=".$j." selected='selected'>".$this->ay[$j]."</option>";
+			if($this->ay[$j] == $k)
+				$s1.="<option value=".$this->ay[$j]." selected='selected'>".$this->ay[$j]."</option>";
 			else
-				$s1.="<option value=".$j.">".$this->ay[$j]."</option>";
+				$s1.="<option value=".$this->ay[$j].">".$this->ay[$j]."</option>";
 		}
 		$s1.="</select></div><div id='clear_id'></div>";
 		echo $s1;
@@ -901,38 +901,39 @@ class gis_ctl implements tab_show
 //{{{class gis_main_map implements tab_show
 class gis_main_map implements tab_show
 {
-	private $ay,$cy;
+	private $ay;
 //{{{public function __construct()	
 	public function __construct()
-	{}//}}}
+	{
+		if(!isset($_SESSION['SEL_2']))
+			die("init error!");
+		if(!isset($_SESSION['INTR_SEND']))
+			die("init error!");
+		$i=$_SESSION['SEL_2'];
+		$a=new init_gis($i);
+		$this->ay=$a->get_unit($i);
+	}//}}}
 //{{{public function __destruct()
 	public function __destruct()
 	{}//}}}
 //{{{public function show_header()
 	public function show_header()
 	{
-		$s1="<div id='allmap'></div>";
+		global $GIS_DIV,$GIS_BEG_SCRIPT,$GIS_MAP_MSG1,$GIS_MAP_MSG2,$GIS_MAP_MARKER,$GIS_END_SCRIPT;
+		$i=count($this->ay);
+//		print_r($this->ay);
+		$s1=$GIS_DIV.$GIS_BEG_SCRIPT;
 		echo $s1;
-		$s1.="<br>hahahahha<br><div id='clear_id'></div>";
+		$s1=sprintf($GIS_MAP_MSG1,"泰安市");
+		$s1.=$GIS_MAP_MSG2;
 		echo $s1;
-		$s1="<script type='text/javascript'>";
-		echo $s1;
-		$s1="var map = new BMap.Map('allmap');";
-		echo $s1;
-		$s1="map.centerAndZoom(new BMap.Point(117.467600,35.7932300), 11);";
-		echo $s1;
-		$s1="map.addControl(new BMap.MapTypeControl());";
-		echo $s1;
-		$s1="map.setCurrentCity('泰安');";
-		echo $s1;
-		$s1="map.enableScrollWheelZoom(true);";
-		echo $s1;
-		$s1="var marker = new BMap.Marker(new BMap.Point(117.467600,35.7932300));";
-		echo $s1;
-		$s1="map.addOverlay(marker);";
-		echo $s1;
-		$s1="</script>";
-		echo $s1;
+		for($j=0;$j<$i;$j++)
+		{
+			$dy=$this->ay[$j];
+			$s1=sprintf($GIS_MAP_MARKER,$dy[3],$dy[4]);
+			echo $s1;
+		}
+		echo $GIS_END_SCRIPT;
 	}//}}}
 //{{{public function show_body()
 	public function show_body()

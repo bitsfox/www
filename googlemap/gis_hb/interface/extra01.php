@@ -1586,7 +1586,7 @@ class init_gis implements listbox_data
 			$this->get_cru_year();
 		$this->get_used_db();
 		$this->conn="SELECT aid,aname FROM area_info WHERE bused = 1";
-		$this->str_top1="SELECT sname,sid from station WHERE aid = %u";
+		
 	}//}}}
 //{{{public function __destruct()
 	public function __destruct()
@@ -1633,6 +1633,31 @@ class init_gis implements listbox_data
 //}}}
 //{{{public function get_unit($y)
 	public function get_unit($y)
-	{}//}}}
+	{
+		if(!isset($_SESSION['INTR_SEND']))
+			die("data error!");
+		$i=intval($_SESSION['INTR_SEND']);
+		if(($i % 100) == 0)
+		{
+			$s1="SELECT aid,sname,sid,lng,lat from station WHERE aid > %u AND aid < %u";
+			$this->str_top1=sprintf($s1,$i,$i+99);
+		}
+		else
+		{
+			$s1="SELECT aid,sname,sid,lng,lat from station WHERE aid = %u";
+			$this->str_top1=sprintf($s1,$i);
+		}
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if(mysqli_connect_errno())
+			die("connect error");
+		mysqli_set_charset($mysqli,"utf8");
+		$res=mysqli_query($mysqli,$this->str_top1);
+		$ay=array();
+		while($rows=mysqli_fetch_row($res))
+			array_push($ay,$rows);
+		mysqli_free_result($res);
+		mysqli_close($mysqli);
+		return $ay;
+	}//}}}
 }//}}}
 ?>
