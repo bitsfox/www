@@ -793,16 +793,110 @@ class tb_fq_mx implements tab_show
 		echo $FQ_HEADER_END;
 	}//}}}
 }//}}}
-//{{{ class tb_fs implements tab_show
-class tb_fs implements tab_show
+//{{{class class gis_ctl implements tab_show
+class gis_ctl implements tab_show
 {
-	private $pnt;
-	public function __construct()
+	private $wctl,$ay,$cy;	//表明是总览，明晰还是列表操作
+	private $rq;	//日期
+//{{{public function __construct($y)	
+	public function __construct($y)
 	{
-	}
-
+		global $DB_ADDR_TY;
+		switch($y)
+		{
+			case 0:
+			case 1:
+			case 2:
+				$this->wctl=$y;
+				break;
+			default:
+				die("参数错误002！");
+		};
+		date_default_timezone("PRC");
+		if(isset($_POST['starttime']))
+			$this->rq=$_POST['starttime'];
+		else
+			$this->rq=date("Y-m-d",time());
+		$a01=array_keys($DB_ADDR_TY);
+		$i=count($a01);
+		$this->ay=array();
+		for($j=0;$j<$i;$j++)
+			array_push($this->ay,$a01[$j]);//得到所有有数据的年份
+		$a=new init_gis($a01[$j]);
+		$this->cy=$a->get_ctlarea();//取得年度列表中最后一个年度的地区代码
+	}//}}}
+//{{{public function __destruct()
+	public function __destruct()
+	{
+		unset($this->wctl);unset($this->rq);
+	}//}}}
+//{{{public function show_header()
+	public function show_header()
+	{
+		switch($this->wctl)
+		{
+			case 0: //show_body用于显示总览
+				show_body();//这里将接口定义的三个函数分别用于三种不同的显示模式，在实现中，仅仅调用show_header这一个函数就行.
+				return;
+			case 1: //show_tail用于显示明晰
+				show_tail();
+				return;
+			default:
+				break;
+		};
+		//这里显示列表
+	}//}}}
+//{{{public function show_body()
+	public function show_body()
+	{//显示总览
+		$i=count($this->cy);
+		if(isset($_POST['sel1']))
+		{
+			$k=$_POST['sel1'];$_SESSION['SEL_1']=$k;
+			$_SESSION['INTR_SEND']=$k;
+		}
+		else
+		{
+			$k=$this->cy[0][0];$_SESSION['SEL_1']=$k;
+			$_SESSION['INTR_SEND']=$k;
+		}
+		$s1="<br><div class='dvmsg'>区域选择：</div><div class='select_style'><select name='sel1'>";
+		for($j=0;$j<$i;$j++)
+		{
+			$xy=$this->cy[$j];
+			if($xy[0] == $k)
+				$s1.="<option value=>".$xy[0]." selected='selected'>".$xy[1]."</option>";
+			else
+				$s1.="<option value=".$xy[0].">".$xy[1]."</option>";
+		}
+		$s1.="</select></div><div id='clear_id'></div>";
+		echo $s1;
+		$i=count($this->ay);
+		if($i<=0)
+			die("count error03!!");
+		if(isset($_POST['sel2']))
+		{$k=$_POST['sel2'];$_SESSION['SEL_2']=$k;}
+		else
+		{$k=$i-1;$_SESSION['SEL_2']=$k;}
+		$s1="<br><div class='dvmsg'>年度选择：</div><div class='select_style'><select name='sel2'>";
+		for($j=0;$j<$i;$j++)
+		{
+			if($j == $k)
+				$s1.="<option value=".$j." selected='selected'>".$this->ay[$j]."</option>";
+			else
+				$s1.="<option value=".$j.">".$this->ay[$j]."</option>";
+		}
+		$s1.="</select></div><div id='clear_id'></div>";
+		echo $s1;
+		$s1="<br><br><div class='dvmsg2'></div><div class='dvmsg2'><input type='submit' id='button_id' name='submit' value='应用' title='点击开始查询'></div>";
+		$s1.="<div id='clear_id'></div>";
+		echo $s1;
+	}//}}}
+//{{{public function show_tail()
+	public function show_tail()
+	{
+	}//}}}
 }//}}}
-
 
 ?>
 
