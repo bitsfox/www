@@ -812,7 +812,7 @@ class gis_ctl implements tab_show
 			default:
 				die("参数错误002！");
 		};
-		date_default_timezone("PRC");
+		date_default_timezone_set("PRC");
 		if(isset($_POST['starttime']))
 			$this->rq=$_POST['starttime'];
 		else
@@ -822,7 +822,7 @@ class gis_ctl implements tab_show
 		$this->ay=array();
 		for($j=0;$j<$i;$j++)
 			array_push($this->ay,$a01[$j]);//得到所有有数据的年份
-		$a=new init_gis($a01[$j]);
+		$a=new init_gis($a01[$j-1]);
 		$this->cy=$a->get_ctlarea();//取得年度列表中最后一个年度的地区代码
 	}//}}}
 //{{{public function __destruct()
@@ -836,12 +836,13 @@ class gis_ctl implements tab_show
 		switch($this->wctl)
 		{
 			case 0: //show_body用于显示总览
-				show_body();//这里将接口定义的三个函数分别用于三种不同的显示模式，在实现中，仅仅调用show_header这一个函数就行.
+				$this->show_body();//这里将接口定义的三个函数分别用于三种不同的显示模式，在实现中，仅仅调用show_header这一个函数就行.
 				return;
 			case 1: //show_tail用于显示明晰
-				show_tail();
+				$this->show_tail();
 				return;
 			default:
+				die("asdflasd");
 				break;
 		};
 		//这里显示列表
@@ -865,7 +866,7 @@ class gis_ctl implements tab_show
 		{
 			$xy=$this->cy[$j];
 			if($xy[0] == $k)
-				$s1.="<option value=>".$xy[0]." selected='selected'>".$xy[1]."</option>";
+				$s1.="<option value=".$xy[0]." selected='selected'>".$xy[1]."</option>";
 			else
 				$s1.="<option value=".$xy[0].">".$xy[1]."</option>";
 		}
@@ -897,6 +898,52 @@ class gis_ctl implements tab_show
 	{
 	}//}}}
 }//}}}
+//{{{class gis_main_map implements tab_show
+class gis_main_map implements tab_show
+{
+	private $ay,$cy;
+//{{{public function __construct()	
+	public function __construct()
+	{}//}}}
+//{{{public function __destruct()
+	public function __destruct()
+	{}//}}}
+//{{{public function show_header()
+	public function show_header()
+	{
+		$s1="<div id='allmap'></div>";
+		echo $s1;
+		$s1.="<br>hahahahha<br><div id='clear_id'></div>";
+		echo $s1;
+		$s1="<script type='text/javascript'>";
+		echo $s1;
+		$s1="var map = new BMap.Map('allmap');";
+		echo $s1;
+		$s1="map.centerAndZoom(new BMap.Point(117.467600,35.7932300), 11);";
+		echo $s1;
+		$s1="map.addControl(new BMap.MapTypeControl());";
+		echo $s1;
+		$s1="map.setCurrentCity('泰安');";
+		echo $s1;
+		$s1="map.enableScrollWheelZoom(true);";
+		echo $s1;
+		$s1="var marker = new BMap.Marker(new BMap.Point(117.467600,35.7932300));";
+		echo $s1;
+		$s1="map.addOverlay(marker);";
+		echo $s1;
+		$s1="</script>";
+		echo $s1;
+	}//}}}
+//{{{public function show_body()
+	public function show_body()
+	{}//}}}
+//{{{public function show_tail()
+	public function show_tail()
+	{}//}}}
+
+}//}}}
+
+
 
 ?>
 

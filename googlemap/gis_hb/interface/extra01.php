@@ -1625,7 +1625,7 @@ class init_gis implements listbox_data
 		$res=mysqli_query($mysqli,$this->conn);
 		$ay=array();
 		while($rows=mysqli_fetch_row($res))
-			array_push($ay,$row);
+			array_push($ay,$rows);
 		mysqli_free_result($res);
 		mysqli_close($mysqli);
 		return $ay;

@@ -2,10 +2,11 @@
 <?php
 	global $menulnk;
 	echo "<form name='form_left1' method='post' action='./".$menulnk[0]."'>";
-	$i=3; //utype 本应=0 废水,由于php的处理会将=0看成是NULL！所以这里用3替代
-	$a= new tb_sleft($i);
+	$i=0; //utype 本应=0 废水,由于php的处理会将=0看成是NULL！所以这里用3替代
+//	$a= new tb_sleft($i);
+	$a= new gis_ctl($i);
 	$a->show_header();
-	$a->show_body();
+//	$a->show_body();
 //	$a->show_tail();
 	$_SESSION['EXCEL_TYPE']=1;
 ?>
