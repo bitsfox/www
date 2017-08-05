@@ -45,7 +45,16 @@ echo $str;
 </head>
 <body>
 <div id="container_id">
-    <div id="header_id"></div>
+    <div id="header_id">
+<?php
+	$i=($_COOKIE['screen'])*0.8;
+	if($i > 480)
+		$j=100;
+	else
+		$j=floor($i/4.8);
+	echo "<img src='./css/logo.png' style='display:block;width:".$j."%;' />";
+?>
+	</div>
     <div id="menu_id">
     <ul>
 <?php
