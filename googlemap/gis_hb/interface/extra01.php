@@ -1639,12 +1639,12 @@ class init_gis implements listbox_data
 		$i=intval($_SESSION['INTR_SEND']);
 		if(($i % 100) == 0)
 		{
-			$s1="SELECT aid,sname,sid,lng,lat from station WHERE aid > %u AND aid < %u";
+			$s1="SELECT a.aid,a.sname,a.sid,a.lng,a.lat,b.link from station as a LEFT JOIN pt_link as b ON a.sid=b.sid WHERE aid > %u AND aid < %u group by a.sid";
 			$this->str_top1=sprintf($s1,$i,$i+99);
 		}
 		else
 		{
-			$s1="SELECT aid,sname,sid,lng,lat from station WHERE aid = %u";
+			$s1="SELECT a.aid,a.sname,a.sid,a.lng,a.lat,b.link from station as a LEFT JOIN pt_link as b ON a.sid=b.sid  WHERE aid = %u group by a.sid";
 			$this->str_top1=sprintf($s1,$i);
 		}
 		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);

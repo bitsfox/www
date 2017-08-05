@@ -26,8 +26,9 @@ if(isset($_SESSION['logok']) && ($_SESSION['logok'] == $tybitsfox['corename']))
 {
 	if(isset($_SESSION['user']))
 	{
-		header("Refresh:0 url=./index.php");
-		die();
+//		header("Refresh:0 url=./index.php");
+		echo "<script>setTimeout(\"window.location='./index.php'\",0);</script>";
+	//	die();
 	}
 }
 ?>

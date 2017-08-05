@@ -138,10 +138,20 @@ require_once($str11);
 	$GIS_MAP_MSG2			=	"map.setCurrentCity('泰安');map.enableScrollWheelZoom(true);";
 	$GIS_MAP_MARKER			=	"var marker = new BMap.Marker(new BMap.Point(%s,%s));map.addOverlay(marker);";
 	$GIS_END_SCRIPT			=	"</script>";	
-
-
-
-
+/*	$GIS_MAP_MARKER			=	"var marker = new BMap.Marker(new BMap.Point(%s,%s));map.addOverlay(marker);marker.addEventListener('click', function(e){searchInfoWindow.open(marker);});";
+	$GIS_CONTENT_IMAGE		=	"var content = <div style='margin:0;line-height:20px;padding:2px;'><img src='%s' alt='' style='float:right;zoom:1;overflow:hidden;width:100px;height:100px;margin-left:3px;'/>";
+	$GIS_CONTENT_TEXT		=	"点位名称：%s<br/>点位编码：%s<br/>经度：%s<br/>纬度：%s</div>;";
+	$GIS_CONTECT_WND		=	"var searchInfoWindow = null;searchInfoWindow = new BMapLib.SearchInfoWindow(map, content, {title  : '%s',width  : 290,height : 105,panel  : 'panel',enableAutoPan : true,searchTypes   :[BMAPLIB_TAB_SEARCH,BMAPLIB_TAB_TO_HERE,BMAPLIB_TAB_FROM_HERE]});"; */
+////////////////////////////////////////////////
+/*	$GIS_CONTENT_DEF		=	"var data_info = [";
+	$GIS_CONTENT_VAR		=	"[%s,%s,'%s'],";
+	$GIS_CONTENT_END		=	"[%s,%s,'%s']];"; */
+	$GIS_CONTENT_IMAGE		=	"var content = '点位名称：%s<br>点位代码：<font color=red>%s</font><br>经度：<font color=blue>%0.6f</font><br>纬度：<font color=blue>%0.6f</font>';";
+	$GIS_CONTENT_OPT		=	"var opts = {width:250,height:90,title:'%s',enableMessage:true};";
+	$GIS_CONTENT_FUNCH		=	"function addClickHandler(content,marker){marker.addEventListener('click',function(e){openInfo(content,e)});};";
+	$GIS_CONTENT_FUNCL		=	"function openInfo(content,e){var p = e.target;var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);var infoWindow = new BMap.InfoWindow(content,opts);map.openInfoWindow(infoWindow,point);};";
+	$GIS_CONTENT_VVV		=	"var marker = new BMap.Marker(new BMap.Point(%0.6f,%0.6f));map.addOverlay(marker);addClickHandler(content,marker);";
+	
 ?>
 
 
