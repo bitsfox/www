@@ -932,34 +932,15 @@ class gis_main_map implements tab_show
 		$s1=sprintf($GIS_MAP_MSG1,$_SESSION['SEL_1']);
 		$s1.=$GIS_MAP_MSG2;
 		echo $s1;
-/*		$s1=$GIS_CONTENT_DEF;
-		for($j=0;$j<i;$j++)
-		{
-			$dy=$this->ay[$j];
-			if($j != ($i-1))
-				$s1.=sprintf($GIS_CONTENT_VAR,$dy[3],$dy[4],$dy[2]);
-			else
-				$s1.=sprintf($GIS_CONTENT_END,$dy[3],$dy[4],$dy[2]);
-		}
-		echo $s1; */
 		$s1=sprintf($GIS_CONTENT_OPT,$_SESSION['SEL_1']);
 		echo $s1;
 		for($j=0;$j<$i;$j++)
 		{
 			$dy=$this->ay[$j];
-			$s1=sprintf($GIS_CONTENT_IMAGE,$dy[1],$dy[2],$dy[3],$dy[4]);
+			$s1=sprintf($GIS_CONTENT_IMAGE,"./images/aaa.jpg",$dy[1],$dy[2],$dy[3],$dy[4]);
+	//		$s1=sprintf($GIS_CONTENT_IMAGE,"./images/aaa.jpg");
 			echo $s1;
-//			if(is_null($dy[5]))
-//				$s1=sprintf($GIS_CONTENT_IMAGE,"../images/aaa.jpg");
-//			else
-//				$s1=sprintf($GIS_CONTENT_IMAGE,$dy[5]);
-//			$s1.=sprintf($GIS_CONTENT_TEXT,$dy[1],$dy[2],$dy[3],$dy[4]);
-//			$s1="var content='点位名称：<br/>';";
-//			echo $s1;
-//			$s1=sprintf($GIS_CONTENT_WND,$_SESSION['SEL_1']);
-//			echo $s1;
 			$s1=sprintf($GIS_CONTENT_VVV,$dy[3],$dy[4]);
-			//$s1=sprintf($GIS_MAP_MARKER,$dy[3],$dy[4]);
 			echo $s1;
 		}
 		echo $GIS_CONTENT_FUNCH;
@@ -974,37 +955,5 @@ class gis_main_map implements tab_show
 	{}//}}}
 
 }//}}}
-/*
-//{{{public function show_header()
-	public function show_header()
-	{
-		global $GIS_DIV,$GIS_BEG_SCRIPT,$GIS_MAP_MSG1,$GIS_MAP_MSG2,$GIS_MAP_MARKER,$GIS_END_SCRIPT;
-//		global $GIS_CONTENT_IMAGE,$GIS_CONTENT_TEXT,$GIS_CONTENT_WND;
-		$i=count($this->ay);
-//		print_r($this->ay);
-		$s1=$GIS_DIV.$GIS_BEG_SCRIPT;
-		echo $s1;
-		$s1=sprintf($GIS_MAP_MSG1,$_SESSION['SEL_1']);
-		$s1.=$GIS_MAP_MSG2;
-		echo $s1;
-		for($j=0;$j<$i;$j++)
-		{
-			$dy=$this->ay[$j];
-//			if(is_null($dy[5]))
-//				$s1=sprintf($GIS_CONTENT_IMAGE,"../images/aaa.jpg");
-//			else
-//				$s1=sprintf($GIS_CONTENT_IMAGE,$dy[5]);
-//			$s1.=sprintf($GIS_CONTENT_TEXT,$dy[1],$dy[2],$dy[3],$dy[4]);
-//			$s1="var content='点位名称：<br/>';";
-//			echo $s1;
-//			$s1=sprintf($GIS_CONTENT_WND,$_SESSION['SEL_1']);
-//			echo $s1;
-			$s1=sprintf($GIS_MAP_MARKER,$dy[3],$dy[4]);
-			echo $s1;
-		}
-		echo $GIS_END_SCRIPT;
-	}//}}}
-*/
-
 
 ?>

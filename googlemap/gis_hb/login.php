@@ -27,7 +27,7 @@ if(isset($_SESSION['logok']) && ($_SESSION['logok'] == $tybitsfox['corename']))
 	if(isset($_SESSION['user']))
 	{
 //		header("Refresh:0 url=./index.php");
-		echo "<script>setTimeout(\"window.location='./index.php'\",0);</script>";
+		echo "<script>setTimeout(\"window.location='./index.php'\",20);</script>";
 	//	die();
 	}
 }
@@ -74,7 +74,8 @@ if(isset($_POST['submit']))
 			$_SESSION['logok'] = $tybitsfox['corename'];
 			$_SESSION['leftcnt']	= 4;
 			$_SESSION['user']	=	$_POST['user'];
-			header("Refresh:0 url=./index.php");
+			//header("Refresh:0 url=./index.php");
+			echo "<script>setTimeout(\"window.location='./index.php'\",0);</script>";
 		}
 	}
 	else
