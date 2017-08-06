@@ -141,196 +141,6 @@ function _reg_db($u,$p)
 	$a->query_db(1);
 	return 0;
 }//}}}
-//{{{ class tb_wsc implements tab_show 污水厂实时主界面显示类
-class tb_wsc implements tab_show
-{
-	private $dy;
-//{{{public function __construct()	
-	public function __construct()
-	{
-		$a=new data_wsright();
-		$a->parse_sql();
-		$this->dy=$a->get_std();
-	}//}}}
-//{{{public function show_header()
-	public function show_header()
-	{
-		global $FSS_HEADER;
-		echo $FSS_HEADER;
-	}//}}}
-//{{{public function show_body()
-	public function show_body()
-	{
-		global $FSS_BODY_1,$FSS_BODY_RED,$FSS_BODY_NOR,$FSS_BODY_LL,$WUXIAO;
-		$str="";
-		$i=count($this->dy);
-		for($j=0;$j<$i;$j++)
-		{
-			$fy=$this->dy[$j];
-			$s1=sprintf($FSS_BODY_1,$fy[0],$fy[1],$fy[2]);
-			$str.=$s1;
-			if(($fy[3]>$fy[4]) && ($fy[4]>0))
-				$s1=sprintf($FSS_BODY_RED,$fy[3],$fy[4]);
-			else
-			{
-				if($fy[3] >= 0)
-					$s1=sprintf($FSS_BODY_NOR,$fy[3],$fy[4]);
-				else
-					$s1=sprintf($FSS_BODY_NOR,$WUXIAO,$fy[4]);
-			}
-			$str.=$s1;
-			if(($fy[5]>$fy[6]) && ($fy[6]>0))
-				$s1=sprintf($FSS_BODY_RED,$fy[5],$fy[6]);
-			else
-			{
-				if($fy[5] >= 0)
-					$s1=sprintf($FSS_BODY_NOR,$fy[5],$fy[6]);
-				else
-					$s1=sprintf($FSS_BODY_NOR,$WUXIAO,$fy[6]);
-			}
-			$str.=$s1;
-			$s1=sprintf($FSS_BODY_LL,$fy[7],$fy[8],$fy[9]);
-			$str.=$s1;
-		}
-		echo $str;
-	}//}}}
-//{{{public function show_tail()
-	public function show_tail()
-	{
-		global $FSS_HEADER_END;
-		echo $FSS_HEADER_END;
-	}//}}}
-}//}}}
-//{{{class tb_fs implements tab_show 废水实时主界面显示类
-class tb_fs implements tab_show
-{
-	private $dy;
-//{{{public function __construct()	
-	public function __construct()
-	{
-		$a=new data_sright();
-		$a->parse_sql();
-		$this->dy=$a->get_std();
-	}//}}}
-//{{{public function show_header()	
-	public function show_header()
-	{
-		global $FSS_HEADER;
-		echo $FSS_HEADER;
-	}//}}}
-//{{{public function show_body()	
-	public function show_body()
-	{
-		global $FSS_BODY_1,$FSS_BODY_RED,$FSS_BODY_NOR,$FSS_BODY_LL,$WUXIAO;
-		$str="";
-		$i=count($this->dy);
-		for($j=0;$j<$i;$j++)
-		{
-			$fy=$this->dy[$j];
-			$s1=sprintf($FSS_BODY_1,$fy[0],$fy[1],$fy[2]);
-			$str.=$s1;
-			if(($fy[3]>$fy[4]) && ($fy[4]>0))
-				$s1=sprintf($FSS_BODY_RED,$fy[3],$fy[4]);
-			else
-			{
-				if($fy[3] >= 0)
-					$s1=sprintf($FSS_BODY_NOR,$fy[3],$fy[4]);
-				else
-					$s1=sprintf($FSS_BODY_NOR,$WUXIAO,$fy[4]);
-			}
-			$str.=$s1;
-			if(($fy[5]>$fy[6]) && ($fy[6]>0))
-				$s1=sprintf($FSS_BODY_RED,$fy[5],$fy[6]);
-			else
-			{
-				if($fy[5] >= 0)
-					$s1=sprintf($FSS_BODY_NOR,$fy[5],$fy[6]);
-				else
-					$s1=sprintf($FSS_BODY_NOR,$WUXIAO,$fy[6]);
-			}
-			$str.=$s1;
-			$s1=sprintf($FSS_BODY_LL,$fy[7],$fy[8],$fy[9]);
-			$str.=$s1;
-		}
-		echo $str;
-	}//}}}
-//{{{public function show_tail()	
-	public function show_tail()
-	{
-		global $FSS_HEADER_END;
-		echo $FSS_HEADER_END;
-	}//}}}
-//{{{public function __destruct()
-	public function __destruct()
-	{unset($this->ay);unset($this->cy);unset($this->dy);}//}}}
-}//}}}
-//{{{class tb_fq implements tab_show 废气实时主界面显示类
-class tb_fq implements tab_show
-{
-	private $dy;
-	public function __construct()
-	{
-		$a=new data_qright();
-		$a->parse_sql();
-		$this->dy=$a->get_std();
-	}
-	public function show_header()
-	{
-		global $FQS_HEADER;
-		echo $FQS_HEADER;
-	}
-	public function show_body()
-	{
-		global $FQS_BODY_1,$FQS_BODY_RED,$FQS_BODY_NOR,$FQS_BODY_LL,$WUXIAO;
-		$str="";
-		$i=count($this->dy);
-		for($j=0;$j<$i;$j++)
-		{
-			$y=$this->dy[$j];
-			$s1=sprintf($FQS_BODY_1,$y[0],$y[1],$y[2]);
-			$str.=$s1;
-			if(($y[3]>$y[4]) && ($y[4]>0))
-				$s1=sprintf($FQS_BODY_RED,$y[3],$y[4]);
-			else
-			{
-				if($y[3] >= 0)
-					$s1=sprintf($FQS_BODY_NOR,$y[3],$y[4]);
-				else
-					$s1=sprintf($FQS_BODY_NOR,$WUXIAO,$y[4]);
-			}
-			$str.=$s1;
-			if(($y[5]>$y[6]) && ($y[6]>0))
-				$s1=sprintf($FQS_BODY_RED,$y[5],$y[6]);
-			else
-			{
-				if($y[5] >= 0)
-					$s1=sprintf($FQS_BODY_NOR,$y[5],$y[6]);
-				else
-					$s1=sprintf($FQS_BODY_NOR,$WUXIAO,$y[6]);
-			}
-			$str.=$s1;
-			if(($y[7]>$y[8]) && ($y[8]>0))
-				$s1=sprintf($FQS_BODY_RED,$y[7],$y[8]);
-			else
-			{
-				if($y[7] >= 0)
-					$s1=sprintf($FQS_BODY_NOR,$y[7],$y[8]);
-				else	
-					$s1=sprintf($FQS_BODY_NOR,$WUXIAO,$y[8]);
-			}
-			$str.=$s1;
-			$s1=sprintf($FQS_BODY_LL,$y[9],$y[10]);
-			$str.=$s1;
-		}
-		echo $str;
-
-	}
-	public function show_tail()
-	{
-		global $FQS_HEADER_END;
-		echo $FQS_HEADER_END;
-	}
-}//}}}
 ///////////////////////////////////////////////////////////
 //{{{class tb_sleft implements tab_show 所有实时数据查看的控制界面类
 class tb_sleft implements tab_show
@@ -954,6 +764,27 @@ class gis_main_map implements tab_show
 	public function show_tail()
 	{}//}}}
 
+}//}}}
+//{{{class gis_mingxi implements tab_show
+class gis_mingxi implements tab_show
+{
+	private $ay,$cy;		//ay保存选择区域，cy保存每个区域中所有站点，cy数组中key=区划代码，values=该区划内所有站点数组
+	private $rq;			//日期
+//{{{ public function __construct()
+	public function __construct()
+	{}//}}}
+//{{{public function __destruct()
+	public function __destruct()
+	{}//}}}
+//{{{public function show_header()
+	public function show_header()
+	{}//}}}
+//{{{public function show_body()
+	public function show_body()
+	{}//}}}
+//{{{public function show_tail()
+	public function show_tail()
+	{}//}}}
 }//}}}
 
 ?>
