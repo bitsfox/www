@@ -11,9 +11,9 @@ if(session_status() != PHP_SESSION_ACTIVE)
 if(!defined("FULL_PATH"))
 {
 	$s1=dirname(__FILE__);
-	$s2=strstr($s1,"php_hl");
+	$s2=strstr($s1,"gis_hb");
 	$i=strlen($s1)-strlen($s2);
-	$s2=substr($s1,0,$i)."php_hl/";
+	$s2=substr($s1,0,$i)."gis_hb/";
 	define("FULL_PATH",$s2);
 }
 
@@ -1583,7 +1583,7 @@ class init_gis implements listbox_data
 		if($y > 0)
 			$this->rq=$y;
 		else
-			$this->get_cru_year();
+			$this->get_cur_year();
 		$this->get_used_db();
 		$this->conn="SELECT aid,aname FROM area_info WHERE bused = 1";
 		

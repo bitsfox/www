@@ -19,9 +19,9 @@ if(session_status() != PHP_SESSION_ACTIVE)
 if(!defined("FULL_PATH"))
 {
 	$s1=dirname(__FILE__);
-	$s2=strstr($s1,"php_hl");
+	$s2=strstr($s1,"gis_hb");
 	$i=strlen($s1)-strlen($s2);
-	$s2=substr($s1,0,$i)."php_hl/";
+	$s2=substr($s1,0,$i)."gis_hb/";
 	define("FULL_PATH",$s2);
 }
 //确保包含了全局变量的定义文件
@@ -937,7 +937,7 @@ class gis_main_map implements tab_show
 		for($j=0;$j<$i;$j++)
 		{
 			$dy=$this->ay[$j];
-			$s1=sprintf($GIS_CONTENT_IMAGE,"./images/aaa.jpg",$dy[1],$dy[2],$dy[3],$dy[4]);
+			$s1=sprintf($GIS_CONTENT_IMAGE,$dy[5],$dy[1],$dy[2],$dy[3],$dy[4]);
 	//		$s1=sprintf($GIS_CONTENT_IMAGE,"./images/aaa.jpg");
 			echo $s1;
 			$s1=sprintf($GIS_CONTENT_VVV,$dy[3],$dy[4]);

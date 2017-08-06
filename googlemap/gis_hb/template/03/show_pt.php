@@ -1,0 +1,33 @@
+<?php
+if(session_status() != PHP_SESSION_ACTIVE)
+	session_start();
+if(!defined("FULL_PATH"))
+{
+	$s1=dirname(__FILE__);
+	$s2=strstr($s1,"gis_hb");
+	$i=strlen($s1)-strlen($s2);
+	$s2=substr($s1,0,$i)."gis_hb/";
+	define("FULL_PATH",$s2);
+}
+//确保包含了全局变量的定义文件
+$ifile=constant("FULL_PATH")."config/main.php";
+require_once($ifile);
+$st=constant("FULL_PATH")."include/inter_def.php";
+require_once($st);
+$st=constant("FULL_PATH")."core/main.php";
+require_once($st);
+$st=constant("FULL_PATH")."interface/extra01.php";
+require_once($st);
+$st=constant("FULL_PATH")."interface/extra02.php";
+require_once($st);
+	$ay=array();
+	$a=new init_gis(0);
+	$ay=$a->get_unit(0);
+	$i=count($ay);
+	$cy=array();
+	for($j=0;$j<$i;$j++)
+		array_push($cy,$ay[$j][5]);
+	$dy=array();
+	$dy=json_encode($cy);
+	print_r($cy);
+?>

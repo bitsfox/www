@@ -6,17 +6,14 @@
 		if(!defined("FULL_PATH"))
 		{
 			$s1=dirname(__FILE__);
-			$s2=strstr($s1,"php_hl");
+			$s2=strstr($s1,"gis_hb");
 			$i=strlen($s1)-strlen($s2);
-			$s2=substr($s1,0,$i)."php_hl/";
+			$s2=substr($s1,0,$i)."gis_hb/";
 			define("FULL_PATH",$s2);
 		}
 		$str=constant("FULL_PATH")."template/02/l01.html";
 		require_once($str);
 	?>
-	</div>
-	<div id="left_ida" class="shadow_class">
-	<img src='./images/aaa.jpg' style='display:block;width:200px;'/>
 	</div>
 	<div id="right_id">
 	<div id="clear_id"></div>
@@ -24,12 +21,14 @@
 	<?php
 		$a=new gis_main_map();
 		$a->show_header();
-	/*	$a->show_body();
-		$a->show_tail(); */
 	?>
 <!--	<table class='imagetable'><tr><th>aaa</th><th>bbb</th></tr>
 	<tr><td>cccc</td><td>dddd</td></tr></table>   -->
 	</div>
+	</div>
+	<div id="left_ida" class="shadow_class">
+<!--	<img src='./images/aaa.jpg' style='display:block;width:200px;'/> -->
+	<?php require_once("template/03/show_pt.php");?>
 	</div>
 </div>
 	<div id="clear_id"></div>
