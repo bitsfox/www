@@ -1660,4 +1660,100 @@ class init_gis implements listbox_data
 		return $ay;
 	}//}}}
 }//}}}
+//{{{class init_gis_mx implements listbox_data
+class init_gis_mx implements listbox_data
+{
+	private $conn,$con_str,$con_str1;
+	private $rq,$db;
+//{{{public function __construct($y)
+	public function __construct($y)
+	{
+		if($y > 0)
+			$this->rq=$y;
+		else
+			$this->get_cur_yesr();
+		$this->get_used_db();
+		$this->conn="SELECT aid,aname FROM area_info WHERE bused = 1";
+		$this->con_str="SELECT aid,sname,sid,lng,lat from station WHERE aid > %u AND aid < %u order by aid";
+		$this->con_str1="SELECT sid,link FROM pt_link";
+	}//}}}
+//{{{public function __destruct()
+	public function __destruct()
+	{unset($this->db);}//}}}
+//{{{public function get_cur_year()
+	public function get_cur_year()
+	{
+		$dy=array();
+		$dy=getdate(time());
+		$this->rq=$dy['year'];
+	}//}}}
+//{{{public function get_used_db()
+	public function get_used_db()
+	{
+		global $DB_ADDR_TY,$DB_PORT_TY,$DB_NAME_TY,$DB_PWD_TY;
+		global $DB_USER_TY;
+		$i=intval($this->rq);
+		if(!isset($DB_ADDR_TY[$i]))
+			die("你所选择的日期".$i."年，没有数据！");
+		$this->db=array();
+		array_push($this->db,$DB_ADDR_TY[$i]);
+		array_push($this->db,$DB_PORT_TY[$i]);
+		array_push($this->db,$DB_NAME_TY[$i]);
+		array_push($this->db,$DB_USER_TY);
+		array_push($this->db,$DB_PWD_TY);
+	}//}}}
+//{{{public function get_ctlarea()
+	public function get_ctlarea()
+	{
+		$ay=array();
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if(mysqli_connect_error())
+			die("connect error");
+		mysqli_set_charset($mysqli,"utf8");
+		$res=mysqli_query($mysql,$this->conn);
+		while($rows=mysqli_fetch_row($res))
+			array_push($ay,$rows);
+		mysqli_free_result($res);
+		mysqli_close($mysqli);
+		return $ay;
+	}//}}}
+//{{{public function get_unit($y)
+	public function get_unit($y)
+	{
+		$ay=array();
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if(mysqli_connect_error())
+			die("connect error");
+		mysqli_set_charset($mysqli,"utf8");
+		$res=mysqli_query($mysqli,$this->con_str);
+		while($rows=mysqli_fetch_row($res))
+			array_push($ay,$rows);
+		mysqli_free_result($res);
+		$cy=array();
+		$res=mysqli_query($mysqli,$this->con_str1);
+		while($rows=mysqli_fetch_row($res))
+			array_push($cy,$rows);
+		mysqli_free_result($res);
+		mysqli_close($mysqli);
+		$i=count($ay);
+		$j=count($cy);
+		$dy=array();
+		for($k=0;$k<$i;$k++)
+		{
+			$ey=$ay[$k];//取得单个站点的资料，组成一个新数组
+			for($l=0;$l<$j;$l++)
+			{
+				$fy=$cy[$l];
+				if($ey[2] == $fy[0])  //比较sid
+					array_push($ey,$fy[1]); //将图片链接加入新数组
+			}
+			array_push($dy,$ey); //将新数组作为一个元素加入目标数组
+		}
+	//传出的目标数组的格式为：aid,sname,sid,lng,lat,link1,link2...
+	//每个站点的图片数量由count（）决定：count-5	
+		return $dy;
+	}//}}}
+
+}//}}}
+
 ?>

@@ -606,8 +606,11 @@ class tb_fq_mx implements tab_show
 //{{{class class gis_ctl implements tab_show
 class gis_ctl implements tab_show
 {
-	private $wctl,$ay,$cy;	//表明是总览，明晰还是列表操作
-	private $rq;	//日期
+//wctl表明是总览，明晰还是列表操作
+//ay保存选择区域，cy保存每个区域中所有站点，cy数组中key=区划代码，values=该区划内所有站点数组
+//rq:当前选择的年度，ty存储有有效数据的年度数组	
+	private $wctl,$ay,$cy;	
+	private $rq,$ty;
 //{{{public function __construct($y)	
 	public function __construct($y)
 	{
@@ -616,7 +619,6 @@ class gis_ctl implements tab_show
 		{
 			case 0:
 			case 1:
-			case 2:
 				$this->wctl=$y;
 				break;
 			default:
@@ -629,11 +631,11 @@ class gis_ctl implements tab_show
 			$this->rq=date("Y-m-d",time());
 		$a01=array_keys($DB_ADDR_TY);
 		$i=count($a01);
-		$this->ay=array();
+		$this->ty=array();
 		for($j=0;$j<$i;$j++)
-			array_push($this->ay,$a01[$j]);//得到所有有数据的年份
+			array_push($this->ty,$a01[$j]);//得到所有有数据的年份
 		$a=new init_gis($a01[$j-1]);
-		$this->cy=$a->get_ctlarea();//取得年度列表中最后一个年度的地区代码
+		$this->ay=$a->get_ctlarea();//取得年度列表中最后一个年度的地区代码
 	}//}}}
 //{{{public function __destruct()
 	public function __destruct()
@@ -643,43 +645,59 @@ class gis_ctl implements tab_show
 //{{{public function show_header()
 	public function show_header()
 	{
-		switch($this->wctl)
+		if($this->wctl == 0)
 		{
-			case 0: //show_body用于显示总览
-				$this->show_body();//这里将接口定义的三个函数分别用于三种不同的显示模式，在实现中，仅仅调用show_header这一个函数就行.
-				return;
-			case 1: //show_tail用于显示明晰
-				$this->show_tail();
-				return;
-			default:
-				die("asdflasd");
-				break;
-		};
-		//这里显示列表
+			$this->show_body();
+			return;
+		}//总览到这里处理完成，下面是明晰界面所要求的数据获得
+		$dy=array();
+		$i=count($this->ay);
+		for($j=0;$j<$i;$j++)
+			array_push($dy,$this->ay[$j][0]); //取得aid数组
+		$a=new init_gis_mx($this->rq);
+		$ey=$a->get_unit();
+		$i=count($this->ay);
+		$j=count($ey);
+		global $arry;
+		$arry=array();
+		for($k=0;$j<$i;$j++)
+		{
+			$zy=array();
+			$fy=$this->ay[$k];
+			for($l=0;$l<$j;$l++)
+			{
+				if($fy[0] == $ey[$l][0])
+					array_push($zy,$ey[$l]);
+			}
+			array_push($arry,$zy);
+			//unset($zy);
+		}
+		$this->cy=array_combine($dy,$arry);
+		$this->show_tail();
 	}//}}}
 //{{{public function show_body()
 	public function show_body()
 	{//显示总览
-		$i=count($this->cy);
+		$i=count($this->ay);
 		if(isset($_POST['sel1']))
 		{//INTR_SEND保存区划代码，SEL_1保存区划名称
 			$k=$_POST['sel1'];//$_SESSION['SEL_1']=$k;
 			$_SESSION['INTR_SEND']=$k;
 			for($j=0;$j<$i;$j++)
 			{
-				if($k == $this->cy[$j][0])
-					$_SESSION['SEL_1']=$this->cy[$j][1];
+				if($k == $this->ay[$j][0])
+					$_SESSION['SEL_1']=$this->ay[$j][1];
 			}
 		}
 		else
 		{
-			$k=$this->cy[0][0];$_SESSION['SEL_1']=$this->cy[0][1];
+			$k=$this->ay[0][0];$_SESSION['SEL_1']=$this->ay[0][1];
 			$_SESSION['INTR_SEND']=$k;
 		}
 		$s1="<br><div class='dvmsg'>区域选择：</div><div class='select_style'><select name='sel1'>";
 		for($j=0;$j<$i;$j++)
 		{
-			$xy=$this->cy[$j];
+			$xy=$this->ay[$j];
 			if($xy[0] == $k)
 				$s1.="<option value=".$xy[0]." selected='selected'>".$xy[1]."</option>";
 			else
@@ -687,20 +705,20 @@ class gis_ctl implements tab_show
 		}
 		$s1.="</select></div><div id='clear_id'></div>";
 		echo $s1;
-		$i=count($this->ay);
+		$i=count($this->ty);
 		if($i<=0)
 			die("count error03!!");
 		if(isset($_POST['sel2']))
 		{$k=$_POST['sel2'];$_SESSION['SEL_2']=$k;}
 		else
-		{$k=$this->ay[$i-1];$_SESSION['SEL_2']=$k;}
+		{$k=$this->ty[$i-1];$_SESSION['SEL_2']=$k;}
 		$s1="<br><div class='dvmsg'>年度选择：</div><div class='select_style'><select name='sel2'>";
 		for($j=0;$j<$i;$j++)
 		{
-			if($this->ay[$j] == $k)
-				$s1.="<option value=".$this->ay[$j]." selected='selected'>".$this->ay[$j]."</option>";
+			if($this->ty[$j] == $k)
+				$s1.="<option value=".$this->ty[$j]." selected='selected'>".$this->ty[$j]."</option>";
 			else
-				$s1.="<option value=".$this->ay[$j].">".$this->ay[$j]."</option>";
+				$s1.="<option value=".$this->ty[$j].">".$this->ty[$j]."</option>";
 		}
 		$s1.="</select></div><div id='clear_id'></div>";
 		echo $s1;
@@ -710,7 +728,35 @@ class gis_ctl implements tab_show
 	}//}}}
 //{{{public function show_tail()
 	public function show_tail()
-	{
+	{//这是明细控制界面的显示
+		$i=count($this->ay);
+		if(isset($_POST['sel1']))
+		{//INTR_SEND保存区划代码，SEL_1保存区划名称
+			$k=$_POST['sel1'];//$_SESSION['SEL_1']=$k;
+			$_SESSION['INTR_SEND']=$k;
+			for($j=0;$j<$i;$j++)
+			{
+				if($k == $this->ay[$j][0])
+					$_SESSION['SEL_1']=$this->ay[$j][1];
+			}
+		}
+		else
+		{
+			$k=$this->ay[0][0];$_SESSION['SEL_1']=$this->ay[0][1];
+			$_SESSION['INTR_SEND']=$k;
+		}
+		$s1="<br><div class='dvmsg'>区域选择：</div><div class='select_style'><select name='sel1'>";
+		for($j=0;$j<$i;$j++)
+		{
+			$xy=$this->ay[$j];
+			if($xy[0] == $k)
+				$s1.="<option value=".$xy[0]." selected='selected'>".$xy[1]."</option>";
+			else
+				$s1.="<option value=".$xy[0].">".$xy[1]."</option>";
+		}
+		$s1.="</select></div><div id='clear_id'></div>";
+		echo $s1;
+		
 	}//}}}
 }//}}}
 //{{{class gis_main_map implements tab_show
@@ -764,27 +810,6 @@ class gis_main_map implements tab_show
 	public function show_tail()
 	{}//}}}
 
-}//}}}
-//{{{class gis_mingxi implements tab_show
-class gis_mingxi implements tab_show
-{
-	private $ay,$cy;		//ay保存选择区域，cy保存每个区域中所有站点，cy数组中key=区划代码，values=该区划内所有站点数组
-	private $rq;			//日期
-//{{{ public function __construct()
-	public function __construct()
-	{}//}}}
-//{{{public function __destruct()
-	public function __destruct()
-	{}//}}}
-//{{{public function show_header()
-	public function show_header()
-	{}//}}}
-//{{{public function show_body()
-	public function show_body()
-	{}//}}}
-//{{{public function show_tail()
-	public function show_tail()
-	{}//}}}
 }//}}}
 
 ?>
