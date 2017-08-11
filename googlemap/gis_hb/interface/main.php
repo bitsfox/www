@@ -745,7 +745,7 @@ class gis_ctl implements tab_show
 			$k=$this->ay[0][0];$_SESSION['SEL_1']=$this->ay[0][1];
 			$_SESSION['INTR_SEND']=$k;
 		}
-		$s1="<br><div class='dvmsg'>区域选择：</div><div class='select_style'><select name='sel1'>";
+		$s1="<br><div class='dvmsg'>区域选择：</div><div class='select_style'><select name='sel1' id='sel1' onchange = 'onass()'>";
 		for($j=0;$j<$i;$j++)
 		{
 			$xy=$this->ay[$j];
@@ -756,6 +756,8 @@ class gis_ctl implements tab_show
 		}
 		$s1.="</select></div><div id='clear_id'></div>";
 		echo $s1;
+		$s1="<br><div class='dvmsg'>点位选择：</div><div class='select_style'><select name='sel3'>";
+		for
 		
 	}//}}}
 }//}}}
