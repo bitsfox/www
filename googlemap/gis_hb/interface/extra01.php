@@ -1671,10 +1671,10 @@ class init_gis_mx implements listbox_data
 		if($y > 0)
 			$this->rq=$y;
 		else
-			$this->get_cur_yesr();
+			$this->get_cur_year();
 		$this->get_used_db();
 		$this->conn="SELECT aid,aname FROM area_info WHERE bused = 1";
-		$this->con_str="SELECT aid,sname,sid,lng,lat from station WHERE aid > %u AND aid < %u order by aid";
+		$this->con_str="SELECT aid,sname,sid,lng,lat from station WHERE aid = %u order by aid";
 		$this->con_str1="SELECT sid,link FROM pt_link";
 	}//}}}
 //{{{public function __destruct()
@@ -1710,9 +1710,13 @@ class init_gis_mx implements listbox_data
 		if(mysqli_connect_error())
 			die("connect error");
 		mysqli_set_charset($mysqli,"utf8");
-		$res=mysqli_query($mysql,$this->conn);
+		$res=mysqli_query($mysqli,$this->conn);
 		while($rows=mysqli_fetch_row($res))
-			array_push($ay,$rows);
+		{
+			$i=intval($rows[0]);
+			if(($i % 100) > 0)
+				array_push($ay,$rows);
+		}
 		mysqli_free_result($res);
 		mysqli_close($mysqli);
 		return $ay;
@@ -1725,7 +1729,8 @@ class init_gis_mx implements listbox_data
 		if(mysqli_connect_error())
 			die("connect error");
 		mysqli_set_charset($mysqli,"utf8");
-		$res=mysqli_query($mysqli,$this->con_str);
+		$str=sprintf($this->con_str,$_SESSION['INTR_SEND']);
+		$res=mysqli_query($mysqli,$str);
 		while($rows=mysqli_fetch_row($res))
 			array_push($ay,$rows);
 		mysqli_free_result($res);

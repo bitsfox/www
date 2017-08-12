@@ -36,5 +36,10 @@ function onass()
 	var i=x.selectedIndex;
 	if(i>jary.length)
 		alert('length error!');
-	var av=jary[i]
+	var b=x.options[i].value;
+	var av=jary[i];
+	if(av[0][0] != b)
+		alert("not equal!");
+	else
+		alert("right!!");
 }

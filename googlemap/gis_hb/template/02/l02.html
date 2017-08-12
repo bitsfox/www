@@ -2,7 +2,8 @@
 <?php
 	global $menulnk;
 	echo "<form name='form_left2' method='post' action='./".$menulnk[1]."'>";
-	$a=new gis_ctl(1);
+	$i=1;
+	$a=new gis_ctl($i);
 	$a->show_header();
 	global $arry;
 	$_SESSION['EXCEL_TYPE']=2;

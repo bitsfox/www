@@ -634,8 +634,16 @@ class gis_ctl implements tab_show
 		$this->ty=array();
 		for($j=0;$j<$i;$j++)
 			array_push($this->ty,$a01[$j]);//得到所有有数据的年份
-		$a=new init_gis($a01[$j-1]);
-		$this->ay=$a->get_ctlarea();//取得年度列表中最后一个年度的地区代码
+		if($this->wctl == 0)
+		{
+			$a=new init_gis($a01[$j-1]);
+			$this->ay=$a->get_ctlarea();//取得年度列表中最后一个年度的地区代码
+		}
+		else
+		{
+			$a=new init_gis_mx($a01[$j-1]);
+			$this->ay=$a->get_ctlarea();
+		}
 	}//}}}
 //{{{public function __destruct()
 	public function __destruct()
@@ -645,6 +653,22 @@ class gis_ctl implements tab_show
 //{{{public function show_header()
 	public function show_header()
 	{
+		$i=count($this->ay);
+		if(isset($_POST['sel1']))
+		{//INTR_SEND保存区划代码，SEL_1保存区划名称
+			$k=$_POST['sel1'];//$_SESSION['SEL_1']=$k;
+			$_SESSION['INTR_SEND']=$k;
+			for($j=0;$j<$i;$j++)
+			{
+				if($k == $this->ay[$j][0])
+					$_SESSION['SEL_1']=$this->ay[$j][1];
+			}
+		}
+		else
+		{
+			$k=$this->ay[0][0];$_SESSION['SEL_1']=$this->ay[0][1];
+			$_SESSION['INTR_SEND']=$k;
+		}
 		if($this->wctl == 0)
 		{
 			$this->show_body();
@@ -656,6 +680,7 @@ class gis_ctl implements tab_show
 			array_push($dy,$this->ay[$j][0]); //取得aid数组
 		$a=new init_gis_mx($this->rq);
 		$ey=$a->get_unit();
+		print_r($ey);
 		$i=count($this->ay);
 		$j=count($ey);
 		global $arry;
@@ -673,27 +698,13 @@ class gis_ctl implements tab_show
 			//unset($zy);
 		}
 		$this->cy=array_combine($dy,$arry);
-		$this->show_tail();
+//		print_r($arry);
+		//$this->show_tail();
 	}//}}}
 //{{{public function show_body()
 	public function show_body()
 	{//显示总览
 		$i=count($this->ay);
-		if(isset($_POST['sel1']))
-		{//INTR_SEND保存区划代码，SEL_1保存区划名称
-			$k=$_POST['sel1'];//$_SESSION['SEL_1']=$k;
-			$_SESSION['INTR_SEND']=$k;
-			for($j=0;$j<$i;$j++)
-			{
-				if($k == $this->ay[$j][0])
-					$_SESSION['SEL_1']=$this->ay[$j][1];
-			}
-		}
-		else
-		{
-			$k=$this->ay[0][0];$_SESSION['SEL_1']=$this->ay[0][1];
-			$_SESSION['INTR_SEND']=$k;
-		}
 		$s1="<br><div class='dvmsg'>区域选择：</div><div class='select_style'><select name='sel1'>";
 		for($j=0;$j<$i;$j++)
 		{
@@ -730,21 +741,6 @@ class gis_ctl implements tab_show
 	public function show_tail()
 	{//这是明细控制界面的显示
 		$i=count($this->ay);
-		if(isset($_POST['sel1']))
-		{//INTR_SEND保存区划代码，SEL_1保存区划名称
-			$k=$_POST['sel1'];//$_SESSION['SEL_1']=$k;
-			$_SESSION['INTR_SEND']=$k;
-			for($j=0;$j<$i;$j++)
-			{
-				if($k == $this->ay[$j][0])
-					$_SESSION['SEL_1']=$this->ay[$j][1];
-			}
-		}
-		else
-		{
-			$k=$this->ay[0][0];$_SESSION['SEL_1']=$this->ay[0][1];
-			$_SESSION['INTR_SEND']=$k;
-		}
 		$s1="<br><div class='dvmsg'>区域选择：</div><div class='select_style'><select name='sel1' id='sel1' onchange = 'onass()'>";
 		for($j=0;$j<$i;$j++)
 		{
