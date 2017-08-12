@@ -41,5 +41,16 @@ function onass()
 	if(av[0][0] != b)
 		alert("not equal!");
 	else
-		alert("right!!");
+	{
+		var v=document.getElementById("sel3");
+		v.options.length=0;
+		var j=av.length;
+		for(i=0;i<j;i++)
+		{
+			var aa=new Option;
+			aa.value=av[i][2];
+			aa.text=av[i][1];
+			v.add(aa);
+		}
+	}
 }

@@ -1674,7 +1674,7 @@ class init_gis_mx implements listbox_data
 			$this->get_cur_year();
 		$this->get_used_db();
 		$this->conn="SELECT aid,aname FROM area_info WHERE bused = 1";
-		$this->con_str="SELECT aid,sname,sid,lng,lat from station WHERE aid = %u order by aid";
+		$this->con_str="SELECT aid,sname,sid,lng,lat from station WHERE aid > %u and aid < %u order by aid";
 		$this->con_str1="SELECT sid,link FROM pt_link";
 	}//}}}
 //{{{public function __destruct()
@@ -1729,7 +1729,9 @@ class init_gis_mx implements listbox_data
 		if(mysqli_connect_error())
 			die("connect error");
 		mysqli_set_charset($mysqli,"utf8");
-		$str=sprintf($this->con_str,$_SESSION['INTR_SEND']);
+		$v1=intval($_SESSION['INTR_SEND']);
+		$v1=(floor($v1/100))*100;
+		$str=sprintf($this->con_str,$v1,$v1+99);
 		$res=mysqli_query($mysqli,$str);
 		while($rows=mysqli_fetch_row($res))
 			array_push($ay,$rows);

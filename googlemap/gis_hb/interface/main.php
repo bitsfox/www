@@ -654,6 +654,8 @@ class gis_ctl implements tab_show
 	public function show_header()
 	{
 		$i=count($this->ay);
+		if($i <= 0)
+			die("count error0012");
 		if(isset($_POST['sel1']))
 		{//INTR_SEND保存区划代码，SEL_1保存区划名称
 			$k=$_POST['sel1'];//$_SESSION['SEL_1']=$k;
@@ -680,12 +682,13 @@ class gis_ctl implements tab_show
 			array_push($dy,$this->ay[$j][0]); //取得aid数组
 		$a=new init_gis_mx($this->rq);
 		$ey=$a->get_unit();
-		print_r($ey);
+//		print_r($ey[1]);
 		$i=count($this->ay);
 		$j=count($ey);
+		//die("count is:".$j);
 		global $arry;
 		$arry=array();
-		for($k=0;$j<$i;$j++)
+		for($k=0;$k<$i;$k++)
 		{
 			$zy=array();
 			$fy=$this->ay[$k];
@@ -698,13 +701,27 @@ class gis_ctl implements tab_show
 			//unset($zy);
 		}
 		$this->cy=array_combine($dy,$arry);
-//		print_r($arry);
-		//$this->show_tail();
+		$this->show_tail();
 	}//}}}
 //{{{public function show_body()
 	public function show_body()
 	{//显示总览
 		$i=count($this->ay);
+		if(isset($_POST['sel1']))
+		{//INTR_SEND保存区划代码，SEL_1保存区划名称
+			$k=$_POST['sel1'];//$_SESSION['SEL_1']=$k;
+			$_SESSION['INTR_SEND']=$k;
+			for($j=0;$j<$i;$j++)
+			{
+				if($k == $this->ay[$j][0])
+					$_SESSION['SEL_1']=$this->ay[$j][1];
+			}
+		}
+		else
+		{
+			$k=$this->ay[0][0];$_SESSION['SEL_1']=$this->ay[0][1];
+			$_SESSION['INTR_SEND']=$k;
+		}
 		$s1="<br><div class='dvmsg'>区域选择：</div><div class='select_style'><select name='sel1'>";
 		for($j=0;$j<$i;$j++)
 		{
@@ -741,6 +758,21 @@ class gis_ctl implements tab_show
 	public function show_tail()
 	{//这是明细控制界面的显示
 		$i=count($this->ay);
+		if(isset($_POST['sel1']))
+		{//INTR_SEND保存区划代码，SEL_1保存区划名称
+			$k=$_POST['sel1'];//$_SESSION['SEL_1']=$k;
+			$_SESSION['INTR_SEND']=$k;
+			for($j=0;$j<$i;$j++)
+			{
+				if($k == $this->ay[$j][0])
+					$_SESSION['SEL_1']=$this->ay[$j][1];
+			}
+		}
+		else
+		{
+			$k=$this->ay[0][0];$_SESSION['SEL_1']=$this->ay[0][1];
+			$_SESSION['INTR_SEND']=$k;
+		}
 		$s1="<br><div class='dvmsg'>区域选择：</div><div class='select_style'><select name='sel1' id='sel1' onchange = 'onass()'>";
 		for($j=0;$j<$i;$j++)
 		{
@@ -752,7 +784,21 @@ class gis_ctl implements tab_show
 		}
 		$s1.="</select></div><div id='clear_id'></div>";
 		echo $s1;
-		$s1="<br><div class='dvmsg'>点位选择：</div><div class='select_style'><select name='sel3'>";
+		if(isset($_POST['sel3']))
+			$m=$_POST['sel3'];
+		else
+			$m=$this->cy[$_SESSION['INTR_SEND']][2];
+		$ty=$this->cy[$_SESSION['INTR_SEND']];
+		$i=count($ty);
+		$s1="<br><div class='dvmsg1'>点位选择：</div><div class='select_style1'><select name='sel3' id='sel3'>";
+		for($j=0;$j<$i;$j++)
+		{
+			$xy=$ty[$j];
+			if($xy[2] == $m)
+				$s1.="<option value=".$xy[2]." selected='selected'>".$xy[1]."</option>";
+			else
+				$s1.="<option value=".$xy[2].">".$xy[1]."</option>";
+		}
 		$s1.="</select></div><div id='clear_id'></div>";
 		echo $s1;
 		$s1="<br><br><div class='dvmsg2'></div><div class='dvmsg2'><input type='submit' id='button_id' name='submit' value='应用' title='点击开始查询'></div>";
