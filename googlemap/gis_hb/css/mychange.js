@@ -28,4 +28,13 @@ function onssa()
 {
 	var v=document.getElementById('sel2p');
 	var i=v.selectedIndex;
+	var bb=v.Option[i].value
+}
+function onass()
+{
+	var x=document.getElementById("sel1");
+	var i=x.selectedIndex;
+	if(i>jary.length)
+		alert('length error!');
+	var av=jary[i]
 }

@@ -757,8 +757,11 @@ class gis_ctl implements tab_show
 		$s1.="</select></div><div id='clear_id'></div>";
 		echo $s1;
 		$s1="<br><div class='dvmsg'>点位选择：</div><div class='select_style'><select name='sel3'>";
-		for
-		
+		$s1.="</select></div><div id='clear_id'></div>";
+		echo $s1;
+		$s1="<br><br><div class='dvmsg2'></div><div class='dvmsg2'><input type='submit' id='button_id' name='submit' value='应用' title='点击开始查询'></div>";
+		$s1.="<div id='clear_id'></div>";
+		echo $s1;
 	}//}}}
 }//}}}
 //{{{class gis_main_map implements tab_show
