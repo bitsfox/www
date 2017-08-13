@@ -32,6 +32,8 @@ a:hover {color:blue;}
 {width:1px;height:28px;background-color:#999;}
 #left_ida
 {position:absolute;background-color:#F3F3F3;top:300px;left:5%;width:18.5%;height=500px;margin:0 auto;padding:0 auto;overflow:hidden} /*height:620px*/
+#left_idb
+{position:absolute;background-color:#F3F3F3;top:400px;left:5%;width:18.5%;height=500px;margin:0 auto;padding:0 auto;overflow:hidden} /*height:620px*/
 #left_id
 {background-color:#F3F3F3;width:20%;margin:0;padding:10px 5px;float:left;overflow:auto;} /*height:620px*/
 #left_id ul li

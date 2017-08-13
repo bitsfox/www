@@ -610,7 +610,7 @@ class gis_ctl implements tab_show
 //ay保存选择区域，cy保存每个区域中所有站点，cy数组中key=区划代码，values=该区划内所有站点数组
 //rq:当前选择的年度，ty存储有有效数据的年度数组	
 	private $wctl,$ay,$cy;	
-	private $rq,$ty;
+	private $rq,$ty,$zy; //2017-8-13新添加zy用于保存资料类型
 //{{{public function __construct($y)	
 	public function __construct($y)
 	{
@@ -634,6 +634,11 @@ class gis_ctl implements tab_show
 		$this->ty=array();
 		for($j=0;$j<$i;$j++)
 			array_push($this->ty,$a01[$j]);//得到所有有数据的年份
+		$this->zy=array("点位基本情况","原始记录表格目录","土壤样品采集现场记录表",
+				"土壤样品运输记录表","土壤样品交接记录表","土壤样品制备原始记录表",
+				"PH值测定原始记录表","水分测定原始记录表","阳离子交换量测定原始记录表",
+				"土壤有机质测定原始记录表","原子吸收法测定土壤元素原始记录表","原子吸收法测定土壤元素校准曲线",
+				"原子荧光法测定土壤元素原始记录表","原子荧光法测定土壤元素校准曲线","分光光度法测定土壤元素原始记录表");
 		if($this->wctl == 0)
 		{
 			$a=new init_gis($a01[$j-1]);
@@ -798,6 +803,39 @@ class gis_ctl implements tab_show
 				$s1.="<option value=".$xy[2]." selected='selected'>".$xy[1]."</option>";
 			else
 				$s1.="<option value=".$xy[2].">".$xy[1]."</option>";
+		}
+		$s1.="</select></div><div id='clear_id'></div>";
+		echo $s1;
+		$i=count($this->ty);
+		if($i<=0)
+			die("count error04!!");
+		if(isset($_POST['sel2']))
+		{$k=$_POST['sel2'];$_SESSION['SEL_2']=$k;}
+		else
+		{$k=$this->ty[$i-1];$_SESSION['SEL_2']=$k;}
+		$s1="<br><div class='dvmsg1'>年度选择：</div><div class='select_style1'><select name='sel2'>";
+		for($j=0;$j<$i;$j++)
+		{
+			if($this->ty[$j] == $k)
+				$s1.="<option value=".$this->ty[$j]." selected='selected'>".$this->ty[$j]."</option>";
+			else
+				$s1.="<option value=".$this->ty[$j].">".$this->ty[$j]."</option>";
+		}
+		$s1.="</select></div><div id='clear_id'></div>";
+		echo $s1;
+//新添加，资料选择
+		if(isset($_POST['sel4']))//目前的k保存的是序号
+		{$k=$_POST['sel4'];$_SESSION['SEL_4']=$K;}
+		else
+		{$k=0;$_SESSION['SEL_4']=0;}
+		$i=count($this->zy);
+		$s1="<br><div class='dvmsg1'>资料选择：</div><div class='select_style1'><select name='sel4'>";
+		for($j=0;$j<$i;$j++)
+		{
+			if($j == $k)
+				$s1.="<option value=".$j." selected='selected'>".$this->zy[$j]."</option>";
+			else
+				$s1.="<option value=".$j." >".$this->zy[$j]."</option>";
 		}
 		$s1.="</select></div><div id='clear_id'></div>";
 		echo $s1;
