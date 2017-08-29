@@ -1639,12 +1639,12 @@ class init_gis implements listbox_data
 		$i=intval($_SESSION['INTR_SEND']);
 		if(($i % 100) == 0)
 		{
-			$s1="SELECT a.aid,a.sname,a.sid,a.lng,a.lat,b.link from station as a LEFT JOIN pt_link as b ON a.sid=b.sid WHERE aid > %u AND aid < %u group by a.sid";
+			$s1="SELECT a.aid,a.sname,a.sid,a.lng,a.lat,b.link from station as a LEFT JOIN pt_link as b ON a.sid=b.sid WHERE a.aid > %u AND a.aid < %u AND b.lid < 1000 group by a.sid";
 			$this->str_top1=sprintf($s1,$i,$i+99);
 		}
 		else
 		{
-			$s1="SELECT a.aid,a.sname,a.sid,a.lng,a.lat,b.link from station as a LEFT JOIN pt_link as b ON a.sid=b.sid  WHERE aid = %u group by a.sid";
+			$s1="SELECT a.aid,a.sname,a.sid,a.lng,a.lat,b.link from station as a LEFT JOIN pt_link as b ON a.sid=b.sid  WHERE aid = %u AND b.lid < 1000 group by a.sid";
 			$this->str_top1=sprintf($s1,$i);
 		}
 		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
@@ -1675,7 +1675,7 @@ class init_gis_mx implements listbox_data
 		$this->get_used_db();
 		$this->conn="SELECT aid,aname FROM area_info WHERE bused = 1";
 		$this->con_str="SELECT aid,sname,sid,lng,lat from station WHERE aid > %u and aid < %u order by aid";
-		$this->con_str1="SELECT sid,link FROM pt_link";
+		$this->con_str1="SELECT sid,link FROM pt_link WHERE lid < 1000";
 	}//}}}
 //{{{public function __destruct()
 	public function __destruct()
@@ -1762,5 +1762,23 @@ class init_gis_mx implements listbox_data
 	}//}}}
 
 }//}}}
+//{{{class init_gis_mmx implements listbox_data
+class init_gis_mmx implements listbox_data
+{
+	private $conn,$con_str;
+	private $db,$rq;
+//{{{public function __construct($y)
+	public function __construct($y)
+	{
+		if($y > 0)
+			$this->rq=$y;
+		else
+			$this->rq=get_cur_year();
+		$this->get_used_db();
+		$this->conn=""
+	}//}}}	
+}//}}}
+
+
 
 ?>
