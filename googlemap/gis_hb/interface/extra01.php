@@ -1775,8 +1775,70 @@ class init_gis_mmx implements listbox_data
 		else
 			$this->rq=get_cur_year();
 		$this->get_used_db();
-		$this->conn=""
-	}//}}}	
+		$this->conn="select a.lng,a.lat,b.sid,b.fpoint,b.ftime,b.weather,b.fcode,b.fdeep,b.altitude, b.fused,b.ntype,b.wtype,b.etype,b.ftype,b.fqual,b.fcolor,b.fdamp,b.weight,b.aeast,b.awest,b.asouth,b.anorth, b.coller,b.noter,b.checker from station as a left join station_ex as b on a.sid = b.sid where a.sid = '%s'";
+		$this->con_str="SELECT link FROM pt_link WHERE sid = '%s' AND lid = %d";
+	}//}}}
+//{{{public function __destruct()
+	public function __destruct()
+	{unset($this->db);}//}}}
+//{{{public function get_cur_year()
+	public function get_cur_year()
+	{
+		$dy=array();
+		$dy=getdate(time());
+		return $dy['year'];
+	}//}}}
+//{{{public function get_used_db()
+	public function get_used_db()
+	{
+		global $DB_ADDR_TY,$DB_PORT_TY,$DB_NAME_TY,$DB_PWD_TY;
+		global $DB_USER_TY;
+		$i=intval($this->rq);
+		if(!isset($DB_ADDR_TY[$i]))
+			die("你所选择的日期".$i."年，没有数据！");
+		$this->db=array();
+		array_push($this->db,$DB_ADDR_TY[$i]);
+		array_push($this->db,$DB_PORT_TY[$i]);
+		array_push($this->db,$DB_NAME_TY[$i]);
+		array_push($this->db,$DB_USER_TY);
+		array_push($this->db,$DB_PWD_TY);
+	}//}}}
+//{{{public function get_ctlarea()
+	public function get_ctlarea()
+	{//这是取得站点基本信息的函数，这是站点信息中唯一不涉及图片的信息资料
+		$ay=array();
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if(mysqli_connect_error())
+			die("connect error");
+		mysqli_set_charset($mysqli,"utf8");
+		$str=sprintf($this->conn,$_SESSION['SEL3']);
+		$res=mysqli_query($mysqli,$str);
+		while($rows=mysqli_fetch_row($res))
+		{
+			array_push($ay,$rows);
+		}
+		mysqli_free_result($res);
+		mysqli_close($mysqli);
+		return $ay;
+	}//}}}
+//{{{publilc function get_unit($y)
+	public function get_unit($y)
+	{
+		$ay=array();
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if(mysqli_connect_error())
+			die("connect error");
+		mysqli_set_charset($mysqli,"utf8");
+		$i=intval($_SESSION['SEL_4'])+1000;
+		$str=sprintf($this->con_str,$_SESSION['SEL3'],$i);
+		$res=mysqli_query($mysqli,$str);
+		while($rows=mysqli_fetch_row($res))
+			array_push($ay,$rows);
+		mysqli_free_result($res);
+		mysqli_close($mysqli);
+		return $ay;
+	}//}}}
+
 }//}}}
 
 
