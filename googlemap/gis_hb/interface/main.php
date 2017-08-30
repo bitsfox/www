@@ -896,5 +896,34 @@ class gis_main_map implements tab_show
 	{}//}}}
 
 }//}}}
+//{{{class gis_mx_pic implements tab_show
+class gis_mx_pic implements tab_show
+{
+	private $ay;
+//{{{public function __construct()
+	public function __construct()
+	{
+		if(!isset($_SESSION['SEL3']))
+			die("init error!");
+		if(!isset($_SESSION['SEL_4']))
+			die("init error!");
+		if(!isset($_SESSION['SEL_2']))
+			die("init error!");
+		//$i=$_SESSION['SEL_2'];
+	}//}}}
+//{{{public function __destruct()
+	public function __destruct()
+	{}//}}}
+//{{{public function show_header()
+	public function show_header()
+	{
+	}//}}}
+//{{{public function show_body()
+	public function show_body()
+	{}//}}}
+//{{{public function show_tail()
+	public function show_tail()
+	{}//}}}
+}//}}}
 
 ?>
