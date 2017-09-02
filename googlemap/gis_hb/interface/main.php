@@ -825,7 +825,7 @@ class gis_ctl implements tab_show
 		echo $s1;
 //新添加，资料选择
 		if(isset($_POST['sel4']))//目前的k保存的是序号
-		{$k=$_POST['sel4'];$_SESSION['SEL_4']=$K;}
+		{$k=$_POST['sel4'];$_SESSION['SEL_4']=$k;}
 		else
 		{$k=0;$_SESSION['SEL_4']=0;}
 		$i=count($this->zy);
@@ -904,26 +904,57 @@ class gis_mx_pic implements tab_show
 	public function __construct()
 	{
 		if(!isset($_SESSION['SEL3']))
-			die("init error!");
-		if(!isset($_SESSION['SEL_4']))
-			die("init error!");
-		if(!isset($_SESSION['SEL_2']))
-			die("init error!");
-		//$i=$_SESSION['SEL_2'];
+			die("init error1!");
+		if(!isset($_SESSION['SEL_4']))//index
+			die("init error2!");
+		if(!isset($_SESSION['SEL_2']))//year
+			die("init error3!");
+		/*$a=new init_gis_mmx($_SESSION['SEL_2']);
+		$cy=array();
+		if($_SESSION['SEL_4'] == 0) //基本信息
+			$this->ay=$a->get_ctlarea();
+		else
+			$this->ay=$a->get_unit();*/
 	}//}}}
 //{{{public function __destruct()
 	public function __destruct()
-	{}//}}}
+	{unset($this->ay);}//}}}
 //{{{public function show_header()
 	public function show_header()
 	{
+		if($_SESSION['SEL_4'] != 0)
+			$this->show_body();
+		else
+			$this->show_tail();
 	}//}}}
 //{{{public function show_body()
 	public function show_body()
-	{}//}}}
+	{
+		$a=new init_gis_mmx($_SESSION['SEL_2']);
+		$dy=array();
+		$dy=$a->get_unit();
+		$s1="<center><img src='%s' border=1 class='imgclass' style='width:580px;'></center>";
+		$str=sprintf($s1,$dy[0][0]);
+		//echo $dy[0][0];
+		echo $str;
+	}//}}}
 //{{{public function show_tail()
 	public function show_tail()
-	{}//}}}
+	{//显示基本信息
+		global $GIS_HEADER,$GIS_BODY1,$GIS_HEADER_END; 
+		$cy=array("点位编号","采样地点","经度","纬度","采样时间","天气","样品编号","采样深度","海拔","土地利用","作物类型","灌溉类型","地形地貌","土壤类型","土壤质地","土壤颜色","土壤湿度","样品重量","周边信息-东","周边信息-西","周边信息-南","周边信息-北","采样人","记录人","校对人");
+		$i=count($cy);
+		$a=new init_gis_mmx($_SESSION['SEL_2']);
+		$dy=array();
+		$dy=$a->get_ctlarea();
+		echo $GIS_HEADER;
+		for($j=0;$j<$i;$j++)
+		{
+			$str=sprintf($GIS_BODY1,$cy[$j],$dy[0][$j]);
+			echo $str;
+		}
+		echo $GIS_HEADER_END;
+	}//}}}
 }//}}}
 
 ?>

@@ -1775,7 +1775,7 @@ class init_gis_mmx implements listbox_data
 		else
 			$this->rq=get_cur_year();
 		$this->get_used_db();
-		$this->conn="select a.lng,a.lat,b.sid,b.fpoint,b.ftime,b.weather,b.fcode,b.fdeep,b.altitude, b.fused,b.ntype,b.wtype,b.etype,b.ftype,b.fqual,b.fcolor,b.fdamp,b.weight,b.aeast,b.awest,b.asouth,b.anorth, b.coller,b.noter,b.checker from station as a left join station_ex as b on a.sid = b.sid where a.sid = '%s'";
+		$this->conn="select b.sid,b.fpoint,a.lng,a.lat,b.ftime,b.weather,b.fcode,b.fdeep,b.altitude, b.fused,b.ntype,b.wtype,b.etype,b.ftype,b.fqual,b.fcolor,b.fdamp,b.weight,b.aeast,b.awest,b.asouth,b.anorth, b.coller,b.noter,b.checker from station as a left join station_ex as b on a.sid = b.sid where a.sid = '%s'";
 		$this->con_str="SELECT link FROM pt_link WHERE sid = '%s' AND lid = %d";
 	}//}}}
 //{{{public function __destruct()
@@ -1812,10 +1812,12 @@ class init_gis_mmx implements listbox_data
 			die("connect error");
 		mysqli_set_charset($mysqli,"utf8");
 		$str=sprintf($this->conn,$_SESSION['SEL3']);
+		//echo $str;
 		$res=mysqli_query($mysqli,$str);
 		while($rows=mysqli_fetch_row($res))
 		{
 			array_push($ay,$rows);
+			//print_r($rows);
 		}
 		mysqli_free_result($res);
 		mysqli_close($mysqli);
@@ -1831,6 +1833,7 @@ class init_gis_mmx implements listbox_data
 		mysqli_set_charset($mysqli,"utf8");
 		$i=intval($_SESSION['SEL_4'])+1000;
 		$str=sprintf($this->con_str,$_SESSION['SEL3'],$i);
+		//echo $str;
 		$res=mysqli_query($mysqli,$str);
 		while($rows=mysqli_fetch_row($res))
 			array_push($ay,$rows);
