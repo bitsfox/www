@@ -144,8 +144,8 @@ require_once($str11);
 	$GIS_CONTENT_FUNCH		=	"function addClickHandler(content,marker){marker.addEventListener('click',function(e){openInfo(content,e)});};";
 	$GIS_CONTENT_FUNCL		=	"function openInfo(content,e){var p = e.target;var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);var infoWindow = new BMap.InfoWindow(content,opts);map.openInfoWindow(infoWindow,point);};";
 	$GIS_CONTENT_VVV		=	"var marker = new BMap.Marker(new BMap.Point(%0.6f,%0.6f));map.addOverlay(marker);addClickHandler(content,marker);";
-	$GIS_HEADER				=	"<center><table width=97%% class='imagetable'><tr><th width=50%% align=center>项目名称</th><th width=50%% align=center>项目数据</th>";
-	$GIS_BODY1				=	"<tr><td width=50%%>%s</td><td width=50%%>%s</td></tr>";
+	$GIS_HEADER				=	"<center><table width=97%% class='imagetable'><tr><th width=10%% align=center>项目名称</th><th width=40%% align=center>项目数据</th><th width=10%% align=center>项目名称</th><th width=40%% align=center>项目数据</th></tr>";
+	$GIS_BODY1				=	"<tr><td width=10%%>%s</td><td width=40%%>%s</td><td width=10%%>%s</td><td width=40%%>%s</td></tr>";
 	$GIS_HEADER_END			=	"</table></center>";	
 ?>
 
