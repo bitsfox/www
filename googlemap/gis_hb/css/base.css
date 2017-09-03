@@ -31,7 +31,7 @@ a:hover {color:blue;}
 .menudiv_class
 {width:1px;height:28px;background-color:#999;}
 #left_ida
-{position:absolute;background-color:#F3F3F3;top:340px;left:5%;width:18.5%;height=500px;margin:0 auto;padding:0 auto;overflow:hidden} /*height:620px*/
+{position:absolute;background-color:#F3F3F3;top:360px;left:5%;width:18.5%;height=500px;margin:0 auto;padding:0 auto;overflow:hidden} /*height:620px*/
 #left_idb
 {position:absolute;background-color:#F3F3F3;top:400px;left:5%;width:18.5%;height=500px;margin:0 auto;padding:0 auto;overflow:hidden} /*height:620px*/
 #left_id

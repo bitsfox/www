@@ -174,7 +174,7 @@ class gis_ctl implements tab_show
 		$this->ty=array();
 		for($j=0;$j<$i;$j++)
 			array_push($this->ty,$a01[$j]);//得到所有有数据的年份
-		$this->zy=array("点位基本情况","土壤样品采集现场记录表","土壤样品运输记录表","土壤样品交接记录表",
+		$this->zy=array("点位基本情况","土壤样品采集现场记录表","土壤无机样品交接记录表","土壤有机样品交接记录表","土壤样品运输记录表",
 				"土壤样品制备原始记录表","PH值测定原始记录表","水分测定原始记录表","阳离子交换量测定原始记录表",
 				"土壤有机质测定原始记录表","原子吸收法测定土壤元素原始记录表","原子吸收法测定土壤元素校准曲线",
 				"原子荧光法测定土壤元素原始记录表","原子荧光法测定土壤元素校准曲线","分光光度法测定土壤元素原始记录表");
@@ -467,12 +467,6 @@ class gis_mx_pic implements tab_show
 			die("init error2!");
 		if(!isset($_SESSION['SEL_2']))//year
 			die("init error3!");
-		/*$a=new init_gis_mmx($_SESSION['SEL_2']);
-		$cy=array();
-		if($_SESSION['SEL_4'] == 0) //基本信息
-			$this->ay=$a->get_ctlarea();
-		else
-			$this->ay=$a->get_unit();*/
 	}//}}}
 //{{{public function __destruct()
 	public function __destruct()
