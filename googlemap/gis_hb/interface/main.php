@@ -165,8 +165,8 @@ class gis_ctl implements tab_show
 				die("参数错误002！");
 		};
 		date_default_timezone_set("PRC");
-		if(isset($_POST['starttime']))
-			$this->rq=$_POST['starttime'];
+		if(isset($_POST['sel2']))
+			$this->rq=$_POST['sel2'];
 		else
 			$this->rq=date("Y-m-d",time());
 		$a01=array_keys($DB_ADDR_TY);
@@ -517,5 +517,32 @@ class gis_mx_pic implements tab_show
 		echo $GIS_HEADER_END;
 	}//}}}
 }//}}}
+//{{{class gis_calc_ctl implements tab_show 监测数据图表的控制界面显示类
+class gis_calc_ctl implements tab_show
+{
+	private $rq,$ay,$cy,$ty; //rq选择的年度，ay区域选择，cy污染物类型
+	private $zy;//有效年份列表
+//{{{public function __construct($y)
+	public function __construct($y)
+	{//sel1 行政区划，sel2 年度选择，sel3 污染物类型
+		global $DB_ADDR_TY;
+		if(isset($_POST['sel2']))
+			$this->rq=$_POST['sel2'];
+		else
+			$this->rq=date('Y-m-d',time());
+		$a01=array_keys($DB_ADDR_TY);
+		$i=count($a01);
+		$this->zy=array();
+		for($j=0;$j<$i;$j++)
+			array_push($this->zy,$a01[$j]);
+		$a=new init_gis($a01[$j-1]);
+		$this->ay=$a->get_ctlarea();//取得年度列表中最后一个年度的地区代码列表
+
+	}//}}}
+
+}//}}}
+
+
+
 
 ?>
