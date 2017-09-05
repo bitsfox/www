@@ -524,7 +524,7 @@ class gis_calc_ctl implements tab_show
 	private $zy;//有效年份列表
 //{{{public function __construct($y)
 	public function __construct($y)
-	{//sel1 行政区划，sel2 年度选择，sel3 污染物类型
+	{//sel1 行政区划，sel2 年度选择，sel3 污染物名称
 		global $DB_ADDR_TY;
 		if(isset($_POST['sel2']))
 			$this->rq=$_POST['sel2'];
@@ -537,9 +537,86 @@ class gis_calc_ctl implements tab_show
 			array_push($this->zy,$a01[$j]);
 		$a=new init_gis($a01[$j-1]);
 		$this->ay=$a->get_ctlarea();//取得年度列表中最后一个年度的地区代码列表
-
+		if(!isset($_POST['sel3']))
+			unset($_SESSION['SEL_3']);
+		$b=new init_gis_calc($a01[$j-1]);
+		$this->cy=$b->get_ctlarea();
 	}//}}}
-
+//{{{public function __destruct()
+	public function __destruct()
+	{}//}}}
+//{{{public function show_header()
+	public function show_header()
+	{
+		$i=count($this->ay);
+		if($i <= 0)
+			die("count error0013");
+		if(isset($_POST['sel1']))
+		{//$_SESSION['INTR_SEND']保存行政区划代码，$_SESSION['SEL_1']保存行政区划名称
+			$_SESSION['SEL_1']=$_POST['sel1'];$k=$_POST['sel1'];
+			for($j=0;$j<$i;$j++)
+			{
+				if($_POST['sel1'] == $this->ay[$j][0])
+					$_SESSION['SEL_1']=$this->ay[$j][1];
+			}
+		}
+		else
+		{
+			$k=$this->ay[0][0];$_SESSION['SEL_1']=$this->ay[0][1];
+			$_SESSION['INTR_SEND']=$k;
+		}
+		$s1="<br><div class='dvmsg'>区域选择：</div><div class='select_style'><select name='sel1'>";
+		for($j=0;$j<$i;$j++)
+		{
+			$xy=$this->ay[$j];
+			if($xy[0] == $k)
+				$s1.="<option value=".$xy[0]." selected='selected'>".$xy[1]."</option>";
+			else
+				$s1.="<option value=".$xy[0]." >".$xy[1]."</option>";
+		}
+		$s1.="</select></div><div id='clear_id'></div>";
+		echo $s1;
+		$i=count($this->zy);
+		if(isset($_POST['sel2']))
+		{$k=$_POST['sel2'];$_SESSION['SEL_2']=$k;}
+		else
+		{$k=$this->zy[$i-1];$_SESSION['SEL_2']=$k;}
+		$s1="<br><div class='dvmsg'>年度选择：</div><div class='select_style'><select name='sel2'>";
+		for($j=0;$j<$i;$j++)
+		{
+			if($this->zy[$j] == $k)
+				$s1.="<option value=".$this->zy[$j]." selected='selected' >".$this->zy[$j]."</option>";
+			else
+				$s1.="<option value=>".$this->zy[$j]." >".$this->zy[$j]."</option>";
+		}
+		$s1.="</select></div><div id='clear_id'></div>";
+		echo $s1;
+		if(isset($_POST['sel3']))
+			$_SESSION['SEL_3']=$_POST['sel3'];
+		else
+			$_SESSION['SEL_3']="镉";
+		$i=count($this->cy);
+		$s1="<br><div class='dvmsg'>污染物选择：</div><div class='select_style'><select name='sel3'>";
+		for($j=0;$j<$i;$j++)
+		{
+			$xy=$this->cy[$j];
+			if($xy[1] == $_SESSION['SEL_3'])
+				$s1.="<option value=".$xy[1]." selected='selected'>".$xy[1]."</option>";
+			else
+				$s1.="<option value=".$xy[1]." >".$xy[1]."</option>";
+		}
+		$s1.="</select></div><div id='clear_id'></div>";
+		echo $s1;
+		$s1="<br><br><div class='dvmsg2'></div><div class='dvmsg2'><input type='submit' id='button_id' name='submit' value='应用' title='点击开始查询'></div>";
+		$s1.="<div id='clear_id'></div>";
+		echo $s1;
+	}//}}}
+//{{{public function show_body()
+	public function show_body()
+	{}//}}}
+//{{{public function show_tail()
+	public function show_tail()
+	{}//}}}
 }//}}}
 
 

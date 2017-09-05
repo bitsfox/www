@@ -46,7 +46,7 @@ require_once($str11);
 //定义主页的主菜单值
 	$menuitem[0]			=	"点位总览";
 	$menuitem[1]			=	"点位详细";
-	$menuitem[2]			=	"监测数据";
+	$menuitem[2]			=	"数据分析";
 	$menulnk[0]				=	"index.php?pgcnt=".base64_encode("template/01/m01.html");
 	$menulnk[1]				=	"index.php?pgcnt=".base64_encode("template/01/m02.html");
 	$menulnk[2]				=	"index.php?pgcnt=".base64_encode("template/01/m03.html");

@@ -138,6 +138,14 @@ git远程空仓库的建立：<font color=red size=3>git init --bare workdir.git
 <font color=red size=3>alter table station change sname sname varchar(20) comment '站点名称';</font>
 或者使用：
 <font color=red size=3>alter table station modify sname varchar(20) comment '站点名称';</font>
+4.建立一个表索引：
+create index pt_link_sid_lid on pt_link(sid,lid);
+5.查看索引表：
+show index from pt_link;
+6.查看一个索引表是否起作用：
+explain select * from pt_link where sid='370915010543' and lid > 1000;
+7.删除一个索引：
+drop index soil_val_iid on soil_val;
 
 
 

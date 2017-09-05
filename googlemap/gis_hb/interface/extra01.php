@@ -326,8 +326,9 @@ class init_gis_calc implements listbox_data
 			$this->get_cur_year();
 		$this->get_used_db();
 		$this->conn="SELECT iid,iname from standard group by iname order by iid"; //用于取得combox列表数据
-		$this->conn1="SELECT iid,iname,isname,iisd,soil_type,soil_name,std FROM standard WHERE iid = %d"; //用于取得同一污染物不同类型的执行标准
-		$this->str_con="SELECT sid,iid,date,val FROM soil_val WHERE sid = '%s' AND iid = %a";
+		$this->conn1="SELECT iid,iname,isname,iisd,soil_type,soil_name,std FROM standard WHERE iname = '%s'"; //用于取得同一污染物不同类型的执行标准
+		$this->str_con="SELECT sid,iid,date,val FROM soil_val WHERE aid = '%s' AND iid = %a";//用于取得指定区域指定污染物的监测数据
+		//$this->str_con1="SELECT sid,iid,date,val FROM soil_val WHERE sid = '%s' ORDER BY iid";//用于取得指定点位所有的污染物监测数据
 	}//}}}
 //{{{public function __destruct()
 	public function __destruct()
@@ -354,8 +355,37 @@ class init_gis_calc implements listbox_data
 		array_push($this->db,$DB_USER_TY);
 		array_push($this->db,$DB_PWD_TY);
 	}//}}}
-
-
+//{{{public function get_ctlarea()
+	public function get_ctlarea()
+	{
+		$ay=array();
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if(mysqli_connect_error())
+			die("connect error!");
+		mysqli_set_charset($mysqli,"utf8");
+		$res=mysqli_query($mysqli,$this->conn);
+		while($rows=mysqli_fetch_row($res))
+			array_push($ay,$rows); //得到一个以污染物分组的数据列表，用于combox的显示
+		mysqli_free_result($res);
+		mysqli_close($mysqli);
+		return $ay;
+	}//}}}
+//{{{public function get_unit($y)
+	public function get_unit($y)
+	{
+		$ay=array();
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if($mysqli_connect_error())
+			die("connect error!");
+		mysqli_set_char_set($mysqli,"utf8");
+		$str=sprintf($this->con,$_SESSION['INTR_SEND'],$_SESSION['SEL_3']);
+		$res=mysqli_query($mysqli,$str);
+		while($rows=mysqli_fetch_row($res))
+			array_push($ay,$rows);
+		mysqli_free_result($res);
+		mysqli_close($mysqli);
+		return $ay;
+	}//}}}
 }//}}}
 
 
