@@ -405,7 +405,7 @@ class gis_ctl implements tab_show
 //{{{class gis_main_map implements tab_show 点位总览主界面地图显示类
 class gis_main_map implements tab_show
 {
-	private $ay;
+	private $ay,$cy;
 //{{{public function __construct()	
 	public function __construct()
 	{
@@ -416,6 +416,8 @@ class gis_main_map implements tab_show
 		$i=$_SESSION['SEL_2'];
 		$a=new init_gis($i);
 		$this->ay=$a->get_unit($i);
+		$b=new init_gis_trail($i);
+		$this->cy=$b->get_ctlarea();
 	}//}}}
 //{{{public function __destruct()
 	public function __destruct()
@@ -444,11 +446,42 @@ class gis_main_map implements tab_show
 		}
 		echo $GIS_CONTENT_FUNCH;
 		echo $GIS_CONTENT_FUNCL;
+		$this->show_body();
 		echo $GIS_END_SCRIPT;
 	}//}}}
 //{{{public function show_body()
 	public function show_body()
-	{}//}}}
+	{
+		global $GIS_TRAIL_BEG,$GIS_TRAIL_MSG,$GIS_TRAIL_END;
+		$clr=array("blue","green","magenta","olive","coral");
+		if(!isset($_SESSION['INTR_SEND']))
+			return;
+		$i=$_SESSION['INTR_SEND'];
+		if($i == 370900)
+			return;
+		/*$j=intval($i);
+		if($j/100 == 0)
+			return;*/
+		$xy=$this->cy[$i];
+		$i=count($xy);
+		for($j=0;$j<$i;$j++)
+		{
+			echo $GIS_TRAIL_BEG;
+			$yy=$xy[$j];
+			$m=count($yy);
+			for($n=0;$n<$m;$n++)
+			{
+				$str=sprintf($GIS_TRAIL_MSG,$yy[$n][1],$yy[$n][2]);
+				echo $str;
+			}
+			if($j<=4)
+				$s=$clr[$j];
+			else
+				$s=$clr[4];
+			$str=sprintf($GIS_TRAIL_END,$s);
+			echo $str;
+		}
+	}//}}}
 //{{{public function show_tail()
 	public function show_tail()
 	{}//}}}

@@ -73,7 +73,10 @@ require_once($str11);
 	$GIS_MAP_MSG1			=	"var map = new BMap.Map('allmap');map.centerAndZoom('%s', 10);map.addControl(new BMap.MapTypeControl());";
 	$GIS_MAP_MSG2			=	"map.setCurrentCity('泰安');map.enableScrollWheelZoom(true);";
 	$GIS_MAP_MARKER			=	"var marker = new BMap.Marker(new BMap.Point(%s,%s));map.addOverlay(marker);";
-	$GIS_END_SCRIPT			=	"</script>";	
+	$GIS_TRAIL_BEG			=	"var polyline = new BMap.Polyline([";
+	$GIS_TRAIL_MSG			=	"new BMap.Point(%s,%s),";
+	$GIS_TRAIL_END			=	"], {strokeColor:'%s', strokeWeight:2, strokeOpacity:0.5});\nmap.addOverlay(polyline);";
+	$GIS_END_SCRIPT			=	"</script>";
 ////////////////////////////////////////////////
 	$GIS_CONTENT_IMAGE		=	"var content = \"<div style='margin:0;line-height:20px;padding:2px;'><img src='%s' alt='' style='float:right;zoom:1;overflow:hidden;width:100px;height:100px;margin-left:3px;'/>点位名称：%s<br>点位代码：<font color=red>%s</font><br>经度：<font color=blue>%0.6f</font><br>纬度：<font color=blue>%0.6f</font></div>\";";
 	$GIS_CONTENT_OPT		=	"var opts = {width:300,height:110,title:'%s',enableMessage:true};";
