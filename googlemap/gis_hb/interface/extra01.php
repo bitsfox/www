@@ -387,6 +387,107 @@ class init_gis_calc implements listbox_data
 		return $ay;
 	}//}}}
 }//}}}
-
+//{{{class init_gis_trail implements listbox_data
+class init_gis_trail implements listbox_data
+{
+	private $rq,$conn,$db;
+//{{{public function __construct($y)
+	public function __construct($y)
+	{
+		if($y > 0)
+			$this->rq=$y;
+		else
+			$this->get_cur_year();
+		$this->get_used_db();
+		$this->conn="SELECT idx,lng,lat,aid FROM trail ORDER BY ida,aid,idx";
+	}//}}}
+//{{{public function __destruct()
+	public function __destruct()
+	{unset($this->db);}//}}}
+//{{{public function get_cur_year()
+	public function get_cur_year()
+	{
+		$dy=array();
+		$dy=getdate(time());
+		$this->rq=$dy['year'];
+	}//}}}
+//{{{public function get_used_db()
+	public function get_used_db()
+	{
+		global $DB_ADDR_TY,$DB_PORT_TY,$DB_NAME_TY,$DB_PWD_TY;
+		global $DB_USER_TY;
+		$i=intval($this->rq);
+		if(!isset($DB_ADDR_TY[$i]))
+			die("你所选择的日期".$i."年，没有数据！");
+		$this->db=array();
+		array_push($this->db,$DB_ADDR_TY[$i]);
+		array_push($this->db,$DB_PORT_TY[$i]);
+		array_push($this->db,$DB_NAME_TY[$i]);
+		array_push($this->db,$DB_USER_TY);
+		array_push($this->db,$DB_PWD_TY);
+	}//}}}
+//{{{public function get_ctlarea()
+	public function get_ctlarea()
+	{
+		$ay=array();$cy=array();$dy=array();
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if(mysqli_connect_error())
+			die("connect error!");
+		mysqli_set_charset($mysqli,"utf8");
+		$res=mysqli_query($mysqli,$this->conn);
+		while($rows=mysqli_fetch_row($res))
+			array_push($cy,$rows);
+		mysqli_free_result($res);
+		mysqli_close($mysqli);
+		$i=count($cy);
+		$x=0;//$cy[0][3];	//get aid
+		$y=0;
+		for($j=0;$j<$i;$j++)
+		{
+			if($cy[$j][0]>$y)
+				$y=$cy[$j][0];//取得最大航迹数
+			if($x == $cy[$j][3])
+				continue;
+			else
+			{
+				$x=$cy[$j][3];
+				array_push($dy,$x); //取得行政区域代码的数组
+			}
+		}
+		for($j=0;$j<$y;$j++)
+			$ty[$j]=array(); //init array
+		$i=count($dy);$k=0;
+		$m=count($cy);
+		for($j=0;$j<$i;$j++)
+		{
+			$x=$dy[$j];
+			for($l=$k;$l<$m;$l++)
+			{
+				if($cy[$l][3] != $x)
+				{
+					$k=$l;
+					break;//这里采用这种方式，是因为之前的数据库查询保证了cy数组队列中元素的排序
+				}
+				array_push($ty[$cy[$l][0]-1],$cy[$l]);
+			}
+			$zy=array();
+			for($n=0;$n<$y;$n++)
+			{
+				if(count($ty[$n])<=0)
+					continue;
+				array_push($zy,$ty[$n]);
+			}
+			if(count($zy)>0)
+				array_push($ay,$zy);
+			for($p=0;$p<$y;$p++)
+				$ty[$p]=array(); //reinit
+		}
+		$yy=array_combine($dy,$ay);
+		return $yy;
+	}//}}}
+//{{{public function get_unit($y)
+	public function get_unit($y)
+	{}//}}}
+}//}}}
 
 ?>

@@ -618,8 +618,43 @@ class gis_calc_ctl implements tab_show
 	public function show_tail()
 	{}//}}}
 }//}}}
+//{{{class gis_calc_main implements tab_show 监测数据图表的主界面显示类
+class gis_calc_main implements tab_show
+{
+	private $ay;
+//{{{public function __construct()
+	public function __construct()
+	{
+		if(!isset($_SESSION['SEL_3']))
+			die("init error!");
+	}//}}}
+//{{{public function __destruct()
+	public function __destruct()
+	{unset($this->ay);}//}}}
+//{{{public function show_header()
+	public function show_header()
+	{
+		$a=new init_gis_trail($_SESSION['SEL_2']);
+		$this->ay=$a->get_ctlarea();
+		$cy=array_keys($this->ay);
+		print_r($cy);
+		$i=count($cy);
+		for($j=0;$j<$i;$j++)
+		{
+			$v=$cy[$j];
+			$k=count($this->ay[$v]);
+			echo "count is".$k;
+		}
+		echo "<br>";
 
-
+	}//}}}
+//{{{public function show_body()
+	public function show_body()
+	{}//}}}
+//{{{public function show_tail()
+	public function show_tail()
+	{}//}}}
+}//}}}
 
 
 ?>
