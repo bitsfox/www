@@ -1,9 +1,9 @@
 <?php
-/*山东汇力监控平台
+/*土壤环境信息系统
  本文件定义本项目所用的各类全局变量
 
 
- 	2016-4-17  田勇 alias tybitsfox
+ 	2017-9-10  田勇 alias tybitsfox
  */
 //2017-1-1添加session的状态判断,避免log中的错误提示
 if(session_status() != PHP_SESSION_ACTIVE)
@@ -26,23 +26,12 @@ require_once($str11);
 	$tybitsfox['www_path']		=	"/var/www";
 	$tybitsfox['version']		=	"0.0.0.1";
 	$tybitsfox['corename']		=	"tiny";
-//山东汇力公司污染源监控平台登录
+//土壤环境信息系统平台登录
 	$tybitsfox['logmsg']		=	"泰安市土壤环境信息系统登录";
-//山东汇力公司污染源监控平台	
+//土壤环境信息系统平台	
 	$tybitsfox['title']			=	"泰安市土壤环境信息系统"; 
-//山东汇力公司污染源监控用户注册
+//土壤环境信息系统用户注册
 	$tybitsfox['regmsg']		=	"泰安市土壤环境信息系统用户注册";	
-//数据库信息：
-	$database['host']			=	"localhost";
-	$database['type']			=	"MYSQL";
-	$database['user']			=	"sdhl";
-	$database['pwd']			=	"sdhl2016";
-//将来这个应该是动态生成的：	
-	$database['dbname']			=	"gis_hb";
-//附加的数据库变量
-	$database['logstr']			=	"select * from auth";
-	$database['logtab']			=	"auth";
-	$database['regstr']			=	"insert into auth(user,pwd) values('%s','%s')";
 //定义主页的主菜单值
 	$menuitem[0]			=	"点位总览";
 	$menuitem[1]			=	"点位详细";

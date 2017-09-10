@@ -11,6 +11,15 @@ booting界面显示的错误为：Radeon kernel modesetting for r600 or later re
 解决方法：保证更新源里有：non-free contrib
 然后： apt-get install firmware-linux-nonfree
 重启后问题解决.
+问题3：修改root的.bashrc发生错误，无法进入系统的修改方法
+1、在grub界面，按照提示，按‘'e'进入编辑模式。
+2、在linux   /vmlinuz-4.9.0-3-686-pae root=/dev/sda2 ro  quiet这一行的最后添加：init=/bin/sh 或者 single init=/bin/sh
+3、按ctrl+x启动编辑后的项目。
+4、进入到sh,重新挂载分区为可读写模式：mount -no remount,rw /
+5、使用nano编辑.bashrc
+6、退出挂载的读写模式：mount -no remount,ro /
+7、重新启动，完成
+这是因为.bashrc错误而导致了默认的bash不能工作（闪退）所以，只能启动另外一个sh。忘记密码的话也是如此操作，使用password重新设定密码即可
 </font>";
 echo"软件的安装：
 1、apt-get install aptitude			debian9默认竟然没有这个
