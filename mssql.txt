@@ -102,6 +102,81 @@ mssql2005的安装盘大小约为一G，由于完全安装需要C盘至少1.7G�
 	1>select * from $(tablename) where convert(varchar(50),DATE_TIME,20) like '2009-01-22%'
 	2>go
 ----------------------------------------------------------------------------------------------------------------------------------------------
+二、sqlcmd的基本应用
+1、连接数据库：sqlcmd -S 【localhost】-d databasename 
+本地连接时，如不指定数据库可直接：sqlcmd，更多的参数可参考相关文章。
+2、查看当前所有的数据库名称：select 【name】 from sys.databases /go
+3、选择待操作的数据库：use dbname /go
+4、查看当前数据库中的表：select 【name】 from sys.objects where type='U' /go
+      or		 select name from sys.tables /go
+5、创建一个数据库：create database db1 /go
+6、创建一个表：create table tb01(vname int,vname1 varchar(20),...) /go
+7、插入一条记录：insert into tb01(vname,vname1,...) values(var1,var2,...) /go
+8、查询其他命令：:help
+三、使用excel中的数据批量导入数据库：
+1、在使用excel中的数据之前需要进行下列准备工作：
+（1）启用Ad Hoc Distributed Queries：
+在sqlcmd中运行：
+exec sp_configure 'show advanced options',1
+reconfigure
+exec sp_configure 'Ad Hoc Distributed Queries',1
+reconfigure
+（2）为了安全使用完成后，关闭Ad Hoc Distributed Queries：
+exec sp_configure 'Ad Hoc Distributed Queries',0
+reconfigure
+exec sp_configure 'show advanced options',0
+reconfigure
+2、在sqlcmd中查询excel的记录：
+SELECT * FROM OpenDataSource( 'Microsoft.Jet.OLEDB.4.0','Data Source="c:\book1.xls";
+User ID=Admin;Password=;Extended properties=Excel 5.0')...[Sheet1$]  /go
+如果查询成功，则可以进行数据导入。
+3、数据导入：在导入前，需要确定你当前所操作的数据库是否是目标数据库，可以使用use dbname
+指定目标数据库，然后运行：
+SELECT * into newtable FROM OpenDataSource( 'Microsoft.Jet.OLEDB.4.0',
+'Data Source="c:\book1.xls";User ID=Admin;Password=;Extended properties=Excel 5.0')...[Sheet1$]
+即可完成数据库的导入。
+
+
+
+
+SQL2000系统表的应用
+--1：获取当前数据库中的所有用户表
+
+select Name from sysobjects where xtype='u' and status>=0
+
+--2：获取某一个表的所有字段
+
+select name from syscolumns where id=object_id('表名')
+
+--3：查看与某一个表相关的视图、存储过程、函数
+
+select a.* from sysobjects a, syscomments b where a.id = b.id and b.text like '%表名%'
+
+--4：查看当前数据库中所有存储过程
+
+select name as 存储过程名称 from sysobjects where xtype='P'
+
+--5：查询用户创建的所有数据库
+
+select * from master..sysdatabases D where sid not in(select sid from master..syslogins where name='sa')
+
+或者
+
+select dbid, name AS DB_NAME from master..sysdatabases where sid <> 0x01
+
+--6：查询某一个表的字段和数据类型
+
+select column_name,data_type from information_schema.columns
+where table_name = '表名'
+
+--7:取得表字段的描述
+select name,
+(select value from sysproperties where id = syscolumns.id and smallid=syscolumns.colid) as 描述
+from syscolumns where id=object_id('表名')
+
+--8:取得表字段长度：
+select a.name,b.length from syscolumns a,systypes b where a.xtype=b.xtype
+----------------------------------------------------------------------------------------------------------------------------------------------
 1、你可以用SQLCMD执行交互式动作，如：
 
 C:\sqlcmd>sqlcmd 
