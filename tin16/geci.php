@@ -2,7 +2,7 @@
 <?php
 echo "<a name=a00></a><font size=5><center>my favorite song</center></font><br><br>";
 echo "<a href=#a01>Without you</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#a02>No matter what</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#a03>Edelweiss</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#a04>Jingle Bells</a>&nbsp;&nbsp;&nbsp;&nbsp;";
-echo "<a href=#a05>Everything I Do,I Do It For You</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#a06>demons</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#a07>Eyes On Me</a>";
+echo "<a href=#a05>Everything I Do,I Do It For You</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#a06>demons</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#a07>Eyes On Me</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#a08>rivers of babylon</a>";
 echo "<br><br>";
 echo "<table width=100% border=0><tr width=100%><td width=100% colspan=4>
 <a name=a01></a><center><font color=red size=5>Without you -Harry Nilsson</font>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#a00>返回</a></center>
@@ -590,6 +590,35 @@ I will know that you are on dreamer
 我将知道你还未迷失方向
 </pre></td>
 <td width=10%></td></tr>";
+echo "<tr><td colspan=4 width=100%><a name=a08></a><center><font color=red size=5>Rivers of Babylon</font>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#a00>返 回</a></center><br><br></td></tr>";
+echo "<tr><td width=10%></td><td colspan=2 width=80%><pre>
+by the rivers of babylon.                                     呣……，呣……啊……，啊……来到巴比伦河边
+there we sat down                                             我们坐在你身旁
+yeah we wept.when we remembered zion.                         耶，我们哭泣又悲伤，当我们想起了家乡
+by the rivers of babylon.                                     来到巴比伦河边，
+there we sat down                                             我们坐在你身旁。
+yeah we wept.when we remembered zion                          耶，我们哭泣又悲伤，当我们想起了家乡
+for there they that carried us away in captivity.             是凶狠的敌人把我们虏掠到这里
+requiring of us a song.                                       还强迫我们把歌唱
+now how shall we sing the lord's song.                        我们怎能唱得出圣歌来，
+in a strange land.                                            陌在生的异国他乡
+for there they that.carried us away in captivity.             是凶狠的敌人把我们虏掠到这里
+requiring of us a song now how shall we sing.                 还强迫我们把歌唱
+the lord’s song in a stranger land.                           我们怎能唱得出圣歌来，在陌生的异国他乡
+let the words of our mouths.
+and the meditathons of our hearts.
+be acceptable in the sight here tonight.                      让我们心里的话儿和期望在今夜向你倾叙
+let the words of our mouths.
+and the meditathons of our hearts.
+be acceptable in the sight here tonight.                      让我们心里的话儿和期望在今夜向你倾叙。
+by the rivers of babylon.there we sat down                    来到了巴比伦河边，我们坐在你身旁
+yeah we wept.when we remembered zion.                         耶，我们哭泣又悲伤，当我们想起了家乡。
+by the rivers of babylon.there we sat down.                   来到巴比伦河边，我们坐在你身旁
+yeah we wept.when we remembered zionah                        耶，我们哭泣又悲伤，当我们想起了家乡。
+by the rivers of babylon.there we sat down                    来到了巴比伦河边，我们坐在你身旁。
+yeah we wept.when we remembered zion.                         耶，我们哭泣又悲伤，当我们想起了家乡。
+by the rivers of babylon.there we sat down                    来到了巴比伦河边，我们坐在你身旁。
+</pre></td><td width=10%></td></tr>";
 echo "</table><center><a href=#a00>返回</a></center>";
 
 
