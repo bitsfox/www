@@ -144,8 +144,12 @@ function _verf_db($u,$p)
 	for($j=0;$j<$i;$j++)
 	{
 		$row=$ay[$j];
-		if(($row[1] == $u) && ($row[2] == $p))
-			return 0;
+		if($row[1] == $u)
+		{
+			$str=base64_decode(base64_decode($row[2]));
+			if($str == $p)
+				return 0;
+		}
 	}
 	return 1; 
 }//}}}

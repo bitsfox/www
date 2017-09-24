@@ -34,11 +34,8 @@ function oooii()
 }
 </script>
 <script language="JavaScript" src="./css/mydate.js"></script>
-
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <?php
+echo "<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />";
 //2017-1-1添加session的状态判断,避免log中的错误提示
 if(session_status() != PHP_SESSION_ACTIVE)
 	session_start();
@@ -56,21 +53,11 @@ global $tybitsfox;
 $str="<title>".$tybitsfox['title']."</title>";
 echo $str;
 ?>
-<!-- <link href="css/base.css" rel="stylesheet" type="text/css" media="all" /> 
-<title>aaaa</title>  -->
-<!-- 
-<style type="text/css">
-	#allmap {width: 100%;height: 90%;overflow: hidden;margin:0;font-family:"微软雅黑";}
-</style> 
--->
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Wst0GYAGq6QfZG1fGTwNxGLD9CBW5N99"></script>
 <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
-</head>
-<body>
-<div id="container_id"><div id="header_id"><img src='./css/logo.png' style='display:block;width:80%;' /></div>
-    <div id="menu_id">
-    <ul>
 <?php
+	echo "</head><body><div id='container_id'>";
+	echo "<div id='header_id'><img src='./css/logo.png' style='display:block;width:80%;' /></div><div id='menu_id'><ul>";
     $cnt=count($menuitem);
     for($i=0;$i<$cnt;$i++)
     {
@@ -79,18 +66,5 @@ echo $str;
 	$st="<li>&nbsp;&nbsp;&nbsp;&nbsp;<font color=red>欢迎 </font>[ <a href='javascript:void(0)' onclick ='unreg()' />";
 	$st.=$_SESSION['user']."</a> ]</li><li class='menudiv_class'></li>";
 	echo $st;
+	echo "</ul></div><div id='clear_id'></div>";
 ?>
-    </ul></div><div id="clear_id"></div>
-<!--	<div id="left_id" class="shadow_class">明晰操作栏</div>
-	<div id="right_id">
-	<div id="clear_id"></div>
-	<div id="right_top_id" class="shadow_class">
-	<br><br><center>这里是<font color=red>主页</font>，请选择你要进行的操作</center>
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
-	</div>
-</div></body></html>	
-<script type="text/javascript">
-var width = window.screen.width;
-document.cookie="screen="+width;
-</script>
--->

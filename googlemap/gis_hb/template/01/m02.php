@@ -21,43 +21,31 @@
  * MA  02111-1307  USA
  */
 ?>
-	<div id="left_id" class="shadow_class">
-	<?php
-		//2017-1-1添加session的状态判断,避免log中的错误提示
-		if(session_status() != PHP_SESSION_ACTIVE)
-			session_start();
-		if(!defined("FULL_PATH"))
-		{
-			$s1=dirname(__FILE__);
-			$s2=strstr($s1,"gis_hb");
-			$i=strlen($s1)-strlen($s2);
-			$s2=substr($s1,0,$i)."gis_hb/";
-			define("FULL_PATH",$s2);
-		}
-		$str=constant("FULL_PATH")."template/02/l01.html";
-		require_once($str);
-	?>
-	</div>
-	<div id="right_id">
-	<div id="clear_id"></div>
-	<div id="right_top_id" class="shadow_class">
-	<?php
-		$a=new gis_main_map();
-		$a->show_header();
-	?>
-<!--	<table class='imagetable'><tr><th>aaa</th><th>bbb</th></tr>
-	<tr><td>cccc</td><td>dddd</td></tr></table>   -->
-	</div>
-	</div>
-	<div id="left_ida" class="shadow_class">
-<!--	<img src='./images/aaa.jpg' style='display:block;width:200px;'/> -->
-	<?php require_once("template/03/show_pt.php");?>
-	</div>
-</div>
-	<div id="clear_id"></div>
-	<div id="container_id">
 <?php
+echo "<div id='left_id' class='shadow_class'>";
+//2017-1-1添加session的状态判断,避免log中的错误提示
+if(session_status() != PHP_SESSION_ACTIVE)
+	session_start();
+	if(!defined("FULL_PATH"))
+{
+	$s1=dirname(__FILE__);
+	$s2=strstr($s1,"gis_hb");
+	$i=strlen($s1)-strlen($s2);
+	$s2=substr($s1,0,$i)."gis_hb/";
+	define("FULL_PATH",$s2);
+}
+$str=constant("FULL_PATH")."template/02/l02.php";
+require_once($str);
+echo "</div><div id='right_id'><div id='clear_id'></div><div id='right_top_aid' class='shadow_class'>";
+$a=new gis_mx_pic();
+$a->show_header();
+//<!--	<img src='./images/aaa.jpg' style='display:block;width:200px;'/> -->
+?>
+<?php
+echo "</div></div><div id='left_idb' class='shadow_class'>";
+require_once("template/03/show_mpt.php");
+echo "</div></div><div id='clear_id'></div><div id='container_id'>";
 require_once("template/03/foot.php");
+echo "</div></body></html>";
 ?>	
-	</div>
-</body></html>	
+

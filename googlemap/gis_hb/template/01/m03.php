@@ -21,8 +21,8 @@
  * MA  02111-1307  USA
  */
 ?>
-	<div id="left_id" class="shadow_class">
 	<?php
+		echo "<div id='left_id' class='shadow_class'>";
 		//2017-1-1添加session的状态判断,避免log中的错误提示
 		if(session_status() != PHP_SESSION_ACTIVE)
 			session_start();
@@ -34,28 +34,14 @@
 			$s2=substr($s1,0,$i)."gis_hb/";
 			define("FULL_PATH",$s2);
 		}
-		$str=constant("FULL_PATH")."template/02/l03.html";
+		$str=constant("FULL_PATH")."template/02/l03.php";
 		require_once($str);
 	?>
-	</div>
-	<div id="right_id">
-	<div id="clear_id"></div>
-	<div id="right_top_id" class="shadow_class">
 	<?php
+		echo "</div><div id='right_id'><div id='clear_id'></div><div id='right_top_id' class='shadow_class'>";
 		$a=new gis_calc_main();
 		$a->show_header();
-		echo "aaaaaaaaaa";
-	?>
-<!--	<table class='imagetable'><tr><th>aaa</th><th>bbb</th></tr>
-	<tr><td>cccc</td><td>dddd</td></tr></table>   -->
-	</div>
-	</div>
-</div>
-	<div id="clear_id"></div>
-	<div id="container_id">
-<?php
-require_once("template/03/foot.php");
+		echo "</div></div></div><div id='clear_id'></div><div id='container_id'>";
+		require_once("template/03/foot.php");
+		echo "</div></body></html>";
 ?>	
-	</div>
-</body></html>	
-

@@ -59,9 +59,9 @@ require_once($str11);
 	$menuitem[0]			=	"点位总览";
 	$menuitem[1]			=	"点位详细";
 	$menuitem[2]			=	"数据分析";
-	$menulnk[0]				=	"index.php?pgcnt=".base64_encode("template/01/m01.html");
-	$menulnk[1]				=	"index.php?pgcnt=".base64_encode("template/01/m02.html");
-	$menulnk[2]				=	"index.php?pgcnt=".base64_encode("template/01/m03.html");
+	$menulnk[0]				=	"index.php?pgcnt=".base64_encode("template/01/m01.php");
+	$menulnk[1]				=	"index.php?pgcnt=".base64_encode("template/01/m02.php");
+	$menulnk[2]				=	"index.php?pgcnt=".base64_encode("template/01/m03.php");
 //
 	$arry					=	array();
 //下面的数组用于绘制图形	

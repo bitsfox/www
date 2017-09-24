@@ -36,7 +36,7 @@ $str=constant("FULL_PATH")."interface/main.php";
 require_once($str);
 _verf_fox();
 global $tybitsfox;
-$str=constant("FULL_PATH")."template/01/01.html";
+$str=constant("FULL_PATH")."template/01/01.php";
 include_once($str);
 //if($_GET['pgcnt'] == NULL)
 if(!isset($_GET['pgcnt']))

@@ -21,14 +21,32 @@
  * MA  02111-1307  USA
  */
 ?>
-<center>当前：土壤点位总览</center>
-<?php
-	global $menulnk;
-	echo "<form name='form_left1' method='post' action='./".$menulnk[0]."'>";
-	$i=0; //utype 本应=0 废水,由于php的处理会将=0看成是NULL！所以这里用3替代
-	$a= new gis_ctl($i);
-	$a->show_header();
-	$_SESSION['EXCEL_TYPE']=1;
-?>
-</form>
-<!-- </body></html> -->
+	<?php
+		echo "<div id='left_id' class='shadow_class'>";
+		//2017-1-1添加session的状态判断,避免log中的错误提示
+		if(session_status() != PHP_SESSION_ACTIVE)
+			session_start();
+		if(!defined("FULL_PATH"))
+		{
+			$s1=dirname(__FILE__);
+			$s2=strstr($s1,"gis_hb");
+			$i=strlen($s1)-strlen($s2);
+			$s2=substr($s1,0,$i)."gis_hb/";
+			define("FULL_PATH",$s2);
+		}
+		$str=constant("FULL_PATH")."template/02/l01.php";
+		require_once($str);
+	?>
+	<?php
+		echo "</div><div id='right_id'><div id='clear_id'></div><div id='right_top_id' class='shadow_class'>";
+		$a=new gis_main_map();
+		$a->show_header();
+		echo "</div></div><div id='left_ida' class='shadow_class'>";
+		//<img src='./images/aaa.jpg' style='display:block;width:200px;'/> 
+	?>
+	<?php
+   		require_once("template/03/show_pt.php");
+		echo "</div></div><div id='clear_id'></div><div id='container_id'>";
+		require_once("template/03/foot.php");
+		echo "</div></body></html>";	
+	?>

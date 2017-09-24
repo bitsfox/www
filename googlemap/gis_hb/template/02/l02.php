@@ -21,19 +21,19 @@
  * MA  02111-1307  USA
  */
 ?>
-<center>当前浏览：监测数据</center>
 <?php
+	echo "<center>当前：点位详细信息</center>";
 	global $menulnk;
-	echo "<form name='form_left3' method='post' action='./".$menulnk[2]."'>";
-	$a=new gis_calc_ctl(1);
+	echo "<form name='form_left2' method='post' action='./".$menulnk[1]."'>";
+	$i=1;
+	$a=new gis_ctl($i);
 	$a->show_header();
-	/*$a= new tb_sleft(2);
-	$a->show_header();
-	$a->show_body();
-//	$a->show_tail();
-	$_SESSION['EXCEL_TYPE']=3; */
+	global $arry;
+	$_SESSION['EXCEL_TYPE']=2;
+	echo "</form>";
 ?>
-</form>
-<!-- </body></html> -->
-
+<script language="javascript" type="text/javascript"> 
+var jary=<?php echo json_encode($arry,JSON_UNESCAPED_UNICODE);?>;
+</script>
+<script language="JavaScript" src="./css/mychange.js"></script>
 
