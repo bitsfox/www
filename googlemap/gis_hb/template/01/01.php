@@ -49,12 +49,13 @@ if(!defined("FULL_PATH"))
 }
 $str="<link href='css/base.css' rel='stylesheet' type='text/css' media='all'/>";
 echo $str;
-global $tybitsfox;
+global $tybitsfox,$GIS_BAIDU_AK;
 $str="<title>".$tybitsfox['title']."</title>";
 echo $str;
+$str="<script type='text/javascript' src='http://api.map.baidu.com/api?v=2.0&ak=".$GIS_BAIDU_AK."'></script>";
+echo $str;
+echo "<script src='http://libs.baidu.com/jquery/1.9.0/jquery.js'></script>";
 ?>
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Wst0GYAGq6QfZG1fGTwNxGLD9CBW5N99"></script>
-<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
 <?php
 	echo "</head><body><div id='container_id'>";
 	echo "<div id='header_id'><img src='./css/logo.png' style='display:block;width:80%;' /></div><div id='menu_id'><ul>";

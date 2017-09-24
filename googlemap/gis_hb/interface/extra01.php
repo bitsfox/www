@@ -24,8 +24,6 @@
 <?php
 /*这是一个由接口导出的类定义文件的扩展
   也就是本目录下main.php文件的扩展
- 
-
  	2016-4-17  田勇 alias tybitsfox
  */
 //2017-1-1添加session的状态判断,避免log中的错误提示
@@ -410,7 +408,7 @@ class init_gis_calc implements listbox_data
 		return $ay;
 	}//}}}
 }//}}}
-//{{{class init_gis_trail implements listbox_data
+//{{{class init_gis_trail implements listbox_data 总览界面航迹数据的获取类
 class init_gis_trail implements listbox_data
 {
 	private $rq,$conn,$db;
@@ -512,5 +510,52 @@ class init_gis_trail implements listbox_data
 	public function get_unit($y)
 	{}//}}}
 }//}}}
+//{{{class init_std_val implements listbox_data 数据分析界面，标准额数据的获取类
+class init_std_val implements listbox_data
+{
+	private $conn,$db,$rq;
+//{{{public function __constant($y)
+	public function __constant($y)
+	{
+		if($y > 0)
+			$this->rq=$y;
+		else
+			$this->get_cur_year();
+		$this->get_used_db();
+		$this->conn="SELECT a.aid,a.sid,a.iid,a.val,b.iname,b.isname,b.iisd,b.soil_type,b.soil_name,b.std FROM soil_val as a LEFT JOIN standard as b ON a.iid = b.iid ORDER BY a.iid,a.aid,a.sid";
+	}//}}}
+//{{{public function __destruct()
+	public function __destruct()
+	{unset($this->db);}//}}}
+//{{{public function get_cur_year()
+	public function get_cur_year()
+	{
+		$dy=array();
+		$dy=getdate(time());
+		$this->rq=$dy['year'];
+	}//}}}
+//{{{public function get_used_db()
+	public function get_used_db()
+	{
+		global $DB_ADDR_TY,$DB_PORT_TY,$DB_NAME_TY,$DB_PWD_TY;
+		global $DB_USER_TY;
+		$i=intval($this->rq);
+		if(!isset($DB_ADDR_TY[$i]))
+			die("你所选择的日期".$i."年，没有数据！");
+		$this->db=array();
+		array_push($this->db,$DB_ADDR_TY[$i]);
+		array_push($this->db,$DB_PORT_TY[$i]);
+		array_push($this->db,$DB_NAME_TY[$i]);
+		array_push($this->db,$DB_USER_TY);
+		array_push($this->db,$DB_PWD_TY);
+	}//}}}
+//{{{public function get_ctlarea()
+	public function get_ctlarea()
+	{}//}}}
+//{{{public function get_unit()
+	public function get_unit($y)
+	{}//}}}
+}//}}}
+
 
 ?>

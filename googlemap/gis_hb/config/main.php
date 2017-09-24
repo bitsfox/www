@@ -80,6 +80,7 @@ require_once($str11);
 	define("IGN_VAL",-100.11);	
 	$WUXIAO					=	"无效值";
 //////////////////////////////2017-8-4添加，土壤监测gis系统//////////////////////////
+	$GIS_BAIDU_AK			=	"Wst0GYAGq6QfZG1fGTwNxGLD9CBW5N99";
 	$GIS_DIV				=	"<div id='allmap'></div><br><div id='clear_id'></div>";
 	$GIS_BEG_SCRIPT			=	"<script type='text/javascript'>";
 	$GIS_MAP_MSG1			=	"var map = new BMap.Map('allmap');map.centerAndZoom('%s', 10);map.addControl(new BMap.MapTypeControl());";

@@ -98,7 +98,7 @@ if (navigator.appName == "Netscape")
 	{
 		if(adNum<(intPage-1))
 			adNum++;
-		else adNum=1;
+		else adNum=0;
 		theTimer=setTimeout("nextAd()", TimeOut);
 		document.images.imgInit.src=imgUrl[adNum];
 	}
@@ -133,7 +133,7 @@ else
 		if(adNum<count)
 			adNum++ ;
 		else
-			 adNum=1;
+			 adNum=0;
 		if( key==0 )
 		{
 			key=1;
