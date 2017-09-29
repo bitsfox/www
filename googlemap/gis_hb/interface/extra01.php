@@ -552,7 +552,15 @@ class init_std_val implements listbox_data
 	}//}}}
 //{{{public function get_ctlarea()
 	public function get_ctlarea()
-	{}//}}}
+	{
+		$ay1=array();$ay2=array();
+		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
+		if(mysqli_connect_error())
+			die("connect error!");
+		mysqli_set_charset($mysqli,"utf8");
+		$res=mysqli_query($mysqli,$this->conn);
+
+	}//}}}
 //{{{public function get_unit()
 	public function get_unit($y)
 	{}//}}}
