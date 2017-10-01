@@ -38,7 +38,7 @@
 		require_once($str);
 	?>
 	<?php
-		echo "</div><div id='right_id'><div id='clear_id'></div><div id='right_top_id' class='shadow_class'>";
+		echo "</div><div id='right_id'><div id='clear_id'></div><div id='right_top_aid' class='shadow_class'>";
 		$a=new gis_calc_main();
 		$a->show_header();
 		echo "</div></div></div><div id='clear_id'></div><div id='container_id'>";

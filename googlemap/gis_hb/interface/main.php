@@ -710,6 +710,7 @@ class gis_calc_main implements tab_show
 //{{{public function show_header()
 	public function show_header()
 	{
+		global $GIS_V_HEADER,$GIS_V_BODY1,$GIS_V_END,$GIS_V_BODY2;
 		if(!isset($_POST['sel1']))
 			return;
 		$a=new init_std_val($_SESSION['SEL_2']);
@@ -727,6 +728,17 @@ class gis_calc_main implements tab_show
 			$dy=$ay[$cy[$j]];
 			$str=sprintf("<font size=3>%d年度<font color=blue>%s%s</font>土壤点位<font color=blue>%s</font>含量统计表</font><br>",$_SESSION['SEL_2'],$_SESSION['SEL_1'],$dy[0][8],$_SESSION['SEL_3']);
 			echo $str;
+			$k=count($dy);
+			echo $GIS_V_HEADER;
+			for($l=0;$l<$k;$l++)
+			{
+				if(floatval($dy[$l][3]) < floatval($dy[$l][9]))
+					$str=sprintf($GIS_V_BODY1,$dy[$l][1],$dy[$l][4],$dy[$l][8],$dy[$l][3],$dy[$l][9]);
+				else
+					$str=sprintf($GIS_V_BODY2,$dy[$l][1],$dy[$l][4],$dy[$l][8],$dy[$l][3],$dy[$l][9]);
+				echo $str;
+			}
+			echo $GIS_V_END;
 		}
 	}//}}}
 //{{{public function show_body()
