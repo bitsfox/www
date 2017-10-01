@@ -613,7 +613,7 @@ class gis_calc_ctl implements tab_show
 			die("count error0013");
 		if(isset($_POST['sel1']))
 		{//$_SESSION['INTR_SEND']保存行政区划代码，$_SESSION['SEL_1']保存行政区划名称
-			$_SESSION['SEL_1']=$_POST['sel1'];$k=$_POST['sel1'];
+			$_SESSION['INTR_SEND']=$_POST['sel1'];$k=$_POST['sel1'];
 			for($j=0;$j<$i;$j++)
 			{
 				if($_POST['sel1'] == $this->ay[$j][0])
@@ -667,6 +667,22 @@ class gis_calc_ctl implements tab_show
 		}
 		$s1.="</select></div><div id='clear_id'></div>";
 		echo $s1;
+		if(isset($_POST['radio1']))
+			$_SESSION['SEL_4']=$_POST['radio1'];
+		else
+			$_SESSION['SEL_4']=0;
+		$s1="<br><div class='dwmsg'>";
+		if($_SESSION['SEL_4'] == 0)
+		{
+			$s1.="<input type='radio' name='radio1' value=0 checked />数据以表格显示";
+			$s1.="<input type='radio' name='radio1' value=1 />数据以图形显示</div>";
+		}
+		else
+		{
+			$s1.="<input type='radio' name='radio1' value=0 />数据以表格显示";
+			$s1.="<input type='radio' name='radio1' value=1 checked />数据以图形显示</div>";
+		}
+		echo $s1;
 		$s1="<br><br><div class='dvmsg2'></div><div class='dvmsg2'><input type='submit' id='button_id' name='submit' value='应用' title='点击开始查询'></div>";
 		$s1.="<div id='clear_id'></div>";
 		echo $s1;
@@ -694,19 +710,24 @@ class gis_calc_main implements tab_show
 //{{{public function show_header()
 	public function show_header()
 	{
-		$a=new init_gis_trail($_SESSION['SEL_2']);
-		$this->ay=$a->get_ctlarea();
-		$cy=array_keys($this->ay);
-		print_r($cy);
-		$i=count($cy);
+		if(!isset($_POST['sel1']))
+			return;
+		$a=new init_std_val($_SESSION['SEL_2']);
+		$ay=$a->get_ctlarea();
+		$i=count($ay);//取得iid的数量，确定要显示的表格数量
+		if($i <= 0)
+		{
+			$str=sprintf("<font size=3>%d年度<font color=blue>%s</font>土壤点位<font color=blue>特征污染物：%s</font>未监测</font><br>",$_SESSION['SEL_2'],$_SESSION['SEL_1'],$_SESSION['SEL_3']);
+			echo $str;
+			return;
+		}
+		$cy=array_keys($ay);
 		for($j=0;$j<$i;$j++)
 		{
-			$v=$cy[$j];
-			$k=count($this->ay[$v]);
-			echo "count is".$k;
+			$dy=$ay[$cy[$j]];
+			$str=sprintf("<font size=3>%d年度<font color=blue>%s%s</font>土壤点位<font color=blue>%s</font>含量统计表</font><br>",$_SESSION['SEL_2'],$_SESSION['SEL_1'],$dy[0][8],$_SESSION['SEL_3']);
+			echo $str;
 		}
-		echo "<br>";
-
 	}//}}}
 //{{{public function show_body()
 	public function show_body()

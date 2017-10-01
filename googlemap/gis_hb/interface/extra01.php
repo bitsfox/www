@@ -514,16 +514,18 @@ class init_gis_trail implements listbox_data
 class init_std_val implements listbox_data
 {
 	private $conn,$db,$rq;
-//{{{public function __constant($y)
-	public function __constant($y)
+//{{{public function __construct($y)
+	public function __construct($y)
 	{
+		if(!isset($_SESSION['SEL_1']))
+			die("session error! #00102");
 		if($y > 0)
 			$this->rq=$y;
 		else
 			$this->get_cur_year();
 		$this->get_used_db();
-		//$this->conn="SELECT a.aid,a.sid,a.iid,a.val,b.iname,b.isname,b.iisd,b.soil_type,b.soil_name,b.std FROM soil_val as a LEFT JOIN standard as b ON a.iid = b.iid ORDER BY a.iid,a.aid,a.sid";
-	 	$this->conn="SELECT a.aid,c.sname,a.iid,a.val,b.iname,b.isname,b.iisd,b.soil_type,b.soil_name,b.std FROM (soil_val as a LEFT JOIN standard as b ON a.iid = b.iid) left join station as c ON a.sid = c.sid ORDER BY a.iid,a.aid,a.val";
+		$this->conn="SELECT a.aid,c.sname,a.iid,a.val,b.iname,b.isname,b.iisd,b.soil_type,b.soil_name,b.std FROM (soil_val as a LEFT JOIN standard as b ON a.iid = b.iid) left join station as c ON a.sid = c.sid WHERE b.iname = '%s' ORDER BY a.iid,a.aid,a.val";
+	 	//$this->conn="SELECT a.aid,c.sname,a.iid,a.val,b.iname,b.isname,b.iisd,b.soil_type,b.soil_name,b.std FROM (soil_val as a LEFT JOIN standard as b ON a.iid = b.iid) left join station as c ON a.sid = c.sid WHERE b.iname = '%s' ORDER BY a.iid,a.aid,a.val";
 	}//}}}
 //{{{public function __destruct()
 	public function __destruct()
@@ -553,17 +555,48 @@ class init_std_val implements listbox_data
 //{{{public function get_ctlarea()
 	public function get_ctlarea()
 	{
-		$ay1=array();$ay2=array();
+		$ay=array();$cy1=array();$cy2=array();$cy3=array();
+		$i=intval($_SESSION['INTR_SEND']);
+		if(($i % 100) == 0) //选择全市的数据
+			$str=sprintf($this->conn,$_SESSION['SEL_3']);
+		else //选择某一个县市区的数据
+			$str=sprintf("SELECT a.aid,c.sname,a.iid,a.val,b.iname,b.isname,b.iisd,b.soil_type,b.soil_name,b.std FROM (soil_val as a LEFT JOIN standard as b ON a.iid = b.iid) left join station as c ON a.sid = c.sid WHERE b.iname = '%s' AND a.aid = %d ORDER BY a.iid,a.aid,a.val",$_SESSION['SEL_3'],$i);
 		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
 		if(mysqli_connect_error())
 			die("connect error!");
 		mysqli_set_charset($mysqli,"utf8");
-		$res=mysqli_query($mysqli,$this->conn);
-
+		$res=mysqli_query($mysqli,$str);
+		$i=0;//compare iid
+		while($rows=mysqli_fetch_row($res))
+		{
+			if($rows[2] != $i)
+			{
+				$i=$rows[2];
+				array_push($cy1,$i);
+				if(count($cy3) > 0)
+				{
+					array_push($cy2,$cy3);
+					$cy3=array();
+				}
+			}
+			array_push($cy3,$rows);
+		}
+		if(count($cy3) > 0)
+			array_push($cy2,$cy3);
+		mysqli_free_result($res);
+		mysqli_close($mysqli);
+		if(count($cy1) != count($cy2))
+		{
+			$str=sprintf("count erroe! cy1=%d cy2=%d",count($cy1),count($cy2));
+			die($str);
+		}
+		$ay=array_combine($cy1,$cy2);
+		return $ay; //返回的结果为：按照iid分组的队列，不论查询的是全部点位还是某一个区划的点位
 	}//}}}
 //{{{public function get_unit()
 	public function get_unit($y)
-	{}//}}}
+	{//该函数目前未用
+	}//}}}
 }//}}}
 
 
