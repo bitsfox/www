@@ -710,6 +710,13 @@ class gis_calc_main implements tab_show
 //{{{public function show_header()
 	public function show_header()
 	{
+		if(!isset($_SESSION['SEL_4']))
+			return;
+		if($_SESSION['SEL_4'] == 1)
+		{
+			$this->show_body();
+			return;
+		}
 		global $GIS_V_HEADER,$GIS_V_BODY1,$GIS_V_END,$GIS_V_BODY2;
 		if(!isset($_POST['sel1']))
 			return;
@@ -743,7 +750,31 @@ class gis_calc_main implements tab_show
 	}//}}}
 //{{{public function show_body()
 	public function show_body()
-	{}//}}}
+	{//图形显示的实现函数
+		//echo "hello world";
+		$a=new init_std_val($_SESSION['SEL_2']);
+		$ay=$a->get_ctlarea();
+		$i=count($ay);//取得iid的数量，确定要显示的表格数量
+		if($i <= 0)
+		{
+			$str=sprintf("<font size=3>%d年度<font color=blue>%s</font>土壤点位<font color=blue>特征污染物：%s</font>未监测</font><br>",$_SESSION['SEL_2'],$_SESSION['SEL_1'],$_SESSION['SEL_3']);
+			echo $str;
+			return;
+		}
+		if(isset($_SESSION['GRA_P1']))
+			unset($_SESSION['GRA_P1']);
+		$w=$_SESSION['screen'];
+		if(($w == NULL)||($w < 100))
+			$w=1000;
+		$xs=floor($w*0.67);
+		$cy=array_values($ay);
+		$_SESSION['GRA_P1']=$cy;
+		$str="<center><table width=97%>";
+		echo $str;
+		$str="<tr><td width=100% align=center><img src='core/graph/gg01.php' border=1 class='imgclass' style='width:90%;cursor:pointer' onclick='javascript:window.open(this.src)' /></td></tr>";
+		echo $str;
+		echo "</table></center>";
+	}//}}}
 //{{{public function show_tail()
 	public function show_tail()
 	{}//}}}

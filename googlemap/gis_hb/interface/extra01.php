@@ -525,7 +525,7 @@ class init_std_val implements listbox_data
 			$this->get_cur_year();
 		$this->get_used_db();
 		$this->conn="SELECT a.aid,c.sname,a.iid,a.val,b.iname,b.isname,b.iisd,b.soil_type,b.soil_name,b.std FROM (soil_val as a LEFT JOIN standard as b ON a.iid = b.iid) left join station as c ON a.sid = c.sid WHERE b.iname = '%s' ORDER BY a.iid,a.aid,a.val";
-	 	//$this->conn="SELECT a.aid,c.sname,a.iid,a.val,b.iname,b.isname,b.iisd,b.soil_type,b.soil_name,b.std FROM (soil_val as a LEFT JOIN standard as b ON a.iid = b.iid) left join station as c ON a.sid = c.sid WHERE b.iname = '%s' ORDER BY a.iid,a.aid,a.val";
+	 	//$this->conn="SELECT a.aid,c.sname,a.iid,a.val,b.iname,b.isname,b.iisd,b.soil_type,b.soil_name,b.std FROM (soil_val as a LEFT JOIN standard as b ON a.iid = b.iid) left join station as c ON a.sid = c.sid ORDER BY a.iid,a.aid,a.val";
 	}//}}}
 //{{{public function __destruct()
 	public function __destruct()
