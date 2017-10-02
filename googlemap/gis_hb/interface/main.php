@@ -740,9 +740,22 @@ class gis_calc_main implements tab_show
 			for($l=0;$l<$k;$l++)
 			{
 				if(floatval($dy[$l][3]) < floatval($dy[$l][9]))
-					$str=sprintf($GIS_V_BODY1,$dy[$l][1],$dy[$l][4],$dy[$l][8],$dy[$l][3],$dy[$l][9]);
+					$str=sprintf($GIS_V_BODY1,$dy[$l][1],$dy[$l][4],$dy[$l][8],$dy[$l][3],$dy[$l][9],"I类 (无污染)");
 				else
-					$str=sprintf($GIS_V_BODY2,$dy[$l][1],$dy[$l][4],$dy[$l][8],$dy[$l][3],$dy[$l][9]);
+				{
+					$z1=floatval($dy[$l][3])/floatval($dy[$l][9]);
+					if($z1 <= 2)
+						$s="II类 (轻微污染)";
+					else
+						if($z1 <= 3)
+							$s="III类 (轻度污染)";
+						else
+							if($z1 <= 5)
+								$s="IV类 (中度污染)";
+							else
+								$s="V类 (重度污染)";
+					$str=sprintf($GIS_V_BODY2,$dy[$l][1],$dy[$l][4],$dy[$l][8],$dy[$l][3],$dy[$l][9],$s);
+				}
 				echo $str;
 			}
 			echo $GIS_V_END;

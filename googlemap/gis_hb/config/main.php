@@ -99,9 +99,9 @@ require_once($str11);
 	$GIS_HEADER				=	"<center><table width=97%% class='imagetable'><tr><th width=10%% align=center>项目名称</th><th width=40%% align=center>项目数据</th><th width=10%% align=center>项目名称</th><th width=40%% align=center>项目数据</th></tr>";
 	$GIS_BODY1				=	"<tr><td width=10%%>%s</td><td width=40%%>%s</td><td width=10%%>%s</td><td width=40%%>%s</td></tr>";
 	$GIS_HEADER_END			=	"</table></center>";
-	$GIS_V_HEADER			=	"<center><table width=97%% class='imagetable'><tr><th width=40%% align=center>点位名称</th><th width=15%% align=center>监测项目</th><th width=15%% align=center>土地类型</th><th width=15%% align=center>监测值(mg/L)</th><th width=15%% align=center>标准值</th></tr>";
-	$GIS_V_BODY1			=	"<tr><td width=40%%>%s</td><td width=15%%>%s</td><td width=15%%>%s</td><td width=15%%>%s</td><td width=15%%>%s</td></tr>";
-	$GIS_V_BODY2			=	"<tr><td width=40%%>%s</td><td width=15%%>%s</td><td width=15%%>%s</td><td width=15%%><font color=red>%s</font></td><td width=15%%>%s</td></tr>";
+	$GIS_V_HEADER			=	"<center><table width=97%% class='imagetable'><tr><th width=40%% align=center>点位名称</th><th width=15%% align=center>监测项目</th><th width=15%% align=center>土地类型</th><th width=10%% align=center>监测值(mg/Kg)</th><th width=10%% align=center>标准值(mg/Kg)</th><th width=10%% align=center>污染程度</th></tr>";
+	$GIS_V_BODY1			=	"<tr><td width=40%%>%s</td><td width=15%%>%s</td><td width=15%%>%s</td><td width=10%%>%s</td><td width=10%%>%s</td><td width=10%%>%s</td></tr>";
+	$GIS_V_BODY2			=	"<tr><td width=40%%>%s</td><td width=15%%>%s</td><td width=15%%>%s</td><td width=10%%><font color=red>%s</font></td><td width=10%%>%s</td><td width=10%%>%s</td></tr>";
 	$GIS_V_END				=	"</table></center>";
 ?>
 

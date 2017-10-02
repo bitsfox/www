@@ -66,8 +66,34 @@ for($j=0;$j<$i;$j++)
 	$ox=$wt;$oy+=$k*22+60;
 	imageline($im,$ox,$oy,$ox,$oym+60,$black);
 	imageline($im,$ox,$oy,$ox+$wx-24,$oy,$black);
-	$str=sprintf("i=%d",$k);
-	imagettftext($im,10,0,$ox+10,$oy-30,$black,$font,$str);
+	$str=sprintf("%d年度%s%s土壤点位%s含量柱状图",$_SESSION['SEL_2'],$_SESSION['SEL_1'],$cy[0][8],$_SESSION['SEL_3']);
+	imagettftext($im,12,0,$ox+154,$oym+30,$blue,$font,$str);
+	$v1=16;$v2=$oy;
+	for($l=0;$l<$k;$l++)
+	{
+		$v2=$oy-$l*22-4;
+		$str=$cy[$l][1];
+		imagettftext($im,10,0,$v1,$v2,$black,$font,$str);
+		$v3=$ox;$v4=$oy-($l+1)*22;
+		$v6=$v4+22;
+		if($cy[$l][3] >= $cy[$l][9]) //超标
+		{
+			$cb=floatval((floatval($cy[$l][3])-floatval($cy[$l][9]))/floatval($cy[3][9]));
+			if($cb < 0.25)
+				$v5=$ox+600+floor($cb)*200;
+			else
+				//$v5=$ox+600+floor((1-$cb)*200);
+				$v5=$ox+800;
+			imagefilledrectangle($im,$v3,$v4,$v5,$v6,$red);
+		}
+		else
+		{
+			$v5=$ox+floor((600*floatval($cy[$l][3]))/floatval($cy[$l][9]));
+			imagefilledrectangle($im,$v3,$v4,$v5,$v6,$blue);
+		}
+	}
+	//画个标准值的刻度
+	imageline($im,$ox+600,$oy,$ox+600,$oy-5,$red);
 }
 header('Content-type:image/png'); //通知浏览器这不是文本而是一个图片
 imagepng($im);
