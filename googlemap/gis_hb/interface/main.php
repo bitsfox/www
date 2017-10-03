@@ -56,8 +56,6 @@ $st=constant("FULL_PATH")."core/main.php";
 require_once($st);
 $st=constant("FULL_PATH")."interface/extra01.php";
 require_once($st);
-$st=constant("FULL_PATH")."interface/extra02.php";
-require_once($st);
 ///////////////////////////////////////////////////////////////
 //{{{class login_init implements sqli_def
 class login_init implements sqli_def
@@ -545,9 +543,7 @@ class gis_mx_pic implements tab_show
 		$a=new init_gis_mmx($_SESSION['SEL_2']);
 		$dy=array();
 		$dy=$a->get_unit();
-		$s1="<center><img src='%s' border=1 class='imgclass' style='width:580px;'></center>";
-		$str=sprintf($s1,$dy[0][0]);
-		//echo $dy[0][0];
+		$str="<center><img src='".$dy[0][0]."' border=1 class='imgclass' style='width:90%;cursor:pointer' onclick='javascript:window.open(this.src)'></center>";
 		echo $str;
 	}//}}}
 //{{{public function show_tail()

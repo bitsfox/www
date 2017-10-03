@@ -41,8 +41,6 @@ $st=constant("FULL_PATH")."core/main.php";
 require_once($st);
 $st=constant("FULL_PATH")."interface/extra01.php";
 require_once($st);
-$st=constant("FULL_PATH")."interface/extra02.php";
-require_once($st);
 	$ay=array();
 	global $arry;
 	$i=count($arry);

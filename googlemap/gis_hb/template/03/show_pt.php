@@ -41,8 +41,6 @@ $st=constant("FULL_PATH")."core/main.php";
 require_once($st);
 $st=constant("FULL_PATH")."interface/extra01.php";
 require_once($st);
-$st=constant("FULL_PATH")."interface/extra02.php";
-require_once($st);
 	$ay=array();
 	$a=new init_gis(0);
 	$ay=$a->get_unit(0);
