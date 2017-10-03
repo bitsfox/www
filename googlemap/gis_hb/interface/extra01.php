@@ -558,7 +558,10 @@ class init_std_val implements listbox_data
 		$ay=array();$cy1=array();$cy2=array();$cy3=array();
 		$i=intval($_SESSION['INTR_SEND']);
 		if(($i % 100) == 0) //选择全市的数据
-			$str=sprintf($this->conn,$_SESSION['SEL_3']);
+			if($_SESSION['SEL_5'] == 0)
+				$str=sprintf($this->conn,$_SESSION['SEL_3']);
+			else
+				$str=sprintf("SELECT a.aid,c.sname,a.iid,a.val,b.iname,b.isname,b.iisd,b.soil_type,b.soil_name,b.std FROM (soil_val as a LEFT JOIN standard as b ON a.iid = b.iid) left join station as c ON a.sid = c.sid WHERE b.iname = '%s' ORDER BY a.iid,a.aid,a.val",$_SESSION['SEL_3']);
 		else //选择某一个县市区的数据
 			$str=sprintf("SELECT a.aid,c.sname,a.iid,a.val,b.iname,b.isname,b.iisd,b.soil_type,b.soil_name,b.std FROM (soil_val as a LEFT JOIN standard as b ON a.iid = b.iid) left join station as c ON a.sid = c.sid WHERE b.iname = '%s' AND a.aid = %d ORDER BY a.iid,a.aid,a.val",$_SESSION['SEL_3'],$i);
 		$mysqli=mysqli_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);

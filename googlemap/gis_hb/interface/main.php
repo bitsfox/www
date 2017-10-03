@@ -683,6 +683,22 @@ class gis_calc_ctl implements tab_show
 			$s1.="<input type='radio' name='radio1' value=1 checked />数据以图形显示</div>";
 		}
 		echo $s1;
+		if(isset($_POST['radio2']))
+			$_SESSION['SEL_5']=$_POST['radio2'];
+		else
+			$_SESSION['SEL_5']=0; //按监测值排序
+		$s1="<br><div class='dwmsg'>";
+		if($_SESSION['SEL_5'] == 0)
+		{
+			$s1.="<input type='radio' name='radio2' value=0 checked />按监测数据排序";
+			$s1.="<input type='radio' name='radio2' value=1 />按行政区划排序</div>";
+		}
+		else
+		{
+			$s1.="<input type='radio' name='radio2' value=0 />按监测数据排序";
+			$s1.="<input type='radio' name='radio2' value=1 checked />按行政区划排序</div>";
+		}
+		echo $s1;
 		$s1="<br><br><div class='dvmsg2'></div><div class='dvmsg2'><input type='submit' id='button_id' name='submit' value='应用' title='点击开始查询'></div>";
 		$s1.="<div id='clear_id'></div>";
 		echo $s1;
