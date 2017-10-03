@@ -100,7 +100,7 @@ if (navigator.appName == "Netscape")
 		theTimer=setTimeout("nextAd()", TimeOut);
 		document.images.imgInit.src=imgUrl[adNum];
 	}
-	document.write('<img src="imgUrl[1]" name="imgInit" border=1  class="imgClass" style="width:250px;">');
+	document.write('<img src="imgUrl[1]" name="imgInit" border=1  class="imgClass" style="width:250px;cursor:pointer" onclick="javascript:window.open(this.src)">');
 //	document.write('</div></center>');
 	nextAd();
 }

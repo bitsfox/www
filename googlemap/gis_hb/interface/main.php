@@ -543,7 +543,7 @@ class gis_mx_pic implements tab_show
 		$a=new init_gis_mmx($_SESSION['SEL_2']);
 		$dy=array();
 		$dy=$a->get_unit();
-		$str="<center><img src='".$dy[0][0]."' border=1 class='imgclass' style='width:90%;cursor:pointer' onclick='javascript:window.open(this.src)'></center>";
+		$str="<center><img src='".$dy[0][0]."' border=1 class='imgclass' style='width:50%;cursor:pointer' onclick='javascript:window.open(this.src)'></center>";
 		echo $str;
 	}//}}}
 //{{{public function show_tail()

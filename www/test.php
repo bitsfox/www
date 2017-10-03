@@ -82,7 +82,7 @@ echo "<a href='excel.php' target=_blank>excel</a>";
 <br><br>
 <input type='button' id='bnt1' value="button1" onclick='aaa()'/>
 <?php
-$str=base64_encode(base64_encode('tahb'));
+$str=base64_encode(base64_encode('user'));
 echo $str;
 $s1=base64_decode(base64_decode($str));
 echo "<br>".$s1;
