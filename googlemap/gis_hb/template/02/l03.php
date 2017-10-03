@@ -22,7 +22,7 @@
  */
 ?>
 <?php
-	echo "<center>当前浏览：监测数据</center>";
+	echo "<center>当前浏览：数据分析</center>";
 	global $menulnk;
 	echo "<form name='form_left3' method='post' action='./".$menulnk[2]."'>";
 	$a=new gis_calc_ctl(1);
