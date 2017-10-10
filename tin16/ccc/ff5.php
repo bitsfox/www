@@ -11,28 +11,28 @@ echo "<p><strong>(1) 攻略總目錄</strong></p>
 <td >第一世界</td><td >支線跳轉</td><td>鋼琴/技能</td>
 </tr>
 <tr >
-<td ><a href='ff5_part1.php' target='_blank'>1-1 風之水晶</a></td><td><a href='ff5_part1.php/#初心者之館' target='_blank'>初心者之館</a></td><td>琴：<span style='color: #800000;'>圖爾村</span></td>
+<td ><a href='ff5_part1_1.php' target='_blank'>1-1 風之水晶</a></td><td><a href='ff5_part1_1.php/#初心者之館' target='_blank'>初心者之館</a></td><td>琴：<span style='color: #800000;'>圖爾村</span></td>
 </tr>
 <tr >
-<td ><a href='ff5_part2.php' target='_blank'>1-2 水之水晶</a></td><td><a href='ff5_part2.php/#泰空城' target='_blank'>泰空城</a></td><td >琴：<span style='color: #800000;'>卡文鎮</span></td>
+<td ><a href='ff5_part1_2.php' target='_blank'>1-2 水之水晶</a></td><td><a href='ff5_part1_2.php/#泰空城' target='_blank'>泰空城</a></td><td >琴：<span style='color: #800000;'>卡文鎮</span></td>
 </tr>
 <tr >
-<td ><a href='ff5_part3.php' target='_blank'>1-3 火之水晶</a></td><td ></td><td >琴：<span style='color: #800000;'>卡納克鎮</span></td>
+<td ><a href='ff5_part1_3.php' target='_blank'>1-3 火之水晶</a></td><td ></td><td >琴：<span style='color: #800000;'>卡納克鎮</span></td>
 </tr>
 <tr >
-<td ><a href='ff5_part4.php' target='_blank'>1-4 土之水晶 (上)</a></td><td ><a href='ff5_part4.php/#沃爾斯城' target='_blank'>小妖魔</a><br/>
-<a href='ff5_part4.php/#新月鎮' target='_blank'>新月鎮</a><br/>
-<a href='ff5_part4.php/#裡克斯村' target='_blank'>裡克斯村</a><br/>
-<a href='ff5_part4.php/#嘉科爾洞窟' target='_blank'>嘉科爾洞窟</a><br/>
-<a href='ff5_part4.php/#伊斯特利村' target='_blank'>伊斯特利村</a></td><td >琴：<span style='color: #800000;'>新月鎮</span><br/>
+<td ><a href='ff5_part1_4.php' target='_blank'>1-4 土之水晶 (上)</a></td><td ><a href='ff5_part1_4.php/#沃爾斯城' target='_blank'>小妖魔</a><br/>
+<a href='ff5_part1_4.php/#新月鎮' target='_blank'>新月鎮</a><br/>
+<a href='ff5_part1_4.php/#裡克斯村' target='_blank'>裡克斯村</a><br/>
+<a href='ff5_part1_4.php/#嘉科爾洞窟' target='_blank'>嘉科爾洞窟</a><br/>
+<a href='ff5_part1_4.php/#伊斯特利村' target='_blank'>伊斯特利村</a></td><td >琴：<span style='color: #800000;'>新月鎮</span><br/>
 琴：<span style='color: #800000;'>嘉科爾鎮</span><br/>
 歌：<span style='color: #800080;'>體力之歌</span><br/>
 歌：<span style='color: #800080;'>誘惑之歌</span><br/>
 黑：<span style='color: #800080;'>蛙變</span><br/>
 歌：<span style='color: #800080;'>愛之歌</span><br/>
-召：<a href='ff5_part4.php/#古代圖書館 地圖2' target='_blank'>伊弗利特</a><br/>
-召：<a href='ff5_part4.php/#沃爾斯城' target='_blank'>濕婆</a><br/>
-召：<a href='ff5_part4.php/#伊斯特利村' target='_blank'>拉姆</a></td>
+召：<a href='ff5_part1_4.php/#古代圖書館 地圖2' target='_blank'>伊弗利特</a><br/>
+召：<a href='ff5_part1_4.php/#沃爾斯城' target='_blank'>濕婆</a><br/>
+召：<a href='ff5_part1_4.php/#伊斯特利村' target='_blank'>拉姆</a></td>
 </tr>
 <tr >
 <td ><a href='ff5_part5.php' target='_blank'>1-5 土之水晶 (下)</a></td><td ></td><td >召：<a href='ff5_part5.php/#卡納克隕石地' target='_blank'>泰坦</a></td>
@@ -41,15 +41,15 @@ echo "<p><strong>(1) 攻略總目錄</strong></p>
 <td >第二世界</td><td >支線跳轉</td><td >鋼琴/技能</td>
 </tr>
 <tr >
-<td ><a href='http://www.hdlulu.com/2013/04/09/ff5_part2_1/' target='_blank'>2-1 孤島 – 巴爾城</a></td><td ><a href='http://www.hdlulu.com/2013/04/09/ff5_part2_1/#莫古利村' target='_blank'>莫古利村</a><br/>
-<a href='http://www.hdlulu.com/2013/04/09/ff5_part2_1/#巴爾城' target='_blank'>石像練級</a><br/>
-<a href='http://www.hdlulu.com/2013/04/09/ff5_part2_1/#金幣洞窟' target='_blank'>金幣洞窟</a><br/>
-<a href='http://www.hdlulu.com/2013/04/09/ff5_part2_1/#克爾布村' target='_blank'>科納格壺</a></td><td >琴：<span style='color: #800000;'>魯格爾村</span><br/>
+<td ><a href='ff5_part11.php' target='_blank'>2-1 孤島 – 巴爾城</a></td><td ><a href='ff5_part11.php/#莫古利村' target='_blank'>莫古利村</a><br/>
+<a href='ff5_part11.php/#巴爾城' target='_blank'>石像練級</a><br/>
+<a href='ff5_part11.php/#金幣洞窟' target='_blank'>金幣洞窟</a><br/>
+<a href='ff5_part11.php/#克爾布村' target='_blank'>科納格壺</a></td><td >琴：<span style='color: #800000;'>魯格爾村</span><br/>
 歌：<span style='color: #800080;'>鎮魂歌</span><br/>
-召：<a href='http://www.hdlulu.com/2013/04/09/ff5_part2_1/#飛龍谷' target='_blank'>巨像兵</a></td>
+召：<a href='ff5_part11.php/#飛龍谷' target='_blank'>巨像兵</a></td>
 </tr>
 <tr >
-<td ><a href='http://www.hdlulu.com/2013/04/11/ff5_part2_2/' target='_blank'>2-2 吉多祠堂 – 慕亞大森林</a></td><td ><a href='http://www.hdlulu.com/2013/04/11/ff5_part2_2/#薩蓋特城' target='_blank'>薩蓋特城</a><br/>
+<td ><a href='ff5_part12.php/' target='_blank'>2-2 吉多祠堂 – 慕亞大森林</a></td><td ><a href='ff5_part12.php/#薩蓋特城' target='_blank'>薩蓋特城</a><br/>
 <a href='http://www.hdlulu.com/2013/04/11/ff5_part2_2/#慕亞村' target='_blank'>慕亞村</a><br/>
 <a href='http://www.hdlulu.com/2013/04/11/ff5_part2_2/#封印之城庫扎' target='_blank'>封印之城庫扎</a></td><td >琴：<span style='color: #800000;'>慕亞村</span><br/>
 歌：<span style='color: #800080;'>速度之歌</span><br/>
