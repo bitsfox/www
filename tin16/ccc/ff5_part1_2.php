@@ -1,6 +1,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <?php
-echo "<p><span style='color: #800000; font-size: 22px;'>Final Fantasy V ( FF5, iOS )</span></p>
+echo "<center><font size=4><p><span style='color: #800000; font-size: 22px;'>Final Fantasy V ( FF5, iOS )</span></p>
 <p><span style='color: #800000; font-size: 22px;'>Walkthrough &#8211; Part 1-2</span></p>
 <p><span style='color: #800000; font-size: 22px;'>1st World: The Water Crystal</span></p>
 <p><span style='color: #800000; font-size: 22px;'> </span></p>
@@ -859,5 +859,5 @@ echo "<table style='width: 565px;' border='0' cellspacing='0' cellpadding='0'><c
 <p><img class='alignnone' src='./images/ff5_part_1-2/09-tower_of_walse-016.png' alt='' width='486' height='326' /></p>
 <p><span style='color: #ffffff;'>-</span></p>
 <p><span style='color: #ffffff;'>-</span></p>
-<p>Part 1-2 第一世界：水之水晶 ( 完 )</p>";
+<p>Part 1-2 第一世界：水之水晶 ( 完 )</p></font></center>";
 ?>

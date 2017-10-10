@@ -1,6 +1,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <?php
-echo "<p><span style='color: #800000; font-size: 22px;'>Final Fantasy V ( FF5, iOS )</span></p>
+echo "<center><font size=4><p><span style='color: #800000; font-size: 22px;'>Final Fantasy V ( FF5, iOS )</span></p>
 <p><span style='color: #800000; font-size: 22px;'>Walkthrough &#8211; Part 1-5</span></p>
 <p><span style='color: #800000; font-size: 22px;'>1st World: The Earth Crystal (B)</span></p>
 <p><span style='color: #800000; font-size: 22px;'> </span></p>
@@ -583,5 +583,5 @@ echo "<table cellspacing='0' cellpadding='0'>
 <span style='color: #ffffff;'>-</span><br /> <span style='color: #800080;'>青魔法：</span>( 依照遊戲中的青魔法選單由上至下 )<br /> 水紋吐息、5 級致死一擊、4 級強重力、蛙變之歌、閃光、月之笛、死亡厲爪、勁風、中勁風、火焰放射、妖精拳、黑色衝擊、破防、融合、吸血、魔法鎚、自爆、？？？、千針刺、白風、導彈<br /> <span style='color: #ffffff;'>-</span><br /> <span style='color: #800080;'>召喚魔法：</span><br /> 陸行鳥、風精靈、印魚群、濕婆、拉姆、伊弗利特、泰坦</p>
 <p><span style='color: #ffffff;'>-</span></p>
 <p><span style='color: #ffffff;'>-</span></p>
-<p>Part 1-5 第一世界：土之水晶 (下) ( 完 )</p>";
+<p>Part 1-5 第一世界：土之水晶 (下) ( 完 )</p></font></center>";
 ?>

@@ -1,6 +1,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <?php
-echo "<p><span style='color: #800000; font-size: 22px;'>Final Fantasy V ( FF5, iOS )</span></p>
+echo "<center><font size=4><p><span style='color: #800000; font-size: 22px;'>Final Fantasy V ( FF5, iOS )</span></p>
 <p><span style='color: #800000; font-size: 22px;'>Walkthrough &#8211; Part 1-3</span></p>
 <p><span style='color: #800000; font-size: 22px;'>1st World: The Fire Crystal</span></p>
 <p><span style='color: #800000; font-size: 22px;'> </span></p>
@@ -393,5 +393,5 @@ echo "<p><span style='color: #ffffff;'>-</span><br /> <span style='color: #fffff
 <span style='color: #ffffff;'>-</span><br /> <span style='color: #0000ff;'>後記：</span><br /> 1. 現在取得了馴獸師之後，我們便可利用其「操縱」能力 ( 需升到 LV2：ABP 10+50=60 習得 )，在學習青魔法上有相當大的幫助，越早學會越好，請務必安排。<br /> 
 <span style='color: #ffffff;'>-</span><br /> 2. 忍者的特性就是常見的速度快，可雙手各持一把武器增加攻擊力 ( 二刀流 )，以及「投擲」能力、戰鬥中的逃跑能力等等，可以自行考慮學習。<br /> <span style='color: #ffffff;'>-</span><br /> 3. 風水師除了利用各種地形進行攻擊之外，還有閃避迷宮中的陷阱的效果，但地形攻擊總是隨機的，有時也要看運氣。</p>
 <p><span style='color: #ffffff;'>-</span><br /> <span style='color: #ffffff;'>-</span></p>
-<p>Part 1-3 第一世界：火之水晶 ( 完 )</p>";
+<p>Part 1-3 第一世界：火之水晶 ( 完 )</p></font></center>";
 ?>

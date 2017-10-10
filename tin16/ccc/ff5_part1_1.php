@@ -1,6 +1,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <?php
-echo "<p><span style='color: #800000; font-size: 22px;'>Final Fantasy V ( FF5, iOS )</span></p>
+echo "<center><font size=4><p><span style='color: #800000; font-size: 22px;'>Final Fantasy V ( FF5, iOS )</span></p>
 <p><span style='color: #800000; font-size: 22px;'>Walkthrough &#8211; Part 1-1</span></p>
 <p><span style='color: #800000; font-size: 22px;'>1st World: The Wind Crystal</span></p>
 <p><span style='color: #800000; font-size: 22px;'> </span></p>
@@ -423,5 +423,5 @@ echo "<p><span style='color: #ffffff;'>-</span></p>
 <p><img class='alignnone' src='./images/ff5_part_1-1/05-shrine_of_the_wind_crystal-019.png' alt='' width='486' height='326' /><br /> <span style='color: #ffffff;'>-</span><br /> <span style='color: #ffffff;'> -</span><br /> 最後就走到房間最上面的傳送點離開吧！</p>
 <p><img class='alignnone' src='./images/ff5_part_1-1/05-shrine_of_the_wind_crystal-020.png' alt='' width='486' height='326' /><br /> <span style='color: #ffffff;'>-</span><br /> <span style='color: #ffffff;'> -</span><br /> 現在已取得職業，那麼誓必該開始轉職來提升 ABP 了，這樣才能早日習得想學到的能力，大家就選自己喜歡的職業吧！因為各職業的技能特性差異還挺大的，在我的資料收集上還無法這麼快說明清楚，所以這裡的攻略會先以基本常用的職業為主，如果有特殊情況再另外說明。<br /> <span style='color: #ffffff;'>-</span><br /> 我選了<span style='color: #0000ff;'>騎士、盜賊、黑魔、白魔</span>。</p>
 <p>( 我真的很愛偷東西XDDDDD )<br /> <span style='color: #ffffff;'>-</span><br /> 當然日後一定也會整理好各職業的技能一覽表，像是我的資料中青魔道士可有高達 30 種的青魔法，大家有興趣的話也可以轉青魔道師來試試XDDDDD<br /> <span style='color: #ffffff;'>-</span><br /> <span style='color: #ffffff;'> -</span><br /> 選好職業後，建議可以先在附近先打打雜兵，提升一點基本能力，至少黑白魔法的 LV1 可以使用之後，就繼續前進，我們下一個地點會先回到剛剛去過的圖爾村。<br /> <span style='color: #ffffff;'>-</span><br /> <span style='color: #ffffff;'> -</span><em id='__mceDel'><span style='color: #ffffff;'><br /> </span></em></p>
-<p>Part 1-1 第一世界：風之水晶 ( 完 )</p>";
+<p>Part 1-1 第一世界：風之水晶 ( 完 )</p></font></center>";
 ?>

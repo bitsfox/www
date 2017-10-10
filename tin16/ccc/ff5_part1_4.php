@@ -1,6 +1,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <?php
-echo "<p><span style='color: #800000; font-size: 22px;'>Final Fantasy V ( FF5, iOS )</span></p>
+echo "<center><font size=4><p><span style='color: #800000; font-size: 22px;'>Final Fantasy V ( FF5, iOS )</span></p>
 <p><span style='color: #800000; font-size: 22px;'>Walkthrough &#8211; Part 1-4</span></p>
 <p><span style='color: #800000; font-size: 22px;'>1st World: The Earth Crystal (A)</span></p>
 <p><span style='color: #800000; font-size: 22px;'> </span></p>
@@ -762,5 +762,5 @@ echo "<p><span style='color: #ffffff;'>-</span></p>
 <span style='color: #000080;'><a href='./images/ff5_enemy_list/056.png' target='_blank'><span style='color: #000080; text-decoration: underline;'>056-原型機器人</span></a></span></span><br /> 在他身上可以學到兩種青魔法：
 <span style='color: #800080;'>火焰放射、導彈</span><br /> ( <span style='text-decoration: underline;'><span style='color: #0000ff;'><a href='http://www.hdlulu.com/2013/04/06/ff5_part1_5/' target='_blank'><span style='color: #0000ff; text-decoration: underline;'>下一篇已有說明</span></a></span></span>，等拿到飛空艇後就可以去補打 )<br /> <span style='color: #ffffff;'>-</span></p>
 <p><span style='color: #ffffff;'>-</span></p>
-<p>Part 1-4 第一世界：土之水晶 (上) ( 完 )</p>";
+<p>Part 1-4 第一世界：土之水晶 (上) ( 完 )</p></font></center>";
 ?>
