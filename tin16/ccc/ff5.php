@@ -67,37 +67,52 @@ echo "<p><strong>(1) 攻略總目錄</strong></p>
 <a href='./ff5_part3_1.php#吉多祠堂 > 古代圖書館 > 慕亞村' target='_blank'>弱雞刀/勇者劍</a></td><td >歌：<span style='color: #800080;'>魔力之歌</span></td>
 </tr>
 <tr >
-<td ><a href='http://www.hdlulu.com/2013/04/19/ff5_part3_2/' target='_blank'>3-2 第二塊石板</a></td><td ><a href='http://www.hdlulu.com/2013/04/19/ff5_part3_2/#蜃景鎮' target='_blank'>蜃景鎮</a><br/>
-<a href='http://www.hdlulu.com/2013/04/19/ff5_part3_2/#陸行鳥環繞世界一周' target='_blank'>幻影背心</a><br/>
-<a href='http://www.hdlulu.com/2013/04/19/ff5_part3_2/#伊斯特利瀑布' target='_blank'>魔法燈</a><br/>
-<a href='http://www.hdlulu.com/2013/04/19/ff5_part3_2/#魯格爾村' target='_blank'>魯格爾村</a><br/>
-<a href='http://www.hdlulu.com/2013/04/19/ff5_part3_2/#卡文鎮' target='_blank'>卡文鎮</a></td><td >琴：<span style='color: #800000;'>蜃景鎮</span><br/>
+<td ><a href='./ff5_part3_2.php' target='_blank'>3-2 第二塊石板</a></td><td ><a href='./ff5_part3_2.php#蜃景鎮' target='_blank'>蜃景鎮</a><br/>
+<a href='./ff5_part3_2.php#陸行鳥環繞世界一周' target='_blank'>幻影背心</a><br/>
+<a href='./ff5_part3_2.php#伊斯特利瀑布' target='_blank'>魔法燈</a><br/>
+<a href='./ff5_part3_2.php#魯格爾村' target='_blank'>魯格爾村</a><br/>
+<a href='./ff5_part3_2.php#卡文鎮' target='_blank'>卡文鎮</a></td><td >琴：<span style='color: #800000;'>蜃景鎮</span><br/>
 歌：<span style='color: #800080;'>力量之歌</span><br/>
 歌：<span style='color: #800080;'>英雄之歌</span><br/>
-召：<a href='http://www.hdlulu.com/2013/04/19/ff5_part3_2/#海盜巢窟' target='_blank'>希爾德拉</a><br/>
-召：<a href='http://www.hdlulu.com/2013/04/19/ff5_part3_2/#嘉科爾洞窟' target='_blank'>奧汀</a></td>
+召：<a href='./ff5_part3_2.php#海盜巢窟' target='_blank'>希爾德拉</a><br/>
+召：<a href='./ff5_part3_2.php#嘉科爾洞窟' target='_blank'>奧汀</a></td>
 </tr>
 <tr >
-<td ><a href='http://www.hdlulu.com/2013/04/22/ff5_part3_3/' target='_blank'>3-3 第三塊石板</a></td><td ><a href='http://www.hdlulu.com/2013/04/22/ff5_part3_3/#卡納克鎮南方海底洞窟' target='_blank'>遊戲進度統計</a><br/>
-<a href='http://www.hdlulu.com/2013/04/22/ff5_part3_3/#沃爾斯塔' target='_blank'>模仿師</a></td><td >白：<span style='color: #800080;'>神聖</span><br/>
+<td ><a href='./ff5_part3_3.php' target='_blank'>3-3 第三塊石板</a></td><td ><a href='./ff5_part3_3.php#卡納克鎮南方海底洞窟' target='_blank'>遊戲進度統計</a><br/>
+<a href='./ff5_part3_3.php#沃爾斯塔' target='_blank'>模仿師</a></td><td >白：<span style='color: #800080;'>神聖</span><br/>
 黑：<span style='color: #800080;'>核爆</span><br/>
 時：<span style='color: #800080;'>隕石</span><br/>
-召：<a href='http://www.hdlulu.com/2013/04/22/ff5_part3_3/#北山' target='_blank'>巴哈姆特</a><br/>
-召：<a href='http://www.hdlulu.com/2013/04/22/ff5_part3_3/#鳳凰之塔' target='_blank'>鳳凰</a></td>
+召：<a href='./ff5_part3_3.php#北山' target='_blank'>巴哈姆特</a><br/>
+召：<a href='./ff5_part3_3.php#鳳凰之塔' target='_blank'>鳳凰</a></td>
 </tr>
 <tr >
-<td ><a href='http://www.hdlulu.com/2013/04/27/ff5_part3_4/' target='_blank'>3-4 第四塊石板最終戰</a></td><td ><a href='http://www.hdlulu.com/2013/04/27/ff5_part3_4/#蜃景鎮西南方海底' target='_blank'>預言士</a><br/>
-<a href='http://www.hdlulu.com/2013/04/27/ff5_part3_4/#蜃景鎮西南方海底' target='_blank'>劍鬥士</a><br/>
-<a href='http://www.hdlulu.com/2013/04/27/ff5_part3_4/#蜃景鎮西南方海底' target='_blank'>砲擊士</a></td><td >召：<a href='http://www.hdlulu.com/2013/04/27/ff5_part3_4/#伊斯特利瀑布' target='_blank'>利維坦</a></td>
+<td ><a href='./ff5_part3_4.php' target='_blank'>3-4 第四塊石板最終戰</a></td><td ><a href='./ff5_part3_4.php#蜃景鎮西南方海底' target='_blank'>預言士</a><br/>
+<a href='./ff5_part3_4.php#蜃景鎮西南方海底' target='_blank'>劍鬥士</a><br/>
+<a href='./ff5_part3_4.php#蜃景鎮西南方海底' target='_blank'>砲擊士</a></td><td >召：<a href='./ff5_part3_4.php#伊斯特利瀑布' target='_blank'>利維坦</a></td>
 </tr>
 <tr >
 <td colspan='3' >隱藏迷宮</td>
 </tr>
 <tr >
-<td ><a href='http://www.hdlulu.com/2013/05/03/ff5_part4_1/' target='_blank'>4-1 隱藏迷宮 (上)</a></td><td ></td><td ></td>
+<td ><a href='./ff5_part4_1.php' target='_blank'>4-1 隱藏迷宮 (上)</a></td><td ></td><td ></td>
 </tr>
 <tr >
-<td ><a href='http://www.hdlulu.com/2013/05/07/ff5_part4_2/' target='_blank'>4-2 隱藏迷宮 (下)</a></td><td ><a href='http://www.hdlulu.com/2013/05/07/ff5_part4_2/#光與暗的盡頭' target='_blank'>亡靈法師</a></td><td ><a href='http://www.hdlulu.com/2013/05/07/ff5_part4_2/#黑暗魔法習得說明' target='_blank'>黑暗魔法列表</a></td>
+<td ><a href='./ff5_part4_2.php' target='_blank'>4-2 隱藏迷宮 (下)</a></td><td ><a href='./ff5_part4_2.php#光與暗的盡頭' target='_blank'>亡靈法師</a></td><td ><a href='./ff5_part4_2.php#黑暗魔法習得說明' target='_blank'>黑暗魔法列表</a></td>
 </tr>
-</tbody></table></center>";
+</tbody></table><br><br>
+<table width=70% border=1 cellpadding=2 cellspacing=0>
+<tr><td width=100%><font size=4>
+<a href='./ff5_mix_items.php' target=_blank>FF5 道具調配效果一覽表</a></font>
+</td></tr>
+<tr><td width=100%><font size=4>
+<a href='./ff5_blue_magic_list1.php' target=_blank>FF5 青魔法習得列表(一)</a>
+</font></td></tr>
+<tr><td width=100%><font size=4>
+<a href='./ff5_blue_magic_list2.php' target=_blank>FF5 青魔法習得列表(二)</a>
+</font></td></tr>
+<tr><td width=100%><font size=4>
+<a href='./ff5_magic.php' target=_blank>FF5 魔法技能一覽表</a>
+</font></td></tr>
+</table>
+</center><br><br>";
 ?>
