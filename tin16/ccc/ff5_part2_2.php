@@ -693,11 +693,6 @@ echo "
 <blockquote>
 <div id='th0ths_quotes_sc_quote' style='font-style: normal; padding: 2px 10px 0px 10px; line-height: 1.5em; '>慕亞大森林四個水晶魔王攻略法：</br>
 對付他們可以先放青魔法「閃光」，這樣他們物理攻擊就不會打到主角們，接著再一隻隻打，不要用全體攻擊魔法，這樣水晶們就不會連續使用攻擊魔法。會好打很多！</div>
-<div id='th0ths_quotes_sc_owner' style='font-style: normal; text-align: right; padding: 12px 15px 0px 0px; '>
-<a href='#comment-6886'>連結／原始發表：ppk　日期：2013/11/24</a> </div>
-</blockquote>
-</div>
-<p>&nbsp;</p>
 <p>好不容易打敗了 4 顆水晶，艾克斯迪司竟突然出現！( 劇情省略 )</p>
 <p><img class='alignnone' src='./images/ff5_part_2-2/08-muah_forest-022.png' alt='' width='486' height='326' /><br /> <span style='color: #ffffff;'>-</span><br /> 
 <span style='color: #ffffff;'> -</span><br /> 劇情過後，眾人乘著飛龍回到了地圖上。後續到底發生了什麼事呢？欲知詳情，請自行體驗，我已經學乖了，盡量不要劇透太多，多保留一點劇情讓大家去感受&#8230;.. ( 我都哭了 )</p>
@@ -734,7 +729,7 @@ echo "
 </tr>
 </tbody></table>";
 echo "
-<p><span style='color: #ffffff; line-height: 1.5em;'>-</span><br /> <span style='color: #ffffff;'> -</span><br /> 接下來第二世界只剩最後一個地點，就是艾克斯迪司城。在這之前如果你還沒有去過 <span style='text-decoration: underline;'><span style='color: #0000ff;'><a href='./ff5_part2_1#金幣洞窟' target='_blank'>
+<p><span style='color: #ffffff; line-height: 1.5em;'>-</span><br /> <span style='color: #ffffff;'> -</span><br /> 接下來第二世界只剩最後一個地點，就是艾克斯迪司城。在這之前如果你還沒有去過 <span style='text-decoration: underline;'><span style='color: #0000ff;'><a href='./ff5_part2_1.php#金幣洞窟' target='_blank'>
 <span style='color: #0000ff; text-decoration: underline;'>金幣洞窟</span></a></span></span> 打 <span style='text-decoration: underline;'><span style='color: #000080; text-decoration: underline;'><a href='./images/ff5_enemy_list/282.png' target='_blank'>
 <span style='color: #000080; text-decoration: underline;'>282-金錢龜</span></a></span></span>、還有鋼琴沒去彈，或是召喚獸 <span style='text-decoration: underline;'><span style='color: #000080; text-decoration: underline;'><a href='./images/ff5_enemy_list/281.png' target='_blank'>
 <span style='color: #000080; text-decoration: underline;'>281-卡托布雷帕斯</span></a></span></span> 還沒去打，現在都可以進行。<br /> <span style='color: #ffffff;'>-</span><br /> 當然，你要繼續窩在巴爾城 B2 打 <span style='text-decoration: underline;'>
