@@ -732,12 +732,6 @@ echo "<table cellspacing='0' cellpadding='0'>
 在戰鬥前將詩人都弄到瀕死<br />
 （我的做法是找同一地圖的蜈蚣，騎士開防護，其它人防禦，開自動到詩人都瀕死，再吧騎士外的人都調整成陣魂歌後逃跑）<br /><br />
 接著遇到金錢龜後就開自動無腦打</div>
-<div id='th0ths_quotes_sc_owner' style='font-style: normal; text-align: right; padding: 12px 15px 0px 0px; '>
-<a href='http://www.hdlulu.com/2013/04/11/ff5_part2_2/comment-page-2/#comment-7247' target='_blank'>連結／原始發表：CHCOOBOO　日期：2013/12/07</a> </div>
-</blockquote>
-</div>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 <p>飛龍谷裡的 <span style='text-decoration: underline;'><span style='color: #000080; text-decoration: underline;'><a href='./images/ff5_enemy_list/103.png' target='_blank'><span style='color: #000080; text-decoration: underline;'>103-毒雞獸</span></a></span></span> 操縱指令中有「浮空」</p>
 <p><img class='alignnone' src='./images/ff5_part_2-1/08-cave_of_gil-006.png' alt='' width='486' height='326' /></p>
 <p><span style='color: #ffffff;'>-</span></p>
@@ -818,7 +812,7 @@ echo "<p><span style='color: #ffffff;'>-</span></p>
 <p><span style='color: #ffffff;'>-</span></p>
 <p><span style='color: #ff0000;'>11/1 Update:</span> ( 感謝網友 <span style='color: #0000ff;'>mili</span> 分享心得 )</p>
 <p>要抓科納格蛙時，用青魔法「<span style='color: #800080;'>死亡厲爪</span>」，成功的話就可讓它瀕死，這樣就很好抓囉！</p>
-<p>( 青魔法習得請參考：<span style='text-decoration: underline;'><span style='color: #000080;'><a href='http://www.hdlulu.com/2013/05/08/ff5_blue_magic_list_1/#死亡厲爪' target='_blank'>
+<p>( 青魔法習得請參考：<span style='text-decoration: underline;'><span style='color: #000080;'><a href='./ff5_blue_magic_list1.php#死亡厲爪' target='_blank'>
 <span style='color: #000080; text-decoration: underline;'>FF5 青魔法習得列表 &#8211; 死亡厲爪</span></a></span></span> )</p>
 <p><span style='color: #ffffff;'>-</span></p>
 <p>在附近會出沒的「科納格蛙」，記得去抓一隻</p>
