@@ -49,7 +49,9 @@ if($pflag==0)
 	echo "<td align=center width=25% ><a href='./tin16/bbb/bof3.php' target=_blank>龙战士3攻略</a></td>";
 	echo "<td align=center width=25% ><a href='./tin16/bbb/bof4.php#begin' target=_blank>龙战士4攻略</a></td>";
 	echo "<td align=center width=25% ><a href='./tin16/ccc/ff5.php#begin' target=_blank>最终幻想5a</a></td></tr>";
-	echo "<tr><td align=center width=25% ><a href='./tin16/ddd/ff6.php' target=_blank>最终幻想6</a></td><tr></table></center>";
+	echo "<tr><td align=center width=25% ><a href='./tin16/ddd/ff6.php' target=_blank>最终幻想6</a></td>";
+	echo "<td align=center width=25% ><a href='./tin16/eee/ff2.php' target=_blank>最终幻想2</a></td>";
+	echo "<td align=center width=25% ><a href='./tin16/fff/ff3.php' target=_blank>最终幻想3</a></td></tr></table></center>";
 	echo "<br><br>";
 }
 ?>
