@@ -6,6 +6,16 @@ for a,b,c in os.walk("./"):
 	for x in c:
 		y=x[-3:]
 		if(y.lower() == "htm"):
+			str="sed -i 's/walkthrough.html/zhaoce_walkthrough_advance.htm/g' %s" % (x)
+			os.system(str)
+			print("modified: %s" % (x))
+#			print(str)
+print("finished!!!");
+exit(0)
+for a,b,c in os.walk("./"):
+	for x in c:
+		y=x[-3:]
+		if(y.lower() == "htm"):
 #			print x
 			str="sed -i '/^<li><a href=\"enemies.htm/d' %s" % (x)
 			os.system(str)
