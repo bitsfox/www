@@ -127,7 +127,7 @@ echo "<center><font size=4><p><strong>(1) 攻略總目錄</strong></p>
 <span style='color: #800000;'>聖戰</span></td>
 </tr>
 <tr>
-<td colspan='3' style='background-color: #ffffcc;'>隱藏迷宮</td>
+<td colspan='3' style='background-color: #ffffcc;'><center><a href='./ff6/index.html'>天幻版FF6A</a></center></td>
 </tr>
 <tr>
 <td style='background-color: #ffffcc;'>(編寫中尚未開放)</td><td style='background-color: #ffffcc;'></td><td style='background-color: #ffffcc;'></td>
