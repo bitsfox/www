@@ -85,6 +85,7 @@ echo "<a href='./www/index.php' target=_blank>进入lims系统</a>&nbsp;&nbsp;&n
 echo "<br><br><a href='./php-chunked-xhtml/index.html' target=_blank>php</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=./www.veryhuo.com/php/index.html>PHP</a>";
 echo "<br><br><a href='./php_hl/login.php' target=_blank>dl登录</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./www/test.php' target=_blank>php测试</a><br></br>";
 echo "<a href=./googlemap/aaa.html target=_blank>turang</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./googlemap/gis_hb/login.php' target=_blank>土壤信息</a>";
+echo "<br><br><a href='./template_new/test.html' target=_blank>测试</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./template_new/backdoor.php' target=_blank>设置</a>";
 }
 //echo "end of search....<br>";
 ?><!--

@@ -131,7 +131,17 @@ git远程空仓库的建立：<font color=red size=3>git init --bare workdir.git
 +-----------+-------------+-----------------+------+-----+---------+----------------+---------------------------------+--------------------+
 6 rows in set (0.00 sec)
 或者：
-<font color=red size=3>show create table station;</font>
+<font color=red size=3>show create table soil_val;
+ CREATE TABLE `soil_val` (
+  `sid` varchar(24) NOT NULL COMMENT '站点id',
+  `iid` int(12) unsigned NOT NULL COMMENT '污染项目id',
+  `date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '监测时间',
+  `val` double(7,2) NOT NULL COMMENT '监测值',
+  `aid` int(6) unsigned NOT NULL COMMENT '行政区划',
+  PRIMARY KEY (`sid`,`iid`),
+  KEY `soil_aid_iid` (`aid`,`iid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+</font>
 3.修改一个字段：
 可以使用change和modify两种方式，区别在于，change可以修改指定字段的名称和属性。而modify只修改属性：
 用change如果不修改字段名的时候也要写两次字段名（相同的）：
