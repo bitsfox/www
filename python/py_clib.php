@@ -118,17 +118,73 @@ echo "<tr><td><font size=4><br>Python语言中的字典是一个根据关键字�
 echo "<tr><td><font size=6>三、Python的C语言扩展</font></td></tr>";
 echo "<tr><td><font size=5><br>3.1 模块封装</font></td></tr>";
 echo "<tr><td><font size=4></font><br>在了解了Python的C语言接口后，就可以利用Python解释器提供的这些接口来编写Python的C语言扩展，假设有如下一个C语言函数：<br><br>
-例6：example.c
-int fact(int n)
-{
-	  if (n <= 1) 
-		      return 1;
-	    else 
-			    return n * fact(n - 1);
-}
-</td></tr>";
-echo "<tr><td><font size=4></font></td></tr>";
-echo "<tr><td><font size=4></font></td></tr>";
+&nbsp;&nbsp;&nbsp;&nbsp;例6：example.c<br>
+&nbsp;&nbsp;&nbsp;&nbsp;int fact(int n)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (n <= 1) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return n * fact(n - 1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+该函数的功能是计算某个给定自然数的阶乘，如果想在Python解释器中调用该函数，则应该首先将其实现为Python中的一个模块，这需要编写相应的封装接口，如下所示：<br><br>
+&nbsp;&nbsp;&nbsp;例7: wrap.c<br>
+&nbsp;&nbsp;&nbsp;#include <Python.h><br>
+&nbsp;&nbsp;&nbsp;PyObject* wrap_fact(PyObject* self, PyObject* args) <br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int n, result;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (! PyArg_ParseTuple(args, 'i:fact', &n))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return NULL;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = fact(n);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return Py_BuildValue('i', result);<br>
+&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;static PyMethodDef exampleMethods[] = <br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'fact', wrap_fact, METH_VARARGS, 'Caculate N!'},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{NULL, NULL}<br>
+&nbsp;&nbsp;&nbsp;};<br>
+&nbsp;&nbsp;&nbsp;void initexample() <br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PyObject* m;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m = Py_InitModule('example', exampleMethods);<br>
+&nbsp;&nbsp;&nbsp;}<br><br>
+一个典型的Python扩展模块至少应该包含三个部分：导出函数、方法列表和初始化函数。<br><br></td></tr>";
+echo "<tr><td><font size=5>3.2 导出函数</font></td></tr>";
+echo "<tr><td><font size=4><br>要在Python解释器中使用C语言中的某个函数，首先要为其编写相应的导出函数，上述例子中的导出函数为wrap_fact。在Python的C语言扩展中，所有的导出函数都具有相同的函数原型：<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;PyObject* method(PyObject* self, PyObject* args);<br><br>
+该函数是Python解释器和C函数进行交互的接口，带有两个参数：self和args。参数self只在C函数被实现为内联方法(built-in method)时才被用到，通常该参数的值为空(NULL)。参数args中包含了Python解释器要传递给C函数的所有参数，通常使用Python的C语言扩展接口提供的函数PyArg_ParseTuple()来获得这些参数值。<br>
+所有的导出函数都返回一个PyObject指针，如果对应的C函数没有真正的返回值(即返回值类型为void)，则应返回一个全局的None对象(Py_None)，并将其引用计数增1，如下所示：<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;PyObject* method(PyObject *self, PyObject *args)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Py_INCREF(Py_None);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return Py_None;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br><br></font></td></tr>";
+echo "<tr><td><font size=5>3.3 方法列表</font></td></tr>";
+echo "<tr><td><font size=4><br>方法列表中给出了所有可以被Python解释器使用的方法，上述例子对应的方法列表为：<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;static PyMethodDef exampleMethods[] = <br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'fact', wrap_fact, METH_VARARGS, 'Caculate N!'},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{NULL, NULL}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;};<br><br>
+方法列表中的每项由四个部分组成：方法名、导出函数、参数传递方式和方法描述。方法名是从Python解释器中调用该方法时所使用的名字。参数传递方式则规定了Python向C函数传递参数的具体形式，可选的两种方式是METH_VARARGS和METH_KEYWORDS，其中METH_VARARGS是参数传递的标准形式，它通过Python的元组在Python解释器和C函数之间传递参数，若采用METH_KEYWORD方式，则Python解释器和C函数之间将通过Python的字典类型在两者之间进行参数传递。<br><br></font></td></tr>";
+echo "<tr><td><font size=5>3.4 初始化函数</font></td></tr>";
+echo "<tr><td><font size=4><br>所有的Python扩展模块都必须要有一个初始化函数，以便Python解释器能够对模块进行正确的初始化。Python解释器规定所有的初始化函数的函数名都必须以init开头，并加上模块的名字。对于模块example来说，则相应的初始化函数为:<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;void initexample()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PyObject* m;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m = Py_InitModule('example', exampleMethods);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+当Python解释器需要导入该模块时，将根据该模块的名称查找相应的初始化函数，一旦找到则调用该函数进行相应的初始化工作，初始化函数则通过调用Python的C语言扩展接口所提供的函数Py_InitModule()，来向Python解释器注册该模块中所有可以用到的方法。<br><br></font></td></tr>";
+echo "<tr><td><font size=5>3.5 编译链接</font></td></tr>";
+echo "<tr><td><font size=4><br>要在Python解释器中使用C语言编写的扩展模块，必须将其编译成动态链接库的形式。下面以RedHat Linux 8.0为例，介绍如何将C编写的Python扩展模块编译成动态链接库：<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;gcc -fpic -c -I/usr/include/python2.2 \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-I /usr/lib/python2.2/config \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;example.c wrapper.c<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gcc -shared -o example.so example.o wrapper.o<br><br></font></td></tr>";
+echo "<tr><td><font size=5>3.6 引入Python解释器</font></td></tr>";
+echo "<tr><td><font size=4><br>当生成Python扩展模块的动态链接库后，就可以在Python解释器中使用该扩展模块了，与Python自带的模块一样，扩展模块也是通过import命令引入后再使用的，如下所示：<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;python<br>
+&nbsp;&nbsp;&nbsp;&nbsp;>>>import example<br>
+&nbsp;&nbsp;&nbsp;&nbsp;>>>elample.fact(4)<br><br></font></td></tr>";
 echo "<tr><td><font size=4></font></td></tr>";
 echo "</table></center>";
 ?>
