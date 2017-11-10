@@ -100,6 +100,7 @@ git远程空仓库的建立：<font color=red size=3>git init --bare workdir.git
 		这里注意如果是不同数据库的数据迁移，不能使用load data local infile,只能是load data infile.
    		另外备份时注意建立的目录ta_test_bak的属性，有问题的话可以更改为：chmod 0777
 		使用逗号作为分割符时：<font color=red size=3>load data infile '/tmp/aaa.txt' into table usertab fields terminated by',';</font>
+		<font size=5 color=red><strong>注意：load data的操作是添加数据库，而非新建，如需用该操作更新数据库时，应先手动delete已有的数据！</strong></font>
 2.导出一个表
  mysqldump -u 用户名 -p 数据库名 表名> 导出的文件名
  <font color=red size=3>mysqldump -u wcnc -p ta_test usrtab> ta_test_usrtab.sql</font>
