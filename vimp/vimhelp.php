@@ -107,7 +107,7 @@ dfa 表示删除从当前光标到光标后面的第一个a字符之间的内容
 yy 表示拷贝光标所在行.
 dd 表示删除光标所在行.
 D 表示删除从当前光标到光标所在行尾的内容.
-<font size=4 color=blue>删除包含特定字符的行:g/pattern/d
+<font size=4 color=blue>删除包含特定字符的行:g/pattern/d  例如删除空行的操作：g/^$/d
 删除不包含指定字符的行：v/pattern/d
                         g!/pattern/d
 删除指定的行：
