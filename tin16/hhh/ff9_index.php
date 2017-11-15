@@ -18,7 +18,30 @@ echo "<tr><td align=center><br><strong>个人特技列表</strong><br><br><font 
 <a href='./ff9_special_eiko.php' target=_blank>艾可特技</a>&nbsp;&nbsp;&nbsp;&nbsp;
 <a href='./ff9_special_chan.php' target=_blank>阿馋特技</a>&nbsp;&nbsp;&nbsp;&nbsp;
 </font></td></tr>";
-echo "<tr><td align=center><br><font size=4><a href='./ff9_01.php' target=_blank>攻略1</a></font></td></tr>";
+echo "<tr><td align=center><br><table width=80% cellpadding=3 cellspacing=0 border=1>";
+echo "<tr><td align=center colspan=6><strong><font size=4>DISC1攻略</font></strong></td></tr>";
+echo "<tr><td><a href='./ff9_01.php#ff9_001' target=_blank>(1)序章</a></td>";
+echo "<td><a href='./ff9_01.php#ff9_002' target=_blank>(2)亚历山大广场</a></td>";
+echo "<td><a href='./ff9_01.php#ff9_003' target=_blank>(3)剧场艇演出</a></td>";
+echo "<td><a href='./ff9_01.php#ff9_004' target=_blank>(4)诱拐计划</a></td>";
+echo "<td><a href='./ff9_01.php#ff9_005' target=_blank>(5)逃离</a></td>";
+echo "<td><a href='./ff9_01.php#ff9_006' target=_blank>(6)魔之森</a></td></tr>";
+echo "<tr><td><a href='./ff9_01.php#ff9_007' target=_blank>(7)森林逃亡</a></td>";
+echo "<td><a href='./ff9_01.php#ff9_008' target=_blank>(8)雾之大陆</a></td>";
+echo "<td><a href='./ff9_01.php#ff9_009' target=_blank>(9)冰之洞窟</a></td>";
+echo "<td><a href='./ff9_01.php#ff9_010' target=_blank>(10)达利村</a></td>";
+echo "<td><a href='./ff9_01.php#ff9_011' target=_blank>(11)隐藏在地下的秘密</a></td>";
+echo "<td><a href='./ff9_01.php#ff9_012' target=_blank>(12)空中激战 </a></td></tr>";
+echo "<tr><td><a href='./ff9_01.php#ff9_013' target=_blank>(13)巨大城</a></td>";
+echo "<td><a href='./ff9_01.php#ff9_014' target=_blank>(14)狩猎大会</a></td>";
+echo "<td><a href='./ff9_01.php#ff9_015' target=_blank>(15)新的伙伴</a></td>";
+echo "<td><a href='./ff9_01.php#ff9_016' target=_blank>(16)陷落的通道</a></td>";
+echo "<td><a href='./ff9_01.php#ff9_017' target=_blank>(17)分道扬镳</a></td>";
+echo "<td><a href='./ff9_01.php#ff9_018' target=_blank>(18)青之王都</a></td></tr></table>";
+echo "</table></td></tr>";
+echo "<tr><td align=center><br><font size=4><a href='./ff9_02.php' target=_blank>攻略DISC2</a></font></td></tr>";
+echo "<tr><td align=center><br><font size=4><a href='./ff9_03.php' target=_blank>攻略DISC3</a></font></td></tr>";
+echo "<tr><td align=center><br><font size=4><a href='./ff9_04.php' target=_blank>攻略DISC4</a></font></td></tr>";
 
 echo "</table></center></body></html>";
 ?>

@@ -11,7 +11,7 @@
   width: 300px;
   border:1px solid #789;
   text-align:center;
-  font-size:12px;
+  font-size:13px;
   background:#eee;
   font-family: "YaHei Consolas Hybrid",Verdana,MS Gothic,Arial,"宋体";
 }
@@ -28,7 +28,7 @@
   background:#daebf3;
   color:#c30;
   width:60px;
-  font-size:12px;
+  font-size:13px;
   text-align:center;
   font-weight:normal;
   border-right:1px dotted #369;
@@ -57,6 +57,7 @@
   padding-left:3px;
   padding-top:2px;
   text-align:left;
+  font-size:13px;
   vertical-align:middle;
   line-height:120%;
   background:#fff;
@@ -74,7 +75,7 @@
   color:#0c0;font-family:"YaHei Consolas Hybrid",Georgia,MS Gothic,Arial,"宋体";
 }
 .character {
-  color:#f0f;font-family:"YaHei Consolas Hybrid",Georgia,MS Gothic,Arial,"宋体";
+  color:#00f;font-family:"YaHei Consolas Hybrid",Georgia,MS Gothic,Arial,"宋体";
 }
 .monster {
   color:#33f;font-family:"YaHei Consolas Hybrid",Georgia,MS Gothic,Arial,"宋体";
