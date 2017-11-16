@@ -66,6 +66,30 @@ echo "<td><a href='./ff9_02.php#ff9_122' target=_blank>(22)在Iifa Tree的战斗
 echo "<td></td><td></td></tr>";
 echo "</table></td></tr>";
 
+echo "<tr><td align=center><br><table width=80% cellpadding=3 cellspacing=0 border=1>";
+echo "<tr><td align=center colspan=6><strong><font size=4>DISC3攻略</font></strong></td></tr>";
+echo "<tr><td><a href='./ff9_03.php#ff9_201' target=_blank>(1)回到Alexandria城</a></td>";
+echo "<td><a href='./ff9_03.php#ff9_202' target=_blank>(2)Treno的卡片之旅</a></td>";
+echo "<td><a href='./ff9_03.php#ff9_203' target=_blank>(3)在Alexandria的战斗</a></td>";
+echo "<td><a href='./ff9_03.php#ff9_204' target=_blank>(4)Lindblum城</a></td>";
+echo "<td><a href='./ff9_03.php#ff9_205' target=_blank>(5)黑魔法师之村</a></td>";
+echo "<td><a href='./ff9_03.php#ff9_206' target=_blank>(6)沙漠</a></td></tr>";
+echo "<tr><td><a href='./ff9_03.php#ff9_207' target=_blank>(7)Forgotten Continent</a></td>";
+echo "<td><a href='./ff9_03.php#ff9_208' target=_blank>(8)Oeilvert</a></td>";
+echo "<td><a href='./ff9_03.php#ff9_209' target=_blank>(9)Desert Palace</a></td>";
+echo "<td><a href='./ff9_03.php#ff9_210' target=_blank>(10)Esto Gaza</a></td>";
+echo "<td><a href='./ff9_03.php#ff9_211' target=_blank>(11)Mount Gulug</a></td>";
+echo "<td><a href='./ff9_03.php#ff9_212' target=_blank>(12)飞空艇</a></td></tr>";
+echo "<tr><td><a href='./ff9_03.php#ff9_213' target=_blank>(13)Alexandria</a></td>";
+echo "<td><a href='./ff9_03.php#ff9_214' target=_blank>(14)Daguerreo</a></td>";
+echo "<td><a href='./ff9_03.php#ff9_215' target=_blank>(15)Ipsen's Castle</a></td>";
+echo "<td><a href='./ff9_03.php#ff9_216' target=_blank>(16)四大守护</a></td>";
+echo "<td><a href='./ff9_03.php#ff9_217' target=_blank>(17)Terra</a></td>";
+echo "<td><a href='./ff9_03.php#ff9_218' target=_blank>(18)Bran Bal</a></td></tr>";
+echo "<tr><td><a href='./ff9_03.php#ff9_219' target=_blank>(19)Pandemonium</a></td>";
+echo "<td></td><td></td><td></td><td></td><td></td></tr>";
+echo "</table></td></tr>";
+
 echo "<tr><td align=center><br><font size=4><a href='./ff9_03.php' target=_blank>攻略DISC3</a></font></td></tr>";
 echo "<tr><td align=center><br><font size=4><a href='./ff9_04.php' target=_blank>攻略DISC4</a></font></td></tr>";
 
