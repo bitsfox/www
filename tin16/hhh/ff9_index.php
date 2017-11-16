@@ -37,9 +37,35 @@ echo "<td><a href='./ff9_01.php#ff9_014' target=_blank>(14)狩猎大会</a></td>
 echo "<td><a href='./ff9_01.php#ff9_015' target=_blank>(15)新的伙伴</a></td>";
 echo "<td><a href='./ff9_01.php#ff9_016' target=_blank>(16)陷落的通道</a></td>";
 echo "<td><a href='./ff9_01.php#ff9_017' target=_blank>(17)分道扬镳</a></td>";
-echo "<td><a href='./ff9_01.php#ff9_018' target=_blank>(18)青之王都</a></td></tr></table>";
+echo "<td><a href='./ff9_01.php#ff9_018' target=_blank>(18)青之王都</a></td></tr>";
 echo "</table></td></tr>";
-echo "<tr><td align=center><br><font size=4><a href='./ff9_02.php' target=_blank>攻略DISC2</a></font></td></tr>";
+echo "<tr><td align=center><br><table width=80% cellpadding=3 cellspacing=0 border=1>";
+echo "<tr><td align=center colspan=6><strong><font size=4>DISC2攻略</font></strong></td></tr>";
+echo "<tr><td><a href='./ff9_02.php#ff9_101' target=_blank>(1)车站</a></td>";
+echo "<td><a href='./ff9_02.php#ff9_102' target=_blank>(2)不夜城</a></td>";
+echo "<td><a href='./ff9_02.php#ff9_103' target=_blank>(3)家庭教师</a></td>";
+echo "<td><a href='./ff9_02.php#ff9_104' target=_blank>(4)虫道</a></td>";
+echo "<td><a href='./ff9_02.php#ff9_105' target=_blank>(5)克雷拉</a></td>";
+echo "<td><a href='./ff9_02.php#ff9_106' target=_blank>(6)克雷拉街道</a></td></tr>";
+echo "<tr><td><a href='./ff9_02.php#ff9_107' target=_blank>(7)克雷拉崩坏</a></td>";
+echo "<td><a href='./ff9_02.php#ff9_108' target=_blank>(8)亚历山大的救援</a></td>";
+echo "<td><a href='./ff9_02.php#ff9_109' target=_blank>(9)逃出亚历山大</a></td>";
+echo "<td><a href='./ff9_02.php#ff9_110' target=_blank>(10)女王的杀手</a></td>";
+echo "<td><a href='./ff9_02.php#ff9_111' target=_blank>(11)雷神的考验</a></td>";
+echo "<td><a href='./ff9_02.php#ff9_112' target=_blank>(12)被摧毁的巨大城</a></td></tr>";
+echo "<tr><td><a href='./ff9_02.php#ff9_113' target=_blank>(13)地下的隐藏通道</a></td>";
+echo "<td><a href='./ff9_02.php#ff9_114' target=_blank>(14)外侧大陆的矮人村</a></td>";
+echo "<td><a href='./ff9_02.php#ff9_115' target=_blank>(15)黑魔导士之村</a></td>";
+echo "<td><a href='./ff9_02.php#ff9_116' target=_blank>(16)矮人村的婚礼</a></td>";
+echo "<td><a href='./ff9_02.php#ff9_117' target=_blank>(17)又一个召唤士</a></td>";
+echo "<td><a href='./ff9_02.php#ff9_118' target=_blank>(18召唤士之村)</a></td></tr>";
+echo "<tr><td><a href='./ff9_02.php#ff9_119' target=_blank>(19)艾可的决定</a></td>";
+echo "<td><a href='./ff9_02.php#ff9_120' target=_blank>(20)Iifa Tree</a></td>";
+echo "<td><a href='./ff9_02.php#ff9_121' target=_blank>(21)在Madain Sari的战斗</a></td>";
+echo "<td><a href='./ff9_02.php#ff9_122' target=_blank>(22)在Iifa Tree的战斗</a></td>";
+echo "<td></td><td></td></tr>";
+echo "</table></td></tr>";
+
 echo "<tr><td align=center><br><font size=4><a href='./ff9_03.php' target=_blank>攻略DISC3</a></font></td></tr>";
 echo "<tr><td align=center><br><font size=4><a href='./ff9_04.php' target=_blank>攻略DISC4</a></font></td></tr>";
 
