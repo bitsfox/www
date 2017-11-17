@@ -2,23 +2,25 @@
 echo "<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />";
 echo "<link href='./ff9.css' rel='stylesheet' type='text/css' media='all'/>";
 echo "</head><body>";
-echo "<center><font color=red size=5>最终幻想9攻略</font><br>";
-echo "<table width=80% border=0 cellpading=0 cellspacing=0>";
-echo "<tr><td align=center><br><font size=4><a href='./ff9_skill.php' target=_blank>技能列表</a></font></td></tr>";
-echo "<tr><td align=center><br><font size=4><a href='./ff9_magic1.php' target=_blank>黑、白魔法列表</a></font></td></tr>";
-echo "<tr><td align=center><br><font size=4><a href='./ff9_magic2.php' target=_blank>青魔法列表</a></font></td></tr>";
-echo "<tr><td align=center><br><font size=4><a href='./ff9_magic3.php' target=_blank>召唤魔法列表</a></font></td></tr>";
-echo "<tr><td align=center><br><strong>个人特技列表</strong><br><br><font size=4>
-<a href='./ff9_special_jitan.php' target=_blank>吉坦特技</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href='./ff9_special_xiaodao.php' target=_blank>小刀特技</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href='./ff9_special_vivi.php' target=_blank>比比特技</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href='./ff9_special_stanna.php' target=_blank>斯坦纳特技</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href='./ff9_special_freya.php' target=_blank>弗蕾雅特技</a>&nbsp;&nbsp;&nbsp;&nbsp;</td></tr><tr><td align=center><br><br><font size=4>
-<a href='./ff9_special_ama.php' target=_blank>阿曼达特技</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href='./ff9_special_eiko.php' target=_blank>艾可特技</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href='./ff9_special_chan.php' target=_blank>阿馋特技</a>&nbsp;&nbsp;&nbsp;&nbsp;
-</font></td></tr>";
-echo "<tr><td align=center><br><table width=80% cellpadding=3 cellspacing=0 border=1>";
+echo "<center><font color=red size=5>最终幻想9攻略</font><br><br>";
+echo "<table width=64% border=1 cellpadding=5 cellspacing=0>";
+echo "<tr><td align=center><font size=4><a href='./ff9_skill.php' target=_blank>技能列表</a></font>";
+echo "<td align=center><font size=4><a href='./ff9_magic1.php' target=_blank>黑、白魔法列表</a></font>";
+echo "<td align=center><font size=4><a href='./ff9_magic2.php' target=_blank>青魔法列表</a></font>";
+echo "<td align=center><font size=4><a href='./ff9_magic3.php' target=_blank>召唤魔法列表</a></font></tr>";
+echo "</table><br>";
+echo "<table width=64% border=1 cellpadding=5 cellspacing=0>";
+echo "<tr><td colspan=4 align=center><strong>个人特技列表</strong></td></tr><tr>
+<td><font size=4><a href='./ff9_special_jitan.php' target=_blank>吉坦特技</a></font></td>
+<td><font size=4><a href='./ff9_special_xiaodao.php' target=_blank>小刀特技</a></font></td>
+<td><font size=4><a href='./ff9_special_vivi.php' target=_blank>比比特技</a></font></td>
+<td><font size=4><a href='./ff9_special_stanna.php' target=_blank>斯坦纳特技</a></font></td></tr><tr>
+<td><font size=4><a href='./ff9_special_freya.php' target=_blank>弗蕾雅特技</a></font></td>
+<td><font size=4><a href='./ff9_special_ama.php' target=_blank>阿曼达特技</a></font></td>
+<td><font size=4><a href='./ff9_special_eiko.php' target=_blank>艾可特技</a></font></td>
+<td><font size=4><a href='./ff9_special_chan.php' target=_blank>阿馋特技</a></font></td></tr>
+</table>";
+echo "<br><table width=64% cellpadding=3 cellspacing=0 border=1>";
 echo "<tr><td align=center colspan=6><strong><font size=4>DISC1攻略</font></strong></td></tr>";
 echo "<tr><td><a href='./ff9_01.php#ff9_001' target=_blank>(1)序章</a></td>";
 echo "<td><a href='./ff9_01.php#ff9_002' target=_blank>(2)亚历山大广场</a></td>";
@@ -38,8 +40,8 @@ echo "<td><a href='./ff9_01.php#ff9_015' target=_blank>(15)新的伙伴</a></td>
 echo "<td><a href='./ff9_01.php#ff9_016' target=_blank>(16)陷落的通道</a></td>";
 echo "<td><a href='./ff9_01.php#ff9_017' target=_blank>(17)分道扬镳</a></td>";
 echo "<td><a href='./ff9_01.php#ff9_018' target=_blank>(18)青之王都</a></td></tr>";
-echo "</table></td></tr>";
-echo "<tr><td align=center><br><table width=80% cellpadding=3 cellspacing=0 border=1>";
+echo "</table>";
+echo "<br><table width=64% cellpadding=3 cellspacing=0 border=1>";
 echo "<tr><td align=center colspan=6><strong><font size=4>DISC2攻略</font></strong></td></tr>";
 echo "<tr><td><a href='./ff9_02.php#ff9_101' target=_blank>(1)车站</a></td>";
 echo "<td><a href='./ff9_02.php#ff9_102' target=_blank>(2)不夜城</a></td>";
@@ -64,9 +66,8 @@ echo "<td><a href='./ff9_02.php#ff9_120' target=_blank>(20)Iifa Tree</a></td>";
 echo "<td><a href='./ff9_02.php#ff9_121' target=_blank>(21)在Madain Sari的战斗</a></td>";
 echo "<td><a href='./ff9_02.php#ff9_122' target=_blank>(22)在Iifa Tree的战斗</a></td>";
 echo "<td></td><td></td></tr>";
-echo "</table></td></tr>";
-
-echo "<tr><td align=center><br><table width=80% cellpadding=3 cellspacing=0 border=1>";
+echo "</table>";
+echo "<br><table width=64% cellpadding=3 cellspacing=0 border=1>";
 echo "<tr><td align=center colspan=6><strong><font size=4>DISC3攻略</font></strong></td></tr>";
 echo "<tr><td><a href='./ff9_03.php#ff9_201' target=_blank>(1)回到Alexandria城</a></td>";
 echo "<td><a href='./ff9_03.php#ff9_202' target=_blank>(2)Treno的卡片之旅</a></td>";
@@ -88,10 +89,29 @@ echo "<td><a href='./ff9_03.php#ff9_217' target=_blank>(17)Terra</a></td>";
 echo "<td><a href='./ff9_03.php#ff9_218' target=_blank>(18)Bran Bal</a></td></tr>";
 echo "<tr><td><a href='./ff9_03.php#ff9_219' target=_blank>(19)Pandemonium</a></td>";
 echo "<td></td><td></td><td></td><td></td><td></td></tr>";
-echo "</table></td></tr>";
+echo "</table>";
+echo "<br><table width=64% cellpadding=3 cellspacing=0 border=1>";
+echo "<tr><td align=center colspan=4><strong><font size=4>DISC4攻略</font></strong></td></tr>";
+echo "<tr><td><a href='./ff9_04.php#ff9_301' target=_blank>(1)Black Mage Village</a></td>";
+echo "<td><a href='./ff9_04.php#ff9_302' target=_blank>(2)记忆的场所--Memoria</a></td>";
+echo "<td><a href='./ff9_04.php#ff9_303' target=_blank>(3)Iifa Tree</a></td>";
+echo "<td><a href='./ff9_04.php#ff9_304' target=_blank>(4)Melodies of life-Ending</a></td></tr>";
+echo "</table>";
+echo "<br><table width=64% cellpadding=3 cellspacing=0 border=1>";
+echo "<tr><td colspan=6 align=center><font size=5>其他</font></td></tr>";
+echo "<tr><td align=center><a href='./ff9_map.php' target=_blank>地图查看</a></td>";
+echo "<td align=center><a href='./ff9_liji.php' target=_blank>幻化系统</a></td>";
+echo "<td align=center><a href='./ff9_status.php' target=_blank>状态一览</a></td>";
+echo "<td align=center><a href='./ff9_shop.php' target=_blank>商店一览</a></td>";
+echo "<td align=center><a href='./ff9_combo.php' target=_blank>合成屋一览</a></td>";
+echo "<td align=center><a href='./ff9_chocho.php' target=_blank>陆行鸟挖宝</a></td></tr>";
+echo "<tr><td align=center><a href='./ff9_wepon.php' target=_blank>武器一览</td>";
+echo "<td align=center><a href='./ff9_defend.php' target=_blank>防具一览</td>";
+echo "<td align=center>图鉴:<a href='ff9_mon_a.php'>a</a> b c d e f</td>
+<td align=center>图鉴:g h i j k l</td>
+<td align=center>图鉴:m n o p q r s</td>
+<td align=center>图鉴:t u v w x y z</td></tr>";
+echo "</table><br><br>";
 
-echo "<tr><td align=center><br><font size=4><a href='./ff9_03.php' target=_blank>攻略DISC3</a></font></td></tr>";
-echo "<tr><td align=center><br><font size=4><a href='./ff9_04.php' target=_blank>攻略DISC4</a></font></td></tr>";
-
-echo "</table></center></body></html>";
+echo "</center></body></html>";
 ?>
