@@ -107,10 +107,26 @@ echo "<td align=center><a href='./ff9_combo.php' target=_blank>合成屋一览</
 echo "<td align=center><a href='./ff9_chocho.php' target=_blank>陆行鸟挖宝</a></td></tr>";
 echo "<tr><td align=center><a href='./ff9_wepon.php' target=_blank>武器一览</td>";
 echo "<td align=center><a href='./ff9_defend.php' target=_blank>防具一览</td>";
-echo "<td align=center>图鉴:<a href='ff9_mon_a.php'>a</a> b c d e f</td>
-<td align=center>图鉴:g h i j k l</td>
-<td align=center>图鉴:m n o p q r s</td>
-<td align=center>图鉴:t u v w x y z</td></tr>";
+echo "<td align=center>图鉴: <a href='ff9_mon_a.php' target=_blank>a</a>
+<a href='ff9_mon_b.php' target=_blank>b</a>
+<a href='ff9_mon_c.php' target=_blank>c</a>
+<a href='ff9_mon_d.php' target=_blank>d</a>
+<a href='ff9_mon_f.php' target=_blank>f</a></td>
+<td align=center>图鉴: <a href='ff9_mon_h.php' target=_blank>h</a>
+<a href='ff9_mon_j.php' target=_blank>j</a>
+<a href='ff9_mon_k.php' target=_blank>k</a>
+<a href='ff9_mon_l.php' target=_blank>l</a>
+<a href='ff9_mon_m.php' target=_blank>m</a></td>
+<td align=center>图鉴: <a href='ff9_mon_n.php' target=_blank>n</a>
+<a href='ff9_mon_p.php' target=_blank>p</a>
+<a href='ff9_mon_q.php' target=_blank>q</a>
+<a href='ff9_mon_r.php' target=_blank>r</a>
+<a href='ff9_mon_s.php' target=_blank>s</a></td>
+<td align=center>图鉴: <a href='ff9_mon_t.php' target=_blank>t</a>
+<a href='ff9_mon_w.php' target=_blank>w</a>
+<a href='ff9_mon_x.php' target=_blank>x</a>
+<a href='ff9_mon_y.php' target=_blank>y</a>
+<a href='ff9_mon_z.php' target=_blank>z</td></tr>";
 echo "</table><br><br>";
 
 echo "</center></body></html>";
