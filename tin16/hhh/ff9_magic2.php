@@ -9,7 +9,7 @@ echo "<center><h1>最终幻想9(Final Fantasy IX)(FF9)<br />青魔法</h1></cent
         <tr>
             <td>■FF9中唯一的青魔导士便是胖胖的阿馋，学习青魔法是一个很有意思的过程。为了配合阿馋的&ldquo;想要去外面的世界吃到除了青蛙以外的美餐&rdquo;的主题，<span class='cell6'>在敌人的HP剩下不到1/4的时候将敌人吃掉幻化时体力在1/2以下就可以吃掉</span>，便会习得该敌人所拥有的青魔法的阿馋的形象这时便立体了起来。<br />
 
-            ■以下便介绍青魔法全部分部地点。大多数青魔法可以吃不同种怪习得，截图只随机选择其一供为参考。其它的怪物可以根据名称到<a target='_blank' href='Monsters.html'>怪物图鉴</a>查找相应图片。<br />
+            ■以下便介绍青魔法全部分部地点。大多数青魔法可以吃不同种怪习得，截图只随机选择其一供为参考。其它的怪物可以根据名称到<a target='_blank' href='./ff9_mon_a.php'>怪物图鉴</a>查找相应图片。<br />
             ■此表格按青魔法英文名首字母顺序排列。<br />
             ■表中<span class='cell6'>红色字体</span>的怪物即为图中的怪物。<br />
             ■表中<span class='blue'>黄色字体</span>为地点的名称。</td>
@@ -211,7 +211,7 @@ echo "<center><h1>最终幻想9(Final Fantasy IX)(FF9)<br />青魔法</h1></cent
 
         </tr>
         <tr>
-            <td class='cell5' colspan='2'>名称:极限手套<img height='10' width='20' alt='' src='./tw_pic/hot.gif' /></td>
+            <td class='cell5' colspan='2'>名称:极限手套</td>
         </tr>
         <tr>
             <td>效果: 阿馋的HP为1时,固定给与对象9999的伤害</td>
