@@ -60,7 +60,7 @@ echo "<td><a href='./ff9_02.php#ff9_114' target=_blank>(14)外侧大陆的矮人
 echo "<td><a href='./ff9_02.php#ff9_115' target=_blank>(15)黑魔导士之村</a></td>";
 echo "<td><a href='./ff9_02.php#ff9_116' target=_blank>(16)矮人村的婚礼</a></td>";
 echo "<td><a href='./ff9_02.php#ff9_117' target=_blank>(17)又一个召唤士</a></td>";
-echo "<td><a href='./ff9_02.php#ff9_118' target=_blank>(18召唤士之村)</a></td></tr>";
+echo "<td><a href='./ff9_02.php#ff9_118' target=_blank>(18)召唤士之村</a></td></tr>";
 echo "<tr><td><a href='./ff9_02.php#ff9_119' target=_blank>(19)艾可的决定</a></td>";
 echo "<td><a href='./ff9_02.php#ff9_120' target=_blank>(20)Iifa Tree</a></td>";
 echo "<td><a href='./ff9_02.php#ff9_121' target=_blank>(21)在Madain Sari的战斗</a></td>";
