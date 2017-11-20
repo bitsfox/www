@@ -407,7 +407,7 @@ echo "
  <tr>  <td colspan='9' width='548'><div align='left'>    <p>　夜：基本命中率100%</p>  </div></td> </tr>
  <tr>  <td class='bg' colspan='9' width='548'>行动特点</td> </tr>
  <tr>  <td colspan='9' width='548'><div align='left'>    <p>　夜的使用情况：一场战斗中只使用一次</p>    </div></td> </tr>
-</table><p><a name=Nymph</td> </tr>
+</table><p><a name=Nymph</p><p></p><table width=550 cellpadding=0 cellspacing=0 class='table_center'><tr>  <td colspan='3' rowspan='9' width='212'><img src='pic/villains/Steiner1.jpg' width='217' height='190'></td>  <td class='bg2' width='56'>名称</td>  <td colspan='5' class='bg2' width='279'>斯坦纳(BOSS)</td> </tr>
  <tr>  <td width='56' class='bg'>类型</td>  <td colspan='5' width='279'>人形</td> </tr>
  <tr>  <td width='56' class='bg'>首次出现</td>  <td width='56'>Disc3</td>  <td width='56' class='bg'>速度</td>  <td width='56'>25</td>  <td width='56' class='bg'>物理防御</td>  <td width='56'>10</td> </tr>
  <tr>  <td width='56' class='bg'>等级</td>  <td width='56'>32</td>  <td width='56' class='bg'>力量</td>  <td width='56'>15</td>  <td width='56' class='bg'>物理回避</td>  <td width='56'>4</td> </tr>
