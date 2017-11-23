@@ -7,10 +7,10 @@
 body{counter-reset:h1 -1}
 h3:before{content:''}
 </style>
-<link rel=stylesheet media='only screen and (max-device-width: 480px)' href="http://woodpecker.org.cn/diveintopython3/mobile.css">
-<link rel=stylesheet media=print href="http://woodpecker.org.cn/diveintopython3/print.css">
 <meta name=viewport content='initial-scale=1.0'>
+<!--
 <form action=http://www.google.com/cse><div><input type=hidden name=cx value=014021643941856155761:l5eihuescdw><input type=hidden name=ie value=UTF-8>&nbsp;<input type=search name=q size=25 placeholder="powered by Google&trade;">&nbsp;<input type=submit name=sa value=Search></div></form>
+-->
 <p>您在这里：<a href="index.html">首页</a> <span class=u>&#8227;</span> <a href="table-of-contents.html#whats-new">深入 Python 3</a> <span class=u>&#8227;</span>
 <h1>《深入 Python 3》中有何新内容</h1>
 <blockquote class=q>
@@ -19,7 +19,7 @@ h3:before{content:''}
 <p id=toc>&nbsp;
 <h2 id=divingin><i>又叫做</i> &#8220;the minus level&#8221;</h2>
 
-<p class=f>你读过原版的 &#8220;<a href=http://diveintopython.org/>深入 Python</a>&#8221; 并可能甚至买了纸版的。（谢谢！）你差不多已经了解 Python 2 了。你准备好了投入到 Python 3 里面。&hellip; 如果所有这些都成立，继续读。（如果没有一个是成立的，你最好<a href="installing-python.html">从头开始</a>。）
+<p class=f>你读过原版的 &#8220;深入 Python&#8221; 并可能甚至买了纸版的。（谢谢！）你差不多已经了解 Python 2 了。你准备好了投入到 Python 3 里面。&hellip; 如果所有这些都成立，继续读。（如果没有一个是成立的，你最好<a href="installing-python.html">从头开始</a>。）
 
 <p>Python 3 提供了一个脚本叫做 <code>2to3</code>。学习它。喜欢它。使用它。<a href="porting-code-to-python-3-with-2to3.html">用 <code>2to3</code> 移植代码到 Python 3</a> 是一个有关 <code>2to3</code> 工具能够自动整理的所有东西的参考手册。很多这些东西都是语法的变更，因此了解 Python 3 里面许多的语法变更是一个好的起点。（<code>print</code> 现在是一个函数，<code>`x`</code> 不能使用，等等。）
 
@@ -40,10 +40,10 @@ h3:before{content:''}
 
 <p>迭代在 Python 3 里面无处不在，比起五年之前我写&#8220;深入Python&#8221; 的时候，我现在能更好的理解它们。你也需要理解他们，因为过去经常在 Python 2 里面返回列表的很多函数，在 Python 3 里面将返回迭代。至少，你应该阅读一下<a href="iterators.html#a-fibonacci-iterator">迭代章节的下半部分</a>和<a href="advanced-iterators.html#generator-expressions">高级迭代章节的下半部分</a>。
 
-<p>根据大家的要求，我已经添加了一个关于<a href="special-method-names.html">特殊方法名称</a>的附录，有点像<a href=http://www.python.org/doc/3.1/reference/datamodel.html#special-method-names> Python 文档的 &#8220;数据模型&#8221;章节</a>但是包含更多的内容。
+<p>根据大家的要求，我已经添加了一个关于<a href="special-method-names.html">特殊方法名称</a>的附录，有点像 Python 文档的 &#8220;数据模型&#8221;章节但是包含更多的内容。
 
-<p>当我在撰写&#8220;深入 Python&#8221;的时候，所有可用的 XML 库都很糟糕。接着 Fredrik Lundh 编写了非常优秀的 <a href=http://effbot.org/zone/element-index.htm>ElementTree</a>。Python 的专家们聪明的把 <a href=http://docs.python.org/3.1/library/xml.etree.elementtree.html>ElementTree 变成了标准库的一部分</a>，然后现在它构成了<a href="xml.html">我的新的 XML 章节</a>的基础。解析 XML 的那些老的方式仍然可用，但是你应该避免使用它们，因为他们很糟糕！
+<p>当我在撰写&#8220;深入 Python&#8221;的时候，所有可用的 XML 库都很糟糕。接着 Fredrik Lundh 编写了非常优秀的 ElementTree。Python 的专家们聪明的把 ElementTree 变成了标准库的一部分，然后现在它构成了<a href="xml.html">我的新的 XML 章节</a>的基础。解析 XML 的那些老的方式仍然可用，但是你应该避免使用它们，因为他们很糟糕！
 
-<p>除此之外，还有个关于 Python 的新东西&nbsp;&mdash;&nbsp;不是语言上的，而是社区中的&nbsp;&mdash;&nbsp;像 <a href=http://pypi.python.org/>Python 包装索引</a>(PyPI)的出现。Python 提供了实用工具类用来将你的代码打包成标准格式，并分发那些包到 PyPI 中。阅读 <a href="packaging.html">打包 Python 库</a>了解详细信息。
+<p>除此之外，还有个关于 Python 的新东西&nbsp;&mdash;&nbsp;不是语言上的，而是社区中的&nbsp;&mdash;&nbsp;像 Python 包装索引(PyPI)的出现。Python 提供了实用工具类用来将你的代码打包成标准格式，并分发那些包到 PyPI 中。阅读 <a href="packaging.html">打包 Python 库</a>了解详细信息。
 
 <p class=c>&copy; 2001&ndash;9 <a href="about.html">Mark Pilgrim</a>

@@ -7,10 +7,6 @@
 body{counter-reset:h1 14}
 mark{display:inline}
 </style>
-<link rel=stylesheet media='only screen and (max-device-width: 480px)' href="http://woodpecker.org.cn/diveintopython3/mobile.css">
-<link rel=stylesheet media=print href="http://woodpecker.org.cn/diveintopython3/print.css">
-<meta name=viewport content='initial-scale=1.0'>
-<form action=http://www.google.com/cse><div><input type=hidden name=cx value=014021643941856155761:l5eihuescdw><input type=hidden name=ie value=UTF-8>&nbsp;<input type=search name=q size=25 placeholder="powered by Google&trade;">&nbsp;<input type=submit name=root value=Search></div></form>
 <p>您在这里: <a href="index.html">主页</a> <span class=u>&#8227;</span> <a href="table-of-contents.html#http-web-services">深入Python 3</a> <span class=u>&#8227;</span>
 <p id=level>难度等级: <span class=u title=advanced>&#x2666;&#x2666;&#x2666;&#x2666;&#x2662;</span>
 <h1>HTTP Web 服务</h1>
@@ -185,7 +181,7 @@ Cache-Control: max-age=31536000, public</samp></pre>
 <p>我们来举个例子，你想要通过<abbr>HTTP</abbr>下载一个资源, 比如说<a href="xml.html">一个Atom 供稿</a>。作为一个供稿, 你不会只下载一次，你会一次又一次的下载它。 (大部分的供稿阅读器会美一小时检查一次更新。) 让我们先用最粗糙和最快的方法来实现它，接着再来看看怎样改进。
 <pre class='nd screen'>
 <samp class=p>>>> </samp><kbd class=pp>import urllib.request</kbd>
-<samp class=p>>>> </samp><kbd class=pp>a_url = 'http://diveintopython3.org/examples/feed.xml'</kbd>
+<samp class=p>>>> </samp><kbd class=pp>a_url = './examples/feed.xml'</kbd>
 <a><samp class=p>>>> </samp><kbd class=pp>data = urllib.request.urlopen(a_url).read()</kbd>  <span class=u>&#x2460;</span></a>
 <a><samp class=p>>>> </samp><kbd class=pp>type(data)</kbd>                                   <span class=u>&#x2461;</span></a>
 <samp class=pp>&lt;class 'bytes'></samp>
@@ -201,7 +197,7 @@ Cache-Control: max-age=31536000, public</samp></pre>
 </samp></pre>
 <ol>
 <li>在Python中通过<abbr>HTTP</abbr>下载东西是非常简单的; 实际上，只需要一行代码。<code>urllib.request</code>模块有一个方便的函数<code>urlopen()</code> ，它接受你所要获取的页面地址，然后返回一个类文件对象，您只要调用它的<code>read()</code>方法就可以获得网页的全部内容。没有比这更简单的了。
-<li><code>urlopen().read()</code>方法总是返回<a href="strings.html#byte-arrays"><code>bytes</code>对象,而不是字符串</a>。记住字节仅仅是字节，字符只是一种抽象。 <abbr>HTTP</abbr> 服务器不关心抽象的东西。如果你请求一个资源，你得到字节。 如果你需要一个字符串，你需要确定<a href=http://feedparser.org/docs/character-encoding.html>字符编码</a>,并显式的将其转化成字符串。
+<li><code>urlopen().read()</code>方法总是返回<a href="strings.html#byte-arrays"><code>bytes</code>对象,而不是字符串</a>。记住字节仅仅是字节，字符只是一种抽象。 <abbr>HTTP</abbr> 服务器不关心抽象的东西。如果你请求一个资源，你得到字节。 如果你需要一个字符串，你需要确定字符编码,并显式的将其转化成字符串。
 </ol>
 
 <p>那么，有什么问题呢？作为开发或测试中的快速试验，没有什么不妥的地方。我总是这么干。我需要供稿的内容，然后我拿到了它。相同的技术对任何网页都有效。但一旦你考虑到你需要定期访问Web服务的时候，(<i>例如</i> 每隔1小时请求一下这个供稿), 这样的做法就显得很低效和粗暴了。
@@ -216,7 +212,7 @@ Cache-Control: max-age=31536000, public</samp></pre>
 <samp class=p>>>> </samp><kbd class=pp>from http.client import HTTPConnection</kbd>
 <a><samp class=p>>>> </samp><kbd class=pp>HTTPConnection.debuglevel = 1</kbd>                                       <span class=u>&#x2460;</span></a>
 <samp class=p>>>> </samp><kbd class=pp>from urllib.request import urlopen</kbd>
-<a><samp class=p>>>> </samp><kbd class=pp>response = urlopen('http://diveintopython3.org/examples/feed.xml')</kbd>  <span class=u>&#x2461;</span></a>
+<a><samp class=p>>>> </samp><kbd class=pp>response = urlopen('./examples/feed.xml')</kbd>  <span class=u>&#x2461;</span></a>
 <samp><a>send: b'GET /examples/feed.xml HTTP/1.1                                 <span class=u>&#x2462;</span></a>
 <a>Host: diveintopython3.org                                               <span class=u>&#x2463;</span></a>
 <a>Accept-Encoding: identity                                               <span class=u>&#x2464;</span></a>
@@ -270,7 +266,7 @@ Content-Type: application/xml</samp>
 
 <pre class='nd screen'>
 # continued from the <a href="http-web-services.html#whats-on-the-wire">previous example</a>
-<samp class=p>>>> </samp><kbd class=pp>response2 = urlopen('http://diveintopython3.org/examples/feed.xml')</kbd>
+<samp class=p>>>> </samp><kbd class=pp>response2 = urlopen('./examples/feed.xml')</kbd>
 <samp>send: b'GET /examples/feed.xml HTTP/1.1
 Host: diveintopython3.org
 Accept-Encoding: identity
@@ -380,7 +376,7 @@ Writing /usr/local/lib/python3.1/dist-packages/httplib2-python3_0.5.0.egg-info</
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import httplib2</kbd>
 <a><samp class=p>>>> </samp><kbd class=pp>h = httplib2.Http('.cache')</kbd>                                                    <span class=u>&#x2460;</span></a>
-<a><samp class=p>>>> </samp><kbd class=pp>response, content = h.request('http://diveintopython3.org/examples/feed.xml')</kbd>  <span class=u>&#x2461;</span></a>
+<a><samp class=p>>>> </samp><kbd class=pp>response, content = h.request('./examples/feed.xml')</kbd>  <span class=u>&#x2461;</span></a>
 <a><samp class=p>>>> </samp><kbd class=pp>response.status</kbd>                                                                <span class=u>&#x2462;</span></a>
 <samp class=pp>200</samp>
 <a><samp class=p>>>> </samp><kbd class=pp>content[:52]</kbd>                                                                   <span class=u>&#x2463;</span></a>
@@ -403,8 +399,6 @@ Writing /usr/local/lib/python3.1/dist-packages/httplib2-python3_0.5.0.egg-info</
 <p>字节串。字符串。真麻烦啊。为什么<code>httplib2</code>不能替你把转换做了呢？由于决定字符编码的规则依赖于你请求的资源的类型，导致自动转化很复杂。<code>httplib2</code>怎么知道你要请求的资源的类型呢？通常类型会在<code>Content-Type</code> <abbr>HTTP</abbr> 头里面列出,但是这是<abbr>HTTP</abbr>的可选特性，并且并非所有的<abbr>HTTP</abbr>服务器都支持。如果<abbr>HTTP</abbr>响应没有包含这个头，那就留给客户端去猜了。(这通常被称为&#8220;内容嗅探(content sniffing)&#8221; ，但它从来就不是完美的。)
 
 <p>如果你知道你期待的资源是什么类型的(这个例子中是<abbr>XML</abbr>文档), 也许你应该直接将返回的<code>字节串(bytes)</code>对象传给<a href="xml.html#xml-parse"><code>xml.etree.ElementTree.parse()</code> 函数</a>。只要(像这个文档一样)<abbr>XML</abbr> 文档自己包含字符编码信息，这是可以工作的。但是字符编码信息是一个可选特性并非所有<abbr>XML</abbr>文档包含这样的信息。如果一个<abbr>XML</abbr>文档不包含编码信息，客户端应该去查看<code>Content-Type</code> <abbr>HTTP</abbr> 头, 里面应该包含一个<code>charset</code>参数。
-
-<p class=ss><a style=border:0 href=http://www.cafepress.com/feedparser><img src=http://feedparser.org/img/feedparser.jpg alt="[I support RFC 3023 t-shirt]" width=150 height=150></a>
 
 <p>但问题更糟糕。现在字符编码信息可能在两个地方：在<abbr>XML</abbr>文档自己内部，在<code>Content-Type</code> <abbr>HTTP</abbr> 头里面。如果信息在<em>两个</em>地方都出现了，哪个优先呢？根据<a href=http://www.ietf.org/rfc/rfc3023.txt>RFC 3023</a> (我发誓，这不是我编的), 如果在<code>Content-Type</code> <abbr>HTTP</abbr>头里面给出的媒体类型(media type)是<code>application/xml</code>, <code>application/xml-dtd</code>, <code>application/xml-external-parsed-entity</code>, 或者是任何<code>application/xml</code>的子类型，比如<code>application/atom+xml</code> 或者 <code>application/rss+xml</code> 亦或是 <code>application/rdf+xml</code>, 那么编码是
 
@@ -453,7 +447,7 @@ Writing /usr/local/lib/python3.1/dist-packages/httplib2-python3_0.5.0.egg-info</
 <samp class=p>>>> </samp><kbd class=pp>import httplib2</kbd>
 <a><samp class=p>>>> </samp><kbd class=pp>httplib2.debuglevel = 1</kbd>                                                        <span class=u>&#x2460;</span></a>
 <a><samp class=p>>>> </samp><kbd class=pp>h = httplib2.Http('.cache')</kbd>                                                    <span class=u>&#x2461;</span></a>
-<a><samp class=p>>>> </samp><kbd class=pp>response, content = h.request('http://diveintopython3.org/examples/feed.xml')</kbd>  <span class=u>&#x2462;</span></a>
+<a><samp class=p>>>> </samp><kbd class=pp>response, content = h.request('./examples/feed.xml')</kbd>  <span class=u>&#x2462;</span></a>
 <a><samp class=p>>>> </samp><kbd class=pp>len(content)</kbd>                                                                   <span class=u>&#x2463;</span></a>
 <samp class=pp>3070</samp>
 <a><samp class=p>>>> </samp><kbd class=pp>response.status</kbd>                                                                <span class=u>&#x2464;</span></a>
@@ -485,7 +479,7 @@ Writing /usr/local/lib/python3.1/dist-packages/httplib2-python3_0.5.0.egg-info</
 
 <pre class=screen>
 # continued from the previous example
-<samp class=p>>>> </samp><kbd class=pp>response2, content2 = h.request('http://diveintopython3.org/examples/feed.xml',</kbd>
+<samp class=p>>>> </samp><kbd class=pp>response2, content2 = h.request('./examples/feed.xml',</kbd>
 <a><samp class=p>... </samp><kbd class=pp>    headers={'cache-control':'no-cache'})</kbd>  <span class=u>&#x2460;</span></a>
 <samp><a>connect: (diveintopython3.org, 80)             <span class=u>&#x2461;</span></a>
 send: b'GET /examples/feed.xml HTTP/1.1
@@ -502,7 +496,7 @@ reply: 'HTTP/1.1 200 OK'
 <a><samp class=p>>>> </samp><kbd class=pp>print(dict(response2.items()))</kbd>             <span class=u>&#x2463;</span></a>
 <samp class=pp>{'status': '200',
  'content-length': '3070',
- 'content-location': 'http://diveintopython3.org/examples/feed.xml',
+ 'content-location': './examples/feed.xml',
  'accept-ranges': 'bytes',
  'expires': 'Wed, 03 Jun 2009 00:40:26 GMT',
  'vary': 'Accept-Encoding',
@@ -629,7 +623,7 @@ reply: 'HTTP/1.1 200 OK'</samp>
 <samp class=p>>>> </samp><kbd class=pp>import httplib2</kbd>
 <samp class=p>>>> </samp><kbd class=pp>httplib2.debuglevel = 1</kbd>
 <samp class=p>>>> </samp><kbd class=pp>h = httplib2.Http('.cache')</kbd>
-<a><samp class=p>>>> </samp><kbd class=pp>response, content = h.request('http://diveintopython3.org/examples/feed-302.xml')</kbd>  <span class=u>&#x2460;</span></a>
+<a><samp class=p>>>> </samp><kbd class=pp>response, content = h.request('./examples/feed-302.xml')</kbd>  <span class=u>&#x2460;</span></a>
 <samp>connect: (diveintopython3.org, 80)
 <a>send: b'GET /examples/feed-302.xml HTTP/1.1                                            <span class=u>&#x2461;</span></a>
 Host: diveintopython3.org
@@ -645,7 +639,7 @@ reply: 'HTTP/1.1 200 OK'</samp></pre>
 <li>这个<abbr>URL</abbr>上没有供稿。我设置了服务器让其发出一个到正确地址的临时重定向。
 <li>这是请求。
 <li>这是响应: <code>302 Found</code>。这里没有显示出来，这个响应也包含由一个<code>Location</code>头给出实际的<abbr>URL</abbr>.
-<li><code>httplib2</code> 马上转身并跟随重定向，发出另一个到在<code>Location</code>头里面给出的<abbr>URL</abbr>: <code>http://diveintopython3.org/examples/feed.xml</code> 的请求。
+<li><code>httplib2</code> 马上转身并跟随重定向，发出另一个到在<code>Location</code>头里面给出的<abbr>URL</abbr>: <code>./examples/feed.xml</code> 的请求。
 </ol>
 
 <p>&#8220;跟随&#8221; 一个重定向就是这个例子展示的那么多。<code>httplib2</code> 发送一个请求到你要求的<abbr>URL</abbr>。服务器返回一个响应说&#8220;不，不, 看那边.&#8221; <code>httplib2</code> 给新的<abbr>URL</abbr>发送另一个请求.
@@ -681,11 +675,11 @@ reply: 'HTTP/1.1 200 OK'</samp></pre>
 <a><samp class=p>>>> </samp><kbd class=pp>response.previous</kbd>                                                     <span class=u>&#x2460;</span></a>
 <samp class=pp>{'status': '302',
  'content-length': '228',
- 'content-location': 'http://diveintopython3.org/examples/feed-302.xml',
+ 'content-location': './examples/feed-302.xml',
  'expires': 'Thu, 04 Jun 2009 02:21:41 GMT',
  'server': 'Apache',
  'connection': 'close',
- 'location': 'http://diveintopython3.org/examples/feed.xml',
+ 'location': './examples/feed.xml',
  'cache-control': 'max-age=86400',
  'date': 'Wed, 03 Jun 2009 02:21:41 GMT',
  'content-type': 'text/html; charset=iso-8859-1'}</samp>
@@ -705,7 +699,7 @@ reply: 'HTTP/1.1 200 OK'</samp></pre>
 
 <pre class=screen>
 # continued from the previous example
-<a><samp class=p>>>> </samp><kbd class=pp>response2, content2 = h.request('http://diveintopython3.org/examples/feed-302.xml')</kbd>  <span class=u>&#x2460;</span></a>
+<a><samp class=p>>>> </samp><kbd class=pp>response2, content2 = h.request('./examples/feed-302.xml')</kbd>  <span class=u>&#x2460;</span></a>
 <samp>connect: (diveintopython3.org, 80)
 <a>send: b'GET /examples/feed-302.xml HTTP/1.1                                              <span class=u>&#x2461;</span></a>
 Host: diveintopython3.org
@@ -717,7 +711,7 @@ user-agent: Python-httplib2/$Rev: 259 $'
 <ol>
 <li>同一个<abbr>URL</abbr>, 同一个 <code>httplib2.Http</code> 对象 (所以也是同一个缓存)。
 <li><code>302</code> 响应没有缓存，所以<code>httplib2</code> 对同一个 <abbr>URL</abbr>发送了另一个请求。
-<li>再一次，服务器以<code>302</code>响应。但是请注意什么<em>没有</em> 发生: 没有第二个到最终<abbr>URL</abbr>, <code>http://diveintopython3.org/examples/feed.xml</code> 的请求。原因是缓存 (还记的你在前一个例子中看到的<code>Cache-Control</code>头吗？)。 一旦 <code>httplib2</code> 收到<code>302 Found</code> 状态码, <em>它在发出新的请求前检查它的缓存</em>. 缓存中有<code>http://diveintopython3.org/examples/feed.xml</code>的一份新鲜副本, 所以不需要重新请求它了。
+<li>再一次，服务器以<code>302</code>响应。但是请注意什么<em>没有</em> 发生: 没有第二个到最终<abbr>URL</abbr>, <code>./examples/feed.xml</code> 的请求。原因是缓存 (还记的你在前一个例子中看到的<code>Cache-Control</code>头吗？)。 一旦 <code>httplib2</code> 收到<code>302 Found</code> 状态码, <em>它在发出新的请求前检查它的缓存</em>. 缓存中有<code>./examples/feed.xml</code>的一份新鲜副本, 所以不需要重新请求它了。
 <li>当 <code>request()</code>方法返回的时候，它已经从缓存中读取了feed数据并返回了它。当然，它和你上次收到的数据是一样的。
 </ol>
 
@@ -727,7 +721,7 @@ user-agent: Python-httplib2/$Rev: 259 $'
 
 <pre class=screen>
 # continued from the previous example
-<a><samp class=p>>>> </samp><kbd class=pp>response, content = h.request('http://diveintopython3.org/examples/feed-301.xml')</kbd>  <span class=u>&#x2460;</span></a>
+<a><samp class=p>>>> </samp><kbd class=pp>response, content = h.request('./examples/feed-301.xml')</kbd>  <span class=u>&#x2460;</span></a>
 <samp>connect: (diveintopython3.org, 80)
 send: b'GET /examples/feed-301.xml HTTP/1.1
 Host: diveintopython3.org
@@ -737,7 +731,7 @@ user-agent: Python-httplib2/$Rev: 259 $'
 <a><samp class=p>>>> </samp><kbd class=pp>response.fromcache</kbd>                                                                 <span class=u>&#x2462;</span></a>
 <samp class=pp>True</samp></pre>
 <ol>
-<li>又一次，这个<abbr>URL</abbr>实际上并不存在。我设置我的服务器来执行一个永久重定向到<code>http://diveintopython3.org/examples/feed.xml</code>.
+<li>又一次，这个<abbr>URL</abbr>实际上并不存在。我设置我的服务器来执行一个永久重定向到<code>./examples/feed.xml</code>.
 <li>这就是: 状态码 <code>301</code>。 但是再次注意什么<em>没有</em>发生: 没有发送到重定向后的<abbr>URL</abbr>的请求。为什么没有? 因为它已经在本地缓存了。
 <li><code>httplib2</code> &#8220;跟随&#8221; 重定向到了它的缓存里面。
 </ol>
@@ -746,7 +740,7 @@ user-agent: Python-httplib2/$Rev: 259 $'
 
 <pre class=screen>
 # continued from the previous example
-<a><samp class=p>>>> </samp><kbd class=pp>response2, content2 = h.request('http://diveintopython3.org/examples/feed-301.xml')</kbd>  <span class=u>&#x2460;</span></a>
+<a><samp class=p>>>> </samp><kbd class=pp>response2, content2 = h.request('./examples/feed-301.xml')</kbd>  <span class=u>&#x2460;</span></a>
 <a><samp class=p>>>> </samp><kbd class=pp>response2.fromcache</kbd>                                                                  <span class=u>&#x2461;</span></a>
 <samp class=pp>True</samp>
 <a><samp class=p>>>> </samp><kbd class=pp>content2 == content</kbd>                                                                  <span class=u>&#x2462;</span></a>

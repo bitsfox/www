@@ -6,10 +6,10 @@
 <style>
 body{counter-reset:h1 4}
 </style>
-<link rel=stylesheet media='only screen and (max-device-width: 480px)' href="http://woodpecker.org.cn/diveintopython3/mobile.css">
-<link rel=stylesheet media=print href="http://woodpecker.org.cn/diveintopython3/print.css">
+<!--
 <meta name=viewport content='initial-scale=1.0'>
 <form action=http://www.google.com/cse><div><input type=hidden name=cx value=014021643941856155761:l5eihuescdw><input type=hidden name=ie value=UTF-8>&nbsp;<input type=search name=q size=25 placeholder="powered by Google&trade;">&nbsp;<input type=submit name=sa value=Search></div></form>
+-->
 <p>你的位置: <a href="index.html">Home</a> <span class=u>&#8227;</span> <a href="table-of-contents.html#strings">Dive Into Python 3</a> <span class=u>&#8227;</span>
 <p id=level>难度等级: <span class=u title=intermediate>&#x2666;&#x2666;&#x2666;&#x2662;&#x2662;</span>
 <h1>字符串</h1>
@@ -61,7 +61,7 @@ My alphabet starts where your alphabet ends! <span class=u>&#x275E;</span><br>&m
 
 <p>但是对于UTF-32和UTF-16编码方式还有一些其他不明显的缺点。不同的计算机系统会以不同的顺序保存字节。这意味着字符<code>U+4E2D</code>在UTF-16编码方式下可能被保存为<code>4E 2D</code>或者<code>2D 4E</code>，这取决于该系统使用的是大尾端(big-endian)还是小尾端(little-endian)。（对于UTF-32编码方式，则有更多种可能的字节排列。）只要文档没有离开你的计算机，它还是安全的&nbsp;&mdash;&nbsp;同一台电脑上的不同程序使用相同的字节顺序(byte order)。但是当我们需要在系统之间传输这个文档的时候，也许在万维网中，我们就需要一种方法来指示当前我们的字节是怎样存储的。不然的话，接收文档的计算机就无法知道这两个字节<code>4E 2D</code>表达的到底是<code>U+4E2D</code>还是<code>U+2D4E</code>。
 <!--one way and reversed-->
-<p>为了解决<em>这个</em>问题，多字节的Unicode编码方式定义了一个&#8220;<a href="http://woodpecker.org.cn/diveintopython3/en.wikipedia.org/wiki/Byte-order_mark">字节顺序标记(Byte Order Mark)</a>&#8221;，它是一个特殊的非打印字符，你可以把它包含在文档的开头来指示你所使用的字节顺序。对于UTF-16，字节顺序标记是<code>U+FEFF</code>。如果收到一个以字节<code>FF FE</code>开头的UTF-16编码的文档，你就能确定它的字节顺序是单向的(one way)的了；如果它以<code>FE FF</code>开头，则可以确定字节顺序反向了。
+<p>为了解决<em>这个</em>问题，多字节的Unicode编码方式定义了一个&#8220;字节顺序标记(Byte Order Mark)&#8221;，它是一个特殊的非打印字符，你可以把它包含在文档的开头来指示你所使用的字节顺序。对于UTF-16，字节顺序标记是<code>U+FEFF</code>。如果收到一个以字节<code>FF FE</code>开头的UTF-16编码的文档，你就能确定它的字节顺序是单向的(one way)的了；如果它以<code>FE FF</code>开头，则可以确定字节顺序反向了。
 
 <p>不过，UTF-16还不够完美，特别是要处理许多<abbr>ASCII</abbr>字符时。如果仔细想想的话，甚至一个中文网页也会包含许多的<abbr>ASCII</abbr>字符&nbsp;&mdash;&nbsp;所有包围在可打印中文字符周围的元素(element)和属性(attribute)。能够在常数时间内找到第<var>Nth</var>个字符当然非常好，但是依然存在着纠缠不休的星芒层字符的问题，这意味着你不能<em>保证</em>每个字符都是2个字节长，所以，除非你维护着另外一个索引，不然就不能<em>真正意义上的</em>在常数时间内定位第<var>N</var>个字符。另外，朋友，世界上肯定还存在很多的<abbr>ASCII</abbr>文本&hellip;
 
@@ -71,7 +71,7 @@ My alphabet starts where your alphabet ends! <span class=u>&#x275E;</span><br>&m
 
 <!-->The range of integers used to code the abstract characters is called the codespace. A particular integer in this set is called a code point. When an abstract character is mapped or assigned to a particular code point in the codespace, it is then referred to as an encoded character.
 <-->
-<p>UTF-8是一种为Unicode设计的<em>变长(variable-length)</em>编码系统。即，不同的字符可使用不同数量的字节编码。对于<abbr>ASCII</abbr>字符(A-Z, <i class=baa>&amp;</i>c.)<abbr>UTF-8</abbr>仅使用1个字节来编码。事实上，<abbr>UTF-8</abbr>中前128个字符(0&ndash;127)使用的是跟<abbr>ASCII</abbr>一样的编码方式。像&ntilde;和&ouml;这样的&#8220;扩展拉丁字符(Extended Latin)&#8221;则使用2个字节来编码。（这里的字节并不是像UTF-16中那样简单的<a href="http://woodpecker.org.cn/diveintopython3/en.wikipedia.org/wiki/Code_point">Unicode编码点(unicode code point)</a>；它使用了一些位变换(bit-twiddling)。）中文字符比如&#8220;&#x4E2D;&#8221;则占用了3个字节。很少使用的&#8220;星芒层字符&#8221;则占用4个字节。
+<p>UTF-8是一种为Unicode设计的<em>变长(variable-length)</em>编码系统。即，不同的字符可使用不同数量的字节编码。对于<abbr>ASCII</abbr>字符(A-Z, <i class=baa>&amp;</i>c.)<abbr>UTF-8</abbr>仅使用1个字节来编码。事实上，<abbr>UTF-8</abbr>中前128个字符(0&ndash;127)使用的是跟<abbr>ASCII</abbr>一样的编码方式。像&ntilde;和&ouml;这样的&#8220;扩展拉丁字符(Extended Latin)&#8221;则使用2个字节来编码。（这里的字节并不是像UTF-16中那样简单的Unicode编码点(unicode code point)；它使用了一些位变换(bit-twiddling)。）中文字符比如&#8220;&#x4E2D;&#8221;则占用了3个字节。很少使用的&#8220;星芒层字符&#8221;则占用4个字节。
 
 <p>缺点：因为每个字符使用不同数量的字节编码，所以寻找串中第<var>N</var>个字符是一个O(N)复杂度的操作&nbsp;&mdash;&nbsp;即，串越长，则需要更多的时间来定位特定的字符。同时，还需要位变换来把字符编码成字节，把字节解码成字符。
 
