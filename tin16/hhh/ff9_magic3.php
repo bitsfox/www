@@ -40,12 +40,24 @@ echo "<center><h1>最终幻想9(Final Fantasy IX)(FF9)<br />召唤兽</h1>
             </td>
         </tr>
         <tr>
-            <td class='summon' onmouseover=\"this.bgColor='#ddeeff'\" onmouseout=\"this.bgColor='#FFFFFF'\" bgcolor='#ffffff'>
-            <div align='center'><a href='system.htm#equip'>为什么我没有召唤兽？</a></div>
+            <td class='hand' onmouseover=\"this.bgColor='#ddeeff'\" onmouseout=\"this.bgColor='#FFFFFF'\" bgcolor='#ffffff'>
+            <div id='main02' onclick=\"document.all.summonfaq02.style.display=(document.all.summonfaq02.style.display =='none')?'':'none'\" align='center'>为什么我没有召唤兽？</div>
             </td>
         </tr>
         <tr>
-            <td bgcolor='#f6f6f6'>&nbsp;</td>
+            <td bgcolor='#f6f6f6'>
+            <div class='ff9' id='summonfaq02' style='DISPLAY: none'>
+            <table cellspacing='0' cellpadding='0' width='500' border='0'>
+                <tbody>
+                    <tr>
+                        <td>
+                        <p>游戏中Dagger和Eiko具备召唤能力。但只有在饰品处装备特定的魔石(各召唤兽对应的魔石)比如让Dagger装备Peridot，<br>
+						下面就会显示出Ramuh(雷神)及修得所需AP。其修炼方法同上述修炼技能的方法。只有在AP达到上限也就是技能旁边显示三星的时候，<br>
+						卸下该魔石后才能任意召唤这个召唤兽了。否则卸下魔石召唤兽就会消失。最终召唤Ark需要装备浮石后才能习得。<br></p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table></div></td>
         </tr>
         <tr>
             <td class='hand' onmouseover=\"this.bgColor='#ddeeff'\" onmouseout=\"this.bgColor='#FFFFFF'\" bgcolor='#ffffff'>
