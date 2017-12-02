@@ -93,7 +93,29 @@ echo "14、安装常用工具：
 	首先查看下：/lib/modules/4.9.0-3-686-pae/kernel/sound/core/oss目录下是否安装了
 	snd-pcm-oss.ko和snd-mixer-oss.ko这两个驱动模块，如果有的话，将其手动添加到/etc/modules文件中，让系统再启动时能自动加载这两个模块：
 	snd-pcm-oss
-	snd-mixer-oss";
+	snd-mixer-oss<br>";
+echo "17、通过systemctl命令，启动自己在开机需要执行的程序
+	在linux启动时一些个人写的获取天气，邮件以及对系统设置（调节亮度）的操作都需要在系统启动之后自动执行，之前我的做法是通过.bashrc之
+	类的脚本或者加入到conky或者i3的启动脚本中执行。但是，当不使用root登录时，有些操作不能再如上述操作启动了，因为有些操作需要权限，
+	因此这些需要开机运行的脚本我整合为一个符合作为systemctl服务而启动的脚本，将该脚本加入到/etc/init.d/目录下，再将该脚本的链接文件
+	加入到/etc/rc2.d/目录下，即可在系统启动时自动执行。整合后的脚本如下：(/etc/init.d/gttmpfan.sh)
+	#!/bin/sh
+	RETVAL=0
+	case $1 in
+	start)
+ 	   echo 71 > /sys/class/backlight/radeon_bl0/brightness
+  	  gettempfan
+	;;
+	stop)
+   		echo 'it's already stoped'
+	;;
+	*)
+  	  echo 'welcome to use this script'
+	esac
+	exit \$RETCAL
+	////////////在/etc/rc2.d/下加入上述脚本的启动链接///////
+	ln -s /etc/init.d/gttmpfan.sh  /etc/rc2.d/S20gttmpfan
+	完成！";
 echo "<center><font color=blue>----------------------------------至此安装基本结束------------------------------------</font></center>
 下面是一些配置的修改：
 1、允许root使用ssh登录
