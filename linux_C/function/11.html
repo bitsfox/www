@@ -8,57 +8,57 @@
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc176></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc176></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       atexit（设置程序正常结束前调用的函数） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> _exit,exit,on_exit<br>
+    <td> <font face='宋体' size='3'> _exit,exit,on_exit<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdlib.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdlib.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int atexit (void (*function)(void));<br>
+    <td> <font face='宋体' size='3'> int atexit (void (*function)(void));<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> atexit()用来设置一个程序正常结束前调用的函数。当程序通过调用exit()或从main中返回时，参数function所指定的函数会先被调用，然后才真正由exit()结束程序。<br>
+    <td> <font face='宋体' size='3'> atexit()用来设置一个程序正常结束前调用的函数。当程序通过调用exit()或从main中返回时，参数function所指定的函数会先被调用，然后才真正由exit()结束程序。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 如果执行成功则返回0，否则返回-1，失败原因存于errno中。<br>
+    <td> <font face='宋体' size='3'> 如果执行成功则返回0，否则返回-1，失败原因存于errno中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdlib.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdlib.h&gt;<br>
       void my_exit(void)<br>
       {<br>
       printf(“before exit () !\n”);<br>
@@ -72,65 +72,65 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 执行 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 执行 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> before exit()!<br>
+    <td> <font face='宋体' size='3'> before exit()!<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc177></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc177></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       execl（执行文件） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> fork，execle，execlp，execv，execve，execvp<br>
+    <td> <font face='宋体' size='3'> fork，execle，execlp，execv，execve，execvp<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;unistd.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;unistd.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int execl(const char * path,const char * arg,....);<br>
+    <td> <font face='宋体' size='3'> int execl(const char * path,const char * arg,....);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> execl()用来执行参数path字符串所代表的文件路径，接下来的参数代表执行该文件时传递过去的argv(0)、argv[1]……，最后一个参数必须用空指针(NULL)作结束。<br>
+    <td> <font face='宋体' size='3'> execl()用来执行参数path字符串所代表的文件路径，接下来的参数代表执行该文件时传递过去的argv(0)、argv[1]……，最后一个参数必须用空指针(NULL)作结束。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 如果执行成功则函数不会返回，执行失败则直接返回-1，失败原因存于errno中。<br>
+    <td> <font face='宋体' size='3'> 如果执行成功则函数不会返回，执行失败则直接返回-1，失败原因存于errno中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;unistd.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;unistd.h&gt;<br>
       main()<br>
       {<br>
       execl(“/bin/ls”,”ls”,”-al”,”/etc/passwd”,(char * )0);<br>
@@ -139,73 +139,73 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 执行 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 执行 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> /*执行/bin/ls -al /etc/passwd */<br>
+    <td> <font face='宋体' size='3'> /*执行/bin/ls -al /etc/passwd */<br>
       -rw-r--r-- 1 root root 705 Sep 3 13 :52 /etc/passwd<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc178></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc178></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       execlp（从PATH 环境变量中查找文件并执行） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> fork，execl，execle，execv，execve，execvp<br>
+    <td> <font face='宋体' size='3'> fork，execl，execle，execv，execve，execvp<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;unistd.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;unistd.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int execlp(const char * file,const char * arg,……)；<br>
+    <td> <font face='宋体' size='3'> int execlp(const char * file,const char * arg,……)；<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> execlp()会从PATH 环境变量所指的目录中查找符合参数file的文件名，找到后便执行该文件，然后将第二个以后的参数当做该文件的argv[0]、argv[1]……，最后一个参数必须用空指针(NULL)作结束。<br>
+    <td> <font face='宋体' size='3'> execlp()会从PATH 环境变量所指的目录中查找符合参数file的文件名，找到后便执行该文件，然后将第二个以后的参数当做该文件的argv[0]、argv[1]……，最后一个参数必须用空指针(NULL)作结束。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 如果执行成功则函数不会返回，执行失败则直接返回-1，失败原因存于errno 中。<br>
+    <td> <font face='宋体' size='3'> 如果执行成功则函数不会返回，执行失败则直接返回-1，失败原因存于errno 中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 错误代码 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 错误代码 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 参考execve()。<br>
+    <td> <font face='宋体' size='3'> 参考execve()。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> /* 执行ls -al /etc/passwd execlp()会依PATH 变量中的/bin找到/bin/ls 
+    <td> <font face='宋体' size='3'> /* 执行ls -al /etc/passwd execlp()会依PATH 变量中的/bin找到/bin/ls 
       */<br>
       #include&lt;unistd.h&gt;<br>
       main()<br>
@@ -216,73 +216,73 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 执行 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 执行 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> -rw-r--r-- 1 root root 705 Sep 3 13 :52 /etc/passwd<br>
+    <td> <font face='宋体' size='3'> -rw-r--r-- 1 root root 705 Sep 3 13 :52 /etc/passwd<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc179></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc179></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       execv（执行文件） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> fork，execl，execle，execlp，execve，execvp<br>
+    <td> <font face='宋体' size='3'> fork，execl，execle，execlp，execve，execvp<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;unistd.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;unistd.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int execv (const char * path, char * const 
+    <td> <font face='宋体' size='3'> int execv (const char * path, char * const 
       argv[ ]);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> execv()用来执行参数path字符串所代表的文件路径，与execl()不同的地方在于execve()只需两个参数，第二个参数利用数组指针来传递给执行文件。<br>
+    <td> <font face='宋体' size='3'> execv()用来执行参数path字符串所代表的文件路径，与execl()不同的地方在于execve()只需两个参数，第二个参数利用数组指针来传递给执行文件。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 如果执行成功则函数不会返回，执行失败则直接返回-1，失败原因存于errno 中。<br>
+    <td> <font face='宋体' size='3'> 如果执行成功则函数不会返回，执行失败则直接返回-1，失败原因存于errno 中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 错误代码 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 错误代码 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 请参考execve（）。<br>
+    <td> <font face='宋体' size='3'> 请参考execve（）。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> /* 执行/bin/ls -al /etc/passwd */<br>
+    <td> <font face='宋体' size='3'> /* 执行/bin/ls -al /etc/passwd */<br>
       #include&lt;unistd.h&gt;<br>
       main()<br>
       {<br>
@@ -293,66 +293,66 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 执行 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 执行 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> -rw-r--r-- 1 root root 705 Sep 3 13 :52 /etc/passwd<br>
+    <td> <font face='宋体' size='3'> -rw-r--r-- 1 root root 705 Sep 3 13 :52 /etc/passwd<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc180></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc180></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       execve（执行文件） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> fork，execl，execle，execlp，execv，execvp<br>
+    <td> <font face='宋体' size='3'> fork，execl，execle，execlp，execv，execvp<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;unistd.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;unistd.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int execve(const char * filename,char * const 
+    <td> <font face='宋体' size='3'> int execve(const char * filename,char * const 
       argv[ ],char * const envp[ ]);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> execve()用来执行参数filename字符串所代表的文件路径，第二个参数系利用数组指针来传递给执行文件，最后一个参数则为传递给执行文件的新环境变量数组。<br>
+    <td> <font face='宋体' size='3'> execve()用来执行参数filename字符串所代表的文件路径，第二个参数系利用数组指针来传递给执行文件，最后一个参数则为传递给执行文件的新环境变量数组。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 如果执行成功则函数不会返回，执行失败则直接返回-1，失败原因存于errno 中。<br>
+    <td> <font face='宋体' size='3'> 如果执行成功则函数不会返回，执行失败则直接返回-1，失败原因存于errno 中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 错误代码 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 错误代码 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> EACCES<br>
+    <td> <font face='宋体' size='3'> EACCES<br>
       1. 欲执行的文件不具有用户可执行的权限。<br>
       2. 欲执行的文件所属的文件系统是以noexec 方式挂上。<br>
       3.欲执行的文件或script翻译器非一般文件。<br>
@@ -379,9 +379,9 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;unistd.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;unistd.h&gt;<br>
       main()<br>
       {<br>
       char * argv[ ]={“ls”,”-al”,”/etc/passwd”,(char *)0};<br>
@@ -392,73 +392,73 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 执行 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 执行 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> -rw-r--r-- 1 root root 705 Sep 3 13 :52 /etc/passwd<br>
+    <td> <font face='宋体' size='3'> -rw-r--r-- 1 root root 705 Sep 3 13 :52 /etc/passwd<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc181></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc181></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       execvp（执行文件） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> fork，execl，execle，execlp，execv，execve<br>
+    <td> <font face='宋体' size='3'> fork，execl，execle，execlp，execv，execve<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;unistd.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;unistd.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int execvp(const char *file ,char * const argv 
+    <td> <font face='宋体' size='3'> int execvp(const char *file ,char * const argv 
       []);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> execvp()会从PATH 环境变量所指的目录中查找符合参数file 的文件名，找到后便执行该文件，然后将第二个参数argv传给该欲执行的文件。<br>
+    <td> <font face='宋体' size='3'> execvp()会从PATH 环境变量所指的目录中查找符合参数file 的文件名，找到后便执行该文件，然后将第二个参数argv传给该欲执行的文件。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 如果执行成功则函数不会返回，执行失败则直接返回-1，失败原因存于errno中。<br>
+    <td> <font face='宋体' size='3'> 如果执行成功则函数不会返回，执行失败则直接返回-1，失败原因存于errno中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 错误代码 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 错误代码 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 请参考execve（）。<br>
+    <td> <font face='宋体' size='3'> 请参考execve（）。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> /*请与execlp（）范例对照*/<br>
+    <td> <font face='宋体' size='3'> /*请与execlp（）范例对照*/<br>
       #include&lt;unistd.h&gt;<br>
       main()<br>
       {<br>
@@ -469,193 +469,193 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 执行 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 执行 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> -rw-r--r-- 1 root root 705 Sep 3 13 :52 /etc/passwd<br>
+    <td> <font face='宋体' size='3'> -rw-r--r-- 1 root root 705 Sep 3 13 :52 /etc/passwd<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc182></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc182></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       exit（正常结束进程） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> _exit，atexit，on_exit<br>
+    <td> <font face='宋体' size='3'> _exit，atexit，on_exit<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdlib.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdlib.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> void exit(int status);<br>
+    <td> <font face='宋体' size='3'> void exit(int status);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> exit()用来正常终结目前进程的执行，并把参数status返回给父进程，而进程所有的缓冲区数据会自动写回并关闭未关闭的文件。<br>
+    <td> <font face='宋体' size='3'> exit()用来正常终结目前进程的执行，并把参数status返回给父进程，而进程所有的缓冲区数据会自动写回并关闭未关闭的文件。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 参考wait（）<br>
+    <td> <font face='宋体' size='3'> 参考wait（）<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc183></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc183></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         _ </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       exit（结束进程执行） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> exit，wait，abort<br>
+    <td> <font face='宋体' size='3'> exit，wait，abort<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;unistd.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;unistd.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> void _exit(int status);<br>
+    <td> <font face='宋体' size='3'> void _exit(int status);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> _exit()用来立刻结束目前进程的执行，并把参数status返回给父进程，并关闭未关闭的文件。此函数调用后不会返回，并且会传递SIGCHLD信号给父进程，父进程可以由wait函数取得子进程结束状态。<br>
+    <td> <font face='宋体' size='3'> _exit()用来立刻结束目前进程的执行，并把参数status返回给父进程，并关闭未关闭的文件。此函数调用后不会返回，并且会传递SIGCHLD信号给父进程，父进程可以由wait函数取得子进程结束状态。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 附加说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 附加说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> _exit（）不会处理标准I/O 缓冲区，如要更新缓冲区请使用exit（）。<br>
+    <td> <font face='宋体' size='3'> _exit（）不会处理标准I/O 缓冲区，如要更新缓冲区请使用exit（）。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc184></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc184></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       vfork（建立一个新的进程） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> wait，execve<br>
+    <td> <font face='宋体' size='3'> wait，execve<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;unistd.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;unistd.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> pid_t vfork(void);<br>
+    <td> <font face='宋体' size='3'> pid_t vfork(void);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> vfork()会产生一个新的子进程，其子进程会复制父进程的数据与堆栈空间，并继承父进程的用户代码，组代码，环境变量、已打开的文件代码、工作目录和资源限制等。Linux 
+    <td> <font face='宋体' size='3'> vfork()会产生一个新的子进程，其子进程会复制父进程的数据与堆栈空间，并继承父进程的用户代码，组代码，环境变量、已打开的文件代码、工作目录和资源限制等。Linux 
       使用copy-on-write(COW)技术，只有当其中一进程试图修改欲复制的空间时才会做真正的复制动作，由于这些继承的信息是复制而来，并非指相同的内存空间，因此子进程对这些变量的修改和父进程并不会同步。此外，子进程不会继承父进程的文件锁定和未处理的信号。注意，Linux不保证子进程会比父进程先执行或晚执行，因此编写程序时要留意<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 死锁或竞争条件的发生。 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 死锁或竞争条件的发生。 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 如果vfork()成功则在父进程会返回新建立的子进程代码(PID)，而在新建立的子进程中则返回0。如果vfork 
+    <td> <font face='宋体' size='3'> 如果vfork()成功则在父进程会返回新建立的子进程代码(PID)，而在新建立的子进程中则返回0。如果vfork 
       失败则直接返回-1，失败原因存于errno中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 错误代码 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 错误代码 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> EAGAIN 内存不足。ENOMEM 内存不足，无法配置核心所需的数据结构空间。<br>
+    <td> <font face='宋体' size='3'> EAGAIN 内存不足。ENOMEM 内存不足，无法配置核心所需的数据结构空间。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;unistd.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;unistd.h&gt;<br>
       main()<br>
       {<br>
       if(vfork() = =0)<br>
@@ -669,73 +669,73 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 执行 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 执行 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> this is the parent process<br>
+    <td> <font face='宋体' size='3'> this is the parent process<br>
       this is the child process<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc185></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc185></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       getpgid（取得进程组识别码） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> setpgid，setpgrp，getpgrp<br>
+    <td> <font face='宋体' size='3'> setpgid，setpgrp，getpgrp<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;unistd.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;unistd.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> pid_t getpgid( pid_t pid);<br>
+    <td> <font face='宋体' size='3'> pid_t getpgid( pid_t pid);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> getpgid()用来取得参数pid 指定进程所属的组识别码。如果参数pid为0，则会取得目前进程的组识别码。<br>
+    <td> <font face='宋体' size='3'> getpgid()用来取得参数pid 指定进程所属的组识别码。如果参数pid为0，则会取得目前进程的组识别码。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 执行成功则返回组识别码，如果有错误则返回-1，错误原因存于errno中。<br>
+    <td> <font face='宋体' size='3'> 执行成功则返回组识别码，如果有错误则返回-1，错误原因存于errno中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 错误代码 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 错误代码 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> ESRCH 找不到符合参数pid 指定的进程。<br>
+    <td> <font face='宋体' size='3'> ESRCH 找不到符合参数pid 指定的进程。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> /*取得init 进程（pid＝1）的组识别码*/<br>
+    <td> <font face='宋体' size='3'> /*取得init 进程（pid＝1）的组识别码*/<br>
       #include&lt;unistd.h&gt;<br>
       mian()<br>
       {<br>
@@ -745,65 +745,65 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 执行 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 执行 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> init gid = 0<br>
+    <td> <font face='宋体' size='3'> init gid = 0<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc186></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc186></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       getpgrp（取得进程组识别码） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> setpgid，getpgid，getpgrp<br>
+    <td> <font face='宋体' size='3'> setpgid，getpgid，getpgrp<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;unistd.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;unistd.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> pid_t getpgrp(void);<br>
+    <td> <font face='宋体' size='3'> pid_t getpgrp(void);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> getpgrp()用来取得目前进程所属的组识别码。此函数相当于调用getpgid(0)；<br>
+    <td> <font face='宋体' size='3'> getpgrp()用来取得目前进程所属的组识别码。此函数相当于调用getpgid(0)；<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 返回目前进程所属的组识别码。<br>
+    <td> <font face='宋体' size='3'> 返回目前进程所属的组识别码。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;unistd.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;unistd.h&gt;<br>
       main()<br>
       {<br>
       printf(“my gid =%d\n”,getpgrp());<br>
@@ -812,65 +812,65 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 执行 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 执行 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> my gid =29546<br>
+    <td> <font face='宋体' size='3'> my gid =29546<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc187></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc187></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       getpid（取得进程识别码） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> fork，kill，getpid<br>
+    <td> <font face='宋体' size='3'> fork，kill，getpid<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;unistd.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;unistd.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> pid_t getpid(void);<br>
+    <td> <font face='宋体' size='3'> pid_t getpid(void);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> getpid（）用来取得目前进程的进程识别码，许多程序利用取到的此值来建立临时文件，以避免临时文件相同带来的问题。<br>
+    <td> <font face='宋体' size='3'> getpid（）用来取得目前进程的进程识别码，许多程序利用取到的此值来建立临时文件，以避免临时文件相同带来的问题。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 目前进程的进程识别码<br>
+    <td> <font face='宋体' size='3'> 目前进程的进程识别码<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;unistd.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;unistd.h&gt;<br>
       main()<br>
       {<br>
       printf(“pid=%d\n”,getpid());<br>
@@ -879,65 +879,65 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 执行 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 执行 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> pid=1494 /*每次执行结果都不一定相同*/<br>
+    <td> <font face='宋体' size='3'> pid=1494 /*每次执行结果都不一定相同*/<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc188></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc188></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       getppid（取得父进程的进程识别码） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> fork，kill，getpid<br>
+    <td> <font face='宋体' size='3'> fork，kill，getpid<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;unistd.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;unistd.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> pid_t getppid(void);<br>
+    <td> <font face='宋体' size='3'> pid_t getppid(void);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> getppid()用来取得目前进程的父进程识别码。<br>
+    <td> <font face='宋体' size='3'> getppid()用来取得目前进程的父进程识别码。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 目前进程的父进程识别码。<br>
+    <td> <font face='宋体' size='3'> 目前进程的父进程识别码。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;unistd.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;unistd.h&gt;<br>
       main()<br>
       {<br>
       printf(“My parent ‘pid =%d\n”,getppid());<br>
@@ -946,59 +946,59 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 执行 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 执行 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> My parent pid =463<br>
+    <td> <font face='宋体' size='3'> My parent pid =463<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc189></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc189></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       getpriority（取得程序进程执行优先权） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> setpriority，nice<br>
+    <td> <font face='宋体' size='3'> setpriority，nice<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;sys/time.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;sys/time.h&gt;<br>
       #include&lt;sys/resource.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int getpriority(int which,int who);<br>
+    <td> <font face='宋体' size='3'> int getpriority(int which,int who);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> getpriority()可用来取得进程、进程组和用户的进程执行优先权。<br>
+    <td> <font face='宋体' size='3'> getpriority()可用来取得进程、进程组和用户的进程执行优先权。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 参数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 参数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> which有三种数值，参数who 则依which值有不同定义<br>
+    <td> <font face='宋体' size='3'> which有三种数值，参数who 则依which值有不同定义<br>
       which who 代表的意义<br>
       PRIO_PROCESS who 为进程识别码<br>
       PRIO_PGRP who 为进程的组识别码<br>
@@ -1008,145 +1008,145 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 返回进程执行优先权，如有错误发生返回值则为-1 且错误原因存于errno。<br>
+    <td> <font face='宋体' size='3'> 返回进程执行优先权，如有错误发生返回值则为-1 且错误原因存于errno。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 附加说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 附加说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 由于返回值有可能是-1，因此要同时检查errno是否存有错误原因。最好在调用次函数前先清除errno变量。<br>
+    <td> <font face='宋体' size='3'> 由于返回值有可能是-1，因此要同时检查errno是否存有错误原因。最好在调用次函数前先清除errno变量。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 错误代码 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 错误代码 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> ESRCH 参数which或who 可能有错，而找不到符合的进程。EINVAL 参数which 
+    <td> <font face='宋体' size='3'> ESRCH 参数which或who 可能有错，而找不到符合的进程。EINVAL 参数which 
       值错误。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc190></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc190></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       nice（改变进程优先顺序） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> setpriority，getpriority<br>
+    <td> <font face='宋体' size='3'> setpriority，getpriority<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;unistd.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;unistd.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int nice(int inc);<br>
+    <td> <font face='宋体' size='3'> int nice(int inc);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> nice()用来改变进程的进程执行优先顺序。参数inc数值越大则优先顺序排在越后面，即表示进程执行会越慢。只有超级用户才能使用负的inc 
+    <td> <font face='宋体' size='3'> nice()用来改变进程的进程执行优先顺序。参数inc数值越大则优先顺序排在越后面，即表示进程执行会越慢。只有超级用户才能使用负的inc 
       值，代表优先顺序排在前面，进程执行会较快。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 如果执行成功则返回0，否则返回-1，失败原因存于errno中。<br>
+    <td> <font face='宋体' size='3'> 如果执行成功则返回0，否则返回-1，失败原因存于errno中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 错误代码 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 错误代码 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> EPERM 一般用户企图转用负的参数inc值改变进程优先顺序。<br>
+    <td> <font face='宋体' size='3'> EPERM 一般用户企图转用负的参数inc值改变进程优先顺序。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc191></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc191></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       on_exit（设置程序正常结束前调用的函数） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> _exit，atexit，exit<br>
+    <td> <font face='宋体' size='3'> _exit，atexit，exit<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdlib.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdlib.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int on_exit(void (* function)(int, void*),void 
+    <td> <font face='宋体' size='3'> int on_exit(void (* function)(int, void*),void 
       *arg);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> on_exit()用来设置一个程序正常结束前调用的函数。当程序通过调用exit()或从main中返回时，参数function所指定的函数会先被调用，然后才真正由exit()结束程序。参数arg指针会传给参数function函数，详细情况请见范例。<br>
+    <td> <font face='宋体' size='3'> on_exit()用来设置一个程序正常结束前调用的函数。当程序通过调用exit()或从main中返回时，参数function所指定的函数会先被调用，然后才真正由exit()结束程序。参数arg指针会传给参数function函数，详细情况请见范例。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 如果执行成功则返回0，否则返回-1，失败原因存于errno中。<br>
+    <td> <font face='宋体' size='3'> 如果执行成功则返回0，否则返回-1，失败原因存于errno中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 附加说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 附加说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdlib.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdlib.h&gt;<br>
       void my_exit(int status,void *arg)<br>
       {<br>
       printf(“before exit()!\n”);<br>
@@ -1163,9 +1163,9 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 执行 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 执行 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> before exit()!<br>
+    <td> <font face='宋体' size='3'> before exit()!<br>
       exit (1234)<br>
       arg = test<br>
       </font> </td>
@@ -1173,58 +1173,58 @@
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc192></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc192></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       setpgid（设置进程组识别码） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> getpgid，setpgrp，getpgrp<br>
+    <td> <font face='宋体' size='3'> getpgid，setpgrp，getpgrp<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;unistd.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;unistd.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int setpgid(pid_t pid,pid_t pgid);<br>
+    <td> <font face='宋体' size='3'> int setpgid(pid_t pid,pid_t pgid);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> setpgid()将参数pid 指定进程所属的组识别码设为参数pgid 指定的组识别码。如果参数pid 
+    <td> <font face='宋体' size='3'> setpgid()将参数pid 指定进程所属的组识别码设为参数pgid 指定的组识别码。如果参数pid 
       为0，则会用来设置目前进程的组识别码，如果参数pgid为0，则会以目前进程的进程识别码来取代。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 执行成功则返回组识别码，如果有错误则返回-1，错误原因存于errno中。<br>
+    <td> <font face='宋体' size='3'> 执行成功则返回组识别码，如果有错误则返回-1，错误原因存于errno中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 错误代码 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 错误代码 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> EINVAL 参数pgid小于0。<br>
+    <td> <font face='宋体' size='3'> EINVAL 参数pgid小于0。<br>
       EPERM 进程权限不足，无法完成调用。<br>
       ESRCH 找不到符合参数pid指定的进程。<br>
       </font> </td>
@@ -1232,93 +1232,93 @@
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc193></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc193></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       setpgrp（设置进程组识别码） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> getpgid，setpgid，getpgrp<br>
+    <td> <font face='宋体' size='3'> getpgid，setpgid，getpgrp<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;unistd.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;unistd.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int setpgrp(void);<br>
+    <td> <font face='宋体' size='3'> int setpgrp(void);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> setpgrp()将目前进程所属的组识别码设为目前进程的进程识别码。此函数相当于调用setpgid(0,0)。<br>
+    <td> <font face='宋体' size='3'> setpgrp()将目前进程所属的组识别码设为目前进程的进程识别码。此函数相当于调用setpgid(0,0)。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 执行成功则返回组识别码，如果有错误则返回-1，错误原因存于errno中。<br>
+    <td> <font face='宋体' size='3'> 执行成功则返回组识别码，如果有错误则返回-1，错误原因存于errno中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc194></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc194></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       setpriority（设置程序进程执行优先权） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> getpriority，nice<br>
+    <td> <font face='宋体' size='3'> getpriority，nice<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;sys/time.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;sys/time.h&gt;<br>
       #include&lt;sys/resource.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int setpriority(int which,int who, int prio);<br>
+    <td> <font face='宋体' size='3'> int setpriority(int which,int who, int prio);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> setpriority()可用来设置进程、进程组和用户的进程执行优先权。参数which有三种数值，参数who 
+    <td> <font face='宋体' size='3'> setpriority()可用来设置进程、进程组和用户的进程执行优先权。参数which有三种数值，参数who 
       则依which值有不同定义<br>
       which who 代表的意义<br>
       PRIO_PROCESS who为进程识别码<br>
@@ -1329,9 +1329,9 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 执行成功则返回0，如果有错误发生返回值则为-1，错误原因存于errno。<br>
+    <td> <font face='宋体' size='3'> 执行成功则返回0，如果有错误发生返回值则为-1，错误原因存于errno。<br>
       ESRCH 参数which或who 可能有错，而找不到符合的进程<br>
       EINVAL 参数which值错误。<br>
       EPERM 权限不够，无法完成设置<br>
@@ -1341,66 +1341,66 @@
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc195></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc195></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       system（执行shell 命令） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> fork，execve，waitpid，popen<br>
+    <td> <font face='宋体' size='3'> fork，execve，waitpid，popen<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdlib.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdlib.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int system(const char * string);<br>
+    <td> <font face='宋体' size='3'> int system(const char * string);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> system()会调用fork()产生子进程，由子进程来调用/bin/sh-c string来执行参数string字符串所代表的命令，此命令执行完后随即返回原调用的进程。在调用system()期间SIGCHLD 
+    <td> <font face='宋体' size='3'> system()会调用fork()产生子进程，由子进程来调用/bin/sh-c string来执行参数string字符串所代表的命令，此命令执行完后随即返回原调用的进程。在调用system()期间SIGCHLD 
       信号会被暂时搁置，SIGINT和SIGQUIT 信号则会被忽略。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 如果system()在调用/bin/sh时失败则返回127，其他失败原因返回-1。若参数string为空指针(NULL)，则返回非零值。如果system()调用成功则最后会返回执行shell命令后的返回值，但是此返回值也有可能为system()调用/bin/sh失败所返回的127，因此最好能再检查errno 
+    <td> <font face='宋体' size='3'> 如果system()在调用/bin/sh时失败则返回127，其他失败原因返回-1。若参数string为空指针(NULL)，则返回非零值。如果system()调用成功则最后会返回执行shell命令后的返回值，但是此返回值也有可能为system()调用/bin/sh失败所返回的127，因此最好能再检查errno 
       来确认执行成功。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 附加说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 附加说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 在编写具有SUID/SGID权限的程序时请勿使用system()，system()会继承环境变量，通过环境变量可能会造成系统安全的问题。<br>
+    <td> <font face='宋体' size='3'> 在编写具有SUID/SGID权限的程序时请勿使用system()，system()会继承环境变量，通过环境变量可能会造成系统安全的问题。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdlib.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdlib.h&gt;<br>
       main()<br>
       {<br>
       system(“ls -al /etc/passwd /etc/shadow”);<br>
@@ -1409,82 +1409,82 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 执行 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 执行 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> -rw-r--r-- 1 root root 705 Sep 3 13 :52 /etc/passwd<br>
+    <td> <font face='宋体' size='3'> -rw-r--r-- 1 root root 705 Sep 3 13 :52 /etc/passwd<br>
       -r--------- 1 root root 572 Sep 2 15 :34 /etc/shadow<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc196></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc196></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       wait（等待子进程中断或结束） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> waitpid，fork<br>
+    <td> <font face='宋体' size='3'> waitpid，fork<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;sys/types.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;sys/types.h&gt;<br>
       #include&lt;sys/wait.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> pid_t wait (int * status);<br>
+    <td> <font face='宋体' size='3'> pid_t wait (int * status);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> wait()会暂时停止目前进程的执行，直到有信号来到或子进程结束。如果在调用wait()时子进程已经结束，则wait()会立即返回子进程结束状态值。子进程的结束状态值会由参数status 
+    <td> <font face='宋体' size='3'> wait()会暂时停止目前进程的执行，直到有信号来到或子进程结束。如果在调用wait()时子进程已经结束，则wait()会立即返回子进程结束状态值。子进程的结束状态值会由参数status 
       返回，而子进程的进程识别码也会一快返回。如果不在意结束状态值，则<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 参数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 参数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> status可以设成NULL。子进程的结束状态值请参考waitpid()。<br>
+    <td> <font face='宋体' size='3'> status可以设成NULL。子进程的结束状态值请参考waitpid()。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 如果执行成功则返回子进程识别码(PID)，如果有错误发生则返回-1。失败原因存于errno中。<br>
+    <td> <font face='宋体' size='3'> 如果执行成功则返回子进程识别码(PID)，如果有错误发生则返回-1。失败原因存于errno中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 附加说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 附加说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdlib.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdlib.h&gt;<br>
       #include&lt;unistd.h&gt;<br>
       #include&lt;sys/types.h&gt;<br>
       #include&lt;sys/wait.h&gt;<br>
@@ -1507,9 +1507,9 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 执行 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 执行 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> This is the child process.pid=1501<br>
+    <td> <font face='宋体' size='3'> This is the child process.pid=1501<br>
       This is the parent process .wait for child...<br>
       child’s pid =1501,exit status =5<br>
       </font> </td>
@@ -1517,44 +1517,44 @@
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc197></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc197></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       waitpid（等待子进程中断或结束） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> wait，fork<br>
+    <td> <font face='宋体' size='3'> wait，fork<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;sys/types.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;sys/types.h&gt;<br>
       #include&lt;sys/wait.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> pid_t waitpid(pid_t pid,int * status,int options);<br>
+    <td> <font face='宋体' size='3'> pid_t waitpid(pid_t pid,int * status,int options);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> waitpid()会暂时停止目前进程的执行，直到有信号来到或子进程结束。如果在调用wait()时子进程已经结束，则wait()会立即返回子进程结束状态值。子进程的结束状态值会由参数status返回，而子进程的进程识别码也会一快返回。如果不在意结束状态值，则参数status可以设成NULL。参数pid为欲等待的子进程识别码，其他数值意义如下:<br>
+    <td> <font face='宋体' size='3'> waitpid()会暂时停止目前进程的执行，直到有信号来到或子进程结束。如果在调用wait()时子进程已经结束，则wait()会立即返回子进程结束状态值。子进程的结束状态值会由参数status返回，而子进程的进程识别码也会一快返回。如果不在意结束状态值，则参数status可以设成NULL。参数pid为欲等待的子进程识别码，其他数值意义如下:<br>
       pid&lt;-1 等待进程组识别码为pid绝对值的任何子进程。<br>
       pid=-1 等待任何子进程，相当于wait()。<br>
       pid=0 等待进程组识别码与目前进程相同的任何子进程。<br>
@@ -1573,72 +1573,72 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 如果执行成功则返回子进程识别码(PID)，如果有错误发生则返回-1。失败原因存于errno中。<br>
+    <td> <font face='宋体' size='3'> 如果执行成功则返回子进程识别码(PID)，如果有错误发生则返回-1。失败原因存于errno中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 参考wait()。<br>
+    <td> <font face='宋体' size='3'> 参考wait()。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc198></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc198></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       fprintf（格式化输出数据至文件） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> printf，fscanf，vfprintf<br>
+    <td> <font face='宋体' size='3'> printf，fscanf，vfprintf<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdio.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdio.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int fprintf(FILE * stream, const char * format,.......);<br>
+    <td> <font face='宋体' size='3'> int fprintf(FILE * stream, const char * format,.......);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> fprintf()会根据参数format字符串来转换并格式化数据，然后将结果输出到参数stream指定的文件中，直到出现字符串结束('\0')为止。<br>
+    <td> <font face='宋体' size='3'> fprintf()会根据参数format字符串来转换并格式化数据，然后将结果输出到参数stream指定的文件中，直到出现字符串结束('\0')为止。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 关于参数format字符串的格式请参考printf()。成功则返回实际输出的字符数，失败则返回-1，错误原因存于errno中。<br>
+    <td> <font face='宋体' size='3'> 关于参数format字符串的格式请参考printf()。成功则返回实际输出的字符数，失败则返回-1，错误原因存于errno中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdio.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdio.h&gt;<br>
       main()<br>
       {<br>
       int i = 150;<br>
@@ -1651,73 +1651,73 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 执行 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 执行 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> -100 3.141590 96<br>
+    <td> <font face='宋体' size='3'> -100 3.141590 96<br>
       150 150<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc199></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc199></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       fscanf（格式化字符串输入） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> scanf，sscanf<br>
+    <td> <font face='宋体' size='3'> scanf，sscanf<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdio.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdio.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int fscanf(FILE * stream ,const char *format,....);<br>
+    <td> <font face='宋体' size='3'> int fscanf(FILE * stream ,const char *format,....);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> fscanf()会自参数stream的文件流中读取字符串，再根据参数format字符串来转换并格式化数据。格式转换形式请参考scanf()。转换后的结构存于对应的参数内。<br>
+    <td> <font face='宋体' size='3'> fscanf()会自参数stream的文件流中读取字符串，再根据参数format字符串来转换并格式化数据。格式转换形式请参考scanf()。转换后的结构存于对应的参数内。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 成功则返回参数数目，失败则返回-1，错误原因存于errno中。<br>
+    <td> <font face='宋体' size='3'> 成功则返回参数数目，失败则返回-1，错误原因存于errno中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 附加说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 附加说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdio.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdio.h&gt;<br>
       main()<br>
       {<br>
       int i;<br>
@@ -1730,52 +1730,52 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 执行 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 执行 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 10 0x1b aaaaaaaaa bbbbbbbbbb /*从键盘输入*/<br>
+    <td> <font face='宋体' size='3'> 10 0x1b aaaaaaaaa bbbbbbbbbb /*从键盘输入*/<br>
       10 27 aaaaa<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc200></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc200></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       printf（格式化输出数据） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> scanf，snprintf<br>
+    <td> <font face='宋体' size='3'> scanf，snprintf<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdio.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdio.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int printf(const char * format,.............);<br>
+    <td> <font face='宋体' size='3'> int printf(const char * format,.............);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> printf()会根据参数format字符串来转换并格式化数据，然后将结果写出到标准输出设备，直到出现字符串结束('\0')为止。参数format字符串可包含下列三种字符类型<br>
+    <td> <font face='宋体' size='3'> printf()会根据参数format字符串来转换并格式化数据，然后将结果写出到标准输出设备，直到出现字符串结束('\0')为止。参数format字符串可包含下列三种字符类型<br>
       1.一般文本，伴随直接输出。<br>
       2.ASCII控制字符，如\t、\n等。<br>
       3.格式转换字符。<br>
@@ -1815,16 +1815,16 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 成功则返回实际输出的字符数，失败则返回-1，错误原因存于errno中。<br>
+    <td> <font face='宋体' size='3'> 成功则返回实际输出的字符数，失败则返回-1，错误原因存于errno中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdio.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdio.h&gt;<br>
       main()<br>
       {<br>
       int i = 150;<br>
@@ -1837,52 +1837,52 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 执行 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 执行 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> -100 3.14159 96<br>
+    <td> <font face='宋体' size='3'> -100 3.14159 96<br>
       150 150<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc201></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc201></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       sacnf（格式化字符串输入） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> fscanf，snprintf<br>
+    <td> <font face='宋体' size='3'> fscanf，snprintf<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdio.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdio.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int scanf(const char * format,.......);<br>
+    <td> <font face='宋体' size='3'> int scanf(const char * format,.......);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> scanf()会将输入的数据根据参数format字符串来转换并格式化数据。Scanf()格式转换的一般形式如下<br>
+    <td> <font face='宋体' size='3'> scanf()会将输入的数据根据参数format字符串来转换并格式化数据。Scanf()格式转换的一般形式如下<br>
       ％[*][size][l][h]type<br>
       以中括号括起来的参数为选择性参数，而％与type则是必要的。<br>
       * 代表该对应的参数数据忽略不保存。<br>
@@ -1908,16 +1908,16 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 成功则返回参数数目，失败则返回-1，错误原因存于errno中。<br>
+    <td> <font face='宋体' size='3'> 成功则返回参数数目，失败则返回-1，错误原因存于errno中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include &lt;stdio.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include &lt;stdio.h&gt;<br>
       main()<br>
       {<br>
       int i;<br>
@@ -1930,73 +1930,73 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 执行 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 执行 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 10 0x1b aaaaaaaaaa bbbbbbbbbb<br>
+    <td> <font face='宋体' size='3'> 10 0x1b aaaaaaaaaa bbbbbbbbbb<br>
       10 27 aaaaa<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc202></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc202></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       sprintf（格式化字符串复制） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> printf，sprintf<br>
+    <td> <font face='宋体' size='3'> printf，sprintf<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdio.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdio.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int sprintf( char *str,const char * format,.........);<br>
+    <td> <font face='宋体' size='3'> int sprintf( char *str,const char * format,.........);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> sprintf()会根据参数format字符串来转换并格式化数据，然后将结果复制到参数str所指的字符串数组，直到出现字符串结束(’\0’)为止。关于参数format字符串的格式请参考printf()。<br>
+    <td> <font face='宋体' size='3'> sprintf()会根据参数format字符串来转换并格式化数据，然后将结果复制到参数str所指的字符串数组，直到出现字符串结束(’\0’)为止。关于参数format字符串的格式请参考printf()。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 成功则返回参数str字符串长度，失败则返回-1，错误原因存于errno中。<br>
+    <td> <font face='宋体' size='3'> 成功则返回参数str字符串长度，失败则返回-1，错误原因存于errno中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 附加说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 附加说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 使用此函数得留意堆栈溢出，或改用snprintf（）。<br>
+    <td> <font face='宋体' size='3'> 使用此函数得留意堆栈溢出，或改用snprintf（）。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdio.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdio.h&gt;<br>
       main()<br>
       {<br>
       char * a=”This is string A!”;<br>
@@ -2008,65 +2008,65 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 执行 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 执行 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> &gt;&gt;&gt;This is string A!&lt;&lt;&lt;<br>
+    <td> <font face='宋体' size='3'> &gt;&gt;&gt;This is string A!&lt;&lt;&lt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc203></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc203></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       sscanf（格式化字符串输入） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> scanf，fscanf<br>
+    <td> <font face='宋体' size='3'> scanf，fscanf<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdio.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdio.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int sscanf (const char *str,const char * format,........);<br>
+    <td> <font face='宋体' size='3'> int sscanf (const char *str,const char * format,........);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> sscanf()会将参数str的字符串根据参数format字符串来转换并格式化数据。格式转换形式请参考scanf()。转换后的结果存于对应的参数内。<br>
+    <td> <font face='宋体' size='3'> sscanf()会将参数str的字符串根据参数format字符串来转换并格式化数据。格式转换形式请参考scanf()。转换后的结果存于对应的参数内。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 成功则返回参数数目，失败则返回-1，错误原因存于errno中。<br>
+    <td> <font face='宋体' size='3'> 成功则返回参数数目，失败则返回-1，错误原因存于errno中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdio.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdio.h&gt;<br>
       main()<br>
       {<br>
       int i;<br>
@@ -2080,182 +2080,182 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 执行 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 执行 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 10 27 aaaaa<br>
+    <td> <font face='宋体' size='3'> 10 27 aaaaa<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc204></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc204></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       vfprintf（格式化输出数据至文件） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> printf，fscanf，fprintf<br>
+    <td> <font face='宋体' size='3'> printf，fscanf，fprintf<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdio.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdio.h&gt;<br>
       #include&lt;stdarg.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int vfprintf(FILE *stream,const char * format,va_list 
+    <td> <font face='宋体' size='3'> int vfprintf(FILE *stream,const char * format,va_list 
       ap);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> vfprintf()会根据参数format字符串来转换并格式化数据，然后将结果输出到参数stream指定的文件中，直到出现字符串结束(’\0’)为止。关于参数format字符串的格式请参考printf()。va_list用法请参考附录C或vprintf()范例。<br>
+    <td> <font face='宋体' size='3'> vfprintf()会根据参数format字符串来转换并格式化数据，然后将结果输出到参数stream指定的文件中，直到出现字符串结束(’\0’)为止。关于参数format字符串的格式请参考printf()。va_list用法请参考附录C或vprintf()范例。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 成功则返回实际输出的字符数，失败则返回-1，错误原因存于errno中。<br>
+    <td> <font face='宋体' size='3'> 成功则返回实际输出的字符数，失败则返回-1，错误原因存于errno中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 参考fprintf()及vprintf()。<br>
+    <td> <font face='宋体' size='3'> 参考fprintf()及vprintf()。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc205></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc205></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       vfscanf（格式化字符串输入） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> scanf，sscanf，fscanf<br>
+    <td> <font face='宋体' size='3'> scanf，sscanf，fscanf<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdio.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdio.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int vfscanf(FILE * stream,const char * format 
+    <td> <font face='宋体' size='3'> int vfscanf(FILE * stream,const char * format 
       ,va_list ap);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> vfscanf()会自参数stream 的文件流中读取字符串，再根据参数format字符串来转换并格式化数据。格式转换形式请参考scanf()。转换后的结果存于对应的参数内。va_list用法请参考附录C 
+    <td> <font face='宋体' size='3'> vfscanf()会自参数stream 的文件流中读取字符串，再根据参数format字符串来转换并格式化数据。格式转换形式请参考scanf()。转换后的结果存于对应的参数内。va_list用法请参考附录C 
       或vprintf()。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 成功则返回参数数目，失败则返回-1，错误原因存于errno中。<br>
+    <td> <font face='宋体' size='3'> 成功则返回参数数目，失败则返回-1，错误原因存于errno中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 参考fscanf()及vprintf()。<br>
+    <td> <font face='宋体' size='3'> 参考fscanf()及vprintf()。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc206></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc206></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       vprintf（格式化输出数据） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> printf，vfprintf，vsprintf<br>
+    <td> <font face='宋体' size='3'> printf，vfprintf，vsprintf<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdio.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdio.h&gt;<br>
       #include&lt;stdarg.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int vprintf(const char * format,va_list ap);<br>
+    <td> <font face='宋体' size='3'> int vprintf(const char * format,va_list ap);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> vprintf()作用和printf()相同，参数format格式也相同。va_list为不定个数的参数列，用法及范例请参考附录C。<br>
+    <td> <font face='宋体' size='3'> vprintf()作用和printf()相同，参数format格式也相同。va_list为不定个数的参数列，用法及范例请参考附录C。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 成功则返回实际输出的字符数，失败则返回-1，错误原因存于errno中。<br>
+    <td> <font face='宋体' size='3'> 成功则返回实际输出的字符数，失败则返回-1，错误原因存于errno中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdio.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdio.h&gt;<br>
       #include&lt;stdarg.h&gt;<br>
       int my_printf( const char *format,……)<br>
       {<br>
@@ -2278,182 +2278,182 @@
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 执行 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 执行 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> my_printf() : -100 3.14159 96<br>
+    <td> <font face='宋体' size='3'> my_printf() : -100 3.14159 96<br>
       my_printf() : 150 150<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc207></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc207></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       vscanf（格式化字符串输入） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> vsscanf，vfscanf<br>
+    <td> <font face='宋体' size='3'> vsscanf，vfscanf<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdio.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdio.h&gt;<br>
       #include&lt;stdarg.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int vscanf( const char * format,va_list ap);<br>
+    <td> <font face='宋体' size='3'> int vscanf( const char * format,va_list ap);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> vscanf()会将输入的数据根据参数format字符串来转换并格式化数据。格式转换形式请参考scanf()。转换后的结果存于对应的参数内。va_list用法请参考附录C或vprintf()范例。<br>
+    <td> <font face='宋体' size='3'> vscanf()会将输入的数据根据参数format字符串来转换并格式化数据。格式转换形式请参考scanf()。转换后的结果存于对应的参数内。va_list用法请参考附录C或vprintf()范例。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 成功则返回参数数目，失败则返回-1，错误原因存于errno中。<br>
+    <td> <font face='宋体' size='3'> 成功则返回参数数目，失败则返回-1，错误原因存于errno中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 请参考scanf()及vprintf()。<br>
+    <td> <font face='宋体' size='3'> 请参考scanf()及vprintf()。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc208></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc208></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       vsprintf（格式化字符串复制） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> vnsprintf，vprintf，snprintf<br>
+    <td> <font face='宋体' size='3'> vnsprintf，vprintf，snprintf<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdio.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdio.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int vsprintf( char * str,const char * format,va_list 
+    <td> <font face='宋体' size='3'> int vsprintf( char * str,const char * format,va_list 
       ap);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> vsprintf()会根据参数format字符串来转换并格式化数据，然后将结果复制到参数str所指的字符串数组，直到出现字符串结束(’\0’)为止。关于参数format字符串的格式请参考printf()。va_list用法请参考附录C或vprintf()范例。<br>
+    <td> <font face='宋体' size='3'> vsprintf()会根据参数format字符串来转换并格式化数据，然后将结果复制到参数str所指的字符串数组，直到出现字符串结束(’\0’)为止。关于参数format字符串的格式请参考printf()。va_list用法请参考附录C或vprintf()范例。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 成功则返回参数str字符串长度，失败则返回-1，错误原因存于errno中。<br>
+    <td> <font face='宋体' size='3'> 成功则返回参数str字符串长度，失败则返回-1，错误原因存于errno中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 请参考vprintf()及vsprintf()。<br>
+    <td> <font face='宋体' size='3'> 请参考vprintf()及vsprintf()。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top">　 
       <div align="right"><br>
-        <font face='宋体' size='2'><a name=linuxc209></a></font> </div>
+        <font face='宋体' size='3'><a name=linuxc209></a></font> </div>
     </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> <br>
+      <div align="right"><font face='宋体' size='3'> <br>
         </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> <br>
+    <td> <font face='宋体' size='3'> <br>
       vsscanf（格式化字符串输入） </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 相关函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 相关函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> vscanf，vfscanf<br>
+    <td> <font face='宋体' size='3'> vscanf，vfscanf<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 表头文件 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 表头文件 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> #include&lt;stdio.h&gt;<br>
+    <td> <font face='宋体' size='3'> #include&lt;stdio.h&gt;<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 定义函数 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 定义函数 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> int vsscanf(const char * str,const char * format,va_list 
+    <td> <font face='宋体' size='3'> int vsscanf(const char * str,const char * format,va_list 
       ap);<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 函数说明 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 函数说明 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> vsscanf()会将参数str的字符串根据参数format字符串来转换并格式化数据。格式转换形式请参考附录C 
+    <td> <font face='宋体' size='3'> vsscanf()会将参数str的字符串根据参数format字符串来转换并格式化数据。格式转换形式请参考附录C 
       或vprintf()范例。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 返回值 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 返回值 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 成功则返回参数数目，失败则返回-1，错误原因存于errno中。<br>
+    <td> <font face='宋体' size='3'> 成功则返回参数数目，失败则返回-1，错误原因存于errno中。<br>
       </font> </td>
   </tr>
   <tr> 
     <td width="80" valign="top"> 
-      <div align="right"><font face='宋体' size='2'> 范例 </font> </div>
+      <div align="right"><font face='宋体' size='3'> 范例 </font> </div>
     </td>
-    <td> <font face='宋体' size='2'> 请参考sscanf()及vprintf()。<br>
+    <td> <font face='宋体' size='3'> 请参考sscanf()及vprintf()。<br>
       </font> </td>
   </tr>
   <tr> 
