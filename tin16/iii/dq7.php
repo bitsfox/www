@@ -11,7 +11,12 @@ echo "<tr><td align=center><a href='./gong7.php' target=_blank>图文攻略七</
 echo "<td align=center><a href='./gong9.php' target=_blank>图文攻略九</a></td></tr>";
 echo "<tr><td align=center><a href='./gong10.php' target=_blank>图文攻略十</a></td><td align=center><a href='./gong11.php' target=_blank>图文攻略十一</a></td>";
 echo "<td align=center><a href='./gong12.php' target=_blank>图文攻略十二</a></td></tr>";
+echo "<tr><td align=center><a href='./gong13.php' target=_blank>图文攻略十三</a></td><td align=center><a href='./gong14.php' target=_blank>图文攻略十四</a></td>";
+echo "<td align=center><a href='./gong15.php' target=_blank>图文攻略十五</a></td></tr>";
+echo "<tr><td align=center><a href='./gong16.php' target=_blank>图文攻略十六</a></td><td align=center><a href='./gong17.php' target=_blank>图文攻略十七</a></td>";
+echo "<td align=center><a href='./gong18.php' target=_blank>图文攻略十八</a></td></tr>";
+echo "<tr><td align=center><a href='./job1.php' target=_blank>人类基本职业</a></td><td align=center><a href='./job2.php' target=_blank>人类进阶职业</a></td>";
+echo "<td align=center><a href='./job3.php' target=_blank>人类高级职业</a></td></tr>";
 
-echo "</table></center>";
-
+echo "</table></center></body></html>";
 ?>
