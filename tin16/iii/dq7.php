@@ -17,6 +17,8 @@ echo "<tr><td align=center><a href='./gong16.php' target=_blank>图文攻略十�
 echo "<td align=center><a href='./gong18.php' target=_blank>图文攻略十八</a></td></tr>";
 echo "<tr><td align=center><a href='./job1.php' target=_blank>人类基本职业</a></td><td align=center><a href='./job2.php' target=_blank>人类进阶职业</a></td>";
 echo "<td align=center><a href='./job3.php' target=_blank>人类高级职业</a></td></tr>";
+echo "<tr><td align=center><a href='./prac_job.php' target=_blank>职业训练场所</a></td><td align=center><a href='./comb_job.php' target=_blank>职业组合</a></td>";
+echo "<td align=center></td></tr>";
 
 echo "</table></center></body></html>";
 ?>
