@@ -63,56 +63,56 @@ echo "<style type='text/css'>
             <p>ジュニア級Gladiator</p>
             </td>
             <td>---</td>
-            <td>0</td>
+            <td>0/0</td>
             <td colspan='2'>---</td>
         </tr>
         <tr>
             <td colspan='2'>★★</td>
             <td>フェザー級Fencer</td>
             <td>しんくう斬りVacuSlash</td>
-            <td>15</td>
+            <td>15/15</td>
             <td colspan='2'>真空斩，对风系敌人的伤害1.3倍</td>
         </tr>
         <tr>
             <td colspan='2'>★★★</td>
             <td>ライト級Swordsman</td>
             <td>ゾンビ斬りZombieCut</td>
-            <td>20</td>
+            <td>20/35</td>
             <td colspan='2'>僵尸斩，对丧尸敌人伤害1.3倍</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★</td>
             <td>ミドル級&nbsp;&nbsp;&nbsp;&nbsp; Ronin</td>
             <td>もろば斬り2EdgeHit</td>
-            <td>25</td>
+            <td>25/60</td>
             <td colspan='2'>强力攻击（约1.5倍），自己遭受1/4反弹伤害</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★</td>
             <td>ヘビー級Mercenary</td>
             <td>みなごろしMassacre</td>
-            <td>30</td>
+            <td>30/90</td>
             <td colspan='2'>皆杀斩，以战场上所有人员作为对象攻击其中一名</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★</td>
             <td>むさべつ級Duelist</td>
             <td>はやぶさ斬りFalconCut</td>
-            <td>30</td>
+            <td>30/120</td>
             <td colspan='2'>隼斩，2次攻击，每击攻击力为正常的0.75倍</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★★</td>
             <td>チャンピオンChampion</td>
             <td>---</td>
-            <td>30</td>
+            <td>30/150</td>
             <td colspan='2'>---</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★★★</td>
             <td>ワールドチャンプAvenger</td>
             <td>ばくれつけんQuadHits</td>
-            <td>50</td>
+            <td>50/200</td>
             <td colspan='2'>4次攻击，每击对象敌全体任意选取，伤害0.5倍</td>
         </tr>
         <tr>
@@ -181,56 +181,56 @@ echo "<style type='text/css'>
             <p>メラファイターBouncer</p>
             </td>
             <td>マホカンタBounce</td>
-            <td>0</td>
+            <td>0/0</td>
             <td colspan='2'>反弹所有咒文</td>
         </tr>
         <tr>
             <td colspan='2'>★★</td>
             <td>バイキルターWanderer</td>
             <td>かえん斬りFireSlash</td>
-            <td>12</td>
+            <td>12/12</td>
             <td colspan='2'>火焰斩，对植物系和虫系敌人的伤害1.3倍</td>
         </tr>
         <tr>
             <td colspan='2'>★★★</td>
             <td>デインキラーScout</td>
             <td>いなずま斬りBoltSlash</td>
-            <td>12</td>
+            <td>12/24</td>
             <td colspan='2'>雷鸣斩，对大部分敌人伤害1.3倍</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★</td>
             <td>スペルキラー&nbsp;&nbsp;&nbsp;&nbsp; Battler</td>
             <td>バイキルトTwinHits</td>
-            <td>26</td>
+            <td>26/50</td>
             <td colspan='2'>己方单人攻击力加倍</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★</td>
             <td>ブリザーダーEnchanter</td>
             <td>マヒャド斬りIceSlash</td>
-            <td>30</td>
+            <td>30/80</td>
             <td colspan='2'>寒冰斩，对火焰系敌人有特效</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★</td>
             <td>バシファイターBladeMage</td>
             <td>バシルーラDisperse</td>
-            <td>50</td>
+            <td>50/130</td>
             <td colspan='2'>驱散敌人，无法得到经验值</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★★</td>
             <td>マグマソードConqueror</td>
             <td>ベギラゴンFirebolt</td>
-            <td>40</td>
+            <td>40/170</td>
             <td colspan='2'>高级火墙魔法，敌一组约80-110点伤害</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★★★</td>
             <td>フォースロードFaust</td>
             <td>メラゾーマBlazemost</td>
-            <td>50</td>
+            <td>50/220</td>
             <td colspan='2'>高级火球魔法，敌单体约170~200点伤害</td>
         </tr>
         <tr>
@@ -301,56 +301,56 @@ echo "<style type='text/css'>
             <td>
             <p>&nbsp;&nbsp; ザラキ&nbsp;&nbsp; Defeat</p>
             </td>
-            <td>0</td>
+            <td>0/0</td>
             <td colspan='2'>敌一组即死咒文</td>
         </tr>
         <tr>
             <td colspan='2'>★★</td>
             <td>ハイウォーロックCounsel</td>
             <td>フバーハ Barrier</td>
-            <td>15</td>
+            <td>15/15</td>
             <td colspan='2'>减轻吐息的伤害</td>
         </tr>
         <tr>
             <td colspan='2'>★★★</td>
             <td>ビショップ&nbsp;&nbsp; Arbiter</td>
             <td>マヒャド&nbsp; Blizzard</td>
-            <td>23</td>
+            <td>23/38</td>
             <td colspan='2'>冰系高级咒文，敌全体80~100点伤害</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★</td>
             <td>ハイビショップSeer</td>
             <td>マジックバリアMagicWall</td>
-            <td>27</td>
+            <td>27/65</td>
             <td colspan='2'>减轻己方所受咒文伤害</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★</td>
             <td>ウィザード&nbsp; Oracle</td>
             <td>ベホマラーHealUs</td>
-            <td>45</td>
+            <td>45/110</td>
             <td colspan='2'>全体回复咒文，己方全体回复80+点HP</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★</td>
             <td>ハイウィザードWise One</td>
             <td>&nbsp;ザオリク&nbsp; Revive</td>
-            <td>40</td>
+            <td>40/150</td>
             <td colspan='2'>高级生命咒文，我方单体全HP复活，成功率100%</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★★</td>
             <td>アークウィザードElder</td>
             <td>しょうかんSummon</td>
-            <td>50</td>
+            <td>50/200</td>
             <td colspan='2'>召唤精灵协助攻击</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★★★</td>
             <td>スペルエンペラーProphet</td>
             <td>イオナズンExplodet</td>
-            <td>50</td>
+            <td>50/250</td>
             <td colspan='2'>高级核爆咒文，敌全体130~150点伤害</td>
         </tr>
         <tr>
@@ -420,56 +420,56 @@ echo "<style type='text/css'>
             <p>&nbsp; &nbsp; &nbsp;つきびと &nbsp; &nbsp;&nbsp;Fan</p>
             </td>
             <td>---</td>
-            <td>0</td>
+            <td>0/0</td>
             <td colspan='2'>---</td>
         </tr>
         <tr>
             <td colspan='2'>★★</td>
             <td>レッスンちゅうGroupie</td>
             <td>まぶしい光Flash</td>
-            <td>10</td>
+            <td>10/10</td>
             <td colspan='2'>发出闪光，降低敌全体命中率</td>
         </tr>
         <tr>
             <td colspan='2'>★★★</td>
             <td>&nbsp; デビュー&nbsp; &nbsp;Rebel</td>
             <td>アストロンIronize</td>
-            <td>15</td>
+            <td>15/25</td>
             <td colspan='2'>变成铁块，敌人无法攻击，自己也无法反击</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★</td>
             <td>ニューフェイスPerformer</td>
             <td>ぶきみな光EerieLite</td>
-            <td>15</td>
+            <td>15/40</td>
             <td colspan='2'>使敌人的魔法抗性降低</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★</td>
             <td>アイドルスターStar</td>
             <td>ハッスルダンスHustle</td>
-            <td>25</td>
+            <td>25/65</td>
             <td colspan='2'>热力舞，我方全员80左右HP回复，限战斗中使用</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★</td>
             <td>&nbsp; &nbsp;えんぎは &nbsp; Artist</td>
             <td>ムーンサルトBackFlip</td>
-            <td>35</td>
+            <td>35/100</td>
             <td colspan='2'>舞技，攻击敌全体，与攻击力和敌人数目有关</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★★</td>
             <td>フェーマスしょうSellout</td>
             <td>&nbsp;火ばしら FireTower</td>
-            <td>40</td>
+            <td>40/140</td>
             <td colspan='2'>威力略小于Blazemost，有失败几率，不耗MP</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★★★</td>
             <td>シネマのほし Icon</td>
             <td>せいれいの歌LifeSong</td>
-            <td>40</td>
+            <td>40/180</td>
             <td colspan='2'>复活一个同伴，效果同Vivify</td>
         </tr>
         <tr>
@@ -538,7 +538,7 @@ echo "<table bordercolor='#000000' width='560' border='1'>
             <p>スライムハンターPetOwner</p>
             </td>
             <td>まものならしTamer, &nbsp;&nbsp; どくの息PoisonGas</td>
-            <td>0</td>
+            <td>0/0</td>
             <td colspan='2'>
             <p>驯服怪物使其加入率提高；喷出毒气，使敌人中毒</p>
             </td>
@@ -547,49 +547,49 @@ echo "<table bordercolor='#000000' width='560' border='1'>
             <td colspan='2'>★★</td>
             <td>アニマルハンターGroomer</td>
             <td>---</td>
-            <td>18</td>
+            <td>18/18</td>
             <td colspan='2'>---</td>
         </tr>
         <tr>
             <td colspan='2'>★★★</td>
             <td>ゾンビハンターRanchHand</td>
             <td>あまい息SleepAir</td>
-            <td>15</td>
+            <td>15/33</td>
             <td colspan='2'>呼出催眠的气息，使敌一组催眠</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★</td>
             <td>メタルハンターTracker</td>
             <td>つめたい息FrigidAir</td>
-            <td>25</td>
+            <td>25/58</td>
             <td colspan='2'>冰系吐息，敌全体约10~20点伤害</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★</td>
             <td>デビルハンターHunter</td>
             <td>やけつく息PalsyAir</td>
-            <td>19</td>
+            <td>19/77</td>
             <td colspan='2'>使敌一组麻痹</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★</td>
             <td>トロルハンターHandler</td>
             <td>かえんの息BlazeAir</td>
-            <td>16</td>
+            <td>16/93</td>
             <td colspan='2'>炎系吐息，敌全体约30~40点伤害</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★★</td>
             <td>ドラゴンハンターTrainer</td>
             <td>もうどくのきりPoisonFog</td>
-            <td>32</td>
+            <td>32/125</td>
             <td colspan='2'>呼出毒雾，使敌人中剧毒</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★★★</td>
             <td>モンスターロードBeastLord</td>
             <td>ドラゴラムBeDragon</td>
-            <td>40</td>
+            <td>40/165</td>
             <td colspan='2'>变身幻化成龙，吐火直到战斗结束</td>
         </tr>
         <tr>
@@ -658,56 +658,56 @@ echo "<table bordercolor='#000000' width='560' border='1'>
             <p>あらくれものShipWreck</p>
             </td>
             <td>キアリーAntidote</td>
-            <td>0</td>
+            <td>0/0</td>
             <td colspan='2'>驱毒术，我方单体解各种毒</td>
         </tr>
         <tr>
             <td colspan='2'>★★</td>
             <td>はしけばんBarnacle</td>
             <td>おいかぜFairWind</td>
-            <td>20</td>
+            <td>20/20</td>
             <td colspan='2'>反弹各种吐息伤害</td>
         </tr>
         <tr>
             <td colspan='2'>★★★</td>
             <td>かんばんそうじSwab</td>
             <td>ハリケーンHurricane</td>
-            <td>30</td>
+            <td>30/50</td>
             <td colspan='2'>召唤飓风，敌一组约50~60点伤害</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★</td>
             <td>うみのおとこCutthroat</td>
             <td>トラマナStepGuard</td>
-            <td>30</td>
+            <td>30/80</td>
             <td colspan='2'>损伤地形无效</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★</td>
             <td>キャプテンBuccaneer</td>
             <td>レミラーマMapMagic</td>
-            <td>30</td>
+            <td>30/110</td>
             <td colspan='2'>呈现地图上的宝物所处位置</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★</td>
             <td>バイキングSmuggler</td>
             <td>大ぼうぎょStrongD</td>
-            <td>30</td>
+            <td>30/140</td>
             <td colspan='2'>大幅度提升使用者的防御</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★★</td>
             <td>だいかいぞくMarauder</td>
             <td>コーラルレインCoralRain</td>
-            <td>30</td>
+            <td>30/170</td>
             <td colspan='2'>初级水系咒文，敌全体约90~110点伤害</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★★★</td>
             <td>&nbsp; かいぞくおう&nbsp; Sea Dog</td>
             <td>メイルストロムWhirlPool</td>
-            <td>30</td>
+            <td>30/200</td>
             <td colspan='2'>高级水系咒文，敌一组约120~130点伤害</td>
         </tr>
         <tr>
@@ -776,56 +776,56 @@ echo "<table bordercolor='#000000' width='560' border='1'>
             <p>ブロンズナイトPage</p>
             </td>
             <td>みがわりScapeGoat</td>
-            <td>0</td>
+            <td>0/0</td>
             <td colspan='2'>保护一个同伴，承受其一回合内所受的所有伤害</td>
         </tr>
         <tr>
             <td colspan='2'>★★</td>
             <td>アイアンアイトSquire</td>
             <td>しんくうはVacuum</td>
-            <td>20</td>
+            <td>20/20</td>
             <td colspan='2'>真空波，伤害与角色等级及攻击力有关</td>
         </tr>
         <tr>
             <td colspan='2'>★★★</td>
             <td>スチールナイトKnight</td>
             <td>すてみBerserker</td>
-            <td>20</td>
+            <td>20/40</td>
             <td colspan='2'>不分敌我做出强力一击，威力相当于会心一击</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★</td>
             <td>シルバーナイトZealot</td>
             <td>バギクロスInfermost</td>
-            <td>40</td>
+            <td>40/80</td>
             <td colspan='2'>高级真空咒文，敌一组80~160点伤害</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★</td>
             <td>ゴールドナイトCrusader</td>
             <td>マジックバリアMagicWall</td>
-            <td>40</td>
+            <td>40/120</td>
             <td colspan='2'>减少己方全员所受的魔法伤害</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★</td>
             <td>クリスタルナイトTemplar</td>
             <td>におうだちGuardian</td>
-            <td>30</td>
+            <td>30/150</td>
             <td colspan='2'>替所有队员承受该回合所有攻击</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★★</td>
             <td>キングスナイトHolyKnight</td>
             <td>メガザルFarewell</td>
-            <td>30</td>
+            <td>30/180</td>
             <td colspan='2'>己方所有队员完全恢复+完全复活，牺牲自己</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★★★</td>
             <td>ホーリーナイトMartyr</td>
             <td>グランドクロスMultiCut</td>
-            <td>60</td>
+            <td>60/240</td>
             <td colspan='2'>十字斩，敌一组约180~200点伤害，对丧尸有特效</td>
         </tr>
         <tr>
