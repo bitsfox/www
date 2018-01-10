@@ -63,56 +63,56 @@ echo "<style type='text/css'>
             <p>スキングローブSaint</p>
             </td>
             <td>---</td>
-            <td>0</td>
+            <td>0/0</td>
             <td colspan='2'>---</td>
         </tr>
         <tr>
             <td colspan='2'>★★</td>
             <td>ブランズグローブAngel</td>
             <td>メタル斬りMetalCut</td>
-            <td>20</td>
+            <td>20/20</td>
             <td colspan='2'>金属斩，对金属系敌人造成普通攻击1.5倍+1的伤害</td>
         </tr>
         <tr>
             <td colspan='2'>★★★</td>
             <td>シルバーハンドArchangel</td>
             <td>ベホマラーHealUs</td>
-            <td>20</td>
+            <td>20/40</td>
             <td colspan='2'>中级全体回复咒文，全员回复HP100左右</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★</td>
             <td>ゴールドハンドThrone</td>
             <td>岩石おとしRockThrow</td>
-            <td>40</td>
+            <td>40/80</td>
             <td colspan='2'>巨石投，敌全体约90～120点伤害</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★</td>
             <td>プラチナハンドCherubim</td>
             <td>メガンテSacrifice</td>
-            <td>40</td>
+            <td>40/120</td>
             <td colspan='2'>敌全体即死咒文，使用者牺牲自己</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★</td>
             <td>コスモハンドSeraphim</td>
             <td>ギガスラッシュGigaSlash</td>
-            <td>30</td>
+            <td>30/150</td>
             <td colspan='2'>究级必杀剑，敌一组350～450点伤害</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★★</td>
             <td>ウルトラハンドCelestial</td>
             <td>&nbsp;ザオリク &nbsp;Revive</td>
-            <td>30</td>
+            <td>30/180</td>
             <td colspan='2'>高级生命咒文，我方单体复活，HP全回复</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★★★</td>
             <td>ミラクルハンドDemigod</td>
             <td>アルテマソードUltraHit</td>
-            <td>60</td>
+            <td>60/240</td>
             <td colspan='2'>究级斩，敌单体约400～600点伤害</td>
         </tr>
         <tr>
@@ -184,56 +184,56 @@ echo "<style type='text/css'>
             <p>しゅぎょうちゅうTheurgist</p>
             </td>
             <td>めいそうMeditate</td>
-            <td>0</td>
+            <td>0/0</td>
             <td colspan='2'>冥想，使用者恢复HP500左右</td>
         </tr>
         <tr>
             <td colspan='2'>★★</td>
             <td>ほうろうびと Conjuror</td>
             <td>ザラキーマDefeatMax</td>
-            <td>30</td>
+            <td>30/30</td>
             <td colspan='2'>高级即死咒文，对象敌全体</td>
         </tr>
         <tr>
             <td colspan='2'>★★★</td>
             <td>さすらいぼうずGeomancer</td>
             <td>&nbsp; マグマ &nbsp;Magma</td>
-            <td>30</td>
+            <td>30/60</td>
             <td colspan='2'>从地下召唤岩浆攻击，敌全体约80点伤害</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★</td>
             <td>やまごもりElemental</td>
             <td>めいどうふうまTremor</td>
-            <td>30</td>
+            <td>30/90</td>
             <td colspan='2'>召唤大地裂缝吞没敌人，敌全体即死效果，成功率低</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★</td>
             <td>やまぶしMaelstrom</td>
             <td>れんごく火炎HellFlame</td>
-            <td>30</td>
+            <td>30/120</td>
             <td colspan='2'>地狱之炎，敌全体约200～220点伤害，耗费MP20</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★</td>
             <td>しゅげんしゃTempest</td>
             <td>いてつく波動DeMagic</td>
-            <td>30</td>
+            <td>30/150</td>
             <td colspan='2'>冻气波动，消除敌人身上的辅助效果</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★★</td>
             <td>てんちのさとりFury</td>
             <td>ジゴスパークHellblast</td>
-            <td>50</td>
+            <td>50/200</td>
             <td colspan='2'>召唤闪电攻击全体敌人，敌全体约220～250点伤害</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★★★</td>
             <td>アースゴッデスRagnarok</td>
             <td>げんま召喚Summoner</td>
-            <td>50</td>
+            <td>50/250</td>
             <td colspan='2'>召唤精灵一同战斗</td>
         </tr>
         <tr>
@@ -306,56 +306,56 @@ echo "<style type='text/css'>
             <p>おひとよしArchetype</p>
             </td>
             <td>---</td>
-            <td>0</td>
+            <td>0/0</td>
             <td colspan='2'>---</td>
         </tr>
         <tr>
             <td colspan='2'>★★</td>
             <td>むらゆうしゃDefender</td>
             <td>アストロンIronize</td>
-            <td>8</td>
+            <td>8/8</td>
             <td colspan='2'>变成铁块，所有攻击免疫，自己无法行动</td>
         </tr>
         <tr>
             <td colspan='2'>★★★</td>
             <td>しまゆうしゃParagon</td>
             <td>&nbsp;ザオリク&nbsp; Revive</td>
-            <td>12</td>
+            <td>12/20</td>
             <td colspan='2'>高级生命咒文，我方单体复活，HP全回复</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★</td>
             <td>くにゆうしゃ Savior</td>
             <td>&nbsp; ライデイン &nbsp;Zap</td>
-            <td>30</td>
+            <td>30/50</td>
             <td colspan='2'>初级雷电咒文，敌全体约70～90点伤害</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★</td>
             <td>たいりくゆうしゃGuardian</td>
             <td>いてつく波動DeMagic</td>
-            <td>30</td>
+            <td>30/80</td>
             <td colspan='2'>冻气波动，消除敌人身上的辅助效果</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★</td>
             <td>せかいのゆうしゃAvatar</td>
             <td>ギガデインThordain</td>
-            <td>30</td>
+            <td>30/110</td>
             <td colspan='2'>高级雷电咒文，敌一组约180～220点伤害</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★★</td>
             <td>しんのゆうしゃLegend</td>
             <td>ギガスラッシュGigaSlash</td>
-            <td>40</td>
+            <td>40/150</td>
             <td colspan='2'>究级必杀剑，敌一组350～450点伤害</td>
         </tr>
         <tr>
             <td colspan='2'>★★★★★★★★</td>
             <td>うちゅうヒーローChosen One</td>
             <td>ミナデインAlldain</td>
-            <td>50</td>
+            <td>50/200</td>
             <td colspan='2'>集全员的力量攻击敌单体，可造成600多点伤害</td>
         </tr>
         <tr>

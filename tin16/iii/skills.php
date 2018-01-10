@@ -1,5 +1,6 @@
 <?php
 echo "<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />";
+echo "</head><body>";
 echo "<style type='text/css'>
 #liu table{background-color:#eeeeee; font-size:14px; text-align:center; border-collapse:collapse; border:1px black solid; width:600px;}
 #liu th{background-color:#555555; border:1px black solid; color:#FFFFFF;}
