@@ -26,5 +26,8 @@ echo "<tr><td align=center><a href='./accessories.php' target=_blank>饰品一�
 echo "<td align=center><a href='./weapon.php' target=_blank>武器一览</a></td></tr>";
 echo "<tr><td align=center><a href='./armor.php' target=_blank>铠甲一览</a></td><td align=center><a href='./shield.php' target=_blank>盾牌一览</a></td>";
 echo "<td align=center><a href='./hat.php' target=_blank>头盔一览</a></td></tr>";
+echo "<tr><td align=center><a href='exp.php' target=_blank>经验升级</a></td>
+";
+echo "<td></td><td></td></tr>";
 echo "</table></center></body></html>";
 ?>
