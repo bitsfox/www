@@ -56,6 +56,7 @@ if($pflag==0)
 	echo "<tr><td align=center width=25%><a href='./tin16/hhh/ff9_index.php' target=_blank>最终幻想9</td>";
 	echo "<td align=center width=25% ><a href='./tin16/iii/dq7.php' target=_blank>勇者斗恶龙7</a></td>";
 	echo "<td align=center width=25% ><a href='./tin16/jjj/dqmps.php' target=_blank>勇者怪兽1+2</a></td>";
+	echo "<td align=center width=25% ><a href='./tin16/kkk/dq6.php' target=_blank>勇者斗恶龙6</a></td>";
 	echo "</tr>";
 	echo "</table></center><br><br>";
 }
