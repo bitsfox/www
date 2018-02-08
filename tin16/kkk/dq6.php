@@ -27,6 +27,10 @@ echo "<td align=center><a href='./job4.php' target=_blank><font size=4>隐藏职
 echo "<td align=center><a href='./zone.php' target=_blank><font size=4>熟练度地域</font></a></td>";
 echo "<td align=center><a href='./spell.php' target=_blank><font size=4>咒文</font></a></td>";
 echo "</tr></table>";
+echo "<font color=blue size=4>真实世界</font><br>";
+echo "<img src='./images/true.jpg' border=1 style='width:40%;cursor:pointer' onclick='javascript:window.open(this.src)' />";
+echo "<br><font color=blue size=4>梦世界</font><br>";
+echo "<img src='./images/dream.jpg' border=1 style='width:40%;cursor:pointer' onclick='javascript:window.open(this.src)' />";
 
 echo "</body></html>";
 ?>
