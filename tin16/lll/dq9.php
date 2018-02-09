@@ -19,13 +19,20 @@ echo "<td align=center><a href='./comb_item.php' target=_blank><font size=4>合�
 echo "<td align=center><a href='./job.php' target=_blank><font size=4>职业介绍</font></a></td>";
 echo "<td align=center><a href='./abli.php' target=_blank><font size=4>技能介绍</font></a></td>";
 echo "<td align=center><a href='./absword.php' target=_blank><font size=4>剑技能</font></a></td>";
-echo "<td align=center><a href='./.php' target=_blank><font size=4></font></a></td></tr><tr>";
-echo "<td align=center><a href='./.php' target=_blank><font size=4></font></a></td>";
-echo "<td align=center><a href='./.php' target=_blank><font size=4></font></a></td>";
-echo "<td align=center><a href='./.php' target=_blank><font size=4></font></a></td>";
-echo "<td align=center><a href='./.php' target=_blank><font size=4></font></a></td>";
-echo "<td align=center><a href='./.php' target=_blank><font size=4></font></a></td>";
-echo "<td align=center><a href='./.php' target=_blank><font size=4></font></a></td>";
+echo "<td align=center><a href='./abspear.php' target=_blank><font size=4>枪技能</font></a></td></tr><tr>";
+echo "<td align=center><a href='./abknife.php' target=_blank><font size=4>短剑技能</font></a></td>";
+echo "<td align=center><a href='./abwand.php' target=_blank><font size=4>杖技能</font></a></td>";
+echo "<td align=center><a href='./abwhip.php' target=_blank><font size=4>鞭技能</font></a></td>";
+echo "<td align=center><a href='./abstaff.php' target=_blank><font size=4>棍技能</font></a></td>";
+echo "<td align=center><a href='./abclaw.php' target=_blank><font size=4>爪技能</font></a></td>";
+echo "<td align=center><a href='./abfan.php' target=_blank><font size=4>扇技能</font></a></td></tr><tr>";
+echo "<td align=center><a href='./abaxe.php' target=_blank><font size=4>斧技能</font></a></td>";
+echo "<td align=center><a href='./abhammer.php' target=_blank><font size=4>锤技能</font></a></td>";
+echo "<td align=center><a href='./abbrang.php' target=_blank><font size=4>回旋镖技能</font></a></td>";
+echo "<td align=center><a href='./abbow.php' target=_blank><font size=4>弓技能</font></a></td>";
+echo "<td align=center><a href='./abshield.php' target=_blank><font size=4>盾技能</font></a></td>";
+echo "<td align=center><a href='./abhand.php' target=_blank><font size=4>空手技能</font></a></td>";
+
 echo "</tr></table>";
 //echo "<img src='./images/dream.jpg' border=1 style='width:40%;cursor:pointer' onclick='javascript:window.open(this.src)' />";
 
