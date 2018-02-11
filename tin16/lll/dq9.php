@@ -31,8 +31,19 @@ echo "<td align=center><a href='./abhammer.php' target=_blank><font size=4>锤�
 echo "<td align=center><a href='./abbrang.php' target=_blank><font size=4>回旋镖技能</font></a></td>";
 echo "<td align=center><a href='./abbow.php' target=_blank><font size=4>弓技能</font></a></td>";
 echo "<td align=center><a href='./abshield.php' target=_blank><font size=4>盾技能</font></a></td>";
-echo "<td align=center><a href='./abhand.php' target=_blank><font size=4>空手技能</font></a></td>";
-
+echo "<td align=center><a href='./abhand.php' target=_blank><font size=4>空手技能</font></a></td></tr><tr>";
+echo "<td align=center><a href='./abcourage.php' target=_blank><font size=4>战士-勇敢</font></a></td>";
+echo "<td align=center><a href='./abfaith.php' target=_blank><font size=4>僧侣-信仰之心</font></a></td>";
+echo "<td align=center><a href='./abspell.php' target=_blank><font size=4>魔法师-魔法</font></a></td>";
+echo "<td align=center><a href='./abfocus.php' target=_blank><font size=4>武斗家-气势</font></a></td>";
+echo "<td align=center><a href='./abacqui.php' target=_blank><font size=4>盗贼-宝物</font></a></td>";
+echo "<td align=center><a href='./ablithe.php' target=_blank><font size=4>旅艺人-曲艺</font></a></td></tr><tr>";
+echo "<td align=center><a href='./abguts.php' target=_blank><font size=4>战斗大师-斗魂</font></a></td>";
+echo "<td align=center><a href='./abvalour.php' target=_blank><font size=4>圣骑士-博爱</font></a></td>";
+echo "<td align=center><a href='./abfource.php' target=_blank><font size=4>魔法战士-元素之力</font></a></td>";
+echo "<td align=center><a href='./abrugg.php' target=_blank><font size=4>游侠-生存</font></a></td>";
+echo "<td align=center><a href='./abenlight.php' target=_blank><font size=4>贤者-悟道</font></a></td>";
+echo "<td align=center><a href='./abjene.php' target=_blank><font size=4>超级明星-灵气</font></a></td>";
 echo "</tr></table>";
 //echo "<img src='./images/dream.jpg' border=1 style='width:40%;cursor:pointer' onclick='javascript:window.open(this.src)' />";
 
