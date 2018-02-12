@@ -43,7 +43,13 @@ echo "<td align=center><a href='./abvalour.php' target=_blank><font size=4>圣�
 echo "<td align=center><a href='./abfource.php' target=_blank><font size=4>魔法战士-元素之力</font></a></td>";
 echo "<td align=center><a href='./abrugg.php' target=_blank><font size=4>游侠-生存</font></a></td>";
 echo "<td align=center><a href='./abenlight.php' target=_blank><font size=4>贤者-悟道</font></a></td>";
-echo "<td align=center><a href='./abjene.php' target=_blank><font size=4>超级明星-灵气</font></a></td>";
+echo "<td align=center><a href='./abjene.php' target=_blank><font size=4>超级明星-灵气</font></a></td></tr><tr>";
+echo "<td align=center><a href='./job_mission.php' target=_blank><font size=4>转职任务介绍</font></a></td>";
+echo "<td align=center><a href='./b.php' target=_blank><font size=4>待添加</font></a></td>";
+echo "<td align=center><a href='./b.php' target=_blank><font size=4>待添加</font></a></td>";
+echo "<td align=center><a href='./b.php' target=_blank><font size=4>待添加</font></a></td>";
+echo "<td align=center><a href='./b.php' target=_blank><font size=4>待添加</font></a></td>";
+echo "<td align=center><a href='./b.php' target=_blank><font size=4>待添加</font></a></td>";
 echo "</tr></table>";
 //echo "<img src='./images/dream.jpg' border=1 style='width:40%;cursor:pointer' onclick='javascript:window.open(this.src)' />";
 
