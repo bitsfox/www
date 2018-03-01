@@ -194,3 +194,7 @@ echo "<font size=5><center><h3>勇者斗恶龙9基本流程攻略</h3></center>
    使用破关记录到最后迷宫下方的沼泽地，会到隐藏迷宫，当然也有个非常强的魔王。 <br>";
 echo "</div></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>
