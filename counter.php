@@ -13,7 +13,7 @@ function upcounter($sname)
 	if(mysqli_affected_rows() == 0)
 	{
 		$fn=substr(strrchr($sname,'/'),1);
-		$sqlstr="insert into link_cnt(link,count,tip) values('".$sname."',0,'".$fn."')";
+		$sqlstr="insert into link_cnt(link,count,tip) values('".$sname."',1,'".$fn."')";
 		mysqli_query($conn,$sqlstr);
 	}
 	mysqli_close($conn);

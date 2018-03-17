@@ -371,3 +371,7 @@ echo "<center><font color=blue size=5>勇者斗恶龙5怪物同伴咒文特技�
 ";
 echo "</div></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

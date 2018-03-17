@@ -74,3 +74,7 @@ BOSS战：雪之女王<br>
        帕帕斯死后，盖玛将主角身上的黄金宝珠打碎，之后将主角和亨利抓去当了十年的奴隶…… <br>";
 echo "</font></div></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

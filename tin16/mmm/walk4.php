@@ -21,3 +21,7 @@ echo "<font color=red>攻略流程　通关之后</font><br>
 ";
 echo "</font></div></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

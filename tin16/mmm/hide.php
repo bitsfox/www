@@ -23,3 +23,7 @@ echo "<center><h2>勇者斗恶龙5隐藏谜之迷宫地图及宝箱</h2></center
 </table>";
 echo "</div></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>
