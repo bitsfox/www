@@ -908,3 +908,7 @@ echo"<font size=3><a name=bof008></a><center><font color=green size=3>【最终�
 <center><a href=#bof000>返  回</a></center><br><br>";
 echo "</font></pre>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

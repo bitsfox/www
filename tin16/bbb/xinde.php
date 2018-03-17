@@ -116,3 +116,7 @@ echo "<font color=red>龙</font>——全能力普通，倾向物理攻击
 echo "<pre>";
 echo "<a href='./bof3.php#begin'>返  回</a>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

@@ -186,3 +186,7 @@ echo "	繁荣的古代机械文明已成遥远的过去，而曾经是生物的�
 　　加兰多：挪动巨石，推烂木箱，冰块";
 echo "</td></tr></table></font></pre></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

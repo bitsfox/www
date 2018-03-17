@@ -79,4 +79,7 @@ echo "<tr><td width=20% align=center><font color=red>74.散列拳</font></td><td
 echo "<tr><td width=20% align=center><font color=red>75.用力</font></td><td width=40% align=left>对于战场全体毒攻击.</td><td width=20% align=center><font color=blue>状态异常</font></td><td width=20% align=center><font color=green>汉（传承师）</font></td></tr>";
 echo "<tr><td width=20% align=center><font color=red>76.火焰柱</font></td><td width=40% align=left>单体攻击火属性魔法等级3.</td><td width=20% align=center><font color=blue>火</font></td><td width=20% align=center><font color=green>拉乌鲁夫（传承师）</font></td></tr>";
 echo "</table><br><br><br><a href='./bof4.php#begin'>返回</a><br><br></center>";
+?><?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
 ?>

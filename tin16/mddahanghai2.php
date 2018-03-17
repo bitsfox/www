@@ -304,3 +304,7 @@ echo "<font color=black size=4><pre>
 
 
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

@@ -219,3 +219,7 @@ echo "<center><a href='./bof3.php#begin'>返  回</a></center><br><br>";
 
 
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

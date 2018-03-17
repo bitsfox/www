@@ -971,3 +971,7 @@ echo "<a name=pic01></a><br><center><font color=red size=6>mm2r 全地图</font>
 
 
 
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

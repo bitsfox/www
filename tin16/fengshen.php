@@ -303,3 +303,7 @@ echo "
 ";
 echo "</pre></font></td><td width=10%></td></tr><table>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

@@ -13,3 +13,7 @@ echo "<a name=pic_001></a>
 <td width=80% align=center><img src='./bof3_pic/bof4.jpeg' style='display:block;width:70%;' /></td><td width=10%></td>
 <td width=10%></td></tr></table><br><br><br><br><br><br><br><br><br><br>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

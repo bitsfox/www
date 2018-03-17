@@ -49,3 +49,7 @@ echo "<table width=70% border=1>
 <tr><td width=100% align=center><img src='./bof4_pic/boss.jpg' style='display:block;width=70%' /></td></tr>
 </table><br><br><a href='./bof4.php#begin'>返  回</a><br><br></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

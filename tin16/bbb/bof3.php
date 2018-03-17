@@ -11,3 +11,7 @@ echo "<center><a href=#begin>返  回</a></center><br><br><a name=yinzi></a>";
 include_once("./yinzi.php");
 echo "<center><a href=#begin>返  回</a>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

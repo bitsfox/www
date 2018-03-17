@@ -248,3 +248,7 @@ echo "<tr><td width=100%>
 echo "</table><br><br>";
 echo "<a href='./bof4.php#begin'>返  回</a></center><br><br>"
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

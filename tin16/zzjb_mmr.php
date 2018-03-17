@@ -242,3 +242,7 @@ echo "<a name=mmr_015></a>
 <td width=10%></td></tr>
 </table>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

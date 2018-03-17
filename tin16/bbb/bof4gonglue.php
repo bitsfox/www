@@ -497,3 +497,7 @@ echo "</td></tr><tr><td width=100% align=center>
 </table><a href='./bof4.php#begin'>返  回</a><br>";
 
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

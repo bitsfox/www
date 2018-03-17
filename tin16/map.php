@@ -10,3 +10,7 @@ echo "<table border=0 width=100%><tr width=100%><td width=10%></td>
 </table>";
 
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

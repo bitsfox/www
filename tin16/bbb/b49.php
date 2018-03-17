@@ -1467,3 +1467,7 @@ echo '</td></tr><tr><td width=100%><font color=red>R11.21、咒炮之町基地�
 队伍：<font color=DarkRed>【妮娜】</font>、<font color=blue>【Ryu】</font>。<br>
 </tr></td></table><a href="./bof4.php#begin">返  回</a><br></center>';
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

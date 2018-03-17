@@ -346,3 +346,7 @@ echo"<center><table width=60% border=1 bgcolor=black >
 <tr align='center' bgcolor='black'><td colspan='1'><img src='./141.jpg' height='210' width='240'></td><td colspan='1'><font color='white'>デビアスの森</font></td></tr>
 </table><br><br><br><br><br>thanks for <a href='http://bbs.a9vg.com/thread-759182-1-4.html'>bbs.a9vg.com电玩部落</a></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

@@ -79,4 +79,7 @@ echo "第三章    潮流（ながれ）<br>
 晉加山地（ジンガ山地）<br>
 　　登上關卡南部的山后，往西可以找到通往山中小屋的路，往南則繼續向帝都前進。來到山中小屋可拜巴巴德爾為師。<br>
 <center><img src='./bof4_pic/bof4_012.jpg' /></center></td></tr></table></center>";
+?><?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
 ?>

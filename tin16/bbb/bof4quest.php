@@ -358,3 +358,7 @@ echo "<pre>
 　　第一击就可以打出50hit以上~~~~然后是超级连锁加变速齿轮~~~~最后吐息~~~~不出意外~~~可以连到100hit以上~
 </pre></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

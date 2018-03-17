@@ -623,3 +623,7 @@ echo "</table><center><a href=#a00>返回</a></center>";
 
 
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>
