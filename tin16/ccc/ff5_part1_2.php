@@ -861,3 +861,7 @@ echo "<table style='width: 565px;' border='0' cellspacing='0' cellpadding='0'><c
 <p><span style='color: #ffffff;'>-</span></p>
 <p>Part 1-2 第一世界：水之水晶 ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

@@ -229,3 +229,7 @@ echo "<p><img class='alignnone' alt='' src='./ff3_images/ff3_part_2-1/05-dwarven
 <p><span style='color: #ffffff;'>-</span><br /> <span style='color: #ffffff;'>-</span></p>
 <div>FF3 Part 1-4 離開浮遊大陸 ( 完 )</div></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

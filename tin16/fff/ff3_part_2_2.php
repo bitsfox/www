@@ -208,3 +208,7 @@ echo "<p><img class='alignnone' alt='' src='./ff3_images/ff3_part_2-2/04-the_sun
 <p><span style='color: #ffffff;'>-</span><br /> <span style='color: #ffffff;'>-</span></p>
 <div>FF3 Part 2-2 取得飛空艇無敵號 ( 完 )</div></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

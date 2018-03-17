@@ -1191,3 +1191,7 @@ Lv 13</td><td style='background-color: #ffffcc;'>775<br />
 <p>&nbsp;</p>
 <p>Part 1-2 納爾謝集結 ( 完 )</p></font></center>"; 
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

@@ -33,3 +33,7 @@ echo "<font color='blue'>Vol.3 魔王之战</font><br>
 ";
 echo "</div></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

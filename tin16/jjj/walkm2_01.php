@@ -55,3 +55,7 @@ echo "该攻略对应女孩版，相对于男孩版，部分对话、极少数�
 echo "</body></html>";
 ?>
 
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

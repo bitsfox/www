@@ -220,3 +220,7 @@ echo "<p><img class='alignnone' alt='' src='./ff4_images/ff4_part_1-2/03-kaipo-0
 <p>FF4 Part 1-2 法布爾城水晶失守 ( 完 )</p></font></center>
 ";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

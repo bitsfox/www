@@ -615,3 +615,7 @@ echo "<p>&nbsp;</p>
 ";
 echo "</div></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

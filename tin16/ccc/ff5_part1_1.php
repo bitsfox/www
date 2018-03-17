@@ -425,3 +425,7 @@ echo "<p><span style='color: #ffffff;'>-</span></p>
 <p>( 我真的很愛偷東西XDDDDD )<br /> <span style='color: #ffffff;'>-</span><br /> 當然日後一定也會整理好各職業的技能一覽表，像是我的資料中青魔道士可有高達 30 種的青魔法，大家有興趣的話也可以轉青魔道師來試試XDDDDD<br /> <span style='color: #ffffff;'>-</span><br /> <span style='color: #ffffff;'> -</span><br /> 選好職業後，建議可以先在附近先打打雜兵，提升一點基本能力，至少黑白魔法的 LV1 可以使用之後，就繼續前進，我們下一個地點會先回到剛剛去過的圖爾村。<br /> <span style='color: #ffffff;'>-</span><br /> <span style='color: #ffffff;'> -</span><em id='__mceDel'><span style='color: #ffffff;'><br /> </span></em></p>
 <p>Part 1-1 第一世界：風之水晶 ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

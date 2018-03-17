@@ -745,3 +745,7 @@ echo "
 <p><span style='color: #ffffff;'>-</span></p>
 <p>Part 2-2 第二世界：吉多祠堂 &#8211; 慕亞大森林 ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

@@ -613,3 +613,7 @@ echo "<p><span style='color: #ffffff;'> -</span><br /> <a name='翡翠通道 B1 
 <p><img class='alignnone' alt='' src='./ff2_images/ff2_part_6/07-jade_passage-020.png' width='486' height='326' /><br /> <span style='color: #ffffff;'>-</span><br /> <span style='color: #ffffff;'> -</span></p>
 <p>Part 6 龍捲 &#8211; 翡翠通道 ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

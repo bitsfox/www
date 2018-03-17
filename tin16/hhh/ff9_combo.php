@@ -75,3 +75,7 @@ echo "
 </tbody></table></center><font color='#808000'>*标记的道具在全游戏中只能拥有一定数量</font>";
 echo "</center></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

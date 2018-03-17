@@ -269,3 +269,7 @@ echo "<center><h1>最终幻想9(Final Fantasy IX)(FF9)<br />辅助技能说明(�
 </table>";
 echo "</center></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

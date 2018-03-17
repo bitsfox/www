@@ -42,3 +42,7 @@ echo "<strong><font color='#0000ff'>（Rexwood）（过去）</font></strong><br
 &nbsp;&nbsp;&nbsp; 来到神殿左上方红色台座房间，把得到的红色石版全部安放到左上方的台座里，随后主角一行再次被传送到了一个新的世界！ <br>";
 echo "</td></tr></table></center></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

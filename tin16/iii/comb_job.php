@@ -369,3 +369,7 @@ echo "<div id='divcenter'><p>首先说明一下职历，职历一般在该职业
 echo "</body></html>";
 ?>
 
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

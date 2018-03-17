@@ -136,3 +136,7 @@ echo "
 <p>PS3：元素属性的持续时间为6~9回合，附加之后伤害会加强到110%。</p></div>";
 echo "</div></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

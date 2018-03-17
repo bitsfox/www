@@ -63,3 +63,7 @@ echo "<center><font size=4><p><span style='font-size: 22px; color: #800000;'>Fin
 <p>上面的資料整理不知道這樣是否清楚，我會再想想是否做成表格會比較容易閱讀。</p>
 <p>大家第二輪加油囉！( 我尾巴是都有刷到了，現在還在刷備用的尾巴、銀蘋果等XDDDD )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

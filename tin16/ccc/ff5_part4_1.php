@@ -1124,3 +1124,7 @@ echo "<p><a name='隆卡心臟 B3'></a><br /> <span style='color: #ffffff;'>-</s
 <p><span style='color: #ffffff;'>-</span><br /> <span style='color: #ffffff;'>-</span></p>
 <p>Part 4-1 隱藏迷宮 (上) ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

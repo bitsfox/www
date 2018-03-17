@@ -432,3 +432,7 @@ echo "<p><span style='color: #ffffff; line-height: 1.5em;'>-</span></p>
 <p>&nbsp;</p>
 <p><a href='#top'><span style='text-decoration: underline;'><span style='color: #0000ff; text-decoration: underline;'>返回頂部</span></span></a></p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

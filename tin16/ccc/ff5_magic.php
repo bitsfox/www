@@ -1018,3 +1018,7 @@ echo "<p><a name='預言'></a></p>
 </tbody>
 </table>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

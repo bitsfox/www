@@ -35,3 +35,7 @@ echo "<center><font size=4><p><strong>(1) FF2 攻略總目錄</strong></p>
 </tbody>
 </table></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

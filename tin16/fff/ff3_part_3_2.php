@@ -224,3 +224,7 @@ echo "<p><img class='alignnone' alt='' src='http://pic.hdlulu.com/wordpress/wp-c
 <div>FF3 Part 3-2 禁地武器與支線事件 ( 完 )</div></font></center>
 ";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

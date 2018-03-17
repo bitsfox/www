@@ -31,3 +31,7 @@ echo "<tr><td align=center><a href='exp.php' target=_blank>经验升级</a></td>
 echo "<td></td><td></td></tr>";
 echo "</table></center></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

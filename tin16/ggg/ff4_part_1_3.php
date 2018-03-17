@@ -202,3 +202,7 @@ echo "<p><span style='color: #ff0000;'>但是你有注意到兩個櫃檯裡面�
 <p><span style='color: #ffffff;'>-</span><br /> <span style='color: #ffffff;'>-</span></p>
 <p>FF4 Part 1-3 聖騎士的覺醒 ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

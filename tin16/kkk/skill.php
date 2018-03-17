@@ -723,3 +723,7 @@ echo "<table cellspacing='1' cellpadding='1' align='center' border='1'>
 </table>";
 echo "</div></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

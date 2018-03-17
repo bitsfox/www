@@ -280,3 +280,7 @@ echo "
 <p>PS：玩球杀法这个技能在装备了两次攻击的武器时，攻击次数变成7~9次。</p></div>";
 echo "</div></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

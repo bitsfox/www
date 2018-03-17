@@ -1240,3 +1240,7 @@ echo "<p><strong style='line-height: 1.5em;'>(二) 偷取玄冰棒 ( 4~6 根 )</
 <p>&nbsp;</p>
 <p><span style='line-height: 1.5em;'>Part 1-3 蒂娜與幻獸魔石 ( 完 )</span></p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

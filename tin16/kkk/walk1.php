@@ -33,3 +33,7 @@ echo "<font color='#0000ff'>Vol.1.旅立</font><br>
 ";
 echo "</div></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

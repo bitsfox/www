@@ -212,3 +212,7 @@ HP大概为3330 毫无疑问的血牛打法<BR>
 接着来到魔法门向最后的宫殿出发吧";
 echo "</body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

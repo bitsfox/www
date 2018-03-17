@@ -153,3 +153,7 @@ echo "<div class='ff9'>
 </div>";
 echo "</center></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

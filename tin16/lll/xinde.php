@@ -42,3 +42,7 @@ echo "<br><center><font color=red size=6>游戏心得</font></center><br>
       <div id='comment' style='display:none'><br><br>";
 echo "</div></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

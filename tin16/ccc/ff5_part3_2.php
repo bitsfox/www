@@ -537,3 +537,7 @@ echo "<p><span style='color: #ffffff;'>-</span></p>
 <span style='color: #ffffff;'>-</span><br /> 另外要說明一下的是，因為目前劇情方向較自由，現階段各地可以收到的怪物圖鑒蠻多的，只是我還沒有好好整理起來，本篇沒有提到的話，之後也會盡量慢慢都列出，建議也可以自己先到處去收集一下XD<br /> <span style='color: #ffffff;'>-</span><br /> <span style='color: #ffffff;'>-</span><span style='color: #ffffff;'><br /> </span></p>
 <p>Part 3-2 第三世界：第二塊石板 ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

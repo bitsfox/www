@@ -626,3 +626,7 @@ echo "<br><a name='ff9_122' />
 //<font size=4><a href='#ff9_101'>返回2-1</a></font></div><br>";
 echo "</body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

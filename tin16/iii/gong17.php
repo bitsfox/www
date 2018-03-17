@@ -54,3 +54,7 @@ echo "<center><table width=70%><tr><td align=center>
 <p align='left'>&nbsp;&nbsp;&nbsp; 无论从哪个迷宫都可以通向魔王所在处。最终的魔王会变身三次！如果适当的修炼了级别和职业不是很难对付。胜利后就是漫长的结局了，主角会到各地周游一趟。 <br>";
 echo "</td></tr></table></center></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

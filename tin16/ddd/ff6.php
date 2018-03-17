@@ -134,3 +134,7 @@ echo "<center><font size=4><p><strong>(1) 攻略總目錄</strong></p>
 </tr>
 </table></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

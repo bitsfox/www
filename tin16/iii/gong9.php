@@ -86,3 +86,7 @@ echo "<center><table width=70%><tr><td align=center>
 <p align='left'>&nbsp;&nbsp;&nbsp; 在神殿里红色台座房间内把石版拼在右上的台座上。 <br>";
 echo "</td></tr></table></center></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

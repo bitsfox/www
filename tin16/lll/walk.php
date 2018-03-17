@@ -133,3 +133,7 @@ echo "<font size=4><center><h1>勇者斗恶龙9基本流程攻略</h1></center>
  </p></font>";
 echo "</div></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

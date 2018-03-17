@@ -37,3 +37,7 @@ echo "<center><font size=6 color=red>转职任务详细做法</font></center><br
 详细方法：这种怪并不少，实际上如果刷出洞穴系的宝物迷宫，基本上下几层就能看到，只要宝物图等级不是太低，一般都可以遇到（样子是个红红的脑袋），需要注意的是这种怪一般出现在地洞、水洞类的宝物迷宫。怪物的HP不足500，需要玩家用游艺人的特技吹火干掉他。由于该特技攻击极端低下，而且这个怪会自爆，所以务必看情况决定。<br><br></font>";
 echo "</div></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

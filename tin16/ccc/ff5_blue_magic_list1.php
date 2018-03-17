@@ -2108,3 +2108,7 @@ echo "<p><span style='color: #ffffff;'>-</span></p>
 <p><span style='color: #ffffff;'>-</span></p></font>
 ";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

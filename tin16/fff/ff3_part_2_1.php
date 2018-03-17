@@ -252,3 +252,7 @@ echo "<p><img class='alignnone' alt='' src='./ff3_images/ff3_part_2-1-1/08-repli
 <div>FF3 Part 2-1 取得飛空艇鸚鵡螺號 ( 完 )</div></font></center>
 ";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

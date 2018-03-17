@@ -285,3 +285,7 @@ Po 出來而已，日文的資訊就完整得多，所以這次寫 FF2 我也會
 還是以我自己習慣的寫法，如果覺得我的敘述太囉嗦的話，還請見諒，因為我希望以最詳細的方式來說明攻略的走法，與各劇情進度的來龍去脈，常看這裡的攻略的朋友應該都會很熟悉我的風格XDD<br /> <span style='color: #ffffff;'>-</span><br /> <span style='color: #ffffff;'>-</span></p>
 <p>Part 1 阿爾提亞鎮 &#8211; 珀福特鎮 ( 完 )</p></center></font>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

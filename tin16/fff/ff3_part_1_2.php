@@ -228,3 +228,7 @@ echo "<p><img class='alignnone' alt='' src='./ff3_images/ff3_missed_items/04-cas
 <p><span style='color: #ffffff;'>-</span><br /> <span style='color: #ffffff;'> -</span></p>
 <div>FF3 Part 1-2 解除魔人詛咒 ( 完 )</div></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

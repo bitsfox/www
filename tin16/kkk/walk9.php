@@ -27,3 +27,7 @@ echo "<font color='blue'>Vol.9 终章——最后的隐藏世界</font><br>
 ";
 echo "</div></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

@@ -566,3 +566,7 @@ echo "<center><font color=red size=5>合成素材</font></center>
 ";
 echo "</div></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

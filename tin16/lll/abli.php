@@ -233,3 +233,7 @@ echo "
 <p>本专题中的技能表格采用了日中双语言的形式，在DQ9美版发售之后将第一时间更新英文名。同时在表格内尽可能将技能的作用进行详细地说明，希望能对各位玩家有所帮助。</p>";
 echo "</div></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

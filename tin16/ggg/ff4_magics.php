@@ -1036,3 +1036,7 @@ echo "<p><span style='color: #ffffff;'>-</span></p>
 <p><span style='color: #ffffff;'>-</span></p>
 <p><span style='text-decoration: underline;'><span style='color: #0000ff; text-decoration: underline;'><a href='#top'><span style='color: #0000ff; text-decoration: underline;'>返回頂部</span></a></span></span></p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

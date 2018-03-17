@@ -282,3 +282,7 @@ echo "<a name='top' /><div class='ff9'>
 </tr></tbody></table></center></div>";
 echo "</body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

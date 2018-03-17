@@ -57,3 +57,7 @@ echo "<center><font size=4><p><strong>(1) 攻略總目錄</strong></p>
 <td style='background-color: #ffffcc;'><a href='./ff3_part_3_3.php' target='_blank'>3-3 水晶塔最終決戰</a></td><td style='background-color: #ffffcc;'><a href='./ff3_iron_giant.php' target='_blank'>洋蔥裝備與鐵巨人</a></td>
 </tr></tbody></table></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

@@ -34,3 +34,7 @@ echo "<center><table width=70%><tr><td align=center>
 <p align='left'><strong>&nbsp;BillyCane完成于2005-6-3</strong><br>";
 echo "</td></tr></table></center></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

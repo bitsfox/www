@@ -132,3 +132,7 @@ HP+50%<br />
 <p>&nbsp;</p>
 <p><a href='./ff4_hiding_boss.php' target='_blank'><span style='text-decoration: underline;'><span style='color: #0000ff; text-decoration: underline;'>[專題] FF4 革律翁及原初巴別巨人</span></span></a></p></center><p>&nbsp;</p>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

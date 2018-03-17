@@ -238,3 +238,7 @@ echo "<center><font size=4><p><span style='color: #800000; font-size: 22px;'>Fin
 <div><span style='color: #ffffff;'>-</span></div>
 <div>FF3 Part 1-1 宿命的光之戰士 ( 完 )</div></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

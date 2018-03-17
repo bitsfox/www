@@ -222,3 +222,7 @@ echo "<p><span style='color: #ff0000;'>1/20 Update:</span> ( 感謝網友 <span 
 <p>FF4 Part 3-1 初探月世界 ( 完 )</p></font></center>
 ";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

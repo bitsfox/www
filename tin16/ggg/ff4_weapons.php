@@ -436,3 +436,7 @@ echo "<table style='width: 499px;' border='0' cellspacing='0' cellpadding='0'>
 <p><span style='color: #ffffff;'>-</span><br /> 以上就是一些 FF4 在後期個人認為較值得去打的怪物與裝備、物品，做了一些整理，我目前也尚未放集全，感覺快要比之前在 FFD 刷尾巴還花時間，還沒刷夠的朋友我們一起繼續加油吧XDDDD<br /> <span style='color: #ffffff;'>-</span><br /> <span style='color: #ffffff;'>-</span></p>
 <p><span style='text-decoration: underline;'><span style='color: #0000ff; text-decoration: underline;'><a href='#top'><span style='color: #0000ff; text-decoration: underline;'>返回頂部</span></a></span></span></p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

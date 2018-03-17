@@ -688,3 +688,7 @@ echo "<p>&nbsp;</p>
 <p><span style='color: #ffffff;'>-</span></p>
 <p>Part 5 密西迪亞鎮 &#8211; 密西迪亞塔 ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

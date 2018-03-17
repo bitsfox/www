@@ -223,3 +223,7 @@ echo "<p><span style='text-decoration: underline;'><span style='color: #0000ff; 
 <p><span style='color: #ffffff;'>-</span><br /> <span style='color: #ffffff;'>-</span></p>
 <div>FF4 Part 1-1 開端．巴隆王的陰謀 ( 完 )</div></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

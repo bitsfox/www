@@ -226,3 +226,7 @@ echo "<br><a name='ff9_304' />
 </table><font size=4><a href='#ff9_304'>返回4-4</a></font></div><br>";
 echo "</body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

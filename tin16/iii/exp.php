@@ -67,3 +67,7 @@ H200 M100 攻210 防800 速255 E65000<br />
 可惜あんこくまどう不像六代那样身上带着ふっかつのつえ……<!--专题内容结束--></div>";
 echo "</body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

@@ -587,3 +587,7 @@ echo "<table cellpadding=2 cellspacing=0 border=1 style='font-size:14px;'>
 </table>
 <p>Part 1-6 魔大陸之戰 ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

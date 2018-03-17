@@ -13,3 +13,7 @@ echo "<div class=ff9>
 <P align=center><a href='map/final_fantasy_ix_map.jpg' alt='FF9陆行鸟挖宝地图英文版'></><IMG src='./pic/map/final_fantasy_ix_map.jpg' border='0'></a></P></div>";
 echo "</body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

@@ -456,3 +456,7 @@ echo "<p><span style='color: #ffffff;'>-</span></p>
 <p>以上是攻略過程，當然是有參考其他網站，不過打起來是真的很刺激XD，如果你在攻略過程中有什麼其他的心得，也歡迎大家幫忙分享一下喔！</p>
 <p><span style='text-decoration: underline;'><span style='color: #0000ff; text-decoration: underline;'><a href='#top'><span style='color: #0000ff; text-decoration: underline;'>返回頂部</span></a></span></span></p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

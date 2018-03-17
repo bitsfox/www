@@ -395,3 +395,7 @@ echo "<p><span style='color: #ffffff;'>-</span><br /> <span style='color: #fffff
 <p><span style='color: #ffffff;'>-</span><br /> <span style='color: #ffffff;'>-</span></p>
 <p>Part 1-3 第一世界：火之水晶 ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

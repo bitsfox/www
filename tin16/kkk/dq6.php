@@ -34,3 +34,7 @@ echo "<img src='./images/dream.jpg' border=1 style='width:40%;cursor:pointer' on
 
 echo "</body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

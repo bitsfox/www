@@ -1105,3 +1105,7 @@ echo "
 <p>若有需要再補充的事項，下一篇會繼續說明。</p>
 <p>Part 1-5 封魔壁幻獸事件 ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

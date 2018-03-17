@@ -219,3 +219,7 @@ HP 低於 150 就一定要趕快回復，回復藥或是魔法均可，不要省
 <p><span style='color: #ffffff;'>-</span><br /> <span style='color: #ffffff;'>-</span></p>
 <div>FF3 Part 1-3 德修的加入與離開 ( 完 )</div></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

@@ -336,3 +336,7 @@ echo "<p><img class='alignnone' alt='' src='./ff4_images/ff4_part_3-2/04-lunar_s
 <p><span style='color: #ffffff;'>-</span></p>
 <p>FF4 Part 3-2 月球最終決戰 ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

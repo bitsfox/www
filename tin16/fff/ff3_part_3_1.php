@@ -204,3 +204,7 @@ BOSS 只會用物理攻擊，傷害不高<br /> 2. 兩到三回合後，BOSS 會
 <div>FF3 Part 3-1 多加與烏內的犧牲 ( 完 )</div></font></center>
 ";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

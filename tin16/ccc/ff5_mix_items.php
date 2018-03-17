@@ -281,3 +281,7 @@ echo "<center><font size=4><p><span style='font-size: 22px; color: #800000;'>Fin
 <p><span style='line-height: 1.5em; color: #ffffff;'>-</span></p></font></center>
 ";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

@@ -1003,3 +1003,7 @@ echo "</body></html>";
 //<div id=ff9tw align=center>
 //<table class=tw cellspacing=5>
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

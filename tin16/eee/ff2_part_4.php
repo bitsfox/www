@@ -593,3 +593,7 @@ echo "<p><span style='color: #ffffff;'>- </span></p>
 <p><span style='color: #ffffff;'>-</span></p>
 <p>Part 4 迪斯特洞窟 &#8211; 菲因城 ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

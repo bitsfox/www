@@ -655,3 +655,7 @@ echo "<p><span style='color: #ffffff; line-height: 1.5em;'>-</span></p>
 <p><span style='color: #ffffff;'>-</span></p>
 <p>Part 3-1 第三世界：第一塊石板 ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

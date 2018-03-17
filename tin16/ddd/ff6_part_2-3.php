@@ -835,3 +835,7 @@ echo "<p><span style='color: #ff0000;'>2014/4/26 Update:</span></p>
 <p><span style='line-height: 1.5em;'> </span></p>
 <p>Part 2-3 尋找失散同伴 (下) ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

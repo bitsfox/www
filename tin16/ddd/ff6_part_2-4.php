@@ -1118,3 +1118,7 @@ echo "<p>這也是以往 SFC 版沒有的魔石，巨型仙人掌做為 GBA 版�
 <p>下一篇 Part 2-5，待續！</p>
 <p>Part 2-4 其他支線說明 ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

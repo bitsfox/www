@@ -108,3 +108,7 @@ echo "
 隐藏迷宫全域&mdash;&mdash;９９";
 echo "</div></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

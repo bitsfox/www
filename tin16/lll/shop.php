@@ -82,3 +82,7 @@ echo "<center><font color=red size=5>商店道具</font></center>
  &nbsp; &nbsp; &nbsp; &nbsp;大家再配合这篇文章里的合成表加中文大地图素材的散落位置，相信合成什么so easy！";
 echo "</div></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

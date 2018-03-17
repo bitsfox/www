@@ -156,3 +156,7 @@ DDDD，其實風水師雖然「地形」的攻擊方式為隨機，但是傷害�
 <div>FF3 Part 3-3 水晶塔最終決戰 ( 完 )</div></font></center>
 ";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

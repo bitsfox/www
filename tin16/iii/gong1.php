@@ -57,3 +57,7 @@ echo "<center><table width=70%><tr><td align=center>
 &nbsp;&nbsp; &nbsp;来到遗迹，刚准备进入山洞时，（Maribel）出现并加入主角的队伍。来到神殿把最后一块石版安放到左上方黄色台座上，主角一行被发出来的光传送到一个完全陌生的地方。 <br>";
 echo "</td></tr></table></center></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

@@ -396,3 +396,7 @@ echo "<p><span style='color: #ffffff; line-height: 1.5em;'>-</span></p>
 <p>Part 2 薩拉曼德鎮 &#8211; 雪原洞窟 ( 完 )</p></font></center>";
 ?>
 
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

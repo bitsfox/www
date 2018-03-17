@@ -85,3 +85,7 @@ DQ7中各个地区练习职业的最高等级要求：（资料提供者:FAZZ）
 echo "</td></tr></table></center></body></html>";
 ?>
 
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

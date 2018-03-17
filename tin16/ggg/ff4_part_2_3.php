@@ -262,3 +262,7 @@ echo "<p><span style='color: #ffffff;'>-</span></p>
 <p><span style='color: #ffffff;'>-</span><br /> <span style='color: #ffffff;'>-</span></p>
 <p>FF4 Part 2-3 爭奪暗之水晶 ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

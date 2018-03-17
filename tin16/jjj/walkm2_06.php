@@ -100,3 +100,7 @@ BOSS战   多克一只 弱智到无以复加<BR>
 <IMG src='./walkm2/135.jpg' border='0' /><BR>";
 echo "</body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

@@ -967,3 +967,7 @@ echo "<p><span style='color: #ffffff; line-height: 1.5em;'>-</span></p>
 <span style='color: #ffffff;'>-</span><br /> <span style='color: #ffffff;'> -</span><br /> <span style='color: #000080;'><strong><span style='font-size: 18px;'>最後，感謝每一位，</span></strong></span></p>
 <p><span style='color: #000080;'><strong><span style='font-size: 18px;'>陪伴著我，再度完成一部 FF 攻略的你們。</span></strong></span></p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

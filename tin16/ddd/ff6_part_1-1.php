@@ -967,3 +967,7 @@ Lv 13</td><td style='background-color: #ffffcc;'>3000<br />
 <p><img class='alignnone' src='./ff6_images/ff6_part_1-1/08-lethe_river-007.png' alt='' width='486' height='326' /></p>
 <p>Part 1-1 失憶的神祕少女 ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

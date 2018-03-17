@@ -281,3 +281,7 @@ echo "
 <p>PS2：脱力攻击和断刃这两个技能在装备2次攻击的武器时，特效发动两次。</p></div>";
 echo "</div></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

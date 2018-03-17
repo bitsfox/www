@@ -256,3 +256,7 @@ echo "<p><img class='alignnone' alt='' src='./ff4_images/ff4_part_2-1/04-castle_
 <p><span style='color: #ffffff;' data-mce-mark='1'>-</span><br /> <span style='color: #ffffff;' data-mce-mark='1'>-</span></p>
 <p>FF4 Part 2-1 佐特塔擊破 ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

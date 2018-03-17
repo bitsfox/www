@@ -298,3 +298,7 @@ echo "<STYLE type=text/css>
 </table></div>";
 echo "</body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

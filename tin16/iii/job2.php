@@ -840,3 +840,7 @@ echo "<table bordercolor='#000000' width='560' border='1'>
 echo "</body></html>";
 ?>
 
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

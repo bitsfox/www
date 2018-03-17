@@ -126,3 +126,7 @@ HP500左右 将其干翻后得到月之石<BR>
 上前调查就可以得到通往冰雪世界的冰之钥匙<BR>";
 echo "</body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

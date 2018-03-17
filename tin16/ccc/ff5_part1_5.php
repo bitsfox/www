@@ -585,3 +585,7 @@ echo "<table cellspacing='0' cellpadding='0'>
 <p><span style='color: #ffffff;'>-</span></p>
 <p>Part 1-5 第一世界：土之水晶 (下) ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

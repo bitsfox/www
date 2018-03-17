@@ -161,3 +161,7 @@ Lv99全技能点满后的数据<br/><br/>
 ";
 echo "</div></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

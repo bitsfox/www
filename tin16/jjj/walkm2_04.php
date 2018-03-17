@@ -203,3 +203,7 @@ HP倒是比较厚   大概有650左右 要有耐心<BR>
 <IMG src='./walkm2/082.jpg' border='0' /><BR>";
 echo "</body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

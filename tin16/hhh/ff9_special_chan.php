@@ -165,3 +165,7 @@ echo "<div class='ff9'>
 </table></center></div>";
 echo "</body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

@@ -254,3 +254,7 @@ echo "<center><h1>最终幻想9(Final Fantasy IX)(FF9)<br />召唤兽</h1>
 ";
 echo "</body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

@@ -192,3 +192,7 @@ echo "<center><font size=4><p><span style='font-size: 22px; color: #800000;'>Fin
 <p><span style='color: #ffffff;'>-</span><br /> <span style='color: #ffffff;'>-</span></p>
 <p>FF4 Part 2-2 前進地底巴別塔 ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

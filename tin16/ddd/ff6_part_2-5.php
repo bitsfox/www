@@ -1258,3 +1258,7 @@ echo "<table cellpadding=2 cellspacing=0 border=1 style='font-size:14px;'>
 <p>希望那一天很快就會到，謝謝大家一直以來的支持！</p>
 <p>Part 2-5 瓦礫之塔最終戰 ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

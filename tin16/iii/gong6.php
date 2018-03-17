@@ -65,3 +65,7 @@ echo "<center><table width=70%><tr><td align=center>
 &nbsp;&nbsp;&nbsp; 回到神殿可以把黄色台座房间内中间的台座拼齐！ <br>";
 echo "</td></tr></table></center></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

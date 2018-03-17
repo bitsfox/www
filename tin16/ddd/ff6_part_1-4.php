@@ -1127,3 +1127,7 @@ echo "<p><span style='color: #008000;'><strong>★低等級攻略 &#8211; 經驗
 </table>
 <p>Part 1-4 魔導工廠突擊 ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

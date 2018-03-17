@@ -293,3 +293,7 @@ echo "<p><span style='color: #ffffff;'>-</span><br /> <a name='萬魔殿 1F ~ 2F
 <br /> <span style='color: #ffffff;'>-</span><br /> <span style='color: #ffffff;'>-</span></p>
 <p>Part 7 萬魔殿最終戰 ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

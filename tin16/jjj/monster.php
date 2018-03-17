@@ -121,3 +121,7 @@ echo "</body></html>";
 //  <div id='s_lang' class='selop'><span class='sel' onclick='chgLn(0)'>中</span><span onclick='chgLn(1)'>日</span><span onclick='chgLn(2)'>英</span></div>
 //  <div id='s_xlop' class='selop'><span class='sel' onclick='chgSxs()'>系</span><span class='sel' onclick='chgVn(1)' style='width:22px;'>GB1</span><span class='sel' onclick='chgVn(2)' style='width:22px;'>GB2</span><span class='sel' onclick='chgVn(3)'>PS</span></div>
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

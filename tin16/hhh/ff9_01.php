@@ -328,3 +328,7 @@ echo "<br><a name='ff9_018' />
 //<font size=4><a href='#ff9_012'>返回1-12</a></font></div><br>";
 echo "</body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

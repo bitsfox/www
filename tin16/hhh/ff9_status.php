@@ -219,3 +219,7 @@ echo "<div class='ff9'>
 以上红宝石兽 与其他道具的组合是该召唤兽的特殊形态。<img height='11' alt='' width='13' src='./pic/system/go.gif' /><a target='_blank' href='./ff9_magic3.php'><u>召唤兽</u></a></center></div>";
 echo "</body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

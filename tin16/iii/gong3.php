@@ -51,3 +51,7 @@ echo "<center><table width=70%><tr><td align=center>
 &nbsp;&nbsp;&nbsp; 来到神殿绿色台座房间，把所有的绿色石版安在左上的台座上！ <br>";
 echo "</td></tr></table></center></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

@@ -282,3 +282,7 @@ PS：攻击力999的达成方法为，战斗大师学会了所有附加攻击力
 <p>PS3：斗魂博击和无心攻击这两个攻击技能在装备了两次攻击的武器时，也会发动两次。</p></div>";
 echo "</div></body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

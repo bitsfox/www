@@ -978,3 +978,7 @@ echo "<p><span style='color: #ffffff;'>-</span></p>
 <p><span style='color: #ffffff;'>-</span></p>
 <p>Part 2-1 第二世界：孤島 &#8211; 巴爾城 ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

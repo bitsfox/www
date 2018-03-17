@@ -130,3 +130,7 @@ echo "荒漠世界地图：<BR>
 之后对着海洋按下三角形键就可以渡海了<BR";
 echo "</body></html>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>

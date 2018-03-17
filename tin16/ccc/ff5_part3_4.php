@@ -1287,3 +1287,7 @@ echo "<p><span style='color: #ffffff; line-height: 1.5em;'>-</span></p>
 <span style='color: #800080;'>提高 EXP</span> ( 經驗值提升為 1.5 倍，但只有裝備者有效 )<br /> 劍鬥士：<strong>LV 1</strong> &#8211; <span style='color: #800080;'>引敵</span> ( 提升遇敵機率，隊中一人裝備即可 )<br /> <span style='color: #ffffff;'>-</span><br /> 新職業的其他能力介紹後續再提吧！<br /> <span style='color: #ffffff;'>-</span><br /> <span style='color: #ffffff;'>-</span></p>
 <p>Part 3-4 第三世界：第四塊石板與最終戰 ( 完 )</p></font></center>";
 ?>
+<?php
+include_once("/var/www/counter.php");
+upcounter(__FILE__)
+?>
