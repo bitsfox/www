@@ -29,7 +29,9 @@ echo "<td align=center><a href='./hat.php' target=_blank>头盔一览</a></td></
 echo "<tr><td align=center><a href='exp.php' target=_blank>经验升级</a></td>
 ";
 echo "<td></td><td></td></tr>";
-echo "</table></center></body></html>";
+echo "</table>";
+echo "<br><img src='./pic1/cd03b4fd5266d01642253e3c9f2bd40735fa353a.jpg' />";
+echo "</center></body></html>";
 ?>
 <?php
 include_once("/var/www/counter.php");

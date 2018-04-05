@@ -125,6 +125,11 @@ echo "<center><font size=6 color=blue>可以学习的技能列表</font></center
 </table></center>
 ";
 echo "<br><center><a href='./bof3.php#begin'>返  回</a></center><br>";
+echo "<center><br>";
+echo "<img src='./bof3_pic/4d1bbfdded898b395882dd77.jpg' /><br>";
+echo "<img src='./bof3_pic/3cc6b125c6ff7a6d35a80f70.jpg' /><br>";
+echo "<img src='./bof3_pic/df7750f0db5e7ecf7931aaca.jpg' /><br></center>";
+echo "<br><center><a href='./bof3.php#begin'>返  回</a></center><br>";
 
 
 ?>

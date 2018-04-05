@@ -1,6 +1,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <?php
-echo "<center><font color=red size=5>四、拜师心得</font></center>";
+echo "<a name=xinde><center><font color=red size=5>四、拜师心得</font></center>";
 echo "<pre>--转自：百度BOF3贴吧 抖M色の深红<br>";
 echo "<font color=red>龙</font>——全能力普通，倾向物理攻击
 拜师方案1.过关流，师匠—巴巴德尔，龙神
@@ -113,8 +113,23 @@ echo "<font color=red>龙</font>——全能力普通，倾向物理攻击
 二回合想变龙变龙不变龙直接撸过去，不过混搭的龙还是变身好
 
 嗯，我就说常用和我喜欢的吧，有其他的都补充上就好";
-echo "<pre>";
-echo "<a href='./bof3.php#begin'>返  回</a>";
+echo "</pre>";
+echo "<a name=neww><center><font color=red size=5>八、杂 记</font></center>";
+echo "<br><br>一、关于龙变身的详细资料可查看：<a href='http://bof.wikia.com/wiki/Breath_of_Fire_III' target=_blank>龙战士III</a><br><br>";
+echo "变身为真凯撒龙的组合为：<img src='./bof3_pic/InfinityGene_Sprite.gif' />&nbsp;&nbsp;<img src='./bof3_pic/RadianceGene_Sprite.png' />&nbsp;&nbsp;<img src='./bof3_pic/TranceGene_Sprite.png' />&nbsp;&nbsp;<font color=red>Infinity(真龙之力)</font> + <font color=red>Radiance(光明)</font> + <font color=red>Trance(转换)</font>";
+echo "<br><br><font color=red>火山溶洞快速升级的方法：</font><br>";
+echo "先决条件：1、先捡到红莲戒指和防火的衣服(AsbestosArmr)，然后刷紫色火岩怪的岩浆之铠，三名角色最好都配有上述装备，达到火免疫或者火吸收。<br>";
+echo "2、在飞翼城备足复活药（200z）、火焰弹（10z）和冰河水晶(500z)<br>";
+echo "3、去火山刷溶岩怪，大约扔15，6个火焰弹即可用冰河水晶秒乖收经验了 ^_^<br>";
+echo "4、中间有人挂掉，其余两人直接用复活药，复活法术也行，但是法术有时会失败。<br>";
+echo "<center><table width=30% border=0><tr><td width=50% align=center><img src='./bof3_pic/Vulcan_Sprite.gif' /></td><td width=50% align=center><img src='./bof3_pic/LavaMan_Sprite.gif' /></td></tr>";
+echo "<tr><td width=50% align=center>紫色火岩怪</td><td width=50% align=center>火山刷溶岩怪</td></tr></table></center>";
+echo "<br><br><font color=blue>船只加速，玩了这么久，我竟然不知道在找传说的水手和上黑船时按'O'键可以加速～～～</font><br>";
+echo "<br><font color=red>取得死亡沙漠宝藏的走法：</font><br>";
+echo "<font color=red>【生命之铠】</font>从工厂出发，向西走三个晚上，之后向北一直走（走到当西之明星居正西方的位置的时候）<br>
+<font color=red>【皇帝之剑】</font>从绿洲出发，向西走四个晚上，之后向南一直走（走一个晚上多一点）<br>
+<font color=red>【究极之爪】</font>从绿洲出发，向西一直走<br>";
+echo "<br><br><center><a href='./bof3.php#begin'>返  回</a></center>";
 ?>
 <?php
 include_once("/var/www/counter.php");

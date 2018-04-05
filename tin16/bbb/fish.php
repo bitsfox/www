@@ -1,7 +1,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <?php
 echo "<a name=fish><center><font color=red size=6>龙战士3渔场一览</font></center>";
-echo "<center><table width=70%>";
+echo "<center><table width=70>>";
 echo "<tr><td width=100%><pre>
 乌尔奥地区：
 师匠梅加斯旁边：蓝水母，南美热带鱼，七彩鱼
@@ -164,7 +164,7 @@ echo "<tr><td width=100%><pre><font color=blue>
 </font></pre></td></tr>";
 echo "</table></center>";
 echo "<center><a href='./bof3.php#begin'>返  回</a></center><br><br>";
-echo "<a name=script></a><center><font color=red size=6>妖精村的建设</font></center>";
+echo "<a name=faer></a><center><font color=red size=6>妖精村的建设</font></center>";
 echo "<center><table width=70%><tr><td width=100%><pre>
 1、妖精一开始的工作有3种，分别是狩猎、开拓和建筑
 狩猎：为妖精村打猎准备充足的食物，要保证3分1的人口去狩猎，以保证食物的充足；
@@ -213,8 +213,92 @@ echo "<center><table width=70%><tr><td width=100%><pre>
 几样物品所需战斗场数：
 生命水晶、魔法水晶、力量食品、蛋白质、燕窝、鱼头：15
 商证、特优等青蛙、红莲戒指、冰河戒指、雷之戒指：20
-龙之枪、灵魂戒指、生命手环、圣剑、史莱姆王之剑：25</pre>
+龙之枪、灵魂戒指、生命手环、圣剑、史莱姆王之剑：25
+<font color=blue>善用LS大法玩猜数字游戏可以轻易获得史莱姆王之剑 ^_^</font>
+</pre>
 </td></tr></table></center>";
+echo "<center><font size=5 color=red>商店物品一览</font><table width=70% border=1 cellpadding=1 cellspacing=0>";
+echo "<tr><td width=33% colspan=2 align=center>武  器</td><td width=33% colspan=2 align=center>物  品</td><td width=33% colspan=2 align=center>任  意</td></tr>";
+echo "<tr><td width=16% align=center>按性能</td><td width=17% align=center>按速度</td><td width=16% align=center>按性能</td><td width=17% align=center>按速度</td><td width=16% align=center>按性能</td><td width=17% align=center>按速度</td></tr><tr>";
+echo "<td width=16%>
+尖枝10z<br>
+皮护腰210z<br>
+青铜剑240z<br>
+绉绸短甲1300z<br>
+火爪3300z<br>
+琥珀胸甲6100z<br>
+穿身枪7400z<br>
+佣兵之剑9200z<br>
+防身护手11000z<br>
+虎盔5300z<br>
+<font color=red>蛇杖22000z</font><br>
+</td>";
+echo "<td width=17%>
+尖枝10z<br>
+皮护腰210z<br>
+青铜剑240z<br>
+圆盾1100z<br>
+破风杖2200z<br>
+绉绸短甲1300z<br>
+火爪3300z<br>
+四叶之冠1800<br>
+匕首之王6200z<br>
+刃之护手6800z<br>
+冰戟12500z<br>
+</td>";
+echo "<td width=16%>
+青苹果5z<br>
+元气弹50z<br>
+万能药100z<br>
+兴奋剂200z<br>
+皮鞋3000z<br>
+毅力皮带3000z<br>
+超爆弹800z<br>
+梦之耳环1000z</br>
+不惑戒指1000z</br>
+防御戒指3000z</br>
+钻石手环3000z</br>
+</td>";
+echo "<td width=17%>
+青苹果5z<br>
+元气弹50z<br>
+万能药100z<br>
+纯元气弹300z<br>
+兴奋剂200z<br>
+护身符500z<br>
+健康凉鞋500z<br>
+皮鞋3000z<br>
+勇气之带3000z<br>
+梦之耳环1000z<br>
+不惑戒指1000z<br>
+</td>";
+echo "<td width=16%>
+木之果5z<br>
+肉干50z<br>
+雷焰200z<br>
+虎爪3800z<br>
+<font color=red>飞跃之杆2000z</font><br>
+毅力皮带3000z<br>
+铃铛颈环10000z<br>
+圣灵石3000z<br>
+圣之围巾10000z<br>
+火药弹10z<br>
+棍头枪7000z<br>
+</td>";
+echo "<td width=17%>
+木之果5z<br>
+肉干50z<br>
+棉布服50z<br>
+火魂弹500z<br>
+超爆弹800z<br>
+铃铛颈环10000z<br>
+<font color=red>飞跃之杆2000z</font><br>
+死亡稀饭200z<br>
+匕首之王6200z<br>
+圣之围巾10000z<br>
+圣灵石3000z<br>
+</td></tr>";
+echo "</table></center><br>";
 echo "<center><a href='./bof3.php#begin'>返  回</a></center><br><br>";
 
 
