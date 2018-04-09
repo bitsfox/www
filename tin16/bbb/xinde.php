@@ -115,7 +115,7 @@ echo "<font color=red>龙</font>——全能力普通，倾向物理攻击
 嗯，我就说常用和我喜欢的吧，有其他的都补充上就好";
 echo "</pre>";
 echo "<a name=neww><center><font color=red size=5>八、杂 记</font></center>";
-echo "<br><br>一、关于龙变身的详细资料可查看：<a href='http://bof.wikia.com/wiki/Breath_of_Fire_III' target=_blank>龙战士III</a><br><br>";
+echo "<br><br>一、关于龙变身的详细资料可查看：<a href='http://bof.wikia.com/wiki/Breath_of_Fire_III' target=_blank>龙战士III</a>&nbsp;和&nbsp;<a href='http://www.gamefaqs.com/psp/928759-breath-of-fire-iii/faqs/'>龙战士III FAQ</a><br><br>";
 echo "变身为真凯撒龙的组合为：<img src='./bof3_pic/InfinityGene_Sprite.gif' />&nbsp;&nbsp;<img src='./bof3_pic/RadianceGene_Sprite.png' />&nbsp;&nbsp;<img src='./bof3_pic/TranceGene_Sprite.png' />&nbsp;&nbsp;<font color=red>Infinity(真龙之力)</font> + <font color=red>Radiance(光明)</font> + <font color=red>Trance(转换)</font>";
 echo "<br><br><font color=red>火山溶洞快速升级的方法：</font><br>";
 echo "先决条件：1、先捡到红莲戒指和防火的衣服(AsbestosArmr)，然后刷紫色火岩怪的岩浆之铠，三名角色最好都配有上述装备，达到火免疫或者火吸收。<br>";
@@ -129,6 +129,25 @@ echo "<br><font color=red>取得死亡沙漠宝藏的走法：</font><br>";
 echo "<font color=red>【生命之铠】</font>从工厂出发，向西走三个晚上，之后向北一直走（走到当西之明星居正西方的位置的时候）<br>
 <font color=red>【皇帝之剑】</font>从绿洲出发，向西走四个晚上，之后向南一直走（走一个晚上多一点）<br>
 <font color=red>【究极之爪】</font>从绿洲出发，向西一直走<br>";
+echo "在黑市有<font color=red>【男服（Manly Clothes）】</font>买，属性为死后满血复活，是打狂兽的最佳装备。<br>";
+echo "在黑船上的Bolt Mage掉落<font color=red>【风之袍（Robe of Wind）】</font>，属性为放雷、风、土，还可当装备使用，效果是加速<br>";
+echo "装备（必须装备上的才可）作为道具使用的效果： <br>
+<font color=red>【封魔之盾】</font>：ap吸收 <br>
+<font color=red>【圣剑】</font>：强攻 <br>
+<font color=red>【圣矛】</font>：全体强防 <br>
+<font color=red>【漆黑之杖】</font>：沉默 <br>
+<font color=red>【恩泽之杖】</font>：中回复 <br>
+<font color=red>【力之凯】</font>：保护 <br>
+<font color=red>【风之袍】</font>：加速 <br>
+<font color=red>【龙之刀】</font>：狂火 <br>
+<font color=red>【破坏之杖】</font>：雷 <br>
+<font color=red>【黄铜爪】</font>：风暴 <br>
+<font color=red>【皇帝之剑】</font>：狂雷 <br>
+<font color=red>【破风杖】</font>：风 <br>
+<font color=red>【匕首之王】</font>：加速 <br>
+<font color=red>【断凯剑】</font>：弱防 <br>
+<font color=red>【红玉之杖】</font>：火<br>其中封魔盾吸ap时必须己方没有或有很少的ap才会有效<br>";
+
 echo "<br><br><center><a href='./bof3.php#begin'>返  回</a></center>";
 ?>
 <?php
