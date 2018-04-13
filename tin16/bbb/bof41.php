@@ -92,10 +92,48 @@ echo "<tr><td width=100%>
 <font color=red>Q:到了西之森应该怎找村长?</font><br><br>
 <font color=blue>A:先看入口的男人教导...用机器人撞苹果树就可能拿到苹果，调查树根放苹果上去，然后进去追怪物!<br><br>(P.S: 苹果可以无限拿的~)</font>
 </td></tr>";
-echo "<tr><td width=100%>
-<font color=red>Q:全召唤龙?</font><br><br>
-<font color=blue>风竜 剧情发展<br><br>树竜 シューク某分支地<br><br>砂竜 用砂船シェド与ハシビトの町 之间,在南面有块空地利用沙丘飞进去...<br><br>泥竜 在沙漠处,曾经有个??唱歌赶跑龙的的地方.<br><br>海流 用船进入...在火山岛附近的岩石带里按'△'<br><br>草竜 找猫人的母亲,进入黄金平野直走到大石头发现一只发 光的鸟...一直追著它就可以<br><br>岩竜 问运河里的男人...问到龙的形状时选2.</font>
-</td></tr>";
+echo "<tr><td width=100%>";
+//<font color=red>Q:全召唤龙?</font><br><br>
+//<font color=blue>风竜 剧情发展<br><br>树竜 シューク某分支地<br><br>砂竜 用砂船シェド与ハシビトの町 之间,在南面有块空地利用沙丘飞进去...<br><br>泥竜 在沙漠处,曾经有个??唱歌赶跑龙的的地方.<br><br>海流 用船进入...在火山岛附近的岩石带里按'△'<br><br>草竜 找猫人的母亲,进入黄金平野直走到大石头发现一只发 光的鸟...一直追著它就可以<br><br>岩竜 问运河里的男人...问到龙的形状时选2.</font>
+echo "<font color=red>Q:全召唤龙的获得</font><br><font color=blue>首先是沙龙（大突击）……</font><br>
+当游戏进行到取得沙船，可以开沙船玩小游戏时，就可以去找沙龙了，从希耶德进入…<br><center>";
+echo "<img src='./bof4_pic/fe66087b1d2f53ff0bd18742.jpg'></center>";
+echo "进入开沙船的小游戏后，利用沙丘的腾空，飞跃到一处孤立的小岛中（注意看小地图）……<br><center>";
+echo "<img src='./bof4_pic/ba71b0b7bd8524ff30add142.jpg'></center>
+小岛中有一处沙漠绿洲，进入后就会看到沙龙，对话就能取得大突击了… <br>
+<center><img src='./bof4_pic/32fab1de38aaf953cdbf1a43.jpg'></center>
+<font color=blue>接着是泥龙（大泥流）……</font><br>
+还记得第一次见到泥龙的地方吗？水坝北面的？处…<br><center>
+<img src='./bof4_pic/2ee2708b83389119c9fc7a43.jpg'></center>
+第三章时再次回到这里，泥龙就在这恭候大驾了，记得换个角度哦…<br><center>
+<img src='./bof4_pic/3e3753da57e311d0b7fd4843.jpg'></center>
+<font color=blue>再来是草龙（大回复）……</font><br>
+首先从黄金平原进入…<br>
+进入后首先一直向上走，直到在一块大石头前停下，等待一下并四处张望，会发现一只发光的小鸟……（如图）<br>
+<center><img src='./bof4_pic/0aa3372a9b7538335243c14c.jpg'></center>
+<center><img src='./bof4_pic/37f437fa06e453829f51464c.jpg'></center>
+<font color=blue>到树龙（最大防御）了……</font><br>
+在席克地区，如图位置处会遇到？，马上进入…<br>
+<center><img src='./bof4_pic/a808f9ed5a4e2b4479f0554d.jpg'></center>
+进入后从岔路出去…<br>
+<center><img src='./bof4_pic/69e061274bfbdf08908f9d4e.jpg'></center>
+回到大地图会多出一条路通往另一个？…<br>
+<center><img src='./bof4_pic/917845107c39e0f7c2ce794e.jpg'></center>
+<font color=blue>大部分人说找不到的海龙（大海流）……</font><br>
+海龙当然在海上了，首先在席克或利普开船出海…<br>
+<center><img src='./bof4_pic/394748ed235fa3dfb21cb14f.jpg'></center>
+把船使至如图地方…<br>
+<center><img src='./bof4_pic/f22cabecad3e4b2c63d09f48.jpg'></center>
+探索进入，与海龙对话取得大海流…<br>
+<font color=blue>最后是岩龙（大特异点）了……</font><br>
+从运河进入…<br>
+<center><img src='./bof4_pic/5bfd79ec29c91eda2e2e2149.jpg'></center>
+途中看见一男人，对话开始闲聊，选择选项……<br>
+选择1、1、1、2<br>
+全部选对后，走出运河时大地图会多出一条路…<br>
+<center><img src='./bof4_pic/15f0718dad451119b21bba55.jpg'></center>
+进入找到岩龙，对话就能学会大特异点了…<br>";
+
 echo "<tr><td width=100%>
 <font color=red>Q:HP呈黄色应该怎样回复?</font><br><br>
 <font color=blue>A:到宿舍睡一觉.</font>
