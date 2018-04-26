@@ -643,7 +643,7 @@ class gis_calc_ctl implements tab_show
 			if($this->zy[$j] == $k)
 				$s1.="<option value=".$this->zy[$j]." selected='selected' >".$this->zy[$j]."</option>";
 			else
-				$s1.="<option value=>".$this->zy[$j]." >".$this->zy[$j]."</option>";
+				$s1.="<option value=".$this->zy[$j]." >".$this->zy[$j]."</option>";
 		}
 		$s1.="</select></div><div id='clear_id'></div>";
 		echo $s1;
