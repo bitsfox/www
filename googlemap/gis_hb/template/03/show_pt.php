@@ -42,7 +42,7 @@ require_once($st);
 $st=constant("FULL_PATH")."interface/extra01.php";
 require_once($st);
 	$ay=array();
-	$a=new init_gis(0);
+	$a=new init_gis($_SESSION['SEL_2']);
 	$ay=$a->get_unit(0);
 	$i=count($ay);
 	$cy=array();

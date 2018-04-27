@@ -204,7 +204,7 @@ class gis_ctl implements tab_show
 				"土壤有机质测定原始记录表","原子吸收法测定土壤元素原始记录表","原子吸收法测定土壤元素校准曲线",
 				"原子荧光法测定土壤元素原始记录表","原子荧光法测定土壤元素校准曲线","分光光度法测定土壤元素原始记录表");
 		$this->yy=array("全部点位","基础点位","质控点位");
-		if($this->wctl == 0)
+	/*	if($this->wctl == 0)
 		{
 			$a=new init_gis($a01[$j-1]);
 			$this->ay=$a->get_ctlarea();//取得年度列表中最后一个年度的地区代码
@@ -213,7 +213,7 @@ class gis_ctl implements tab_show
 		{
 			$a=new init_gis_mx($a01[$j-1]);
 			$this->ay=$a->get_ctlarea();
-		}
+		}*/
 	}//}}}
 //{{{public function __destruct()
 	public function __destruct()
@@ -223,6 +223,23 @@ class gis_ctl implements tab_show
 //{{{public function show_header()
 	public function show_header()
 	{
+		$i=count($this->ty);
+		if($i<=0)
+			die("count error04!!");
+		if(isset($_POST['sel2']))
+		{$k=$_POST['sel2'];$_SESSION['SEL_2']=$k;}
+		else
+		{$k=$this->ty[$i-1];$_SESSION['SEL_2']=$k;}
+		if($this->wctl == 0)
+		{
+			$a=new init_gis($k);
+			$this->ay=$a->get_ctlarea();//取得年度列表中最后一个年度的地区代码
+		}
+		else
+		{
+			$a=new init_gis_mx($k);
+			$this->ay=$a->get_ctlarea();
+		}
 		$i=count($this->ay);
 		if($i <= 0)
 			die("count error0012");
@@ -324,14 +341,14 @@ class gis_ctl implements tab_show
 		$i=count($this->ty);
 		if($i<=0)
 			die("count error03!!");
-		if(isset($_POST['sel2']))
+	/*	if(isset($_POST['sel2']))
 		{$k=$_POST['sel2'];$_SESSION['SEL_2']=$k;}
 		else
-		{$k=$this->ty[$i-1];$_SESSION['SEL_2']=$k;}
+		{$k=$this->ty[$i-1];$_SESSION['SEL_2']=$k;} */
 		$s1="<br><div class='dvmsg'>年度选择：</div><div class='select_style'><select name='sel2'>";
 		for($j=0;$j<$i;$j++)
 		{
-			if($this->ty[$j] == $k)
+			if($this->ty[$j] == $_SESSION['SEL_2'])
 				$s1.="<option value=".$this->ty[$j]." selected='selected'>".$this->ty[$j]."</option>";
 			else
 				$s1.="<option value=".$this->ty[$j].">".$this->ty[$j]."</option>";
@@ -392,14 +409,14 @@ class gis_ctl implements tab_show
 		$i=count($this->ty);
 		if($i<=0)
 			die("count error04!!");
-		if(isset($_POST['sel2']))
+	/*	if(isset($_POST['sel2']))
 		{$k=$_POST['sel2'];$_SESSION['SEL_2']=$k;}
 		else
-		{$k=$this->ty[$i-1];$_SESSION['SEL_2']=$k;}
+		{$k=$this->ty[$i-1];$_SESSION['SEL_2']=$k;}*/
 		$s1="<br><div class='dvmsg1'>年度选择：</div><div class='select_style1'><select name='sel2'>";
 		for($j=0;$j<$i;$j++)
 		{
-			if($this->ty[$j] == $k)
+			if($this->ty[$j] == $_SESSION['SEL_2'])
 				$s1.="<option value=".$this->ty[$j]." selected='selected'>".$this->ty[$j]."</option>";
 			else
 				$s1.="<option value=".$this->ty[$j].">".$this->ty[$j]."</option>";
