@@ -190,10 +190,13 @@ class gis_ctl implements tab_show
 				die("参数错误002！");
 		};
 		date_default_timezone_set("PRC");
-		if(isset($_POST['sel2']))
-			$this->rq=$_POST['sel2'];
+	//	if(isset($_POST['sel2']))
+	//		$this->rq=$_POST['sel2'];
+		if(isset($_SESSION['SEL_2']))
+			$this->rq=$_SESSION['SEL_2'];
 		else
-			$this->rq=date("Y-m-d",time());
+	//		$this->rq=date("Y-m-d",time());
+			$this->ra=date("Y");
 		$a01=array_keys($DB_ADDR_TY);
 		$i=count($a01);
 		$this->ty=array();
@@ -229,7 +232,12 @@ class gis_ctl implements tab_show
 		if(isset($_POST['sel2']))
 		{$k=$_POST['sel2'];$_SESSION['SEL_2']=$k;}
 		else
-		{$k=$this->ty[$i-1];$_SESSION['SEL_2']=$k;}
+		{
+			if(isset($_SESSION['SEL_2']))
+			{$k=$_SESSION['SEL_2'];}
+			else
+			{$k=$this->ty[$i-1];$_SESSION['SEL_2']=$k;}
+		}
 		if($this->wctl == 0)
 		{
 			$a=new init_gis($k);
@@ -599,20 +607,21 @@ class gis_calc_ctl implements tab_show
 	public function __construct($y)
 	{//sel1 行政区划，sel2 年度选择，sel3 污染物名称
 		global $DB_ADDR_TY;
-		if(isset($_POST['sel2']))
-			$this->rq=$_POST['sel2'];
+	//	if(isset($_POST['sel2']))
+		if(isset($_SESSION['SEL_2']))
+			$this->rq=$_SESSION['SEL_2'];
 		else
-			$this->rq=date('Y-m-d',time());
+			$this->rq=date('Y');
 		$a01=array_keys($DB_ADDR_TY);
 		$i=count($a01);
 		$this->zy=array();
 		for($j=0;$j<$i;$j++)
 			array_push($this->zy,$a01[$j]);
-		$a=new init_gis($a01[$j-1]);
+		$a=new init_gis($this->rq);
 		$this->ay=$a->get_ctlarea();//取得年度列表中最后一个年度的地区代码列表
 		if(!isset($_POST['sel3']))
 			unset($_SESSION['SEL_3']);
-		$b=new init_gis_calc($a01[$j-1]);
+		$b=new init_gis_calc($this->rq);
 		$this->cy=$b->get_ctlarea();
 	}//}}}
 //{{{public function __destruct()
@@ -653,7 +662,12 @@ class gis_calc_ctl implements tab_show
 		if(isset($_POST['sel2']))
 		{$k=$_POST['sel2'];$_SESSION['SEL_2']=$k;}
 		else
-		{$k=$this->zy[$i-1];$_SESSION['SEL_2']=$k;}
+		{
+			if(isset($_SESSION['SEL_2']))
+				$k=$_SESSION['SEL_2'];
+			else
+			{$k=$this->zy[$i-1];$_SESSION['SEL_2']=$k;}
+		}
 		$s1="<br><div class='dvmsg'>年度选择：</div><div class='select_style'><select name='sel2'>";
 		for($j=0;$j<$i;$j++)
 		{
