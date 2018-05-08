@@ -39,24 +39,36 @@
            <span class="icon-bar"></span>
          </button>
          <a href="#" class="btn-closemenu"><i class="icon-x"></i></a>
-<a class='navbar-brand' href='/'><img src='/huili/images/logo/logo-greenback.png' alt='Greenback'/></a>
+<a class='navbar-brand' href='/'><img src='/huili/images/logo/logo.png5.png' alt='Greenback'/></a>
 	   </div>
        <div class='collapse navbar-collapse' id='mobile-side'>
          <ul class='nav navbar-nav navbar-right'>
-           <li><a href='#' title='您身边的环保专家'>环保管家</a></li>
-           <li><a href='#' title='排污许可证办理指南'>排污许可证</a></li>
-           <li><a href='#' title='Safe and Bank-Level Secure'>Security</a></li>
-           <li><a href='#' title='Learn from the Experts in Connected Accounting'>Blog</a></li>
-           <li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown'>日志<b class='caret'></b></a>
+           <li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown' title='您身边的环保专家,为您提供专业的服务'>管家服务<b class='caret'></b></a>
+		   <ul class='dropdown-menu'>
+				<li><a href='#'><span class='fa fa-gear fa-fw'></span>&nbsp;环评咨询</a></li>
+				<li><a href='#'><span class='fa fa-truck fa-fw'></span>&nbsp;环保工程</a></li>
+				<li><a href='#'><span class='fa fa-flask fa-fw'></span>&nbsp;环境监测</a></li>
+				<li><a href='#'><span class='fa fa-pagelines fa-fw'></span>&nbsp;项目验收</a></li>
+				<li><a href='#'><span class='fa fa-recycle fa-fw'></span>&nbsp;清洁生产</a></li>
+				<li><a href='#'><span class='fa fa-fire fa-fw'></span>&nbsp;危废服务</a></li>
+				<li><a href='#'><span class='fa fa-calendar-check-o fa-fw'></span>&nbsp;应急预案</a></li>
+				<li><a href='#'><span class='fa fa-pencil fa-fw'></span>&nbsp;排污申报</a></li>
+		   </ul>
+		   </li>
+           <li><a href='#' title='聚集了环保全领域的资深专家和优秀人才'>专家团队</a></li>
+<!--       <li><a href='#' title='Learn from the Experts in Connected Accounting'>Blog</a></li> -->
+           <li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown' title='建设项目名录、管家案例'>资讯信息<b class='caret'></b></a>
 		   	<ul class='dropdown-menu'>
-				<li><a href='#'>aaa</a></li>
-				<li><a href='#'>bbb</a></li>
-				<li><a href='#'>ccc</a></li>
-				<li><a href='#'>ddd</a></li>
+				<li><a href='#'><span class='fa fa-book fa-fw'></span>&nbsp;项目名录</a></li>
+				<li><a href='#'><span class='fa fa-snapchat-ghost fa-fw'></span>&nbsp;环保案例</a></li>
+				<li><a href='#'><span class='fa fa-joomla fa-fw'></span>&nbsp;技术动态</a></li>
+				<li><a href='#'><span class='fa fa-wpforms fa-fw'></span>&nbsp;环保法规</a></li>
+				<li><a href='#'><span class='fa fa-download fa-fw'></span>&nbsp;资料下载</a></li>
 			</ul>
 		   </li> 
-           <li><a href='#' title='Contact Us About Connected Accounting'>Contact</a></li>
-           <li class='sec'><a href='#' class='btn btn-head-signin' title='Sign In'>登录</a></li>
+           <li><a href='#' title='污染源、水站、空气站在线监控平台'>监控平台</a></li>
+           <li><a href='#' title='在这里发布供求，寻求支持'>交流互动</a></li>
+           <li class='sec'><a href='./include/login.php' class='btn btn-head-signin' title='Sign In'>登录</a></li>
            <li class='sec'><a href='#' class='btn btn-head-signup' title='Sign Up for Free'>注册</a></li>
          </ul>
          <ul class='list-unstyled list-mobilebtns'>
@@ -78,6 +90,16 @@
          </p>
       </div>
     </div>
+    <!-- Promo Slider -->
+    <div class="promo-hero">
+      <div>
+        
+      </div>
+      <!--
+      <div>
+        <img src="img/hero-home2.png" alt="Greenback will help you organize your online purchases"/>
+      </div>  -->
+    </div> 	
   </section>
 <?php
 echo "<img src='/huili/images/logo/aboutditu.jpg' style='width:100%;cursor:pointer'>";
