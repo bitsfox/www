@@ -29,7 +29,7 @@ echo "</head>";
       <!-- Form Login -->
       <div class="form-login form-box">
         <div class="side-head">
-    <a href="/"><img class="logo" src='../images/logo/logo.png5.png' alt="huishi group"></a>
+    	<a href="/huili/index.php"><img class="logo" src='../images/logo/logo.png5.png' alt="huishi group"></a>
 </div>
         <div>
           <div class="form-group">
@@ -37,7 +37,7 @@ echo "</head>";
             <div class="form-suffix">
 			  <span class='fa fa-envelope-o fa-lg picto'></span>
               <input id="email" type="email" class="form-control first" name="email" value=''
-                placeholder="Email" autocorrect="off" autocapitalize="none" autocomplete="username" required autofocus />
+                placeholder="Email" autocorrect="off" autocapitalize="none" autocomplete="username" required/>
             </div>
           </div>
           <div class="form-group">
@@ -51,14 +51,14 @@ echo "</head>";
         </div>
         <div class="form-group form-twocols">
           <div class="pass-reset">
-            <a href="/auth/forgot" class="btn-text">Forgot your password?</a>
+            <a href="/auth/forgot" class="btn-text">是不是忘记密码了?</a>
           </div>
         </div>
         <div class="form-group">
-          <button type="submit" href="#" class="btn btn-primary btn-fat btn-block">Sign In</button>
+          <button type="submit" href="#" class="btn btn-primary btn-fat btn-block">登 录</button>
         </div>
         <div class="form-group form-out">
-          <p>Don't have an account yet? <a href="/register/signup" class="btn-text">Sign Up</a></p>
+          <p>您还没有帐号? <a href="/register/signup" class="btn-text">注 册</a></p>
         </div>
       </div>
     </form>
@@ -69,7 +69,7 @@ echo "</head>";
          <div class="inner">
            <div class="row">
              <div class="col-sm-12">
-               <p class="copy">&COPY; 2018 Greenback, Inc. All Rights Reserved</p>
+               <p class="copy">&COPY; 2018 汇氏环境, Inc. 保留所有权利</p>
              </div>
            </div>
          </div>
