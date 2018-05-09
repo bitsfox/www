@@ -21,44 +21,30 @@ echo "<script src='".constant("JS_FILE_TWO")."'></script>";
 //echo "<script src='".constant("JS_FILE_THR")."'></script>";
 echo "</head>";
 ?>
-    <body class='loginpage'>
+    <body class="loginpage">
         <div class="bg">
   <div class="loginbox">
-        <form class="form form-landing" action='#' method="post">
-      <input type="hidden" value="b7f4a68d-58ad-486d-a554-e3781e727376" name="authenticityToken" />
+        <form class="form form-landing" action='./forgot.php' method="post">
+      <input type="hidden" value="2e7c1d51-7cdc-48b4-a74b-8483e4a7173b" name="authenticityToken" />
       <!-- Form Login -->
       <div class="form-login form-box">
         <div class="side-head">
     	<a href="/huili/index.php"><img class="logo" src='../images/logo/logo.png5.png' alt="huishi group"></a>
 </div>
-        <div>
-          <div class="form-group">
-            <label>Email</label>
-            <div class="form-suffix">
-			  <span class='fa fa-envelope-o fa-lg picto'></span>
-              <input id="email" type="email" class="form-control first" name="email" value=''
-                placeholder="Email" autocorrect="off" autocapitalize="none" autocomplete="username" required/>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Password</label>
-            <div class="form-suffix">
-			  <span class='fa fa-key fa-lg picto'></span>
-              <input id="password" type="password" class="form-control last" name="password" value=""
-                placeholder="Password" autocomplete="current-password" required />
-            </div>
-          </div>
-        </div>
-        <div class="form-group form-twocols">
-          <div class="pass-reset">
-            <a href="./forgot.php" class="btn-text">是不是忘记密码了?</a>
+        <h5>Forgot your password?</h5>
+        <p class="intro">We'll email you a link to reset your password.</p>
+        <div class="form-group">
+          <label>Email Address</label>
+          <div class="form-suffix">
+			<span class='fa fa-envelope-o fa-lg picto'></span>
+            <input type="email" class="form-control" name="email" value="" placeholder="Email" />
           </div>
         </div>
         <div class="form-group">
-          <button type="submit" href="#" class="btn btn-primary btn-fat btn-block">登 录</button>
+          <button class="btn btn-primary btn-fat btn-block">Reset Password</button>
         </div>
-        <div class="form-group form-out">
-          <p>您还没有帐号? <a href="/register/signup" class="btn-text">注 册</a></p>
+        <div class="form-group form-out text-center">
+          <p>Remembered your password? <a href='/auth/signin' class="btn-text btn-backlogin">Sign</a></p>
         </div>
       </div>
     </form>
@@ -69,7 +55,7 @@ echo "</head>";
          <div class="inner">
            <div class="row">
              <div class="col-sm-12">
-               <p class="copy">&COPY; 2018 汇氏环境, Inc. 保留所有权利</p>
+               <p class="copy">&COPY; 2018 Greenback, Inc. All Rights Reserved</p>
              </div>
            </div>
          </div>
