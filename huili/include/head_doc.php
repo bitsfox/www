@@ -15,6 +15,7 @@ if(!defined("CSS_FILE"))
 	die("run error.errno:#00002");
 echo "<!DOCTYPE html>\n<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />\n";
 echo "<title>testtest</title>\n";	//<--这里修改标题
+echo "<link rel='stylesheet' href='".constant("CSS_FILEB")."'>";
 echo "<link rel='stylesheet' href='".constant("CSS_FILE")."'>";
 echo "<script src='".constant("JS_FILE_ONE")."'></script>";
 echo "<script src='".constant("JS_FILE_TWO")."'></script>";

@@ -14,8 +14,8 @@ if(!defined("FULL_PATH"))
 echo "<!DOCTYPE html>\n<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />\n";
 echo "<title>testtest</title>\n";	//<--这里修改标题
 //echo "<link rel='stylesheet' href='".constant("CSS_FILE")."'>";
-echo "<link rel='stylesheet' href='".constant("CSS_FILEA")."'>";
 echo "<link rel='stylesheet' href='".constant("CSS_FILEB")."'>";
+echo "<link rel='stylesheet' href='".constant("CSS_FILEA")."'>";
 echo "<script src='".constant("JS_FILE_ONE")."'></script>";
 echo "<script src='".constant("JS_FILE_TWO")."'></script>";
 //echo "<script src='".constant("JS_FILE_THR")."'></script>";
