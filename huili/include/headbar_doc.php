@@ -43,10 +43,10 @@
 	   </div>
        <div class='collapse navbar-collapse' id='mobile-side'>
          <ul class='nav navbar-nav navbar-right'>
-           <li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown' title='您身边的环保专家,为您提供专业的服务'>管家服务<b class='caret'></b></a>
+          <li class='dropdown'><a href='#' class='dropdown-toggle tooltip' data-toggle='dropdown'>管家服务<b class='caret'></b><span class='tooltiptext'>您身边的环保专家,为您提供专业的服务</span></a> 
 		   <ul class='dropdown-menu'>
 				<li><a href='#'><span class='fa fa-gear fa-fw'></span>&nbsp;环评咨询</a></li>
-				<li><a href='#'><span class='fa fa-truck fa-fw'></span>&nbsp;环保工程</a></li>
+				<li><a href='#'><span class='fa fa-truck fa-fw'></span>&nbsp;环境工程</a></li>
 				<li><a href='#'><span class='fa fa-flask fa-fw'></span>&nbsp;环境监测</a></li>
 				<li><a href='#'><span class='fa fa-pagelines fa-fw'></span>&nbsp;项目验收</a></li>
 				<li><a href='#'><span class='fa fa-recycle fa-fw'></span>&nbsp;清洁生产</a></li>
@@ -55,20 +55,20 @@
 				<li><a href='#'><span class='fa fa-pencil fa-fw'></span>&nbsp;排污申报</a></li>
 		   </ul>
 		   </li>
-           <li><a href='#' title='聚集了环保全领域的资深专家和优秀人才'>专家团队</a></li>
+		   	   <li><a href='#' class='tooltip'>专家团队<span class='tooltiptext'>聚集了环保全领域的资深专家和优秀人才</span></a></li>
 <!--       <li><a href='#' title='Learn from the Experts in Connected Accounting'>Blog</a></li> -->
-           <li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown' title='建设项目名录、管家案例'>资讯信息<b class='caret'></b></a>
+           <li class='dropdown'><a href='#' class='dropdown-toggle tooltip' data-toggle='dropdown' >资讯信息<b class='caret'></b><span class='tooltiptext'>建设项目名录、管家案例</span></a>
 		   	<ul class='dropdown-menu'>
-				<li><a href='#'><span class='fa fa-book fa-fw'></span>&nbsp;项目名录</a></li>
-				<li><a href='#'><span class='fa fa-snapchat-ghost fa-fw'></span>&nbsp;环保案例</a></li>
+				<li><a href='#'><span class='fa fa-book fa-fw'></span>&nbsp;企业名录</a></li>
+				<li><a href='#'><span class='fa fa-snapchat-ghost fa-fw'></span>&nbsp;环境案例</a></li>
 				<li><a href='#'><span class='fa fa-joomla fa-fw'></span>&nbsp;技术动态</a></li>
-				<li><a href='#'><span class='fa fa-wpforms fa-fw'></span>&nbsp;环保法规</a></li>
+				<li><a href='#'><span class='fa fa-wpforms fa-fw'></span>&nbsp;环境法规</a></li>
 				<li><a href='#'><span class='fa fa-download fa-fw'></span>&nbsp;资料下载</a></li>
 			</ul>
 		   </li> 
-           <li><a href='#' title='污染源、水站、空气站在线监控平台'>监控平台</a></li>
-           <li><a href='#' title='在这里发布供求，寻求支持'>交流互动</a></li>
-           <li class='sec'><a href='./include/login.php' class='btn btn-head-signin' title='Sign In'>登录</a></li>
+           <li><a href='#' class='tooltip'>监控平台<span class='tooltiptext'>污染源、水站、空气站在线监控平台</span></a></li>
+           <li><a href='#' class='tooltip'>交流互动<span class='tooltiptext'>在这里发布供求，寻求支持</span></a></li>
+           <li class='sec'><a href='./include/login.php' class='btn btn-head-signin tooltip'>登录<span class='tooltiptext'>Sign In</span></a></li>
            <li class='sec'><a href='#' class='btn btn-head-signup' title='Sign Up for Free'>注册</a></li>
          </ul>
          <ul class='list-unstyled list-mobilebtns'>
@@ -84,7 +84,7 @@
       <div class="promo-msg promo-msg--half">
         <h1 class="animated">懂你所需、做你所想</h1>
           <p class="intro animated">
-			汇众环保管家，是目前国内环保行业唯一的线上线下联动、一站式、全流程的第三方服务平台。
+			汇氏环保管家，是目前国内环保行业唯一的线上线下联动、一站式、全流程的第三方服务平台。
 			公司现已通过本平台发展形成线上线下专业环保服务团队和国内领先的环保供应链体系。未来，
 			公司将以绿色环保科技为努力方向，打造国内最大最专业的环保咨询服务平台。
          </p>

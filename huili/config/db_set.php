@@ -11,7 +11,7 @@
 <?php
 $DB_ADDR_TY		=		array('2018'=>'127.0.0.1','2019'=>'127.0.0.1');
 $DB_PORT_TY		=		array('2018'=>'3306','2019'=>'3306');
-$DB_NAME_TY		=		array('2018'=>'hlgj','2019'=>'hlgj');
+$DB_NAME_TY		=		array('2018'=>'hlgj_2018','2019'=>'hlgj_2018');
 $DB_USER_TY		=		array('2018'=>'sdhl','2019'=>'sdhl');
 $DB_PWD_TY		=		array('2018'=>'sdhl2016','2019'=>'sdhl2016');
 ?>

@@ -5,7 +5,7 @@
  @author		田勇 Alisa tybitsfox <tybitsfox@163.com>
  @license		GPLv2
 
-本文件是超文本头部的定义及输出文件，包括了对所需css和js文件的引入
+本文件是用户的登录界面文件，该文件是个独立的文件，不与head_doc.php组合，其本身包括了对所需css和js文件的引入
  **/
 ?>
 <?php
@@ -32,6 +32,11 @@ echo "</head>";
     	<a href="/huili/index.php"><img class="logo" src='../images/logo/logo.png5.png' alt="huishi group"></a>
 </div>
         <div>
+<!--如果输入错误，则会出现这个提示
+        <div class="alert alert-danger" role="alert">
+              <strong>Uh oh!</strong> Invalid username or password.
+        </div>-->
+
           <div class="form-group">
             <label>Email</label>
             <div class="form-suffix">

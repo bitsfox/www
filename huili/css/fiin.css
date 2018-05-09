@@ -2004,7 +2004,7 @@ table.dataTable td.dataTables_empty{padding:50px 12px}
 .noty_buttons .btn-outline:hover{box-shadow:inset 0 0 0 1px rgba(0,0,0,.35);color:rgba(0,0,0,.55);background-color:transparent}
 .form-landing{max-width:380px;width:100%;margin:0 auto;font-size:.925em;position:relative;z-index:10}
 .form-landing .side-head{padding:35px 0;padding-top:0}
-.form-box{background-color:#fff;border-radius:5px;padding:45px 60px}
+.form-box{background-color:#fff;border-radius:5px;padding:25px 60px}
 .box-title{text-align:center;text-transform:uppercase;letter-spacing:2px;color:rgba(71,98,111,.55);font-size:.92em;margin-top:-30px;margin-bottom:15px}
 .form-landing .btn-text{position:relative;color:#2c3444}
 .form-landing .btn-text:after,.form-landing .btn-text:before{content:"";width:100%;height:1px;background-color:rgba(0,0,0,.1);display:inline-block;position:absolute;left:0;bottom:-4px;transition:all .3s cubic-bezier(.25,.46,.45,.94)}
@@ -2019,7 +2019,7 @@ table.dataTable td.dataTables_empty{padding:50px 12px}
 .form-landing .checkbox label{font-size:.9em}
 .form-landing .fs-checkbox{padding-left:25px}
 .form-landing .form-group>label{letter-spacing:1px}
-.form-landing .form-out{margin-bottom:-90px;margin-top:90px;color:#fff;text-align:center}
+.form-landing .form-out{margin-bottom:-60px;margin-top:60px;color:#fff;text-align:center}
 .form-landing .form-out .btn-text{color:#fff}
 .form-landing .form-out .btn-text:after,.form-landing .form-out .btn-text:before{background-color:hsla(0,0%,100%,.65)}
 .form-landing h5{font-size:1.2em;color:#3eae48;text-align:center}
