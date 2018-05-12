@@ -15,6 +15,8 @@ if(session_status() != PHP_SESSION_ACTIVE)
 	session_start();
 if(!defined("FULL_PATH"))
 	include_once("../need.php");
+require_once(constant("FULL_PATH")."lib/interface.php");
+
 //{{{class login implements inter_sign	
 class login implements inter_sign
 {
@@ -101,7 +103,7 @@ class login implements inter_sign
 		$mysqli=mysql_connect($this->db[0],$this->db[3],$this->db[4],$this->db[2],$this->db[1]);
 		if(mysqli_connect_errno())
 			return 5; //connect error
-		$res=mysqli_query(&mysqli,$this->conn);
+		$res=mysqli_query($mysqli,$this->conn);
 		while($row=mysqli_fetch_row($res))
 			array_push($ay,$row);
 		mysqli_free_result($res);
