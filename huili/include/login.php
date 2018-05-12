@@ -18,7 +18,19 @@ echo $SIGN_DEF["title"];
 echo $SIGN_DEF["css"];
 echo $SIGN_DEF["js"];
 echo $SIGN_DEF["head_end"];
-for($i=1;$i<=10;$i++)
+echo $SIGN_DEF["body_10_1"];
+echo $SIGN_DEF["body_10_2"];
+echo $SIGN_DEF["body_10_3"];
+if(isset($_POST["email"]) && isset($_POST["password"]))
+{
+	$a=new loginn($_POST["email"],$_POST["password"]);
+	$i=$a->signin();
+	if($i)
+		$a->err_msg($i);
+	else
+		echo "<script>setTimeout(\"window.location='../index.php'\",2);</script>";
+}
+for($i=4;$i<=10;$i++)
 {
 	$str=sprintf("body_10_%d",$i);
 	echo $SIGN_DEF[$str];

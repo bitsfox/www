@@ -18,15 +18,15 @@ if(!defined("FULL_PATH"))
 require_once(constant("FULL_PATH")."lib/interface.php");
 
 //{{{class login implements inter_sign	
-class login implements inter_sign
+class loginn implements inter_sign
 {
 	private $usr,$pwd,$db,$conn;
-//{{{public function __construct($u,$p,$w)	
+//{{{public function __construct($u,$p)	
 	public function __construct($u,$p)
 	{
 		$this->usr=$u;$this->pwd=$p;
-		if(!defined($_SESSION['CURRENT']))
-			get_cur_year();
+		if(!isset($_SESSION['CURRENT']))
+			$this->get_cur_year();
 	}//}}}
 //{{{public function __destruct()
 	public function __destruct()
@@ -37,10 +37,10 @@ class login implements inter_sign
 	private function get_cur_year()
 	{
 		$ay=array();
-		$ay=getdate();
+		$ay=getdate(time());
 		$_SESSION['CURRENT']=$ay['year'];
 	}//}}}
-//{{{public function check_it()
+//{{{public function check_it($a,$b)
 	public function check_it($a,$b)
 	{
 		global $DB_ADDR_TY,$DB_PORT_TY,$DB_NAME_TY,$DB_USER_TY,$DB_PWD_TY;
@@ -58,20 +58,20 @@ class login implements inter_sign
 			return 2; //邮箱名或密码长度错误
 		if(strchr($a,'@') == FALSE || strchr($a,'.') == FALSE )
 			return 3; //邮箱名格式错误
-		if((strchr($a,'(') == FALSE ) || (strchr($b,'(') == FALSE))
+		if((strchr($a,'(') != FALSE ) || (strchr($b,'(') != FALSE))
 			$i=1; //邮箱名或密码含有括号或者引号字符。
-		if((strchr($a,')') == FALSE ) || (strchr($b,')') == FALSE))
+		if((strchr($a,')') != FALSE ) || (strchr($b,')') != FALSE))
 			$i=1;
-		if((strchr($a,'\'') == FALSE ) || (strchr($b,'\'') == FALSE))
+		if((strchr($a,'\'') != FALSE ) || (strchr($b,'\'') != FALSE))
 			$i=1;
-		if((strchr($a,'"') == FALSE ) || (strchr($b,'"') == FALSE))
+		if((strchr($a,'"') != FALSE ) || (strchr($b,'"') != FALSE))
 			$i=1;
 		return $i;//返回0为正确
 	}//}}}
 //{{{public function signin()
 	public function signin()
 	{
-		$i=check_it($this->usr,$this->pwd);
+		$i=$this->check_it($this->usr,$this->pwd);
 		if($i != 0)
 			return $i;
 		$ay=array();
@@ -95,7 +95,7 @@ class login implements inter_sign
 //{{{public function signup()
 	public function signup()
 	{
-		$i=check_it($this->usr,$this->pwd);
+		$i=$this->check_it($this->usr,$this->pwd);
 		if($i != 0)
 			return $i;
 		$ay=array();
@@ -136,7 +136,7 @@ class login implements inter_sign
 		switch($errno)
 		{
 		case 0://success
-			echo "return success!";
+			//echo "return success!";
 			break;
 		case 1://用户名和密码不能包括引号或者括号
 			echo "<div class='alert alert-danger' role='alert'><strong>错误</strong> 不能包含括号或引号字符</div>";
@@ -158,6 +158,9 @@ class login implements inter_sign
 			echo "<div class='alert alert-danger' role='alert'><strong>错误</strong>帐号或密码错误</div>";
 			break;
 		case 8://注册失败
+			echo "<div class='alert alert-danger' role='alert'><strong>错误</strong>注册失败</div>";
+			break;
+		default:
 			echo "<div class='alert alert-danger' role='alert'><strong>错误</strong>注册失败</div>";
 			break;
 		}
