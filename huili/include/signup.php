@@ -2,6 +2,7 @@
 if(!defined("FULL_PATH"))
 	require_once("../need.php");
 require_once(constant("FULL_PATH")."lib/main.php");
+require_once(constant("FULL_PATH")."config/email.php");
 global $SIGN_DEF;
 echo $SIGN_DEF["head"];
 echo $SIGN_DEF["title"];
@@ -12,7 +13,19 @@ echo $SIGN_DEF["body_10_1"];
 echo $SIGN_DEF["body_10_2"];
 echo $SIGN_DEF["body_10_3"];
 if(isset($_POST["email"]))
+{
 	echo $SIGN_DEF["bodyr_E_1"];
+	$handle=fopen("./vbvb.txt","r");
+	while(!feof($handle))
+	{
+		$st.=fgets($handle);
+	}
+	fclose($handle);
+	$mailcontent = $st;
+	$mailtype = "HTML";//HTML/TXT
+    $smtp = new smtp();//这里面的一个true是表示使用身份验证,否则不使用身份验证.
+    $state = $smtp->sendmail($_POST["email"],"bitsfox@126.com","huishi group", $mailcontent, $mailtype);
+}	
 else
 {
 	echo $SIGN_DEF["bodyr_10_3"];

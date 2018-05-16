@@ -1242,7 +1242,7 @@ to{-webkit-transform:rotate(1turn)}
 .vendor-icon{width:100%;height:100%;margin:20px 0}
 body{font-family:"YaHei Consolas Hybrid",Lato,Arial,Helvetica Neue,Helvetica,sans-serif;font-weight:400;font-size:16px;color:#26363e;background-color:#ecf2ee}
 body,html{height:100%}
-h1,h2,h3,h4,h5,h6{font-family:Lato,Arial,Helvetica Neue,Helvetica,sans-serif;font-weight:700}
+h1,h2,h3,h4,h5,h6{font-family:"YaHei Consolas Hybrid",Lato,Arial,Helvetica Neue,Helvetica,sans-serif;font-weight:700}
 table{width:100%}
 .row.collapsed{margin-left:-4px;margin-right:-4px}
 .row.collapsed>[class^=col-]{padding-left:4px;padding-right:4px}

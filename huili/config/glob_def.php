@@ -46,5 +46,5 @@ $SIGN_DEF["bodyr_10_3"]	=	"<h5 class='text-center'>与我们保持联系！</h5>
 $SIGN_DEF["bodyr_10_4"]	=	"<div class='form-group'><label>Email</label><div class='form-suffix'><span class='fa fa-envelope-o fa-lg picto'></span><input id='email' type='email' class='form-control' name='email' value='' placeholder='Your Email' autocorrect='off' autocapitalize='none' autocomplete='username' required/></div></div>";
 $SIGN_DEF["bodyr_10_5"]	=	"<div class='form-group'><button href='#' type='submit' class='btn btn-primary btn-block btn-fat'>开始注册</button></div>";
 $SIGN_DEF["bodyr_10_6"]	=	"<p class='intro'>汇氏管家，品质服务的保证.</p><div class='form-group form-out text-center'><p>您已经拥有帐号? 请选择：<a href='./login.php' class='btn-text'>登 录</a></p></div>";
-$SIGN_DEF["bodyr_E_1"]	=	"<h5>注册马上完成!</h5><p class='intro'>我们给<strong>".$_POST["email"]."</strong>.发送了一封邮件，请查阅您的邮箱以完成注册.如果您的邮箱设置了过滤机制，请检查下垃圾邮件目录下是否有我们的信件.</p></div>";
+$SIGN_DEF["bodyr_E_1"]	=	"<h5>注册马上完成!</h5><p class='intro'>我们给<strong>".$_POST["email"]."</strong>.发送了一封邮件，请查阅您的邮箱以完成注册.如果您的邮箱设置了过滤机制，请检查垃圾邮件目录下是否有我们的信件.</p></div>";
 //}}}
