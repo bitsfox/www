@@ -14,13 +14,28 @@ echo $SIGN_DEF["body_10_2"];
 echo $SIGN_DEF["body_10_3"];
 if(isset($_POST["email"]))
 {
+	$v=new mixer();
 	echo $SIGN_DEF["bodyr_E_1"];
 	$handle=fopen("./vbvb.txt","r");
+	$needle=$v->get_nedle();
 	while(!feof($handle))
 	{
-		$st.=fgets($handle);
+		$st1=fgets($handle);
+		$pos=strpos($st1,$needle);
+		if($pos === false)
+			$st.=$st1;
+		else
+		{
+			$pos=strpos($st1,$needle,$pos+2);
+			if($pos === false)
+				$st2=sprintf($st1,$v->mix());
+			else
+				$st2=sprintf($st1,$v->mix(),$v->mix());
+			$st.=$st2;
+		}
 	}
 	fclose($handle);
+	unset($v);
 	$mailcontent = $st;
 	$mailtype = "HTML";//HTML/TXT
     $smtp = new smtp();//这里面的一个true是表示使用身份验证,否则不使用身份验证.

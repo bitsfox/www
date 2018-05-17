@@ -13,7 +13,7 @@ class smtp
 	public $smtp_port,$time_out,$host_name,$log_file,$relay_host;
 	public $debug,$auth,$usr,$pwd;
 	private $sock;
-//{{{function __ocnstruct()	
+//{{{function __construct()	
 	function __construct()
 	{
 		$this->debug = FALSE;
@@ -199,8 +199,48 @@ class smtp
 		if($this->debug)
 			echo $message;
 	}//}}}
-
-
-
 }
+class mixer
+{
+	public $needle;
+//{{{public funcrion __construct()
+	public function __construct()
+	{
+		$this->needle="?code=";
+	}//}}}
+//{{{public function mix()
+	public function mix()
+	{
+		$zone=intval(date("O"))*36;
+		$g=intval(date("U"));
+		$gg=$g-$zone; //转换为格林尼治时间
+		$gx=sprintf("%X",$g);
+		$l=$g%10+5;
+		return sprintf("%s-%s-%X",base64_encode(base64_encode($gg)),base64_encode($gx),$l);
+	}//}}}
+//{{{public function get_nedle()
+	public function get_nedle()
+	{return $this->needle;}//}}}
+//{{{public function unmix($st = "")
+	public function unmix($st = "")
+	{
+		if($st == "")
+			return false;
+		list($gg,$gx,$l)=explode("-",$st);
+		$gg=base64_decode(base64_decode($gg));
+		$gx=base64_decode(base64_decode($gx));
+		if($l != ($gg%10+5))
+			return false;
+		$zone=intval(date("O"))*36;
+		$ga=intval(base_convert($gx,16,10))-$zone;
+		if($ga != intval($gg))
+			return false;
+		$gg=intval(date("U"))-$zone;
+		if(($gg > $ga) && ($gg < ($ga+1800))) //验证时间在半小时内
+			return true;
+		else
+			return false;
+	}//}}}
+}
+
 ?>
