@@ -3,8 +3,8 @@ echo "<!DOCTYPE html>\n<html><head><meta http-equiv='Content-Type' content='text
 echo "<title>testtest</title>\n";
 //echo "<link rel='stylesheet' href='./corp.aadddae364.css'>";
 //echo "<link rel='stylesheet' href='./formated.css'>";
-//echo "<link rel='stylesheet' href='./font-awesome.min.css'>";
-echo "<link rel='stylesheet' href='../css/fin.css'>";
+echo "<link rel='stylesheet' href='../css/font_awesome.css'>";
+//echo "<link rel='stylesheet' href='../css/fiin.css'>";
 echo "</head><body>\n";
 ?>
 <?php

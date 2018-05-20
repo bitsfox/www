@@ -202,21 +202,23 @@ class smtp
 }
 class mixer
 {
-	public $needle;
+	public $needle,$email;
 //{{{public funcrion __construct()
 	public function __construct()
 	{
 		$this->needle="?code=";
+		$this->email="your email";
 	}//}}}
-//{{{public function mix()
-	public function mix()
+//{{{public function mix($xa = "your email")
+	public function mix($xa = "your email")
 	{
 		$zone=intval(date("O"))*36;
 		$g=intval(date("U"));
 		$gg=$g-$zone; //转换为格林尼治时间
 		$gx=sprintf("%X",$g);
 		$l=$g%10+5;
-		return sprintf("%s-%s-%X",base64_encode(base64_encode($gg)),base64_encode($gx),$l);
+		$b=base64_encode(base64_encode($xa));
+		return sprintf("%s-%s-%s-%X",base64_encode(base64_encode($gg)),base64_encode($gx),$b,$l);
 	}//}}}
 //{{{public function get_nedle()
 	public function get_nedle()
@@ -226,10 +228,13 @@ class mixer
 	{
 		if($st == "")
 			return false;
-		list($gg,$gx,$l)=explode("-",$st);
+		list($gg,$gx,$ymail,$l)=explode("-",$st);
 		$gg=base64_decode(base64_decode($gg));
-		$gx=base64_decode(base64_decode($gx));
-		if($l != ($gg%10+5))
+		$gx=base64_decode($gx);
+		$l=intval(base_convert($l,16,10));
+		$g=intval($gg);
+		$this->email=base64_decode(base64_decode($ymail));
+		if($l != ($g%10+5))
 			return false;
 		$zone=intval(date("O"))*36;
 		$ga=intval(base_convert($gx,16,10))-$zone;
@@ -241,6 +246,10 @@ class mixer
 		else
 			return false;
 	}//}}}
+//{{{public function get_mail()
+	public function get_mail()
+	{return $this->email;}//}}}
+
 }
 
 ?>
