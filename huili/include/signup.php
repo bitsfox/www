@@ -59,7 +59,7 @@ else
 	if(!$v->unmix($_GET["code"]))
 		die("请获得授权再访问当前页面.");
 	$w=$v->get_mail();
-	for($i=1;$i<10;$i++)
+	for($i=1;$i<=10;$i++)
 	{
 		if($i == 3)
 		{

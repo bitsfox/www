@@ -39,7 +39,7 @@
            <span class="icon-bar"></span>
          </button>
          <a href="#" class="btn-closemenu"><i class="icon-x"></i></a>
-<a class='navbar-brand' href='/'><img src='/huili/images/logo/logo.png5.png' alt='Greenback'/></a>
+<a class='navbar-brand' href='/huili/index.php'><img src='/huili/images/logo/logo.png5.png' alt='Greenback'/></a>
 	   </div>
        <div class='collapse navbar-collapse' id='mobile-side'>
          <ul class='nav navbar-nav navbar-right'>
@@ -55,7 +55,7 @@
 				<li><a href='#'><span class='fa fa-pencil fa-fw'></span>&nbsp;排污申报</a></li>
 		   </ul>
 		   </li>
-		   	   <li><a href='#' class='tooltip'>专家团队<span class='tooltiptext'>聚集了环保全领域的资深专家和优秀人才</span></a></li>
+		   	   <li><a href='/huili/index.php?selecter=a001' class='tooltip'>专家团队<span class='tooltiptext'>聚集了环保全领域的资深专家和优秀人才</span></a></li>
 <!--       <li><a href='#' title='Learn from the Experts in Connected Accounting'>Blog</a></li> -->
            <li class='dropdown'><a href='#' class='dropdown-toggle tooltip' data-toggle='dropdown' >资讯信息<b class='caret'></b><span class='tooltiptext'>建设项目名录、管家案例</span></a>
 		   	<ul class='dropdown-menu'>
@@ -68,40 +68,19 @@
 		   </li> 
            <li><a href='#' class='tooltip'>监控平台<span class='tooltiptext'>污染源、水站、空气站在线监控平台</span></a></li>
            <li><a href='#' class='tooltip'>交流互动<span class='tooltiptext'>在这里发布供求，寻求支持</span></a></li>
-           <li class='sec'><a href='./include/login.php' class='btn btn-head-signin tooltip'>登录<span class='tooltiptext'>Sign In</span></a></li>
-           <li class='sec'><a href='#' class='btn btn-head-signup' title='Sign Up for Free'>注册</a></li>
+           <li class='sec'><a href='/huili/include/login.php' class='btn btn-head-signin tooltip'>登录<span class='tooltiptext'>Sign In</span></a></li>
+           <li class='sec'><a href='/huili/include/signup.php' class='btn btn-head-signup' title='Sign Up for Free'>注册</a></li>
          </ul>
          <ul class='list-unstyled list-mobilebtns'>
-           <li><a href='./signin.php' class='btn btn-outline btn-head-signin' title='Sign In'>登 录</a></li>
-           <li><a href='./signup.php' class='btn btn-primary btn-head-signup' title='Sign Up for Free'>注 册</a></li>
+           <li><a href='/huili/include/signin.php' class='btn btn-outline btn-head-signin' title='Sign In'>登 录</a></li>
+           <li><a href='/huili/include/signup.php' class='btn btn-primary btn-head-signup' title='Sign Up for Free'>注 册</a></li>
          </ul>
        </div><!-- /.navbar-collapse -->
      </div><!-- /.container-fluid -->
    </nav>
 </header>
-  <section class="promo promo--home">
-    <div class="container">
-      <div class="promo-msg promo-msg--half">
-        <h1 class="animated">懂你所需、做你所想</h1>
-          <p class="intro animated">
-			汇氏环保管家，是目前国内环保行业唯一的线上线下联动、一站式、全流程的第三方服务平台。
-			公司现已通过本平台发展形成线上线下专业环保服务团队和国内领先的环保供应链体系。未来，
-			公司将以绿色环保科技为努力方向，打造国内最大最专业的环保咨询服务平台。
-         </p>
-      </div>
-    </div>
-    <!-- Promo Slider -->
-    <div class="promo-hero">
-      <div>
-        
-      </div>
-      <!--
-      <div>
-        <img src="img/hero-home2.png" alt="Greenback will help you organize your online purchases"/>
-      </div>  -->
-    </div> 	
-  </section>
 <?php
-echo "<img src='/huili/images/logo/aboutditu.jpg' style='width:100%;cursor:pointer'>";
-echo "<br><span class='fa fa-glass fa-lg'></span><br>";
+/*echo "<img src='/huili/images/logo/aboutditu.jpg' style='width:100%;cursor:pointer'>";
+echo "<br><span class='fa fa-glass fa-lg'></span><br>";*/
+
 ?>

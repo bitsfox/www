@@ -17,6 +17,22 @@ if(!defined("FULL_PATH"))
 require_once(constant("GLOB_DEF"));	//全局常量及变量定义文件的引入
 include_once(constant("FULL_PATH")."include/head_doc.php"); //起始头文件的引入
 include_once(constant("FULL_PATH")."include/headbar_doc.php"); //浮动菜单栏定义文件的引入
+if(isset($_GET["selecter"]))
+{
+	switch($_GET["selecter"])
+	{
+	case "a001":
+		include_once(constant("FULL_PATH")."include/expert.php");
+		break;
+	case "a002":
+		include_once(constant("FULL_PATH")."include/manager.php");
+		break;
+	default:
+		break;
+	}
+}
+else
+	include_once(constant("FULL_PATH")."include/home.php");
 include_once(constant("FULL_PATH")."include/foot.php");	//底部文件的引入
 
 ?>
