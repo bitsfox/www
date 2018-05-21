@@ -3,6 +3,7 @@ if(!defined("FULL_PATH"))
 require_once("../need.php");
 include_once(constant("FULL_PATH")."include/head_doc.php"); //起始头文件的引入
 include_once(constant("FULL_PATH")."include/headbar_doc.php"); //浮动菜单栏定义文件的引入
+include_once(constant("FULL_PATH")."include/home.php");	//添加标题背景
 //这里添加条款
 ?>
 <center><h4>汇氏环境帐号服务条款</h4></center>

@@ -55,7 +55,7 @@ $SIGN_DEF["bodyf_10_5"]	=	"</div><div class='help-block'>密码必须是8-32位�
 $SIGN_DEF["bodyf_10_6"] =	"<div class='form-group'><div class='checkbox'><label><input type='checkbox' id='trusted' name='trusted' checked data-ninja-checkbox> 允许自动登录 <span class='helper' data-toggle='tooltip' data-placement='top' title='允许自动登录，意味着您使用的这台设备是安全的，或者这台设备只有您个人使用。这样在每次访问管家时都会自动使用您的帐号登录。如果您不确定这台设备的安全性，请不要选择此项设置，您每次登录都需要输入账号密码验证. '>?</span></label></div></div>";
 $SIGN_DEF["bodyf_10_7"]	=	"<div class='form-group form-delimited'><p class='intro'>点击注册意味着您同意我们的 <a href='./terms.php' target='_blank'>服务条款</a> 和 <a href='./privacy.php' target='_blank'>隐私权相关政策</a>. </p></div>";
 $SIGN_DEF["bodyf_10_8"]	=	"<div class='form-group form-delimited'><button type='submit' class='btn btn-primary btn-fat btn-block'>注 册</button></div><div class='form-group form-out'><p>您已经有帐号? <a href='/auth/signin' class='btn-text'>登 录</a></p></div>";
-$SIGN_DEF["bodyf_10_9"]	=	"</div></form></div>";
+$SIGN_DEF["bodyf_10_9"]	=	"</div></form></div></div>";
 $SIGN_DEF["bodyf_10_10"]	=	"<footer class='footer'><div class='inner'><div class='row'><div class='col-sm-12'><p class='copy'>&COPY; 2018 汇氏环境, Inc. 保留所有权利</p></div></div></div></footer>";
 
 //}}}
