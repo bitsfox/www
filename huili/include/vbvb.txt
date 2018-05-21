@@ -115,7 +115,7 @@
                         <tr>
                             <td valign="top" align="center" style="padding: 40px 20px" class="100p">
                                 <a href='https://www.greenback.com' style="text-decoration: none; outline: none;">
-                                    <img src='https://imgsa.baidu.com/forum/w%3D580/sign=862d35603dadcbef01347e0e9cae2e0e/872cfa1373f082020c209d9b47fbfbedaa641b4e.jpg' width="180" height="52" />
+                                    <img src='http://img1.ph.126.net/wYDfauT8_sO4fr7BioQriQ==/6631529560586642374.png' width="180" height="52" />
                                 </a>
                             </td>
                         </tr>
