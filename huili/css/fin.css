@@ -1136,7 +1136,7 @@ a:focus,button:focus{outline:none;text-decoration:none}
 .list-faq .caret{position:absolute;right:20px;top:25px;opacity:.45;transition:.3s ease-out}
 .list-faq .open .caret{transform:rotate(180deg)}
 .list-promo{margin-top:2.5em}
-.list-promo>li{display:inline-block;vertical-align:top;width:33.333%;text-align:center;margin:0;margin-right:-4px}
+.list-promo>li{display:inline-block;vertical-align:top;width:33%;text-align:center;margin:0;margin-right:-4px}
 .list-promo h3{font-size:1.2em;color:#3ead47;margin:.8em 0;line-height:1.1em}
 .list-promo p{max-width:300px;margin:0 auto}
 .list-promo .picto{max-width:200px;height:auto}

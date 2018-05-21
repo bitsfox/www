@@ -25,14 +25,18 @@ if(isset($_GET["selecter"]))
 		include_once(constant("FULL_PATH")."include/expert.php");
 		break;
 	case "a002":
-		include_once(constant("FULL_PATH")."include/manager.php");
+		include_once(constant("FULL_PATH")."include/home.php");
+		include_once(constant("FULL_PATH")."include/plateform.php");
 		break;
 	default:
 		break;
 	}
 }
 else
+{
 	include_once(constant("FULL_PATH")."include/home.php");
+	include_once(constant("FULL_PATH")."include/features.php");//features.php
+}
 include_once(constant("FULL_PATH")."include/foot.php");	//底部文件的引入
 
 ?>
