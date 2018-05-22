@@ -31,7 +31,7 @@
             <li class="animated">
             <a href="/register/signup">
                 <div class="brand-logo">
-						<span class='fa fa-gear fa-fw'></span>
+						<span class='icon-gear'></span>
                 </div>
                 <div class="brand-msg">
                     <p>环评咨询</p>
@@ -44,7 +44,7 @@
 			<li class="animated">
             <a href="/register/signup">
                 <div class="brand-logo">
-					<span class='fa fa-truck fa-fw'></span>
+					<span class='icon-truck'></span>
                 </div>
                 <div class="brand-msg">
                     <p>环境工程</p>
@@ -57,7 +57,7 @@
 			<li class="animated">
             <a href="/register/signup">
                 <div class="brand-logo">
-					<span class='fa fa-flask fa-fw'></span>
+					<span class='icon-flask'></span>
                 </div>
                 <div class="brand-msg">
                     <p>环境监测</p>
@@ -70,20 +70,20 @@
 			<li class="animated">
             <a href="/register/signup">
                 <div class="brand-logo">
-					<span class='fa fa-pagelines fa-fw'></span>
+					<span class='icon-pagelines'></span>
                 </div>
                 <div class="brand-msg">
                     <p>项目验收</p>
                 </div>
                 <div class="brand-foot">
-                    <div class="btn">详细了解<span class="fa fa-long-arrow-right fa-lg"></span></div>
+                    <div class="btn">详细了解<span class="icon-arrow"></span></div>
                 </div>
             </a>
        		</li>
 			<li class="animated">
             <a href="/register/signup">
                 <div class="brand-logo">
-					<span class='fa fa-recycle fa-fw'></span>
+					<span class='icon-recycle'></span>
                 </div>
                 <div class="brand-msg">
                     <p>清洁生产</p>
@@ -96,7 +96,7 @@
 			<li class="animated">
             <a href="/register/signup">
                 <div class="brand-logo">
-					<span class='fa fa-fire fa-fw'></span>
+					<span class='icon-fire'></span>
                 </div>
                 <div class="brand-msg">
                     <p>危废服务</p>
@@ -109,7 +109,7 @@
 			<li class="animated">
             <a href="/register/signup">
                 <div class="brand-logo">
-					<span class='fa fa-calendar-check-o fa-fw'></span>
+					<span class='icon-calendar-check-o'></span>
                 </div>
                 <div class="brand-msg">
                     <p>应急预案</p>
@@ -122,7 +122,7 @@
 			<li class="animated">
             <a href="/register/signup">
                 <div class="brand-logo">
-					<span class='fa fa-pencil fa-fw'></span>
+					<span class='icon-pencil'></span>
                 </div>
                 <div class="brand-msg">
                     <p>排污申报</p>
@@ -135,7 +135,7 @@
 			<li class="animated">
             <a href="/register/signup">
                 <div class="brand-logo">
-					<span class='fa fa-book fa-fw'></span>
+					<span class='icon-book'></span>
                 </div>
                 <div class="brand-msg">
                     <p>企业名录</p>
@@ -148,7 +148,7 @@
 			<li class="animated">
             <a href="/register/signup">
                 <div class="brand-logo">
-					<span class='fa fa-snapchat-ghost fa-fw'></span>
+					<span class='icon-snapchat-ghost'></span>
                 </div>
                 <div class="brand-msg">
                     <p>环境案例</p>
@@ -161,7 +161,7 @@
 			<li class="animated">
             <a href="/register/signup">
                 <div class="brand-logo">
-					<span class='fa fa-joomla fa-fw'></span>
+					<span class='icon-joomla'></span>
                 </div>
                 <div class="brand-msg">
                     <p>技术动态</p>
@@ -174,7 +174,7 @@
 			<li class="animated">
             <a href="/register/signup">
                 <div class="brand-logo">
-					<span class='fa fa-wpforms fa-fw'></span>
+					<span class='icon-wpforms'></span>
                 </div>
                 <div class="brand-msg">
                     <p>环境法规</p>
@@ -187,7 +187,7 @@
 			<li class="animated">
             <a href="/register/signup">
                 <div class="brand-logo">
-					<span class='fa fa-download fa-fw'></span>
+					<span class='icon-download'></span>
                 </div>
                 <div class="brand-msg">
                     <p>资料下载</p>
