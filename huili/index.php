@@ -28,6 +28,8 @@ if(isset($_GET["selecter"]))
 		include_once(constant("FULL_PATH")."include/home.php");
 		include_once(constant("FULL_PATH")."include/plateform.php");
 		break;
+	case "a003":
+		include_once(constant("FULL_PATH")."include/engineer.php");
 	default:
 		break;
 	}

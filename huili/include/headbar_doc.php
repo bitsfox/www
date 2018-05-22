@@ -56,7 +56,7 @@
 		   </ul>
 		   </li> -->
 		   	   <li><a href='/huili/index.php?selecter=a001' class='tooltip'>管家服务<span class='tooltiptext'>您身边的环境专家，为您提供专业的服务</span></a></li>
-		   	   <li><a href='/huili/index.php?selecter=a002' class='tooltip'>专家团队<span class='tooltiptext'>聚集了环保全领域的资深专家和优秀人才</span></a></li>
+		   	   <li><a href='/huili/index.php?selecter=a003' class='tooltip'>专家团队<span class='tooltiptext'>聚集了环保全领域的资深专家和优秀人才</span></a></li>
 <!--       <li><a href='#' title='Learn from the Experts in Connected Accounting'>Blog</a></li> -->
 <!--           <li class='dropdown'><a href='#' class='dropdown-toggle tooltip' data-toggle='dropdown' >资讯信息<b class='caret'></b><span class='tooltiptext'>建设项目名录、管家案例</span></a>
 		   	<ul class='dropdown-menu'>
@@ -67,7 +67,7 @@
 				<li><a href='#'><span class='fa fa-download fa-fw'></span>&nbsp;资料下载</a></li>
 			</ul>
 		   </li>  -->
-           <li><a href='#' class='tooltip'>监控平台<span class='tooltiptext'>污染源、水站、空气站在线监控平台</span></a></li>
+           <li><a href='/huili/index.php?selecter=a002' class='tooltip'>监控平台<span class='tooltiptext'>污染源、水站、空气站在线监控平台</span></a></li>
            <li><a href='#' class='tooltip'>交流互动<span class='tooltiptext'>在这里发布供求，寻求支持</span></a></li>
            <li class='sec'><a href='/huili/include/login.php' class='btn btn-head-signin tooltip'>登录<span class='tooltiptext'>Sign In</span></a></li>
            <li class='sec'><a href='/huili/include/signup.php' class='btn btn-head-signup' title='Sign Up for Free'>注册</a></li>
