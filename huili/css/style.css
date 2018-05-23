@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('/huili/fonts/icomoon.eot?93kajq');
-  src:  url('/huili/fonts/icomoon.eot?93kajq#iefix') format('embedded-opentype'),
-    url('/huili/fonts/icomoon.ttf?93kajq') format('truetype'),
-    url('/huili/fonts/icomoon.woff?93kajq') format('woff'),
-    url('/huili/fonts/icomoon.svg?93kajq#icomoon') format('svg');
+  src:  url('/huili/fonts/icomoon.eot?a76cei');
+  src:  url('/huili/fonts/icomoon.eot?a76cei#iefix') format('embedded-opentype'),
+    url('/huili/fonts/icomoon.ttf?a76cei') format('truetype'),
+    url('/huili/fonts/icomoon.woff?a76cei') format('woff'),
+    url('/huili/fonts/icomoon.svg?a76cei#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -128,4 +128,10 @@
 }
 .icon-unlock:before {
   content: "\f09c";
+}
+.icon-tqq:before {
+  content: "\f1d6";
+}
+.icon-wechat:before {
+  content: "\f1d7";
 }

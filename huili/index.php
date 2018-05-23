@@ -29,6 +29,7 @@ if(isset($_GET["selecter"]))
 		break;
 	case "a003":
 		include_once(constant("FULL_PATH")."include/engineer.php");
+		break;
 	case "a004":
 		include_once(constant("FULL_PATH")."include/blog.php");
 	default:

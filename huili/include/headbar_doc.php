@@ -11,8 +11,8 @@
   <!-- Mobile top bar -->
  <div class="mobile-bar">
    <div class="logobox">
-       <a href="/app/home" title="Greenback Home">
-           <img class="logo" src='/huili/images/logo/logo-greenback-mobile.png' alt="Greenback"/>
+       <a href="/huili/index.php" title="Greenback Home">
+           <img class="logo" src='/huili/images/logo/logo.png5.png' alt="Greenback"/>
        </a>
    </div>
    <div class="mobile-menu">
@@ -69,12 +69,12 @@
 		   </li>  -->
            <li><a href='/huili/index.php?selecter=a002' class='tooltip'>监控平台<span class='tooltiptext'>污染源、水站、空气站在线监控平台</span></a></li>
            <li><a href='/huili/index.php?selecter=a004' class='tooltip'>交流互动<span class='tooltiptext'>在这里发布供求，寻求支持</span></a></li>
-           <li class='sec'><a href='/huili/include/login.php' class='btn btn-head-signin tooltip'>登录<span class='tooltiptext'>Sign In</span></a></li>
-           <li class='sec'><a href='/huili/include/signup.php' class='btn btn-head-signup' title='Sign Up for Free'>注册</a></li>
+           <li class='sec'><a href='/huili/include/login.php' class='btn btn-head-signin tooltip'>登录<span class='tooltiptext'>登录</span></a></li>
+           <li class='sec'><a href='/huili/include/signup.php' class='btn btn-head-signup' title='免费注册'>注册</a></li>
          </ul>
          <ul class='list-unstyled list-mobilebtns'>
-           <li><a href='/huili/include/signin.php' class='btn btn-outline btn-head-signin' title='Sign In'>登 录</a></li>
-           <li><a href='/huili/include/signup.php' class='btn btn-primary btn-head-signup' title='Sign Up for Free'>注 册</a></li>
+           <li><a href='/huili/include/login.php' class='btn btn-outline btn-head-signin' title='登录'>登 录</a></li>
+           <li><a href='/huili/include/signup.php' class='btn btn-primary btn-head-signup' title='免费注册'>注 册</a></li>
          </ul>
        </div><!-- /.navbar-collapse -->
      </div><!-- /.container-fluid -->
