@@ -68,7 +68,7 @@
 			</ul>
 		   </li>  -->
            <li><a href='/huili/index.php?selecter=a002' class='tooltip'>监控平台<span class='tooltiptext'>污染源、水站、空气站在线监控平台</span></a></li>
-           <li><a href='#' class='tooltip'>交流互动<span class='tooltiptext'>在这里发布供求，寻求支持</span></a></li>
+           <li><a href='/huili/index.php?selecter=a004' class='tooltip'>交流互动<span class='tooltiptext'>在这里发布供求，寻求支持</span></a></li>
            <li class='sec'><a href='/huili/include/login.php' class='btn btn-head-signin tooltip'>登录<span class='tooltiptext'>Sign In</span></a></li>
            <li class='sec'><a href='/huili/include/signup.php' class='btn btn-head-signup' title='Sign Up for Free'>注册</a></li>
          </ul>

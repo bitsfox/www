@@ -1,4 +1,14 @@
 <?php?>
+  <section class="promo short contact">
+    <div class="container">
+      <div class="promo-msg wide">
+        <p class="sect animated">Contact</p>
+        <h1 class="animated">Have something to say? Get in touch</h1>
+        <p class="intro animated">Want to know more about Greenback? We'd love to hear from you.</p>
+
+      </div>
+    </div>
+  </section> <!-- End Promo Section -->
   <!-- Block: Screens -->
   <section class="block">
     
