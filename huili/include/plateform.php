@@ -3,8 +3,8 @@
     <div class="container">
       <div class="promo-msg wide">
         <p class="sect animated">Contact</p>
-        <h1 class="animated">Have something to say? Get in touch</h1>
-        <p class="intro animated">Want to know more about Greenback? We'd love to hear from you.</p>
+        <h1 class="animated">登录我们的平台,获取更多发布的数据</h1>
+        <p class="intro animated">成为注册用户，即可查看各类监控平台，取得实时发布的监测数据.</p>
 
       </div>
     </div>
@@ -15,8 +15,8 @@
     <div class="container">
       <div class="inner">
         
-        <p class="sect">DASHBOARD OVERVIEW</p>
-        <h2>Get an overview of all your spending</h2>
+        <p class="sect">平台预览</p>
+        <h2>多款平台为您提供或发布各类实时数据</h2>
         <p class="intro"></p>
         
         <!-- Dashboard slider -->
