@@ -5,12 +5,15 @@
  @author		田勇 Alisa tybitsfox <tybitsfox@163.com>
  @license		GPLv2
 
-本文件是超文本头部的定义及输出文件，包括了对所需css和js文件的引入
+本文件是密码找回的实现文件
  **/
 ?>
 <?php
 if(!defined("FULL_PATH"))
-	require_once("../need.php");
+{
+	$s=substr(dirname(__FILE__),0,strlen(dirname(__FILE__))-strlen(strstr(dirname(__FILE__),"huili")))."huili".DIRECTORY_SEPARATOR."need.php";
+	require_once($s);
+}
 echo "<!DOCTYPE html>\n<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />\n";
 echo "<title>testtest</title>\n";	//<--这里修改标题
 //echo "<link rel='stylesheet' href='".constant("CSS_FILE")."'>";

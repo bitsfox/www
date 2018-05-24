@@ -62,3 +62,13 @@ $SIGN_DEF["bodyf_10_9"]	=	"</div></form></div></div>";
 $SIGN_DEF["bodyf_10_10"]	=	"<footer class='footer'><div class='inner'><div class='row'><div class='col-sm-12'><p class='copy'>&COPY; 2018 汇氏环境, Inc. 保留所有权利</p></div></div></div></footer>";
 
 //}}}
+//{{{定义主界面的html代码值
+$MAIN_HTM[""]
+
+
+//}}}
+
+
+
+
+
