@@ -10,14 +10,10 @@
 ?>
 <?php
 if(!defined("FULL_PATH"))
-	die("run error.errno:#00001");
-if(!defined("CSS_FILE"))
-	die("run error.errno:#00002");
-echo "<!DOCTYPE html>\n<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />\n";
-echo "<title>testtest</title>\n";	//<--这里修改标题
-echo "<link rel='stylesheet' href='".constant("CSS_FILEB")."'>";
-echo "<link rel='stylesheet' href='".constant("CSS_FILE")."'>";
-echo "<script src='".constant("JS_FILE_ONE")."'></script>";
-echo "<script src='".constant("JS_FILE_TWO")."'></script>";
-echo "</head><body>";
+	define("FULL_PATH",substr(dirname(__FILE__),0,strlen(dirname(__FILE__))-strlen(strstr(dirname(__FILE__),"huili")))."huili".DIRECTORY_SEPARATOR);
+if(!defined("WORK_PLACE"))
+	require_once(constant("FULL_PATH")."config/glob_new.php");
+echo $OUT_HTML['MAIN_HEAD'];
+echo $EX_HTML['headbar1'];
+echo $EX_HTML['headbar2'];
 ?>

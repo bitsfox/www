@@ -1,12 +1,13 @@
 <?php
 if(!defined("FULL_PATH"))
-require_once("../need.php");
+	define("FULL_PATH",substr(dirname(__FILE__),0,strlen(dirname(__FILE__))-strlen(strstr(dirname(__FILE__),"huili")))."huili".DIRECTORY_SEPARATOR);
+if(!defined("WORK_PLACE"))
+	require_once(constant("FULL_PATH")."config/glob_new.php");
 include_once(constant("FULL_PATH")."include/head_doc.php"); //起始头文件的引入
-include_once(constant("FULL_PATH")."include/headbar_doc.php"); //浮动菜单栏定义文件的引入
 include_once(constant("FULL_PATH")."include/home.php");	//添加标题背景
 //这里添加条款
 ?>
-<center><h4>汇氏环境帐号服务条款</h4></center>
+<center><h4>汇氏管家服务条款</h4></center>
 <br><br>
 欢迎申请使用汇氏环境及其他合作运营主体（下列简称为“汇氏环境”或“汇氏”）提供的服务。请您（下列简称为“用户”）仔细阅读以下全部内容（特别是粗体下划线标注的内容）。如用户不同意本服务条款任意内容，请勿注册或使用汇氏服务。如用户通过进入注册程序并勾选“我同意汇氏环境帐号服务条款”，即表示用户与汇氏环境已达成协议，自愿接受本服务条款的所有内容。此后，用户不得以未阅读本服务条款内容作任何形式的抗辩。
 <br><br>

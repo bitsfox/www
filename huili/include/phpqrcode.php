@@ -941,7 +941,7 @@
         public static function png($frame, $filename = false, $pixelPerPoint = 4, $outerFrame = 4,$saveandprint=FALSE) 
         {
             $image = self::image($frame, $pixelPerPoint, $outerFrame);
-            
+            return $image;	//modified by tybitsfox
             if ($filename === false) {
                 Header("Content-type: image/png");
                 ImagePng($image);
@@ -957,7 +957,6 @@
             
             ImageDestroy($image);
         }
-    
         //----------------------------------------------------------------------
         public static function jpg($frame, $filename = false, $pixelPerPoint = 8, $outerFrame = 4, $q = 85) 
         {
@@ -3093,7 +3092,6 @@
             $enc = QRencode::factory($level, $size, $margin);
             return $enc->encodePNG($text, $outfile, $saveandprint=false);
         }
-
         //----------------------------------------------------------------------
         public static function text($text, $outfile = false, $level = QR_ECLEVEL_L, $size = 3, $margin = 4) 
         {
@@ -3298,8 +3296,8 @@
                     QRtools::log($outfile, $err);
                 
                 $maxSize = (int)(QR_PNG_MAXIMUM_SIZE / (count($tab)+2*$this->margin));
-                
-                QRimage::png($tab, $outfile, min(max(1, $this->size), $maxSize), $this->margin,$saveandprint);
+                //modified by tybitsfox
+                return QRimage::png($tab, $outfile, min(max(1, $this->size), $maxSize), $this->margin,$saveandprint);//org is not have return
             
             } catch (Exception $e) {
             
