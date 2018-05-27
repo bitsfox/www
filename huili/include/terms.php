@@ -4,7 +4,7 @@ if(!defined("FULL_PATH"))
 if(!defined("WORK_PLACE"))
 	require_once(constant("FULL_PATH")."config/glob_new.php");
 include_once(constant("FULL_PATH")."include/head_doc.php"); //起始头文件的引入
-include_once(constant("FULL_PATH")."include/home.php");	//添加标题背景
+echo $EX_HTML['home'];
 //这里添加条款
 ?>
 <center><h4>汇氏管家服务条款</h4></center>

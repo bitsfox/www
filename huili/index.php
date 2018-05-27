@@ -13,7 +13,6 @@ if(!defined("FULL_PATH"))
 	define("FULL_PATH",substr(dirname(__FILE__),0,strlen(dirname(__FILE__))-strlen(strstr(dirname(__FILE__),"huili")))."huili".DIRECTORY_SEPARATOR);
 require_once(constant("FULL_PATH")."config/glob_new.php");	//全局常量及变量定义文件的引入
 include_once(constant("FULL_PATH")."include/head_doc.php"); //起始头文件的引入
-//include_once(constant("FULL_PATH")."include/headbar_doc.php"); //浮动菜单栏定义文件的引入
 if(isset($_GET["selecter"]))
 {
 	switch($_GET["selecter"])
@@ -35,8 +34,8 @@ if(isset($_GET["selecter"]))
 }
 else
 {
-	include_once(constant("FULL_PATH")."include/home.php");
-	include_once(constant("FULL_PATH")."include/features.php");//features.php
+	echo $EX_HTML['home'];
+	echo $EX_HTML['feature'];
 }
 include_once(constant("FULL_PATH")."include/foot.php");	//底部文件的引入
 

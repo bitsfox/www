@@ -30,7 +30,26 @@ $GLOB_DEF['PG_TWO']	=	md5("huishi_Dd456EeFf");
 $GLOB_DEF['PG_THR']	=	md5("huishi_Gg789HhIi");
 $GLOB_DEF['PG_FUR']	=	md5("huishi_Jj012KkLl");
 $GLOB_DEF['PG_FIV']	=	md5("huishi_Mm345NnOo");
-$
+$GLOB_DEF['MSG_HOME_TITLE']	=	"懂你所需、做你所想";
+$GLOB_DEF['MSG_HOME_CON']	=	"汇氏环保管家，是目前国内环保行业唯一的线上线下联动、一站式、全流程的第三方服务平台。公司现已通过本平台发展形成线上线下专业环保服务团队和国内领先的环保供应链体系。未来，公司将以绿色环保科技为努力方向，打造国内最大最专业的环保咨询服务平台。";
+$GLOB_DEF['FEAT_TITLE_1']	=	"平台的特性";
+$GLOB_DEF['FEAT_TITLE_2']	=	"汇氏管家，为您的成功助力。";
+$GLOB_DEF['FEAT_TITLE_3']	=	"汇氏管家就是为需要解决环境问题的客户、环境问题专家及环保企业建立一个互联互通的简易而且直观的交流互动平台";
+$GLOB_DEF['FEAT_MSG_M']	=	"环保管家服务为企业提供一站式环保托管服务，统筹解决企业环境问题；提高决策科学性，保证服务效果，有效降低企业环保管理成本；同时降低环境产业链各个环节脱节产生的高昂交易成本。是传统环保服务的升级衍生业务，全方面帮助企业实施管理服务，减少企业用人成本，提升企业环境面貌，解决企业因环保而带来的烦恼。";
+$GLOB_DEF['FEAT_IMG_1']	=	"/huili/images/logo/picto-connect.png";
+$GLOB_DEF['FEAT_IMG_2']	=	"/huili/images/logo/picto-spending.png";
+$GLOB_DEF['FEAT_IMG_3']	=	"/huili/images/logo/picto-quickbooks.png";
+$GLOB_DEF['FEAT_MSG_A1']	=	"互联的平台";
+$GLOB_DEF['FEAT_MSG_A2']	=	"顺畅的沟通是您发挥才能，展示产品和服务，取得最优解决方案的保证。";
+$GLOB_DEF['FEAT_MSG_B1']	=	"优质的服务";
+$GLOB_DEF['FEAT_MSG_B2']	=	"平台围绕环评咨询、环境工程、环境监测、项目验收、清洁生产、应急预案、危废服务、排污申报等领域，提供政策信息咨询、业务辅导、工程施工等专业化咨询服务。";
+$GLOB_DEF['FEAT_MSG_C1']	=	"完整的资源";
+$GLOB_DEF['FEAT_MSG_C2']	=	"各类在线实时监控数据的发布以及全面的企业和专家名录满足您的需要。";
+
+
+
+
+
 
 $s1="<!DOCTYPE html>\n<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />\n<title>".$GLOB_DEF['TITLE']."</title>\n";
 $s2="<link rel='stylesheet' href='".constant('CSS_FONT')."'>\n<link rel='stylesheet' href='".constant("CSS_LOG")."'>";
@@ -71,6 +90,15 @@ $OUT_HTML['FORGOT_AFTER']	= "<h5>重置马上完成!</h5><p class='intro'>我们
 //{{{下面定义的是总览界面（登录前）的html代码
 $EX_HTML['headbar1']	=	"<div class='mobile-bar'>\n<div class='logobox'>\n<a href='/huili/index.php' title='Huishi Home'>\n<img class='logo' src='/huili/images/logo/logo.png5.png' alt='Huishi'/>\n</a>\n</div>\n<div class='mobile-menu'>\n<button type='button' class='navbar-toggle btn-mobilemenu'>\n<span class='sr-only'>Toggle navigation</span>\n<span class='title'>MENU</span>\n<span class='bars'>\n<span class='icon-bar icon-bar1'></span>\n<span class='icon-bar icon-bar2'></span>\n<span class='icon-bar icon-bar3'></span>\n</span>\n</button>\n</div>\n</div>\n<div class='overlay'></div>\n<header class='header'>\n<nav class='navbar navbar-default'>\n<div class='container-fluid'>\n<div class='navbar-header'>\n<button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#mobile-side' aria-expanded='false'>\n<span class='sr-only'>Toggle navigation</span>\n<span class='icon-bar'></span>\n<span class='icon-bar'></span>\n<span class='icon-bar'></span>\n</button>\n<a href='#' class='btn-closemenu'><i class='icon-x'></i></a>\n<a class='navbar-brand' href='/huili/index.php'><img src='/huili/images/logo/logo.png5.png' alt='Huishi'/></a>\n</div>";
 $EX_HTML['headbar2']	=	"<div class='collapse navbar-collapse' id='mobile-side'>\n<ul class='nav navbar-nav navbar-right'>\n<li><a href='/huili/index.php?selecter=".$GLOB_DEF['PG_ONE']."' class='tooltip'>管家服务<span class='tooltiptext'>您身边的环境专家，为您提供专业的服务</span></a></li>\n<li><a href='/huili/index.php?selecter=".$GLOB_DEF['PG_THR']."' class='tooltip'>专家团队<span class='tooltiptext'>聚集了环保全领域的资深专家和优秀人才</span></a></li>\n<li><a href='/huili/index.php?selecter=".$GLOB_DEF['PG_TWO']."' class='tooltip'>监控平台<span class='tooltiptext'>污染源、水站、空气站在线监控平台</span></a></li>\n<li><a href='/huili/index.php?selecter=".$GLOB_DEF['PG_FUR']."' class='tooltip'>交流互动<span class='tooltiptext'>在这里发布供求，寻求支持</span></a></li>\n<li class='sec'><a href='/huili/include/login.php' class='btn btn-head-signin tooltip' title=''>登录</a></li>\n<li class='sec'><a href='/huili/include/signup.php' class='btn btn-head-signup' title=''>注册</a></li>\n</ul>\n<ul class='list-unstyled list-mobilebtns'>\n<li><a href='/huili/include/login.php' class='btn btn-outline btn-head-signin' title='登录'>登 录</a></li>\n<li><a href='/huili/include/signup.php' class='btn btn-primary btn-head-signup' title='免费注册'>注 册</a></li>\n</ul>\n</div><!-- /.navbar-collapse -->\n</div><!-- /.container-fluid -->\n</nav>\n</header>\n";
+$EX_HTML['home']	=	"<section class='promo promo--home'><div class='container'><div class='promo-msg promo-msg--half'><h1 class='animated'>".$GLOB_DEF['MSG_HOME_TITLE']."</h1><p class='intro animated'>".$GLOB_DEF['MSG_HOME_CON']."</p></div></div><div class='promo-hero'><div></div></div></section>";
+$EX_HTML['feature']	=	"<section class='block'><div class='container'><div class='inner'><p class='sect'>".$GLOB_DEF['FEAT_TITLE_1']."</p><h2>".$GLOB_DEF['FEAT_TITLE_2']."</h2><p class='intro'>".$GLOB_DEF['FEAT_TITLE_3']."</p><p class='intro'>".$GLOB_DEF['FEAT_MSG_M']."</p><ul class='list-unstyled list-promo'><li><img class='picto' src='".$GLOB_DEF['FEAT_IMG_1']."' alt='互联的平台'/><h3 class='withtopline'>".$GLOB_DEF['FEAT_MSG_A1']."</h3><p>".$GLOB_DEF['FEAT_MSG_A2']."</p></li><li><img class='picto' src='".$GLOB_DEF['FEAT_IMG_2']."' alt='优质的服务'/><h3 class='withtopline'>".$GLOB_DEF['FEAT_MSG_B1']."</h3><p>".$GLOB_DEF['FEAT_MSG_B2']."</p></li><li><img class='picto' src='".$GLOB_DEF['FEAT_IMG_3']."' alt='完整的资源'/><h3 class='withtopline'>".$GLOB_DEF['FEAT_MSG_C1']."</h3><p>".$GLOB_DEF['FEAT_MSG_C2']."</p></li></ul></div></div></section>";
+
+
+
+
+
+
+
 
 //}}}
 unset($s1);unset($s2);unset($s3);unset($s4);unset($s5);
