@@ -18,7 +18,17 @@ if(isset($_GET["selecter"]))
 	switch($_GET["selecter"])
 	{
 	case $GLOB_DEF['PG_ONE']:
-		include_once(constant("FULL_PATH")."include/expert.php");
+		echo $EX_HTML['expert_beg'];
+		$k=count($GLOB_DEF['EXPE_ARRY']);
+		for($i=0;$i<$k;$i++)
+		{
+			$ay=array();
+			$ay=$GLOB_DEF['EXPE_ARRY'][$i];
+			$st=sprintf($EX_HTML['expert_list'],$ay[0],$ay[1],$ay[2]);
+			echo $st;
+			unset($ay);
+		}
+		echo $EX_HTML['expert_end'];
 		break;
 	case $GLOB_DEF['PG_TWO']:
 		include_once(constant("FULL_PATH")."include/plateform.php");
@@ -38,5 +48,4 @@ else
 	echo $EX_HTML['feature'];
 }
 include_once(constant("FULL_PATH")."include/foot.php");	//底部文件的引入
-
 ?>

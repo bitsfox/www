@@ -14,7 +14,9 @@
 if(session_status() != PHP_SESSION_ACTIVE)
 	session_start();
 if(!defined("FULL_PATH"))
-	include_once("../need.php");
+	define("FULL_PATH",substr(dirname(__FILE__),0,strlen(dirname(__FILE__))-strlen(strstr(dirname(__FILE__),"huili")))."huili".DIRECTORY_SEPARATOR);
+if(!defined("WORK_PLACE"))
+	require_once(constant("FULL_PATH")."config/glob_new.php");
 require_once(constant("FULL_PATH")."lib/interface.php");
 
 //{{{class login implements inter_sign	
