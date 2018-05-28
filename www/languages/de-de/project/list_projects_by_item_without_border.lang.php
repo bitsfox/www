@@ -1,3 +1,0 @@
-<?php
-$LANG['ProjectListByItemWithoutBorderTitle'] = "Elternprojekte";
-?>
