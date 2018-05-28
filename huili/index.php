@@ -17,7 +17,7 @@ if(isset($_GET["selecter"]))
 {
 	switch($_GET["selecter"])
 	{
-	case $GLOB_DEF['PG_ONE']:
+	case $GLOB_DEF['PG_ONE']:	//管家服务
 		echo $EX_HTML['expert_beg'];
 		$k=count($GLOB_DEF['EXPE_ARRY']);
 		for($i=0;$i<$k;$i++)
@@ -30,19 +30,49 @@ if(isset($_GET["selecter"]))
 		}
 		echo $EX_HTML['expert_end'];
 		break;
-	case $GLOB_DEF['PG_TWO']:
-		include_once(constant("FULL_PATH")."include/plateform.php");
+	case $GLOB_DEF['PG_TWO']:	//监控平台
+		echo $EX_HTML['plat_beg'];
+		$k=count($GLOB_DEF['PLAT_ARRY']);
+		for($i=0;$i<$k;$i++)
+		{
+			$ay=array();
+			$ay=$GLOB_DEF['PLAT_ARRY'][$i];
+			$st=sprintf($EX_HTML['plat_list'],$ay[0],$ay[1],$ay[2]);
+			echo $st;
+			unset($ay);
+		}
+		echo $EX_HTML['plat_end'];
 		break;
-	case $GLOB_DEF['PG_THR']:
-		include_once(constant("FULL_PATH")."include/engineer.php");
+	case $GLOB_DEF['PG_THR']:	//专家团队
+		echo $EX_HTML['engin_beg'];
+		$k=count($GLOB_DEF['ENGIN_ARRY']);
+		for($i=0;$i<$k;$i++)
+		{
+			$ay=array();
+			$ay=$GLOB_DEF['ENGIN_ARRY'][$i];
+			$st=sprintf($EX_HTML['engin_list'],$ay[0],$ay[1],$ay[2],$ay[3]);
+			echo $st;
+			unset($ay);
+		}
+		echo $EX_HTML['engin_end'];
 		break;
-	case $GLOB_DEF['PG_FUR']:
-		include_once(constant("FULL_PATH")."include/blog.php");
+	case $GLOB_DEF['PG_FUR']:	//交流互动
+		echo $EX_HTML['blog_beg'];
+		$k=count($GLOB_DEF['BLOG_ARRY']);
+		for($i=0;$i<$k;$i++)
+		{
+			$ay=array();
+			$ay=$GLOB_DEF['BLOG_ARRY'][$i];
+			$st=sprintf($EX_HTML['blog_list'],$ay[0],$ay[1],$ay[2],$ay[3],$ay[4],$ay[5]);
+			echo $st;
+			unset($ay);
+		}
+		echo $EX_HTML['blog_end'];
 	default:
 		break;
 	}
 }
-else
+else	//登录主界面
 {
 	echo $EX_HTML['home'];
 	echo $EX_HTML['feature'];
