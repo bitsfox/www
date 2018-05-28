@@ -55,6 +55,7 @@ $GLOB_DEF['EXPE_MSG_2']		=	"更多的整合意味着更宽广的视野和更加�
 $GLOB_DEF['EXPE_MSG_3']		=	"这里没有你需要的资源?";
 $GLOB_DEF['EXPE_MSG_4']		=	"联系我们";
 $GLOB_DEF['EXPE_MSG_5']		=	"我们会在这个平台下加入他.";
+//在这里定义的所有array变量都是临时的，将来这些数据都取自数据库
 $GLOB_DEF['EXPE_ARRY']		=	array(
 		array('/huili/include/login.php','icon-gear','环评咨询'),
 		array('/huili/include/login.php','icon-truck','环境工程'),
@@ -68,12 +69,55 @@ $GLOB_DEF['EXPE_ARRY']		=	array(
 		array('/huili/include/login.php','icon-snapchat-ghost','环境案例'),
 		array('/huili/include/login.php','icon-joomla','技术动态'),
 		array('/huili/include/login.php','icon-wpforms','环境法规'),
-		array('/huili/include/login.php','icon-download','资料下载'),
+		array('/huili/include/login.php','icon-download','资料下载')
 		);
-
-
-
-
+$GLOB_DEF['ENGIN_TITLE_1']	=	"专家名录";
+$GLOB_DEF['ENGIN_TITLE_2']	=	"全领域的环境专家随时为你提供帮助";
+$GLOB_DEF['ENGIN_TITLE_3']	=	"汇氏管家随时为您解决环境问题";
+$GLOB_DEF['ENGIN_TITLE_4']	=	"了解更多";
+$GLOB_DEF['ENGIN_TITLE_IMG']	=	"/huili/images/logo/img-arrow-large.png";
+$GLOB_DEF['ENGIN_MSG_1']	=	"汇氏管家提供专业的服务";
+$GLOB_DEF['ENGIN_MSG_3']	=	"如果您是一位环境方面的专家或者是一位富有经验的环境工作者，我们期待您的加入";
+$GLOB_DEF['ENGIN_MSG_4']	=	"联系我们";
+$GLOB_DEF['ENGIN_MSG_5']	=	"我们为您提供一个施展才华的平台.";
+$GLOB_DEF['ENGIN_ARRY']		=	array(
+		array('/register/signup','/huili/images/avatar_25.jpg','姓名：徐琛','同济大学环境工程系给水排水专业.同济大学博士后流动站工作'),
+		array('/register/signup','/huili/images/avatar_39.jpg','姓名：孙国再','法律专家,三级高级检察官.青岛市律师协会生态环资委员会副主任委员',),
+		array('/register/signup','/huili/images/05684617086076992_sm.jpg','姓名：周洁','污水治理,污水处理.主持并完成部、省、市和横向科研项目十余项',),
+		array('/register/signup','/huili/images/05684620533698581_sm.jpg','姓名：王星星','污水治理,污水处理.煤炭行业（部级）第十六届优秀工程设计二等奖',),
+		array('/register/signup','/huili/images/avatar_55.jpg','姓名：杨影影','污水处理,脱硫脱硝.2015山东省煤炭工业科学技术二等奖.',),
+		array('/register/signup','/huili/images/logo/guest.png','虚位以待','',),
+		array('/register/signup','/huili/images/logo/guest.png','虚位以待','',),
+		array('/register/signup','/huili/images/logo/guest.png','虚位以待','',),
+		array('/register/signup','/huili/images/logo/guest.png','虚位以待','',),
+		array('/register/signup','/huili/images/logo/guest.png','虚位以待','',),
+		array('/register/signup','/huili/images/logo/guest.png','虚位以待','',),
+		array('/register/signup','/huili/images/logo/guest.png','虚位以待','',)
+		);
+$GLOB_DEF['PLAT_TITLE_1']	=	"Contact";
+$GLOB_DEF['PLAT_TITLE_2']	=	"登录我们的平台,获取更多发布的数据";
+$GLOB_DEF['PLAT_TITLE_3']	=	"成为注册用户，即可查看各类监控平台，取得实时发布的监测数据.";
+$GLOB_DEF['PLAT_MSG_1']		=	"平台预览";
+$GLOB_DEF['PLAT_MSG_2']		=	"多款平台为您提供或发布各类实时数据";
+$GLOB_DEF['PLAT_ARRY']		=	array(
+		array('/huili/images/logo/home-slider-1.png','Home Depot Account Page','Account Page'),
+		array('/huili/images/logo/home-slider-2.png','Connect Page','Connect With Dozens of Vendors'),
+		array('/huili/images/logo/home-slider-3.png','Transaction Detail Page (Delta)','Detailed Receipts'),
+		array('/huili/images/logo/home-slider-4.png','Home Depot features original receipt view','Original Receipts')
+		);
+$GLOB_DEF['PLAT_MSG_3']		=	"/huili/index.php?selecter=".$GLOB_DEF['PG_ONE'];
+$GLOB_DEF['PLAT_MSG_4']		=	"所有的服务";
+$GLOB_DEF['BLOG_TITLE_1']	=	"我们的博客";
+$GLOB_DEF['BLOG_TITLE_2']	=	"信息交流，技术探讨，供需发布";
+$GLOB_DEF['BLOG_ARRY']		=	array(
+		array('/huili/include/blog_show.php','Save Time and Transform Your Business with Connected Accounting','/huili/images/logo/transform-your-business-calculator.jpg','Save Time and Transform Your Business with Connected Accounting','Mar 20, 2018','Save time and transform your business with connected accounting. Cloud accounting is an intelligent choice because it is scalable, cost-effective and easy to use.'),
+		array('/huili/include/blog_show.php','Greenback + Xero Accounting Software','/huili/images/logo/greenback-and-xero.png','Greenback + Xero Accounting Software','Feb 14, 2018','Greenback now integrates with Xero and there couldn’t be a better match. Greenback helps automate your accounting by syncing transactions directly from vendors such as Amazon, Home Depot, Delta, eBay, and more with Xero. What sets us apart from all other receipt apps? We’ve eliminated the need for email, photos, scans, and manual data entry.'),
+		array('/huili/include/blog_show.php','How To Automate Your Lowe&#39;s In-Store and Online Receipts','/huili/images/logo/greenback-and-lowes-automate-your-receipts.jpg','How To Automate Your Lowe&#39;s In-Store and Online Receipts','Jan 9, 2018 ','Tired of manually scanning receipts or snapping photos for bookkeeping, tax compliance, or invoicing? Constantly searching for misplaced, faded receipts? Whether you are a professional contractor, a DIY weekend warrior, admin assistant, or savvy shopper, you can automate your Lowe&#39;s receipts to streamline your record keeping and sync your receipt data to your accounting platform to save time and money. Luckily, there are automation tools that can help you get a handle of the job. With the Greenback app, you can free up your time for more important things like building stuff.'),
+		array('/huili/include/blog_show.php','5 Reasons Why You Need Automated Receipts','/huili/images/logo/greenback-reasons-to-automate.png','5 Reasons Why You Need Automated Receipts','Nov 15, 2017 ','Are you reaping the benefits of accounting in the cloud? Learn how repetitive bookkeeping tasks and data entry can be automated.'),
+		array('/huili/include/blog_show.php','How To Automate Your Online and In-Store Home Depot Receipts','/huili/images/logo/automate-home-depot-receipts.jpg','How To Automate Your Online and In-Store Home Depot Receipts','Oct 14, 2017 ','Tired of misplacing, manually scanning/snapping a photo, or hunting down Home Depot receipts for bookkeeping, tax compliance, or invoicing?'),
+		array('/huili/include/blog_show.php','Greenback Now Available In QuickBooks App Store','/huili/images/logo/greenback-and-quickbooks.jpg','Greenback Now Available In QuickBooks App Store','May 1, 2017 ','Greenback syncs transactions directly from vendors like Amazon, Home Depot, Delta, eBay, and more to your Quick Books Online account.'),
+		array('/huili/include/blog_show.php','How To Automate Home Depot Pro Xtra Receipts','/huili/images/logo/automate-home-depot-pro-receipts.jpg','How To Automate Home Depot Pro Xtra Receipts','Apr 18, 2017 ','Pros need accurate daily expenses by Job Name or PO number, easy to find receipts, tax compliance, and no manual data entry.')
+		);
 
 
 
@@ -121,8 +165,16 @@ $EX_HTML['feature']	=	"<section class='block'><div class='container'><div class=
 $EX_HTML['expert_beg']	=	"<section class='promo network'>\n<div class='container'>\n<div class='promo-msg wide'>\n<p class='sect'>".$GLOB_DEF['EXPE_TITLE_1']."</p>\n<h1 class='animated'>".$GLOB_DEF['EXPE_TITLE_2']."</h1>\n<p class='intro animated'>".$GLOB_DEF['EXPE_TITLE_3']."</p>\n<a href='#integrations' class='learn-more smooth animated'>\n<div>".$GLOB_DEF['EXPE_TITLE_4']."</div>\n<img src='".$GLOB_DEF['EXPE_TITLE_IMG']."' alt='>'/>\n</a>\n</div>\n</div>\n</section>\n<section class='block' id='integrations'>\n<div class='container'>\n<div class='inner'>\n<p class='sect animated'>".$GLOB_DEF['EXPE_MSG_1']."</p>\n<h2 class='animated'>".$GLOB_DEF['EXPE_MSG_2']."</h2>\n<p class='intro animated'>".$GLOB_DEF['EXPE_MSG_3']."<br />\n<a href='/contact'>".$GLOB_DEF['EXPE_MSG_4']."</a>".$GLOB_DEF['EXPE_MSG_5']."</p>\n<ul class='list-unstyled list-brands'>\n";
 //下面的变量需要sprintf函数组合三个参数
 $EX_HTML['expert_list']	=	"<li class='animated'>\n<a href='%s'>\n<div class='brand-logo'>\n<span class='%s'></span>\n</div>\n<div class='brand-msg'>\n<p>%s</p>\n</div>\n<div class='brand-foot'>\n<div class='btn'>详细了解<i class='icon-arrow'></i></div>\n</div>\n</a>\n</li>\n";
-$EXP_HTML['expert_end']	=	"</ul>\n</div>\n</div>\n</section>\n<br>";
-
+$EX_HTML['expert_end']	=	"</ul>\n</div>\n</div>\n</section>\n<br>";
+$EX_HTML['engin_beg']	=	"<section class='promo about'>\n<div class='container'>\n<div class='promo-msg wide'>\n<p class='sect'>".$GLOB_DEF['ENGIN_TITLE_1']."</p>\n<h1 class='animated'>".$GLOB_DEF['ENGIN_TITLE_2']."</h1>\n<p class='intro animated'>".$GLOB_DEF['ENGIN_TITLE_3']."</p>\n<a href='#integrationa' class='learn-more smooth animated'>\n<div>".$GLOB_DEF['ENGIN_TITLE_4']."</div>\n<img src='".$GLOB_DEF['ENGIN_TITLE_IMG']."' alt='>'/>\n</a>\n</div>\n</div>\n</section>\n<section class='block' id='integrationa'>\n<div class='container'>\n<div class='inner'>\n<p class='sect animated'>".$GLOB_DEF['ENGIN_MSG_1']."</p>\n<h2 class='animated'>".$GLOB_DEF['ENGIN_MSG_2']."</h2>\n<p class='intro animated'>".$GLOB_DEF['ENGIN_MSG_3']."<br />\n<a href='/contact'>".$GLOB_DEF['ENGIN_MSG_4']."</a>".$GLOB_DEF['ENGIN_MSG_5']."</p>\n<ul class='list-unstyled list-brands'>\n";
+$EX_HTML['engin_list']	=	"<li class='animated'>\n<a href='%s'>\n<div class='brand-logo'>\n<img src='%s' alt='>' />\n</div>\n<div class='brand-msg'>\n<p>%s</p><p>%s</p>\n</div>\n<div class='brand-foot'>\n<div class='btn'>详细了解<i class='icon-arrow'></i></div>\n</div>\n</a>\n</li>\n";
+$EX_HTML['engin_end']	=	$EX_HTML['expert_end'];
+$EX_HTML['plat_beg']	=	"<section class='promo short contact'>\n<div class='container'>\n<div class='promo-msg wide'>\n<p class='sect animated'>".$GLOB_DEF['PLAT_TITLE_1']."</p>\n<h1 class='animated'>".$GLOB_DEF['PLAT_TITLE_2']."</h1>\n<p class='intro animated'>".$GLOB_DEF['PLAT_TITLE_3']."</p>\n</div>\n</div>\n</section>\n<section class='block'>\n<div class='container'>\n<div class='inner'>\n<p class='sect'>".$GLOB_DEF['PLAT_MSG_1']."</p>\n<h2>".$GLOB_DEF['PLAT_MSG_2']."</h2>\n<p class='intro'></p>\n<div class='promo-slider'>\n";
+$EX_HTML['plat_list']	=	"<div class='promo-slide'>\n<img src='%s' alt='%s'/>\n<div class='promo-caption'>\n<p class='promo-captiontitle'>%s</p>\n<p></p>\n</div>\n</div>\n";
+$EX_HTML['plat_end']	=	"</div>\n<div class='ctablock'>\n<a href='".$GLOB_DEF['PLAT_MSG_3']."' class='btn btn-medium btn-primary'>".$GLOB_DEF['PLAT_MSG_4']."</a>\n</div>\n</div>\n</div>\n</section>\n";
+$EX_HTML['blog_beg']	=	"<section class='promo shortest blog'>\n<div class='container'>\n<div class='promo-msg wide'>\n<p class='sect animated'>".$GLOB_DEF['BLOG_TITLE_1']."</p>\n<h1 class='animated'>".$GLOB_DEF['BLOG_TITLE_2']."</h1>\n</div>\n</div>\n</section>\n<section class='block block-blog grey'>\n<div class='container'>\n<div class='innerx'>\n<div class='textblock widest'>\n<div class='blogposts'>\n";
+$EX_HTML['blog_list']	=	"<div class='blogpost'>\n<a href='%s' class='btn-blogpost'>\n<div class='inner'>\n<h2>%s</h2>\n<div class='blog-img' style='padding-bottom: 10px'>\n<img src='%s' alt='%s'/>\n</div>\n<p class='author'>%s </p>\n<p class='intro'>%s</p>\n<p class='btn-text btn-readblog withlasticon'>阅读<i class='icon-arrow'></i></p>\n</div>\n</a>\n</div>\n";
+$EX_HTML['blog_end']	=	"</div>\n</div>\n</div>\n</div>\n</section>";
 
 
 
