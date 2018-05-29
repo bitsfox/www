@@ -81,12 +81,9 @@ if($_POST[action]=="search")
 }
 echo "</td></tr></table></form> </td></tr></table>";
 echo "<a href='./chgmain_idx.php?usersel=old'>返回老版主页</a><br><br>";
-echo "<a href='./www/index.php' target=_blank>进入lims系统</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=./www.t086.com/code/php/index.html>php-taiwan</a>";
-echo "<br><br><a href='./php-chunked-xhtml/index.html' target=_blank>php</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=./www.veryhuo.com/php/index.html>PHP</a>";
-echo "<br><br><a href='./php_hl/login.php' target=_blank>dl登录</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./www/test.php' target=_blank>php测试</a><br></br>";
-echo "<a href=./googlemap/aaa.html target=_blank>turang</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./googlemap/gis_hb/login.php' target=_blank>土壤信息</a>";
-#echo "<br><br><a href='./template_new/test.html' target=_blank>测试</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./template_new/backdoor.php' target=_blank>设置</a>";
-echo "<br><br><a href='./huili/index.php' target=_blank>测试</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./huili/test/h04.php' target=_blank>设置</a>";
+echo "<a href='./php-chunked-xhtml/index.html' target=_blank>PHP5手册</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=./www.veryhuo.com/php/index.html>PHP4手册</a>";
+echo "<br><br><a href='./php_hl/login.php' target=_blank>监控平台登录</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./googlemap/gis_hb/login.php' target=_blank>土壤信息</a>";
+echo "<br><br><a href='./huili/index.php' target=_blank>管家测试</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='./huili/test/h04.php' target=_blank>设置</a>";
 }
 //echo "end of search....<br>";
 ?><!--
